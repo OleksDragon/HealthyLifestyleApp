@@ -33,6 +33,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureOrderMappings();
             ConfigureConsultationMappings();
             ConfigureMaleHealthTrackerMappings();
+            ConfigureGroupMappings();
         }
         #endregion
 
@@ -303,6 +304,53 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.EnergyLevelScore, opt => opt.Condition(src => src.EnergyLevelScore.HasValue))
                 .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
 
+        }
+
+        private void ConfigureGroupMappings()
+        {
+            CreateMap<Group, GroupDto>()
+                .ForMember(dest => dest.GroupMembers, opt => opt.MapFrom(src => src.GroupMemberships));
+
+            CreateMap<GroupMembership, GroupMemberDto>()
+                .ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.GroupId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.JoinDate, opt => opt.MapFrom(src => src.JoinDate))
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role));
+
+            CreateMap<GroupCreateDto, Group>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.CreatorId, opt => opt.MapFrom(src => src.CreatorId))
+                .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.GroupMemberships, opt => opt.MapFrom(src => src.GroupMembers))
+                .ForMember(dest => dest.Creator, opt => opt.Ignore()) // вручну або з контексту
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<GroupUpdateDto, Group>()
+                .ForMember(dest => dest.Name, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Name)))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.GroupMemberships, opt => opt.MapFrom(src => src.GroupMembers))
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatorId, opt => opt.Ignore())
+                .ForMember(dest => dest.Creator, opt => opt.Ignore())
+                .ForMember(dest => dest.CreationDate, opt => opt.Ignore());
+
+            CreateMap<GroupMemberDto, GroupMembership>()
+                .ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.GroupId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.JoinDate, opt => opt.MapFrom(src => src.JoinDate))
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
+                .ForMember(dest => dest.Group, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore());
+
+            CreateMap<GroupMemberCreateDto, GroupMembership>()
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.JoinDate, opt => opt.MapFrom(src => src.JoinDate))
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
+                .ForMember(dest => dest.GroupId, opt => opt.Ignore())
+                .ForMember(dest => dest.Group, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore());
         }
         #endregion
     }

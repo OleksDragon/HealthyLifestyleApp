@@ -20,19 +20,19 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 
-// Создаем билдер для веб-приложения
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавляем логирование в консоль
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 builder.Services.AddLogging(configure => configure.AddConsole());
 
-// Загружаем .env файл
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ .env пїЅпїЅпїЅпїЅ
 Env.Load("../../.env"); 
 
 
-// --- Регистрация сервисов в DI контейнере ---
+// --- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ DI пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---
 
-// 1. Настройка DbContext с подключением к SQL Server
+// 1. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ DbContext пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -43,35 +43,35 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
-// 2. Конфигурация Identity с кастомным User и Role<Guid>
+// 2. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Identity пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ User пїЅ Role<Guid>
 builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
 {
-    // Настройки политики паролей
-    options.Password.RequireDigit = true; // Требуется наличие хотя бы одной цифры в пароле (0-9)
-    options.Password.RequiredLength = 8; // Минимальная длина пароля — 8 символов
-    options.Password.RequireNonAlphanumeric = false; // Не требуется наличие специальных символов (например, !, @, #)
-    options.Password.RequireUppercase = true; // Требуется наличие хотя бы одной заглавной буквы (A-Z)
-    options.Password.RequireLowercase = true; // Требуется наличие хотя бы одной строчной буквы (a-z)
-    options.Password.RequiredUniqueChars = 1; // Минимальное количество уникальных символов в пароле (1 означает, что нет ограничений на повторение символов)
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    options.Password.RequireDigit = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (0-9)
+    options.Password.RequiredLength = 8; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 8 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    options.Password.RequireNonAlphanumeric = false; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, !, @, #)
+    options.Password.RequireUppercase = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (A-Z)
+    options.Password.RequireLowercase = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (a-z)
+    options.Password.RequiredUniqueChars = 1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 
-    // Настройки блокировки аккаунта
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // Время блокировки аккаунта — 5 минут после превышения лимита неудачных попыток входа
-    options.Lockout.MaxFailedAccessAttempts = 5; // Максимальное количество неудачных попыток входа перед блокировкой — 5
-    options.Lockout.AllowedForNewUsers = true; // Разрешить блокировку для новых пользователей (если false, новые пользователи не блокируются)
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 5 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    options.Lockout.MaxFailedAccessAttempts = 5; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 5
+    options.Lockout.AllowedForNewUsers = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ false, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 
-    // Настройки подтверждений при входе
-    options.SignIn.RequireConfirmedAccount = false; // Не требуется подтверждение аккаунта для входа (например, через email или телефон)
-    options.SignIn.RequireConfirmedEmail = false; // Не требуется подтверждённый email для входа
-    options.SignIn.RequireConfirmedPhoneNumber = false; // Не требуется подтверждённый номер телефона для входа
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    options.SignIn.RequireConfirmedAccount = false; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ email пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+    options.SignIn.RequireConfirmedEmail = false; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ email пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    options.SignIn.RequireConfirmedPhoneNumber = false; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
-    // Ограничения на имя пользователя
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     options.User.RequireUniqueEmail = true;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// 3. Настройка аутентификации JWT Bearer
+// 3. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ JWT Bearer
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -97,10 +97,10 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// 4. Регистрация AutoMapper
+// 4. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-// 5. Регистрация сервисов приложения
+// 5. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProfessionalQualificationService, ProfessionalQualificationService>();
@@ -113,16 +113,19 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IConsultationService, ConsultationService>();
 builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>();
+builder.Services.AddScoped<IGroupService, GroupService>();
 
-// 6. Регистрация репозитория и Unit of Work
+// 6. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IConsultationRepository, ConsultationRepository>();
 builder.Services.AddScoped<IMaleHealthTrackerRepository, MaleHealthTrackerRepository>();
+builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+builder.Services.AddScoped<IGroupMembershipRepository, GroupMembershipRepository>();
 
-// 7. Конфигурация CORS
+// 7. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ CORS
 builder.Services.AddCors(options =>
 {
     if (builder.Environment.IsDevelopment())
@@ -138,7 +141,7 @@ builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowSpecificOrigin", builder =>
         {
-            builder.WithOrigins("http://localhost:3000") // URL фронтенда
+            builder.WithOrigins("http://localhost:3000") // URL пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                    .AllowAnyHeader()
                    .AllowAnyMethod()
                    .AllowCredentials();
@@ -146,7 +149,7 @@ builder.Services.AddCors(options =>
     }
 });
 
-// 8. Добавление контроллеров и настройка JSON сериализации
+// 8. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ JSON пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -155,7 +158,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
 
-// 9. Добавляем Swagger
+// 9. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -192,11 +195,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// --- Создаем и настраиваем конвейер обработки запросов ---
+// --- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---
 
 var app = builder.Build();
 
-// Получаем логгер после сборки приложения
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
 
 if (app.Environment.IsDevelopment())
@@ -206,14 +209,14 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseHttpsRedirection(); // В продакшене HTTPS-редирект будет включен
+    app.UseHttpsRedirection(); // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HTTPS-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 app.UseCors(builder.Environment.IsDevelopment() ? "AllowAllOrigins" : "AllowSpecificOrigin");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-// --- Seed данных при старте приложения ---
+// --- Seed пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---
 if (app.Environment.IsDevelopment())
 {
     using (var scope = app.Services.CreateScope())
@@ -229,11 +232,11 @@ if (app.Environment.IsDevelopment())
             await Task.Delay(TimeSpan.FromSeconds(5));
             logger.LogInformation("Attempting to apply migrations...");
 
-            // Применяем миграции
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             await dbContext.Database.MigrateAsync();
             logger.LogInformation("Migrations applied successfully.");
 
-            // Заполнение начальными данными
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             await ApplicationDbContextSeed.SeedDefaultUserAndRolesAsync(userManager, roleManager, dbContext);
             logger.LogInformation("Database seeded successfully.");
         }
@@ -241,7 +244,7 @@ if (app.Environment.IsDevelopment())
         {
             var loggerForSeed = services.GetRequiredService<ILogger<Program>>();
             loggerForSeed.LogError(ex, "An error occurred while seeding the database.");
-            throw; // Перебрасываем исключение для отладки
+            throw; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
     }
 }

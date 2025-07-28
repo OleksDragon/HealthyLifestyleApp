@@ -1,0 +1,46 @@
+﻿using HealthyLifestyle.Application.DTOs.Tracker;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HealthyLifestyle.Application.Interfaces
+{
+    public interface IMentalHealthRecordService
+    {
+        /// <summary>
+        /// Отримує список усіх 'записів' записів ментального здоров’я.
+        /// </summary>
+        /// <returns>Список записів чоловічого трекера здоров’я.</returns>
+        Task<IEnumerable<MentalHealthRecordDto>> GetAllMentalHealthRecordsAsync();
+
+        /// <summary>
+        /// Отримує запис запису ментального здоров’я за ідентифікатором.
+        /// </summary>
+        /// <param name="id">Ідентифікатор запису UserId.</param>
+        /// <returns>Запис чоловічого трекера.</returns>
+        Task<MentalHealthRecordDto> GetMentalHealthRecordByIdAsync(Guid id);
+
+        /// <summary>
+        /// Створює новий запис запису ментального здоров’я.
+        /// </summary>
+        /// <param name="createDto">Дані для створення запису.</param>
+        /// <returns>Створений запис.</returns>
+        Task<MentalHealthRecordDto> CreateMentalHealthRecordAsync(MentalHealthRecordCreateDto createDto);
+
+        /// <summary>
+        /// Оновлює існуючий запис запису ментального здоров’я.
+        /// </summary>
+        /// <param name="id">Ідентифікатор запису UserId.</param>
+        /// <param name="updateDto">Оновлені дані.</param>
+        /// <returns>Оновлений запис.</returns>
+        Task<MentalHealthRecordDto> UpdateMentalHealthRecordAsync(Guid id, MentalHealthRecordUpdateDto updateDto);
+
+        /// <summary>
+        /// Видаляє запис запису ментального здоров’я.
+        /// </summary>
+        /// <param name="id">Ідентифікатор запису для видалення UserId.</param>
+        Task DeleteMentalHealthRecordAsync(Guid id);
+    }
+}

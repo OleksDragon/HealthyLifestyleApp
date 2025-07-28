@@ -36,6 +36,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureMaleHealthTrackerMappings();
             ConfigureGroupMappings();
             ConfigureFemaleHealthTrackerMappings();
+            ConfigureMentalHealthRecordMappings();
         }
         #endregion
 
@@ -385,6 +386,38 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.MoodNotes, opt => opt.Condition(src => src.MoodNotes != null))
                 .ForMember(dest => dest.BleedingLevel, opt => opt.Condition(src => src.BleedingLevel.HasValue)); // Для Enum
         }
+
+        private void ConfigureMentalHealthRecordMappings()
+        {
+            CreateMap<MentalHealthRecord, MentalHealthRecordDto>();
+
+            CreateMap<MentalHealthRecordCreateDto, MentalHealthRecord>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore()) // Навігаційне поле
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.MeditationDurationMinutes, opt => opt.MapFrom(src => src.MeditationDurationMinutes))
+                .ForMember(dest => dest.BreathingPracticeDurationMinutes, opt => opt.MapFrom(src => src.BreathingPracticeDurationMinutes))
+                .ForMember(dest => dest.StressLevelScore, opt => opt.MapFrom(src => src.StressLevelScore))
+                .ForMember(dest => dest.AnxietyLevelScore, opt => opt.MapFrom(src => src.AnxietyLevelScore))
+                .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes));
+
+            CreateMap<MentalHealthRecordUpdateDto, MentalHealthRecord>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id не оновлюється
+                .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
+                .ForMember(dest => dest.User, opt => opt.Ignore()) // Навігаційне поле
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore()) // Не оновлюється
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.MeditationDurationMinutes, opt => opt.Condition(src => src.MeditationDurationMinutes.HasValue))
+                .ForMember(dest => dest.BreathingPracticeDurationMinutes, opt => opt.Condition(src => src.BreathingPracticeDurationMinutes.HasValue))
+                .ForMember(dest => dest.StressLevelScore, opt => opt.Condition(src => src.StressLevelScore.HasValue))
+                .ForMember(dest => dest.AnxietyLevelScore, opt => opt.Condition(src => src.AnxietyLevelScore.HasValue))
+                .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
+        }
+
         #endregion
     }
 }

@@ -32,7 +32,7 @@ namespace HealthyLifestyle.Api.Controllers.Tracker
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllMaleHealthTracke()
         {
-            var maleHealthTracker = await _maleHealthTrackerService.GetAllMaleHealthTrackeAsync();
+            var maleHealthTracker = await _maleHealthTrackerService.GetAllMaleHealthTrackerAsync();
             return Ok(maleHealthTracker);
         }
 
@@ -50,7 +50,7 @@ namespace HealthyLifestyle.Api.Controllers.Tracker
         {
             try
             {
-                var maleHealthTracker = await _maleHealthTrackerService.GetMaleHealthTrackeByIdAsync(id);
+                var maleHealthTracker = await _maleHealthTrackerService.GetMaleHealthTrackerByIdAsync(id);
                 return Ok(maleHealthTracker);
             }
             catch (KeyNotFoundException ex)
@@ -81,7 +81,7 @@ namespace HealthyLifestyle.Api.Controllers.Tracker
 
             try
             {
-                var createMaleHealthTracker = await _maleHealthTrackerService.CreateMaleHealthTrackeAsync(maleHealthTrackerCreateDto);
+                var createMaleHealthTracker = await _maleHealthTrackerService.CreateMaleHealthTrackerAsync(maleHealthTrackerCreateDto);
                 return CreatedAtAction(nameof(GetMaleHealthTrackeById), new { id = createMaleHealthTracker.Id }, createMaleHealthTracker);
             }
             catch (Exception ex)
@@ -99,7 +99,7 @@ namespace HealthyLifestyle.Api.Controllers.Tracker
         [ProducesResponseType(404)]
         [ProducesResponseType(401)]
         [ProducesResponseType(403)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public async Task<IActionResult> UpdateMaleHealthTracke(Guid id, [FromBody] MaleHealthTrackerUpdateDto maleHealthTrackerCreateDto)
         {
             if (!ModelState.IsValid)
@@ -108,7 +108,7 @@ namespace HealthyLifestyle.Api.Controllers.Tracker
             }
             try
             {
-                var updatedMaleHealthTracker = await _maleHealthTrackerService.UpdateMaleHealthTrackeAsync(id, maleHealthTrackerCreateDto);
+                var updatedMaleHealthTracker = await _maleHealthTrackerService.UpdateMaleHealthTrackerAsync(id, maleHealthTrackerCreateDto);
                 return Ok(updatedMaleHealthTracker);
             }
             catch (KeyNotFoundException ex)
@@ -125,12 +125,12 @@ namespace HealthyLifestyle.Api.Controllers.Tracker
         [ProducesResponseType(404)]
         [ProducesResponseType(401)]
         [ProducesResponseType(403)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public async Task<IActionResult> DeleteMaleHealthTracke(Guid id)
         {
             try
             {
-                await _maleHealthTrackerService.DeleteMaleHealthTrackeAsync(id);
+                await _maleHealthTrackerService.DeleteMaleHealthTrackerAsync(id);
                 return NoContent(); // 204 No Content, оскільки немає тіла відповіді
             }
             catch (KeyNotFoundException ex)

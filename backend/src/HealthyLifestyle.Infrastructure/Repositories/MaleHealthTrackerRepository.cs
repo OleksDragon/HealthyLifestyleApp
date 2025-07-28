@@ -25,6 +25,6 @@ namespace HealthyLifestyle.Infrastructure.Repositories
             // Базовий конструктор Repository<MaleHealthTracker> вже ініціалізує _dbContext та _dbSet.
         }
 
-        // Якщо ви додали специфічні методи до IMaleHealthTracker, їх реалізація буде тут.
+        // Якщо ви додали специфічні методи до IMaleHealthTrackerRepository, їх реалізація буде тут.
     }
 }

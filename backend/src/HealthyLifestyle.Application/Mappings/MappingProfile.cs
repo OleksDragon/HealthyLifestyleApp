@@ -7,6 +7,7 @@ using HealthyLifestyle.Application.DTOs.User;
 using HealthyLifestyle.Application.DTOs.Working;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Enums;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HealthyLifestyle.Application.Mappings
 {
@@ -34,6 +35,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureConsultationMappings();
             ConfigureMaleHealthTrackerMappings();
             ConfigureGroupMappings();
+            ConfigureFemaleHealthTrackerMappings();
         }
         #endregion
 
@@ -351,6 +353,37 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.GroupId, opt => opt.Ignore())
                 .ForMember(dest => dest.Group, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore());
+        }
+
+        private void ConfigureFemaleHealthTrackerMappings()
+        {
+            CreateMap<FemaleHealthTracker, FemaleHealthTrackerDto>()
+                .ForMember(dest => dest.PmsSymptoms, opt => opt.MapFrom(src => src.PmsSymptoms));
+
+            CreateMap<FemaleHealthTrackerCreateDto, FemaleHealthTracker>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore()) // Навігаційне поле
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.CycleDay, opt => opt.MapFrom(src => src.CycleDay))
+                .ForMember(dest => dest.IsFertile, opt => opt.MapFrom(src => src.IsFertile))
+                .ForMember(dest => dest.PmsSymptoms, opt => opt.MapFrom(src => src.PmsSymptoms))
+                .ForMember(dest => dest.MoodNotes, opt => opt.MapFrom(src => src.MoodNotes))
+                .ForMember(dest => dest.BleedingLevel, opt => opt.MapFrom(src => src.BleedingLevel));
+
+            CreateMap<FemaleHealthTrackerUpdateDto, FemaleHealthTracker>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id не оновлюється
+                .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore()) // Дата створення не оновлюється
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.CycleDay, opt => opt.Condition(src => src.CycleDay.HasValue))
+                .ForMember(dest => dest.IsFertile, opt => opt.Condition(src => src.IsFertile.HasValue))
+                .ForMember(dest => dest.PmsSymptoms, opt => opt.Condition(src => src.PmsSymptoms != null))
+                .ForMember(dest => dest.MoodNotes, opt => opt.Condition(src => src.MoodNotes != null))
+                .ForMember(dest => dest.BleedingLevel, opt => opt.Condition(src => src.BleedingLevel.HasValue)); // Для Enum
         }
         #endregion
     }

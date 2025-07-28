@@ -74,19 +74,22 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="bleedingLevel">Рівень кровотечі (опціонально).</param>
         public FemaleHealthTracker(
             Guid userId,
-            DateTime recordDate,
             int cycleDay,
             bool isFertile,
             string? moodNotes = null,
             BleedingLevel? bleedingLevel = null)
             : this()
         {
+            if (userId == Guid.Empty)
+                throw new ArgumentException("Ідентифікатор користувача не може бути порожнім.", nameof(userId));
+
             UserId = userId;
-            RecordDate = recordDate;
+            RecordDate = DateTime.UtcNow;
             CycleDay = cycleDay;
             IsFertile = isFertile;
             MoodNotes = moodNotes;
             BleedingLevel = bleedingLevel;
+            SetUpdatedAt();
         }
 
         #endregion

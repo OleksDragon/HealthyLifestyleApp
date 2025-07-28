@@ -25,13 +25,13 @@ namespace HealthyLifestyle.Application.Services.Tracker
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<MaleHealthTrackerDto>> GetAllMaleHealthTrackeAsync()
+        public async Task<IEnumerable<MaleHealthTrackerDto>> GetAllMaleHealthTrackerAsync()
         {
             var maleHealthTracker = await _maleHealthTrackerRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<MaleHealthTrackerDto>>(maleHealthTracker);
         }
 
-        public async Task<MaleHealthTrackerDto> GetMaleHealthTrackeByIdAsync(Guid id)
+        public async Task<MaleHealthTrackerDto> GetMaleHealthTrackerByIdAsync(Guid id)
         {
             var maleHealthTracker = await _maleHealthTrackerRepository.GetByIdAsync(id);
             if (maleHealthTracker == null)
@@ -41,7 +41,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
             return _mapper.Map<MaleHealthTrackerDto>(maleHealthTracker);
         }
 
-        public async Task<MaleHealthTrackerDto> CreateMaleHealthTrackeAsync(MaleHealthTrackerCreateDto maleHealthTrackerCreateDto)
+        public async Task<MaleHealthTrackerDto> CreateMaleHealthTrackerAsync(MaleHealthTrackerCreateDto maleHealthTrackerCreateDto)
         {
             var maleHealthTracker = _mapper.Map<MaleHealthTracker>(maleHealthTrackerCreateDto);
             await _maleHealthTrackerRepository.AddAsync(maleHealthTracker);
@@ -49,7 +49,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
             return _mapper.Map<MaleHealthTrackerDto>(maleHealthTracker);
         }
 
-        public async Task<MaleHealthTrackerDto> UpdateMaleHealthTrackeAsync(Guid id, MaleHealthTrackerUpdateDto updateDto)
+        public async Task<MaleHealthTrackerDto> UpdateMaleHealthTrackerAsync(Guid id, MaleHealthTrackerUpdateDto updateDto)
         {
             var maleHealthTracker = await _maleHealthTrackerRepository.GetByIdAsync(id);
             if (maleHealthTracker == null)
@@ -64,7 +64,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
             return _mapper.Map<MaleHealthTrackerDto>(maleHealthTracker);
         }
 
-        public async Task DeleteMaleHealthTrackeAsync(Guid id)
+        public async Task DeleteMaleHealthTrackerAsync(Guid id)
         {
             var maleHealthTracker = await _maleHealthTrackerRepository.GetByIdAsync(id);
             if (maleHealthTracker == null)

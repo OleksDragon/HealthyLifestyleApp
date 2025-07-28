@@ -12,34 +12,34 @@ namespace HealthyLifestyle.Application.Interfaces
         /// Отримує список усіх записів чоловічого трекера здоров’я.
         /// </summary>
         /// <returns>Список записів чоловічого трекера здоров’я.</returns>
-        Task<IEnumerable<MaleHealthTrackerDto>> GetAllMaleHealthTrackeAsync();
+        Task<IEnumerable<MaleHealthTrackerDto>> GetAllMaleHealthTrackerAsync();
 
         /// <summary>
         /// Отримує запис чоловічого трекера за ідентифікатором.
         /// </summary>
         /// <param name="id">Ідентифікатор запису UserId.</param>
         /// <returns>Запис чоловічого трекера.</returns>
-        Task<MaleHealthTrackerDto> GetMaleHealthTrackeByIdAsync(Guid id);
+        Task<MaleHealthTrackerDto> GetMaleHealthTrackerByIdAsync(Guid id);
 
         /// <summary>
         /// Створює новий запис чоловічого трекера.
         /// </summary>
         /// <param name="createDto">Дані для створення запису.</param>
         /// <returns>Створений запис.</returns>
-        Task<MaleHealthTrackerDto> CreateMaleHealthTrackeAsync(MaleHealthTrackerCreateDto createDto);
+        Task<MaleHealthTrackerDto> CreateMaleHealthTrackerAsync(MaleHealthTrackerCreateDto createDto);
 
         /// <summary>
         /// Оновлює існуючий запис чоловічого трекера.
         /// </summary>
-        /// <param name="id">Ідентифікатор запису.</param>
+        /// <param name="id">Ідентифікатор запису UserId.</param>
         /// <param name="updateDto">Оновлені дані.</param>
         /// <returns>Оновлений запис.</returns>
-        Task<MaleHealthTrackerDto> UpdateMaleHealthTrackeAsync(Guid id, MaleHealthTrackerUpdateDto updateDto);
+        Task<MaleHealthTrackerDto> UpdateMaleHealthTrackerAsync(Guid id, MaleHealthTrackerUpdateDto updateDto);
 
         /// <summary>
         /// Видаляє запис чоловічого трекера.
         /// </summary>
-        /// <param name="id">Ідентифікатор запису для видалення.</param>
-        Task DeleteMaleHealthTrackeAsync(Guid id);
+        /// <param name="id">Ідентифікатор запису для видалення UserId.</param>
+        Task DeleteMaleHealthTrackerAsync(Guid id);
     }
 }

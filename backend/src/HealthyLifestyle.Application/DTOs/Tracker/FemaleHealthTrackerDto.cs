@@ -42,6 +42,8 @@ namespace HealthyLifestyle.Application.DTOs.Tracker
         [Required(ErrorMessage = "Ідентифікатор користувача є обов’язковим.")]
         public Guid UserId { get; set; }
 
+        public DateTime RecordDate { get; set; }
+
         [Range(1, 31, ErrorMessage = "День циклу має бути в межах від 1 до 31.")]
         public int CycleDay { get; set; }
 
@@ -59,6 +61,8 @@ namespace HealthyLifestyle.Application.DTOs.Tracker
     /// </summary>
     public class FemaleHealthTrackerUpdateDto
     {
+        public DateTime RecordDate { get; set; }
+
         [Range(1, 31, ErrorMessage = "День циклу має бути в межах від 1 до 31.")]
         public int? CycleDay { get; set; }
 

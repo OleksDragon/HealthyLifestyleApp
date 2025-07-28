@@ -33,6 +33,8 @@ namespace HealthyLifestyle.Application.DTOs.Tracker
         [Required(ErrorMessage = "Ідентифікатор користувача є обов’язковим.")]
         public Guid UserId { get; set; }
 
+        public DateTime RecordDate { get; set; }
+
         [Range(0, double.MaxValue, ErrorMessage = "Рівень тестостерона не може бути від’ємним.")]
         public double? TestosteroneLevel { get; set; }
 
@@ -48,6 +50,8 @@ namespace HealthyLifestyle.Application.DTOs.Tracker
     /// </summary>
     public class MaleHealthTrackerUpdateDto
     {
+        public DateTime RecordDate { get; set; }
+
         [Range(0, double.MaxValue, ErrorMessage = "Рівень тестостерона не може бути від’ємним.")]
         public double? TestosteroneLevel { get; set; }
 

@@ -74,6 +74,7 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="bleedingLevel">Рівень кровотечі (опціонально).</param>
         public FemaleHealthTracker(
             Guid userId,
+            DateTime recordDate,
             int cycleDay,
             bool isFertile,
             string? moodNotes = null,
@@ -84,7 +85,7 @@ namespace HealthyLifestyle.Core.Entities
                 throw new ArgumentException("Ідентифікатор користувача не може бути порожнім.", nameof(userId));
 
             UserId = userId;
-            RecordDate = DateTime.UtcNow;
+            RecordDate = recordDate;
             CycleDay = cycleDay;
             IsFertile = isFertile;
             MoodNotes = moodNotes;

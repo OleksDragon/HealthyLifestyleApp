@@ -77,7 +77,6 @@ namespace HealthyLifestyle.Core.Entities
                 throw new ArgumentException("Ідентифікатор користувача не може бути порожнім.", nameof(userId));
 
             UserId = userId;
-            RecordDate = DateTime.UtcNow;
             SetUpdatedAt();
         }
 
@@ -102,7 +101,6 @@ namespace HealthyLifestyle.Core.Entities
             if (testosteroneLevel.HasValue) TestosteroneLevel = testosteroneLevel.Value;
             if (energyLevelScore.HasValue) EnergyLevelScore = energyLevelScore.Value;
             if (notes != null) Notes = notes;
-            RecordDate = DateTime.UtcNow;
             SetUpdatedAt();
         }
 

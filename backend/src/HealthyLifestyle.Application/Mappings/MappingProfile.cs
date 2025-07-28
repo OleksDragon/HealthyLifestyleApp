@@ -295,14 +295,15 @@ namespace HealthyLifestyle.Application.Mappings
             CreateMap<MaleHealthTrackerCreateDto, MaleHealthTracker>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate));
 
             CreateMap<MaleHealthTrackerUpdateDto, MaleHealthTracker>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id не оновлюється через DTO
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore()) // Дата створення не оновлюється
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
-                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.TestosteroneLevel, opt => opt.Condition(src => src.TestosteroneLevel.HasValue))
                 .ForMember(dest => dest.EnergyLevelScore, opt => opt.Condition(src => src.EnergyLevelScore.HasValue))
                 .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
@@ -363,7 +364,7 @@ namespace HealthyLifestyle.Application.Mappings
 
             CreateMap<FemaleHealthTrackerCreateDto, FemaleHealthTracker>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
-                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore()) // Навігаційне поле
@@ -377,7 +378,7 @@ namespace HealthyLifestyle.Application.Mappings
             CreateMap<FemaleHealthTrackerUpdateDto, FemaleHealthTracker>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id не оновлюється
                 .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
-                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore()) // Дата створення не оновлюється
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.CycleDay, opt => opt.Condition(src => src.CycleDay.HasValue))
@@ -408,7 +409,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id не оновлюється
                 .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
                 .ForMember(dest => dest.User, opt => opt.Ignore()) // Навігаційне поле
-                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore()) // Не оновлюється
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.MeditationDurationMinutes, opt => opt.Condition(src => src.MeditationDurationMinutes.HasValue))

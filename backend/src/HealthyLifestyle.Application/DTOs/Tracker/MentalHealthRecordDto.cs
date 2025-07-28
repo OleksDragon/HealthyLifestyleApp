@@ -41,6 +41,8 @@ namespace HealthyLifestyle.Application.DTOs.Tracker
         [Required(ErrorMessage = "Ідентифікатор користувача є обов’язковим.")]
         public Guid UserId { get; set; }
 
+        public DateTime RecordDate { get; set; }
+
         [Range(0, int.MaxValue, ErrorMessage = "Тривалість медитації не може бути від’ємною.")]
         public int MeditationDurationMinutes { get; set; }
 
@@ -61,6 +63,8 @@ namespace HealthyLifestyle.Application.DTOs.Tracker
     /// </summary>
     public class MentalHealthRecordUpdateDto
     {
+        public DateTime RecordDate { get; set; }
+
         [Range(0, int.MaxValue, ErrorMessage = "Тривалість медитації не може бути від’ємною.")]
         public int? MeditationDurationMinutes { get; set; }
 

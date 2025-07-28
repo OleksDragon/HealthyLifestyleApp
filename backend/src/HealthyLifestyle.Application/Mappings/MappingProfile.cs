@@ -40,7 +40,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureFemaleHealthTrackerMappings();
             ConfigureMentalHealthRecordMappings();
             ConfigureNotificationMappings();
-
+            ConfigureSleepRecordMappings();
         }
         #endregion
 
@@ -498,6 +498,50 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.AnxietyLevelScore, opt => opt.Condition(src => src.AnxietyLevelScore.HasValue))
                 .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
         }
+
+        private void ConfigureSleepRecordMappings()
+        {
+            CreateMap<SleepRecord, SleepRecordDto>();
+
+            CreateMap<SleepRecordCreateDto, SleepRecord>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // генерується автоматично
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore()) // навігаційне поле
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.SleepDate, opt => opt.MapFrom(src => src.SleepDate))
+                .ForMember(dest => dest.BedTime, opt => opt.MapFrom(src => src.BedTime))
+                .ForMember(dest => dest.WakeUpTime, opt => opt.MapFrom(src => src.WakeUpTime))
+                .ForMember(dest => dest.TotalSleepMinutes, opt => opt.MapFrom(src =>
+                    new SleepRecord
+                    {
+                        BedTime = src.BedTime,
+                        WakeUpTime = src.WakeUpTime
+                    }.CalculateSleepDuration()))
+                .ForMember(dest => dest.SleepQualityScore, opt => opt.MapFrom(src => src.SleepQualityScore))
+                .ForMember(dest => dest.SmartAlarmUsed, opt => opt.MapFrom(src => src.SmartAlarmUsed))
+                .ForMember(dest => dest.DreamDetails, opt => opt.MapFrom(src => src.DreamDetails));
+
+            CreateMap<SleepRecordUpdateDto, SleepRecord>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.SleepDate, opt => opt.MapFrom(src => src.SleepDate))
+                .ForMember(dest => dest.BedTime, opt => opt.MapFrom(src => src.BedTime))
+                .ForMember(dest => dest.WakeUpTime, opt => opt.MapFrom(src => src.WakeUpTime))
+                .ForMember(dest => dest.SleepQualityScore, opt => opt.MapFrom(src => src.SleepQualityScore))
+                .ForMember(dest => dest.SmartAlarmUsed, opt => opt.MapFrom(src => src.SmartAlarmUsed))
+                .ForMember(dest => dest.DreamDetails, opt => opt.Condition(src => src.DreamDetails != null))
+                .ForMember(dest => dest.TotalSleepMinutes, opt => opt.MapFrom(src =>
+                    new SleepRecord
+                    {
+                        BedTime = src.BedTime,
+                        WakeUpTime = src.WakeUpTime
+                    }.CalculateSleepDuration()));
+        }
+
         #endregion
     }
 }

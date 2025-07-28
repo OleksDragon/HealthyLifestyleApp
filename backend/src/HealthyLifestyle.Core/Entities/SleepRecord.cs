@@ -30,7 +30,7 @@ namespace HealthyLifestyle.Core.Entities
         /// Час пробудження користувача.
         /// </summary>
         [Required]
-        public TimeSpan WakeUpTime { get; set; }
+        public TimeSpan WakeUpTime { get; set; } 
 
         /// <summary>
         /// Загальна кількість хвилин сну.

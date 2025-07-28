@@ -117,6 +117,7 @@ builder.Services.AddScoped<IChallengeService, ChallengeService>();
 builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>();
 builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerService>();
 builder.Services.AddScoped<IMentalHealthRecordService, MentalHealthRecordService>();
+builder.Services.AddScoped<ISleepRecordService, SleepRecordService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 
 
@@ -133,6 +134,7 @@ builder.Services.AddScoped<IChallengeParticipantRepository, ChallengeParticipant
 builder.Services.AddScoped<IMaleHealthTrackerRepository, MaleHealthTrackerRepository>();
 builder.Services.AddScoped<IFemaleHealthTrackerRepository, FemaleHealthTrackerRepository>();
 builder.Services.AddScoped<IMentalHealthRecordRepository, MentalHealthRecordRepository>();
+builder.Services.AddScoped<ISleepRecordRepository, SleepRecordRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 // 7. Конфігурація CORS

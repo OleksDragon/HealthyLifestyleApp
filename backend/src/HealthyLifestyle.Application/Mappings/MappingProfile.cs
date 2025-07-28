@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Auth;
+using HealthyLifestyle.Application.DTOs.Notification;
 using HealthyLifestyle.Application.DTOs.ProfessionalQualification;
 using HealthyLifestyle.Application.DTOs.Shop;
 using HealthyLifestyle.Application.DTOs.Tracker;
@@ -36,7 +37,11 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureMaleHealthTrackerMappings();
             ConfigureGroupMappings();
             ConfigureFemaleHealthTrackerMappings();
+
             ConfigureChallengeMappings();
+
+            ConfigureNotificationMappings();
+
         }
         #endregion
 
@@ -387,6 +392,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.BleedingLevel, opt => opt.Condition(src => src.BleedingLevel.HasValue)); // Для Enum
         }
 
+
         private void ConfigureChallengeMappings()
         {
             CreateMap<SocialChallenge, ChallengeDto>()
@@ -438,6 +444,29 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ForMember(dest => dest.Challenge, opt => opt.Ignore());
+        }
+        private void ConfigureNotificationMappings()
+        {
+            // Мапінг з Notification до NotificationDto
+            CreateMap<Notification, NotificationDto>();
+
+            // Мапінг з CreateNotificationDto до Notification
+            CreateMap<CreateNotificationDto, Notification>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.IsRead, opt => opt.MapFrom(_ => false))
+                .ForMember(dest => dest.User, opt => opt.Ignore()); // Не мапимо навігаційну властивість
+
+            // Мапінг з UpdateNotificationDto до Notification
+            CreateMap<UpdateNotificationDto, Notification>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Type, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.Message, opt => opt.Condition(src => !string.IsNullOrWhiteSpace(src.Message)));
         }
         #endregion
     }

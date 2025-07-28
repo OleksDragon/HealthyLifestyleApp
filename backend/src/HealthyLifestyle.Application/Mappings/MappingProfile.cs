@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Auth;
+using HealthyLifestyle.Application.DTOs.Notification;
 using HealthyLifestyle.Application.DTOs.ProfessionalQualification;
 using HealthyLifestyle.Application.DTOs.Shop;
 using HealthyLifestyle.Application.DTOs.Tracker;
@@ -33,10 +34,13 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureProductMappings();
             ConfigureOrderMappings();
             ConfigureConsultationMappings();
-            ConfigureMaleHealthTrackerMappings();
             ConfigureGroupMappings();
+            ConfigureChallengeMappings();
+            ConfigureMaleHealthTrackerMappings();
             ConfigureFemaleHealthTrackerMappings();
             ConfigureMentalHealthRecordMappings();
+            ConfigureNotificationMappings();
+
         }
         #endregion
 
@@ -388,6 +392,82 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.BleedingLevel, opt => opt.Condition(src => src.BleedingLevel.HasValue)); // Для Enum
         }
 
+        private void ConfigureChallengeMappings()
+        {
+            CreateMap<SocialChallenge, ChallengeDto>()
+                .ForMember(dest => dest.Participations, opt => opt.MapFrom(src => src.Participations));
+
+            CreateMap<UserChallengeParticipation, ChallengeParticipationDto>()
+                .ForMember(dest => dest.ChallengeId, opt => opt.MapFrom(src => src.ChallengeId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.JoinDate, opt => opt.MapFrom(src => src.JoinDate))
+                .ForMember(dest => dest.Progress, opt => opt.MapFrom(src => src.Progress))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
+
+            CreateMap<ChallengeCreateDto, SocialChallenge>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.CreatorId, opt => opt.MapFrom(src => src.CreatorId))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
+                .ForMember(dest => dest.Creator, opt => opt.Ignore())
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Participations, opt => opt.MapFrom(src => src.Participations));
+
+            CreateMap<ChallengeUpdateDto, SocialChallenge>()
+                .ForMember(dest => dest.Name, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Name)))
+                .ForMember(dest => dest.Description, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Description)))
+                .ForMember(dest => dest.CreatorId, opt => opt.Ignore())
+                .ForMember(dest => dest.StartDate, opt => opt.Condition(src => src.StartDate != null))
+                .ForMember(dest => dest.EndDate, opt => opt.Condition(src => src.EndDate != null))
+                .ForMember(dest => dest.Type, opt => opt.Condition(src => src.Type.HasValue))
+                .ForMember(dest => dest.Creator, opt => opt.Ignore())
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Participations, opt => opt.Condition(src => src.Participations != null));
+
+            CreateMap<ChallengeParticipationDto, UserChallengeParticipation>()
+                .ForMember(dest => dest.ChallengeId, opt => opt.MapFrom(src => src.ChallengeId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.JoinDate, opt => opt.MapFrom(src => src.JoinDate))
+                .ForMember(dest => dest.Progress, opt => opt.MapFrom(src => src.Progress))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Challenge, opt => opt.Ignore());
+
+            CreateMap<ChallengeCreateParticipationDto, UserChallengeParticipation>()
+                .ForMember(dest => dest.ChallengeId, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.JoinDate, opt => opt.MapFrom(src => src.JoinDate))
+                .ForMember(dest => dest.Progress, opt => opt.MapFrom(src => src.Progress))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Challenge, opt => opt.Ignore());
+        }
+        private void ConfigureNotificationMappings()
+        {
+            // Мапінг з Notification до NotificationDto
+            CreateMap<Notification, NotificationDto>();
+
+            // Мапінг з CreateNotificationDto до Notification
+            CreateMap<CreateNotificationDto, Notification>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.IsRead, opt => opt.MapFrom(_ => false))
+                .ForMember(dest => dest.User, opt => opt.Ignore()); // Не мапимо навігаційну властивість
+
+            // Мапінг з UpdateNotificationDto до Notification
+            CreateMap<UpdateNotificationDto, Notification>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Type, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.Message, opt => opt.Condition(src => !string.IsNullOrWhiteSpace(src.Message)));
+        }
+
         private void ConfigureMentalHealthRecordMappings()
         {
             CreateMap<MentalHealthRecord, MentalHealthRecordDto>();
@@ -418,7 +498,6 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.AnxietyLevelScore, opt => opt.Condition(src => src.AnxietyLevelScore.HasValue))
                 .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
         }
-
         #endregion
     }
 }

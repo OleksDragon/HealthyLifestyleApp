@@ -114,7 +114,6 @@ namespace HealthyLifestyle.Application.Services.Working
                 }
                 else
                 {
-                    existing.JoinDate = memberDto.JoinDate;
                     existing.Role = memberDto.Role;
                 }
             }

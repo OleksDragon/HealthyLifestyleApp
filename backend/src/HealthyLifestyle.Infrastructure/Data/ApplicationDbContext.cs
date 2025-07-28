@@ -34,6 +34,7 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<Group> Groups { get; set; }
         public DbSet<GroupMembership> GroupMemberships { get; set; }
         public DbSet<SocialChallenge> SocialChallenges { get; set; }
+        public DbSet<UserChallengeParticipation> UserChallengeParticipations { get; set; }
         public DbSet<MentalHealthRecord> MentalHealthRecords { get; set; }
         public DbSet<SleepRecord> SleepRecords { get; set; }
         public DbSet<FemaleHealthTracker> FemaleHealthTrackers { get; set; }
@@ -106,6 +107,7 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureMaleHealthTracker(modelBuilder);
             ConfigureHealthDashboard(modelBuilder);
             ConfigureNotification(modelBuilder);
+            ConfigureUserChallengeParticipation(modelBuilder);
         }
         #endregion
 
@@ -512,6 +514,26 @@ namespace HealthyLifestyle.Infrastructure.Data
                    .HasForeignKey(sc => sc.CreatorId)
                    .OnDelete(DeleteBehavior.Restrict);
                 entity.Property(sc => sc.Type).HasConversion<string>();
+            });
+        }
+
+        /// <summary>
+        /// Налаштовує сутність UserChallengeParticipation.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureUserChallengeParticipation(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserChallengeParticipation>(entity =>
+            {
+                entity.HasOne(gm => gm.User)
+                   .WithMany(u => u.ChallengeParticipations)
+                   .HasForeignKey(gm => gm.UserId)
+                   .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(gm => gm.Challenge)
+                   .WithMany(g => g.Participations)
+                   .HasForeignKey(gm => gm.ChallengeId)
+                   .OnDelete(DeleteBehavior.Restrict);
+                entity.Property(gm => gm.Status).HasConversion<string>();
             });
         }
 

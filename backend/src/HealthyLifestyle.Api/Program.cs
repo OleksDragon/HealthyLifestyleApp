@@ -18,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
+using YourProject.Application.Services;
 
 
 // Створюємо білдер для веб-програми
@@ -28,7 +29,6 @@ builder.Services.AddLogging(configure => configure.AddConsole());
 
 // Завантажуємо .env файл
 Env.Load("../../.env");
-
 
 // --- Реєстрація сервісів у DI контейнері ---
 
@@ -112,10 +112,13 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IConsultationService, ConsultationService>();
-builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>();
 builder.Services.AddScoped<IGroupService, GroupService>();
+builder.Services.AddScoped<IChallengeService, ChallengeService>();
+builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>();
 builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerService>();
 builder.Services.AddScoped<IMentalHealthRecordService, MentalHealthRecordService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -123,11 +126,14 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IConsultationRepository, ConsultationRepository>();
-builder.Services.AddScoped<IMaleHealthTrackerRepository, MaleHealthTrackerRepository>();
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 builder.Services.AddScoped<IGroupMembershipRepository, GroupMembershipRepository>();
+builder.Services.AddScoped<IChallengeRepository, ChallengeRepository>();
+builder.Services.AddScoped<IChallengeParticipantRepository, ChallengeParticipantRepository>();
+builder.Services.AddScoped<IMaleHealthTrackerRepository, MaleHealthTrackerRepository>();
 builder.Services.AddScoped<IFemaleHealthTrackerRepository, FemaleHealthTrackerRepository>();
 builder.Services.AddScoped<IMentalHealthRecordRepository, MentalHealthRecordRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

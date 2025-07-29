@@ -77,7 +77,6 @@ namespace HealthyLifestyle.Core.Entities
                 throw new ArgumentException("Ідентифікатор користувача не може бути порожнім.", nameof(userId));
 
             UserId = userId;
-            SetUpdatedAt();
         }
 
         #endregion

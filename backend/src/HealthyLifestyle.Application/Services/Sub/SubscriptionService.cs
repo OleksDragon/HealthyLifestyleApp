@@ -34,8 +34,6 @@ namespace HealthyLifestyle.Application.Services.Sub
         {
             var activeSubscriptions = await _subscriptionRepository.GetActiveSubscriptionsByUserIdAsync(createDto.UserId);
 
-            Console.WriteLine($"\n\nActive subscriptions count: {activeSubscriptions.Count}");
-
             if (activeSubscriptions.Any())
             {
                 throw new InvalidOperationException("Користувач вже має активну підписку, діждіться терміну дії підписки або скасуйте її!");

@@ -20,10 +20,11 @@ namespace HealthyLifestyle.Infrastructure.Repositories
         {
         }
 
-        public async Task<SleepRecord?> GetSleepRecordByUserIdAsync(Guid userId)
+        public async Task<List<SleepRecord>> GetSleepRecordByUserIdAsync(Guid userId)
         {
             return await _dbSet
-                .FirstOrDefaultAsync(sr => sr.UserId == userId);
+                .Where(mh => mh.UserId == userId)
+                .ToListAsync();
         }
 
         // Тут можна додати специфічні методи для роботи з SleepRecord, якщо потрібно.

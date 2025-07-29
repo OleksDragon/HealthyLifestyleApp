@@ -90,7 +90,6 @@ namespace HealthyLifestyle.Core.Entities
             IsFertile = isFertile;
             MoodNotes = moodNotes;
             BleedingLevel = bleedingLevel;
-            SetUpdatedAt();
         }
 
         #endregion

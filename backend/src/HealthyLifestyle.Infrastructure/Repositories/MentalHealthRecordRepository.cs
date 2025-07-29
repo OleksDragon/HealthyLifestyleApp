@@ -20,10 +20,11 @@ namespace HealthyLifestyle.Infrastructure.Repositories
         {
         }
 
-        public async Task<MentalHealthRecord?> GetMentalHealthRecordByUserIdAsync(Guid userId)
+        public async Task<List<MentalHealthRecord>> GetMentalHealthRecordByUserIdAsync(Guid userId)
         {
             return await _dbSet
-                .FirstOrDefaultAsync(mhr => mhr.UserId == userId);
+                .Where(mh => mh.UserId == userId)
+                .ToListAsync();
         }
         // Тут можна додати специфічні методи для роботи з MentalHealthRecord, якщо потрібно.
     }

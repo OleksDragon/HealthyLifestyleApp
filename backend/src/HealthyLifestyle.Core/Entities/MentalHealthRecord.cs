@@ -97,7 +97,6 @@ namespace HealthyLifestyle.Core.Entities
             StressLevelScore = stressLevelScore;
             AnxietyLevelScore = anxietyLevelScore;
             Notes = notes;
-            SetUpdatedAt();
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HealthyLifestyle.Application.DTOs.Sub;
 using HealthyLifestyle.Application.DTOs.Tracker;
 using HealthyLifestyle.Application.Interfaces;
 using HealthyLifestyle.Core.Entities;
@@ -37,7 +38,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
 
         public async Task DeleteMentalHealthRecordAsync(Guid id)
         {
-            var mentalHealthRecord = await _mentalHealthRecordRepository.GetMentalHealthRecordByUserIdAsync(id);
+            var mentalHealthRecord = await _mentalHealthRecordRepository.GetByIdAsync(id);
             if (mentalHealthRecord == null)
             {
                 throw new ArgumentException($"Запис ментального здоров'я з ID {id} не знайдено.");
@@ -53,7 +54,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
             return _mapper.Map<IEnumerable<MentalHealthRecordDto>>(mentalHealthRecord);
         }
 
-        public async Task<MentalHealthRecordDto> GetMentalHealthRecordByIdAsync(Guid id)
+        public async Task<List<MentalHealthRecordDto>> GetMentalHealthRecordByIdAsync(Guid id)
         {
             var mentalHealthRecord = await _mentalHealthRecordRepository.GetMentalHealthRecordByUserIdAsync(id);
             if (mentalHealthRecord == null)
@@ -61,12 +62,12 @@ namespace HealthyLifestyle.Application.Services.Tracker
                 throw new KeyNotFoundException($"Запис ментального здоров'я з ID '{id}' не знайдено.");
             }
 
-            return _mapper.Map<MentalHealthRecordDto>(mentalHealthRecord);
+            return _mapper.Map<List<MentalHealthRecordDto>>(mentalHealthRecord);
         }
 
         public async Task<MentalHealthRecordDto> UpdateMentalHealthRecordAsync(Guid id, MentalHealthRecordUpdateDto updateDto)
         {
-            var mentalHealthRecord = await _mentalHealthRecordRepository.GetMentalHealthRecordByUserIdAsync(id);
+            var mentalHealthRecord = await _mentalHealthRecordRepository.GetByIdAsync(id);
             if (mentalHealthRecord == null)
             {
                 throw new ArgumentException($"Запис ментального здоров'я з ID {id} не знайдено.");

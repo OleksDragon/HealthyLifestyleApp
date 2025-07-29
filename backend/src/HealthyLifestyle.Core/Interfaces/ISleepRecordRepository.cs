@@ -14,7 +14,7 @@ namespace HealthyLifestyle.Core.Interfaces
 
     public interface ISleepRecordRepository : IRepository<SleepRecord>
     {
-        Task<SleepRecord?> GetSleepRecordByUserIdAsync(Guid userId);
+        Task<List<SleepRecord>> GetSleepRecordByUserIdAsync(Guid userId);
 
         // Приклад: Якщо вам знадобиться специфічний для SleepRecord метод,
         // який не є загальним CRUD, ви можете додати його сюди.

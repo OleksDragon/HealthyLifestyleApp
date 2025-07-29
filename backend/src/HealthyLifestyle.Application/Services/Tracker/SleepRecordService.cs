@@ -39,7 +39,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
 
         public async Task DeleteSleepRecordAsync(Guid id)
         {
-            var sleepRecord = await _sleepRecordRepository.GetSleepRecordByUserIdAsync(id);
+            var sleepRecord = await _sleepRecordRepository.GetByIdAsync(id);
             if (sleepRecord == null)
             {
                 throw new ArgumentException($"Запис сну користувача з ID {id} не знайдено.");
@@ -55,7 +55,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
             return _mapper.Map<IEnumerable<SleepRecordDto>>(sleepRecord);
         }
 
-        public async Task<SleepRecordDto?> GetSleepRecordByIdAsync(Guid id)
+        public async Task<List<SleepRecordDto>> GetSleepRecordByIdAsync(Guid id)
         {
             var sleepRecord = await _sleepRecordRepository.GetSleepRecordByUserIdAsync(id);
             if (sleepRecord == null)
@@ -63,12 +63,12 @@ namespace HealthyLifestyle.Application.Services.Tracker
                 throw new KeyNotFoundException($"Запис сну користувача з ID '{id}' не знайдено.");
             }
 
-            return _mapper.Map<SleepRecordDto>(sleepRecord);
+            return _mapper.Map<List<SleepRecordDto>>(sleepRecord);
         }
 
         public async Task<SleepRecordDto> UpdateSleepRecordAsync(Guid id, SleepRecordUpdateDto updateDto)
         {
-            var sleepRecord = await _sleepRecordRepository.GetSleepRecordByUserIdAsync(id);
+            var sleepRecord = await _sleepRecordRepository.GetByIdAsync(id);
             if (sleepRecord == null)
             {
                 throw new ArgumentException($"Запис сну користувача з ID {id} не знайдено.");

@@ -18,9 +18,9 @@ namespace HealthyLifestyle.Application.Interfaces
         /// <summary>
         /// Отримує запис запису ментального здоров’я за ідентифікатором.
         /// </summary>
-        /// <param name="id">Ідентифікатор запису UserId.</param>
+        /// <param name="id">Ідентифікатор користувача UserId.</param>
         /// <returns>Запис чоловічого трекера.</returns>
-        Task<MentalHealthRecordDto> GetMentalHealthRecordByIdAsync(Guid id);
+        Task<List<MentalHealthRecordDto>> GetMentalHealthRecordByIdAsync(Guid id);
 
         /// <summary>
         /// Створює новий запис запису ментального здоров’я.
@@ -32,7 +32,7 @@ namespace HealthyLifestyle.Application.Interfaces
         /// <summary>
         /// Оновлює існуючий запис запису ментального здоров’я.
         /// </summary>
-        /// <param name="id">Ідентифікатор запису UserId.</param>
+        /// <param name="id">Ідентифікатор запису ментального здоров’я.</param>
         /// <param name="updateDto">Оновлені дані.</param>
         /// <returns>Оновлений запис.</returns>
         Task<MentalHealthRecordDto> UpdateMentalHealthRecordAsync(Guid id, MentalHealthRecordUpdateDto updateDto);
@@ -40,7 +40,7 @@ namespace HealthyLifestyle.Application.Interfaces
         /// <summary>
         /// Видаляє запис запису ментального здоров’я.
         /// </summary>
-        /// <param name="id">Ідентифікатор запису для видалення UserId.</param>
+        /// <param name="id">Ідентифікатор запису ментального здоров’я.</param>
         Task DeleteMentalHealthRecordAsync(Guid id);
     }
 }

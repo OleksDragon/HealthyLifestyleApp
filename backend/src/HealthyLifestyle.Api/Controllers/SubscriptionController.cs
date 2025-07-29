@@ -32,7 +32,7 @@ namespace HealthyLifestyle.Api.Controllers.Subscription
         }
 
         /// <summary>
-        /// Отримує підписку за UserId.
+        /// Отримує підписки користувача.
         /// </summary>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(SubscriptionDto), 200)]
@@ -83,7 +83,7 @@ namespace HealthyLifestyle.Api.Controllers.Subscription
         }
 
         /// <summary>
-        /// Оновлює підписку за Id.
+        /// Оновлює підписку.
         /// </summary>
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(SubscriptionDto), 200)]
@@ -111,7 +111,7 @@ namespace HealthyLifestyle.Api.Controllers.Subscription
         }
 
         /// <summary>
-        /// Видаляє підписку за Id.
+        /// Видаляє підписку.
         /// </summary>
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
@@ -124,7 +124,7 @@ namespace HealthyLifestyle.Api.Controllers.Subscription
                 await _subscriptionService.DeleteSubscriptionAsync(id);
                 return NoContent();
             }
-            catch (KeyNotFoundException ex)
+            catch (ArgumentException ex)
             {
                 return NotFound(ex.Message);
             }
@@ -135,7 +135,7 @@ namespace HealthyLifestyle.Api.Controllers.Subscription
         }
 
         /// <summary>
-        /// Продовжує дію підписки до нової дати.
+        /// Продовжує дію підписки до нової дати (підписка не повинна мати статус active).
         /// </summary>
         [HttpPatch("{id}/renew")]
         [ProducesResponseType(204)]
@@ -184,7 +184,7 @@ namespace HealthyLifestyle.Api.Controllers.Subscription
         }
 
         /// <summary>
-        /// Скасовує активну підписку.
+        /// Робить активну підписку expired.
         /// </summary>
         [HttpPatch("{id}/expire")]
         [ProducesResponseType(204)]

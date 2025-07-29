@@ -25,14 +25,14 @@ namespace HealthyLifestyle.Application.Interfaces
         /// <summary>
         /// Створити нову підписку.
         /// </summary>
-        /// <param name="updateDto">Дані для створення підписки.</param>
+        /// <param name="createDto">Дані для створення підписки.</param>
         Task<SubscriptionDto> CreateSubscriptionAsync(SubscriptionCreateDto createDto);
 
         /// <summary>
         /// Оновити існуючу підписку.
         /// </summary>
         /// <param name="id">Ідентифікатор підписки.</param>
-        /// <param name="updateDto">Дані для створення підписки.</param>
+        /// <param name="updateDto">Дані для оновлення підписки.</param>
         Task<SubscriptionDto> UpdateSubscriptionAsync(Guid id, SubscriptionUpdateDto updateDto);
 
         /// <summary>

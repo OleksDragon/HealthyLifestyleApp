@@ -13,7 +13,7 @@ namespace HealthyLifestyle.Core.Interfaces
     /// </summary>
     public interface IMentalHealthRecordRepository : IRepository<MentalHealthRecord>
     {
-        Task<MentalHealthRecord?> GetMentalHealthRecordByUserIdAsync(Guid userId);
+        Task<List<MentalHealthRecord>> GetMentalHealthRecordByUserIdAsync(Guid userId);
 
         // Приклад: Якщо вам знадобиться специфічний для MentalHealthRecord метод,
         // який не є загальним CRUD, ви можете додати його сюди.

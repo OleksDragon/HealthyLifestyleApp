@@ -71,7 +71,7 @@ namespace HealthyLifestyle.Application.Services.Tracker
             var sleepRecord = await _sleepRecordRepository.GetSleepRecordByUserIdAsync(id);
             if (sleepRecord == null)
             {
-                throw new ArgumentException($"Запис ментального здоров'я з ID {id} не знайдено.");
+                throw new ArgumentException($"Запис сну користувача з ID {id} не знайдено.");
             }
 
             _mapper.Map(updateDto, sleepRecord);

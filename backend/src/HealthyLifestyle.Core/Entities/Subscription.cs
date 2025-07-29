@@ -84,6 +84,7 @@ namespace HealthyLifestyle.Core.Entities
         {
             EndDate = newEndDate;
             Status = SubscriptionStatus.Active;
+            SetUpdatedAt();
         }
 
         /// <summary>
@@ -92,6 +93,7 @@ namespace HealthyLifestyle.Core.Entities
         public void Cancel()
         {
             Status = SubscriptionStatus.Canceled;
+            SetUpdatedAt();
         }
 
         /// <summary>

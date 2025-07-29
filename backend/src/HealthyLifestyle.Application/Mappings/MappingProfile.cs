@@ -3,6 +3,7 @@ using HealthyLifestyle.Application.DTOs.Auth;
 using HealthyLifestyle.Application.DTOs.Notification;
 using HealthyLifestyle.Application.DTOs.ProfessionalQualification;
 using HealthyLifestyle.Application.DTOs.Shop;
+using HealthyLifestyle.Application.DTOs.Sub;
 using HealthyLifestyle.Application.DTOs.Tracker;
 using HealthyLifestyle.Application.DTOs.User;
 using HealthyLifestyle.Application.DTOs.Working;
@@ -41,6 +42,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureMentalHealthRecordMappings();
             ConfigureNotificationMappings();
             ConfigureSleepRecordMappings();
+            ConfigureSubscriptionMappings();
         }
         #endregion
 
@@ -541,6 +543,36 @@ namespace HealthyLifestyle.Application.Mappings
                         WakeUpTime = src.WakeUpTime
                     }.CalculateSleepDuration()));
         }
+
+        private void ConfigureSubscriptionMappings()
+        {
+            CreateMap<Subscription, SubscriptionDto>();
+
+            CreateMap<SubscriptionCreateDto, Subscription>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(_ => SubscriptionStatus.Active))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
+
+            CreateMap<SubscriptionUpdateDto, Subscription>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
+        }
+
 
         #endregion
     }

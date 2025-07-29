@@ -3,6 +3,7 @@ using HealthyLifestyle.Application.Interfaces;
 using HealthyLifestyle.Application.Mappings;
 using HealthyLifestyle.Application.Services;
 using HealthyLifestyle.Application.Services.Shop;
+using HealthyLifestyle.Application.Services.Sub;
 using HealthyLifestyle.Application.Services.Tracker;
 using HealthyLifestyle.Application.Services.Working;
 using HealthyLifestyle.Core.Entities;
@@ -119,6 +120,7 @@ builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerServi
 builder.Services.AddScoped<IMentalHealthRecordService, MentalHealthRecordService>();
 builder.Services.AddScoped<ISleepRecordService, SleepRecordService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 
 
 // 6. Реєстрація репозиторію та Unit of Work
@@ -136,6 +138,7 @@ builder.Services.AddScoped<IFemaleHealthTrackerRepository, FemaleHealthTrackerRe
 builder.Services.AddScoped<IMentalHealthRecordRepository, MentalHealthRecordRepository>();
 builder.Services.AddScoped<ISleepRecordRepository, SleepRecordRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

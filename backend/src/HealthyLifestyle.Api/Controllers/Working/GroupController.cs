@@ -1,5 +1,5 @@
 ﻿using HealthyLifestyle.Application.DTOs.Working;
-using HealthyLifestyle.Application.Interfaces;
+using HealthyLifestyle.Application.Interfaces.Working;
 using HealthyLifestyle.Application.Services.Working;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

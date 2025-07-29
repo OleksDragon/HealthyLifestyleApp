@@ -1,5 +1,5 @@
 ﻿using HealthyLifestyle.Core.Entities;
-using HealthyLifestyle.Core.Interfaces;
+using HealthyLifestyle.Core.Interfaces.Working;
 using HealthyLifestyle.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HealthyLifestyle.Infrastructure.Repositories
+namespace HealthyLifestyle.Infrastructure.Repositories.Working
 {
     public class GroupMembershipRepository : Repository<GroupMembership>, IGroupMembershipRepository
     {

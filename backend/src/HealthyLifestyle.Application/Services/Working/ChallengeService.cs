@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Working;
-using HealthyLifestyle.Application.Interfaces;
+using HealthyLifestyle.Application.Interfaces.Working;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
+using HealthyLifestyle.Core.Interfaces.Working;
 using System;
 using System.Collections.Generic;
 using System.Linq;

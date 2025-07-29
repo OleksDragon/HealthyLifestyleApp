@@ -124,13 +124,9 @@ builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerServi
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IChallengeService, ChallengeService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
-<<<<<<< HEAD
-builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
-=======
 builder.Services.AddScoped<IMealService, MealService>();
-
 builder.Services.AddScoped<IDietPlanService, DietPlanService>();
->>>>>>> origin/master
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 
 
 // 6. Реєстрація репозиторію та Unit of Work
@@ -148,11 +144,9 @@ builder.Services.AddScoped<IFemaleHealthTrackerRepository, FemaleHealthTrackerRe
 builder.Services.AddScoped<IMentalHealthRecordRepository, MentalHealthRecordRepository>();
 builder.Services.AddScoped<ISleepRecordRepository, SleepRecordRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
-builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
-
 builder.Services.AddScoped<IMealRepository, MealRepository>();
-
 builder.Services.AddScoped<IDietPlanRepository, DietPlanRepository>();
+builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
 
 // 7. Конфігурація CORS

@@ -124,6 +124,7 @@ builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IChallengeService, ChallengeService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IMealService, MealService>();
+builder.Services.AddScoped<IDietPlanService, DietPlanService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -142,7 +143,7 @@ builder.Services.AddScoped<ISleepRecordRepository, SleepRecordRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 builder.Services.AddScoped<IMealRepository, MealRepository>();
-
+builder.Services.AddScoped<IDietPlanRepository, DietPlanRepository>();
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

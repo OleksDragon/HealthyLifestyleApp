@@ -33,15 +33,24 @@ namespace YourProject.Application.Services
 
         public async Task<NotificationDto> CreateNotificationAsync(CreateNotificationDto notificationCreateDto)
         {
-            var notification = _mapper.Map<Notification>(notificationCreateDto);
-            notification.CreatedAt = DateTime.UtcNow;
-            notification.IsRead = false;
+            try
+            {
+                var notification = _mapper.Map<Notification>(notificationCreateDto);
+                notification.CreatedAt = DateTime.UtcNow;
+                notification.IsRead = false;
 
-            await _notificationRepository.AddAsync(notification);
-            await _unitOfWork.SaveChangesAsync();
+                await _notificationRepository.AddAsync(notification);
+                await _unitOfWork.SaveChangesAsync();
 
-            return _mapper.Map<NotificationDto>(notification);
+                return _mapper.Map<NotificationDto>(notification);
+            }
+            catch (Exception ex)
+            {
+                // Тут можна використати логування або кинути внутрішню помилку у response
+                throw new Exception("Помилка при створенні сповіщення", ex);
+            }
         }
+    
 
         public async Task MarkAsReadAsync(Guid id)
         {

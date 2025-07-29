@@ -76,51 +76,39 @@ namespace HealthyLifestyle.Application.Services.Working
 
         public async Task<GroupDto> UpdateGroupAsync(Guid id, GroupUpdateDto groupUpdateDto)
         {
+            var updGroup = _mapper.Map<Group>(groupUpdateDto);
             var group = await _groupRepository.GetGroupByIdWithMembersAsync(id);
-            if (group == null)
+            if (group != null)
             {
-                throw new ArgumentException($"Група з ID {id} не знайдено.");
+                updGroup.Name = groupUpdateDto.Name ?? group.Name;
+                updGroup.Description = groupUpdateDto.Description ?? group.Description;
+                updGroup.CreatorId = group.CreatorId;
+                updGroup.CreationDate = group.CreationDate;
+                await _groupMembershipRepository.DeleteByGroupIdAsync(id);
+                _groupRepository.Delete(group);
+                await _unitOfWork.SaveChangesAsync();
             }
 
-            if (!string.IsNullOrEmpty(groupUpdateDto.Name))
-                group.Name = groupUpdateDto.Name;
+            typeof(BaseEntity).GetProperty("Id")?.SetValue(updGroup, id);
 
-            if (!string.IsNullOrEmpty(groupUpdateDto.Description))
-                group.Description = groupUpdateDto.Description;
-
-            var newMembers = groupUpdateDto.GroupMembers ?? new List<GroupMemberCreateDto>();
-
-            var toRemove = group.GroupMemberships
-                .Where(existing => !newMembers.Any(m => m.UserId == existing.UserId))
-                .ToList();
-
-            foreach (var member in toRemove)
+            if (groupUpdateDto.GroupMembers != null)
             {
-                group.GroupMemberships.Remove(member);
-            }
-
-            foreach (var memberDto in newMembers)
-            {
-                var existing = group.GroupMemberships.FirstOrDefault(m => m.UserId == memberDto.UserId);
-                if (existing == null)
+                var groupMemberships = groupUpdateDto.GroupMembers.Select(memberDto => new GroupMembership
                 {
-                    group.GroupMemberships.Add(new GroupMembership
-                    {
-                        GroupId = group.Id,
-                        UserId = memberDto.UserId,
-                        JoinDate = memberDto.JoinDate,
-                        Role = memberDto.Role
-                    });
-                }
-                else
-                {
-                    existing.Role = memberDto.Role;
-                }
+                    Group = updGroup,
+                    UserId = memberDto.UserId,
+                    JoinDate = memberDto.JoinDate,
+                    Role = memberDto.Role
+                }).ToList();
+
+                updGroup.GroupMemberships = groupMemberships;
             }
 
-            _groupRepository.Update(group);
+            await _groupRepository.AddAsync(updGroup);
             await _unitOfWork.SaveChangesAsync();
-            return _mapper.Map<GroupDto>(group);
+
+            return _mapper.Map<GroupDto>(updGroup);
         }
+
     }
 }

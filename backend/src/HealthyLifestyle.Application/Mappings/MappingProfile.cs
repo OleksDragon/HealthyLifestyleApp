@@ -1,6 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Auth;
+
 using HealthyLifestyle.Application.DTOs.DietPlan;
+
 using HealthyLifestyle.Application.DTOs.MealTracker;
 using HealthyLifestyle.Application.DTOs.Notification;
 using HealthyLifestyle.Application.DTOs.ProfessionalQualification;
@@ -47,7 +49,9 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureChallengeMappings();
             ConfigureNotificationMappings();
             ConfigureMealMappings();
+
             ConfigureDietPlanMappings();
+
         }
         #endregion
 
@@ -474,6 +478,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.Message, opt => opt.Condition(src => !string.IsNullOrWhiteSpace(src.Message)));
         }
+
         private void ConfigureMentalHealthRecordMappings()
         {
             CreateMap<MentalHealthRecord, MentalHealthRecordDto>();
@@ -572,6 +577,7 @@ namespace HealthyLifestyle.Application.Mappings
                     (int)Math.Round((src.ProteinsG ?? 0) * 4 + (src.CarbsG ?? 0) * 4 + (src.FatsG ?? 0) * 9)))
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
+
         private void ConfigureDietPlanMappings()
         {
             // Map from DietPlan to DietPlanDto
@@ -614,6 +620,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.EndDate, opt => opt.Condition(src => src.EndDate.HasValue))
                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
         }
+
         #endregion
     }
 }

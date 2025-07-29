@@ -1,6 +1,6 @@
 ﻿using HealthyLifestyle.Application.DTOs.Shop;
 using HealthyLifestyle.Application.DTOs.Working;
-using HealthyLifestyle.Application.Interfaces;
+using HealthyLifestyle.Application.Interfaces.Working;
 using HealthyLifestyle.Application.Services.Shop;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

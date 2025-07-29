@@ -1,5 +1,6 @@
 using DotNetEnv;
 using HealthyLifestyle.Application.Interfaces;
+using HealthyLifestyle.Application.Interfaces.Working;
 using HealthyLifestyle.Application.Mappings;
 using HealthyLifestyle.Application.Services;
 using HealthyLifestyle.Application.Services.Shop;
@@ -8,8 +9,10 @@ using HealthyLifestyle.Application.Services.Tracker;
 using HealthyLifestyle.Application.Services.Working;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
+using HealthyLifestyle.Core.Interfaces.Working;
 using HealthyLifestyle.Infrastructure.Data;
 using HealthyLifestyle.Infrastructure.Repositories;
+using HealthyLifestyle.Infrastructure.Repositories.Working;
 using HealthyLifestyle.Infrastructure.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -126,8 +129,8 @@ builder.Services.AddScoped<IChallengeService, ChallengeService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IMealService, MealService>();
 builder.Services.AddScoped<IDietPlanService, DietPlanService>();
+builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
-
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -146,8 +149,9 @@ builder.Services.AddScoped<ISleepRecordRepository, SleepRecordRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<IMealRepository, MealRepository>();
 builder.Services.AddScoped<IDietPlanRepository, DietPlanRepository>();
+builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
+builder.Services.AddScoped<IFitnessActivityRepository, FitnessActivityRepository>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
-
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

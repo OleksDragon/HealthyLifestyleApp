@@ -46,8 +46,9 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureMentalHealthRecordMappings();
             ConfigureNotificationMappings();
             ConfigureSleepRecordMappings();
-            ConfigureDietPlanMappings();
             ConfigureMealMappings();
+            ConfigureDietPlanMappings();
+            ConfigureWorkoutMappings();
             ConfigureSubscriptionMappings();
         }
         #endregion
@@ -452,6 +453,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ForMember(dest => dest.Challenge, opt => opt.Ignore());
         }
+
         private void ConfigureNotificationMappings()
         {
             // Мапінг з Notification до NotificationDto
@@ -615,6 +617,52 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
                 .ForMember(dest => dest.EndDate, opt => opt.Condition(src => src.EndDate.HasValue))
                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
+        }
+
+        private void ConfigureWorkoutMappings()
+        {
+            CreateMap<Workout, WorkoutDto>()
+                .ForMember(dest => dest.FitnessActivities, opt => opt.MapFrom(src => src.FitnessActivities));
+
+            CreateMap<FitnessActivity, FitnessActivityItemDto>()
+                .ForMember(dest => dest.WorkoutId, opt => opt.MapFrom(src => src.WorkoutId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.DurationMinutes, opt => opt.MapFrom(src => src.DurationMinutes))
+                .ForMember(dest => dest.CaloriesBurned, opt => opt.MapFrom(src => src.CaloriesBurned))
+                .ForMember(dest => dest.ActivityDate, opt => opt.MapFrom(src => src.ActivityDate))
+                .ForMember(dest => dest.ActivityType, opt => opt.MapFrom(src => src.ActivityType));
+
+            CreateMap<WorkoutCreateDto, Workout>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.FitnessActivities, opt => opt.MapFrom(src => src.FitnessActivities))
+                .ForMember(dest => dest.DifficultyLevel, opt => opt.MapFrom(src => src.DifficultyLevel))
+                .ForMember(dest => dest.AnimationUrl, opt => opt.Condition(src => src.AnimationUrl != null))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type));
+
+            CreateMap<WorkoutUpdateDto, Workout>()
+                .ForMember(dest => dest.Name, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Name)))
+                .ForMember(dest => dest.Description, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Description)))
+                .ForMember(dest => dest.FitnessActivities, opt => opt.Condition(src => src.FitnessActivities != null))
+                .ForMember(dest => dest.DifficultyLevel, opt => opt.Condition(src => src.DifficultyLevel.HasValue))
+                .ForMember(dest => dest.AnimationUrl, opt => opt.Condition(src => src.AnimationUrl != null))
+                .ForMember(dest => dest.Type, opt => opt.Condition(src => src.Type.HasValue));
+
+            CreateMap<FitnessActivityItemDto, FitnessActivity>()
+                .ForMember(dest => dest.WorkoutId, opt => opt.MapFrom(src => src.WorkoutId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.DurationMinutes, opt => opt.MapFrom(src => src.DurationMinutes))
+                .ForMember(dest => dest.CaloriesBurned, opt => opt.MapFrom(src => src.CaloriesBurned))
+                .ForMember(dest => dest.ActivityDate, opt => opt.MapFrom(src => src.ActivityDate))
+                .ForMember(dest => dest.ActivityType, opt => opt.MapFrom(src => src.ActivityType));
+
+            CreateMap<FitnessActivityItemCreateDto, FitnessActivity>()
+                .ForMember(dest => dest.WorkoutId, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.DurationMinutes, opt => opt.MapFrom(src => src.DurationMinutes))
+                .ForMember(dest => dest.CaloriesBurned, opt => opt.MapFrom(src => src.CaloriesBurned))
+                .ForMember(dest => dest.ActivityDate, opt => opt.MapFrom(src => src.ActivityDate))
+                .ForMember(dest => dest.ActivityType, opt => opt.MapFrom(src => src.ActivityType));
         }
 
         private void ConfigureSubscriptionMappings()

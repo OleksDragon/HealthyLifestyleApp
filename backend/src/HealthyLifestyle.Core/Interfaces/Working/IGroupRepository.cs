@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HealthyLifestyle.Core.Interfaces
+namespace HealthyLifestyle.Core.Interfaces.Working
 {
     /// <summary>
     /// Спеціалізований інтерфейс репозиторію для сутності Group.

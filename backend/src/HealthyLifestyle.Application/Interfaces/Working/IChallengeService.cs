@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HealthyLifestyle.Application.Interfaces
+namespace HealthyLifestyle.Application.Interfaces.Working
 {
     public interface IChallengeService
     {

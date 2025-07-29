@@ -579,12 +579,19 @@ namespace HealthyLifestyle.Application.Mappings
 
             // Map from CreateDietPlanDto to DietPlan
             CreateMap<CreateDietPlanDto, DietPlan>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // Will be generated automatically
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
-                .ForMember(dest => dest.Client, opt => opt.Ignore())
-                .ForMember(dest => dest.Dietitian, opt => opt.Ignore())
-                .ForMember(dest => dest.MealEntries, opt => opt.Ignore());
+                .ForMember(dest => dest.Client, opt => opt.Ignore()) // Navigation property
+                .ForMember(dest => dest.Dietitian, opt => opt.Ignore()) // Navigation property
+                .ForMember(dest => dest.MealEntries, opt => opt.Ignore()) // Navigation property
+                .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId))
+                .ForMember(dest => dest.DietitianId, opt => opt.MapFrom(src => src.DietitianId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.DietType, opt => opt.MapFrom(src => src.DietType))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
 
             // Map from UpdateDietPlanDto to DietPlan
             CreateMap<UpdateDietPlanDto, DietPlan>()
@@ -596,7 +603,16 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.MealEntries, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                .ForMember(dest => dest.Name, opt => opt.Condition(src => !string.IsNullOrWhiteSpace(src.Name)))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.Condition(src => src.Description != null))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.DietType, opt => opt.Condition(src => src.DietType.HasValue))
+                .ForMember(dest => dest.DietType, opt => opt.MapFrom(src => src.DietType))
+                .ForMember(dest => dest.StartDate, opt => opt.Condition(src => src.StartDate.HasValue))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.EndDate, opt => opt.Condition(src => src.EndDate.HasValue))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
         }
         #endregion
     }

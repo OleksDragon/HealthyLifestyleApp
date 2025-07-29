@@ -118,8 +118,12 @@ builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>(
 builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerService>();
 builder.Services.AddScoped<IMentalHealthRecordService, MentalHealthRecordService>();
 builder.Services.AddScoped<ISleepRecordService, SleepRecordService>();
+builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>();
+builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerService>();
+builder.Services.AddScoped<IGroupService, GroupService>();
+builder.Services.AddScoped<IChallengeService, ChallengeService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
-
+builder.Services.AddScoped<IMealService, MealService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -136,6 +140,9 @@ builder.Services.AddScoped<IFemaleHealthTrackerRepository, FemaleHealthTrackerRe
 builder.Services.AddScoped<IMentalHealthRecordRepository, MentalHealthRecordRepository>();
 builder.Services.AddScoped<ISleepRecordRepository, SleepRecordRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+
+builder.Services.AddScoped<IMealRepository, MealRepository>();
+
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

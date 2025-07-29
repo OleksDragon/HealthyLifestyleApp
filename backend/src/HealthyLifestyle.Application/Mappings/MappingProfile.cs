@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Auth;
+using HealthyLifestyle.Application.DTOs.MealTracker;
 using HealthyLifestyle.Application.DTOs.Notification;
 using HealthyLifestyle.Application.DTOs.ProfessionalQualification;
 using HealthyLifestyle.Application.DTOs.Shop;
@@ -41,6 +42,11 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureMentalHealthRecordMappings();
             ConfigureNotificationMappings();
             ConfigureSleepRecordMappings();
+            ConfigureFemaleHealthTrackerMappings();
+            ConfigureChallengeMappings();
+            ConfigureNotificationMappings();
+            ConfigureMealMappings();
+
         }
         #endregion
 
@@ -468,6 +474,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Message, opt => opt.Condition(src => !string.IsNullOrWhiteSpace(src.Message)));
         }
 
+
         private void ConfigureMentalHealthRecordMappings()
         {
             CreateMap<MentalHealthRecord, MentalHealthRecordDto>();
@@ -540,6 +547,32 @@ namespace HealthyLifestyle.Application.Mappings
                         BedTime = src.BedTime,
                         WakeUpTime = src.WakeUpTime
                     }.CalculateSleepDuration()));
+        }
+
+
+        private void ConfigureMealMappings()
+        {
+            CreateMap<MealEntry, MealDto>();
+
+            CreateMap<CreateMealDto, MealEntry>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.DietPlan, opt => opt.Ignore())
+                .ForMember(dest => dest.Calories, opt => opt.MapFrom(src =>
+                    (int)Math.Round(src.ProteinsG * 4 + src.CarbsG * 4 + src.FatsG * 9)));
+
+            CreateMap<UpdateMealDto, MealEntry>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.DietPlan, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.Calories, opt => opt.MapFrom(src =>
+                    (int)Math.Round((src.ProteinsG ?? 0) * 4 + (src.CarbsG ?? 0) * 4 + (src.FatsG ?? 0) * 9)))
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
 
         #endregion

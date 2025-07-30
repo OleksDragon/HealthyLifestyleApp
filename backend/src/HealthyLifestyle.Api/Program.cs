@@ -131,6 +131,7 @@ builder.Services.AddScoped<IMealService, MealService>();
 builder.Services.AddScoped<IDietPlanService, DietPlanService>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
+builder.Services.AddScoped<IFitnessActivityService, FitnessActivityService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

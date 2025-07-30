@@ -50,6 +50,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureDietPlanMappings();
             ConfigureWorkoutMappings();
             ConfigureSubscriptionMappings();
+            ConfigureFitnessActivityMappings();
         }
         #endregion
 
@@ -690,6 +691,27 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
         }
 
+        private void ConfigureFitnessActivityMappings()
+        {
+            CreateMap<FitnessActivity, FitnessActivityDto>();
+
+            CreateMap<CreateFitnessActivityDto, FitnessActivity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Workout, opt => opt.Ignore());
+
+            CreateMap<UpdateFitnessActivityDto, FitnessActivity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.WorkoutId, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Workout, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        }
         #endregion
     }
 }

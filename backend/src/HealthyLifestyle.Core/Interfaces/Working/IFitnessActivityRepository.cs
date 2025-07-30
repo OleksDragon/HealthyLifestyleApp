@@ -10,5 +10,6 @@ namespace HealthyLifestyle.Core.Interfaces.Working
     public interface IFitnessActivityRepository : IRepository<FitnessActivity>
     {
         Task DeleteByWorkoutIdAsync(Guid workoutId);
+        Task<IEnumerable<FitnessActivity>> GetByUserIdAsync(Guid userId);
     }
 }

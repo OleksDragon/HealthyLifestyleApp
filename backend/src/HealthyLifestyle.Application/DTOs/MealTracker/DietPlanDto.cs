@@ -78,28 +78,6 @@ namespace HealthyLifestyle.Application.DTOs.DietPlan
         public DateTime? UpdatedAt { get; set; }
 
         #endregion
-
-        #region Custom Validation
-
-        /// <summary>
-        /// Custom validation attribute to ensure EndDate is after StartDate
-        /// </summary>
-        public class ValidateEndDateAfterStartDateAttribute : ValidationAttribute
-        {
-            protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-            {
-                var model = (DietPlanDto)validationContext.ObjectInstance;
-
-                if (model.EndDate <= model.StartDate)
-                {
-                    return new ValidationResult("End date must be after start date.");
-                }
-
-                return ValidationResult.Success;
-            }
-        }
-
-        #endregion
     }
 
     /// <summary>
@@ -132,25 +110,6 @@ namespace HealthyLifestyle.Application.DTOs.DietPlan
         public DateTime EndDate { get; set; }
 
         #endregion
-
-        #region Custom Validation
-
-        public class ValidateEndDateAfterStartDateAttribute : ValidationAttribute
-        {
-            protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-            {
-                var model = (CreateDietPlanDto)validationContext.ObjectInstance;
-
-                if (model.EndDate <= model.StartDate)
-                {
-                    return new ValidationResult("End date must be after start date.");
-                }
-
-                return ValidationResult.Success;
-            }
-        }
-
-        #endregion
     }
 
     /// <summary>
@@ -174,25 +133,23 @@ namespace HealthyLifestyle.Application.DTOs.DietPlan
         public DateTime? EndDate { get; set; }
 
         #endregion
+    }
 
-        #region Custom Validation
-
-        public class ValidateEndDateAfterStartDateAttribute : ValidationAttribute
+    public class ValidateEndDateAfterStartDateAttribute : ValidationAttribute
+    {
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+            if (validationContext.ObjectInstance is not CreateDietPlanDto model)
             {
-                var model = (UpdateDietPlanDto)validationContext.ObjectInstance;
-
-                if (model.EndDate.HasValue && model.StartDate.HasValue &&
-                    model.EndDate.Value <= model.StartDate.Value)
-                {
-                    return new ValidationResult("End date must be after start date.");
-                }
-
                 return ValidationResult.Success;
             }
-        }
 
-        #endregion
+            if (model.EndDate <= model.StartDate)
+            {
+                return new ValidationResult("End date must be after start date.");
+            }
+
+            return ValidationResult.Success;
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using HealthyLifestyle.Core.Enums;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HealthyLifestyle.Application.DTOs.ProfessionalQualification
 {

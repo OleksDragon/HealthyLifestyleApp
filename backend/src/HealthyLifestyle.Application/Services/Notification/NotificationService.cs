@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Notification;
-using HealthyLifestyle.Application.Interfaces;
+using HealthyLifestyle.Application.Interfaces.Notification;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
+using HealthyLifestyle.Core.Interfaces.NotificationIR;
 
 namespace YourProject.Application.Services
 {

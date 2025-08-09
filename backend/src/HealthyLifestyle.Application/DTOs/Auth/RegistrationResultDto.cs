@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace HealthyLifestyle.Application.DTOs.Auth
+﻿namespace HealthyLifestyle.Application.DTOs.Auth
 {
     /// <summary>
     /// DTO, що представляє результат операції реєстрації користувача.

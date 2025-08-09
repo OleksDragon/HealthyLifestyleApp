@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using HealthyLifestyle.Core.Enums;
 
 namespace HealthyLifestyle.Application.DTOs.User

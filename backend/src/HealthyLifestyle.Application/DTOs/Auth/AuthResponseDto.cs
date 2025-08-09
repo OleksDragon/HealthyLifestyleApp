@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HealthyLifestyle.Application.DTOs.Auth
+﻿namespace HealthyLifestyle.Application.DTOs.Auth
 {
     /// <summary>
     /// DTO для відповіді при успішній автентифікації користувача.

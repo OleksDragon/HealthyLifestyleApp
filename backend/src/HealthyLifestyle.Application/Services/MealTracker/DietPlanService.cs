@@ -3,9 +3,6 @@ using HealthyLifestyle.Application.DTOs.DietPlan;
 using HealthyLifestyle.Application.Interfaces;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace HealthyLifestyle.Application.Services
 {

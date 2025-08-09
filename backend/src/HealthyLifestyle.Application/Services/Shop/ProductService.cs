@@ -1,16 +1,12 @@
 ﻿using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Shop;
-using HealthyLifestyle.Application.Interfaces;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
+using HealthyLifestyle.Application.Interfaces.Shop;
+using HealthyLifestyle.Core.Interfaces.Shop;
 
 namespace HealthyLifestyle.Application.Services.Shop
 {

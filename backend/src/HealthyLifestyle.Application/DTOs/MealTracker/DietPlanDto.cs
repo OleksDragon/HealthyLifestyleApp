@@ -1,7 +1,4 @@
 ﻿using HealthyLifestyle.Core.Entities;
-using HealthyLifestyle.Core.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HealthyLifestyle.Application.DTOs.DietPlan

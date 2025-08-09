@@ -1,7 +1,4 @@
 ﻿using HealthyLifestyle.Application.DTOs.DietPlan;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace HealthyLifestyle.Application.Interfaces
 {

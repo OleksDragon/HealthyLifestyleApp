@@ -1,5 +1,4 @@
-﻿
-using HealthyLifestyle.Application.DTOs.MealTracker;
+﻿using HealthyLifestyle.Application.DTOs.MealTracker;
 
 namespace HealthyLifestyle.Application.Interfaces
 {

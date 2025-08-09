@@ -1,10 +1,9 @@
 ﻿using HealthyLifestyle.Application.DTOs.Shop;
-using HealthyLifestyle.Application.Interfaces;
+using HealthyLifestyle.Application.Interfaces.Shop;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HealthyLifestyle.Api.Controllers.shop
+namespace HealthyLifestyle.Api.Controllers.Shop
 {
     /// <summary>
     /// Контролер для керування продуктами в додатку HealthyLifestyle.

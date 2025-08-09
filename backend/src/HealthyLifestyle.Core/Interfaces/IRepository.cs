@@ -1,7 +1,5 @@
 ﻿using HealthyLifestyle.Core.Entities;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace HealthyLifestyle.Core.Interfaces
 {

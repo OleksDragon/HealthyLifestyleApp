@@ -1,19 +1,20 @@
 using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Auth;
-
 using HealthyLifestyle.Application.DTOs.DietPlan;
-
 using HealthyLifestyle.Application.DTOs.MealTracker;
 using HealthyLifestyle.Application.DTOs.Notification;
 using HealthyLifestyle.Application.DTOs.ProfessionalQualification;
+using HealthyLifestyle.Application.DTOs.Record;
 using HealthyLifestyle.Application.DTOs.Shop;
-using HealthyLifestyle.Application.DTOs.Sub;
-using HealthyLifestyle.Application.DTOs.Tracker;
-using HealthyLifestyle.Application.DTOs.User;
-using HealthyLifestyle.Application.DTOs.Working;
+using HealthyLifestyle.Application.DTOs.HealthTracker;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Enums;
-using Microsoft.IdentityModel.Tokens;
+using HealthyLifestyle.Application.DTOs.Challenge;
+using HealthyLifestyle.Application.DTOs.Consultation;
+using HealthyLifestyle.Application.DTOs.Group;
+using HealthyLifestyle.Application.DTOs.Workout;
+using HealthyLifestyle.Application.DTOs.Subscription;
+using HealthyLifestyle.Application.DTOs.User;
 
 namespace HealthyLifestyle.Application.Mappings
 {

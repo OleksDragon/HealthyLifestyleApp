@@ -1,6 +1,4 @@
 ﻿using HealthyLifestyle.Core.Entities;
-using System;
-using System.Threading.Tasks;
 
 namespace HealthyLifestyle.Core.Interfaces
 {

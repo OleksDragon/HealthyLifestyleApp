@@ -15,6 +15,7 @@ namespace HealthyLifestyle.Api.Controllers.Auth
         #region Private Fields
 
         private readonly IAuthService _authService;
+        private readonly IConfiguration _configuration;
 
         #endregion
 
@@ -24,9 +25,10 @@ namespace HealthyLifestyle.Api.Controllers.Auth
         /// Конструктор із вбудовуванням залежності сервісу автентифікації.
         /// </summary>
         /// <param name="authService">Сервіс автентифікації для обробки логіки реєстрації та входу.</param>
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, IConfiguration configuration)
         {
             _authService = authService ?? throw new ArgumentNullException(nameof(authService));
+            _configuration = configuration;
         }
 
         #endregion
@@ -105,9 +107,14 @@ namespace HealthyLifestyle.Api.Controllers.Auth
         [HttpPost("login/google")]
         public async Task<IActionResult> LoginWithGoogle([FromBody] ExternalAuthDto dto)
         {
-            var authResponse = await _authService.LoginWithGoogleAsync(dto.ProviderToken);
+            var token = await _authService.ExchangeCodeForToken(dto.ProviderToken);
+            if (token == null)
+                return BadRequest(new { Message = "Не вдалося обміняти код на токен" });
+
+            var authResponse = await _authService.LoginWithGoogleAsync(token);
             if (authResponse == null)
                 return Unauthorized(new { Message = "Google авторизація не вдалася" });
+
             return Ok(authResponse);
         }
         /// <summary>

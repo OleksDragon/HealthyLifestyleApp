@@ -9,14 +9,17 @@ import RegisterPage from "./components/pages/RegisterPage";
 import LoginPage from "./components/pages/LoginPage";
 import HomePage from "./components/pages/HomePage";
 import UserPage from "./components/pages/UserPage";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
 
   return (
-    <Router>
-      <AppRoutes />
-    </Router>
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </GoogleOAuthProvider>
   );
 }
 

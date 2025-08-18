@@ -47,6 +47,8 @@ JWT_KEY=72O3^G4BUrXY$T:LM\*7Asdhtp^vpCt>l1CDK4DMua1<+SaUC4viz\04:HnLkLGSh
 JWT_ISSUER=HealthyLifestyleApi
 JWT_AUDIENCE=HealthyLifestyleClients
 REACT_APP_API_URL=http://localhost:5000
+GOOGLE_CLIENT_ID=596782705647-sa9h8d11i8grjh3jukglih9c9hnsp3co.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
 
 Важно: Для продакшн-среды нужно использовать более надежные и безопасные методы управления секретами.
 

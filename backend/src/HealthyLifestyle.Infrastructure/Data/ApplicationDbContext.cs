@@ -41,6 +41,8 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<MaleHealthTracker> MaleHealthTrackers { get; set; }
         public DbSet<HealthDashboard> HealthDashboards { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<CalendarEvent> CalendarEvents { get; set; }
+
         #endregion
 
         #region Конструктор
@@ -108,6 +110,7 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureHealthDashboard(modelBuilder);
             ConfigureNotification(modelBuilder);
             ConfigureUserChallengeParticipation(modelBuilder);
+            ConfigureCalendarEvents(modelBuilder);
         }
         #endregion
 
@@ -651,6 +654,23 @@ namespace HealthyLifestyle.Infrastructure.Data
             modelBuilder.Entity<RoleSpecificDetail>(entity =>
             {
                 entity.Property(rsd => rsd.HourlyRate).HasPrecision(10, 2);
+            });
+        }
+
+        /// <summary>
+        /// Налаштовує спільну конфігурацію для CalendarEvent.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureCalendarEvents(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CalendarEvent>(entity =>
+            {
+                entity.HasOne(ce => ce.Workout)
+                    .WithMany()
+                    .HasForeignKey("WorkoutId")
+                    .OnDelete(DeleteBehavior.SetNull);
+                entity.HasMany(ce => ce.MeetingParticipants)
+                    .WithMany();
             });
         }
         #endregion

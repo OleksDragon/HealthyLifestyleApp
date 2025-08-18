@@ -13,7 +13,7 @@ namespace HealthyLifestyle.Core.Entities
         /// <summary>
         /// Унікальний ідентифікатор сутності.
         /// </summary>
-        public Guid Id { get; protected set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Дата створення сутності (у форматі UTC).

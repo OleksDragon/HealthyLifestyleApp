@@ -13,7 +13,7 @@ services:
         condition: service_started
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=mssql,1433;Database=${MSSQL_DB};User Id=${MSSQL_USER};Password=${SA_PASSWORD};TrustServerCertificate=true;MultipleActiveResultSets=True
+      - ConnectionStrings__DefaultConnection=Server=mssql,1433;Database=${MSSQL_DB};User Id=${MSSQL_USER};Password=${SA_PASSWORD};Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=True
       - JWT__Key=${JWT_KEY}
       - JWT__Issuer=${JWT_ISSUER}
       - JWT__Audience=${JWT_AUDIENCE}

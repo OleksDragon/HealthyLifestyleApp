@@ -15,6 +15,7 @@ using HealthyLifestyle.Application.DTOs.Group;
 using HealthyLifestyle.Application.DTOs.Workout;
 using HealthyLifestyle.Application.DTOs.Subscription;
 using HealthyLifestyle.Application.DTOs.User;
+using HealthyLifestyle.Application.DTOs.Calendar;
 
 namespace HealthyLifestyle.Application.Mappings
 {
@@ -52,6 +53,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureWorkoutMappings();
             ConfigureSubscriptionMappings();
             ConfigureFitnessActivityMappings();
+            ConfigureCalendarEventMapping();
         }
         #endregion
 
@@ -712,6 +714,26 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        }
+
+        private void ConfigureCalendarEventMapping()
+        {
+            CreateMap<CalendarEvent, CalendarEventDto>()
+                .ForMember(dest => dest.MettingParticipants, opt => opt.MapFrom(src => src.MeetingParticipants));
+
+            CreateMap<CalendarEventCreateDto, CalendarEvent>()
+               .ForMember(dest => dest.Id, opt => opt.Ignore())
+               .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+               .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+               .ForMember(dest => dest.MeetingParticipants, opt => opt.MapFrom(src => src.MettingParticipants == null ? new List<User>() : src.MettingParticipants.Select(id => new User { Id = id })))
+               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value} : null));
+
+            CreateMap<CalendarEventUpdateDto, CalendarEvent>()
+               .ForMember(dest => dest.Id, opt => opt.Ignore())
+               .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+               .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+               .ForMember(dest => dest.MeetingParticipants, opt => opt.MapFrom(src => src.MettingParticipants.Select(id => new User { Id = id })))
+               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value } : null));
         }
         #endregion
     }

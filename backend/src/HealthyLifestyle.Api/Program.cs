@@ -57,6 +57,10 @@ using HealthyLifestyle.Core.Interfaces.GroupIR;
 using HealthyLifestyle.Core.Interfaces.NotificationIR;
 using HealthyLifestyle.Core.Interfaces.SubscriptionIR;
 using HealthyLifestyle.Application.Interfaces.User;
+using HealthyLifestyle.Application.Interfaces.Calendar;
+using HealthyLifestyle.Application.Services.Calendar;
+using HealthyLifestyle.Core.Interfaces.Calendar;
+using HealthyLifestyle.Infrastructure.Repositories.Calendar;
 
 
 // Створюємо білдер для веб-програми
@@ -169,6 +173,7 @@ builder.Services.AddScoped<IDietPlanService, DietPlanService>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddScoped<IFitnessActivityService, FitnessActivityService>();
+builder.Services.AddScoped<ICalendarService, CalendarService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -190,6 +195,7 @@ builder.Services.AddScoped<IDietPlanRepository, DietPlanRepository>();
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IFitnessActivityRepository, FitnessActivityRepository>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+builder.Services.AddScoped<ICalendarRepository, CalendarRepository>();
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

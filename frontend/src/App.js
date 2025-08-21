@@ -15,7 +15,8 @@ function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
 
   return (
-    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+    // {process.env.REACT_APP_GOOGLE_CLIENT_ID}
+    <GoogleOAuthProvider clientId="596782705647-sa9h8d11i8grjh3jukglih9c9hnsp3co.apps.googleusercontent.com">
       <Router>
         <AppRoutes />
       </Router>

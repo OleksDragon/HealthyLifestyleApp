@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap');
+
+.marketplace-section {
+    position: relative;
+    width: 100%;
+    height: 140vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Kumbh Sans', sans-serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* overlay затемнение */
+.marketplace-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+}
+
+/* Контент с текстом */
+.marketplace-content {
+    position: relative;
+    z-index: 1;
+    margin-top: 8%;
+    margin-left: 6%;
+    max-width: 1400px; 
+}
+
+.marketplace-title {
+    font-size: 46px;
+    font-family: Kumbh Sans, sans-serif;
+    color: #D9FF00;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.marketplace-subtitle {
+    font-size: 32px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.marketplace-cta {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    margin-bottom: 150px;
+    background: #D9FF00;
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .marketplace-section {
+        height: 100vh;
+        background-position: top;
+    }
+
+    .marketplace-content {
+        margin-top: 5%;
+        margin-left: 5%;
+    }
+
+    .marketplace-title {
+        font-size: 36px;
+    }
+
+    .marketplace-subtitle {
+        font-size: 24px;
+    }
+
+    .marketplace-cta {
+        margin-bottom: 80px;
+        font-size: 20px;
+        padding: 10px 24px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .marketplace-section {
+        height: 80vh;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .marketplace-content {
+        margin-top: 10%;
+        margin: 0 20px;
+        text-align: center;
+    }
+
+    .marketplace-title {
+        font-size: 30px;
+        white-space: normal;
+    }
+
+    .marketplace-subtitle {
+        font-size: 18px;
+        white-space: normal;
+    }
+
+    .marketplace-cta {
+        margin-bottom: 50px;
+        font-size: 16px;
+    }
+}

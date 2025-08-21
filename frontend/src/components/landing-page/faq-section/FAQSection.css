@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700;900&display=swap');
+
+.faq-section {
+    width: 100%;
+    height: auto;
+    padding: 77px 20px;
+    text-align: center;
+    color: #333;
+    font-family: 'Kumbh Sans', sans-serif;
+
+}
+
+.faq-section h2 {
+    font-size: 70px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: white;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: #D6FF00;
+    padding: 20px;
+    border-radius: 50px;
+    color: #333;
+    font-family: 'Kumbh Sans', sans-serif;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-item p {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.faq-item strong {
+    font-weight: 900;
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .faq-section h2 {
+        font-size: 40px;
+    }
+
+    .faq-item {
+        padding: 20px;
+        height: auto;
+    }
+
+    .faq-item p {
+        font-size: 18px;
+    }
+
+    .faq-item strong {
+        font-size: 24px;
+    }
+}

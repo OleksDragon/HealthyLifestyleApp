@@ -1,0 +1,157 @@
+.main-section {
+    font-family: 'Kumbh Sans', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 800px;
+    padding-top: 40px;
+    width: 100%;
+    height: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1400px;
+    padding: 20px 0;
+}
+
+.header__logo img {
+    height: 40px;
+}
+
+.header__nav .nav__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header__nav .nav__item a {
+    color: #D6FF00;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.header__nav .nav__item a:hover {
+    color: #F0F0F0;
+}
+
+.header__button {
+    background-color: #D6FF00;
+    color: #1d3135;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 150px;
+    width: 90%;
+    max-width: 1400px;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #f0f0f0;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.energy-text {
+    color: #D6FF00;
+}
+
+.hero-content p {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #D6FF00;
+    color: #1d3135;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+/* Адаптивные стили (пример) */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+
+    .header__nav {
+        display: none;
+        /* Скрыть навигацию на мобильных */
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .cta-button {
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .header {
+        padding: 20px;
+    }
+
+    .header__nav .nav__item a {
+        margin-left: 20px;
+        font-size: 18px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header__nav {
+        display: none;
+        /* Hide navigation */
+    }
+
+    .header__logo img {
+        height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .header__button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

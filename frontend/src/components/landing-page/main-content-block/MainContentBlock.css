@@ -1,0 +1,59 @@
+.main-content-block {
+    color: #ffffff;
+    padding: 80px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    height: auto;
+}
+
+.logo-container {
+    flex-shrink: 0;
+}
+
+.nomyfy-logo {
+    height: 100px;
+    width: 500px;
+}
+
+.text-container {
+    max-width: 600px;
+    text-align: left;
+}
+
+.description-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .hero-content {
+        margin-top: 100px;
+        padding-left: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        margin-top: 80px;
+        padding: 0 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+}

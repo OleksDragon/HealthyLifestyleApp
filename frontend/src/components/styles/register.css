@@ -14,6 +14,30 @@
     justify-content: center;
 }
 
+.with-lines {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #EBFFB3;
+    font-family: 'Kumbh Sans', sans-serif;
+    text-decoration: underline;
+}
+
+.with-lines::before,
+.with-lines::after {
+    content: "";
+    width: 90px;
+    border-bottom: 1px solid #EBFFB3;
+    margin: 0 30px;
+}
+
+.with-lines span {
+    font-size: 13px;
+    font-weight: 300;
+}
+
 .nomyfy {
     position: absolute;
     top: 40px;
@@ -169,11 +193,12 @@ input::placeholder {
 }
 
 .eye:hover {
+    background-color: none !important;
     color: white !important;
     transform: none !important;
 }
 
-.login {
+.continue {
     font-family: 'Kumbh Sans', sans-serif;
     font-weight: bold;
     width: 265px;
@@ -185,13 +210,14 @@ input::placeholder {
     cursor: pointer;
     font-size: 18px;
     margin-top: 22px;
+    letter-spacing: 0.5px;
 }
 
-.login:hover {
+.continue:hover {
     background: #D6FF00 !important;
 }
 
-.login:disabled {
+.continue:disabled {
     background: rgba(255, 255, 255, 0.15) !important;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -270,4 +296,26 @@ input::placeholder {
     display: block;
     letter-spacing: 0.5px;
     font-weight: 300;
+}
+
+.form-wrapper {
+    width: 430px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.forms-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+}
+
+.form-content {
+    min-width: 430px;
+   flex-shrink: 0;
+}
+
+.slide-left {
+    transform: translateX(-430px);
 }

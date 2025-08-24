@@ -117,7 +117,7 @@ function HomePage() {
                         className='input'
                         style={{color: emailCorrect ? 'black' : 'red'}}
                         type="email"
-                        placeholder='Email'
+                        placeholder='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -127,7 +127,7 @@ function HomePage() {
                         <input
                             className='input'
                             type={show ? "text" : "password"}
-                            placeholder='Password'
+                            placeholder='пароль'
                             style={{color: passwordCorrect ? 'black' : 'red'}}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -144,7 +144,7 @@ function HomePage() {
                         </button>
                         <br />
                             
-                        <span className='forgot-password'>Забули пароль?</span>
+                        <span className='forgot-password'>забули пароль?</span>
                     </div>
 
                     <button className='login' type="submit" disabled={!passwordCorrect | !emailCorrect}>Увійти</button>

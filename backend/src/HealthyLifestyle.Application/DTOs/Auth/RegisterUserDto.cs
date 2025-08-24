@@ -14,7 +14,7 @@ namespace HealthyLifestyle.Application.DTOs.Auth
         /// Повне ім’я користувача.
         /// Обов’язкове поле, максимальна довжина — 256 символів.
         /// </summary>
-        [Required(ErrorMessage = "Повне ім’я є обов’язковим для заповнення.")]
+        //[Required(ErrorMessage = "Повне ім’я є обов’язковим для заповнення.")]
         [StringLength(256, ErrorMessage = "Повне ім’я не може перевищувати 256 символів.")]
         public string FullName { get; set; } = string.Empty;
 
@@ -31,33 +31,33 @@ namespace HealthyLifestyle.Application.DTOs.Auth
         /// Дата народження користувача.
         /// Обов’язкове поле.
         /// </summary>
-        [Required(ErrorMessage = "Дата народження є обов’язковою.")]
+        //[Required(ErrorMessage = "Дата народження є обов’язковою.")]
         [DataType(DataType.Date)]
-        [CustomValidation(typeof(RegisterUserDto), nameof(ValidateDateOfBirth))]
-        public DateTime DateOfBirth { get; set; }
+        //[CustomValidation(typeof(RegisterUserDto), nameof(ValidateDateOfBirth))]
+        public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// Пол користувача.
         /// Обов’язкове поле.
         /// </summary>
-        [Required(ErrorMessage = "Пол є обов’язковим.")]
-        public Gender Gender { get; set; }
+        //[Required(ErrorMessage = "Стать є обов’язковою.")]
+        public Gender? Gender { get; set; }
 
         /// <summary>
         /// Вага користувача в кілограмах.
         /// Обов’язкове поле з перевіркою діапазону.
         /// </summary>
-        [Required(ErrorMessage = "Вага є обов’язковою.")]
-        [Range(1.0, 300.0, ErrorMessage = "Вага має бути в діапазоні від 1 до 300 кг.")]
-        public double Weight { get; set; }
+        //[Required(ErrorMessage = "Вага є обов’язковою.")]
+        //[Range(1.0, 300.0, ErrorMessage = "Вага має бути в діапазоні від 1 до 300 кг.")]
+        public double Weight { get; set; } = 0;
 
         /// <summary>
         /// Зріст користувача в сантиметрах.
         /// Обов’язкове поле з перевіркою діапазону.
         /// </summary>
-        [Required(ErrorMessage = "Зріст є обов’язковим.")]
-        [Range(1.0, 250.0, ErrorMessage = "Зріст має бути в діапазоні від 1 до 250 см.")]
-        public double Height { get; set; }
+        //[Required(ErrorMessage = "Зріст є обов’язковим.")]
+        //[Range(1.0, 250.0, ErrorMessage = "Зріст має бути в діапазоні від 1 до 250 см.")]
+        public double Height { get; set; } = 0;
 
         /// <summary>
         /// Пароль користувача.

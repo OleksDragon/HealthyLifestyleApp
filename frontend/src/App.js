@@ -9,6 +9,7 @@ import RegisterPage from "./components/pages/RegisterPage";
 import LoginPage from "./components/pages/LoginPage";
 import HomePage from "./components/pages/HomePage";
 import UserPage from "./components/pages/UserPage";
+import SuccessPage from "./components/pages/SuccessPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
@@ -35,6 +36,7 @@ function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/success" element={<SuccessPage />} />
       {/* Переброс на страницу авторизации, если не авторизирован (нет токена) */}
       <Route path="/userpage" element={<PrivateRoute><UserPage /></PrivateRoute>} />
     </Routes>

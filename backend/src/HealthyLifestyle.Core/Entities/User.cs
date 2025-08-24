@@ -20,22 +20,22 @@ namespace HealthyLifestyle.Core.Entities
         /// <summary>
         /// Дата народження користувача.
         /// </summary>
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// Стать користувача (чоловіча, жіноча або інше).
         /// </summary>
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         /// <summary>
         /// Вага користувача в кілограмах.
         /// </summary>
-        public double Weight { get; set; }
+        public double Weight { get; set; } = 0;
 
         /// <summary>
         /// Зріст користувача в сантиметрах.
         /// </summary>
-        public double Height { get; set; }
+        public double Height { get; set; } = 0;
 
         /// <summary>
         /// URL зображення профілю користувача (опціонально).

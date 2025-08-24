@@ -1,5 +1,7 @@
 ﻿using HealthyLifestyle.Application.Interfaces.Email;
 using Microsoft.Extensions.Logging;
+using System.Net.Mail;
+using System.Net;
 
 namespace HealthyLifestyle.Application.Services.Email
 {
@@ -14,15 +16,28 @@ namespace HealthyLifestyle.Application.Services.Email
             _logger = logger;
         }
 
-        public Task SendEmailAsync(string toEmail, string subject, string message)
+        public async Task SendEmailAsync(string toEmail, string subject, string message)
         {
             _logger.LogInformation("Отправка email: To={To}, Subject={Subject}, Message={Message}", toEmail, subject, message);
-            // Тут буде код для реального відправлення email (например, через SmtpClient, SendGrid API и т.д.)
-            // У продакшені ми не використовуватимемо console.writeline.
-            // Console.WriteLine($"Sending email to: {toEmail}");
-            // Console.WriteLine($"Subject: {subject}");
-            // Console.WriteLine($"Body: {message}");
-            return Task.CompletedTask;
+            // Адреса відправника буде змінена згодом
+            MailAddress from = new MailAddress("oursportifyteam@gmail.com", "Sportify Team");
+            MailAddress to = new MailAddress(toEmail);
+            MailMessage m = new MailMessage(from, to);
+            m.Subject = subject;
+            m.Body = message;
+            m.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential("oursportifyteam@gmail.com", "mwqm krgg avtb suro");
+            smtp.EnableSsl = true;
+            try
+            {
+                await smtp.SendMailAsync(m);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
     }
 }

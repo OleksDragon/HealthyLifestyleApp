@@ -2,12 +2,16 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './MainContentBlock.css';
 import nomyfyLogo from '../../../assets/landing-page/nomyfy.svg'; 
+import Bubble from '../animated-background/Bubble';
 
 const MainContentBlock = () => {
     const { t } = useTranslation();
 
     return (
         <section className="main-content-block" id="about-section">
+            <div className="bubbles-container">
+                <Bubble className="bubble-3" />
+            </div>
             <div className="logo-container">
                 <img src={nomyfyLogo} alt="NOMYFY" className="nomyfy-logo" />
             </div>

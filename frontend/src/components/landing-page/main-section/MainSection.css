@@ -11,6 +11,7 @@
     padding-top: 40px;
     width: 100%;
     height: auto;
+    overflow-x: hidden;
 }
 
 .header {
@@ -20,6 +21,7 @@
     width: 90%;
     max-width: 1400px;
     padding: 20px 0;
+    z-index: 1;
 }
 
 .header__logo img {
@@ -53,6 +55,7 @@
     font-size: 16px;
     cursor: pointer;
     border: none;
+    z-index: 1;
 }
 
 .hero-content {
@@ -63,6 +66,7 @@
     margin-top: 150px;
     width: 90%;
     max-width: 1400px;
+    z-index: 1;
 }
 
 .hero-content h1 {
@@ -94,9 +98,10 @@
     text-decoration: none;
     cursor: pointer;
     border: none;
+    z-index: 1;
 }
 
-/* Адаптивные стили (пример) */
+/* Адаптивные стили */
 @media (max-width: 768px) {
     .header {
         padding: 15px 20px;
@@ -104,7 +109,6 @@
 
     .header__nav {
         display: none;
-        /* Скрыть навигацию на мобильных */
     }
 
     .hero-content h1 {
@@ -119,9 +123,23 @@
         font-size: 16px;
         padding: 12px 30px;
     }
+
+    .bubble-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .bubble-2 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .bubble-3 {
+        width: 100px;
+        height: 100px;
+    }
 }
 
-/* Tablet Styles */
 @media (max-width: 1024px) {
     .header {
         padding: 20px;
@@ -130,28 +148,5 @@
     .header__nav .nav__item a {
         margin-left: 20px;
         font-size: 18px;
-    }
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .header__nav {
-        display: none;
-        /* Hide navigation */
-    }
-
-    .header__logo img {
-        height: 30px;
-        margin-bottom: 10px;
-    }
-
-    .header__button {
-        padding: 10px 20px;
-        font-size: 14px;
     }
 }

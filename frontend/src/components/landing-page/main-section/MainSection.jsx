@@ -5,7 +5,7 @@ import LanguageSelector from '../../LanguageSelector';
 import './MainSection.css';
 import heroImage from '../../../assets/landing-page/hero_bg.svg';
 import logo from '../../../assets/landing-page/nomyfy_logo.svg';
-
+import Bubble from '../animated-background/Bubble';
 
 const MainSection = () => {
     const { t } = useTranslation();
@@ -13,6 +13,9 @@ const MainSection = () => {
 
     return (
         <section className="main-section" style={{ backgroundImage: `url(${heroImage})` }}>
+            <div className="bubbles-container">
+                <Bubble className="bubble-1" />
+            </div>
             <header className="header">
                 <div className="header__logo">
                     <img src={logo} alt="Nomyfy Logo" />

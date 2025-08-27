@@ -344,6 +344,23 @@ namespace HealthyLifestyle.Application.Services.Auth
             return user != null;
         }
 
+        /// <summary>
+        /// Змінює пароль користувача
+        /// </summary>
+        /// <param name="email">Email користувача.</param>
+        /// <param name="password">Новий пароль.</param>
+        /// <returns>true, якщо пароль вдало змінено; інакше false.</returns>
+        public async Task<bool> ChangePassword(string email, string password)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return false;
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var result = await _userManager.ResetPasswordAsync(user, token, password);
+
+            return result.Succeeded;
+        }
+
         #endregion
 
         #region Private Methods

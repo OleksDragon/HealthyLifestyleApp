@@ -1,24 +1,27 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import '../styles/login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faFacebookF, faGoogle, faTelegram, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { useGoogleLogin } from "@react-oauth/google";
-import FacebookLogin from "react-facebook-login";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import telegramIcon from "../icons/Telegram.png";
 import bgb from "../img/bgb.png";
 import mgb from "../img/mgb.png";
 import sgb from "../img/sgb.png";
 import bb from "../img/bb.png";
 import nomyfyLogo from "../img/nomyfy.png";
+import eyeOpen from "../icons/EyeOpen.png";
+import eyeClose from "../icons/EyeClose.png";
 
-function HomePage() {
+function LoginPage() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [show, setShow] = useState(false);
-    // Можливо, варто хешувати пароль на стороні фронтенду, а не бекенду
     const [password, setPassword] = useState('');
     const [emailCorrect, setEmailCorrect] = useState(false);
     const [passwordCorrect, setPasswordCorrect] = useState(false);
@@ -29,11 +32,11 @@ function HomePage() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
 
     useEffect(() => {
-        setEmailCorrect(emailRegex.test(email));
+        setEmailCorrect(emailRegex.test(email) || email.length === 0);
     }, [email]);
 
     useEffect(() => {
-        setPasswordCorrect(passwordRegex.test(password));
+        setPasswordCorrect(passwordRegex.test(password) || password.length === 0);
     }, [password]);
 
     const handleLogin = async (e) => {
@@ -77,16 +80,16 @@ function HomePage() {
         }
     })
 
-    // const handleFacebookLogin = async (data) => {
-    //     const response = await axios.post(
-    //         process.env.REACT_APP_API_URL + "/api/Auth/login/facebook",
-    //         { providerToken: data.access_token }
-    //     );
-    //     if (response.data.Token) {
-    //         localStorage.setItem("helth-token", response.data.Token);
-    //         navigate("/userpage");
-    //     }
-    // }
+    const handleFacebookLogin = async (data) => {
+        const response = await axios.post(
+            process.env.REACT_APP_API_URL + "/api/Auth/login/facebook",
+            { providerToken: data.accessToken }
+        );
+        if (response.data.Token) {
+            localStorage.setItem("helth-token", response.data.Token);
+            navigate("/userpage");
+        }
+    }
 
     return (
         <div className='bg'>
@@ -107,7 +110,7 @@ function HomePage() {
             </div>
             <div className='glass'>
                 <h2 style={{ fontFamily: '"Kodchasan", sans-serif', fontWeight: 400, fontSize: '40px', marginTop: '30px', marginBottom: '10px' }}>
-                    ВХІД
+                    {t("login1")}
                 </h2>
                 {error && (
                     <span className='incorrect-data'>{error}</span>
@@ -115,9 +118,9 @@ function HomePage() {
                 <form onSubmit={handleLogin}>
                     <input
                         className='input'
-                        style={{color: emailCorrect ? 'black' : 'red'}}
+                        style={{color: emailCorrect ? 'white' : 'red', border: emailCorrect ? '' : '2px solid red'}}
                         type="email"
-                        placeholder='email'
+                        placeholder='e-mail'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -127,35 +130,48 @@ function HomePage() {
                         <input
                             className='input'
                             type={show ? "text" : "password"}
-                            placeholder='пароль'
-                            style={{color: passwordCorrect ? 'black' : 'red'}}
+                            placeholder={t("password")}
+                            style={{color: passwordCorrect ? 'white' : 'red', border: passwordCorrect ? '' : '2px solid red'}}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
 
-                        <button
-                            type="button"
-                            onClick={() => setShow(!show)}
+                        <img 
+                            src={show ? eyeOpen : eyeClose} 
+                            alt={show ? "Hide" : "Show"} 
+                            onClick={() => setShow(!show)} 
                             className='eye'
-                            aria-label={show ? "Скрыть пароль" : "Показать пароль"}
-                        >
-                            <FontAwesomeIcon icon={show ? faEyeSlash : faEye} />
-                        </button>
+                        />
                         <br />
                             
-                        <span className='forgot-password'>забули пароль?</span>
+                        <span className='forgot-password' onClick={() => navigate("/restore")}>{t("forgot_password")}</span>
                     </div>
 
-                    <button className='login' type="submit" disabled={!passwordCorrect | !emailCorrect}>Увійти</button>
-                    <div className='no-login'>Немає профілю? <span className='register' onClick={() => navigate("/register")}>Реєстрація</span></div>
+                    <button className='login' type="submit" disabled={!passwordCorrect | !emailCorrect | password.length === 0 | email.length === 0}>{t("login2")}</button>
+                    <div className='no-login'>{t("no_profile")} <span className='register' onClick={() => navigate("/register")}>{t("register2")}</span></div>
 
                 </form>
 
                 <div className='social-btns'>
-                    <button className='btn-log-another-way'>
-                        <FontAwesomeIcon icon={faFacebookF} style={{ color: '#0066C3', fontSize: '20px' }} />
-                    </button>
+                    <FacebookLogin
+                        // test id (and use env vars later)
+                        appId="789141780360116"
+                        autoLoad={false}
+                        fields="id,name,email"
+                        callback={handleFacebookLogin}
+                        render={(renderProps) => (
+                        <button
+                            className="btn-log-another-way"
+                            onClick={renderProps.onClick}
+                        >
+                            <FontAwesomeIcon
+                            icon={faFacebookF}
+                            style={{ color: "#0066C3", fontSize: "20px" }}
+                            />
+                        </button>
+                        )}
+                    />
 
                     <button className='btn-log-another-way' onClick={handleGoogleLogin}>
                         <FontAwesomeIcon icon={faGoogle} style={{ color: '#0066C3', fontSize: '20px' }} />
@@ -165,20 +181,9 @@ function HomePage() {
                         <img src={telegramIcon} alt="Telegram" style={{ width: '16x', height: '16px', marginLeft: '-2px'}} />
                     </button>
                 </div>
-                        
-                {/* <FacebookLogin
-                    appId="YOUR_APP_ID"
-                    fields="id,name,email"
-                    callback={handleFacebookLogin}
-                    render={renderProps => (
-                        <button onClick={renderProps.onClick} className='btn-log-another-way'>
-                            <FontAwesomeIcon icon={faFacebook} style={{ color: '#C0E307', fontSize: '20px' }} />
-                            Продовжити з Facebook
-                        </button>
-                )}/> */}
             </div>
         </div>
     );
 }
 
-export default HomePage;
+export default LoginPage;

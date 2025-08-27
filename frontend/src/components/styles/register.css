@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
+
 .bg {
     position: fixed;
     top: 0;
@@ -156,16 +160,16 @@
 }
 
 .glass input {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-family: 'Kumbh Sans', sans-serif;
+    color: white;
     width: 320px;
     height: 46px;
-    border-radius: 23px;
-    border: none;
-    background: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    font-size: 14px;
+    font-size: 16px;
     outline: none;
     padding-left: 20px;
     margin: 12px;
@@ -173,14 +177,16 @@
 
 input::placeholder {
     font-family: 'Kumbh Sans', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     color: white;
 }
 
 .eye {
+    width: 24px;
+    height: auto;
     position: absolute;
     right: 15%;
-    top: 35px;
+    top: 40px;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -211,6 +217,8 @@ input::placeholder {
     font-size: 18px;
     margin-top: 22px;
     letter-spacing: 0.5px;
+
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .continue:hover {
@@ -318,4 +326,12 @@ input::placeholder {
 
 .slide-left {
     transform: translateX(-430px);
+}
+
+.slide-left-2 {
+    transform: translateX(-860px);
+}
+
+.slide-left-3 {
+    transform: translateX(-1290px);
 }

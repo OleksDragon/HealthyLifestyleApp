@@ -92,6 +92,37 @@ namespace HealthyLifestyle.Api.Controllers.Auth
             return BadRequest();
         }
 
+
+        /// <summary>
+        /// Перевіряє чи існує користувач с заданою поштою.
+        /// </summary>
+        /// <param name="email">Пошта, яку треба перевірити</param>
+        [HttpPost("exist/{email}")]
+        public async Task<IActionResult> ExistEmail(string email)
+        {
+            if (await _authService.UserExistsAsync(email))return Ok();
+
+            return BadRequest();
+        }
+
+        /// <summary>
+        /// Змінює пароль користувача.
+        /// </summary>
+        /// <param name="model">Дані для зміни паролю.</param>
+        [HttpPost("change/password")]
+        public async Task<IActionResult> ChangePassword([FromBody] LoginUserDto model)
+        {
+            if (await _authService.UserExistsAsync(model.Email))
+            {
+                if (await _authService.ChangePassword(model.Email, model.Password))
+                {
+                    return Ok();
+                }
+            }
+
+            return BadRequest();
+        }
+
         /// <summary>
         /// Реєструє нового користувача та повертає JWT-токен.
         /// </summary>

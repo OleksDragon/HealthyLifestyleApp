@@ -1,13 +1,14 @@
 import axios from 'axios';
-import React, {useEffect, useRef, useState, useImperativeHandle, forwardRef } from 'react';
+import React, {useEffect, useRef, useState, useImperativeHandle, forwardRef, use } from 'react';
 import '../styles/emailConfirm.css';
 
-const EmailConfirmation = forwardRef(({ email }, ref) => {
+const EmailConfirmation = forwardRef(({ email, toggleForm, t }, ref) => {
     const [sendCodeAgain, setSendCodeAgain] = useState(0);
     const [error, setError] = useState("");
     const codeNums = 5;
     const [code, setCode] = useState(Array(codeNums).fill(""));
     const inputsRef = useRef([]);
+    const [send, setSend] = useState(false);
 
     const handleChange = (e, idx) => {
         const val = e.target.value;
@@ -42,26 +43,29 @@ const EmailConfirmation = forwardRef(({ email }, ref) => {
             }
         } catch (err) {
             console.error("Помилка при створенні коду підтвердження: ", err);
-            setError("Помилка при створенні коду підтвердження");
+            setError(t("code_create_error"));
+        }
+    }
+
+    const  handleConfirmEmail = async () => {
+        try {
+            const response = await axios.post(
+                process.env.REACT_APP_API_URL + "/api/Auth/confirmation/" + email + "/" + code.join('')
+            );
+
+            if (response.status === 200) {
+                setError("");
+                return true;
+            }
+        } catch (err) {
+            setError(t("code_error"));
+            return false;
         }
     }
 
     useImperativeHandle(ref, () => ({
-        handleConfirmEmail: async () => {
-            try {
-                const response = await axios.post(
-                    process.env.REACT_APP_API_URL + "/api/Auth/confirmation/" + email + "/" + code.join('')
-                );
-
-                if (response.status === 200) {
-                    setError("");
-                    return true;
-                }
-            } catch (err) {
-                setError("Неправильний код підтвердження");
-                return false;
-            }
-        },
+        handleCreateCode,
+        handleConfirmEmail
     }))
 
     useEffect(() => {
@@ -74,12 +78,21 @@ const EmailConfirmation = forwardRef(({ email }, ref) => {
         return () => clearInterval(timer);
     }, [sendCodeAgain]);
 
+    useEffect(() => {
+        if (code.every(num => num !== "")) {
+            setSend(true);
+        }
+        else {
+            setSend(false);
+        }
+    }, [code]);
+
     return (
         <div className="form-content">
             <div className='info right' style={{ marginTop: '10px' }}>
-                <span>будь ласка, перевірте ваш e-mail</span>
+                <span>{t("check_email")}</span>
                 <br />
-                <span>код відправлений на <span className='info-value'>{email}</span></span>
+                <span>{t("code_send")} <span className='info-value'>{email}</span></span>
             </div>
             <div className='code-inputs'>
                 {code.map((digit, idx) => (
@@ -96,9 +109,9 @@ const EmailConfirmation = forwardRef(({ email }, ref) => {
             </div>
             <div className='info'>
                 {sendCodeAgain === 0 ? (
-                    <button className='info' onClick={handleCreateCode}>надіслати код</button>
+                    <button className='info' onClick={handleCreateCode}>{t("send_code")}</button>
                 ) : (
-                    <span>код знову буде відправлений через{" "}
+                    <span>{t("send_code_again")}{" "}
                         <span className='info-value'>
                             00:{sendCodeAgain < 10 ? "0" + sendCodeAgain : sendCodeAgain}
                         </span>
@@ -106,6 +119,7 @@ const EmailConfirmation = forwardRef(({ email }, ref) => {
                 )}
             </div>
             {error && <div className='error-message'>{error}</div>}
+            <button className='continue' onClick={toggleForm} disabled={!send}>{t("confirm")}</button>
         </div>
     );
 })

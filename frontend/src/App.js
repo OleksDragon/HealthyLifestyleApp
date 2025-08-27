@@ -9,15 +9,14 @@ import RegisterPage from "./components/pages/RegisterPage";
 import LoginPage from "./components/pages/LoginPage";
 import HomePage from "./components/pages/HomePage";
 import UserPage from "./components/pages/UserPage";
-import SuccessPage from "./components/pages/SuccessPage";
+import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
 
   return (
-    // {process.env.REACT_APP_GOOGLE_CLIENT_ID}
-    <GoogleOAuthProvider clientId="596782705647-sa9h8d11i8grjh3jukglih9c9hnsp3co.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
       <Router>
         <AppRoutes />
       </Router>
@@ -36,7 +35,7 @@ function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/success" element={<SuccessPage />} />
+      <Route path="/restore" element={<RestorePasswordPage />} />
       {/* Переброс на страницу авторизации, если не авторизирован (нет токена) */}
       <Route path="/userpage" element={<PrivateRoute><UserPage /></PrivateRoute>} />
     </Routes>

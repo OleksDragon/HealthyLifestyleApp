@@ -60,11 +60,44 @@ i18n
           faq_q6_answer:
             "Leave a request on our website, and we will contact you.",
 
-          // --- Переводы для Footer ---
+          // --- Переклади для Footer ---
           specialists: "Specialists",
           privacy_policy: "Privacy Policy",
           support_service: "Support Service",
           copyright: "© Nomyfy {{year}}.",
+
+          // --- Переклади для входу ---
+          login1: "LOGIN",
+          password: "password",
+          forgot_password: "forgot password?",
+          login2: "Login",
+          no_profile: "No profile? ",
+          register2: "Register",
+
+          // --- Переклади для реєстрації ---
+          continue: "Continue",
+          reg_success: "registration successful",
+          start: "Start",
+          reg_top: "REGISTRATION",
+          success: "SUCCESS",
+          or: "or",
+          code_create_error: "Error creating confirmation code",
+          code_error: "Incorrect confirmation code",
+          check_email: "please check your e-mail",
+          code_send: "the code has been sent to ",
+          send_code: "send code ",
+          send_code_again: "the code will be sent again in ",
+          confirm: "Confirm",
+          password_new: "new password",
+
+          // --- Переклади для відновлення паролю ---
+          enter_email_to_restore: "enter e-main to send the code",
+          send_code2: "Send code",
+          reset_password: "password reset",
+          password_confirm: "password confirmation",
+          update_password: "Update password",
+          password_update_success: "password successfully updated",
+          to_login: "Return to login"
         },
       },
       uk: {
@@ -120,11 +153,44 @@ i18n
           faq_q6_answer:
             "Залиште заявку на нашому сайті, і ми звʼяжемося з вами.",
 
-          // --- Переводы для Footer ---
+          // --- Переклади для Footer ---
           specialists: "Фахівці",
           privacy_policy: "Політика конфіденційності",
           support_service: "Служба підтримки",
           copyright: "© Nomyfy {{year}}.",
+
+          // --- Переклади для входу ---
+          login1: "ВХІД",
+          password: "пароль",
+          forgot_password: "забули пароль?",
+          login2: "Увійти",
+          no_profile: "Немає профілю? ",
+          register2: "Реєстрація",
+
+          // --- Переклади для реєстрації ---
+          continue: "Продовжити",
+          reg_success: "реєстрація успішна",
+          start: "Розпочати",
+          reg_top: "РЕЄСТРАЦІЯ",
+          success: "УСПІШНО",
+          or: "або",
+          code_create_error: "Помилка створення коду підтвердження",
+          code_error: "Невірний код підтвердження",
+          check_email: "будь ласка, перевірте вашу електронну пошту",
+          code_send: "код було надіслано на ",
+          send_code: "надіслати код ",
+          send_code_again: "код буде надіслано знову через ",
+          confirm: "Підтвердити",
+          password_new: "новий пароль",
+
+          // --- Переклади для відновлення паролю ---
+          enter_email_to_restore: "введіть e-mail, щоб надіслати код",
+          send_code2: "Надіслати код",
+          reset_password: "оновлення паролю",
+          password_confirm: "підтвердження пароля",
+          update_password: "Оновити пароль",
+          password_update_success: "пароль успішно оновлено",
+          to_login: "Повернутися до входу",
         },
       },
       de: {
@@ -185,6 +251,39 @@ i18n
           privacy_policy: "Datenschutzerklärung",
           support_service: "Kundendienst",
           copyright: "© Nomyfy {{year}}.",
+
+          // --- Переклади для входу ---
+          login1: "ANMELDUNG",
+          password: "passwort",
+          forgot_password: "passwort vergessen?",
+          login2: "Einloggen",
+          no_profile: "Noch kein Profil? ",
+          register2: "Registrieren",
+
+          // --- Переклади для реєстрації ---
+          continue: "Fortsetzen",
+          reg_success: "Registrierung erfolgreich",
+          start: "Starten",
+          reg_top: "REGISTRIERUNG",
+          success: "ERFOLGREICH",
+          or: "oder",
+          code_create_error: "Fehler beim Erstellen des Bestätigungscodes",
+          code_error: "Falscher Bestätigungscode",
+          check_email: "bitte überprüfe deine E-Mails",
+          code_send: "der Code wurde gesendet an ",
+          send_code: "Code senden ",
+          send_code_again: "der Code wird erneut gesendet in ",
+          confirm: "Bestätigen",
+          password_new: "neues Passwort",
+
+          // --- Переклади для відновлення паролю ---
+          enter_email_to_restore: "E-Mail eingeben, um den Code zu senden",
+          send_code2: "Code senden",
+          reset_password: "Passwort zurücksetzen",
+          password_confirm: "Passwortbestätigung",
+          update_password: "Passwort aktualisieren",
+          password_update_success: "Passwort erfolgreich aktualisiert",
+          to_login: "Zurück zur Anmeldung",
         },
       },
       fr: {
@@ -245,6 +344,39 @@ i18n
           privacy_policy: "Politique de confidentialité",
           support_service: "Service de soutien",
           copyright: "© Nomyfy {{year}}.",
+
+          // --- Переклади для входу ---
+          login1: "CONNEXION",
+          password: "mot de passe",
+          forgot_password: "mot de passe oublié ?",
+          login2: "Se connecter",
+          no_profile: "Pas de compte ? ",
+          register2: "S'inscrire",
+
+          // --- Переклади для реєстрації ---
+          continue: "Continuer",
+          reg_success: "inscription réussie",
+          start: "Commencer",
+          reg_top: "INSCRIPTION",
+          success: "RÉUSSI",
+          or: "ou",
+          code_create_error: "Erreur lors de la création du code de confirmation",
+          code_error: "Code de confirmation incorrect",
+          check_email: "veuillez vérifier votre e-mail",
+          code_send: "le code a été envoyé à ",
+          send_code: "envoyer le code ",
+          send_code_again: "le code sera renvoyé dans ",
+          confirm: "Confirmer",
+          password_new: "nouveau mot de passe",
+
+          // --- Переклади для відновлення паролю ---
+          enter_email_to_restore: "entrez l'e-mail pour envoyer le code",
+          send_code2: "Envoyer le code",
+          reset_password: "réinitialisation du mot de passe",
+          password_confirm: "confirmation du mot de passe",
+          update_password: "Mettre à jour le mot de passe",
+          password_update_success: "mot de passe mis à jour avec succès",
+          to_login: "Retour à la connexion",
         },
       },
       es: {
@@ -305,6 +437,39 @@ i18n
           privacy_policy: "Política de privacidad",
           support_service: "Servicio de soporte",
           copyright: "© Nomyfy {{year}}.",
+
+          // --- Переклади для входу ---
+          login1: "INICIO DE SESIÓN",
+          password: "contraseña",
+          forgot_password: "¿Olvidaste tu contraseña?",
+          login2: "Entrar",
+          no_profile: "¿No tienes cuenta? ",
+          register2: "Registrarse",
+
+          // --- Переклади для реєстрації ---
+          continue: "Continuar",
+          reg_success: "registro exitoso",
+          start: "Comenzar",
+          reg_top: "REGISTRO",
+          success: "EXITOSO",
+          or: "o",
+          code_create_error: "Error al crear el código de confirmación",
+          code_error: "Código de confirmación incorrecto",
+          check_email: "por favor, revisa tu correo electrónico",
+          code_send: "el código ha sido enviado a ",
+          send_code: "enviar código ",
+          send_code_again: "el código será reenviado en ",
+          confirm: "Confirmar",
+          password_new: "nueva contraseña",
+
+          // --- Переклади для відновлення паролю ---
+          enter_email_to_restore: "ingresa el correo electrónico para enviar el código",
+          send_code2: "Enviar código",
+          reset_password: "restablecimiento de contraseña",
+          password_confirm: "confirmación de contraseña",
+          update_password: "Actualizar contraseña",
+          password_update_success: "contraseña actualizada con éxito",
+          to_login: "Volver al inicio de sesión",
         },
       },
     },

@@ -1,4 +1,4 @@
-function HomePage() {
+function UserPage() {
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
             <h1>UserPage</h1>
@@ -6,4 +6,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default UserPage;

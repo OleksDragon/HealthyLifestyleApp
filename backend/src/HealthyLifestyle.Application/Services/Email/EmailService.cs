@@ -20,14 +20,14 @@ namespace HealthyLifestyle.Application.Services.Email
         {
             _logger.LogInformation("Отправка email: To={To}, Subject={Subject}, Message={Message}", toEmail, subject, message);
             // Адреса відправника буде змінена згодом
-            MailAddress from = new MailAddress("oursportifyteam@gmail.com", "Sportify Team");
+            MailAddress from = new MailAddress("nomyfy@gmail.com", "Nomyfy Team");
             MailAddress to = new MailAddress(toEmail);
             MailMessage m = new MailMessage(from, to);
             m.Subject = subject;
             m.Body = message;
             m.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new NetworkCredential("oursportifyteam@gmail.com", "mwqm krgg avtb suro");
+            smtp.Credentials = new NetworkCredential("Nomyfy", "wkzy mlzl mstq kdsy");
             smtp.EnableSsl = true;
             try
             {

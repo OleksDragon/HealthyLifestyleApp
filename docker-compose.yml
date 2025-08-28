@@ -57,20 +57,20 @@ services:
     command: ["redis-server", "--appendonly", "no"] # Отключаем AOF для простоты в DEV, в PROD лучше включить
 
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: healthy_frontend
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - REACT_APP_API_URL=${REACT_APP_API_URL}
-  #     - REACT_APP_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-  #   networks:
-  #     - healthy_net
-  #   depends_on:
-  #     - backend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: healthy_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+      - REACT_APP_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+    networks:
+      - healthy_net
+    depends_on:
+      - backend
 
 volumes:
   mssql_data:

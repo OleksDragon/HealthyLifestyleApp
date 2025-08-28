@@ -54,7 +54,7 @@ function LoginPage() {
             }
         } catch (err) {
             console.log("Помилка авторизації: ", err);
-            setError(err.response?.data?.message || "Помилка авторизації. Перевірте дані.");
+            setError(t("auth_fail"));
         }
     }
 

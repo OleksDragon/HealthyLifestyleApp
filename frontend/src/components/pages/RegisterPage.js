@@ -91,6 +91,7 @@ function RegisterPage() {
     const [activeForm, setActiveForm] = useState(1);
     const emailConf = useRef();
     const navigateTo = useNavigate();
+    const [error, setError] = useState('');
 
     const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
     
@@ -105,7 +106,19 @@ function RegisterPage() {
     }, [password]);
 
     const toggleForm = async () => {
+        setError('');
         if (activeForm === 1) {
+            const response = await axios.post(
+                process.env.REACT_APP_API_URL + "/api/Auth/exist/" + email,
+                {},
+                {
+                    validateStatus: () => true
+                }
+            );
+            if (response.status === 200) {
+                setError(t("user_exist"));
+                return;
+            }
             await emailConf.current.handleCreateCode();
         }
         if (activeForm === 2) {
@@ -221,7 +234,9 @@ function RegisterPage() {
                     </h2>
                 )}
                 
-
+                {error && (
+                    <span className='incorrect-data'>{error}</span>
+                )}
                 <div className="form-wrapper">
                     <div className={`forms-container ${
                         activeForm === 1 ? '' : activeForm === 2 ? 'slide-left' : 'slide-left-2'

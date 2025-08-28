@@ -141,7 +141,19 @@ function RestorePasswordPage() {
     }, [passwordConf]);
 
     const toggleForm = async () => {
+        setError('');
         if (activeForm === 1) {
+            const response = await axios.post(
+                process.env.REACT_APP_API_URL + "/api/Auth/exist/" + email,
+                {},
+                {
+                    validateStatus: () => true
+                }
+            );
+            if (response.status !== 200) {
+                setError(t("user_not_exist"));
+                return;
+            }
             await emailConf.current.handleCreateCode();
         }
         if (activeForm === 2) {
@@ -158,7 +170,7 @@ function RestorePasswordPage() {
                     return;
                 }
             } catch (err) {
-                setError("Помилка оновлення паролю. Спробуйте ще раз.");
+                setError(t("reset_password_error"));
                 return;
             }
         }

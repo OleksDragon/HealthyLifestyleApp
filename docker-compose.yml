@@ -17,11 +17,13 @@ services:
       - JWT__Key=${JWT_KEY}
       - JWT__Issuer=${JWT_ISSUER}
       - JWT__Audience=${JWT_AUDIENCE}
-      - Redis__ConnectionString=redis:6379
+      - Redis__ConnectionString=healthy_redis:6379
       - GoogleAuth__ClientId=${GOOGLE_CLIENT_ID}
-      - GoogleAuth__ClientSecret=${GOOGLE_CLIENT_SECRET}
+      - GoogleAuth__ClientSecret=${GOOGLE_CLIENT_CLIENT_SECRET}
+      - DynamicRendering:InternalFrontendUrl=http://healthy_frontend:3000
     networks:
       - healthy_net
+    command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"
 
   mssql:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -41,7 +43,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-      
+      start_period: 60s
+
   redis:
     image: redis:latest
     container_name: healthy_redis
@@ -54,8 +57,7 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
-    command: ["redis-server", "--appendonly", "no"] # Отключаем AOF для простоты в DEV, в PROD лучше включить
-
+    command: ["redis-server", "--appendonly", "no"]
 
   frontend:
     build:
@@ -69,11 +71,27 @@ services:
       - REACT_APP_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
     networks:
       - healthy_net
+
+  rendertron:
+    build:
+      context: ./rendertron
+      dockerfile: Dockerfile
+    container_name: healthy_rendertron
+    networks:
+    - healthy_net
     depends_on:
-      - backend
+      frontend:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://healthy_frontend:3000/_ping || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 volumes:
   mssql_data:
 
 networks:
   healthy_net:
+    name: healthy_net
+    driver: bridge

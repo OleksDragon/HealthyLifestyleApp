@@ -61,6 +61,9 @@ using HealthyLifestyle.Application.Interfaces.Calendar;
 using HealthyLifestyle.Application.Services.Calendar;
 using HealthyLifestyle.Core.Interfaces.Calendar;
 using HealthyLifestyle.Infrastructure.Repositories.Calendar;
+using Microsoft.Extensions.Options;
+using HealthyLifestyle.Api.Middleware;
+using StackExchange.Redis;
 
 
 // Створюємо білдер для веб-програми
@@ -243,6 +246,11 @@ else
     Console.WriteLine($"Redis connected using: {redisConnectionString}");
 }
 
+// Настройки Dynamic Rendering
+builder.Services.Configure<DynamicRenderingOptions>(
+    builder.Configuration.GetSection("DynamicRendering"));
+
+
 // 9. Додавання контролерів та налаштування JSON серіалізації
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -295,6 +303,9 @@ var app = builder.Build();
 
 // Отримуємо логер після складання програми
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
+
+// --- Подключаем middleware ---
+app.UseMiddleware<DynamicRenderingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

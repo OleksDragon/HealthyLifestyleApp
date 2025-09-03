@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import '../styles/login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faFacebookF, faGoogle, faTelegram, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { useGoogleLogin } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import telegramIcon from "../icons/Telegram.png";
@@ -50,7 +49,7 @@ function LoginPage() {
                 localStorage.setItem("helth-token", response.data.Token); // Зберігання токену
                 // Також можна отримати та зберігти інші дані, що прийшли з сервера
                 setError('');
-                navigate("/userpage");
+                navigate("/dashboard");
             }
         } catch (err) {
             console.log("Помилка авторизації: ", err);
@@ -69,7 +68,7 @@ function LoginPage() {
                 );
                 if (response.data.Token) {
                     localStorage.setItem("helth-token", response.data.Token);
-                    navigate("/userpage");
+                    navigate("/dashboard");
                 }
             } catch (err) {
                 console.log("Помилка авторизації через Google: ", err);
@@ -87,26 +86,26 @@ function LoginPage() {
         );
         if (response.data.Token) {
             localStorage.setItem("helth-token", response.data.Token);
-            navigate("/userpage");
+            navigate("/dashboard");
         }
     }
 
     return (
         <div className='bg'>
             <div className='nomyfy'>
-                    <img src={nomyfyLogo}/>
+                    <img src={nomyfyLogo} alt='nomyfy'/>
             </div>
             <div className='bgb'>
-                    <img src={bgb}/>
+                    <img src={bgb} alt='green ball'/>
             </div>
             <div className='mgb'>
-                    <img src={mgb}/>
+                    <img src={mgb} alt='green ball'/>
             </div>
             <div className='sgb'>
-                    <img src={sgb}/>
+                    <img src={sgb} alt='green ball'/>
             </div>
             <div className='bb'>
-                    <img src={bb}/>
+                    <img src={bb} alt='blue ball'/>
             </div>
             <div className='glass'>
                 <h2 style={{ fontFamily: '"Kodchasan", sans-serif', fontWeight: 400, fontSize: '40px', marginTop: '30px', marginBottom: '10px' }}>
@@ -137,7 +136,7 @@ function LoginPage() {
                             required
                         />
 
-                        <img 
+                        <img
                             src={show ? eyeOpen : eyeClose} 
                             alt={show ? "Hide" : "Show"} 
                             onClick={() => setShow(!show)} 

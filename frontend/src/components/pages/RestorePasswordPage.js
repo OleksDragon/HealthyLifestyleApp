@@ -1,10 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import '../styles/register.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import bgb from "../img/bgb.png";
 import mgb from "../img/mgb.png";
 import sgb from "../img/sgb.png";
@@ -189,32 +187,32 @@ function RestorePasswordPage() {
     return (
         <div className='bg'>
             <div className='nomyfy'>
-                    <img src={nomyfyLogo}/>
+                    <img src={nomyfyLogo} alt='nomyfy'/>
             </div>
             <div className='bgb'>
-                    <img src={bgb}/>
+                    <img src={bgb} alt='green ball'/>
             </div>
             <div className='mgb'>
-                    <img src={mgb}/>
+                    <img src={mgb} alt='green ball'/>
             </div>
             <div className='sgb'>
-                    <img src={sgb}/>
+                    <img src={sgb} alt='green ball'/>
             </div>
             <div className='bb'>
-                    <img src={bb}/>
+                    <img src={bb} alt='blue ball'/>
             </div>
             <div className='glass' style={{height: activeForm !== 4 ? "480px" : "300px", transition: "height 0.8s ease"}}>
                 {activeForm !== 4 ? (
                     <div>
                         <div style={{ textAlign: "left", marginTop: "20px" }}>
-                            <img src={arrow} onClick={() => backForm()} style={{height: "25px", width: "25px", marginLeft: "20px", cursor: "pointer"}} />
+                            <img src={arrow} alt='arrow back' onClick={() => backForm()} style={{height: "25px", width: "25px", marginLeft: "20px", cursor: "pointer"}} />
                         </div>
                         <h2 style={{ fontFamily: '"Kodchasan", sans-serif', fontWeight: 400, fontSize: '40px', marginTop: '0px', marginBottom: '10px' }}>
                             {t("login1")}
                         </h2>
                     </div>
                 ) : (
-                    <h2 style={{ fontFamily: '"Kodchasan", sans-serif', fontWeight: 400, fontSize: '40px', marginTop: '0px', marginBottom: '10px', marginTop: "30px" }}>
+                    <h2 style={{ fontFamily: '"Kodchasan", sans-serif', fontWeight: 400, fontSize: '40px', marginBottom: '10px', marginTop: "30px" }}>
                         {t("success")}
                     </h2>
                 )}

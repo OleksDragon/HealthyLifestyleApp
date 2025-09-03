@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;900&display=swap');
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: #0066C3;
+    background-image: url("../img/FigureBack2.png");
+    background-size: cover;
+    z-index: -1;
+}
+
+.menu-panel {
+    position: relative;
+    grid-column: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.logo {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.logo img {
+    width: 155px;
+}
+
+.menu-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.menu-options {
+    margin-top: 100px;
+    padding-left: 20%;
+}
+
+.menu-option img {
+    width: 26px;
+}
+
+.menu-opt-text {
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.menu-children {
+    grid-column: 2/6;
+    margin-top: 10px;
+}
+
+.exit {
+    position: absolute;
+    bottom: 40px;
+    left: 25%;
+}

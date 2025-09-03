@@ -102,6 +102,17 @@ i18n
           reset_password_error: "Error updating password. Please try again.",
           user_exist: "User with the specified email already exists",
           auth_fail: "Authentication error. Check your data",
+
+          // Переклади для Menu
+          dashboard: "Home",
+          profile: "Profile",
+          health: "Health",
+          eating: "Eating",
+          workout: "Workout",
+          social: "Social",
+          marketplace_menu: "Marketplace",
+          premium: "Premium",
+          exit: "Exit",
         },
       },
       uk: {
@@ -199,6 +210,17 @@ i18n
           reset_password_error: "Помилка оновлення паролю. Спробуйте ще раз.",
           user_exist: "Користувач з вказаною поштою вже існує",
           auth_fail: "Помилка авторизації. Перевірте дані",
+
+          // Переклади для Menu
+          dashboard: "Головна",
+          profile: "Профіль",
+          health: "Здоров'я",
+          eating: "Харчування",
+          workout: "Тренування",
+          social: "Спілка",
+          marketplace_menu: "Маркетплейс",
+          premium: "Преміум",
+          exit: "Вийти",
         },
       },
       de: {
@@ -296,6 +318,17 @@ i18n
           reset_password_error: "Fehler beim Aktualisieren des Passworts. Bitte versuche es erneut.",
           user_exist: "Benutzer mit der angegebenen E-Mail existiert bereits",
           auth_fail: "Authentifizierungsfehler. Überprüfe deine Daten",
+
+          // Переклади для Menu
+          dashboard: "Startseite",
+          profile: "Profil",
+          health: "Gesundheit",
+          eating: "Ernährung",
+          workout: "Training",
+          social: "Soziales",
+          marketplace_menu: "Marktplatz",
+          premium: "Premium",
+          exit: "Beenden",
         },
       },
       fr: {
@@ -393,6 +426,17 @@ i18n
           reset_password_error: "Erreur lors de la mise à jour du mot de passe. Veuillez réessayer.",
           user_exist: "L'utilisateur avec l'e-mail spécifié existe déjà",
           auth_fail: "Erreur d'authentification. Vérifiez vos données",
+
+          // Переклади для Menu
+          dashboard: "Accueil",
+          profile: "Profil",
+          health: "Santé",
+          eating: "Alimentation",
+          workout: "Entraînement",
+          social: "Social",
+          marketplace_menu: "Marché",
+          premium: "Premium",
+          exit: "Sortir",
         },
       },
       es: {
@@ -490,6 +534,17 @@ i18n
           reset_password_error: "Error al actualizar la contraseña. Por favor, inténtalo de nuevo.",
           user_exist: "El usuario con el correo electrónico especificado ya existe",
           auth_fail: "Error de autenticación. Verifica tus datos",
+          
+          // Переклади для Menu
+          dashboard: "Inicio",
+          profile: "Perfil",
+          health: "Salud",
+          eating: "Alimentación",
+          workout: "Entrenamiento",
+          social: "Social",
+          marketplace_menu: "Mercado",
+          premium: "Premium",
+          exit: "Salir",
         },
       },
     },

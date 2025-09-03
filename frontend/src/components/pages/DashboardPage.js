@@ -1,0 +1,9 @@
+function DashboardPage() {
+    return (
+        <div className="dashboard">
+            <h1>UserPage</h1>
+        </div>
+    );
+}
+
+export default DashboardPage;

@@ -60,6 +60,35 @@ namespace HealthyLifestyle.Application.DTOs.User
         public string? Bio { get; set; }
 
         /// <summary>
+        /// Номер телефону користувача.
+        /// Максимальна довжина — 20 символів; має відповідати формату телефонного номера.
+        /// </summary>
+        [Phone(ErrorMessage = "Невірний формат номера телефону.")]
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "Номер телефону має містити від 1 до 20 символів.")]
+        public string? Phone { get; set; }
+
+        /// <summary>
+        /// Країна проживання користувача.
+        /// Максимальна довжина — 100 символів.
+        /// </summary>
+        [StringLength(100, MinimumLength = 1, ErrorMessage = "Назва країни має містити від 1 до 100 символів.")]
+        public string? Country { get; set; }
+
+        /// <summary>
+        /// Місто проживання користувача.
+        /// Максимальна довжина — 100 символів.
+        /// </summary>
+        [StringLength(100, MinimumLength = 1, ErrorMessage = "Назва міста має містити від 1 до 100 символів.")]
+        public string? City { get; set; }
+
+        /// <summary>
+        /// Вулиця проживання користувача.
+        /// Максимальна довжина — 200 символів.
+        /// </summary>
+        [StringLength(200, MinimumLength = 1, ErrorMessage = "Назва вулиці має містити від 1 до 200 символів.")]
+        public string? Street { get; set; }
+
+        /// <summary>
         /// Перевіряє, чи дата народження не пізніше поточної дати.
         /// </summary>
         /// <param name="dateOfBirth">Дата народження для перевірки.</param>

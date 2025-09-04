@@ -61,7 +61,11 @@ namespace HealthyLifestyle.Application.Services.UserS
                 weight: updateDto.Weight,
                 height: updateDto.Height,
                 profilePictureUrl: updateDto.ProfilePictureUrl,
-                bio: updateDto.Bio
+                bio: updateDto.Bio,
+                phone: updateDto.Phone,
+                country: updateDto.Country,
+                city: updateDto.City,
+                street: updateDto.Street
             );
 
             var result = await _userManager.UpdateAsync(user);

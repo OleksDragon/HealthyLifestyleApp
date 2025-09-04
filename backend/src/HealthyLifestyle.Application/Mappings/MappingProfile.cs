@@ -75,7 +75,22 @@ namespace HealthyLifestyle.Application.Mappings
             CreateMap<User, AuthResponseDto>()
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id.ToString()));
 
-            CreateMap<User, UserDto>();
+            CreateMap<User, UserDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
+                .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.DateOfBirth))
+                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
+                .ForMember(dest => dest.Weight, opt => opt.MapFrom(src => src.Weight))
+                .ForMember(dest => dest.Height, opt => opt.MapFrom(src => src.Height))
+                .ForMember(dest => dest.ProfilePictureUrl, opt => opt.MapFrom(src => src.ProfilePictureUrl))
+                .ForMember(dest => dest.Bio, opt => opt.MapFrom(src => src.Bio))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone))
+                .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
+                .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
+                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(src => src.UpdatedAt));
 
             CreateMap<UpdateUserDto, User>()
                 .ForMember(dest => dest.FullName, opt => opt.Condition(src => src.FullName != null))
@@ -85,6 +100,10 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Height, opt => opt.Condition(src => src.Height.HasValue))
                 .ForMember(dest => dest.ProfilePictureUrl, opt => opt.Condition(src => src.ProfilePictureUrl != null))
                 .ForMember(dest => dest.Bio, opt => opt.Condition(src => src.Bio != null))
+                .ForMember(dest => dest.Phone, opt => opt.Condition(src => src.Phone != null))
+                .ForMember(dest => dest.Country, opt => opt.Condition(src => src.Country != null))
+                .ForMember(dest => dest.City, opt => opt.Condition(src => src.City != null))
+                .ForMember(dest => dest.Street, opt => opt.Condition(src => src.Street != null))
                 .ForMember(dest => dest.Email, opt => opt.Ignore())
                 .ForMember(dest => dest.UserName, opt => opt.Ignore())
                 .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())

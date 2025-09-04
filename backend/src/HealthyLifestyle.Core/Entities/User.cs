@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HealthyLifestyle.Core.Entities
 {
@@ -59,6 +60,30 @@ namespace HealthyLifestyle.Core.Entities
         /// </summary>
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
+        /// <summary>
+        /// Номер телефону користувача
+        /// </summary>
+        public string? Phone { get; set; }
+
+        /// <summary>
+        /// Країна проживання
+        /// </summary>
+        [StringLength(100)]
+        public string? Country { get; set; }
+
+        /// <summary>
+        /// Місто проживання
+        /// </summary>
+        [StringLength(100)]
+        public string? City { get; set; }
+
+        /// <summary>
+        /// Вулиця проживання
+        /// </summary>
+        [StringLength(200)]
+        public string? Street { get; set; }
+
+       
         #endregion
 
         #region Навігаційні властивості
@@ -174,7 +199,9 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="weight">Вага в кілограмах.</param>
         /// <param name="height">Зріст в сантиметрах.</param>
         /// <param name="userType">Тип користувача (за замовчуванням User).</param>
-        public User(string email, string fullName, DateTime dateOfBirth, Gender gender, double weight, double height)
+        public User(string email, string fullName, DateTime dateOfBirth, Gender gender,
+               double weight, double height, string? phone = null, string? country = null,
+               string? city = null, string? street = null)
         {
             Id = Guid.NewGuid();
             Email = email;
@@ -184,6 +211,10 @@ namespace HealthyLifestyle.Core.Entities
             Gender = gender;
             Weight = weight;
             Height = height;
+            Phone = phone;
+            Country = country;
+            City = city;
+            Street = street;
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
         }
@@ -202,7 +233,11 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="height">Новий зріст (опціонально).</param>
         /// <param name="profilePictureUrl">Новий URL зображення профілю (опціонально).</param>
         /// <param name="bio">Нова біографія (опціонально).</param>
-        public void UpdateProfile(string? fullName = null, DateTime? dateOfBirth = null, Gender? gender = null, double? weight = null, double? height = null, string? profilePictureUrl = null, string? bio = null)
+        public void UpdateProfile(string? fullName = null, DateTime? dateOfBirth = null,
+                             Gender? gender = null, double? weight = null, double? height = null,
+                             string? profilePictureUrl = null, string? bio = null,
+                             string? phone = null, string? country = null,
+                             string? city = null, string? street = null)
         {
             if (fullName != null) FullName = fullName;
             if (dateOfBirth != null) DateOfBirth = dateOfBirth.Value;
@@ -211,6 +246,10 @@ namespace HealthyLifestyle.Core.Entities
             if (height != null) Height = height.Value;
             if (profilePictureUrl != null) ProfilePictureUrl = profilePictureUrl;
             if (bio != null) Bio = bio;
+            if (phone != null) Phone = phone;
+            if (country != null) Country = country;
+            if (city != null) City = city;
+            if (street != null) Street = street;
 
             UpdatedAt = DateTime.UtcNow;
         }

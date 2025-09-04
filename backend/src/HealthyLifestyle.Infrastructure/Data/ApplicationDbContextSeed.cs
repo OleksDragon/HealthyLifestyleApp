@@ -51,10 +51,20 @@ namespace HealthyLifestyle.Infrastructure.Data
 
             #region Створення користувачів та призначення ролей/деталей
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, "admin@example.com", "AdminPassword123!", RoleNames.Admin,
-                fullName: "Адмін Користувач", biography: "Головний адміністратор платформи.");
+    fullName: "Адмін Користувач",
+    biography: "Головний адміністратор платформи.",
+    phone: "+380501234567",
+    country: "Україна",
+    city: "Київ",
+    street: "вул. Хрещатик 1");
 
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, "user@example.com", "UserPassword123!", RoleNames.User,
-                fullName: "Звичайний Користувач", biography: "Звичайний користувач платформи.");
+                fullName: "Звичайний Користувач",
+                biography: "Звичайний користувач платформи.",
+                phone: "+380671234567",
+                country: "Україна",
+                city: "Львів",
+                street: "вул. Свободи 15");
 
             await CreatePsychologistAsync(userManager, roleManager, context);
             await CreateDietitianAsync(userManager, roleManager, context);
@@ -85,44 +95,91 @@ namespace HealthyLifestyle.Infrastructure.Data
         /// Створює користувача Identity та призначає йому роль.
         /// </summary>
         private static async Task CreateUserWithRoleAndDetailsAsync(
-            UserManager<User> userManager,
-            RoleManager<IdentityRole<Guid>> roleManager,
-            string email,
-            string password,
-            string roleName,
-            string? fullName = null,
-            string? biography = null)
+    UserManager<User> userManager,
+    RoleManager<IdentityRole<Guid>> roleManager,
+    string email,
+    string password,
+    string roleName,
+    string? fullName = null,
+    string? biography = null,
+    string? phone = null,
+    string? country = null,
+    string? city = null,
+    string? street = null)
+{
+    ArgumentNullException.ThrowIfNull(userManager);
+    ArgumentNullException.ThrowIfNull(roleManager);
+    ArgumentNullException.ThrowIfNull(email);
+    ArgumentNullException.ThrowIfNull(password);
+    ArgumentNullException.ThrowIfNull(roleName);
+
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        // Generate random data for new fields if not provided
+        var random = new Random();
+        var user = new User
         {
-            ArgumentNullException.ThrowIfNull(userManager);
-            ArgumentNullException.ThrowIfNull(roleManager);
-            ArgumentNullException.ThrowIfNull(email);
-            ArgumentNullException.ThrowIfNull(password);
-            ArgumentNullException.ThrowIfNull(roleName);
+            UserName = email,
+            Email = email,
+            EmailConfirmed = true,
+            FullName = fullName ?? string.Empty,
+            Bio = biography,
+            Phone = phone ?? GenerateRandomPhone(random),
+            Country = country ?? GenerateRandomCountry(random),
+            City = city ?? GenerateRandomCity(random),
+            Street = street ?? GenerateRandomStreet(random),
+            CreatedAt = DateTime.UtcNow
+        };
 
-            if (await userManager.FindByEmailAsync(email) == null)
-            {
-                var user = new User
-                {
-                    UserName = email,
-                    Email = email,
-                    EmailConfirmed = true,
-                    FullName = fullName ?? string.Empty,
-                    Bio = biography,
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                var result = await userManager.CreateAsync(user, password);
-                if (result.Succeeded && await roleManager.RoleExistsAsync(roleName))
-                {
-                    await userManager.AddToRoleAsync(user, roleName);
-                }
-                else if (!result.Succeeded)
-                {
-                    Console.WriteLine($"Помилка створення користувача {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
-                }
-            }
+        var result = await userManager.CreateAsync(user, password);
+        if (result.Succeeded && await roleManager.RoleExistsAsync(roleName))
+        {
+            await userManager.AddToRoleAsync(user, roleName);
         }
+        else if (!result.Succeeded)
+        {
+            Console.WriteLine(
+                $"Помилка створення користувача {email}: " +
+                $"{string.Join(", ", result.Errors.Select(e => e.Description))}");
+        }
+    }
+}
 
+// Helper methods for generating random data
+private static string GenerateRandomPhone(Random random)
+{
+    return $"+380{random.Next(10, 100)}{random.Next(100, 1000)}{random.Next(1000, 10000)}";
+}
+
+private static string GenerateRandomCountry(Random random)
+{
+    string[] countries = { "Україна", "Польща", "Німеччина", "США", "Велика Британія", "Канада", "Франція", "Італія" };
+    return countries[random.Next(countries.Length)];
+}
+
+private static string GenerateRandomCity(Random random)
+{
+    string[] cities = { 
+        "Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя", "Варшава", 
+        "Берлін", "Лондон", "Нью-Йорк", "Торонто", "Париж", "Рим", "Мадрид"
+    };
+    return cities[random.Next(cities.Length)];
+}
+
+private static string GenerateRandomStreet(Random random)
+{
+    string[] streetNames = {
+        "вул. Центральна", "вул. Героїв України", "вул. Шевченка", "вул. Франка", 
+        "вул. Лесі Українки", "вул. Бандери", "вул. Незалежності", "вул. Свободи",
+        "вул. Мазепи", "вул. Сахарова", "вул. Грушевського", "вул. Липова",
+        "вул. Дубова", "вул. Яблунева", "вул. Вишнева"
+    };
+    
+    string[] streetTypes = { "вулиця", "проспект", "бульвар", "провулок" };
+    string[] prefixes = { "вул. ", "пр. ", "бульв. ", "пров. " };
+    
+    return $"{prefixes[random.Next(prefixes.Length)]}{streetNames[random.Next(streetNames.Length)]} {random.Next(1, 200)}";
+}
         #region Створення професіоналів
         /// <summary>
         /// Створює користувача-психолога, його кваліфікацію та деталі, якщо вони ще не існують.
@@ -134,7 +191,11 @@ namespace HealthyLifestyle.Infrastructure.Data
         {
             var email = "psychologist@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Psychologist123!", RoleNames.Psychologist,
-                fullName: "Д-р Анна Фройд", biography: "Досвідчений психолог із 10-річним стажем.");
+                fullName: "Д-р Анна Фройд", biography: "Досвідчений психолог із 10-річним стажем.",
+                phone: "+380501112233",
+    country: "Австрія",
+    city: "Відень",
+    street: "вул. Фройда 5");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -195,7 +256,11 @@ namespace HealthyLifestyle.Infrastructure.Data
         {
             var email = "dietitian@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Dietitian123!", RoleNames.Dietitian,
-                fullName: "Д-р Олена Павлівна", biography: "Досвідчений дієтолог із 8-річним стажем.");
+                fullName: "Д-р Олена Павлівна", biography: "Досвідчений дієтолог із 8-річним стажем.",
+                phone: "+380502223344",
+                country: "Україна",
+                city: "Київ",
+                street: "пр. Перемоги 25");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -256,7 +321,11 @@ namespace HealthyLifestyle.Infrastructure.Data
         {
             var email = "trainer@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Trainer123!", RoleNames.Trainer,
-                fullName: "Пан Іван Сильний", biography: "Професійний фітнес-тренер із 12-річним стажем.");
+                fullName: "Пан Іван Сильний", biography: "Професійний фітнес-тренер із 12-річним стажем.",
+                phone: "+380503334455",
+                country: "Україна",
+                city: "Одеса",
+                street: "вул. Дерибасівська 10");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;

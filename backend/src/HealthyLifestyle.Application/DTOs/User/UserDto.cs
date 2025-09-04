@@ -77,5 +77,30 @@ namespace HealthyLifestyle.Application.DTOs.User
         /// </summary>
         [Required]
         public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Номер телефону користувача (може бути null).
+        /// </summary>
+        [Phone(ErrorMessage = "Невірний формат номера телефону.")]
+        [StringLength(20, ErrorMessage = "Номер телефону не може перевищувати 20 символів.")]
+        public string? Phone { get; set; }
+
+        /// <summary>
+        /// Країна проживання користувача (може бути null).
+        /// </summary>
+        [StringLength(100, ErrorMessage = "Назва країни не може перевищувати 100 символів.")]
+        public string? Country { get; set; }
+
+        /// <summary>
+        /// Місто проживання користувача (може бути null).
+        /// </summary>
+        [StringLength(100, ErrorMessage = "Назва міста не може перевищувати 100 символів.")]
+        public string? City { get; set; }
+
+        /// <summary>
+        /// Вулиця проживання користувача (може бути null).
+        /// </summary>
+        [StringLength(200, ErrorMessage = "Назва вулиці не може перевищувати 200 символів.")]
+        public string? Street { get; set; }
     }
 }

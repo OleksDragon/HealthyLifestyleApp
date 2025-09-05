@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Net.Http;
 using System;
-using HealthyLifestyle.Api.Middleware;
-using Microsoft.AspNetCore.Http.Extensions;
 
 namespace HealthyLifestyle.Api.Middleware
 {
@@ -47,30 +45,37 @@ namespace HealthyLifestyle.Api.Middleware
             try
             {
                 var userAgent = context.Request.Headers["User-Agent"].ToString().ToLower();
+                _logger.LogInformation("Received request with User-Agent: {UserAgent}", userAgent);
 
-                // Check if the request is from a known bot
+                // Список шляхів, які не потрібно рендерити
+                var excludedPaths = new[] { "/login", "/register", "/auth/google", "/auth/google/callback", "/restore" };
+                var requestPath = context.Request.Path.ToString().ToLower();
+
+                if (excludedPaths.Any(path => requestPath.StartsWith(path)))
+                {
+                    _logger.LogInformation("Skipping Rendertron for excluded path: {Path}", requestPath);
+                    await _next(context);
+                    return;
+                }
+
                 if (_botUserAgents.Any(bot => userAgent.Contains(bot)))
                 {
                     _logger.LogInformation("Request from bot detected. User-Agent: {UserAgent}", userAgent);
 
-                    // Reconstruct the URL for Rendertron using the internal frontend service name
                     var urlToRender = $"{_options.InternalFrontendUrl}{context.Request.Path}{context.Request.QueryString}";
+                    var cacheKey = $"rendertron_cache:{urlToRender.GetHashCode():X}";
 
-                    var cacheKey = $"rendertron_cache:{urlToRender}";
-
-                    // Try to get from cache
                     var cachedHtml = await _cache.GetStringAsync(cacheKey);
                     if (!string.IsNullOrEmpty(cachedHtml))
                     {
                         _logger.LogInformation("Serving from cache. URL: {Url}", urlToRender);
-                        context.Response.ContentType = "text/html";
+                        context.Response.ContentType = "text/html; charset=utf-8";
                         await context.Response.WriteAsync(cachedHtml);
                         return;
                     }
 
                     _logger.LogInformation("Not in cache, rendering with Rendertron. URL: {Url}", urlToRender);
 
-                    // If not in cache, render using Rendertron
                     if (string.IsNullOrEmpty(_options.RendertronUrl))
                     {
                         _logger.LogError("RendertronUrl is not configured. Falling back to normal rendering.");
@@ -88,14 +93,15 @@ namespace HealthyLifestyle.Api.Middleware
                         if (response.IsSuccessStatusCode)
                         {
                             var renderedHtml = await response.Content.ReadAsStringAsync();
-                            // Cache the rendered HTML
+                            
                             var cacheEntryOptions = new DistributedCacheEntryOptions
                             {
-                                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10) // Cache for 10 minutes
+                                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10),
+                                SlidingExpiration = TimeSpan.FromMinutes(5)
                             };
                             await _cache.SetStringAsync(cacheKey, renderedHtml, cacheEntryOptions);
 
-                            context.Response.ContentType = "text/html";
+                            context.Response.ContentType = "text/html; charset=utf-8";
                             await context.Response.WriteAsync(renderedHtml);
                             return;
                         }
@@ -111,7 +117,6 @@ namespace HealthyLifestyle.Api.Middleware
                 _logger.LogError(ex, "An error occurred in DynamicRenderingMiddleware. Falling back to normal rendering.");
             }
 
-            // If not a bot, or if an error occurred, continue down the pipeline
             await _next(context);
         }
     }

@@ -17,11 +17,23 @@ const logger = winston.createLogger({
 
 const PORT = process.env.PORT || 3000;
 
+const excludedPaths = [
+  "/login",
+  "/register",
+  "/auth/google",
+  "/auth/google/callback",
+  "/restore",
+];
+
 app.get("/render", async (req, res) => {
   const url = req.query.url;
   if (!url) {
     logger.error("Missing URL parameter");
     return res.status(400).send("URL parameter required");
+  }
+  if (excludedPaths.some((path) => url.includes(path))) {
+    logger.info(`Skipping rendering for excluded URL: ${url}`);
+    return res.status(200).send("");
   }
   await renderPage(url, res);
 });
@@ -31,6 +43,10 @@ app.get("/render/:url(*)", async (req, res) => {
   if (!url) {
     logger.error("Missing URL parameter");
     return res.status(400).send("URL parameter required");
+  }
+  if (excludedPaths.some((path) => url.includes(path))) {
+    logger.info(`Skipping rendering for excluded URL: ${url}`);
+    return res.status(200).send("");
   }
   await renderPage(url, res);
 });

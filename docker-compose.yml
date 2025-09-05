@@ -19,7 +19,7 @@ services:
       - JWT__Audience=${JWT_AUDIENCE}
       - Redis__ConnectionString=healthy_redis:6379
       - GoogleAuth__ClientId=${GOOGLE_CLIENT_ID}
-      - GoogleAuth__ClientSecret=${GOOGLE_CLIENT_CLIENT_SECRET}
+      - GoogleAuth__ClientSecret=${GOOGLE_CLIENT_SECRET}
       - DynamicRendering:InternalFrontendUrl=http://healthy_frontend:3000
     networks:
       - healthy_net

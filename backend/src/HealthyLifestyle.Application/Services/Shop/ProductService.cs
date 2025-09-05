@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using HealthyLifestyle.Application.Interfaces.Shop;
 using HealthyLifestyle.Core.Interfaces.Shop;
+using HealthyLifestyle.Application.Interfaces.ObjectStorage;
 
 namespace HealthyLifestyle.Application.Services.Shop
 {
@@ -24,6 +25,7 @@ namespace HealthyLifestyle.Application.Services.Shop
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDistributedCache _cache;
         private readonly IConfiguration _configuration;
+        private readonly IObjectStorageService _objectStorageService;
 
         #endregion
 
@@ -38,13 +40,14 @@ namespace HealthyLifestyle.Application.Services.Shop
         /// <param name="cache">Distributed cache for data storage.</param>
         /// <param name="configuration">Application configuration to get settings.</param>
         /// <exception cref="ArgumentNullException">Occurs if any parameter is null.</exception>
-        public ProductService(IProductRepository productRepository, IMapper mapper, IUnitOfWork unitOfWork, IDistributedCache cache, IConfiguration configuration)
+        public ProductService(IProductRepository productRepository, IMapper mapper, IUnitOfWork unitOfWork, IDistributedCache cache, IConfiguration configuration, IObjectStorageService objectStorageService)
         {
             _productRepository = productRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cache = cache;
             _configuration = configuration;
+            _objectStorageService = objectStorageService;
         }
 
         #endregion
@@ -59,7 +62,19 @@ namespace HealthyLifestyle.Application.Services.Shop
         /// <exception cref="ArgumentNullException">Occurs if <paramref name="productCreateDto"/> is null.</exception>
         public async Task<ProductDto> CreateProductAsync(ProductCreateDto productCreateDto)
         {
+            string? imageUrl = null;
+            if (productCreateDto.ImageFile != null)
+            {
+                // Завантажуємо файл у MinIO
+                imageUrl = await _objectStorageService.UploadFileAsync(
+                    productCreateDto.ImageFile.OpenReadStream(),
+                    "products",
+                    productCreateDto.ImageFile.ContentType
+                );
+            }
+
             var product = _mapper.Map<Product>(productCreateDto);
+            product.ImageUrl = imageUrl; // Встановлюємо URL, отриманий від сховища
             await _productRepository.AddAsync(product);
             await _unitOfWork.SaveChangesAsync(); // Save the changes
             await InvalidateProductsCache();
@@ -77,6 +92,12 @@ namespace HealthyLifestyle.Application.Services.Shop
             if (product == null)
             {
                 throw new ArgumentException($"Product with ID  {id}  not found.");
+            }
+
+            // Якщо у продукту є зображення, видаляємо його зі сховища
+            if (!string.IsNullOrEmpty(product.ImageUrl))
+            {
+                await _objectStorageService.DeleteFileAsync(product.ImageUrl);
             }
             _productRepository.Delete(product);
             await _unitOfWork.SaveChangesAsync(); // Save the changes
@@ -153,6 +174,32 @@ namespace HealthyLifestyle.Application.Services.Shop
             if (product == null)
             {
                 throw new ArgumentException($"Product with ID {id} not found.");
+            }
+
+            // Якщо надано новий файл зображення, завантажуємо його
+            if (productUpdateDto.ImageFile != null)
+            {
+                // Спочатку видаляємо старе зображення, якщо воно є
+                if (!string.IsNullOrEmpty(product.ImageUrl))
+                {
+                    await _objectStorageService.DeleteFileAsync(product.ImageUrl);
+                }
+
+                // Завантажуємо нове
+                product.ImageUrl = await _objectStorageService.UploadFileAsync(
+                    productUpdateDto.ImageFile.OpenReadStream(),
+                    "products",
+                    productUpdateDto.ImageFile.ContentType
+                );
+            }
+            else if (productUpdateDto.ImageUrl == "")
+            {
+                // Якщо ImageUrl порожній, це сигнал видалити існуюче зображення
+                if (!string.IsNullOrEmpty(product.ImageUrl))
+                {
+                    await _objectStorageService.DeleteFileAsync(product.ImageUrl);
+                    product.ImageUrl = null;
+                }
             }
 
             _mapper.Map(productUpdateDto, product);

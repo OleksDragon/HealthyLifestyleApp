@@ -58,6 +58,23 @@ public class MinioService : IObjectStorageService
         }
     }
 
+    /// <summary>
+    /// Удаляет файл из хранилища.
+    /// </summary>
+    /// <param name="fileUrl">URL-адрес файла для удаления.</param>
+    public async Task DeleteFileAsync(string fileUrl)
+    {
+        var uri = new Uri(fileUrl);
+        var bucketName = uri.Segments[1].TrimEnd('/');
+        var objectName = string.Join("", uri.Segments.Skip(2));
+
+        var removeObjectArgs = new RemoveObjectArgs()
+            .WithBucket(bucketName)
+            .WithObject(objectName);
+
+        await _minioClient.RemoveObjectAsync(removeObjectArgs);
+    }
+
     public async Task<Stream> GetFileAsync(string objectName)
     {
         try

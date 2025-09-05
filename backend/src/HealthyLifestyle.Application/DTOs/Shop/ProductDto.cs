@@ -1,5 +1,6 @@
 ﻿using HealthyLifestyle.Core.Enums;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace HealthyLifestyle.Application.DTOs.Shop
 {
@@ -44,8 +45,8 @@ namespace HealthyLifestyle.Application.DTOs.Shop
         [StringLength(1000, MinimumLength = 10, ErrorMessage = "Опис продукту повинен містити від 10 до 1000 символів.")]
         public string Description { get; set; } = string.Empty;
 
-        [Url(ErrorMessage = "Недійсний формат URL зображення.")]
-        public string? ImageUrl { get; set; }
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png", ".gif" }, ErrorMessage = "Дозволені лише файли зображень.")]
+        public IFormFile? ImageFile { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Кількість на складі не може бути від'ємною.")]
         public int StockQuantity { get; set; }
@@ -74,7 +75,9 @@ namespace HealthyLifestyle.Application.DTOs.Shop
         [StringLength(1000, MinimumLength = 10, ErrorMessage = "Опис продукту повинен містити від 10 до 1000 символів.")]
         public string? Description { get; set; }
 
-        [Url(ErrorMessage = "Недійсний формат URL зображення.")]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png", ".gif" }, ErrorMessage = "Дозволені лише файли зображень.")]
+        public IFormFile? ImageFile { get; set; }
+
         public string? ImageUrl { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Кількість на складі не може бути від'ємною.")]
@@ -82,6 +85,37 @@ namespace HealthyLifestyle.Application.DTOs.Shop
 
         [Range(0.0, 1.0, ErrorMessage = "Комісія платформи повинна бути в діапазоні від 0 до 1.")]
         public decimal? PlatformCommissionPercentage { get; set; }
+    }
+
+    /// <summary>
+    /// Кастомний атрибут валідації для перевірки розширення файлу.
+    /// </summary>
+    public class AllowedExtensionsAttribute : ValidationAttribute
+    {
+        private readonly string[] _extensions;
+        public AllowedExtensionsAttribute(string[] extensions)
+        {
+            _extensions = extensions;
+        }
+
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        {
+            var file = value as IFormFile;
+            if (file != null)
+            {
+                var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+                if (!string.IsNullOrEmpty(extension) && !_extensions.Contains(extension))
+                {
+                    return new ValidationResult(GetErrorMessage());
+                }
+            }
+            return ValidationResult.Success;
+        }
+
+        public string GetErrorMessage()
+        {
+            return $"Дозволені лише файли з розширенням: {string.Join(", ", _extensions)}.";
+        }
     }
 }
 

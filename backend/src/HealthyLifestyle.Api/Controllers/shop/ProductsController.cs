@@ -88,7 +88,7 @@ namespace HealthyLifestyle.Api.Controllers.Shop
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateProduct([FromBody] ProductCreateDto productCreateDto)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductCreateDto productCreateDto)
         {
             if (!ModelState.IsValid)
             {
@@ -124,7 +124,7 @@ namespace HealthyLifestyle.Api.Controllers.Shop
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] ProductUpdateDto productUpdateDto)
+        public async Task<IActionResult> UpdateProduct(Guid id, [FromForm] ProductUpdateDto productUpdateDto)
         {
             if (!ModelState.IsValid)
             {

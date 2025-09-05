@@ -46,7 +46,9 @@ function LoginPage() {
                 { email, password }
             );
             if (response.data.Token) {
+                console.log("Login successful, token:", response.data);
                 localStorage.setItem("helth-token", response.data.Token); // Зберігання токену
+                localStorage.setItem("user-name", response.data.FullName); // Зберігання імені користувача
                 // Також можна отримати та зберігти інші дані, що прийшли з сервера
                 setError('');
                 navigate("/dashboard");
@@ -68,6 +70,7 @@ function LoginPage() {
                 );
                 if (response.data.Token) {
                     localStorage.setItem("helth-token", response.data.Token);
+                    localStorage.setItem("user-name", response.data.FullName);
                     navigate("/dashboard");
                 }
             } catch (err) {
@@ -86,6 +89,7 @@ function LoginPage() {
         );
         if (response.data.Token) {
             localStorage.setItem("helth-token", response.data.Token);
+            localStorage.setItem("user-name", response.data.FullName);
             navigate("/dashboard");
         }
     }

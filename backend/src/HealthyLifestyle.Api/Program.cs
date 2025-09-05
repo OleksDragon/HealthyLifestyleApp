@@ -64,6 +64,8 @@ using HealthyLifestyle.Infrastructure.Repositories.Calendar;
 using Microsoft.Extensions.Options;
 using HealthyLifestyle.Api.Middleware;
 using StackExchange.Redis;
+using HealthyLifestyle.Application.Interfaces.ObjectStorage;
+using HealthyLifestyle.Application.Services.ObjectStorage;
 
 
 // Створюємо білдер для веб-програми
@@ -178,6 +180,8 @@ builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddScoped<IFitnessActivityService, FitnessActivityService>();
 builder.Services.AddScoped<ICalendarService, CalendarService>();
+Console.WriteLine("Используется MinIO.");
+builder.Services.AddSingleton<IObjectStorageService, MinioService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -200,6 +204,7 @@ builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IFitnessActivityRepository, FitnessActivityRepository>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 builder.Services.AddScoped<ICalendarRepository, CalendarRepository>();
+builder.Services.Configure<MinioSettings>(builder.Configuration.GetSection("MinIO"));
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

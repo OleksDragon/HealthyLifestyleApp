@@ -23,7 +23,7 @@
     height: 80vh;
 }
 
-.steps-widget {
+.imt-widget {
     grid-column: 1/6;
     grid-row: 1/5;
 }
@@ -46,16 +46,25 @@
 .remind-widget {
     grid-column: 1/11;
     grid-row: 9/12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0066C3;
+    backdrop-filter: blur(1px) !important;
 }
 
 .video-widget {
     grid-column: 11/21;
-    grid-row: 1/6;
+    grid-row: 1/7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0066C3;
 }
 
 .tips-widget {
     grid-column: 11/21;
-    grid-row: 6/12;
+    grid-row: 7/12;
     font-family: "Roboto", sans-serif;
     background: rgba(255, 255, 255, 0.4) !important;
     flex-direction: column;
@@ -71,15 +80,14 @@
     border-radius: 30px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .tip-author {
     color: #0066C3;
     align-self: flex-start;
     margin-bottom: 5px;
+    margin-top: 20px;
 }
 
 .tip-author-prof {
@@ -87,8 +95,9 @@
 }
 
 .tips-widget h3 {
-    margin-top: -30px;
+    text-align: start;
     margin-left: 50px;
+    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 22px;
     padding: 0px;
@@ -107,11 +116,12 @@
     white-space: pre-wrap; 
     scrollbar-width: none;
     -ms-overflow-style: none;
-    max-height: 150px;
+    max-height: 120px;
     margin: 0px 36px;
     font-weight: 300;
     font-size: 15px;
     font-family: "Roboto", sans-serif;
+    text-align: justify;
 }
 
 .lecture::-webkit-scrollbar {

@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;370&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
+.widget-header {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 26px;
+    gap: 8px;
+}
+
+.widget-header h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+}
+
+.points {
+    display: flex;
+    gap: 2px;
+}
+
+.points img {
+    width: 6px;
+    height: 6px;
+}
+
+.widget-title {
+    display: flex;
+}
+
+.widget-title img {
+    margin-right: 10px;
+}
+
+.week-chart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    height: 80px;
+    padding-bottom: 10px;
+}
+
+.linear-diagram {
+    font-family: "Inter", sans-serif;
+    border: none;
+    margin-top: -6px;
+}
+
+.ellipse {
+    width: 18px;
+    min-height: 8px;
+    max-height: 60px;
+    background-color: white;
+    border-radius: 10px;
+    transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.ellipse.goal {
+    background-color: #D6FF00;
+}
+
+.widget-info {
+    font-family: "MuseoModerno", sans-serif;
+    font-size: 16px;
+    margin: 10px 30px 0px 30px;
+}
+
+.widget-info h3 {
+    text-align: start;
+}
+
+.widget-info h3 span {
+    color: black;
+}
+
+.widget-info h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 370;
+    text-align: start;
+    color: black;
+    font-size: 14px;
+}
+
+.widget-info div {
+    height: 4px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.requires {
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}

@@ -116,6 +116,16 @@ i18n
           search_placeholder: "Search",
           welcome: "Hi",
           health_one_place: "Your health in one place!",
+
+          // Переклади для віджетів дашборду
+          kkal: "Calories",
+          current_week: "Current week",
+          water: "Water",
+          L: "L",
+          sleep: "Sleep",
+          H: "H",
+          bmi: "BMI",
+          bmi_requires: "Fill in the information about height and weight",
         },
       },
       uk: {
@@ -227,6 +237,16 @@ i18n
           search_placeholder: "Пошук",
           welcome: "Привіт",
           health_one_place: "Твоє здоров'я в одному місці!",
+
+          // Переклади для віджетів дашборду
+          kkal: "Калорії",
+          current_week: "Поточний тиждень",
+          water: "Вода",
+          L: "Л",
+          sleep: "Сон",
+          H: "Г",
+          bmi: "ІМТ",
+          bmi_requires: "Заповніть інформацію щодо зросту та ваги",
         },
       },
       de: {
@@ -338,6 +358,16 @@ i18n
           search_placeholder: "Suche",
           welcome: "Hi",
           health_one_place: "Deine Gesundheit an einem Ort!",
+
+          // Переклади для віджетів дашборду
+          kkal: "Kalorien",
+          current_week: "Aktuelle Woche",
+          water: "Wasser",
+          L: "L",
+          sleep: "Schlaf",
+          H: "S",
+          bmi: "BMI",
+          bmi_requires: "Füllen Sie die Angaben zu Größe und Gewicht aus",
         },
       },
       fr: {
@@ -449,6 +479,16 @@ i18n
           search_placeholder: "Recherche",
           welcome: "Salut",
           health_one_place: "Votre santé en un seul endroit!",
+
+          // Переклади для віджетів дашборду
+          kkal: "Calories",
+          current_week: "Semaine en cours",
+          water: "Eau",
+          L: "L",
+          sleep: "Sommeil",
+          H: "H",
+          bmi: "IMC",
+          bmi_requires: "Remplissez les informations concernant la taille et le poids",
         },
       },
       es: {
@@ -560,6 +600,16 @@ i18n
           search_placeholder: "Búsqueda",
           welcome: "Hola",
           health_one_place: "Tu salud en un solo lugar!",
+
+          // Переклади для віджетів дашборду
+          kkal: "Calorías",
+          current_week: "Semana en curso",
+          water: "Agua",
+          L: "L",
+          sleep: "Sueño",
+          H: "H",
+          bmi: "IMC",
+          bmi_requires: "Complete la información sobre la altura y el peso",
         },
       },
     },

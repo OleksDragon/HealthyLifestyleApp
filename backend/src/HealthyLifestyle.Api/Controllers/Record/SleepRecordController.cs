@@ -35,7 +35,7 @@ namespace HealthyLifestyle.Api.Controllers.Record
         /// Отримує запис сну за UserId.
         /// </summary>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(SleepRecordDto), 200)]
+        [ProducesResponseType(typeof(IEnumerable<SleepRecordDto>), 200)]
         [ProducesResponseType(404)]
         [Authorize]
         public async Task<IActionResult> GetSleepRecordById(Guid id)
@@ -43,6 +43,30 @@ namespace HealthyLifestyle.Api.Controllers.Record
             try
             {
                 var record = await _sleepRecordService.GetSleepRecordByIdAsync(id);
+                return Ok(record);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Внутрішня помилка сервера: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Отримує запис сну за UserId та датою.
+        /// </summary>
+        [HttpGet("userid/{id}/date/{date}")]
+        [ProducesResponseType(typeof(IEnumerable<SleepRecordDto>), 200)]
+        [ProducesResponseType(404)]
+        [Authorize]
+        public async Task<IActionResult> GetSleepRecordByIdAnd(Guid id, DateTime date)
+        {
+            try
+            {
+                var record = await _sleepRecordService.GetSleepRecordByIdAndDateAsync(id, date);
                 return Ok(record);
             }
             catch (KeyNotFoundException ex)

@@ -51,6 +51,13 @@ namespace HealthyLifestyle.Application.Services.Record
             return _mapper.Map<IEnumerable<SleepRecordDto>>(sleepRecord);
         }
 
+        public async Task<List<SleepRecordDto>> GetSleepRecordByIdAndDateAsync(Guid id, DateTime date)
+        {
+            var sleepRecord = await _sleepRecordRepository.GetSleepRecordByUserIdAndDateAsync(id, date);
+
+            return _mapper.Map<List<SleepRecordDto>>(sleepRecord);
+        }
+
         public async Task<List<SleepRecordDto>> GetSleepRecordByIdAsync(Guid id)
         {
             var sleepRecord = await _sleepRecordRepository.GetSleepRecordByUserIdAsync(id);

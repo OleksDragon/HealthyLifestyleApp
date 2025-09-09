@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./LanguageSelector.module.css";
+import languageIcon from "./icons/Language.png";
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
@@ -19,9 +20,11 @@ const LanguageSelector = () => {
 
   return (
     <div className={styles.languageSelector}>
-      <button className={styles.iconButton} onClick={toggleDropdown}>
+      {/* <button className={styles.iconButton} onClick={toggleDropdown}>
         {i18n.language.toUpperCase()}
-      </button>
+      </button> */}
+      <img src={languageIcon} alt="Language" style={{cursor: "pointer", width: "24px"}} onClick={toggleDropdown}/>
+
       {isOpen && (
         <ul className={styles.dropdownMenu}>
           <li

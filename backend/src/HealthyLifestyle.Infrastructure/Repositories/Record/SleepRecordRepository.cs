@@ -15,6 +15,13 @@ namespace HealthyLifestyle.Infrastructure.Repositories.Record
         {
         }
 
+        public async Task<List<SleepRecord>> GetSleepRecordByUserIdAndDateAsync(Guid userId, DateTime date)
+        {
+            return await _dbSet
+                .Where(mh => mh.UserId == userId && mh.SleepDate.Date == date.Date)
+                .ToListAsync();
+        }
+
         public async Task<List<SleepRecord>> GetSleepRecordByUserIdAsync(Guid userId)
         {
             return await _dbSet

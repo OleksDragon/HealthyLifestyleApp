@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from 'react-i18next';
+
 import "../styles/specialists.css"; // стилі винесемо в css
 
+
 function Specialists() {
+   const { t } = useTranslation();
   const [specialists, setSpecialists] = useState([]);
 
   useEffect(() => {
@@ -14,6 +18,7 @@ function Specialists() {
   return (
     <div className="page">
       {/* <h1>Фахівці ({specialists.length})</h1> */}
+      
       <div className="grid-12">
         {specialists.map((spec) => (
           <div key={spec.Id} className="glass-card-for-sepc">

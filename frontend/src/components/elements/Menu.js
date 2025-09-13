@@ -15,6 +15,7 @@ import "../styles/menu.css";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import LanguageSelector from "../LanguageSelector";
+import Breadcrumbs from "../elements/Specialists/Breadcrumbs/Breadcrumbs";
 
 function Menu({ children }) {
     const { t } = useTranslation();
@@ -74,6 +75,7 @@ function Menu({ children }) {
                     <div className="search_wrapper">
                         <img className="search-icon" src={searchIcon} alt="search"/>
                         <input className="search_place" type="text" placeholder={t("search_placeholder")} />
+                        
                     </div>
                     <div className="options">
                         <img src={settingsIcon} alt="settings" />
@@ -81,6 +83,7 @@ function Menu({ children }) {
                         <img src={stringsIcon} alt="strings" />
                     </div>
                 </div>
+                <Breadcrumbs/>
                 {children}
             </div>
         </div>

@@ -51,6 +51,10 @@ function Menu({ children }) {
                         <img style={{ opacity: window.location.pathname == "/social" ? 1 : 0 }} src={socialIcon} alt="social"/>
                         <span className="menu-opt-text">{t("social")}</span>
                     </div>
+                    <div className="menu-option" onClick={() => navegate('/specialists')}>
+                        <img style={{ opacity: window.location.pathname == "/specialists" ? 1 : 0 }} src={socialIcon} alt="specialists"/>
+                        <span className="menu-opt-text">{t("specialists")}</span>
+                    </div>
                     <div className="menu-option" onClick={() => navegate('/marketplace')}>
                         <img style={{ opacity: window.location.pathname == "/marketplace" ? 1 : 0 }} src={marketplaceIcon} alt="marketplace"/>
                         <span className="menu-opt-text">{t("marketplace_menu")}</span>

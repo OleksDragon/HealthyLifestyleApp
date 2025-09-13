@@ -1,0 +1,39 @@
+ .page {
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: left;
+}
+
+.grid-12 {
+  display: grid;
+  gap: 24px;
+  max-width: 1530px; /* контейнер шириною 1530px */
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(348px, 1fr));
+  justify-content: center; /* центрування карток, якщо менше 3 */
+}
+
+/* картка */
+.glass-card-for-sepc {
+  border: 1px solid #fff;
+  border-radius: 40px;
+  width: 300px; /* фіксована ширина картки */
+  height: 358px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.glass-card-for-sepc:hover {
+  transform: scale(1.05);
+  background: rgba(214, 255, 0, 0.5);
+}
+
+ 

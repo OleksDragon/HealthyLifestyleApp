@@ -12,6 +12,7 @@ import DashboardPage from "./components/pages/DashboardPage";
 import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Menu from "./components/elements/Menu";
+import SpecialistsPage from "./components/pages/SpecialistsPage";
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -39,6 +40,7 @@ function AppRoutes() {
       <Route path="/restore" element={<RestorePasswordPage />} />
       {/* Переброс на страницу авторизации, если не авторизирован (нет токена) */}
       <Route path="/dashboard" element={<PrivateRoute><Menu><DashboardPage/></Menu></PrivateRoute>} />
+      <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
     </Routes>
   );
 }

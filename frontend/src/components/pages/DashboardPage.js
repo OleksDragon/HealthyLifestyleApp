@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import '../styles/dashboard.css';
-import StepsWidget from './../elements/Dashboard/StepsWidget';
+import BMIWidget from '../elements/Dashboard/BMIWidget';
 import KkalWidget from './../elements/Dashboard/KkalWidget';
 import SleepWidget from './../elements/Dashboard/SleepWidget';
 import WaterWidget from '../elements/Dashboard/WaterWidget';
@@ -25,7 +25,7 @@ function DashboardPage() {
                 <h6 style={{marginTop: "10px"}}>{t("health_one_place")}</h6>
             </div>
             <div className='widgets'>
-                <StepsWidget className="steps-widget"/>
+                <BMIWidget className="imt-widget"/>
                 <KkalWidget className="kkal-widget"/>
                 <SleepWidget className="sleep-widget"/>
                 <WaterWidget className="water-widget"/>

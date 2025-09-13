@@ -10,11 +10,11 @@ import premiumIcon from "../icons/Premium.png";
 import exitIcon from "../icons/Exit.png";
 import searchIcon from "../icons/GlassScale.png";
 import settingsIcon from "../icons/Settings.png";
-import languageIcon from "../icons/Language.png";
 import stringsIcon from "../icons/Strings.png";
 import "../styles/menu.css";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import LanguageSelector from "../LanguageSelector";
 
 function Menu({ children }) {
     const { t } = useTranslation();
@@ -64,7 +64,7 @@ function Menu({ children }) {
                         <span className="menu-opt-text">{t("premium")}</span>
                     </div>
                 </div>
-                <div className="menu-option exit" onClick={() => localStorage.removeItem("helth-token") || localStorage.removeItem("user-name") || navegate('/')}>
+                <div className="menu-option exit" onClick={() => localStorage.removeItem("helth-token") || localStorage.removeItem("user-name") || localStorage.removeItem("user-id") || navegate('/')}>
                     <img src={exitIcon} alt="exit"/>
                     <span className="menu-opt-text">{t("exit")}</span>
                 </div>
@@ -77,7 +77,7 @@ function Menu({ children }) {
                     </div>
                     <div className="options">
                         <img src={settingsIcon} alt="settings" />
-                        <img src={languageIcon} alt="language" />
+                        <LanguageSelector />
                         <img src={stringsIcon} alt="strings" />
                     </div>
                 </div>

@@ -66,6 +66,8 @@ using HealthyLifestyle.Api.Middleware;
 using StackExchange.Redis;
 using HealthyLifestyle.Application.Interfaces.ObjectStorage;
 using HealthyLifestyle.Application.Services.ObjectStorage;
+using HealthyLifestyle.Application.Interfaces.Location;
+using HealthyLifestyle.Application.Services.Location;
 
 
 // Створюємо білдер для веб-програми
@@ -180,6 +182,7 @@ builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddScoped<IFitnessActivityService, FitnessActivityService>();
 builder.Services.AddScoped<ICalendarService, CalendarService>();
+builder.Services.AddScoped<ILocationService, LocationService>();
 Console.WriteLine("Используется MinIO.");
 builder.Services.AddSingleton<IObjectStorageService, MinioService>();
 

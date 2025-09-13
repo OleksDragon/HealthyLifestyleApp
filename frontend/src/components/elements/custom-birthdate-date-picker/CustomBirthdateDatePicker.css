@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300,500,600,700,900&display=swap');
+
+/* Основний контейнер селектора */
+.year-month-select.custom-select {
+  position: relative;
+  top: -6px;
+  left: -8px;
+  min-width: 100px;
+  margin: 0;
+  margin-top: -2px;
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Стиль розгорнутого селектора */
+.year-month-select.custom-select.expanded {
+  background: transparent;
+}
+
+.year-month-select.custom-select.has-value {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Заголовок селектора */
+.year-month-select .select-header {
+  display: flex;
+  align-items: center;
+  padding: 35px 0 20px 35px;
+  height: 32px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Стилі для розгорнутого стану - замість :active/:focus */
+.year-month-select.custom-select.expanded .select-header {
+  border-radius: 40px 40px 0 0;
+  
+  box-shadow: 
+  0px -4px 8px rgba(23, 23, 23, 0.04),
+  4px 0px 8px rgba(23, 23, 23, 0.02),
+  -4px 0px 8px rgba(23, 23, 23, 0.02),
+  0px 4px 8px rgba(214, 255, 0, 1);
+}
+
+/* Текст всередині селектора */
+.year-month-select .select-input {
+  flex: 1;
+  background: transparent !important;
+  border: none;
+  outline: none;
+  color: #116FCF;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Стрілка селектора */
+.year-month-select .date-select-arrow {
+  margin-left: 7px;
+  flex-shrink: 0;
+  transform: rotate(180deg);
+  height: 18px;
+}
+
+/* рухаємо стрілку окремо для місяців та років */
+/* .year-month-selectors .year-selector .date-select-arrow {
+  margin-left: 28px;
+}
+
+.year-month-selectors .month-selector .date-select-arrow {
+  margin-left: 54px;
+} */
+
+.date-arrow-v-blue {
+  width: 17px;
+  height: 17px;
+}
+
+/* Контейнер з опціями */
+.year-month-select .select-options-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  
+  border-radius: 0 0 40px 40px;
+  max-height: 210px;
+
+  background: rgba(214, 255, 0, 0.01);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(15px);
+
+  box-shadow: 
+      0px -4px 8px rgba(214, 255, 0, 1),
+      4px 0px 12px rgba(23, 23, 23, 0.05),
+      -4px 0px 12px rgba(23, 23, 23, 0.05),
+      0px 4px 8px rgba(23, 23, 23, 0.04);
+
+  isolation: isolate;
+}
+
+.supp-date-container {
+overflow-y: auto;
+  overflow-x: hidden;
+  width: 90%; /* Двигаємо полосу прокрутки */
+  max-height: 210px;
+}
+
+.year-month-select .select-options {
+  padding: 10px 10px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  right: -32px; /* двигаємо текст опцій селектора */
+}
+
+/* Окремі опції в списку */
+.year-month-select .select-option {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 6px 12px;
+  color: #116FCF;
+  font-size: 14px;
+
+  background: transparent;
+  /* border-radius: 40px; */
+}
+
+.year-month-select .select-option.selected {
+  /* background: rgba(93, 113, 226, 0.2); */
+  font-weight: bold;
+}
+
+/* Специфічні стилі для селекторів року та місяця */
+.year-selector {
+  transform: translateX(-7px); /* зміщення селектора вліво/вправо */
+  width: 152px;
+  flex-shrink: 0; /* Забороняємо стискання */
+  margin-left: auto; /* Прижимаємо до правої сторони */
+}
+
+.month-selector {
+  font-weight: 700;
+  font-size: 16px;
+  width: 195px;
+  flex-shrink: 0; /* Забороняємо стискання */
+  margin-right: auto; /* Прижимаємо до лівої сторони */
+}
+
+/* Стилі для input селектора місяця */
+.month-selector .select-input {
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+}
+
+/* Стилі для input селектора року */
+.year-selector .select-input {
+  font-size: 17px;
+  font-weight: 900;
+  width: 100%;
+  text-align: center;
+}
+
+.year-month-select .supp-date-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.year-month-select .supp-date-container::-webkit-scrollbar-track {
+  background: #FFF;
+  border-radius: 10px;
+  
+  margin: 20px 0 40px 0;
+}
+
+.year-month-select .supp-date-container::-webkit-scrollbar-thumb {
+  background: #0661CC;
+  border-radius: 10px;
+}
+
+.year-month-select .supp-date-container::-webkit-scrollbar-thumb:hover {
+  background: #0661c8;
+}
+
+/* Анімація */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Основні стилі для react-datepicker */
+.react-datepicker {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  border: 2px solid #D6FF00;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  width: 345px;
+  height: 250px;
+  overflow: visible;
+  padding: 0;
+  margin-top: -60px;
+}
+
+.react-datepicker__month-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  overflow: hidden;
+
+  background-color: #D6FF00;
+  
+}
+
+.react-datepicker__header {
+  background-color: #D6FF00;
+  border-bottom: 2px solid #D6FF00;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.custom-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.year-month-selectors {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-between; /* Розподіляємо простір між елементами */
+  align-items: center;
+}
+
+.month-navigation {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #116FCF;
+  font-size: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0px 30px;
+  border-radius: 50%;
+}
+
+.nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Inline Select стилі */
+.inline-select {
+  position: relative;
+  flex: 1;
+  max-width: 130px;
+}
+
+.select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 20px;
+  font-size: 17px;
+  background-color: #fff;
+  color: #116FCF;
+  font-weight: 550;
+  cursor: pointer;
+}
+
+.select-trigger .chevron {
+  margin-left: 6px;
+  font-size: 14px;
+}
+
+.select-b-date-option {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  max-height: 180px;
+  overflow-y: auto;
+  background: #D6FF00;
+  border-radius: 40px;
+  z-index: 10000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.select-b-date-option .option {
+  padding: 8px 10px;
+  cursor: pointer;
+  color: #116FCF;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+/* Стилі для днів календаря */
+.react-datepicker__day-names {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 0;
+  margin-left: 15px;
+  padding: 4px 6px 4px 8px; 
+  flex-shrink: 0;
+}
+
+.react-datepicker__day-name {
+  color: #116FCF;
+  font-weight: 600;
+  margin: 1px;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  
+}
+
+.react-datepicker__month {
+  margin: 0;
+  margin-left: 18px;
+  padding: 0 6px 8px 8px; /* Лівий відступ, збільшено нижній */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #D6FF00;
+}
+
+.react-datepicker__week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 30px; /* Збільшення висоти рядків для розтягнення днів вниз */
+  flex-shrink: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.react-datepicker__day {
+  color: #0661CC;
+  margin: 1px;
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px;
+}
+
+.react-datepicker__day--selected {
+  background-color: #0661CC;
+  color: #FFF;
+  font-weight: 900;
+  font-size: 13px;
+  border: none;
+}
+
+.react-datepicker__day--outside-month {
+  color: #999;
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.react-datepicker__day--disabled {
+  color: #D6FF00;
+  cursor: not-allowed;
+  font-size: 14px;
+}
+
+.react-datepicker__day--disabled:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.react-datepicker__triangle {
+  display: none !important; /* Приховати трикутник календаря */
+}
+
+/* Видалити ці блоки: */
+.custom-datepicker-container .react-datepicker__day:hover {
+  background-color: rgba(6, 97, 204, 0.1) ;
+  border-radius: 50%;
+  color: #404040;
+}
+
+.custom-datepicker-container .react-datepicker__day--selected:hover {
+  background-color: #0661CC;
+  border-radius: 50%;
+}
+
+/* Стиль для поточної дати */
+.custom-datepicker-container .react-datepicker__day--today {
+  border: 2px solid #0661CC;
+  background-color: transparent;
+  color: #454545;
+  font-weight: 700;
+  font-size: 13px;
+  border: none !important;
+}
+
+/* Ховер для поточної дати */
+.custom-datepicker-container .react-datepicker__day--today:hover {
+  /* background: rgba(6, 97, 204, 1); */
+  color: #FFF;
+}

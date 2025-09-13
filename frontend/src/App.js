@@ -9,6 +9,7 @@ import RegisterPage from "./components/pages/RegisterPage";
 import LoginPage from "./components/pages/LoginPage";
 import HomePage from "./components/pages/HomePage";
 import DashboardPage from "./components/pages/DashboardPage";
+import ProfilePage from "./components/pages/ProfilePage";
 import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Menu from "./components/elements/Menu";
@@ -38,9 +39,12 @@ function AppRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/restore" element={<RestorePasswordPage />} />
-      {/* Переброс на страницу авторизации, если не авторизирован (нет токена) */}
       <Route path="/dashboard" element={<PrivateRoute><Menu><DashboardPage/></Menu></PrivateRoute>} />
+
       <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
+
+      <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
+
     </Routes>
   );
 }

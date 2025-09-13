@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 18px;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+}
+
+.custom-select.expanded {
+  border-radius: 27px 27px 0 0;
+  z-index: 1001;
+  transition: all 0.1s ease;
+}
+
+.custom-select.has-value {
+  background: rgba(255, 255, 255, 0.50) !important;
+}
+
+.select-header {
+  display: flex;
+  align-items: center;
+  padding: 0 34px 30px 0;
+  height: 75px;
+  cursor: pointer;
+  position: relative;
+  background: transparent !important;
+}
+
+.select-input {
+  flex: 1;
+  background: transparent !important;
+  border: none;
+  outline: none;
+  color: #FFF;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  padding: 0;
+  padding-left: -2px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.select-input::placeholder {
+  color: #116FCF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.select-arrow {
+  color: #116FCF;
+  font-size: 17px;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.custom-select.expanded .select-arrow {
+  transform: rotate(180deg);
+}
+
+.select-options-container {
+  position: absolute;
+  top: 100%;
+  left: -1.5px;
+  right: -1.4px;
+  border-radius: 0 0 25px 25px;
+  overflow: hidden;
+  transform-origin: top center;
+  transition: all 0.9s ease;
+}
+
+.select-options {
+  font-weight: 500; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px 0;
+  position: relative;
+  top: -5px;
+  right: 34px;
+}
+
+.select-option {
+  padding: 4px 0 8px 74px;
+  margin-left: -10px;
+  color: #116FCF;
+  cursor: pointer;
+  font-size: 17px;
+  transition: all 0.2s ease;
+  border-bottom: none;
+  background: transparent;
+}
+
+/* .select-option:hover {
+  background: rgba(93, 113, 226, 0.1);
+} */
+
+/* Стилі для прокрутки */
+.select-options::-webkit-scrollbar {
+  width: 12px;
+}
+
+.select-options::-webkit-scrollbar-track {
+  background: #0661CC;
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+.select-options::-webkit-scrollbar-thumb {
+  background: #FFF;
+  border-radius: 10px;
+}
+
+.select-options::-webkit-scrollbar-thumb:hover {
+  background: #f8f6f6;
+}
+
+/* Анімація */
+.select-options-container {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Базові стилі бордера */
+.custom-select {
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.custom-select.expanded {
+  border-bottom: none;
+}
+
+.select-options-container {
+  border-top: none;
+  margin-top: -2px;
+}
+
+/* ВИЩИЙ ПРІОРІТЕТ - для розгорнутого селекта з значенням */
+.custom-select.expanded.has-value {
+  background: #D6FF00 !important;
+}

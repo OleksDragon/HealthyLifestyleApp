@@ -14,6 +14,12 @@ namespace HealthyLifestyle.Application.Interfaces.Record
         /// <param name="id">Ідентифікатор користувача.</param>
         Task<List<SleepRecordDto>> GetSleepRecordByIdAsync(Guid id);
         /// <summary>
+        /// Отримати запис сну
+        /// </summary>
+        /// <param name="id">Ідентифікатор користувача.</param>
+        /// <param name="date">Дата сну.</param>
+        Task<List<SleepRecordDto>> GetSleepRecordByIdAndDateAsync(Guid id, DateTime date);
+        /// <summary>
         /// Створити новий запис сну.
         /// </summary>
         /// <param name="createDto">Дані для створення запис сну.</param>

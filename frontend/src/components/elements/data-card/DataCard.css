@@ -1,0 +1,294 @@
+/* ==== Загальні стилі для карток ==== */
+.card {
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 40px;
+  height: 250px; 
+  border: 0px solid transparent;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(10px);
+  outline: none;
+  margin-top: -20px;
+  color: #FFF;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Картка закрита (список) */
+.card-closed {
+  background: rgba(255, 255, 255, 0.50);
+}
+.card-closed h3 {
+  display: block;
+}
+
+/* Картка відкрита (деталі) */
+.card-open {
+  background: rgba(255, 255, 255, 0.40);
+}
+.card-open h3 {
+  display: none;
+}
+
+.data-card h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* ==== Списки ==== */
+.list {
+  height: 158px;
+  overflow-y: auto;
+  margin-right: 5px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 25px 10px 12px;
+  border-radius: 12px;
+  cursor:auto;
+  position: relative;
+}
+
+.list-item .date {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  min-width: 45px;
+  flex-shrink: 0;
+}
+
+.list-item .text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  flex: 1;
+  padding: 0 10px;
+  margin-right: 35px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.list-item .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  position:absolute;
+  right: 40px;
+}
+
+/* ==== Крапки ==== */
+.dots {
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 17px;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 3px 9px;
+  height: 23px;
+  width: 23px;
+
+  position:absolute;
+  right: -1px;
+}
+
+.dots:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+/* ==== Детальний перегляд ==== */
+.details-view {
+  height: 195px;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 17px;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 5px;
+  height: 15px;
+  width: 20px;
+
+  position: absolute;
+  left: 15px;
+  top: 7px;
+}
+
+.back-button:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.details-content {
+  flex: 1;
+  margin-right: 5px;
+  margin-top: 20x;
+  cursor: auto;
+  overflow-y: auto;
+}
+
+.list::-webkit-scrollbar, .details-content::-webkit-scrollbar {
+  width: 12px;
+}
+.list::-webkit-scrollbar-track, .details-content::-webkit-scrollbar-track {
+  background: #0661CC;
+  border-radius: 10px;
+  margin: 5px 0;
+}
+.list::-webkit-scrollbar-thumb, .details-content::-webkit-scrollbar-thumb {
+  background: #FFF;
+  border-radius: 10px;
+}
+.list::-webkit-scrollbar-thumb:hover, .details-content::-webkit-scrollbar-thumb:hover {
+  background: #f8f6f6;
+}
+
+.detail-date {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  flex: 1;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.detail-message-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #FFF;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.detail-message {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0661CC;
+  white-space: pre-line;
+  line-height: 1.4;
+}
+
+.detail-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.detail-motivation {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0661CC;
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.purchase-date {
+ font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  flex: 1;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.purchase-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #FFF;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.purchase-product {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.purchase-price {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #0661CC;
+  text-align: center;
+}
+
+.purchase-status {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0661CC;
+  text-align: center;
+  padding: 5px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.purchase-tracking {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.purchase-delivery {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}

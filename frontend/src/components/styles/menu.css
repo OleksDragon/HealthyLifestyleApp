@@ -30,7 +30,7 @@
 }
 
 .logo img {
-    width: 155px;
+    width: 140px;
 }
 
 .menu-option {
@@ -79,7 +79,7 @@
 
 .search_place, .search_place:focus {
     outline: none;
-    margin: 20px;
+    margin: 40px;
     width: 94%;
     height: 46px;
     border-radius: 23px;

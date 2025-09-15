@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   font-family: 'Roboto', sans-serif;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   border-radius: 40px;
   transition: all 0.3s ease;
 }
@@ -60,6 +60,10 @@
   flex-shrink: 0;
   position: relative;
   top: -2px;
+}
+
+.arrow-v-blue {
+  transform: rotate(180deg);
 }
 
 .custom-select.expanded .select-arrow {

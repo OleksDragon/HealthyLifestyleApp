@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import axios from "axios";
 import "../styles/profile.css";
 import ProfileIcon from "../../assets/profile-icons/ProfileIcon.svg";
-import CustomSelect from "../elements/custom-profile-data-select/CustomSelect";
-import CustomDatePicker from "../elements/custom-birthdate-date-picker/CustomBirthdateDatePicker";
-import DataCard from "../elements/data-card/DataCard";
+import CustomSelect from "../elements/Profile/custom-profile-data-select/CustomSelect";
+import CustomDatePicker from "../elements/Profile/custom-birthdate-date-picker/CustomBirthdateDatePicker";
+import DataCard from "../elements/Profile/data-card/DataCard";
 import TruncatedInput from '../elements/truncated-input/TruncatedInput';
 
 // Імпорт сервісних функцій

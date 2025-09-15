@@ -1,0 +1,82 @@
+.mental-health-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mental-health-content {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.mental-health-info {
+    display: flex;
+    background: var(--lim);
+    min-width: 1008px;
+    height: 110px;
+    padding: 20px 30px;
+    border-radius: 30px;
+}
+
+.mental-health-info .title {
+    font-family: var(--font-family);
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--title);
+    min-width: 300px;
+    margin-right: 20px;
+    padding: 18px;
+}
+
+.mental-health-info .sub-title {
+    font-size: 14px;
+    text-align: left;
+    color: var(--bl);
+    max-width: 480px;
+    margin-right: 20px;
+    padding: 18px;
+}
+
+.mental-health-info .info-image {
+    background: var(--img);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 9px;
+    color: var(--bl);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mental-health-card-link {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 35px;
+    margin: 35px 0;
+}
+
+/* Кнопка спеціаліста */
+.contact-to-specialist-btn {
+    padding: 10px 20px;
+    border-radius: 40px;
+    text-align: center;
+    min-width: 340px;
+    height: 46px;
+    background: var(--white);
+    border-radius: 70px;
+    color: var(--bl);
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    border: 0 solid transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

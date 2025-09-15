@@ -139,4 +139,16 @@ namespace HealthyLifestyle.Core.Enums
         System,          // Системні сповіщення
         Message          // Повідомлення від користувача/підтримки
     }
+
+    // Фактори, що можуть впливати на психічний стан користувача.
+    public enum MentalHealthFactor
+    {
+        Sports,
+        Coffee,
+        Alcohol,
+        Sex,
+        Meditation,
+        Antidepressants,
+        Other
+    }
 }

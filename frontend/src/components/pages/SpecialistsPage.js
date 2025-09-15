@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 
+// import { useTranslation } from 'react-i18next';
+
+
 import "../styles/specialists.css"; // стилі винесемо в css
 
 
 function Specialists() {
+
    const { t } = useTranslation();
+
+  //  const { t } = useTranslation();
   const [specialists, setSpecialists] = useState([]);
 
   useEffect(() => {

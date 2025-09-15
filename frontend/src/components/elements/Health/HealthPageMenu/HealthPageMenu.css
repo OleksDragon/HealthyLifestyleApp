@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font-family: 'Roboto', sans-serif;
+    --white: #FFF;
+    --title: #1C6ED0;
+    --bl: #116FCF;
+    --lim: #D6FF00;
+    --img: #AADAFF;
+    --b-img: #D9D9D9;
+}
+
+.health-container {
+    max-width: 90%;
+    /* background: green; */
+    margin-left: 40px;
+}
+
+.health-links {
+    display: flex;
+    justify-content: space-around;
+    gap: 41px;
+}
+
+.health-link-btn {
+    padding: 10px 20px;
+    border-radius: 40px;
+    text-align: center;
+    min-width: 340px;
+    height: 46px;
+    background: #76A7E3;
+    border-radius: 70px;
+    color: var(--white);
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    border: 0 solid transparent;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.health-link-btn.active {
+    background: var(--lim);
+    color: var(--bl);
+}

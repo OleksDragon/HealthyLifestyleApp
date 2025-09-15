@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HealthyLifestyle.Core.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace HealthyLifestyle.Application.DTOs.Record
 {
@@ -20,6 +21,12 @@ namespace HealthyLifestyle.Application.DTOs.Record
         public int StressLevelScore { get; set; }
 
         public int AnxietyLevelScore { get; set; }
+
+        public string? Feeling { get; set; }
+
+        public string? Cause { get; set; }
+
+        public List<MentalHealthFactor> Factors { get; set; } = new();
 
         public string? Notes { get; set; }
 
@@ -50,6 +57,12 @@ namespace HealthyLifestyle.Application.DTOs.Record
         [Range(1, 10, ErrorMessage = "Рівень тривожності має бути в межах від 1 до 10.")]
         public int AnxietyLevelScore { get; set; }
 
+        public string? Feeling { get; set; }
+
+        public string? Cause { get; set; }
+
+        public List<MentalHealthFactor> Factors { get; set; } = new();
+
         public string? Notes { get; set; }
     }
 
@@ -71,6 +84,12 @@ namespace HealthyLifestyle.Application.DTOs.Record
 
         [Range(1, 10, ErrorMessage = "Рівень тривожності має бути в межах від 1 до 10.")]
         public int? AnxietyLevelScore { get; set; }
+
+        public string? Feeling { get; set; }
+
+        public string? Cause { get; set; }
+
+        public List<MentalHealthFactor>? Factors { get; set; }
 
         public string? Notes { get; set; }
     }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using HealthyLifestyle.Core.Enums;
+using System;
+using System.Collections.Generic;
 
 namespace HealthyLifestyle.Core.Entities
 {
     /// <summary>
     /// Запис про ментальне здоров'я користувача.
-    /// Містить дані про медитацію, дихальні практики та рівні стресу/тривожності.
+    /// Містить дані про медитацію, дихальні практики, рівні стресу/тривожності та додаткові фактори.
     /// Успадкований від базового класу <see cref="BaseEntity"/>.
     /// </summary>
     public class MentalHealthRecord : BaseEntity
@@ -42,6 +44,21 @@ namespace HealthyLifestyle.Core.Entities
         public int AnxietyLevelScore { get; set; }
 
         /// <summary>
+        /// Почуття користувача (наприклад, радість, смуток, злість).
+        /// </summary>
+        public string? Feeling { get; set; }
+
+        /// <summary>
+        /// Причина виникнення цього почуття.
+        /// </summary>
+        public string? Cause { get; set; }
+
+        /// <summary>
+        /// Фактори, які могли вплинути на почуття.
+        /// </summary>
+        public List<MentalHealthFactor> Factors { get; set; } = new();
+
+        /// <summary>
         /// Додаткові примітки користувача (опціонально).
         /// </summary>
         public string? Notes { get; set; }
@@ -51,7 +68,7 @@ namespace HealthyLifestyle.Core.Entities
         #region Навігаційні властивості
 
         /// <summary>
-        /// Навигационное свойство для связи з пользователем, якому належить запис.
+        /// Навігаційне властивість для зв'язку з користувачем, якому належить запис.
         /// </summary>
         public virtual User User { get; set; } = null!;
 
@@ -59,25 +76,22 @@ namespace HealthyLifestyle.Core.Entities
 
         #region Конструктори
 
-        /// <summary>
-        /// Параметризатор за замовчуванням, необхідний для Entity Framework Core.
-        /// </summary>
         public MentalHealthRecord() : base()
         {
         }
 
-        /// <summary>
-        /// Ініціалізує новий екземпляр запису про ментальне здоров’я з базовими даними.
-        /// </summary>
-        /// <param name="userId">Ідентифікатор користувача.</param>
-        /// <param name="recordDate">Дата та час створення запису.</param>
-        /// <param name="meditationDurationMinutes">Тривалість медитації (у хвилинах).</param>
-        /// <param name="breathingPracticeDurationMinutes">Тривалість дихальних практик (у хвилинах).</param>
-        /// <param name="stressLevelScore">Рівень стресу (1-10).</param>
-        /// <param name="anxietyLevelScore">Рівень тривожності (1-10).</param>
-        /// <param name="notes">Додаткові примітки (опціонально).</param>
-        /// <exception cref="ArgumentException">Виникає, якщо передані недійсні дані (наприклад, від’ємні значення або оцінки поза діапазоном 1-10).</exception>
-        public MentalHealthRecord(Guid userId, DateTime recordDate, int meditationDurationMinutes, int breathingPracticeDurationMinutes, int stressLevelScore, int anxietyLevelScore, string? notes = null) : this()
+        public MentalHealthRecord(
+            Guid userId,
+            DateTime recordDate,
+            int meditationDurationMinutes,
+            int breathingPracticeDurationMinutes,
+            int stressLevelScore,
+            int anxietyLevelScore,
+            string? feeling = null,
+            string? cause = null,
+            List<MentalHealthFactor>? factors = null,
+            string? notes = null
+        ) : this()
         {
             if (userId == Guid.Empty)
                 throw new ArgumentException("Ідентифікатор користувача не може бути порожнім.", nameof(userId));
@@ -96,6 +110,9 @@ namespace HealthyLifestyle.Core.Entities
             BreathingPracticeDurationMinutes = breathingPracticeDurationMinutes;
             StressLevelScore = stressLevelScore;
             AnxietyLevelScore = anxietyLevelScore;
+            Feeling = feeling;
+            Cause = cause;
+            Factors = factors ?? new List<MentalHealthFactor>();
             Notes = notes;
         }
 
@@ -103,22 +120,15 @@ namespace HealthyLifestyle.Core.Entities
 
         #region Методи
 
-        /// <summary>
-        /// Оновлює дані запису про ментальне здоров’я з новими значеннями (опціонально).
-        /// </summary>
-        /// <param name="recordDate">Нова дата запису (опціонально).</param>
-        /// <param name="meditationDurationMinutes">Нова тривалість медитації (опціонально).</param>
-        /// <param name="breathingPracticeDurationMinutes">Нова тривалість дихальних практик (опціонально).</param>
-        /// <param name="stressLevelScore">Новий рівень стресу (опціонально).</param>
-        /// <param name="anxietyLevelScore">Новий рівень тривожності (опціонально).</param>
-        /// <param name="notes">Нові примітки (опціонально).</param>
-        /// <exception cref="ArgumentException">Виникає, якщо передані недійсні дані (наприклад, від’ємні значення або оцінки поза діапазоном 1-10).</exception>
         public void UpdateRecord(
             DateTime? recordDate = null,
             int? meditationDurationMinutes = null,
             int? breathingPracticeDurationMinutes = null,
             int? stressLevelScore = null,
             int? anxietyLevelScore = null,
+            string? feeling = null,
+            string? cause = null,
+            List<MentalHealthFactor>? factors = null,
             string? notes = null)
         {
             if (meditationDurationMinutes.HasValue && meditationDurationMinutes.Value < 0)
@@ -135,14 +145,14 @@ namespace HealthyLifestyle.Core.Entities
             if (breathingPracticeDurationMinutes.HasValue) BreathingPracticeDurationMinutes = breathingPracticeDurationMinutes.Value;
             if (stressLevelScore.HasValue) StressLevelScore = stressLevelScore.Value;
             if (anxietyLevelScore.HasValue) AnxietyLevelScore = anxietyLevelScore.Value;
+            if (feeling != null) Feeling = feeling;
+            if (cause != null) Cause = cause;
+            if (factors != null) Factors = factors;
             if (notes != null) Notes = notes;
+
             SetUpdatedAt();
         }
 
-        /// <summary>
-        /// Розраховує загальну тривалість релаксаційних практик (медитація + дихальні вправи).
-        /// </summary>
-        /// <returns>Загальна тривалість у хвилинах.</returns>
         public int CalculateTotalRelaxationDuration()
         {
             return MeditationDurationMinutes + BreathingPracticeDurationMinutes;

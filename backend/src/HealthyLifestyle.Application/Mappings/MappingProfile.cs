@@ -516,6 +516,9 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.BreathingPracticeDurationMinutes, opt => opt.MapFrom(src => src.BreathingPracticeDurationMinutes))
                 .ForMember(dest => dest.StressLevelScore, opt => opt.MapFrom(src => src.StressLevelScore))
                 .ForMember(dest => dest.AnxietyLevelScore, opt => opt.MapFrom(src => src.AnxietyLevelScore))
+                .ForMember(dest => dest.Feeling, opt => opt.MapFrom(src => src.Feeling))
+                .ForMember(dest => dest.Cause, opt => opt.MapFrom(src => src.Cause))
+                .ForMember(dest => dest.Factors, opt => opt.MapFrom(src => src.Factors))
                 .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes));
 
             CreateMap<MentalHealthRecordUpdateDto, MentalHealthRecord>()
@@ -529,6 +532,9 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.BreathingPracticeDurationMinutes, opt => opt.Condition(src => src.BreathingPracticeDurationMinutes.HasValue))
                 .ForMember(dest => dest.StressLevelScore, opt => opt.Condition(src => src.StressLevelScore.HasValue))
                 .ForMember(dest => dest.AnxietyLevelScore, opt => opt.Condition(src => src.AnxietyLevelScore.HasValue))
+                .ForMember(dest => dest.Feeling, opt => opt.Condition(src => src.Feeling != null))
+                .ForMember(dest => dest.Cause, opt => opt.Condition(src => src.Cause != null))
+                .ForMember(dest => dest.Factors, opt => opt.Condition(src => src.Factors != null))
                 .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
         }
         private void ConfigureSleepRecordMappings()

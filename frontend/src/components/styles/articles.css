@@ -1,0 +1,100 @@
+.mental-health-articles {
+    width: 100%;
+}
+
+.articles-list {
+    width: 99%;
+    /* height: 100%; */
+}
+
+.mental-health-articles {
+    height: 440px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.article-header-line-blure {
+    margin-right: 0;
+    margin-left: -1.5px;
+    top: 244px;
+    border: none;
+    position: fixed;
+    width: 70.8%;
+    height: 10px;
+    z-index: 1000;
+    background: transparent;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 20px,
+        black calc(100% - 10px),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 10px,
+        black calc(100% - 10px),
+        transparent 100%
+    );
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+.mental-health-articles::-webkit-scrollbar {
+    width: 11px;
+}
+
+.mental-health-articles::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 10px;
+    
+    margin: 15px 0;
+}
+
+.mental-health-articles::-webkit-scrollbar-thumb {
+    background: var(--bl);
+    border: 0.5px solid var(--white);
+    border-radius: 10px;
+}
+
+.mental-health-articles::-webkit-scrollbar-thumb:hover {
+    background: var(--title);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ap-title {
+    background: var(--white);
+    padding: 15px 0;
+    border-radius: 40px;
+    margin: -10px 0 20px 0;
+}
+
+.ap-title h2 {
+    text-align: center;
+    color: var(--bl);
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 900;
+    /* margin: -15px 0 20px 0; */
+}
+
+.articles-list .article-card:first-child {
+    margin-top: 5px;
+}
+
+/* Ефект для останньої картки */
+.articles-list .article-card:last-child:hover {
+    margin-bottom: 15px;
+}

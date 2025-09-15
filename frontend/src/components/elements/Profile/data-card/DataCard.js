@@ -1,12 +1,12 @@
 import React from 'react';
 import './DataCard.css';
 
-import dots_menu from '../../../assets/profile-icons/dots_menu.svg'
-import arrow_long from '../../../assets/profile-icons/arrow_long.svg'
-import smile from '../../../assets/profile-icons/smile.svg'
-import progress from '../../../assets/profile-icons/in_progress.svg'
-import truck from '../../../assets/profile-icons/truck.svg'
-import drop from '../../../assets/profile-icons/drop.svg'
+import dots_menu from '../../../../assets/profile-icons/dots_menu.svg'
+import arrow_long from '../../../../assets/profile-icons/arrow_long.svg'
+import smile from '../../../../assets/profile-icons/smile.svg'
+import progress from '../../../../assets/profile-icons/in_progress.svg'
+import truck from '../../../../assets/profile-icons/truck.svg'
+import drop from '../../../../assets/profile-icons/drop.svg'
 
 const DataCard = ({ 
   title, 

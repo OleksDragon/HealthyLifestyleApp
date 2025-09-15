@@ -107,7 +107,7 @@
 }
 
 .supp-date-container {
-overflow-y: auto;
+  overflow-y: auto;
   overflow-x: hidden;
   width: 90%; /* Двигаємо полосу прокрутки */
   max-height: 210px;
@@ -210,7 +210,7 @@ overflow-y: auto;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   width: 345px;
-  height: 250px;
+  height: 238px; /* Збільшено на 3px (було 235px) */
   overflow: visible;
   padding: 0;
   margin-top: -60px;
@@ -355,7 +355,7 @@ overflow-y: auto;
 .react-datepicker__week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  height: 30px; /* Збільшення висоти рядків для розтягнення днів вниз */
+  height: 29px; /* Збільшено на 1px (було 28px) */
   flex-shrink: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -365,8 +365,8 @@ overflow-y: auto;
   color: #0661CC;
   margin: 1px;
   border-radius: 50%;
-  height: 22px;
-  width: 22px;
+  height: 21px; /* Збільшено на 1px (було 20px) */
+  width: 21px; /* Збільшено на 1px (було 20px) */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -374,14 +374,14 @@ overflow-y: auto;
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
   font-weight: 500;
-  padding: 8px;
+  padding: 7px; /* Збільшено на 1px (було 6px) */
 }
 
 .react-datepicker__day--selected {
   background-color: #0661CC;
   color: #FFF;
   font-weight: 900;
-  font-size: 13px;
+  font-size: 12px;
   border: none;
 }
 
@@ -394,7 +394,7 @@ overflow-y: auto;
 .react-datepicker__day--disabled {
   color: #D6FF00;
   cursor: not-allowed;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .react-datepicker__day--disabled:hover {
@@ -406,7 +406,6 @@ overflow-y: auto;
   display: none !important; /* Приховати трикутник календаря */
 }
 
-/* Видалити ці блоки: */
 .custom-datepicker-container .react-datepicker__day:hover {
   background-color: rgba(6, 97, 204, 0.1) ;
   border-radius: 50%;
@@ -424,7 +423,7 @@ overflow-y: auto;
   background-color: transparent;
   color: #454545;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   border: none !important;
 }
 

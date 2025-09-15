@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import { useTranslation } from 'react-i18next';
 import 'react-datepicker/dist/react-datepicker.css';
 import './CustomBirthdateDatePicker.css';
-import arrow_v_blue from '../../../assets/profile-icons/arrow_v_blue.svg';
+import arrow_v_blue from '../../../../assets/profile-icons/arrow_v_blue.svg';
 
 // Спеціалізований CustomSelect для вибору місяців/років у стилі CustomSelect
 const YearMonthSelect = ({ value, options, onChange, className = '' }) => {

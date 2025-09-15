@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './CustomSelect.css';
-import arrow_v_white from '../../../assets/profile-icons/arrow_v_white.svg'
-import arrow_v_blue from '../../../assets/profile-icons/arrow_v_blue.svg'
+import arrow_v_white from '../../../../assets/profile-icons/arrow_v_white.svg'
+import arrow_v_blue from '../../../../assets/profile-icons/arrow_v_blue.svg'
 
 const CustomSelect = ({ 
   id, 

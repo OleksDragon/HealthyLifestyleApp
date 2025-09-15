@@ -1,0 +1,58 @@
+.article-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 20px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Розподіляє простір між заголовком і стрілкою */
+    width: 100%;
+}
+
+.article-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    /* border-color: rgba(255, 255, 255, 0.3); */
+}
+
+.article-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Займає всю ширину картки */
+    gap: 15px;
+}
+
+.article-title {
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.4;
+    margin: 0; /* Видаляємо марджини */
+    flex: 1; /* Займає весь доступний простір */
+    text-align: left; /* Текст зліва */
+}
+
+.article-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Забороняє стискання */
+}
+
+.article-arrow-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover .article-arrow-icon {
+    transform: translateX(3px); /* Ефект при наведенні */
+}

@@ -13,6 +13,7 @@ import ProfilePage from "./components/pages/ProfilePage";
 import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Menu from "./components/elements/Menu";
+import MeetingPage from './components/pages/MeetingPage';
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -40,6 +41,7 @@ function AppRoutes() {
       <Route path="/restore" element={<RestorePasswordPage />} />
       <Route path="/dashboard" element={<PrivateRoute><Menu><DashboardPage/></Menu></PrivateRoute>} />
       <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
+      <Route path="/meeting/:id" element={<PrivateRoute><MeetingPage /></PrivateRoute>} />
     </Routes>
   );
 }

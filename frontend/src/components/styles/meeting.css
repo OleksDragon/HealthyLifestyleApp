@@ -1,0 +1,48 @@
+.meeting-room {
+    height: 100vh;
+}
+
+.remote-users {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px;
+    justify-content: center;
+    margin: 20px;
+    height: calc(100% - 50px);
+}
+
+.control-panel {
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.control-panel button {
+    border-radius: 20px;
+    height: 40px;
+}
+
+.btn-on {
+    background-color: #4ee753;
+}
+
+.btn-off {
+    background-color: red;
+}
+
+.btn-leave {
+    background-color: red;
+}
+
+.user-window {
+    background: #333;
+}

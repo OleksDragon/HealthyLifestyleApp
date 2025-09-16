@@ -184,6 +184,8 @@ i18n
           p_spain_country: "Spain",
           p_usa_country: "USA",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1st day of last cycle"
         },
       },
       uk: {
@@ -375,6 +377,8 @@ i18n
           article_7: "Профілактика та подолання вигорання",
 
           gender: "Здоров'я за статтю",
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1-й день останнього циклу",
         },
       },
       de: {
@@ -554,6 +558,8 @@ i18n
           p_spain_country: "Spanien",
           p_usa_country: "USA",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1. Tag des letzten Zyklus"
         },
       },
       fr: {
@@ -731,6 +737,9 @@ i18n
           p_france_country: "France",
           p_spain_country: "Espagne",
           p_usa_country: "États-Unis",
+
+          // --- Переклади для календара місячних
+         last_cycle_first_day: "1er jour du dernier cycle",
         },
       },
       es: {
@@ -908,6 +917,9 @@ i18n
           p_france_country: "Francia",
           p_spain_country: "España",
           p_usa_country: "EE.UU.",
+
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1er día del último ciclo"
         },
       },
     },

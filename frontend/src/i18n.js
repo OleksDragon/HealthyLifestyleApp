@@ -377,8 +377,40 @@ i18n
           article_7: "Профілактика та подолання вигорання",
 
           gender: "Здоров'я за статтю",
-          // --- Переклади для календара місячних
+          // --- Переклади для календара місячних для 1-й день останнього циклу
           last_cycle_first_day: "1-й день останнього циклу",
+
+          // --- Переклади для Спеціалістів
+          filter_speciality: "Спеціалізація",
+          filter_mode: "Онлайн/офлайн",
+          filter_experience: "Досвід",
+          filter_price: "Ціна",
+
+          spec_psychologist: "Психолог",
+          spec_doctor: "Лікар",
+          spec_trainer: "Тренер",
+          spec_dietitian: "Дієтолог / нутриціолог",
+
+          mode_online: "Тільки онлайн",
+          mode_offline: "Тільки офлайн",
+          mode_hybrid: "Онлайн / офлайн",
+
+          experience_1: "До 1 року",
+          experience_3: "Від 3 років",
+          experience_5: "Від 5 років",
+          experience_10: "Від 10 років",
+
+          price_100: "від 100 грн/год",
+          price_200: "від 200 грн/год",
+          price_500: "від 500 грн/год",
+          price_1000: "від 1000 грн/год",
+
+          clear_option: "Очистити",
+          clear_filter:"Очистити філтр",
+  unknown_specialist: "Невідомий спеціаліст",
+  top_5: "ТОП - 5",
+  subscribe: "Підписатись",
+  no_specialists_found: "Спеціалістів не знайдено"
         },
       },
       de: {

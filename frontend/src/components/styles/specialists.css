@@ -7,7 +7,7 @@
 
 }
 
-.grid-12 {
+.specialists-list {
   display: grid;
   gap: 30px;
   width: 100%;
@@ -16,9 +16,24 @@
   justify-items: center; /* ← центрує по горизонталі */
   align-items: center;   /* ← центрує по вертикалі */
 }
-
+.filter-container {
+  width: 90%;
+  display: flex;
+  align-items:flex-start;       /* центрує по вертикалі */
+  justify-content: space-around;  /* центрує по горизонталі */
+  flex-wrap: wrap;
+  gap: 10px;    
+  margin-left: 40px;
+}
+.location-btn {
+  min-width: 64px !important;
+  height: 45px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.50) !important;
+}
 /* картка */
-.glass-card-for-sepc {
+.glass-card-for-spec {
   border: 1px solid #fff;
   border-radius: 40px;
   width: 300px; /* фіксована ширина картки */
@@ -34,9 +49,77 @@
   transition: transform 0.3s ease;
 }
 
-.glass-card-for-sepc:hover {
+.glass-card-for-spec:hover {
   transform: scale(1.05);
   background: rgba(214, 255, 0, 0.5);
 }
 
- 
+/* Existing :root and breadcrumbs styles */
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --white: #ffffff;
+  --variable-collection-lim: #your-color-here; /* Replace with actual color value if known */
+}
+
+/* Ensure breadcrumbs is a flex container */
+.breadcrumbs {
+  margin: 0 0 20px 50px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: var(--font-family);
+  gap: 4px;
+  position: relative;
+  z-index: 9999;
+  font-size: 10px !important;
+  justify-content: flex-start; /* Align items from the start */
+}
+
+/* Style for the container of clear-filter to push it to the right */
+.clear-filter-container {
+  margin-left: auto; /* Pushes the clear filter to the right side */
+}
+
+/* New style for Clear Filter to match .text-wrapper-3 */
+.breadcrumbs a.clear-filter {
+  align-items: center;
+  white-space: nowrap;
+  padding: 0 10px; /* Optional padding for better appearance */
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  text-align: right;
+  color: var(--lim); /* Ensure --lim is defined in :root if not already */
+}
+
+/* Existing styles for consistency */
+.reset_align {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.breadcrumb-item {
+  padding-left: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breadcrumb-item svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--white);
+  fill: none;
+  margin: 0 5px;
+}
+
+.remove-icon {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.remove-icon:hover svg {
+  stroke: #ff0000; /* Change color on hover for feedback */
+}

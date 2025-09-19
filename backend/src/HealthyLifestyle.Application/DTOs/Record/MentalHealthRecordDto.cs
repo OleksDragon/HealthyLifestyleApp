@@ -51,10 +51,10 @@ namespace HealthyLifestyle.Application.DTOs.Record
         [Range(0, int.MaxValue, ErrorMessage = "Тривалість дихальних практик не може бути від’ємною.")]
         public int BreathingPracticeDurationMinutes { get; set; }
 
-        [Range(1, 10, ErrorMessage = "Рівень стресу має бути в межах від 1 до 10.")]
+        [Range(0, 10, ErrorMessage = "Рівень стресу має бути в межах від 1 до 10.")] // 0 = null
         public int StressLevelScore { get; set; }
 
-        [Range(1, 10, ErrorMessage = "Рівень тривожності має бути в межах від 1 до 10.")]
+        [Range(0, 10, ErrorMessage = "Рівень тривожності має бути в межах від 1 до 10.")] // 0 = null
         public int AnxietyLevelScore { get; set; }
 
         public string? Feeling { get; set; }
@@ -79,10 +79,10 @@ namespace HealthyLifestyle.Application.DTOs.Record
         [Range(0, int.MaxValue, ErrorMessage = "Тривалість дихальних практик не може бути від’ємною.")]
         public int? BreathingPracticeDurationMinutes { get; set; }
 
-        [Range(1, 10, ErrorMessage = "Рівень стресу має бути в межах від 1 до 10.")]
+        [Range(0, 10, ErrorMessage = "Рівень стресу має бути в межах від 1 до 10.")]
         public int? StressLevelScore { get; set; }
 
-        [Range(1, 10, ErrorMessage = "Рівень тривожності має бути в межах від 1 до 10.")]
+        [Range(0, 10, ErrorMessage = "Рівень тривожності має бути в межах від 1 до 10.")]
         public int? AnxietyLevelScore { get; set; }
 
         public string? Feeling { get; set; }

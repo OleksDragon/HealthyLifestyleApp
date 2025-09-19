@@ -1,16 +1,13 @@
 .m-card-link {
-    /* background: transparent; */
     border-radius: 30px;
     padding: 30px 25px;
     max-width: 250px;
-    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); */
     transition: all 0.3s ease;
-    /* border: 0px solid transparent; */
 
     background-color: rgba(255,255,255,0.15);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(10px);
-    
+
     /* Центрування всього вмісту */
     display: flex;
     flex-direction: column;
@@ -29,8 +26,8 @@
     left: 0;
     width: 218px;
     height: 228px;
-    border-top: 1px solid rgba(255, 255, 255, 0.7); /* Світло-блакитний (lightblue) */
-    border-left: 1px solid rgba(255, 255, 255, 0.7); /* Світло-блакитний */
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    border-left: 1px solid rgba(255, 255, 255, 0.7);
     border-top-left-radius: 30px;
     filter: blur(1px);
     transition: all 0.4s ease;

@@ -16,6 +16,9 @@ import Menu from "./components/elements/Menu";
 import SpecialistsPage from "./components/pages/SpecialistsPage";
 
 import HealthPageMenu from "./components/elements/Health/HealthPageMenu/HealthPageMenu";
+import HealthPage from "./components/pages/HealthPages/HealthPage";
+
+import YourHealthPage from "./components/pages/HealthPages/YourHealthPages/YourHealthPage";
 
 import MentalHealthPage from "./components/pages/HealthPages/MentalHealthPages/MentalHealthPage";
 import EmotionDiaryPage from "./components/pages/HealthPages/MentalHealthPages/EmotionDiaryPage";
@@ -52,7 +55,9 @@ function AppRoutes() {
       <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
       <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
 
-      <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /></Menu></PrivateRoute>} />
+      <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /><HealthPage /></Menu></PrivateRoute>} />
+
+      <Route path="/health/your_health" element={<PrivateRoute><Menu><HealthPageMenu><YourHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
 
       <Route path="/health/mental" element={<PrivateRoute><Menu><HealthPageMenu><MentalHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/mental/diary" element={<PrivateRoute><Menu><HealthPageMenu><EmotionDiaryPage /></HealthPageMenu></Menu></PrivateRoute>} />

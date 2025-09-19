@@ -1,0 +1,610 @@
+.ed-title {
+  background: var(--white);
+  padding: 15px 0;
+  border-radius: 40px;
+  margin: -10px 0 20px 0;
+}
+
+.ed-title h2 {
+  text-align: center;
+  color: var(--bl);
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+/* Основний блок з емоцією */
+.ed-emotion-main-block {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 30px 0 20px 0;
+
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ed-emotion-left {
+  flex: 1;
+}
+
+.ed-emotion-feeling {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lim);
+  margin: 0 0 15px 10px;
+}
+
+.ed-emotion-cause {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--black);
+  margin-left: 10px;
+}
+
+.ed-emotion-right {
+  text-align: right;
+}
+
+.ed-emotion-time {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--black);
+  margin: 0 10px 25px 0;
+}
+
+.ed-emotion-date {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+  margin: 0 10px 0 0;
+}
+
+/* Заголовок факторів */
+.ed-factors-header {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.ed-factors-header h4 {
+  color: var(--white);
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.ed-factor-info-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.ed-info-btn {
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+  background: transparent;
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ed-info-btn:hover {
+  border: none;
+  background: transparent;
+  transform: translateY(-1px);
+}
+
+/* Секція факторів - фон тільки коли є фактори */
+.ed-factors-section {
+  padding: 10px;
+  border-radius: 25px;
+  margin-bottom: 20px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ed-factors-section.ed-has-factors {
+  background-color: rgba(255,255,255,0.4);
+}
+
+.ed-factors-list {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Коли факторів немає - видаляємо padding */
+.ed-factors-section:not(.ed-has-factors) {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* Блок додавання фактора коли факторів немає */
+.ed-factors-section:not(.ed-has-factors) .ed-add-factor-block {
+  width: 100%;
+  padding: 21px;
+  border-radius: 35px;
+  cursor:default;
+  
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Кнопка додавання фактора в рядку */
+.ed-add-factor-btn-inline {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 10px 0 15px;
+  background: var(--white);
+  color: var(--bl);
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.ed-add-factor-btn-inline:hover {
+  border: none;
+  background: var(--white);
+  transform: translateY(-1px);
+}
+
+/* Елемент фактора */
+.ed-factor-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  background: transparent;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.ed-factor-icon {
+  font-size: 16px;
+}
+
+.ed-factor-name {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Блок додавання емоції */
+.ed-add-emotion-block {
+  height: 150px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 30px;
+  margin: 30px 0;
+
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ed-add-emotion-block h3 {
+  color: var(--black);
+  margin: 0 0 15px 0;
+  font-family: var(--font-family);
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.ed-add-emotion-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--bl);
+  font-family: var(--font-family);
+  font-size: 30px;
+  font-weight: 400px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.ed-add-emotion-btn:hover {
+  background: var(--white);
+}
+
+/* Блок додавання фактора */
+.ed-add-factor-block {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ed-add-factor-btn {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--bl);
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ed-add-factor-btn:hover {
+  background: var(--white);
+  transform: translateY(-1px);
+}
+
+.ed-add-factor-text {
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 20px;
+}
+
+/* Адаптація для пустих даних */
+.ed-no-data {
+  text-align: center;
+}
+
+.ed-no-data .ed-factors-section {
+  background: transparent; /* Видаляємо фон для пустих даних */
+}
+
+/* ----------------------------------------------------------- */
+
+/* Стилі для контейнера інформації про фактори */
+.ed-factors-info-container {
+  width: 100%;
+  min-height: 420px;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ed-factors-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ed-factors-info-header h2 {
+  margin: 0;
+  color: var(--lim);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.ed-close-factors-info {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 5px 2px 5px;
+}
+
+.ed-close-factors-info:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+  border-radius: 7px;
+}
+
+.ed-close-factors-info img {
+  width: 20px;
+  height: 20px;
+}
+
+.ed-factors-info-content {
+  line-height: 1.6;
+}
+
+.ed-factors-intro,
+.ed-factors-analytics {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.ed-factors-analytics {
+  margin-top: 10px;
+}
+
+.ed-factors-examples {
+  margin-top: 20px;
+}
+
+.ed-factors-examples h3 {
+  margin-bottom: 10px;
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.ed-factor-example {
+  margin-bottom: 10px;
+}
+
+.ed-factor-example p {
+  margin: 0;
+  color: var(--white);
+  font-size: 16px;
+}
+
+/* ----------------------------------------------------- */
+
+/* Стилі для вибору факторів */
+.ed-factors-selection-container {
+  width: 100%;
+  height: 495px;
+  background: white;
+  padding: 20px;
+  margin-top: -10px;
+  border-radius: 35px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ed-factors-selection-header {
+  display: flex;
+  justify-content:end;
+}
+
+.ed-close-factors-selection {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 5px 2px 5px;
+}
+
+.ed-close-factors-selection-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.ed-close-factors-selection:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+  border-radius: 8px;
+}
+
+.ed-factors-selection-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ed-selected-factors h4,
+.ed-available-factors h4 {
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.ed-selected-factors-list,
+.ed-available-factors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ed-selected-factor-item,
+.ed-available-factor-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  background-color: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ed-selected-factor-item:hover,
+.ed-available-factor-item:hover {
+  background-color: rgba(255,255,255,0.4);
+  transform: translateY(-0.3px);
+}
+
+.ed-factor-icon {
+  margin-right: 10px;
+}
+
+.ed-factor-icon img {
+  margin-top: 2px;
+  width: 24px;
+  height: 24px;
+}
+
+.ed-factor-name-list {
+  flex: 1;
+  color: var(--bl);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ed-remove-factor-btn,
+.ed-add-factor-select-btn {
+  background: var(--white);
+  color: var(--bl);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ed-remove-factor-btn:hover,
+.ed-add-factor-select-btn:hover {
+  background: var(--white);
+  transform: translateY(-1px);
+}
+
+.ed-factors-selection-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.ed-save-factors-btn {
+  width: 25%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--lim);
+  color: var(--bl);
+  transition: all 0.1s ease;
+}
+
+.ed-save-factors-btn:hover {
+  background: var(--lim);
+  transform: translateY(-2px);
+}
+
+.ed-save-factors-btn:disabled {
+  background-color: rgba(255,255,255,0.2);
+  color: var(--white);
+  cursor: not-allowed;
+}
+
+/* Стилі для неактивних кнопок */
+.ed-add-factor-btn:disabled,
+.ed-add-factor-btn-inline:disabled {
+  background: #e1e1e1;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ed-error {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 40px;
+  color: var(--white);
+  background-color: rgba(255,255,255,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+  text-align: center;
+}
+
+/* -------------------------------------------------- */
+
+/* Стилі для блоку нотаток */
+.ed-notes-section {
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  border-radius:27px;
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ed-notes-content {
+  width: 100%;
+}
+
+.ed-notes-textarea {
+  width: 99%;
+  height: 80px;
+  padding: 10px 20px 10px 30px;
+  border: none;
+  align-items: center;
+  margin-top: 10px;
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 500;
+  resize: none;
+  outline: none;
+  cursor: default;
+  background: transparent;
+}
+
+.ed-notes-textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.ed-notes-textarea::placeholder {
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* Стилізація прокрутки для Webkit (Chrome, Safari, Edge) */
+.ed-notes-textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ed-notes-textarea::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.ed-notes-textarea::-webkit-scrollbar-thumb {
+    background: #a0aec0;
+    border-radius: 3px;
+}
+
+.ed-notes-textarea::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+/* Стилізація прокрутки для Firefox */
+.ed-notes-textarea {
+    scrollbar-width: thin;
+    scrollbar-color: #a0aec0 transparent;
+}

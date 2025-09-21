@@ -33,6 +33,7 @@ import ArticleDetailPage from "./components/pages/HealthPages/MentalHealthPages/
 import GenderHealthPage from "./components/pages/HealthPages/GenderHealthPages/GenderHealthPage";
 import FemaleHealthPage from "./components/pages/HealthPages/GenderHealthPages/FemaleHealthPage";
 import FemaleCyclePage from './components/pages/HealthPages/GenderHealthPages/FemaleCyclePage';
+import FemaleCycleCalendarPage from './components/pages/HealthPages/GenderHealthPages/FemaleCycleCalendarPage';
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -83,7 +84,7 @@ function AppRoutes() {
       <Route path="/health/gender" element={<PrivateRoute><Menu><HealthPageMenu><GenderHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female" element={<PrivateRoute><Menu><HealthPageMenu><FemaleHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female/cycle" element={<PrivateRoute><Menu><HealthPageMenu><FemaleCyclePage /></HealthPageMenu></Menu></PrivateRoute>} />
-
+      <Route path="/health/gender/female/cycle/menstruation_calendar" element={<PrivateRoute><Menu><HealthPageMenu><FemaleCycleCalendarPage /></HealthPageMenu></Menu></PrivateRoute>} />
 
     </Routes>
   );

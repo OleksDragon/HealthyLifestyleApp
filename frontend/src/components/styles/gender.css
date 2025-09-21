@@ -212,7 +212,7 @@
     margin-top: 16px;
 }
 
-.date-info > div {
+/* .date-info > div {
     height: 60px;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.24);
@@ -222,6 +222,10 @@
     text-align: center;
     z-index: 6;
     padding-top: 20px;
+} */
+
+.date-info > div {
+    z-index: 15;
 }
 
 .date-info > button {
@@ -280,6 +284,10 @@
     margin: 0 40px;
 }
 
+.cycle-info-header > h3 {
+    color: #D6FF00;
+}
+
 .arrow-bottom {
     height: 14px;
     width: 26px;
@@ -292,15 +300,33 @@
     gap: 20px;
 }
 
+.f-row {
+    background-color: #D6FF00;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    white-space: pre-wrap;
+    text-align: center; 
+    height: 60px;
+    color: #0066C3;
+}
+
 .cycle-preview {
     grid-column: 1/3;
+    background: none !important;
+    color: white !important;
 }
 
 .cycle-finalize {
     grid-column: 1/3;
+    background: none !important;
+    color: white !important;
 }
 
 .cycle-info {
     font-family: var(--font-family);
     font-weight: 500;
 }
+

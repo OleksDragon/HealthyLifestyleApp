@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;370&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
+/* Заголовок страницы челленджей */
+.ch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.create-challenge-link {
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.create-challenge-link:hover {
+    background-color: #0056b3;
+}
+
+.ch-page-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    color: #d6ff00;
+}
+
+/* Контейнер для списка челленджей */
+.challenge-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px 20px;
+}
+
+/* Карточка челленджа */
+.challenge-card {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Заголовок челленджа */
+.challenge-title {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0 5px 0;
+    color: black;
+}
+
+/* Описание челленджа */
+.challenge-description {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 370;
+    color: black;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+/* Даты челленджа */
+.challenge-dates {
+    font-family: "MuseoModerno", sans-serif;
+    font-size: 16px;
+    color: #d6ff00;
+    margin-top: auto;
+    font-weight: 500;
+}
+
+/* "Подробнее" */
+.details-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #116fcf;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.details-link:hover {
+    background-color: #0c57a2;
+}
+
+/* Сообщение "нет челленджей" */
+.no-challenges-message {
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    grid-column: 1 / -1;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+/* --- Скрол-контейнер для карток --- */
+.scrollable-card-container {
+    max-height: 500px;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+/* --- Стилі для скролбара --- */
+.scrollable-card-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scrollable-card-container::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 10px;
+    margin: 5px 0;
+    box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.scrollable-card-container::-webkit-scrollbar-thumb {
+    background: #0661CC;
+    border-radius: 10px;
+}
+
+.scrollable-card-container::-webkit-scrollbar-thumb:hover {
+    background: #0661CC;
+}

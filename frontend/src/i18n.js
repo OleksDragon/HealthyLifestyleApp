@@ -117,7 +117,7 @@ i18n
           welcome: "Hi",
           health_one_place: "Your health in one place!",
 
-           // Переклади для віджетів дашборду
+          // Переклади для віджетів дашборду
           kkal: "Calories",
           current_week: "Current week",
           water: "Water",
@@ -128,7 +128,8 @@ i18n
           bmi_requires: "Fill in the information about height and weight",
 
           // --- Переклади для профілю користувача ---
-          p_error_upadate: "Failed to update profile. Please fill in all fields.",
+          p_error_upadate:
+            "Failed to update profile. Please fill in all fields.",
           p_male: "Male",
           p_female: "Female",
           p_other: "Other",
@@ -183,6 +184,69 @@ i18n
           p_spain_country: "Spain",
           p_usa_country: "USA",
 
+          // --- Переклади для посилань в мапінгу ---
+          mental: "Mental Health",
+          diary: "Emotion Diary",
+          articles: "Useful Articles",
+          article_1: "10 simple stress relief techniques",
+          article_2: "Effective methods for combating anxiety",
+          article_3: "Breathing techniques for relaxation",
+          article_4: "The link between sleep and mental health",
+          article_5: "Basics of meditation for beginners",
+          article_6: "Strategies for improving self-esteem",
+          article_7: "Prevention and overcoming burnout",
+          gender: "Health by gender",
+
+          // --- Переклади для соц. сторінки ---
+          ch_all_challenges_title: "All Challenges",
+          ch_details_link: "Details",
+          ch_no_challenges_message: "There are no challenges yet.",
+          ch_loading: "Loading...",
+          ch_error_loading: "Failed to load challenges.",
+          ch_details_error_loading: "Failed to load challenge details.",
+          ch_not_found: "Challenge not found.",
+          ch_join: "Join",
+          ch_edit: "Edit",
+          ch_delete: "Delete",
+          ch_back: "Back",
+          ch_start_date: "Start Date",
+          ch_end_date: "End Date",
+          ch_type: "Type",
+          ch_type_individual: "Individual",
+          ch_type_group: "Group",
+          ch_creator: "Creator",
+          ch_participants: "Participants",
+          ch_add_challenge_button: "Add Challenge",
+          ch_create_first_link: "Create the first challenge",
+          ch_create_title: "Create a New Challenge",
+          ch_name: "Name",
+          ch_description: "Description",
+          ch_create_submit: "Create",
+          ch_creating: "Creating...",
+          ch_create_success: "Challenge successfully created!",
+          ch_create_error: "Failed to create challenge.",
+          ch_confirmJoinTitle: "Confirm Joining Challenge",
+          ch_confirmJoinText: "Are you sure you want to join this challenge?",
+          yes: "Yes",
+          no: "No",
+          ch_confirmDeleteTitle: "Confirm Deleting Challenge",
+          ch_confirmDeleteText:
+            "Are you sure you want to delete this challenge? This action cannot be undone.",
+          ch_joinedTitle: "Success!",
+          ch_joinedText: "You have successfully joined the challenge.",
+          ok: "OK",
+          ch_deletedTitle: "Challenge Deleted",
+          ch_deletedText: "The challenge has been successfully deleted.",
+          ch_errorTitle: "Error",
+          ch_errorText: "An error occurred. Please try again later.",
+          ch_edit_title: "Edit Challenge",
+          ch_type_competition: "Competition",
+          ch_type_personal: "Personal Goal",
+          ch_save: "Save",
+          ch_saving: "Saving...",
+          ch_edit_success: "Challenge successfully updated!",
+          ch_edit_success_title: "Success!",
+          ch_edit_error: "Failed to update challenge. Please try again.",
         },
       },
       uk: {
@@ -295,7 +359,7 @@ i18n
           welcome: "Привіт",
           health_one_place: "Твоє здоров'я в одному місці!",
 
-        // Переклади для віджетів дашборду
+          // Переклади для віджетів дашборду
           kkal: "Калорії",
           current_week: "Поточний тиждень",
           water: "Вода",
@@ -306,7 +370,8 @@ i18n
           bmi_requires: "Заповніть інформацію щодо зросту та ваги",
 
           // --- Переклади для профілю користувача ---
-          p_error_upadate: "Не вдалося оновити профіль. Будь ласка, заповніть усі поля.",
+          p_error_upadate:
+            "Не вдалося оновити профіль. Будь ласка, заповніть усі поля.",
           p_male: "Чоловік",
           p_female: "Жінка",
           p_other: "Інше",
@@ -374,6 +439,58 @@ i18n
           article_7: "Профілактика та подолання вигорання",
 
           gender: "Здоров'я за статтю",
+
+          // --- Переклади для соц. сторінки ---
+          ch_all_challenges_title: "Усі челенджі",
+          ch_details_link: "Детальніше",
+          ch_no_challenges_message: "Поки що немає челенджів.",
+          ch_loading: "Завантаження...",
+          ch_error_loading: "Не вдалося завантажити челенджі.",
+          ch_details_error_loading: "Помилка завантаження деталей челенджу.",
+          ch_not_found: "Челлендж не знайдено.",
+          ch_join: "Приєднатися",
+          ch_edit: "Редагувати",
+          ch_delete: "Видалити",
+          ch_back: "Назад",
+          ch_start_date: "Дата початку",
+          ch_end_date: "Дата закінчення",
+          ch_type: "Тип",
+          ch_type_individual: "Індивідуальний",
+          ch_type_group: "Груповий",
+          ch_creator: "Творець",
+          ch_participants: "Учасники",
+          ch_add_challenge_button: "Додати челендж",
+          ch_create_first_link: "Створити перший челендж",
+          ch_create_title: "Створити новий челендж",
+          ch_name: "Назва",
+          ch_description: "Опис",
+          ch_create_submit: "Створити",
+          ch_creating: "Створення...",
+          ch_create_success: "Челендж успішно створено!",
+          ch_create_error: "Не вдалося створити челендж.",
+          ch_confirmJoinTitle: "Підтвердіть приєднання до челленджа",
+          ch_confirmJoinText:
+            "Ви впевнені, що хочете приєднатися до цього челленджа?",
+          yes: "Так",
+          no: "Ні",
+          ch_confirmDeleteTitle: "Підтвердіть видалення челленджа",
+          ch_confirmDeleteText:
+            "Ви впевнені, що хочете видалити цей челлендж? Цю дію не можна скасувати.",
+          ch_joinedTitle: "Успіх!",
+          ch_joinedText: "Ви успішно приєдналися до челленджа.",
+          ok: "ОК",
+          ch_deletedTitle: "Челлендж видалено",
+          ch_deletedText: "Челлендж успішно видалено.",
+          ch_errorTitle: "Помилка",
+          ch_errorText: "Виникла помилка. Будь ласка, спробуйте ще раз.",
+          ch_edit_title: "Редагувати челендж",
+          ch_type_competition: "Змагання",
+          ch_type_personal: "Особиста мета",
+          ch_save: "Зберегти",
+          ch_saving: "Збереження...",
+          ch_edit_success: "Челендж успішно оновлено!",
+          ch_edit_success_title: "Успіх!",
+          ch_edit_error: "Не вдалося оновити челендж. Спробуйте ще раз.",
         },
       },
       de: {
@@ -467,8 +584,10 @@ i18n
           update_password: "Passwort aktualisieren",
           password_update_success: "Passwort erfolgreich aktualisiert",
           to_login: "Zurück zur Anmeldung",
-          user_not_exeist: "Benutzer mit der angegebenen E-Mail existiert nicht",
-          reset_password_error: "Fehler beim Aktualisieren des Passworts. Bitte versuche es erneut.",
+          user_not_exeist:
+            "Benutzer mit der angegebenen E-Mail existiert nicht",
+          reset_password_error:
+            "Fehler beim Aktualisieren des Passworts. Bitte versuche es erneut.",
           user_exist: "Benutzer mit der angegebenen E-Mail existiert bereits",
           auth_fail: "Authentifizierungsfehler. Überprüfe deine Daten",
 
@@ -497,7 +616,8 @@ i18n
           bmi_requires: "Füllen Sie die Angaben zu Größe und Gewicht aus",
 
           // --- Переклади для профілю користувача ---
-          p_error_upadate: "Profil konnte nicht aktualisiert werden. Bitte füllen Sie alle Felder aus.",
+          p_error_upadate:
+            "Profil konnte nicht aktualisiert werden. Bitte füllen Sie alle Felder aus.",
           p_male: "Männlich",
           p_female: "Weiblich",
           p_other: "Andere",
@@ -522,7 +642,7 @@ i18n
           p_loading_streets: "Straßen werden geladen...",
           p_btn_save: "Speichern",
           p_btn_saving: "Speichern...",
-          
+
           // --- Переклади для кастомного календаря (день народження користувача) ---
           p_january: "januar",
           p_february: "februar",
@@ -552,6 +672,61 @@ i18n
           p_spain_country: "Spanien",
           p_usa_country: "USA",
 
+          // --- Переклади для соц. сторінки ---
+          ch_all_challenges_title: "Alle Herausforderungen",
+          ch_details_link: "Details",
+          ch_no_challenges_message: "Es gibt noch keine Herausforderungen.",
+          ch_loading: "Wird geladen...",
+          ch_error_loading: "Herausforderungen konnten nicht geladen werden.",
+          ch_details_error_loading:
+            "Fehler beim Laden der Herausforderungsdetails.",
+          ch_not_found: "Herausforderung nicht gefunden.",
+          ch_join: "Beitreten",
+          ch_edit: "Bearbeiten",
+          ch_delete: "Löschen",
+          ch_back: "Zurück",
+          ch_start_date: "Startdatum",
+          ch_end_date: "Enddatum",
+          ch_type: "Typ",
+          ch_type_individual: "Individuell",
+          ch_type_group: "Gruppe",
+          ch_creator: "Ersteller",
+          ch_participants: "Teilnehmer",
+          ch_add_challenge_button: "Herausforderung hinzufügen",
+          ch_create_first_link: "Erste Herausforderung erstellen",
+          ch_create_title: "Neue Herausforderung erstellen",
+          ch_name: "Name",
+          ch_description: "Beschreibung",
+          ch_create_submit: "Erstellen",
+          ch_creating: "Wird erstellt...",
+          ch_create_success: "Herausforderung erfolgreich erstellt!",
+          ch_create_error: "Herausforderung konnte nicht erstellt werden.",
+          ch_confirmJoinTitle: "Beitritt zur Herausforderung bestätigen",
+          ch_confirmJoinText:
+            "Sind Sie sicher, dass Sie dieser Herausforderung beitreten möchten?",
+          yes: "Ja",
+          no: "Nein",
+          ch_confirmDeleteTitle: "Löschung der Herausforderung bestätigen",
+          ch_confirmDeleteText:
+            "Sind Sie sicher, dass Sie diese Herausforderung löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+          ch_joinedTitle: "Erfolg!",
+          ch_joinedText:
+            "Sie sind der Herausforderung erfolgreich beigetreten.",
+          ok: "OK",
+          ch_deletedTitle: "Herausforderung gelöscht",
+          ch_deletedText: "Die Herausforderung wurde erfolgreich gelöscht.",
+          ch_errorTitle: "Fehler",
+          ch_errorText:
+            "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+          ch_edit_title: "Herausforderung bearbeiten",
+          ch_type_competition: "Wettbewerb",
+          ch_type_personal: "Persönliches Ziel",
+          ch_save: "Speichern",
+          ch_saving: "Wird gespeichert...",
+          ch_edit_success: "Herausforderung erfolgreich aktualisiert!",
+          ch_edit_success_title: "Erfolg!",
+          ch_edit_error:
+            "Fehler beim Aktualisieren der Herausforderung. Bitte versuchen Sie es erneut.",
         },
       },
       fr: {
@@ -628,7 +803,8 @@ i18n
           reg_top: "INSCRIPTION",
           success: "RÉUSSI",
           or: "ou",
-          code_create_error: "Erreur lors de la création du code de confirmation",
+          code_create_error:
+            "Erreur lors de la création du code de confirmation",
           code_error: "Code de confirmation incorrect",
           check_email: "veuillez vérifier votre e-mail",
           code_send: "le code a été envoyé à ",
@@ -646,7 +822,8 @@ i18n
           password_update_success: "mot de passe mis à jour avec succès",
           to_login: "Retour à la connexion",
           user_not_exeist: "l'utilisateur avec l'e-mail spécifié n'existe pas",
-          reset_password_error: "Erreur lors de la mise à jour du mot de passe. Veuillez réessayer.",
+          reset_password_error:
+            "Erreur lors de la mise à jour du mot de passe. Veuillez réessayer.",
           user_exist: "L'utilisateur avec l'e-mail spécifié existe déjà",
           auth_fail: "Erreur d'authentification. Vérifiez vos données",
 
@@ -672,15 +849,18 @@ i18n
           sleep: "Sommeil",
           H: "H",
           bmi: "IMC",
-          bmi_requires: "Remplissez les informations concernant la taille et le poids",
+          bmi_requires:
+            "Remplissez les informations concernant la taille et le poids",
 
           // --- Переклади для профілю користувача ---
-          p_error_upadate: "Échec de la mise à jour du profil. Veuillez remplir tous les champs.",
+          p_error_upadate:
+            "Échec de la mise à jour du profil. Veuillez remplir tous les champs.",
           p_male: "Homme",
           p_female: "Femme",
           p_other: "Autre",
           p_success_title: "Merci pour l'information!",
-          p_success_subtitle: "Nos conseils seront encore meilleurs maintenant!",
+          p_success_subtitle:
+            "Nos conseils seront encore meilleurs maintenant!",
           p_btn_home: "Accueil",
           p_about_placeholder: "À propos de moi...",
           p_first_name_placeholder: "Prénom",
@@ -700,7 +880,7 @@ i18n
           p_loading_streets: "Chargement des rues...",
           p_btn_save: "Enregistrer",
           p_btn_saving: "Enregistrement...",
-          
+
           // --- Переклади для кастомного календаря (день народження користувача) ---
           p_january: "janvier",
           p_february: "février",
@@ -729,6 +909,58 @@ i18n
           p_france_country: "France",
           p_spain_country: "Espagne",
           p_usa_country: "États-Unis",
+
+          // --- Переклади для соц. сторінки ---
+          ch_all_challenges_title: "Tous les défis",
+          ch_details_link: "Détails",
+          ch_no_challenges_message: "Il n'y a pas encore de défis.",
+          ch_loading: "Chargement...",
+          ch_error_loading: "Échec du chargement des défis.",
+          ch_details_error_loading: "Échec du chargement des détails du défi.",
+          ch_not_found: "Défi introuvable.",
+          ch_join: "Rejoindre",
+          ch_edit: "Modifier",
+          ch_delete: "Supprimer",
+          ch_back: "Retour",
+          ch_start_date: "Date de début",
+          ch_end_date: "Date de fin",
+          ch_type: "Type",
+          ch_type_individual: "Individuel",
+          ch_type_group: "De groupe",
+          ch_creator: "Créateur",
+          ch_participants: "Participants",
+          ch_add_challenge_button: "Ajouter un défi",
+          ch_create_first_link: "Créer le premier défi",
+          ch_create_title: "Créer un nouveau défi",
+          ch_name: "Nom",
+          ch_description: "Description",
+          ch_create_submit: "Créer",
+          ch_creating: "Création...",
+          ch_create_success: "Défi créé avec succès !",
+          ch_create_error: "Échec de la création du défi.",
+          ch_confirmJoinTitle: "Confirmer la participation au défi",
+          ch_confirmJoinText: "Êtes-vous sûr de vouloir rejoindre ce défi ?",
+          yes: "Oui",
+          no: "Non",
+          ch_confirmDeleteTitle: "Confirmer la suppression du défi",
+          ch_confirmDeleteText:
+            "Êtes-vous sûr de vouloir supprimer ce défi ? Cette action est irréversible.",
+          ch_joinedTitle: "Succès !",
+          ch_joinedText: "Vous avez rejoint le défi avec succès.",
+          ok: "OK",
+          ch_deletedTitle: "Défi supprimé",
+          ch_deletedText: "Le défi a été supprimé avec succès.",
+          ch_errorTitle: "Erreur",
+          ch_errorText:
+            "Une erreur est survenue. Veuillez réessayer plus tard.",
+          ch_edit_title: "Modifier le défi",
+          ch_type_competition: "Compétition",
+          ch_type_personal: "Objectif personnel",
+          ch_save: "Sauvegarder",
+          ch_saving: "Sauvegarde...",
+          ch_edit_success: "Défi mis à jour avec succès !",
+          ch_edit_success_title: "Succès !",
+          ch_edit_error: "Échec de la mise à jour du défi. Veuillez réessayer.",
         },
       },
       es: {
@@ -815,18 +1047,22 @@ i18n
           password_new: "nueva contraseña",
 
           // --- Переклади для відновлення паролю ---
-          enter_email_to_restore: "ingresa el correo electrónico para enviar el código",
+          enter_email_to_restore:
+            "ingresa el correo electrónico para enviar el código",
           send_code2: "Enviar código",
           reset_password: "restablecimiento de contraseña",
           password_confirm: "confirmación de contraseña",
           update_password: "Actualizar contraseña",
           password_update_success: "contraseña actualizada con éxito",
           to_login: "Volver al inicio de sesión",
-          user_not_exeist: "el usuario con el correo electrónico especificado no existe",
-          reset_password_error: "Error al actualizar la contraseña. Por favor, inténtalo de nuevo.",
-          user_exist: "El usuario con el correo electrónico especificado ya existe",
+          user_not_exeist:
+            "el usuario con el correo electrónico especificado no existe",
+          reset_password_error:
+            "Error al actualizar la contraseña. Por favor, inténtalo de nuevo.",
+          user_exist:
+            "El usuario con el correo electrónico especificado ya existe",
           auth_fail: "Error de autenticación. Verifica tus datos",
-          
+
           // Переклади для Menu
           dashboard: "Inicio",
           profile: "Perfil",
@@ -852,7 +1088,8 @@ i18n
           bmi_requires: "Complete la información sobre la altura y el peso",
 
           // --- Переклади для профілю користувача ---
-          p_error_upadate: "No se pudo actualizar el perfil. Por favor, complete todos los campos.",
+          p_error_upadate:
+            "No se pudo actualizar el perfil. Por favor, complete todos los campos.",
           p_male: "Hombre",
           p_female: "Mujer",
           p_other: "Otro",
@@ -877,7 +1114,7 @@ i18n
           p_loading_streets: "Cargando calles...",
           p_btn_save: "Guardar",
           p_btn_saving: "Guardando...",
-          
+
           // --- Переклади для кастомного календаря (день народження користувача) ---
           p_january: "enero",
           p_february: "febrero",
@@ -906,6 +1143,60 @@ i18n
           p_france_country: "Francia",
           p_spain_country: "España",
           p_usa_country: "EE.UU.",
+
+          // --- Переклади для соц. сторінки ---
+          ch_all_challenges_title: "Todos los desafíos",
+          ch_details_link: "Detalles",
+          ch_no_challenges_message: "Todavía no hay desafíos.",
+          ch_loading: "Cargando...",
+          ch_error_loading: "No se pudieron cargar los desafíos.",
+          ch_details_error_loading: "Error al cargar los detalles del desafío.",
+          ch_not_found: "Desafío no encontrado.",
+          ch_join: "Unirse",
+          ch_edit: "Editar",
+          ch_delete: "Eliminar",
+          ch_back: "Atrás",
+          ch_start_date: "Fecha de inicio",
+          ch_end_date: "Fecha de finalización",
+          ch_type: "Tipo",
+          ch_type_individual: "Individual",
+          ch_type_group: "Grupo",
+          ch_creator: "Creador",
+          ch_participants: "Participantes",
+          ch_add_challenge_button: "Añadir desafío",
+          ch_create_first_link: "Crear el primer desafío",
+          ch_create_title: "Crear un nuevo desafío",
+          ch_name: "Nombre",
+          ch_description: "Descripción",
+          ch_create_submit: "Crear",
+          ch_creating: "Creando...",
+          ch_create_success: "¡Desafío creado con éxito!",
+          ch_create_error: "No se pudo crear el desafío.",
+          ch_confirmJoinTitle: "Confirmar unión al desafío",
+          ch_confirmJoinText:
+            "¿Estás seguro de que quieres unirte a este desafío?",
+          yes: "Sí",
+          no: "No",
+          ch_confirmDeleteTitle: "Confirmar eliminación del desafío",
+          ch_confirmDeleteText:
+            "¿Estás seguro de que quieres eliminar este desafío? Esta acción no se puede deshacer.",
+          ch_joinedTitle: "¡Éxito!",
+          ch_joinedText: "Te has unido al desafío con éxito.",
+          ok: "OK",
+          ch_deletedTitle: "Desafío eliminado",
+          ch_deletedText: "El desafío ha sido eliminado con éxito.",
+          ch_errorTitle: "Error",
+          ch_errorText:
+            "Ocurrió un error. Por favor, inténtalo de nuevo más tarde.",
+          ch_edit_title: "Editar Desafío",
+          ch_type_competition: "Competición",
+          ch_type_personal: "Meta Personal",
+          ch_save: "Guardar",
+          ch_saving: "Guardando...",
+          ch_edit_success: "¡Desafío actualizado con éxito!",
+          ch_edit_success_title: "¡Éxito!",
+          ch_edit_error:
+            "No se pudo actualizar el desafío. Por favor, inténtelo de nuevo.",
         },
       },
     },

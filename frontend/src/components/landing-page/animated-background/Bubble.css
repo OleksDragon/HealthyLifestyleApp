@@ -3,21 +3,110 @@
     border-radius: 50%;
     filter: blur(8px);
     opacity: 0.6;
-    animation-name: blink;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
 }
 
-/* Анимация мигания */
-@keyframes blink {
-
-    0%,
-    100% {
-        transform: scale(1);
+/* Анимации плавания */
+@keyframes floatBall1 {
+    0% {
+        transform: translate(0, 0);
     }
 
-    50% {
-        transform: scale(0.7);
+    20% {
+        transform: translate(4px, -2px);
+    }
+
+    40% {
+        transform: translate(-3px, 3px);
+    }
+
+    60% {
+        transform: translate(5px, 5px);
+    }
+
+    80% {
+        transform: translate(-2px, -4px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes floatBall2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-5px, 3px);
+    }
+
+    40% {
+        transform: translate(3px, -2px);
+    }
+
+    60% {
+        transform: translate(-4px, 4px);
+    }
+
+    80% {
+        transform: translate(2px, -5px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes floatBall3 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(6px, 2px);
+    }
+
+    40% {
+        transform: translate(-5px, -3px);
+    }
+
+    60% {
+        transform: translate(3px, 5px);
+    }
+
+    80% {
+        transform: translate(-3px, -2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes floatBall4 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-4px, -3px);
+    }
+
+    40% {
+        transform: translate(2px, 4px);
+    }
+
+    60% {
+        transform: translate(-6px, 3px);
+    }
+
+    80% {
+        transform: translate(5px, -2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
     }
 }
 
@@ -28,8 +117,7 @@
     width: 400px;
     height: 400px;
     background-color: rgba(6, 97, 204, 0.7);
-    animation-duration: 5s;
-    animation-delay: 1s;
+    animation: floatBall1 3s ease-in-out infinite;
 }
 
 .bubble-2 {
@@ -38,8 +126,7 @@
     width: 200px;
     height: 200px;
     background-color: rgba(0, 117, 255, 0.9);
-    animation-duration: 2s;
-    animation-delay: 3s;
+    animation: floatBall2 2.5s ease-in-out infinite;
 }
 
 .bubble-3 {
@@ -48,8 +135,7 @@
     width: 270px;
     height: 270px;
     background-color: rgba(206, 255, 70, 0.7);
-    animation-duration: 8s;
-    animation-delay: 2s;
+    animation: floatBall3 4s ease-in-out infinite;
 }
 
 .bubble-4 {
@@ -58,8 +144,7 @@
     width: 150px;
     height: 150px;
     background-color: rgba(206, 255, 70, 0.7);
-    animation-duration: 6s;
-    animation-delay: 1s;
+    animation: floatBall4 3.5s ease-in-out infinite;
 }
 
 /* Контейнер для пузырьков */

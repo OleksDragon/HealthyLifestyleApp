@@ -1,4 +1,4 @@
-.card {
+.cs-card {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
@@ -8,17 +8,15 @@
     height: 450px;
 }
 
-/* Размеры для закрытых карточек */
-.card-narrow {
+.cs-card-narrow {
     width: 152px;
 }
 
-.card-wide {
+.cs-card-wide {
     width: 250px;
 }
 
-/* Стили для изображений */
-.card img {
+.cs-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -28,28 +26,25 @@
     left: 0;
 }
 
-/* Стили для открытой карточки */
-.card-open {
+.cs-card-open {
     width: 400px;
     transform: scaleX(1);
     transform-origin: left;
 }
 
-/* Стили для закрытой карточки */
-.card-closed {
+.cs-card-closed {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-/* Управление видимостью изображений */
-.card .card-open {
+.cs-card .cs-card-open {
     display: none;
 }
 
-.card.card-open .card-open {
+.cs-card.cs-card-open .cs-card-open {
     display: block;
 }
 
-.card.card-open .card-closed {
+.cs-card.cs-card-open .cs-card-closed {
     display: none;
 }

@@ -51,12 +51,12 @@ namespace HealthyLifestyle.Infrastructure.Data
 
             #region Створення користувачів та призначення ролей/деталей
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, "admin@example.com", "AdminPassword123!", RoleNames.Admin,
-    fullName: "Адмін Користувач",
-    biography: "Головний адміністратор платформи.",
-    phone: "+380501234567",
-    country: "Україна",
-    city: "Київ",
-    street: "вул. Хрещатик 1");
+                fullName: "Адмін Користувач",
+                biography: "Головний адміністратор платформи.",
+                phone: "+380501234567",
+                country: "Україна",
+                city: "Київ",
+                street: "вул. Хрещатик 1");
 
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, "user@example.com", "UserPassword123!", RoleNames.User,
                 fullName: "Звичайний Користувач",
@@ -95,91 +95,92 @@ namespace HealthyLifestyle.Infrastructure.Data
         /// Створює користувача Identity та призначає йому роль.
         /// </summary>
         private static async Task CreateUserWithRoleAndDetailsAsync(
-    UserManager<User> userManager,
-    RoleManager<IdentityRole<Guid>> roleManager,
-    string email,
-    string password,
-    string roleName,
-    string? fullName = null,
-    string? biography = null,
-    string? phone = null,
-    string? country = null,
-    string? city = null,
-    string? street = null)
-{
-    ArgumentNullException.ThrowIfNull(userManager);
-    ArgumentNullException.ThrowIfNull(roleManager);
-    ArgumentNullException.ThrowIfNull(email);
-    ArgumentNullException.ThrowIfNull(password);
-    ArgumentNullException.ThrowIfNull(roleName);
-
-    if (await userManager.FindByEmailAsync(email) == null)
-    {
-        // Generate random data for new fields if not provided
-        var random = new Random();
-        var user = new User
+            UserManager<User> userManager,
+            RoleManager<IdentityRole<Guid>> roleManager,
+            string email,
+            string password,
+            string roleName,
+            string? fullName = null,
+            string? biography = null,
+            string? phone = null,
+            string? country = null,
+            string? city = null,
+            string? street = null)
         {
-            UserName = email,
-            Email = email,
-            EmailConfirmed = true,
-            FullName = fullName ?? string.Empty,
-            Bio = biography,
-            Phone = phone ?? GenerateRandomPhone(random),
-            Country = country ?? GenerateRandomCountry(random),
-            City = city ?? GenerateRandomCity(random),
-            Street = street ?? GenerateRandomStreet(random),
-            CreatedAt = DateTime.UtcNow
-        };
+            ArgumentNullException.ThrowIfNull(userManager);
+            ArgumentNullException.ThrowIfNull(roleManager);
+            ArgumentNullException.ThrowIfNull(email);
+            ArgumentNullException.ThrowIfNull(password);
+            ArgumentNullException.ThrowIfNull(roleName);
 
-        var result = await userManager.CreateAsync(user, password);
-        if (result.Succeeded && await roleManager.RoleExistsAsync(roleName))
-        {
-            await userManager.AddToRoleAsync(user, roleName);
+            if (await userManager.FindByEmailAsync(email) == null)
+            {
+                // Generate random data for new fields if not provided
+                var random = new Random();
+                var user = new User
+                {
+                    UserName = email,
+                    Email = email,
+                    EmailConfirmed = true,
+                    FullName = fullName ?? string.Empty,
+                    Bio = biography,
+                    Phone = phone ?? GenerateRandomPhone(random),
+                    Country = country ?? GenerateRandomCountry(random),
+                    City = city ?? GenerateRandomCity(random),
+                    Street = street ?? GenerateRandomStreet(random),
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                var result = await userManager.CreateAsync(user, password);
+                if (result.Succeeded && await roleManager.RoleExistsAsync(roleName))
+                {
+                    await userManager.AddToRoleAsync(user, roleName);
+                }
+                else if (!result.Succeeded)
+                {
+                    Console.WriteLine(
+                        $"Помилка створення користувача {email}: " +
+                        $"{string.Join(", ", result.Errors.Select(e => e.Description))}");
+                }
+            }
+
         }
-        else if (!result.Succeeded)
+
+        // Helper methods for generating random data
+        private static string GenerateRandomPhone(Random random)
         {
-            Console.WriteLine(
-                $"Помилка створення користувача {email}: " +
-                $"{string.Join(", ", result.Errors.Select(e => e.Description))}");
+            return $"+380{random.Next(10, 100)}{random.Next(100, 1000)}{random.Next(1000, 10000)}";
         }
-    }
-}
 
-// Helper methods for generating random data
-private static string GenerateRandomPhone(Random random)
-{
-    return $"+380{random.Next(10, 100)}{random.Next(100, 1000)}{random.Next(1000, 10000)}";
-}
+        private static string GenerateRandomCountry(Random random)
+        {
+            string[] countries = { "Україна", "Польща", "Німеччина", "США", "Велика Британія", "Канада", "Франція", "Італія" };
+            return countries[random.Next(countries.Length)];
+        }
 
-private static string GenerateRandomCountry(Random random)
-{
-    string[] countries = { "Україна", "Польща", "Німеччина", "США", "Велика Британія", "Канада", "Франція", "Італія" };
-    return countries[random.Next(countries.Length)];
-}
-
-private static string GenerateRandomCity(Random random)
-{
-    string[] cities = { 
-        "Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя", "Варшава", 
+        private static string GenerateRandomCity(Random random)
+        {
+            string[] cities = {
+        "Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя", "Варшава",
         "Берлін", "Лондон", "Нью-Йорк", "Торонто", "Париж", "Рим", "Мадрид"
     };
-    return cities[random.Next(cities.Length)];
-}
+            return cities[random.Next(cities.Length)];
+        }
 
-private static string GenerateRandomStreet(Random random)
-{
-    string[] streetNames = {
-        "вул. Центральна", "вул. Героїв України", "вул. Шевченка", "вул. Франка", 
+        private static string GenerateRandomStreet(Random random)
+        {
+            string[] streetNames = {
+        "вул. Центральна", "вул. Героїв України", "вул. Шевченка", "вул. Франка",
         "вул. Лесі Українки", "вул. Бандери", "вул. Незалежності", "вул. Свободи",
         "вул. Мазепи", "вул. Сахарова", "вул. Грушевського", "вул. Липова",
         "вул. Дубова", "вул. Яблунева", "вул. Вишнева"
     };
-    
-    string[] streetTypes = { "вулиця", "проспект", "бульвар", "провулок" };
-    string[] prefixes = { "вул. ", "пр. ", "бульв. ", "пров. " };
-    
-    return $"{prefixes[random.Next(prefixes.Length)]}{streetNames[random.Next(streetNames.Length)]} {random.Next(1, 200)}";
-}
+
+            string[] streetTypes = { "вулиця", "проспект", "бульвар", "провулок" };
+            string[] prefixes = { "вул. ", "пр. ", "бульв. ", "пров. " };
+
+            return $"{prefixes[random.Next(prefixes.Length)]}{streetNames[random.Next(streetNames.Length)]} {random.Next(1, 200)}";
+        }
         #region Створення професіоналів
         /// <summary>
         /// Створює користувача-психолога, його кваліфікацію та деталі, якщо вони ще не існують.
@@ -616,6 +617,194 @@ private static string GenerateRandomStreet(Random random)
                     context.DoctorDetails.Add(details);
                 }
             }
+        }
+        #endregion
+
+        #region Створення челенджи
+        /// <summary>
+        /// Ініціалізує базу даних стандартними соціальними челенджами та їхніми учасниками.
+        /// </summary>
+        public static async Task SeedChallengesAsync(ApplicationDbContext context, UserManager<User> userManager)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(userManager);
+
+            Console.WriteLine("SeedChallengesAsync: Початок методу.");
+
+            // Перевіряємо, чи є вже челенджі, щоб уникнути дублювання
+            if (!await context.SocialChallenges.AnyAsync())
+            {
+                Console.WriteLine("SeedChallengesAsync: Таблиця SocialChallenges порожня, починаємо заповнення.");
+
+                // Отримуємо користувачів за їхніми email-адресами (як визначено в SeedDefaultUserAndRolesAsync)
+                var regularUser = await userManager.FindByEmailAsync("user@example.com");
+                var psychologist = await userManager.FindByEmailAsync("psychologist@example.com");
+                var dietitian = await userManager.FindByEmailAsync("dietitian@example.com");
+                var trainer = await userManager.FindByEmailAsync("trainer@example.com");
+                var trainer1 = await userManager.FindByEmailAsync("trainer1@example.com");
+                var trainer2 = await userManager.FindByEmailAsync("trainer2@example.com");
+                var trainer3 = await userManager.FindByEmailAsync("trainer3@example.com");
+
+                // Перевіряємо, чи всі необхідні користувачі існують
+                if (regularUser == null || psychologist == null || dietitian == null ||
+                    trainer == null || trainer1 == null || trainer2 == null || trainer3 == null)
+                {
+                    throw new InvalidOperationException("Необхідні користувачі відсутні. Спочатку виконайте SeedDefaultUserAndRolesAsync.");
+                }
+
+                // Визначаємо 6 челенджів
+                var challenges = new List<SocialChallenge>
+        {
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Марафон \"Здорові кроки\"",
+                Description = "Мета — проходити 10,000 кроків щодня.",
+                StartDate = new DateTime(2025, 9, 20),
+                EndDate = new DateTime(2025, 10, 20),
+                CreatorId = regularUser.Id,
+                Type = ChallengeType.Competition
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "30-денний біговий челендж",
+                Description = "Щоденний біг для покращення витривалості.",
+                StartDate = new DateTime(2025, 9, 25),
+                EndDate = new DateTime(2025, 10, 25),
+                CreatorId = trainer.Id,
+                Type = ChallengeType.Competition
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Йога для початківців",
+                Description = "20 хвилин йоги щодня для гнучкості.",
+                StartDate = new DateTime(2025, 9, 15),
+                EndDate = new DateTime(2025, 10, 15),
+                CreatorId = psychologist.Id,
+                Type = ChallengeType.PersonalGoal
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Плавання: від 0 до 1 км",
+                Description = "Навчіться плавати на довгі дистанції.",
+                StartDate = new DateTime(2025, 10, 1),
+                EndDate = new DateTime(2025, 11, 1),
+                CreatorId = trainer1.Id,
+                Type = ChallengeType.Competition
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Челендж \"Без цукру\"",
+                Description = "Повна відмова від цукру на 30 днів.",
+                StartDate = new DateTime(2025, 10, 10),
+                EndDate = new DateTime(2025, 11, 10),
+                CreatorId = dietitian.Id,
+                Type = ChallengeType.PersonalGoal
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Силові тренування",
+                Description = "Щотижневі тренування для набору сили.",
+                StartDate = new DateTime(2025, 10, 20),
+                EndDate = new DateTime(2025, 11, 20),
+                CreatorId = trainer2.Id,
+                Type = ChallengeType.Competition
+            }
+        };
+
+                // Додаємо челенджі до бази даних
+                await context.SocialChallenges.AddRangeAsync(challenges);
+
+                // Визначаємо участі користувачів у челенджах
+                var participations = new List<UserChallengeParticipation>
+        {
+            // Учасники в "Марафоні 'Здорові кроки'"
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = regularUser.Id,
+                ChallengeId = challenges[0].Id,
+                Progress = 15000,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = psychologist.Id,
+                ChallengeId = challenges[0].Id,
+                Progress = 12000,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = trainer.Id,
+                ChallengeId = challenges[0].Id,
+                Progress = 25000,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            // Учасник у "Йога для початківців"
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = regularUser.Id,
+                ChallengeId = challenges[2].Id,
+                Progress = 10,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            // Учасники у "30-денному біговому челенджі"
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = regularUser.Id,
+                ChallengeId = challenges[1].Id,
+                Progress = 5.0,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = trainer1.Id,
+                ChallengeId = challenges[1].Id,
+                Progress = 7.5,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = trainer2.Id,
+                ChallengeId = challenges[1].Id,
+                Progress = 10.0,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            }
+        };
+
+                // Додаємо участі до бази даних
+                await context.UserChallengeParticipations.AddRangeAsync(participations);
+
+                // Зберігаємо всі зміни
+                await context.SaveChangesAsync();
+
+                Console.WriteLine("SeedChallengesAsync: Дані успішно додано та збережено.");
+            }
+            else
+            {
+                Console.WriteLine("SeedChallengesAsync: Таблиця SocialChallenges вже містить дані. Заповнення пропущено.");
+            }
+
+            Console.WriteLine("SeedChallengesAsync: Кінець методу.");
         }
         #endregion
     }

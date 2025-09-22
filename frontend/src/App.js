@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,6 +14,10 @@ import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Menu from "./components/elements/Menu";
 import SpecialistsPage from "./components/pages/SpecialistsPage";
+import ChallengesPage from "./components/pages/social/ChallengesPage";
+import ChallengeDetailsPage from "./components/pages/social/ChallengeDetailsPage";
+import CreateChallengePage from "./components/pages/social/CreateChallengePage";
+import EditChallengePage from "./components/pages/social/EditChallengePage";
 
 import HealthPageMenu from "./components/elements/Health/HealthPageMenu/HealthPageMenu";
 
@@ -38,7 +42,11 @@ function App() {
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("helth-token");
-  return token && token.trim() !== "" ? children : <Navigate to="/login" replace />;
+  return token && token.trim() !== "" ? (
+    children
+  ) : (
+    <Navigate to="/login" replace />
+  );
 }
 
 function AppRoutes() {
@@ -48,19 +56,148 @@ function AppRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/restore" element={<RestorePasswordPage />} />
-      <Route path="/dashboard" element={<PrivateRoute><Menu><DashboardPage/></Menu></PrivateRoute>} />
-      <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
-      <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <DashboardPage />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/specialists"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <SpecialistsPage />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <ProfilePage />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/social"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <ChallengesPage />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/social/:challengeId"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <ChallengeDetailsPage />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/social/create-challenge"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <CreateChallengePage />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/social/:id/edit"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <EditChallengePage />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/health"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <HealthPageMenu />
+            </Menu>
+          </PrivateRoute>
+        }
+      />
 
-      <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /></Menu></PrivateRoute>} />
+      <Route
+        path="/health/mental"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <HealthPageMenu>
+                <MentalHealthPage />
+              </HealthPageMenu>
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/health/mental/diary"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <HealthPageMenu>
+                <EmotionDiaryPage />
+              </HealthPageMenu>
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/health/mental/articles"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <HealthPageMenu>
+                <ArticlesPage />
+              </HealthPageMenu>
+            </Menu>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/health/mental/articles/:articleId"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <HealthPageMenu>
+                <ArticleDetailPage />
+              </HealthPageMenu>
+            </Menu>
+          </PrivateRoute>
+        }
+      />
 
-      <Route path="/health/mental" element={<PrivateRoute><Menu><HealthPageMenu><MentalHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
-      <Route path="/health/mental/diary" element={<PrivateRoute><Menu><HealthPageMenu><EmotionDiaryPage /></HealthPageMenu></Menu></PrivateRoute>} />
-      <Route path="/health/mental/articles" element={<PrivateRoute><Menu><HealthPageMenu><ArticlesPage /></HealthPageMenu></Menu></PrivateRoute>} />
-      <Route path="/health/mental/articles/:articleId" element={<PrivateRoute><Menu><HealthPageMenu><ArticleDetailPage /></HealthPageMenu></Menu></PrivateRoute> } />
-
-      <Route path="/health/gender" element={<PrivateRoute><Menu><HealthPageMenu><GenderHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
-
+      <Route
+        path="/health/gender"
+        element={
+          <PrivateRoute>
+            <Menu>
+              <HealthPageMenu>
+                <GenderHealthPage />
+              </HealthPageMenu>
+            </Menu>
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }

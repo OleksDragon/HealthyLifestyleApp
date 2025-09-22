@@ -5,11 +5,11 @@ const Card = ({ id, closedImage, openImage, isWide, isOpen, onClick }) => {
 
   return (
     <div 
-      className={`card ${isWide ? 'card-wide' : 'card-narrow'} ${isOpen ? 'card-open' : ''}`}
+      className={`cs-card ${isWide ? 'cs-card-wide' : 'cs-card-narrow'} ${isOpen ? 'cs-card-open' : ''}`}
       onClick={() => onClick(id)}
     >
-      <img src={closedImage} alt="Закрытая карточка" className="card-closed" />
-      <img src={openImage} alt="Открытая карточка" className="card-open" />
+      <img src={closedImage} alt="Закрытая карточка" className="cs-card-closed" />
+      <img src={openImage} alt="Открытая карточка" className="cs-card-open" />
           
     </div>
   );

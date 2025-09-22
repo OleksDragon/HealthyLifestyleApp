@@ -71,7 +71,7 @@ namespace HealthyLifestyle.Api.Controllers.Challenge
         [ProducesResponseType(400)]
         [ProducesResponseType(401)] // Unauthorized
         [ProducesResponseType(403)] // Forbidden
-        [Authorize(Roles = "Admin")] // <-- Тільки для користувачів з роллю "Admin"
+        [Authorize] // <-- Тільки для зареєстрованих користувачів
         public async Task<IActionResult> CreateChallenge([FromBody] ChallengeCreateDto сhallengeCreateDto)
         {
             if (!ModelState.IsValid)

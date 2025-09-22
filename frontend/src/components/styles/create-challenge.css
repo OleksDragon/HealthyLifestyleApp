@@ -1,0 +1,134 @@
+.create-challenge-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    font-family: "Roboto", sans-serif;
+}
+
+/* Контейнер для скролу */
+.scrollable-form-container {
+    max-height: 600px;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.ch-create-title {
+    text-align: center;
+    color: #0066C3;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.challenge-form .form-group {
+    margin-bottom: 20px;
+}
+
+.challenge-form label {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #0066C3;
+}
+
+.challenge-form input[type="text"],
+.challenge-form input[type="date"],
+.challenge-form textarea,
+.challenge-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(0, 102, 195, 0.4);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(3px);
+    transition: box-shadow 0.2s ease, border 0.2s ease;
+}
+
+.challenge-form input:focus,
+.challenge-form textarea:focus,
+.challenge-form select:focus {
+    border-color: #0066C3;
+    box-shadow: 0 0 6px rgba(0, 102, 195, 0.3);
+    outline: none;
+}
+
+.challenge-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.challenge-button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.ch-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #0066C3;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ch-button:hover {
+    background-color: #004a8f;
+    transform: scale(1.02);
+}
+
+.ch--button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.success-message,
+.error-message {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.success-message {
+    color: #28a745;
+}
+
+.error-message {
+    color: #dc3545;
+}
+
+/* --- Стилі для скролбара --- */
+.scrollable-form-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scrollable-form-container::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 10px;
+    margin: 5px 0;
+    box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.scrollable-form-container::-webkit-scrollbar-thumb {
+    background: #0661CC;
+    border-radius: 10px;
+}
+
+.scrollable-form-container::-webkit-scrollbar-thumb:hover {
+    background: #0661CC;
+}

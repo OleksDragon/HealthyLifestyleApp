@@ -1,5 +1,5 @@
-.content-section {
-    padding: 20px 20px;
+.cs-content-section {
+    padding: 20px;
     text-align: center;
     color: white;
     display: flex;
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.cards-container {
+.cs-cards-container {
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -18,28 +18,27 @@
     padding-bottom: 30px;
 }
 
-/* Стили для полосы прокрутки в Chrome, Safari, Edge */
-.cards-container::-webkit-scrollbar {
+/* Стили для полосы прокрутки */
+.cs-cards-container::-webkit-scrollbar {
     height: 12px;
 }
 
-.cards-container::-webkit-scrollbar-track {
+.cs-cards-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.cards-container::-webkit-scrollbar-thumb {
+.cs-cards-container::-webkit-scrollbar-thumb {
     background-color: #0465E0;
     border-radius: 10px;
     border: 2px solid transparent;
 }
 
-/* Стили для полосы прокрутки в Firefox */
-.cards-container {
+.cs-cards-container {
     scrollbar-width: thin;
     scrollbar-color: #0465E0 transparent;
 }
 
-.bottom-block {
+.cs-bottom-block {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,24 +48,24 @@
     border-radius: 20px;
 }
 
-.bottom-text {
+.cs-bottom-text {
     text-align: left;
 }
 
-.bottom-text p:first-child {
+.cs-bottom-text p:first-child {
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 10px;
     line-height: 1.2;
 }
 
-.bottom-subtext {
+.cs-bottom-subtext {
     font-size: 20px;
     line-height: 1.5;
     color: #c0c0c0;
 }
 
-.bottom-cta {
+.cs-bottom-cta {
     background-color: #D6FF00;
     color: #1d3135;
     padding: 15px 30px;
@@ -79,38 +78,37 @@
 
 /* Tablet Styles */
 @media (max-width: 1024px) {
-    .card-narrow {
+    .cs-card-narrow {
         width: 120px;
     }
 
-    .card-wide {
+    .cs-card-wide {
         width: 200px;
     }
 
-    .card-open {
+    .cs-card-open {
         width: 350px;
     }
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-    .cards-container {
+    .cs-cards-container {
         gap: 20px;
     }
 
-    .card-narrow {
+    .cs-card-narrow {
         width: 100px;
         height: 400px;
     }
 
-    .card-wide {
+    .cs-card-wide {
         width: 180px;
         height: 400px;
     }
 
-    .card-open {
+    .cs-card-open {
         width: 300px;
         height: 400px;
     }
-
 }

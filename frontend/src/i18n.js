@@ -410,7 +410,8 @@ i18n
   unknown_specialist: "Невідомий спеціаліст",
   top_5: "ТОП - 5",
   subscribe: "Підписатись",
-  no_specialists_found: "Спеціалістів не знайдено"
+  no_specialists_found: "Спеціалістів не знайдено",
+  recomend: "Рекомендуємо!"
         },
       },
       de: {

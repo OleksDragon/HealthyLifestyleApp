@@ -46,7 +46,7 @@ export const specialistsData = [
     IsTopRated: true,
     ProfessionalRoleType: {
       Id: "29ff8ff1-0384-4ecd-9c80-a5f93c7e6767",
-      Name: "Psychologist",
+      Name: "Doctor",
       DefaultHourlyRate: 80
     },
     HourlyRate: 80,
@@ -79,6 +79,25 @@ export const specialistsData = [
     Id: "fd5fb36d-486f-4ea5-851e-617ab861cbe7",
     UserId: "5181f884-cdf0-4f63-5477-08ddebc49a73",
     FullName: "Вікторія Лисенко",
+    ProfilePictureUrl: "https://example.com/trainer.jpg",
+    CardPictureUrl: "../../../../assets/specialists-img/specialists-img/т4 1.png",
+    IsTopRated: true,
+    ProfessionalRoleType: {
+      Id: "c7d9fb29-0522-49ad-b1de-57a02c200e74",
+      Name: "Trainer",
+      DefaultHourlyRate: 60
+    },
+    HourlyRate: 60,
+    Description: "Сертифікований тренер із силових тренувань.",
+    CertificatesUrl: "https://example.com/trainer-certs.pdf",
+    QualificationStatus: "Approved",
+    ApplicationDate: "2025-09-04T15:06:20.1277225",
+    ApprovalDate: "2025-09-04T15:06:20.1277227"
+  },
+  {
+    Id: "fd5fb36d-486f-4ea5-851e-617ab861cbe6",
+    UserId: "5181f884-cdf0-4f63-5477-08ddebc49a73",
+    FullName: "Aндрій Кач",
     ProfilePictureUrl: "https://example.com/trainer.jpg",
     CardPictureUrl: "../../../../assets/specialists-img/specialists-img/т4 1.png",
     IsTopRated: true,

@@ -11,7 +11,8 @@ import { DietitianIcon } from "../elements/Specialists/SpecialistsIcons/Dietitia
 import { specialistsData } from "./SpecialistPages/LocalData/SpecialistsData"; // Import local data
 import SpecCard from "../../components/elements/Specialists/SpecialistCard/SpecCard";
 
-
+import { FrameDefault } from "../elements/Specialists/ChooseOfSpecialist/FrameDefault";
+import { PropertyDefaultWrapper } from "../elements/Specialists/ChooseOfSpecialist/PropertyDefaultWrapper";
 
 // Remove icon SVG
 const RemoveIcon = () => (
@@ -240,16 +241,23 @@ const SpecialistsPage = () => {
       </div>
 
       {/* Specialists List */}
-      <div className="specialists-list">
-        {console.log(specialistsLocal)}
+      <div className="specialists-list scroll-data">
         {specialistsLocal.length === 0 ? (
           <p>{t("no_specialists_found")}</p>
         ) : (
-          specialistsLocal.map((spec) => (
-            <SpecCard key={spec.Id} specialist={spec} />
+          specialistsLocal.map((spec, i) => (
+            <SpecCard key={spec.Id} specialist={spec} index={i} />
           ))
         )}
       </div>
+      <div className="join-section">
+        <h1 className="text-wrapper">Приєднуйся до нас в команду!</h1>
+            
+        <div className="property-default-wrapper">
+          <span>Стати фахівцем</span>
+        </div>
+      </div>
+
     </div>
   );
 };

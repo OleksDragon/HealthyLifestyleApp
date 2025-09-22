@@ -11,10 +11,16 @@
   display: grid;
   gap: 30px;
   width: 100%;
+  padding: 20px 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center; /* центрування карток, якщо менше 3 */
   justify-items: center; /* ← центрує по горизонталі */
   align-items: center;   /* ← центрує по вертикалі */
+
+   position: relative;
+  overflow-y: auto;   /* включає вертикальний скролл */
+  max-height: 70vh;  /* 🔑 задай висоту (або max-height) */
+  width: 95%;
 }
 .filter-container {
   width: 90%;
@@ -122,4 +128,108 @@
 
 .remove-icon:hover svg {
   stroke: #ff0000; /* Change color on hover for feedback */
+}
+
+.scroll-data::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll-data::-webkit-scrollbar-track {
+  background: #FFF;
+  border-radius: 10px;
+  margin: 5px 0;
+  box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.scroll-data::-webkit-scrollbar-thumb {
+  background: #0661CC;
+  border-radius: 10px;
+}
+
+.scroll-data::-webkit-scrollbar-thumb:hover {   
+  background: #044a99;
+}
+
+.label {
+  height: 82px;
+  width: 1012px;
+}
+
+.label .text-wrapper {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 70px;
+  font-weight: 700;
+  height: 82px;
+  justify-content: center;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+.frame .frame-382-default {
+  left: unset !important;
+  margin-left: 174px !important;
+  margin-top: 140px !important;
+  position: unset !important;
+  top: unset !important;
+}
+
+.frame .group {
+  display: flex;
+  margin-left: 298px;
+  margin-top: 70px;
+  width: 764px;
+}
+
+.frame .component-108 {
+  left: unset !important;
+  top: unset !important;
+}
+
+.frame .component-108-instance {
+  left: 39.92% !important;
+  width: 20.29% !important;
+}.frame-default {
+ font-size: 20px;
+}
+
+.text-wrapper {
+  font-size: 50px;
+}
+
+.join-section {
+  width: 100%;
+  max-width: 1208px; /* твій контейнер */
+  margin: 0 auto;    /* центрування */
+  text-align: center;
+}
+
+.text-wrapper {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.property-default-wrapper {
+  display: inline-block; /* щоб розмір підганявся під контент */
+  padding: 14px 40px;    /* відступи для кнопки */
+  background: #ffffff;   /* фон білий */
+  color: #116fcf;        /* текст */
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 40px;
+  border: 2px solid #116fcf;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.property-default-wrapper:hover {
+  background: #116fcf;
+  color: #ffffff;
 }

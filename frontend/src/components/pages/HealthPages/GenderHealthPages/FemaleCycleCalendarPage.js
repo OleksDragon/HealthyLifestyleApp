@@ -12,7 +12,6 @@ import mascot from "../../../img/mascot_women_health.png";
 function FemaleCycleCalendarPage() {
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
-    const location = useLocation();
     const { state } = useLocation();
 
     const today = new Date();
@@ -223,7 +222,7 @@ function FemaleCycleCalendarPage() {
             <div className="navigation">
                 <div className="to-general-cycle">
                     <img src={arrowLeft} alt="Arrow left"/>
-                    <button onClick={() => navigate(location.pathname.substring(0, location.pathname.lastIndexOf('/')))}>{t("go_back")}</button>
+                    <button onClick={() => navigate(-1)}>{t("go_back")}</button>
                 </div>
                 <div className="full-calendar" onClick={() => setFullCalendar(!fullCalendar)}>
                     <img src={calendar} alt="Calendar"/>

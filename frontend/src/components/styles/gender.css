@@ -44,9 +44,7 @@
 }
 
 .female-health-info {
-    top: 0;
     z-index: 3;
-    position: sticky;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,7 +54,7 @@
     padding-left: 50px;
 }
 
-.female-health-info .title {
+.title {
     font-family: var(--font-family);
     font-size: 27px;
     font-weight: 700;
@@ -65,7 +63,7 @@
     margin-right: 20px;
 }
 
-.female-health-info .sub-title {
+.sub-title {
     font-family: var(--font-family);
     font-size: 14px;
     text-align: left;
@@ -84,6 +82,10 @@
 }
 
 .female-health-options button {
+    font-size: 14px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    letter-spacing: 0.3px;
     background: rgba(255, 255, 255, 0.2);
     border: none;
     backdrop-filter: blur(10px);
@@ -137,8 +139,7 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: transform 0.1s ease;
-    text-align: center;
-    padding: 14px;
+    padding: 14px 30px;
 }
 
 .useful-info > div > h3 {
@@ -195,6 +196,7 @@
     height: 50px;
     border: none;
     border-radius: 25px;
+    font-weight: 500;
 }
 
 .calendar-cycle > h3 {
@@ -330,3 +332,214 @@
     font-weight: 500;
 }
 
+.woman-health-info {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 100px;
+    background: var(--lim);
+    border-radius: 30px;
+    padding-left: 50px;
+    align-items: center;
+}
+
+.woman-health-info .sub-title {
+    text-align: start;
+}
+
+.woman-health-info .title {
+    text-align: center;
+}
+
+.gynecology-content {
+    margin: 30px;
+}
+
+.female-health-options-gyn {
+    width: calc(100% - 60px) !important;
+    gap: 50px !important;
+    margin-bottom: 20px;
+}
+
+.articles > h3 {
+    font-family: var(--font-family);
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.gynecology-content > .useful-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gynecology-content > .useful-info > div {
+    width: auto !important;
+}
+
+.gynecology-content > .useful-info > div:first-child {
+    padding-top: 50px !important;
+}
+
+.img-center-top {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 20px auto;
+}
+
+.read-article {
+    height: 36px;
+    border-radius: 18px;
+    width: 120px;
+    background: white;
+    color: #0066C3;
+    font-family: var(--font-family);
+    font-weight: 500;
+    display: block;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.review-tips-container {
+    margin-top: 20px;
+}
+
+.review-tips-container > h3 {
+    font-family: var(--font-family);
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.review-tip {
+    margin: 10px 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+
+.tip-text {
+    height: 60px;
+    border-radius: 30px;
+    color: white;
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: var(--font-family);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.tip-icon {
+    width: 100px;
+    height: auto;
+    margin: 0px auto;
+}
+
+.review-tips-container .review-tip:last-child {
+    margin-top: -3px !important;
+}
+
+.tests-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 20px;
+}
+
+.radio-wrapper {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-left: 50px;
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+
+.radio-wrapper input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+    background-color: white;
+}
+
+.radio-wrapper:hover .custom-radio {
+    border-color: #333;
+}
+
+.radio-wrapper input[type="checkbox"]:checked + .custom-radio {
+    background: #0066C3;
+    border-color: #0066C3;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+.tests-options {
+    display: flex;
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    height: 360px;
+}
+
+.tests-options > button {
+    width: 180px;
+    height: 44px;
+    border-radius: 24px;
+    background-color: white;
+    color: #0066C3;
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+
+.tests-tips > div {
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 26px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+.examination-info-header {
+    width: 100%;
+    height: 54px;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 40px;
+}
+
+.examination-info-header > h3 {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--font-family);
+    margin-left: 50px;
+}
+
+.examination-info-header > div {
+    width: 100%;
+}

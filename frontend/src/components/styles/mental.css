@@ -80,3 +80,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.contact-to-specialist-btn:hover {
+    background: var(--lim);
+}

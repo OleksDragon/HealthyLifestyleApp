@@ -351,10 +351,12 @@
 /* Контейнер навігаційних кнопок */
 .aew-wizard-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-top: 30px;
-  gap: 750px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* Базовий стиль навігаційних кнопок */
@@ -385,8 +387,8 @@
 
 .aew-wizard-nav .aew-nav-btn:first-child:hover {
   background: rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
   border: 2px solid rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Стиль первинної (основної) навігаційної кнопки */

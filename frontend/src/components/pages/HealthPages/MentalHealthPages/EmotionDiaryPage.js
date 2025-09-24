@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import DateCarousel from "../../../../components/elements/Health/MentalHealth/DateCarousel/DateCarousel";
 import AddEmotionWizard from "../../../../components/elements/Health/MentalHealth/AddEmotionWizard/AddEmotionWizard";
 import factor_info_icon from "../../../../assets/health-icons/factor_info_icon.svg";
@@ -9,7 +10,7 @@ import sex from "../../../../assets/health-icons/sex.svg";
 import meditation from "../../../../assets/health-icons/meditation.svg";
 import antidepressants from "../../../../assets/health-icons/antidepressants.svg";
 import other from "../../../../assets/health-icons/other.svg";
-import close_icon from "../../../../assets/health-icons/close_icon.svg"; // Додайте іконку закриття
+import close_icon from "../../../../assets/health-icons/close_icon.svg";
 import "../../../styles/emotionDiary.css";
 
 const EmotionDiaryPage = () => {
@@ -113,6 +114,7 @@ const EmotionDiaryPage = () => {
   // Список всіх доступних факторів
   const allFactors = ["Sports", "Coffee", "Alcohol", "Sex", "Meditation", "Antidepressants", "Other"];
 
+  const navigate = useNavigate();
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today.getDate());
   const [records, setRecords] = useState([]);
@@ -203,46 +205,71 @@ const EmotionDiaryPage = () => {
     } catch (error) {
       console.error("Помилка при завантаженні записів:", error);
       setError("Не вдалося завантажити дані");
+      navigate('/login');
     } finally {
       setLoading(false);
     }
-  }, [userId, token]);
+  }, [userId, token, navigate]);
 
   useEffect(() => {
     fetchRecords();
   }, [userId, token, fetchRecords]);
 
   const handleSaveEmotion = async (emotionData) => {
-    try {
-      const recordDate = new Date();
-      recordDate.setDate(selectedDate);
+  try {
+    const recordDate = new Date();
+    recordDate.setDate(selectedDate);
+    
+    const formatLocalISO = (date) => {
+      const offset = date.getTimezoneOffset();
+      const offsetAbs = Math.abs(offset);
+      const hours = Math.floor(offsetAbs / 60);
+      const minutes = offsetAbs % 60;
+      const sign = offset > 0 ? '-' : '+';
       
-      const formatLocalISO = (date) => {
-        const offset = date.getTimezoneOffset();
-        const offsetAbs = Math.abs(offset);
-        const hours = Math.floor(offsetAbs / 60);
-        const minutes = offsetAbs % 60;
-        const sign = offset > 0 ? '-' : '+';
-        
-        return new Date(date.getTime() - (offset * 60000))
-          .toISOString()
-          .replace('Z', `${sign}${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`);
-      };
+      return new Date(date.getTime() - (offset * 60000))
+        .toISOString()
+        .replace('Z', `${sign}${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`);
+    };
 
-      const requestBody = {
-        UserId: userId,
-        RecordDate: formatLocalISO(recordDate),
-        MeditationDurationMinutes: 0,
-        BreathingPracticeDurationMinutes: 0,
-        StressLevelScore: 0,
-        AnxietyLevelScore: 0,
-        Feeling: emotionData.Feeling,
-        Cause: emotionData.Cause,
-        Factors: [],
-        Notes: emotionData.Notes
-      };
+    const existingRecord = records.find(record => {
+      const recordDateObj = new Date(record.RecordDate);
+      return (
+        recordDateObj.getDate() === selectedDate &&
+        recordDateObj.getMonth() === today.getMonth() &&
+        recordDateObj.getFullYear() === today.getFullYear() &&
+        (!record.Feeling || record.Feeling.trim() === "")
+      );
+    });
 
-      const response = await fetch(
+    const requestBody = {
+      UserId: userId,
+      RecordDate: formatLocalISO(recordDate),
+      MeditationDurationMinutes: existingRecord?.MeditationDurationMinutes || 0,
+      BreathingPracticeDurationMinutes: existingRecord?.BreathingPracticeDurationMinutes || 0,
+      StressLevelScore: existingRecord?.StressLevelScore || 0,
+      AnxietyLevelScore: existingRecord?.AnxietyLevelScore || 0,
+      Feeling: emotionData.Feeling,
+      Cause: emotionData.Cause,
+      Factors: existingRecord?.Factors || [],
+      Notes: emotionData.Notes || existingRecord?.Notes || ""
+    };
+
+    let response;
+    if (existingRecord) {
+      response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/mental-health-record/${existingRecord.Id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestBody)
+        }
+      );
+    } else {
+      response = await fetch(
         `${process.env.REACT_APP_API_URL}/api/mental-health-record`,
         {
           method: 'POST',
@@ -253,18 +280,19 @@ const EmotionDiaryPage = () => {
           body: JSON.stringify(requestBody)
         }
       );
-
-      if (!response.ok) {
-        throw new Error('Помилка при збереженні запису');
-      }
-
-      await fetchRecords();
-      setAddingEmotion(false);
-    } catch (error) {
-      console.error('Помилка при збереженні:', error);
-      setError('Не вдалося зберегти запис');
     }
-  };
+
+    if (!response.ok) {
+      throw new Error('Помилка при збереженні запису');
+    }
+
+    await fetchRecords();
+    setAddingEmotion(false);
+  } catch (error) {
+    console.error('Помилка при збереженні:', error);
+    setError('Не вдалося зберегти запис');
+  }
+};
 
   const handleAddFactor = async (record) => {
     if (!record.Feeling) {
@@ -465,14 +493,14 @@ const EmotionDiaryPage = () => {
 
         <div className="ed-factors-selection-content">
           <div className="ed-selected-factors">
-            <h4>Вибрані фактори:</h4>
+            <h4>Обрані фактори:</h4>
             {selectedFactors.length > 0 ? (
               <div className="ed-selected-factors-list">
                 {selectedFactors.map((factor, index) => (
                   <div 
                     key={index} 
                     className="ed-selected-factor-item"
-                    onClick={() => handleFactorToggle(factor)} // Додаємо клік на весь блок
+                    onClick={() => handleFactorToggle(factor)}
                   >
                     <span className="ed-factor-icon">
                       <img src={getFactorIcon(factor)} alt={factor} />
@@ -481,7 +509,7 @@ const EmotionDiaryPage = () => {
                     <button 
                       className="ed-remove-factor-btn"
                       onClick={(e) => {
-                        e.stopPropagation(); // Запобігаємо подвійному виклику
+                        e.stopPropagation();
                         handleFactorToggle(factor);
                       }}
                     >
@@ -528,7 +556,7 @@ const EmotionDiaryPage = () => {
     );
   };
 
-  return (
+ return (
     <div className="ed-mental-health-diary-container">
       {showFactorsInfo ? (
         <FactorsInfoModal />
@@ -557,70 +585,102 @@ const EmotionDiaryPage = () => {
                   {selectedRecords.length > 0 ? (
                     selectedRecords.map(record => (
                       <div key={record.Id}>
-                        <div className="ed-emotion-main-block">
-                          <div className="ed-emotion-left">
-                            <h3 className="ed-emotion-feeling">{translateEmotions(record.Feeling)}</h3>
-                            <p className="ed-emotion-cause">{translateCauses(record.Cause)}</p>
-                          </div>
-                          <div className="ed-emotion-right">
-                            <p className="ed-emotion-time">{formatTime(record.RecordDate)}</p>
-                            <p className="ed-emotion-date">{formatDate(record.RecordDate)}</p>
-                          </div>
-                        </div>
+                        {!record.Feeling ? (
+                          <div className="ed-no-data">
+                            <div className="ed-add-emotion-block">
+                              <h3>Привіт! Ти як?</h3>
+                              <button className="ed-add-emotion-btn" onClick={handleAddEmotion}>
+                                +
+                              </button>
+                            </div>
 
-                        <div className="ed-factors-header">
-                          <h4>Фактори</h4>
-                          <button className="ed-info-btn" onClick={handleInfoClick}>
-                            <img src={factor_info_icon} alt="Інформація про фактори" className="ed-factor-info-icon" />
-                          </button>
-                        </div>
-                        
-                        <div className={`ed-factors-section ${record.Factors && record.Factors.length > 0 ? 'ed-has-factors' : ''}`}>
-                          <div className="ed-factors-list">
-                            {record.Factors && record.Factors.length > 0 ? (
-                              <>
-                                <button 
-                                  className="ed-add-factor-btn-inline" 
-                                  onClick={() => handleAddFactor(record)}
-                                  disabled={!record.Feeling}
-                                >
-                                  +
-                                </button>
-                                {record.Factors.map((factor, index) => (
-                                  <div key={index} className="ed-factor-item">
-                                    <span className="ed-factor-icon">
-                                      <img src={getFactorIcon(factor)} alt={factor} />
-                                    </span>
-                                    <span className="ed-factor-name">{translateFactor(factor)}</span>
-                                  </div>
-                                ))}
-                              </>
-                            ) : (
+                            <div className="ed-factors-header">
+                              <h4>Фактори</h4>
+                              <button className="ed-info-btn" onClick={handleInfoClick}>
+                                <img src={factor_info_icon} alt="Інформація про фактори" className="ed-factor-info-icon" />
+                              </button>
+                            </div>
+                            
+                            <div className="ed-factors-section">
                               <div className="ed-add-factor-block">
+                                <span className="ed-add-factor-text">Додати фактор</span>
                                 <button 
                                   className="ed-add-factor-btn" 
-                                  onClick={() => handleAddFactor(record)}
-                                  disabled={!record.Feeling}
+                                  disabled={true}
                                 >
                                   +
                                 </button>
-                                <span className="ed-add-factor-text">Додати фактор</span>
                               </div>
-                            )}
-                          </div>
-                        </div>
-                        {hasNotes(record) && (
-                          <div className="ed-notes-section">
-                            <div className="ed-notes-content">
-                              <textarea
-                                className="ed-notes-textarea"
-                                value={record.Notes}
-                                readOnly
-                                rows={4}
-                                placeholder="Нотаток немає"
-                              />
                             </div>
                           </div>
+                        ) : (
+                          <>
+                            <div className="ed-emotion-main-block">
+                              <div className="ed-emotion-left">
+                                <h3 className="ed-emotion-feeling">{translateEmotions(record.Feeling)}</h3>
+                                <p className="ed-emotion-cause">{translateCauses(record.Cause)}</p>
+                              </div>
+                              <div className="ed-emotion-right">
+                                <p className="ed-emotion-time">{formatTime(record.RecordDate)}</p>
+                                <p className="ed-emotion-date">{formatDate(record.RecordDate)}</p>
+                              </div>
+                            </div>
+
+                            <div className="ed-factors-header">
+                              <h4>Фактори</h4>
+                              <button className="ed-info-btn" onClick={handleInfoClick}>
+                                <img src={factor_info_icon} alt="Інформація про фактори" className="ed-factor-info-icon" />
+                              </button>
+                            </div>
+                            
+                            <div className={`ed-factors-section ${record.Factors && record.Factors.length > 0 ? 'ed-has-factors' : ''}`}>
+                              <div className="ed-factors-list">
+                                {record.Factors && record.Factors.length > 0 ? (
+                                  <>
+                                    <button 
+                                      className="ed-add-factor-btn-inline" 
+                                      onClick={() => handleAddFactor(record)}
+                                      disabled={!record.Feeling}
+                                    >
+                                      +
+                                    </button>
+                                    {record.Factors.map((factor, index) => (
+                                      <div key={index} className="ed-factor-item">
+                                        <span className="ed-factor-icon">
+                                          <img src={getFactorIcon(factor)} alt={factor} />
+                                        </span>
+                                        <span className="ed-factor-name">{translateFactor(factor)}</span>
+                                      </div>
+                                    ))}
+                                  </>
+                                ) : (
+                                  <div className="ed-add-factor-block">
+                                    <button 
+                                      className="ed-add-factor-btn" 
+                                      onClick={() => handleAddFactor(record)}
+                                      disabled={!record.Feeling}
+                                    >
+                                      +
+                                    </button>
+                                    <span className="ed-add-factor-text">Додати фактор</span>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                            {hasNotes(record) && (
+                              <div className="ed-notes-section">
+                                <div className="ed-notes-content">
+                                  <textarea
+                                    className="ed-notes-textarea"
+                                    value={record.Notes}
+                                    readOnly
+                                    rows={4}
+                                    placeholder="Нотаток немає"
+                                  />
+                                </div>
+                              </div>
+                            )}
+                          </>
                         )}
                       </div>
                     ))

@@ -29,39 +29,39 @@ function Menu({ children }) {
                 </div>
                 <div className="menu-options">
                     <div className="menu-option" onClick={() => navegate('/dashboard')}>
-                        <img style={{ opacity: window.location.pathname == "/dashboard" ? 1 : 0 }} src={homeIcon} alt="dashboard"/>
+                        <img style={{ opacity: window.location.pathname === "/dashboard" ? 1 : 0 }} src={homeIcon} alt="dashboard"/>
                         <span className="menu-opt-text">{t("dashboard")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/profile')}>
-                        <img style={{ opacity: window.location.pathname == "/profile" ? 1 : 0 }} src={profileIcon} alt="profile"/>
+                        <img style={{ opacity: window.location.pathname === "/profile" ? 1 : 0 }} src={profileIcon} alt="profile"/>
                         <span className="menu-opt-text">{t("profile")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/health')}>
-                        <img style={{ opacity: window.location.pathname == "/health" ? 1 : 0 }} src={healthIcon} alt="health"/>
+                        <img style={{ opacity: window.location.pathname.startsWith("/health") ? 1 : 0 }} src={healthIcon} alt="health"/>
                         <span className="menu-opt-text">{t("health")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/eating')}>
-                        <img style={{ opacity: window.location.pathname == "/eating" ? 1 : 0 }} src={eatingIcon} alt="eating"/>
+                        <img style={{ opacity: window.location.pathname.startsWith("/eating") ? 1 : 0 }} src={eatingIcon} alt="eating"/>
                         <span className="menu-opt-text">{t("eating")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/workout')}>
-                        <img style={{ opacity: window.location.pathname == "/workout" ? 1 : 0 }} src={workoutIcon} alt="workout"/>
+                        <img style={{ opacity: window.location.pathname.startsWith("/workout") ? 1 : 0 }} src={workoutIcon} alt="workout"/>
                         <span className="menu-opt-text">{t("workout")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/social')}>
-                        <img style={{ opacity: window.location.pathname == "/social" ? 1 : 0 }} src={socialIcon} alt="social"/>
+                        <img style={{ opacity: window.location.pathname.startsWith("/social") ? 1 : 0 }} src={socialIcon} alt="social"/>
                         <span className="menu-opt-text">{t("social")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/specialists')}>
-                        <img style={{ opacity: window.location.pathname == "/specialists" ? 1 : 0 }} src={socialIcon} alt="specialists"/>
+                        <img style={{ opacity: window.location.pathname.startsWith("/specialists") ? 1 : 0 }} src={socialIcon} alt="specialists"/>
                         <span className="menu-opt-text">{t("specialists")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/marketplace')}>
-                        <img style={{ opacity: window.location.pathname == "/marketplace" ? 1 : 0 }} src={marketplaceIcon} alt="marketplace"/>
+                        <img style={{ opacity: window.location.pathname.startsWith("/marketplace") ? 1 : 0 }} src={marketplaceIcon} alt="marketplace"/>
                         <span className="menu-opt-text">{t("marketplace_menu")}</span>
                     </div>
                     <div className="menu-option" onClick={() => navegate('/premium')}>
-                        <img style={{ opacity: window.location.pathname == "/premium" ? 1 : 0 }} src={premiumIcon} alt="premium"/>
+                        <img style={{ opacity: window.location.pathname.startsWith("/premium") ? 1 : 0 }} src={premiumIcon} alt="premium"/>
                         <span className="menu-opt-text">{t("premium")}</span>
                     </div>
                 </div>

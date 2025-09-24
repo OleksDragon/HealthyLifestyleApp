@@ -1,0 +1,95 @@
+.sb-square-breathing-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: -15px;
+}
+
+.sb-square-breathing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.sb-square-breathing-info-block {
+    width: 100%;
+    margin-top: -30px;
+}
+
+.sb-breathing-exercise-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    margin-top: -30px;
+    width: 100%;
+    flex: 1;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    background-color: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.sb-timer {
+    background: var(--white);
+    padding: 10px 50px;
+    border-radius: 30px;
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 15px 0 13px 0;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sb-timer.clickable {
+    background: var(--lim);
+    color: var(--bl);
+}
+
+.sb-timer.clickable:hover {
+    transform: translateY(-2px);
+}
+
+.sb-timer.active {
+    cursor: default;
+    background: var(--white);
+    color: #333;
+}
+
+.sb-square-container {
+    height: 208px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.square-icon {
+    width: 192px;
+    height: 192px;
+}
+
+.sb-back-button {
+    width: 180px;
+    margin-left: 10px;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: white;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.sb-back-button:hover {
+    opacity: 0.8;
+}

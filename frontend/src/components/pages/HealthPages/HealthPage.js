@@ -1,6 +1,7 @@
 const HealthPages = () => {
     return(
         <>
+        
         </>
     );
 }

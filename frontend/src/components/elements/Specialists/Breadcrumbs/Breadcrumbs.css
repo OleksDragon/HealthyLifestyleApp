@@ -11,6 +11,8 @@
   flex-wrap: wrap;
   font-family: var(--font-family);
   gap: 4px;
+  position: relative;
+  z-index: 9999;
 }
 
 .breadcrumbs a {

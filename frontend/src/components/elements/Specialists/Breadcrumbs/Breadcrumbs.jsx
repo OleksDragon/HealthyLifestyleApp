@@ -14,7 +14,7 @@ function Breadcrumbs() {
   return (
     <div className="breadcrumbs">
       <Link to="/dashboard" className={location.pathname === "/dashboard" ? "active" : ""}>
-        {t("Головна")}
+        {t("dashboard")}
       </Link>
       {pathnames.map((name, index) => {
         const routeTo = "/" + pathnames.slice(0, index + 1).join("/");
@@ -45,3 +45,5 @@ function Breadcrumbs() {
 }
 
 export default Breadcrumbs;
+                                                                               
+

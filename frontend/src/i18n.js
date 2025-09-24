@@ -116,6 +116,7 @@ i18n
           search_placeholder: "Search",
           welcome: "Hi",
           health_one_place: "Your health in one place!",
+          mental: "Mental health",
 
            // Переклади для віджетів дашборду
           kkal: "Calories",
@@ -183,6 +184,8 @@ i18n
           p_spain_country: "Spain",
           p_usa_country: "USA",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1st day of last cycle"
         },
       },
       uk: {
@@ -294,7 +297,7 @@ i18n
           search_placeholder: "Пошук",
           welcome: "Привіт",
           health_one_place: "Твоє здоров'я в одному місці!",
-
+          mental: "Ментальне здоров'я",
         // Переклади для віджетів дашборду
           kkal: "Калорії",
           current_week: "Поточний тиждень",
@@ -382,6 +385,8 @@ i18n
           article_7: "Профілактика та подолання вигорання",
 
           gender: "Здоров'я за статтю",
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1-й день останнього циклу",
         },
       },
       de: {
@@ -493,7 +498,8 @@ i18n
           search_placeholder: "Suche",
           welcome: "Hi",
           health_one_place: "Deine Gesundheit an einem Ort!",
-
+          mental: "Psychische Gesundheit",
+          
           // Переклади для віджетів дашборду
           kkal: "Kalorien",
           current_week: "Aktuelle Woche",
@@ -560,6 +566,8 @@ i18n
           p_spain_country: "Spanien",
           p_usa_country: "USA",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1. Tag des letzten Zyklus"
         },
       },
       fr: {
@@ -671,7 +679,7 @@ i18n
           search_placeholder: "Recherche",
           welcome: "Salut",
           health_one_place: "Votre santé en un seul endroit!",
-
+          mental: "Santé Mentale",
           // Переклади для віджетів дашборду
           kkal: "Calories",
           current_week: "Semaine en cours",
@@ -737,6 +745,9 @@ i18n
           p_france_country: "France",
           p_spain_country: "Espagne",
           p_usa_country: "États-Unis",
+
+          // --- Переклади для календара місячних
+         last_cycle_first_day: "1er jour du dernier cycle",
         },
       },
       es: {
@@ -848,7 +859,7 @@ i18n
           search_placeholder: "Búsqueda",
           welcome: "Hola",
           health_one_place: "Tu salud en un solo lugar!",
-
+          mental: "Salud Mental",
           // Переклади для віджетів дашборду
           kkal: "Calorías",
           current_week: "Semana en curso",
@@ -914,6 +925,9 @@ i18n
           p_france_country: "Francia",
           p_spain_country: "España",
           p_usa_country: "EE.UU.",
+
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1er día del último ciclo"
         },
       },
     },

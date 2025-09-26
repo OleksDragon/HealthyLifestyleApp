@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import gynecologyReview from "../../../icons/GynecologyReview.png";
 import papReview from "../../../icons/PAPReview.png";
 import bloodReview from "../../../icons/BloodReview.png";

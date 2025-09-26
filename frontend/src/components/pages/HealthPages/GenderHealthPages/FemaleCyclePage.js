@@ -1,16 +1,19 @@
 import { useTranslation } from "react-i18next";
 import mascot from "../../../img/mascot.png";
 import "../../../styles/gender.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import arrowBottom from "../../../icons/ArrowBottom.png";
 import CustomDatePicker from "../../../elements/Health/FemaleHealth/CustomDatePicker/CustomDatePicker";
 import FemaleCustomSelect from "../../../elements/Health/FemaleHealth/CustomSelector/FemaleCustomSelect";
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 function FemaleCyclePage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [trackId, setTrackId] = useState('');
 
     const [openedInfos, setOpenedInfos] = useState([false, false, false]);
     const initialFormData = {
@@ -36,6 +39,76 @@ function FemaleCyclePage() {
             [field]: value
         }));
     };
+
+    const saveCycleData = async () => {
+        try {
+            const parts = formData.cycleStartDate.split(/[-\s]/);
+            const entryDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+
+            const data = {
+                UserId: localStorage.getItem("user-id"),
+                RecordDate: new Date().toISOString().split("T")[0],
+                EntryDate: entryDate,
+                CycleDay: selectedNumber2.toString(),
+                MenstDay: selectedNumber1.toString(),
+                IsFertile: false, // It doesn't matter now
+            }
+
+            if (trackId.length === 0) {
+                await axios.post(
+                    `${process.env.REACT_APP_API_URL}/api/female-health-tracker`,
+                    data,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                        }
+                    }
+                );
+            }
+            else {
+                await axios.put(
+                    `${process.env.REACT_APP_API_URL}/api/female-health-tracker/${localStorage.getItem("user-id")}`,
+                    data,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                        }
+                    }
+                );
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+        navigate(`${location.pathname}/menstruation_calendar`, 
+            { state: {start: formData, m_long: selectedNumber1, c_long: selectedNumber2} })
+    }
+
+    useEffect(() => {
+        const getLastRecord = async () => {
+            try {
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_URL}/api/female-health-tracker/${localStorage.getItem("user-id")}`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                        }
+                    }
+                );
+
+                setSelectedNumber1(response.data.MenstDay.toString());
+                setSelectedNumber2(response.data.CycleDay.toString());
+                let date = new Date(response.data.EntryDate);
+                handleInputChange('cycleStartDate', formatDate(date));
+                setTrackId(response.data.Id);
+            } 
+            catch (error) {
+                console.log(error)
+            } 
+        }
+
+        getLastRecord()
+    }, [])
 
     return (
         <div className="scroll-data cycle-container">
@@ -76,7 +149,7 @@ function FemaleCyclePage() {
                     />
                     <button
                         disabled={!formData.cycleStartDate || selectedNumber1.length === 0 || selectedNumber2.length === 0}
-                        onClick={() => navigate(`${location.pathname}/menstruation_calendar`, { state: {start: formData, m_long: selectedNumber1, c_long: selectedNumber2} })}
+                        onClick={() => saveCycleData()}
                     >{t("calc_cycle")}</button>
                     <span className="warning-calc">
                         {t("warning_calc")}

@@ -294,6 +294,8 @@ i18n
           what_diff_ultrasound_mam_info: "Ultrasound uses sound waves to visualize tissues and shows soft structures of the breast well, especially in young women with dense tissue\n\nMammography is an X-ray examination that can detect small calcifications and early signs of tumors before lumps appear\n\nUltrasound does not use radiation and is suitable for additional control\nMammography remains the main screening method for women over 40\n\nBoth methods are often used together for more accurate diagnosis",
           why_pap_test: "Why get a Pap smear and how often?",
           why_pap_test_info: "A Pap smear helps detect changes in cervical cells at early stages when there are no symptoms\n\nRegular screening prevents the development of cancer and allows timely treatment of inflammatory processes\n\nUsually a Pap test is done once a year if there are no problems or more often as recommended by a doctor\n\nThe test is quick, painless, and takes only a few minutes\n\nEven if you feel well, the test helps take care of your health",
+          reproductive: "Reproductive health",
+          reproductive_sub: "Plan with us! Take care of your body and plan for the future with confidence.",
 
         },
       },
@@ -406,7 +408,6 @@ i18n
           search_placeholder: "Пошук",
           welcome: "Привіт",
           health_one_place: "Твоє здоров'я в одному місці!",
-          mental: "Ментальне здоров'я",
 
         // Переклади для віджетів дашборду
           kkal: "Калорії",
@@ -606,6 +607,9 @@ i18n
           what_diff_ultrasound_mam_info: "УЗД (ультразвукове дослідження) використовує звукові хвилі для візуалізації тканин і добре показує м’які структури грудей, особливо у молодих жінок з щільною тканиною\n\nМамографія – це рентгенівське обстеження, яке дозволяє виявити дрібні кальцинати і ранні ознаки пухлин навіть до появи ущільнень\n\nУЗД не використовує випромінювання і підходить для додаткового контролю\nМамографія залишається основним скринінговим методом для жінок старше 40 років\n\nОбидва методи часто використовують разом для більш точної діагностики",
           why_pap_test: "Навіщо робити цитологічний мазок (ПАП-тест) і як часто",
           why_pap_test_info: "Цитологічний мазок або ПАП-тест допомагає виявити зміни клітин шийки матки на ранніх стадіях коли ще немає симптомів\n\nРегулярне обстеження дозволяє запобігти розвитку раку і своєчасно лікувати запальні процеси\n\nЗазвичай ПАП-тест роблять раз на рік якщо немає проблем або за рекомендацією лікаря частіше\n\nОбстеження швидке безболісне і займає кілька хвилин\n\nНавіть якщо ви почуваєтесь добре тест допомагає дбати про своє здоров’я",
+          reproductive: "Репродуктивне здоров'я",
+          reproductive_sub: "Плануй з нами! Дбай про своє тіло і плануй майбутнє з упевненністю.",
+          
         },
       },
       de: {
@@ -895,6 +899,8 @@ i18n
           what_diff_ultrasound_mam_info: "Ultraschall verwendet Schallwellen zur Darstellung von Gewebe und zeigt weiche Strukturen der Brust gut, besonders bei jungen Frauen mit dichtem Gewebe\n\nMammographie ist eine Röntgenuntersuchung, die kleine Verkalkungen und frühe Anzeichen von Tumoren erkennen kann, bevor Knoten auftreten\n\nUltraschall verwendet keine Strahlung und eignet sich zur zusätzlichen Kontrolle\nMammographie bleibt das wichtigste Screening-Verfahren für Frauen über 40\n\nBeide Methoden werden oft zusammen verwendet, um eine genauere Diagnose zu erhalten",
           why_pap_test: "Warum einen Pap-Abstrich machen und wie oft?",
           why_pap_test_info: "Ein Pap-Abstrich hilft, Veränderungen der Gebärmutterhalszellen frühzeitig zu erkennen, wenn noch keine Symptome vorliegen\n\nRegelmäßige Vorsorge verhindert die Entstehung von Krebs und ermöglicht eine rechtzeitige Behandlung von Entzündungsprozessen\n\nNormalerweise wird der Pap-Test einmal im Jahr durchgeführt, wenn keine Probleme bestehen, oder häufiger nach Empfehlung des Arztes\n\nDie Untersuchung ist schnell, schmerzlos und dauert nur wenige Minuten\n\nAuch wenn Sie sich wohl fühlen, hilft der Test, Ihre Gesundheit zu pflegen",
+          reproductive: "Reproduktive Gesundheit",
+          reproductive_sub: "Planen Sie mit uns! Achten Sie auf Ihren Körper und planen Sie mit Zuversicht für die Zukunft.",
 
         },
       },
@@ -1184,6 +1190,8 @@ i18n
           what_diff_ultrasound_mam_info: "L'échographie utilise des ondes sonores pour visualiser les tissus et montre bien les structures molles du sein, surtout chez les jeunes femmes ayant une poitrine dense\n\nLa mammographie est un examen radiographique qui permet de détecter de petites calcifications et les premiers signes de tumeurs avant l'apparition de nodules\n\nL'échographie n'utilise pas de radiation et convient pour un contrôle supplémentaire\nLa mammographie reste la méthode de dépistage principale pour les femmes de plus de 40 ans\n\nLes deux méthodes sont souvent utilisées ensemble pour un diagnostic plus précis",
           why_pap_test: "Pourquoi faire un frottis de dépistage (test Pap) et à quelle fréquence ?",
           why_pap_test_info: "Le frottis de dépistage ou test Pap permet de détecter les modifications des cellules du col de l'utérus à un stade précoce, avant l'apparition des symptômes\n\nUn dépistage régulier permet de prévenir le développement du cancer et de traiter à temps les processus inflammatoires\n\nEn général, le test Pap se fait une fois par an s'il n'y a pas de problème, ou plus souvent sur recommandation du médecin\n\nL'examen est rapide, indolore et ne prend que quelques minutes\n\nMême si vous vous sentez bien, ce test aide à prendre soin de votre santé",
+          reproductive: "Santé reproductive",
+          reproductive_sub: "Planifiez avec nous ! Prenez soin de votre corps et préparez votre avenir en toute confiance.",
 
         },
       },
@@ -1473,6 +1481,8 @@ i18n
           what_diff_ultrasound_mam_info: "La ecografía utiliza ondas sonoras para visualizar los tejidos y muestra bien las estructuras blandas de la mama, especialmente en mujeres jóvenes con tejido denso\n\nLa mamografía es un examen radiográfico que puede detectar pequeñas calcificaciones y signos tempranos de tumores antes de que aparezcan bultos\n\nLa ecografía no utiliza radiación y es adecuada para un control adicional\nLa mamografía sigue siendo el método de cribado principal para mujeres mayores de 40 años\n\nAmbos métodos se utilizan a menudo juntos para un diagnóstico más preciso",
           why_pap_test: "¿Por qué hacerse una prueba de Papanicolaou y con qué frecuencia?",
           why_pap_test_info: "La prueba de Papanicolaou ayuda a detectar cambios en las células del cuello uterino en etapas tempranas cuando aún no hay síntomas\n\nEl cribado regular previene el desarrollo de cáncer y permite un tratamiento oportuno de procesos inflamatorios\n\nPor lo general, la prueba se realiza una vez al año si no hay problemas, o con mayor frecuencia según lo recomiende el médico\n\nLa prueba es rápida, indolora y dura solo unos minutos\n\nIncluso si se siente bien, la prueba ayuda a cuidar su salud",
+          reproductive: "Salud reproductiva",
+          reproductive_sub: "¡Planifica con nosotros! Cuida tu cuerpo y planifica tu futuro con confianza.",
 
         },
       },

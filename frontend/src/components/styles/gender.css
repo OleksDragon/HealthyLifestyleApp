@@ -543,3 +543,27 @@
 .examination-info-header > div {
     width: 100%;
 }
+
+.reproductive-info {
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.reproductive-info > div {
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 26px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    font-size: 20px;
+}
+
+.reproductive-info > button {
+    align-self: flex-end;
+}

@@ -18,7 +18,7 @@ const FemaleHealthPage = () => {
 
             <div className="female-health-options">
                 <button onClick={() => navigate(`${location.pathname}/cycle`)}>{t("cycle_info")}</button>
-                <button>{t("reproductive_health")}</button>
+                <button onClick={() => navigate(`${location.pathname}/reproductive`)}>{t("reproductive_health")}</button>
                 <button onClick={() => navigate(`${location.pathname}/checks`)}>{t("prevention")}</button>
                 <button onClick={() => navigate(`${location.pathname}/gynecology`)}>{t("gynecology")}</button>
             </div>

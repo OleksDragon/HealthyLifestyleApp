@@ -402,10 +402,12 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
                 .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.EntryDate, opt => opt.MapFrom(src => src.EntryDate))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore()) // Навігаційне поле
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.CycleDay, opt => opt.MapFrom(src => src.CycleDay))
+                .ForMember(dest => dest.MenstDay, opt => opt.MapFrom(src => src.MenstDay))
                 .ForMember(dest => dest.IsFertile, opt => opt.MapFrom(src => src.IsFertile))
                 .ForMember(dest => dest.PmsSymptoms, opt => opt.MapFrom(src => src.PmsSymptoms))
                 .ForMember(dest => dest.MoodNotes, opt => opt.MapFrom(src => src.MoodNotes))
@@ -416,8 +418,10 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
                 .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore()) // Дата створення не оновлюється
+                .ForMember(dest => dest.EntryDate, opt => opt.Condition(src => src.EntryDate.HasValue))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.CycleDay, opt => opt.Condition(src => src.CycleDay.HasValue))
+                .ForMember(dest => dest.MenstDay, opt => opt.Condition(src => src.MenstDay.HasValue))
                 .ForMember(dest => dest.IsFertile, opt => opt.Condition(src => src.IsFertile.HasValue))
                 .ForMember(dest => dest.PmsSymptoms, opt => opt.Condition(src => src.PmsSymptoms != null))
                 .ForMember(dest => dest.MoodNotes, opt => opt.Condition(src => src.MoodNotes != null))

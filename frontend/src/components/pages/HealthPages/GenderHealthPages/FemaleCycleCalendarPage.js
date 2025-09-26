@@ -201,7 +201,7 @@ function FemaleCycleCalendarPage() {
     }
 
     // type = (-1, 1), -1 - left, 1 - right
-    const hadnleArrowClick = (type) => {
+    const handleArrowClick = (type) => {
         if (monthYear === 0) {
             let newMonth = month + type;
             if (newMonth === 0) {
@@ -244,7 +244,7 @@ function FemaleCycleCalendarPage() {
                     </div>
                     <div className="calendar">
                         <div className="calendar-header">
-                            <img style={{cursor: "pointer"}} onClick={() => hadnleArrowClick(-1)} src={arrowLeft3} alt="Arrow leaf"/>
+                            <img style={{cursor: "pointer"}} onClick={() => handleArrowClick(-1)} src={arrowLeft3} alt="Arrow leaf"/>
                             <div 
                                 className={`calendar-date-element ${monthYear === 0 && 'active-part'}`}
                                 onClick={() => setMonthYear(0)}
@@ -257,7 +257,7 @@ function FemaleCycleCalendarPage() {
                             >
                                 {year}
                             </div>
-                            <img style={{cursor: "pointer"}} onClick={() => hadnleArrowClick(1)} src={arrowRight} alt="Arrow right"/>
+                            <img style={{cursor: "pointer"}} onClick={() => handleArrowClick(1)} src={arrowRight} alt="Arrow right"/>
                         </div>
                         <div className="calendar-body">
                             {getWeekdays(i18n.language).map((d, idx) => {

@@ -164,15 +164,15 @@ function FemaleCyclePage() {
                         {openedInfos[0] && 
                             <div className="cycle-info-content">
                                 <div className="f-row">{t("proccess_in_body")}</div>
-                                <div>{t("proccess_in_body_desc")}</div>
+                                <div className="s-row">{t("proccess_in_body_desc")}</div>
                                 <div className="f-row">{t("phase_1_5")}</div>
-                                <div>{t("phase_1_5_desc")}</div>
+                                <div className="s-row">{t("phase_1_5_desc")}</div>
                                 <div className="f-row">{t("phase_6_13")}</div>
-                                <div>{t("phase_6_13_desc")}</div>
+                                <div className="s-row">{t("phase_6_13_desc")}</div>
                                 <div className="f-row">{t("phase_14_16")}</div>
-                                <div>{t("phase_14_16_desc")}</div>
+                                <div className="s-row">{t("phase_14_16_desc")}</div>
                                 <div className="f-row">{t("phase_17_28")}</div>
-                                <div>{t("phase_17_28_desc")}</div>
+                                <div className="s-row">{t("phase_17_28_desc")}</div>
                                 <div className="cycle-finalize">{t("finalize_cycle")}</div>
                             </div>
                         }
@@ -186,15 +186,15 @@ function FemaleCyclePage() {
                             <div className="cycle-info-content">
                                 <div className="cycle-preview">{t("preview_calendar")}</div>
                                 <div className="f-row">{t("predict_cycle")}</div>
-                                <div>{t("predict_cycle_desc")}</div>
+                                <div className="s-row">{t("predict_cycle_desc")}</div>
                                 <div className="f-row">{t("listen_yourself")}</div>
-                                <div>{t("listen_yourself_desc")}</div>
+                                <div className="s-row">{t("listen_yourself_desc")}</div>
                                 <div className="f-row">{t("regularity")}</div>
-                                <div>{t("regularity_desc")}</div>
+                                <div className="s-row">{t("regularity_desc")}</div>
                                 <div className="f-row">{t("doctor_help")}</div>
-                                <div>{t("doctor_help_desc")}</div>
+                                <div className="s-row">{t("doctor_help_desc")}</div>
                                 <div className="f-row">{t("planing")}</div>
-                                <div>{t("planing_desc")}</div>
+                                <div className="s-row">{t("planing_desc")}</div>
                                 <div className="cycle-finalize">{t("finalize_calendar")}</div>
                             </div>
                         }
@@ -206,18 +206,18 @@ function FemaleCyclePage() {
                         </div>
                         {openedInfos[2] && 
                             <div className="cycle-info-content">
-                                <div className="cycle-preview">{t("preview_calendar")}</div>
-                                <div className="f-row">{t("predict_cycle")}</div>
-                                <div>{t("predict_cycle_desc")}</div>
-                                <div className="f-row">{t("listen_yourself")}</div>
-                                <div>{t("listen_yourself_desc")}</div>
-                                <div className="f-row">{t("regularity")}</div>
-                                <div>{t("regularity_desc")}</div>
-                                <div className="f-row">{t("doctor_help")}</div>
-                                <div>{t("doctor_help_desc")}</div>
-                                <div className="f-row">{t("planing")}</div>
-                                <div>{t("planing_desc")}</div>
-                                <div className="cycle-finalize">{t("finalize_calendar")}</div>
+                                <div className="cycle-preview" style={{textAlign: "center", fontSize: "18px", marginTop: "-10px"}}>{t("myth_main")}</div>
+                                <div className="cycle-preview" style={{textAlign: "center", fontSize: "14px", marginTop: "-10px", marginBottom: "10px"}}>{t("myth_sub")}</div>
+                                <div className="f-row">{t("cant_sport")}</div>
+                                <div className="s-row">{t("cant_sport_desc")}</div>
+                                <div className="f-row">{t("c_long_")}</div>
+                                <div className="s-row">{t("c_long_desc")}</div>
+                                <div className="f-row">{t("cant_swim")}</div>
+                                <div className="s-row">{t("cant_swim_desc")}</div>
+                                <div className="f-row">{t("cant_get_pregnant")}</div>
+                                <div className="s-row">{t("cant_get_pregnant_desc")}</div>
+                                <div className="f-row">{t("pain_is_ok")}</div>
+                                <div className="s-row">{t("pain_is_ok_desc")}</div>
                             </div>
                         }
                     </div>

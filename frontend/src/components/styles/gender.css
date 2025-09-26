@@ -300,11 +300,12 @@
     padding: 20px 50px;
     grid-template-columns: 30% 70%;
     gap: 20px;
+    place-items: center;
 }
 
 .f-row {
     background-color: #D6FF00;
-    border-radius: 20px;
+    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,6 +314,19 @@
     text-align: center; 
     height: 60px;
     color: #0066C3;
+    width: 100%;
+}
+
+.s-row {
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
 }
 
 .cycle-preview {

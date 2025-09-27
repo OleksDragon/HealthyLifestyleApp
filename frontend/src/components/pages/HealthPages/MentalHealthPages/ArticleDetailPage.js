@@ -1,20 +1,59 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { article_test_data } from "../../../services/articles_test_data";
+import { useTranslation } from 'react-i18next';
 import back_to_article from "../../../../assets/health-icons/back_to_article.svg";
 import '../../../styles/articleDetails.css'
 
 const ArticleDetailPage = () => {
     const { articleId } = useParams();
     const navigate = useNavigate();
+    const { t } = useTranslation();
+
+    const article_test_data = [
+    {
+        id: "article_1",
+        title: t("mp_article_1"),
+        content: t("mp_article_content_1")
+        },
+        {
+            id: "article_2",
+            title: t("mp_article_2"),
+            content: t("mp_article_content_2")
+        },
+        {
+            id: "article_3",
+            title: t("mp_article_3"),
+            content: t("mp_article_content_3")
+        },
+        {
+            id: "article_4",
+            title: t("mp_article_4"),
+            content: t("mp_article_content_4")
+        },
+        {
+            id: "article_5",
+            title: t("mp_article_5"),
+            content: t("mp_article_content_5")
+        },
+        {
+            id: "article_6",
+            title: t("mp_article_6"),
+            content: t("mp_article_content_6")
+        },
+        {
+            id: "article_7",
+            title: t("mp_article_7"),
+            content: t("mp_article_content_7")
+        }
+    ];
     
     const article = article_test_data.find(item => item.id === articleId);
 
     if (!article) {
         return (
             <div className="ad-container">
-                <h1 className="ad-title">Статтю не знайдено</h1>
-                <p className="ad-text">Стаття з ID {articleId} не існує.</p>
+                <h1 className="ad-title">{t("mp_article_not_found")}</h1>
+                <p className="ad-text">{t("mp_article_not_found_desc_1")} {articleId} {t("mp_article_not_found_desc_2")}</p>
             </div>
         );
     }
@@ -118,7 +157,7 @@ const ArticleDetailPage = () => {
         <div className="ad-container">
             <button className="ad-back-button" onClick={() => navigate(-1)}>
                 <img src={back_to_article} alt="Profile" className="ad-back-btn-icon" />
-                <span className="ad-back-btn-label">Повернутись назад</span>
+                <span className="ad-back-btn-label">{t("mp_return_back")}</span>
             </button>
             <div className="ad-content">
                 {formatContent(article.content)}

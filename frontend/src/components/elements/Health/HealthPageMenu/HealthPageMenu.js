@@ -1,16 +1,18 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 import "./HealthPageMenu.css";
 
 const HealthPage = ({ children }) => {
     const navigate = useNavigate();
     const location = useLocation();
+    const { t } = useTranslation();
 
     const healthSections = [
-        { path: '/health/your', label: 'Твоє здоров\'я' },
-        { path: '/health/mental', label: 'Ментальне здоров\'я' },
-        { path: '/health/gender', label: 'Здоров\'я за статтю' }
+        { path: '/health/your', label: t("hmp_your_health") },
+        { path: '/health/mental', label: t("hmp_mental_health") },
+        { path: '/health/gender', label: t("gender") }
     ];
 
     const handleNavigation = (path) => {

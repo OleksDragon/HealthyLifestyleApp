@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import DateCarousel from "../../../../components/elements/Health/MentalHealth/DateCarousel/DateCarousel";
 import AddEmotionWizard from "../../../../components/elements/Health/MentalHealth/AddEmotionWizard/AddEmotionWizard";
 import factor_info_icon from "../../../../assets/health-icons/factor_info_icon.svg";
@@ -14,101 +15,102 @@ import close_icon from "../../../../assets/health-icons/close_icon.svg";
 import "../../../styles/emotionDiary.css";
 
 const EmotionDiaryPage = () => {
+  const { t } = useTranslation();
   // Словник для перекладу емоцій
   const emotionTranslations = {
-    "Balance": "Баланс",
-    "Safety": "Безпека", 
-    "Neutrality": "Нейтральність",
-    "Lethargy": "Млявість",
-    "Carefreeness": "Безтурботність",
-    "Relaxation": "Розслабленість",
-    "Calmness": "Спокій",
-    "Stability": "Стійкість",
-    "Focus": "Зосередженість",
-    "Indifference": "Байдужість",
-    "Nervousness": "Нервовість", 
-    "Slight irritation": "Легке роздратування",
-    "Doubt": "Сумнів",
-    "Restlessness": "Неспокій",
-    "Distrust": "Недовіра",
-    "Tension": "Напруга",
-    "Dissatisfaction": "Незадоволення",
-    "Melancholy": "Туга",
-    "Fatigue": "Втома",
-    "Self-pity": "Жалію себе", 
-    "Anxiety": "Тривога",
-    "Sadness": "Сум",
-    "Uncertainty": "Непевність",
-    "Confusion": "Розгубленість",
-    "Guilt": "Почуття провини",
-    "Self-rejection": "Неприйняття себе",
-    "Emptiness": "Спустошеність",
-    "Isolation": "Ізоляція",
-    "Depression": "Депресія", 
-    "Envy": "Заздрість",
-    "Deep sorrow": "Глибокий смуток",
-    "Shame": "Сором",
-    "Despair": "Відчай",
-    "Loneliness": "Самотність",
-    "Hopelessness": "Безнадія",
-    "Self-directed aggression": "Агресія до себе",
-    "Energy": "Енергія",
-    "Satisfaction": "Задоволення", 
-    "Connection": "Відчуття зв'язку",
-    "Comfort": "Комфорт",
-    "Love": "Кохання",
-    "Motivation": "Мотивація",
-    "Determination": "Цілеспрямованість",
-    "Respect": "Повага",
-    "Friendship": "Дружність",
-    "In the flow": "В потоці",
-    "Pride": "Гордість", 
-    "Inspiration": "Натхнення",
-    "Hope": "Надія",
-    "Optimism": "Оптимізм",
-    "Confidence": "Впевненість",
-    "Joy": "Радість",
-    "Gratitude": "Подяка",
-    "Openness": "Відкритість",
-    "Bliss": "Блаженство",
-    "Delight": "Захват", 
-    "Admiration": "Захоплення",
-    "Excitement": "Збудження",
-    "Elation": "Піднесення",
-    "Euphoria": "Ейфорія",
-    "Devotion": "Відданість",
-    "Love of life": "Любов до життя",
-    "Triumph": "Тріумф"
+    "Balance": t("mp_aew_balance"),
+    "Safety": t("mp_aew_safety"), 
+    "Neutrality": t("mp_aew_neutrality"),
+    "Lethargy": t("mp_aew_lethargy"),
+    "Carefreeness": t("mp_aew_carefreeness"),
+    "Relaxation": t("mp_aew_relaxation"),
+    "Calmness": t("mp_aew_calmness"),
+    "Stability": t("mp_aew_stability"),
+    "Focus": t("mp_aew_focus"),
+    "Indifference": t("mp_aew_indifference"),
+    "Nervousness": t("mp_aew_nervousness"), 
+    "Slight irritation": t("mp_aew_slight_irritation"),
+    "Doubt": t("mp_aew_doubt"),
+    "Restlessness": t("mp_aew_restlessness"),
+    "Distrust": t("mp_aew_distrust"),
+    "Tension": t("mp_aew_tension"),
+    "Dissatisfaction": t("mp_aew_dissatisfaction"),
+    "Melancholy": t("mp_aew_melancholy"),
+    "Fatigue": t("mp_aew_fatigue"),
+    "Self-pity": t("mp_aew_self_pity"), 
+    "Anxiety": t("mp_aew_anxiety"),
+    "Sadness": t("mp_aew_sadness"),
+    "Uncertainty": t("mp_aew_uncertainty"),
+    "Confusion": t("mp_aew_confusion"),
+    "Guilt": t("mp_aew_guilt"),
+    "Self-rejection": t("mp_aew_self_rejection"),
+    "Emptiness": t("mp_aew_emptiness"),
+    "Isolation": t("mp_aew_isolation"),
+    "Depression": t("mp_aew_depression"), 
+    "Envy": t("mp_aew_envy"),
+    "Deep sorrow": t("mp_aew_deep_sorrow"),
+    "Shame": t("mp_aew_shame"),
+    "Despair": t("mp_aew_despair"),
+    "Loneliness": t("mp_aew_loneliness"),
+    "Hopelessness": t("mp_aew_hopelessness"),
+    "Self-directed aggression": t("mp_aew_self_directed_aggression"),
+    "Energy": t("mp_aew_energy"),
+    "Satisfaction": t("mp_aew_satisfaction"), 
+    "Connection": t("mp_aew_connection"),
+    "Comfort": t("mp_aew_comfort"),
+    "Love": t("mp_aew_love"),
+    "Motivation": t("mp_aew_motivation"),
+    "Determination": t("mp_aew_determination"),
+    "Respect": t("mp_aew_respect"),
+    "Friendship": t("mp_aew_friendship"),
+    "In the flow": t("mp_aew_in_the_flow"),
+    "Pride": t("mp_aew_pride"), 
+    "Inspiration": t("mp_aew_inspiration"),
+    "Hope": t("mp_aew_hope"),
+    "Optimism": t("mp_aew_optimism"),
+    "Confidence": t("mp_aew_confidence"),
+    "Joy": t("mp_aew_joy"),
+    "Gratitude": t("mp_aew_gratitude"),
+    "Openness": t("mp_aew_openness"),
+    "Bliss": t("mp_aew_bliss"),
+    "Delight": t("mp_aew_delight"), 
+    "Admiration": t("mp_aew_admiration"),
+    "Excitement": t("mp_aew_excitement"),
+    "Elation": t("mp_aew_elation"),
+    "Euphoria": t("mp_aew_euphoria"),
+    "Devotion": t("mp_aew_devotion"),
+    "Love of life": t("mp_aew_love_of_life"),
+    "Triumph": t("mp_aew_triumph")
   };
 
   // Словник для перекладу причин
   const causeTranslations = {
-    "Myself": "Я сам",
-    "Family": "Родина", 
-    "Friends": "Друзі",
-    "Partner": "Партнер",
-    "Colleagues": "Колеги",
-    "Work": "Робота",
-    "Training": "Тренування", 
-    "Driving": "Водіння",
-    "Rest": "Відпочинок",
-    "Studying": "Навчання",
-    "Home": "Дім",
-    "Office": "Офіс", 
-    "School": "Школа",
-    "University": "Університет",
-    "Street": "Вулиця"
+    "Myself": t("mp_aew_myself"),
+    "Family": t("mp_aew_family"), 
+    "Friends": t("mp_aew_friends"),
+    "Partner": t("mp_aew_partner"),
+    "Colleagues": t("mp_aew_colleagues"),
+    "Work": t("mp_aew_work"),
+    "Training": t("mp_aew_training"), 
+    "Driving": t("mp_aew_driving"),
+    "Rest": t("mp_aew_rest"),
+    "Studying": t("mp_aew_studying"),
+    "Home": t("mp_aew_home"),
+    "Office": t("mp_aew_office"), 
+    "School": t("mp_aew_school"),
+    "University": t("mp_aew_university"),
+    "Street": t("mp_aew_street")
   };
 
   // Словник для перекладу факторів
   const factorTranslations = {
-    "Sports": "Спорт",
-    "Coffee": "Кава",
-    "Alcohol": "Алкоголь",
-    "Sex": "Секс",
-    "Meditation": "Медитація",
-    "Antidepressants": "Антидепресанти",
-    "Other": "Інше"
+    "Sports": t("mp_edp_sports"),
+    "Coffee": t("mp_edp_coffee"),
+    "Alcohol": t("mp_edp_alcohol"),
+    "Sex": t("mp_edp_sex"),
+    "Meditation": t("mp_edp_meditation"),
+    "Antidepressants": t("mp_edp_antidepressants"),
+    "Other": t("mp_edp_other")
   };
 
   // Список всіх доступних факторів
@@ -133,7 +135,7 @@ const EmotionDiaryPage = () => {
 
   // Функція для перекладу емоцій
   const translateEmotions = (englishEmotions) => {
-    if (!englishEmotions) return "Не вказано";
+    if (!englishEmotions) return t("mp_edp_not_specified");
     
     const emotionsArray = englishEmotions.split(',').map(item => item.trim());
     const translatedEmotions = emotionsArray.map(emotion => {
@@ -430,12 +432,12 @@ const EmotionDiaryPage = () => {
   const FactorsInfoModal = () => (
     <>
       <div className="ed-title">
-        <h2>Щоденник емоцій</h2>
+        <h2>{t("mp_ebp_title")}</h2>
       </div>
 
       <div className="ed-factors-info-container">
         <div className="ed-factors-info-header">
-          <h2>Фактори настрою</h2>
+          <h2>{t("mp_ebp_factor_title")}</h2>
           <button className="ed-close-factors-info" onClick={handleCloseFactorsInfo}>
             <img src={close_icon} alt="Закрити" />
           </button>
@@ -443,32 +445,32 @@ const EmotionDiaryPage = () => {
         
         <div className="ed-factors-info-content">
           <p className="ed-factors-intro">
-            Всі фактори - твої можливі тригери.
+            {t("mp_ebp_factor_info_p_1")}
           </p>
           <p className="ed-factors-intro"> 
-            Наприклад, ви можете не помічати, що спорт, кава або наркотики впливають на ваш настрій і формують поведінкові патерни.
+            {t("mp_ebp_factor_info_p_2")}
           </p>
           
           <p className="ed-factors-analytics">
-            Ви можете відстежити вплив факторів на ваше самопочуття пізніше в розділі аналітики.
+            {t("mp_ebp_factor_info_p_3")}
           </p>
 
           <div className="ed-factors-examples">
-            <h3>Приклад</h3>
+            <h3>{t("mp_ebp_factor_info_p_4")}</h3>
             
             <div className="ed-factor-example">
-              <p>Харчування та стимулятори:</p>
-              <p>Записуй споживання кави, вітамінів або продуктів, які можуть вплинути на рівень енергії.</p>
+              <p>{t("mp_ebp_factor_info_p_5")}</p>
+              <p>{t("mp_ebp_factor_info_p_6")}</p>
             </div>
             
             <div className="ed-factor-example">
-              <p>Активність та фізичні вправи:</p>
-              <p>Відстежуй кількість фізичних вправ або участь у інших формах фізичної активності.</p>
+              <p>{t("mp_ebp_factor_info_p_7")}</p>
+              <p>{t("mp_ebp_factor_info_p_8")}</p>
             </div>
             
             <div className="ed-factor-example">
-              <p>Біологічні цикли:</p>
-              <p>Відстежуючи свої місячні, ви зможете зрозуміти, як вони впливають на ваше емоційне самопочуття.</p>
+              <p>{t("mp_ebp_factor_info_p_9")}</p>
+              <p>{t("mp_ebp_factor_info_p_10")}</p>
             </div>
           </div>
         </div>
@@ -493,7 +495,7 @@ const EmotionDiaryPage = () => {
 
         <div className="ed-factors-selection-content">
           <div className="ed-selected-factors">
-            <h4>Обрані фактори:</h4>
+            <h4>{t("mp_ebp_selected_factors")}</h4>
             {selectedFactors.length > 0 ? (
               <div className="ed-selected-factors-list">
                 {selectedFactors.map((factor, index) => (
@@ -524,7 +526,7 @@ const EmotionDiaryPage = () => {
           </div>
 
           <div className="ed-available-factors">
-            <h4>Доступні фактори:</h4>
+            <h4>{t("mp_ebp_available_factors")}</h4>
             <div className="ed-available-factors-list">
               {availableFactors.map((factor, index) => (
                 <div 
@@ -548,7 +550,7 @@ const EmotionDiaryPage = () => {
               onClick={handleSaveFactors}
               disabled={!hasChanges}
             >
-              Зберегти
+              {t("mp_btn_save")}
             </button>
           </div>
         </div>
@@ -565,7 +567,7 @@ const EmotionDiaryPage = () => {
       ) : (
         <>
           <div className="ed-title">
-            <h2>Щоденник емоцій</h2>
+            <h2>{t("mp_ebp_title")}</h2>
           </div>
           
           <div className="ed-mental-health-diary-content">
@@ -588,14 +590,14 @@ const EmotionDiaryPage = () => {
                         {!record.Feeling ? (
                           <div className="ed-no-data">
                             <div className="ed-add-emotion-block">
-                              <h3>Привіт! Ти як?</h3>
+                              <h3>{t("mp_ebp_hello_how_are_you")}</h3>
                               <button className="ed-add-emotion-btn" onClick={handleAddEmotion}>
                                 +
                               </button>
                             </div>
 
                             <div className="ed-factors-header">
-                              <h4>Фактори</h4>
+                              <h4>{t("mp_ebp_factor")}</h4>
                               <button className="ed-info-btn" onClick={handleInfoClick}>
                                 <img src={factor_info_icon} alt="Інформація про фактори" className="ed-factor-info-icon" />
                               </button>
@@ -603,7 +605,7 @@ const EmotionDiaryPage = () => {
                             
                             <div className="ed-factors-section">
                               <div className="ed-add-factor-block">
-                                <span className="ed-add-factor-text">Додати фактор</span>
+                                <span className="ed-add-factor-text">{t("mp_ebp_add_factor")}</span>
                                 <button 
                                   className="ed-add-factor-btn" 
                                   disabled={true}
@@ -627,7 +629,7 @@ const EmotionDiaryPage = () => {
                             </div>
 
                             <div className="ed-factors-header">
-                              <h4>Фактори</h4>
+                              <h4>{t("mp_ebp_factor")}</h4>
                               <button className="ed-info-btn" onClick={handleInfoClick}>
                                 <img src={factor_info_icon} alt="Інформація про фактори" className="ed-factor-info-icon" />
                               </button>
@@ -662,7 +664,7 @@ const EmotionDiaryPage = () => {
                                     >
                                       +
                                     </button>
-                                    <span className="ed-add-factor-text">Додати фактор</span>
+                                    <span className="ed-add-factor-text">{t("mp_ebp_add_factor")}</span>
                                   </div>
                                 )}
                               </div>
@@ -675,7 +677,6 @@ const EmotionDiaryPage = () => {
                                     value={record.Notes}
                                     readOnly
                                     rows={4}
-                                    placeholder="Нотаток немає"
                                   />
                                 </div>
                               </div>
@@ -687,14 +688,14 @@ const EmotionDiaryPage = () => {
                   ) : (
                     <div className="ed-no-data">
                       <div className="ed-add-emotion-block">
-                        <h3>Привіт! Ти як?</h3>
+                        <h3>{t("mp_ebp_hello_how_are_you")}</h3>
                         <button className="ed-add-emotion-btn" onClick={handleAddEmotion}>
                           +
                         </button>
                       </div>
 
                       <div className="ed-factors-header">
-                        <h4>Фактори</h4>
+                        <h4>{t("mp_ebp_factor")}</h4>
                         <button className="ed-info-btn" onClick={handleInfoClick}>
                           <img src={factor_info_icon} alt="Інформація про фактори" className="ed-factor-info-icon" />
                         </button>
@@ -702,7 +703,7 @@ const EmotionDiaryPage = () => {
                       
                       <div className="ed-factors-section">
                         <div className="ed-add-factor-block">
-                          <span className="ed-add-factor-text">Додати фактор</span>
+                          <span className="ed-add-factor-text">{t("mp_ebp_add_factor")}</span>
                           <button 
                             className="ed-add-factor-btn" 
                             disabled={true}

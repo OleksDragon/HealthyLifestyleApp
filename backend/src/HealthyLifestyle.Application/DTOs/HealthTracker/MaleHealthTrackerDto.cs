@@ -15,7 +15,15 @@ namespace HealthyLifestyle.Application.DTOs.HealthTracker
 
         public double? TestosteroneLevel { get; set; }
 
-        public int? EnergyLevelScore { get; set; }
+        public double? FreeTestosterone { get; set; }
+
+        public double? LH { get; set; }
+
+        public double? Prolactin { get; set; }
+
+        public double? Estradiol { get; set; }
+
+        public double? FSH { get; set; }
 
         public string? Notes { get; set; }
 
@@ -37,8 +45,20 @@ namespace HealthyLifestyle.Application.DTOs.HealthTracker
         [Range(0, double.MaxValue, ErrorMessage = "Рівень тестостерона не може бути від’ємним.")]
         public double? TestosteroneLevel { get; set; }
 
-        [Range(1, 10, ErrorMessage = "Рівень енергії повинен бути в межах від 1 до 10.")]
-        public int? EnergyLevelScore { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень вільного тестостерона не може бути від’ємним.")]
+        public double? FreeTestosterone { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень ЛГ не може бути від’ємним.")]
+        public double? LH { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень пролактину не може бути від’ємним.")]
+        public double? Prolactin { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень естрадіолу не може бути від’ємним.")]
+        public double? Estradiol { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень ФСГ не може бути від’ємним.")]
+        public double? FSH { get; set; }
 
         public string? Notes { get; set; }
     }
@@ -54,8 +74,20 @@ namespace HealthyLifestyle.Application.DTOs.HealthTracker
         [Range(0, double.MaxValue, ErrorMessage = "Рівень тестостерона не може бути від’ємним.")]
         public double? TestosteroneLevel { get; set; }
 
-        [Range(1, 10, ErrorMessage = "Рівень енергії повинен бути в межах від 1 до 10.")]
-        public int? EnergyLevelScore { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень вільного тестостерона не може бути від’ємним.")]
+        public double? FreeTestosterone { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень ЛГ не може бути від’ємним.")]
+        public double? LH { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень пролактину не може бути від’ємним.")]
+        public double? Prolactin { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень естрадіолу не може бути від’ємним.")]
+        public double? Estradiol { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Рівень ФСГ не може бути від’ємним.")]
+        public double? FSH { get; set; }
 
         public string? Notes { get; set; }
     }

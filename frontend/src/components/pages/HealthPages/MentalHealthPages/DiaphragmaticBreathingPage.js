@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import animationData from "../../../../assets/animation/mascot_breathing.json";
 import InfoBlockWithAnimation from "../../../elements/Health/MentalHealth/InfoBlockWithAnimation/InfoBlockWithAnimation";
 import '../../../styles/diaphragmaticBreathing.css';
@@ -11,17 +12,18 @@ const DiaphragmaticBreathingPage = () => {
     const [circleText, setCircleText] = useState("");
     const [circleSize, setCircleSize] = useState("normal");
     const [existingRecord, setExistingRecord] = useState(null);
+    const { t } = useTranslation();
     const [isLoading, setIsLoading] = useState(true);
     
     const timerRef = useRef(null);
     const navigate = useNavigate();
     
     const infoBlockContent = {
-        title: "Діафрагмальне дихання",
-        subtitle: "Дихання, що повертає спокій",
+        title: t("mp_dbp_title"),
+        subtitle: t("mp_dbp_subtitle"),
         descriptions: [
-            "Сядь зручно. Розслаб плечі. Виконуй хочаб 3 - 5 хвилин.",
-            "Повертайся до дихання, як відчуєш напругу."
+            t("mp_dbp_description_1_1"),
+            t("mp_dbp_description_1_2")
         ],
         animationData: animationData,
         containerHeight: "185px",
@@ -231,16 +233,16 @@ const DiaphragmaticBreathingPage = () => {
                 const cycleTime = remainingSeconds % 20;
 
                 if (cycleTime >= 15) { 
-                    setCircleText("ВДИХ");
+                    setCircleText(t("mp_dbp_inhale"));
                     setCircleSize("inhale");
                 } else if (cycleTime >= 10) { 
-                    setCircleText("ТРИМАЙ");
+                    setCircleText(t("mp_dbp_hold"));
                     setCircleSize("hold-inhale");
                 } else if (cycleTime >= 5) { 
-                    setCircleText("ВИДИХ");
+                    setCircleText(t("mp_dbp_exhale"));
                     setCircleSize("exhale");
                 } else { 
-                    setCircleText("ТРИМАЙ");
+                    setCircleText(t("mp_dbp_hold"));
                     setCircleSize("hold-exhale");
                 }
 
@@ -249,7 +251,7 @@ const DiaphragmaticBreathingPage = () => {
             // Таймер завершився нормально
             setIsActive(false);
             setIsCompleted(true);
-            setCircleText("ДАВАЙ ЩЕ");
+            setCircleText(t("mp_dbp_come_on_more"));
             setCircleSize("normal");
             
             // Відправляємо дані на сервер
@@ -261,7 +263,7 @@ const DiaphragmaticBreathingPage = () => {
                 clearTimeout(timerRef.current);
             }
         };
-    }, [isActive, timeLeft, sendDataToServer]);
+    }, [isActive, timeLeft, sendDataToServer, t]);
 
     if (isLoading) {
         return null;
@@ -274,7 +276,7 @@ const DiaphragmaticBreathingPage = () => {
                 <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 23.0703L3 12.5703L11 2.07031" stroke="white" strokeWidth="4" />
                 </svg>
-                <span>Повернутись назад</span>
+                <span>{t("mp_return_back")}</span>
             </div>
             <div className="db-diaphragmatic-breathing-content">
                 <div className="db-diaphragmatic-breathing-info-block">
@@ -286,7 +288,7 @@ const DiaphragmaticBreathingPage = () => {
                         className={`db-timer ${isActive ? 'active' : 'clickable'}`}
                         onClick={handleTimerClick}
                     >
-                        {isActive ? formatTime(timeLeft) : (isCompleted ? "Продовжити" : "Почати")}
+                        {isActive ? formatTime(timeLeft) : (isCompleted ? t("mp_btn_continue") : t("mp_btn_start"))}
                     </div>
 
                     <div className="db-circle-container">

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import './AddEmotionWizard.css';
 
 const AddEmotionWizard = ({ onCancel, onSave }) => {
@@ -7,114 +8,148 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
   const [selectedEmotions, setSelectedEmotions] = useState({}); 
   const [selectedCauses, setSelectedCauses] = useState([]);
   const [notes, setNotes] = useState('');
+  const { t } = useTranslation();
+
+  const progressContainerRef = useRef(null);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const emotionCategories = {
-    "Ок": {
-      "Баланс": "Balance",
-      "Безпека": "Safety", 
-      "Нейтральність": "Neutrality",
-      "Млявість": "Lethargy",
-      "Безтурботність": "Carefreeness",
-      "Розслабленість": "Relaxation",
-      "Спокій": "Calmness",
-      "Стійкість": "Stability",
-      "Зосередженість": "Focus"
+    [t("mp_aew_ok")]: {
+      [t("mp_aew_balance")]: "Balance",
+      [t("mp_aew_safety")]: "Safety", 
+      [t("mp_aew_neutrality")]: "Neutrality",
+      [t("mp_aew_lethargy")]: "Lethargy",
+      [t("mp_aew_carefreeness")]: "Carefreeness",
+      [t("mp_aew_relaxation")]: "Relaxation",
+      [t("mp_aew_calmness")]: "Calmness",
+      [t("mp_aew_stability")]: "Stability",
+      [t("mp_aew_focus")]: "Focus"
     },
-    "Таке": {
-      "Байдужість": "Indifference",
-      "Нервовість": "Nervousness", 
-      "Легке роздратування": "Slight irritation",
-      "Сумнів": "Doubt",
-      "Неспокій": "Restlessness",
-      "Недовіра": "Distrust",
-      "Напруга": "Tension",
-      "Незадоволення": "Dissatisfaction",
-      "Туга": "Melancholy"
+    [t("mp_aew_so_so")]: {
+      [t("mp_aew_indifference")]: "Indifference",
+      [t("mp_aew_nervousness")]: "Nervousness", 
+      [t("mp_aew_slight_irritation")]: "Slight irritation",
+      [t("mp_aew_doubt")]: "Doubt",
+      [t("mp_aew_restlessness")]: "Restlessness",
+      [t("mp_aew_distrust")]: "Distrust",
+      [t("mp_aew_tension")]: "Tension",
+      [t("mp_aew_dissatisfaction")]: "Dissatisfaction",
+      [t("mp_aew_melancholy")]: "Melancholy"
     },
-    "Мені погано": {
-      "Втома": "Fatigue",
-      "Жалію себе": "Self-pity", 
-      "Тривога": "Anxiety",
-      "Сум": "Sadness",
-      "Непевність": "Uncertainty",
-      "Розгубленість": "Confusion",
-      "Почуття провини": "Guilt",
-      "Неприйняття себе": "Self-rejection",
-      "Спустошеність": "Emptiness"
+    [t("mp_aew_i_feel_sick")]: {
+      [t("mp_aew_fatigue")]: "Fatigue",
+      [t("mp_aew_self_pity")]: "Self-pity", 
+      [t("mp_aew_anxiety")]: "Anxiety",
+      [t("mp_aew_sadness")]: "Sadness",
+      [t("mp_aew_uncertainty")]: "Uncertainty",
+      [t("mp_aew_confusion")]: "Confusion",
+      [t("mp_aew_guilt")]: "Guilt",
+      [t("mp_aew_self_rejection")]: "Self-rejection",
+      [t("mp_aew_emptiness")]: "Emptiness"
     },
-    "Жахливо": {
-      "Ізоляція": "Isolation",
-      "Депресія": "Depression", 
-      "Заздрість": "Envy",
-      "Глибокий смуток": "Deep sorrow",
-      "Сором": "Shame",
-      "Відчай": "Despair",
-      "Самотність": "Loneliness",
-      "Безнадія": "Hopelessness",
-      "Агресія до себе": "Self-directed aggression"
+    [t("mp_aew_terribly")]: {
+      [t("mp_aew_isolation")]: "Isolation",
+      [t("mp_aew_depression")]: "Depression", 
+      [t("mp_aew_envy")]: "Envy",
+      [t("mp_aew_deep_sorrow")]: "Deep sorrow",
+      [t("mp_aew_shame")]: "Shame",
+      [t("mp_aew_despair")]: "Despair",
+      [t("mp_aew_loneliness")]: "Loneliness",
+      [t("mp_aew_hopelessness")]: "Hopelessness",
+      [t("mp_aew_self_directed_aggression")]: "Self-directed aggression"
     },
-    "Клас": {
-      "Енергія": "Energy",
-      "Задоволення": "Satisfaction", 
-      "Відчуття зв'язку": "Connection",
-      "Комфорт": "Comfort",
-      "Кохання": "Love",
-      "Мотивація": "Motivation",
-      "Цілеспрямованість": "Determination",
-      "Повага": "Respect",
-      "Дружність": "Friendship"
+    [t("mp_aew_сool")]: {
+      [t("mp_aew_energy")]: "Energy",
+      [t("mp_aew_satisfaction")]: "Satisfaction", 
+      [t("mp_aew_connection")]: "Connection",
+      [t("mp_aew_comfort")]: "Comfort",
+      [t("mp_aew_love")]: "Love",
+      [t("mp_aew_motivation")]: "Motivation",
+      [t("mp_aew_determination")]: "Determination",
+      [t("mp_aew_respect")]: "Respect",
+      [t("mp_aew_friendship")]: "Friendship"
     },
-    "Добре": {
-      "В потоці": "In the flow",
-      "Гордість": "Pride", 
-      "Натхнення": "Inspiration",
-      "Надія": "Hope",
-      "Оптимізм": "Optimism",
-      "Впевненість": "Confidence",
-      "Радість": "Joy",
-      "Подяка": "Gratitude",
-      "Відкритість": "Openness"
+    [t("mp_aew_good")]: {
+      [t("mp_aew_in_the_flow")]: "In the flow",
+      [t("mp_aew_pride")]: "Pride", 
+      [t("mp_aew_inspiration")]: "Inspiration",
+      [t("mp_aew_hope")]: "Hope",
+      [t("mp_aew_optimism")]: "Optimism",
+      [t("mp_aew_confidence")]: "Confidence",
+      [t("mp_aew_joy")]: "Joy",
+      [t("mp_aew_gratitude")]: "Gratitude",
+      [t("mp_aew_openness")]: "Openness"
     },
-    "Чудово": {
-      "Блаженство": "Bliss",
-      "Захват": "Delight", 
-      "Захоплення": "Admiration",
-      "Збудження": "Excitement",
-      "Піднесення": "Elation",
-      "Ейфорія": "Euphoria",
-      "Відданість": "Devotion",
-      "Любов до життя": "Love of life",
-      "Тріумф": "Triumph"
+    [t("mp_aew_great")]: {
+      [t("mp_aew_bliss")]: "Bliss",
+      [t("mp_aew_delight")]: "Delight", 
+      [t("mp_aew_admiration")]: "Admiration",
+      [t("mp_aew_excitement")]: "Excitement",
+      [t("mp_aew_elation")]: "Elation",
+      [t("mp_aew_euphoria")]: "Euphoria",
+      [t("mp_aew_devotion")]: "Devotion",
+      [t("mp_aew_love_of_life")]: "Love of life",
+      [t("mp_aew_triumph")]: "Triumph"
     }
   };
 
   const causeCategories = {
-    "Люди": {
-      "Я сам": "Myself",
-      "Родина": "Family", 
-      "Друзі": "Friends",
-      "Партнер": "Partner",
-      "Колеги": "Colleagues"
+    [t("mp_aew_people")]: {
+      [t("mp_aew_myself")]: "Myself",
+      [t("mp_aew_family")]: "Family", 
+      [t("mp_aew_friends")]: "Friends",
+      [t("mp_aew_partner")]: "Partner",
+      [t("mp_aew_colleagues")]: "Colleagues"
     },
-    "Події": {
-      "Робота": "Work",
-      "Тренування": "Training", 
-      "Водіння": "Driving",
-      "Відпочинок": "Rest",
-      "Навчання": "Studying"
+    [t("mp_aew_events")]: {
+      [t("mp_aew_work")]: "Work",
+      [t("mp_aew_training")]: "Training", 
+      [t("mp_aew_driving")]: "Driving",
+      [t("mp_aew_rest")]: "Rest",
+      [t("mp_aew_studying")]: "Studying"
     },
-    "Місця": {
-      "Дім": "Home",
-      "Офіс": "Office", 
-      "Школа": "School",
-      "Університет": "University",
-      "Вулиця": "Street"
+    [t("mp_aew_places")]: {
+      [t("mp_aew_home")]: "Home",
+      [t("mp_aew_office")]: "Office", 
+      [t("mp_aew_school")]: "School",
+      [t("mp_aew_university")]: "University",
+      [t("mp_aew_street")]: "Street"
     }
   };
   
   const emotionKeys = Object.keys(emotionCategories);
   const causeKeys = Object.keys(causeCategories);
-  
+
+  // Swipe-функції для прогрес-бару
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 30;
+    
+    if (Math.abs(distance) < minSwipeDistance) return;
+    
+    if (distance > minSwipeDistance) {
+      // Swipe вліво - наступна категорія
+      handleNextEmotionCategory();
+    } else if (distance < -minSwipeDistance) {
+      // Swipe вправо - попередня категорія
+      handlePrevEmotionCategory();
+    }
+    
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
   const handleEmotionSelect = (emotion) => {
     const currentCategory = emotionKeys[currentEmotionCategory];
     
@@ -209,7 +244,7 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
         
         return (
           <>
-            <h2 className="aew-wizard-title">Я відчуваю</h2>
+            <h2 className="aew-wizard-title">{t("mp_aew_wizard_title_step_1")}</h2>
             <h3 className="aew-wizard-subtitle">{currentCategory}</h3>
             
             <div className="aew-category-nav">
@@ -223,7 +258,13 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
                 </svg>
               </button>
 
-              <div className="aew-progress-container">
+              <div 
+                ref={progressContainerRef}
+                className="aew-progress-container"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 <div 
                   className={`aew-progress-line ${currentEmotionCategory > 0 ? 'with-radius' : ''}`}
                 >
@@ -270,7 +311,7 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
       case 2:
         return (
           <>
-            <h2 className="aew-wizard-title">Що було причиною цих емоцій?</h2>
+            <h2 className="aew-wizard-title">{t("mp_aew_wizard_title_step_2")}</h2>
 
             <div className="aew-cause-categories">
               {causeKeys.map((category, index) => (
@@ -297,21 +338,21 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
         const selectedEmotionsList = Object.values(selectedEmotions).flat();
         return (
           <>
-            <h2 className="aew-wizard-title">Хочеш написати щось про {selectedEmotionsList.join(', ')}?</h2>
+            <h2 className="aew-wizard-title">{t("mp_aew_wizard_title_step_3")} {selectedEmotionsList.join(', ')}?</h2>
             
             <div className="aew-step3-content">
-              <h3 className="aew-wizard-subtitle aew-step3-subtitle">Нотатка</h3>
+              <h3 className="aew-wizard-subtitle aew-step3-subtitle">{t("mp_aew_notes")}</h3>
               
               <div className='aew-notes-textarea-content'>
                 <textarea
                   className="aew-notes-textarea"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Опишіть свої відчуття детальніше..."
+                  placeholder={t("mp_aew_describe_your_feelings")}
                 ></textarea>
               </div>
               
-              <p className="aew-wizard-description aew-step3-description">Ваша замітка є приватною і її видно тільки вам.</p>
+              <p className="aew-wizard-description aew-step3-description">{t("mp_aew_wizard_description_step_3")}</p>
             </div>
           </>
         );
@@ -331,10 +372,10 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
 
   const getNextButtonText = () => {
     switch (step) {
-      case 1: return "Далі";
-      case 2: return "Далі";
-      case 3: return "Додати";
-      default: return "Далі";
+      case 1: return t("mp_btn_next");
+      case 2: return t("mp_btn_next");
+      case 3: return t("mp_btn_add");
+      default: return t("mp_btn_next");
     }
   };
 
@@ -355,7 +396,7 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
           className="aew-nav-btn" 
           onClick={step === 1 ? onCancel : () => setStep(step - 1)}
         >
-          {step === 1 ? "Скасувати" : "Назад"}
+          {step === 1 ? t("mp_btn_cancel") : t("mp_btn_back")}
         </button>
         <button 
           className="aew-nav-btn aew-primary" 

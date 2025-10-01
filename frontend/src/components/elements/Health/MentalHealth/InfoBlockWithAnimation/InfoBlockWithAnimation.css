@@ -6,7 +6,6 @@
     position: relative;
     overflow: hidden;
     
-    /* Додаємо flex для вертикального центрування */
     display: flex;
     align-items: center;
 }

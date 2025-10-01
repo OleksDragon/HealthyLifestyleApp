@@ -25,12 +25,20 @@ const ChallengesPage = () => {
           { headers }
         );
 
+        console.log("=== ДАННЫЕ ОТ API ===");
+        console.log("Полный ответ:", response.data);
+        if (response.data.length > 0) {
+          console.log("Первый челлендж:", response.data[0]);
+          console.log("Свойства первого челленджа:", Object.keys(response.data[0]));
+        }
+
         const normalizedData = response.data.map((challenge) => ({
           id: challenge.id || challenge.Id,
           title: challenge.title || challenge.Name,
           description: challenge.description || challenge.Description,
           startDate: challenge.startDate || challenge.StartDate,
           endDate: challenge.endDate || challenge.EndDate,
+          participantsCount: challenge.ParticipantsCount ?? challenge.participantsCount ?? 0,
         }));
 
         setChallenges(normalizedData);
@@ -79,6 +87,9 @@ const ChallengesPage = () => {
                             <p className="challenge-dates">
                                 {new Date(challenge.startDate).toLocaleDateString()} –{" "}
                                 {new Date(challenge.endDate).toLocaleDateString()}
+                            </p>
+                            <p className="challenge-participants">
+                                {t("ch_participants")}: {challenge.participantsCount}
                             </p>
                             <Link to={`/social/${challenge.id}`} className="details-link">
                                 {t("ch_details_link")}

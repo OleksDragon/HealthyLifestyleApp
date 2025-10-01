@@ -247,6 +247,15 @@ i18n
           ch_edit_success: "Challenge successfully updated!",
           ch_edit_success_title: "Success!",
           ch_edit_error: "Failed to update challenge. Please try again.",
+          ch_leave: "Leave",
+          ch_complete: "Complete",
+          ch_confirmLeaveTitle: "Confirm Leaving Challenge",
+          ch_confirmLeaveText: "Are you sure you want to leave this challenge?",
+          ch_leftTitle: "Challenge Left",
+          ch_leftText: "You have successfully left the challenge.",
+          ch_completedTitle: "Challenge Completed",
+          ch_completedText:
+            "Congratulations! You have completed the challenge.",
         },
       },
       uk: {
@@ -491,6 +500,14 @@ i18n
           ch_edit_success: "Челендж успішно оновлено!",
           ch_edit_success_title: "Успіх!",
           ch_edit_error: "Не вдалося оновити челендж. Спробуйте ще раз.",
+          ch_leave: "Покинути",
+          ch_complete: "Завершити",
+          ch_confirmLeaveTitle: "Підтвердіть вихід з челенджу",
+          ch_confirmLeaveText: "Ви впевнені, що хочете покинути цей челендж?",
+          ch_leftTitle: "Челендж покинуто",
+          ch_leftText: "Ви успішно покинули челендж.",
+          ch_completedTitle: "Челендж завершено",
+          ch_completedText: "Вітаємо! Ви успішно завершили челендж.",
         },
       },
       de: {
@@ -727,6 +744,16 @@ i18n
           ch_edit_success_title: "Erfolg!",
           ch_edit_error:
             "Fehler beim Aktualisieren der Herausforderung. Bitte versuchen Sie es erneut.",
+          ch_leave: "Verlassen",
+          ch_complete: "Abschließen",
+          ch_confirmLeaveTitle: "Challenge verlassen bestätigen",
+          ch_confirmLeaveText:
+            "Sind Sie sicher, dass Sie diese Challenge verlassen möchten?",
+          ch_leftTitle: "Challenge verlassen",
+          ch_leftText: "Sie haben die Challenge erfolgreich verlassen.",
+          ch_completedTitle: "Challenge abgeschlossen",
+          ch_completedText:
+            "Herzlichen Glückwunsch! Sie haben die Challenge erfolgreich abgeschlossen.",
         },
       },
       fr: {
@@ -961,6 +988,15 @@ i18n
           ch_edit_success: "Défi mis à jour avec succès !",
           ch_edit_success_title: "Succès !",
           ch_edit_error: "Échec de la mise à jour du défi. Veuillez réessayer.",
+          ch_leave: "Quitter",
+          ch_complete: "Terminer",
+          ch_confirmLeaveTitle: "Confirmer la sortie du défi",
+          ch_confirmLeaveText: "Êtes-vous sûr de vouloir quitter ce défi ?",
+          ch_leftTitle: "Défi quitté",
+          ch_leftText: "Vous avez quitté le défi avec succès.",
+          ch_completedTitle: "Défi terminé",
+          ch_completedText:
+            "Félicitations ! Vous avez terminé le défi avec succès.",
         },
       },
       es: {
@@ -1197,6 +1233,16 @@ i18n
           ch_edit_success_title: "¡Éxito!",
           ch_edit_error:
             "No se pudo actualizar el desafío. Por favor, inténtelo de nuevo.",
+          ch_leave: "Abandonar",
+          ch_complete: "Completar",
+          ch_confirmLeaveTitle: "Confirmar abandono del desafío",
+          ch_confirmLeaveText:
+            "¿Estás seguro de que quieres abandonar este desafío?",
+          ch_leftTitle: "Desafío abandonado",
+          ch_leftText: "Has abandonado el desafío exitosamente.",
+          ch_completedTitle: "Desafío completado",
+          ch_completedText:
+            "¡Felicitaciones! Has completado el desafío exitosamente.",
         },
       },
     },

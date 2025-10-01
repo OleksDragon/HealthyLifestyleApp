@@ -167,6 +167,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IConsultationService, ConsultationService>();
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IChallengeService, ChallengeService>();
+builder.Services.AddScoped<IChallengeParticipantService, ChallengeParticipantService>();
 builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>();
 builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerService>();
 builder.Services.AddScoped<IMentalHealthRecordService, MentalHealthRecordService>();

@@ -1,4 +1,5 @@
 ﻿using HealthyLifestyle.Core.Entities;
+using HealthyLifestyle.Core.Interfaces.Challenge;
 
 namespace HealthyLifestyle.Core.Interfaces
 {
@@ -22,5 +23,8 @@ namespace HealthyLifestyle.Core.Interfaces
         /// </summary>
         /// <returns>Кількість змінених записів у базі даних.</returns>
         Task<int> SaveChangesAsync();
+
+        IChallengeRepository Challenges { get; }
+        IChallengeParticipantRepository ChallengeParticipants { get; }
     }
 }

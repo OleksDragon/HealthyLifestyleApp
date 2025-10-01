@@ -389,7 +389,7 @@ i18n
           spec_psychologist: "Психолог",
           spec_doctor: "Лікар",
           spec_trainer: "Тренер",
-          spec_dietitian: "Дієтолог / нутриціолог",
+          spec_dietitian: "Дієтолог",
 
           mode_online: "Тільки онлайн",
           mode_offline: "Тільки офлайн",
@@ -407,11 +407,14 @@ i18n
 
           clear_option: "Очистити",
           clear_filter:"Очистити філтр",
-  unknown_specialist: "Невідомий спеціаліст",
-  top_5: "ТОП - 5",
-  subscribe: "Підписатись",
-  no_specialists_found: "Спеціалістів не знайдено",
-  recomend: "Рекомендуємо!"
+          unknown_specialist: "Невідомий спеціаліст",
+          top_5: "ТОП - 5",
+          subscribe: "Підписатись",
+          no_specialists_found: "Спеціалістів не знайдено",
+          recomend: "Рекомендуємо!",
+          join_team: "Приєднуйся до нас в команду!",
+          become_specialist: "Стати фахівцем"
+          
         },
       },
       de: {

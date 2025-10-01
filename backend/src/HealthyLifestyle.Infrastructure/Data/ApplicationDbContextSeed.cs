@@ -51,12 +51,12 @@ namespace HealthyLifestyle.Infrastructure.Data
 
             #region Створення користувачів та призначення ролей/деталей
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, "admin@example.com", "AdminPassword123!", RoleNames.Admin,
-    fullName: "Адмін Користувач",
-    biography: "Головний адміністратор платформи.",
-    phone: "+380501234567",
-    country: "Україна",
-    city: "Київ",
-    street: "вул. Хрещатик 1");
+                fullName: "Адмін Користувач",
+                biography: "Головний адміністратор платформи.",
+                phone: "+380501234567",
+                country: "Україна",
+                city: "Київ",
+                street: "вул. Хрещатик 1");
 
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, "user@example.com", "UserPassword123!", RoleNames.User,
                 fullName: "Звичайний Користувач",
@@ -95,79 +95,79 @@ namespace HealthyLifestyle.Infrastructure.Data
         /// Створює користувача Identity та призначає йому роль.
         /// </summary>
         private static async Task CreateUserWithRoleAndDetailsAsync(
-    UserManager<User> userManager,
-    RoleManager<IdentityRole<Guid>> roleManager,
-    string email,
-    string password,
-    string roleName,
-    string? fullName = null,
-    string? biography = null,
-    string? phone = null,
-    string? country = null,
-    string? city = null,
-    string? street = null)
-{
-    ArgumentNullException.ThrowIfNull(userManager);
-    ArgumentNullException.ThrowIfNull(roleManager);
-    ArgumentNullException.ThrowIfNull(email);
-    ArgumentNullException.ThrowIfNull(password);
-    ArgumentNullException.ThrowIfNull(roleName);
-
-    if (await userManager.FindByEmailAsync(email) == null)
+        UserManager<User> userManager,
+        RoleManager<IdentityRole<Guid>> roleManager,
+        string email,
+        string password,
+        string roleName,
+        string? fullName = null,
+        string? biography = null,
+        string? phone = null,
+        string? country = null,
+        string? city = null,
+        string? street = null)
     {
-        // Generate random data for new fields if not provided
-        var random = new Random();
-        var user = new User
-        {
-            UserName = email,
-            Email = email,
-            EmailConfirmed = true,
-            FullName = fullName ?? string.Empty,
-            Bio = biography,
-            Phone = phone ?? GenerateRandomPhone(random),
-            Country = country ?? GenerateRandomCountry(random),
-            City = city ?? GenerateRandomCity(random),
-            Street = street ?? GenerateRandomStreet(random),
-            CreatedAt = DateTime.UtcNow
-        };
+        ArgumentNullException.ThrowIfNull(userManager);
+        ArgumentNullException.ThrowIfNull(roleManager);
+        ArgumentNullException.ThrowIfNull(email);
+        ArgumentNullException.ThrowIfNull(password);
+        ArgumentNullException.ThrowIfNull(roleName);
 
-        var result = await userManager.CreateAsync(user, password);
-        if (result.Succeeded && await roleManager.RoleExistsAsync(roleName))
+        if (await userManager.FindByEmailAsync(email) == null)
         {
-            await userManager.AddToRoleAsync(user, roleName);
-        }
-        else if (!result.Succeeded)
-        {
-            Console.WriteLine(
-                $"Помилка створення користувача {email}: " +
-                $"{string.Join(", ", result.Errors.Select(e => e.Description))}");
+            // Generate random data for new fields if not provided
+            var random = new Random();
+            var user = new User
+            {
+                UserName = email,
+                Email = email,
+                EmailConfirmed = true,
+                FullName = fullName ?? string.Empty,
+                Bio = biography,
+                Phone = phone ?? GenerateRandomPhone(random),
+                Country = country ?? GenerateRandomCountry(random),
+                City = city ?? GenerateRandomCity(random),
+                Street = street ?? GenerateRandomStreet(random),
+                CreatedAt = DateTime.UtcNow
+            };
+
+            var result = await userManager.CreateAsync(user, password);
+            if (result.Succeeded && await roleManager.RoleExistsAsync(roleName))
+            {
+                await userManager.AddToRoleAsync(user, roleName);
+            }
+            else if (!result.Succeeded)
+            {
+                Console.WriteLine(
+                    $"Помилка створення користувача {email}: " +
+                    $"{string.Join(", ", result.Errors.Select(e => e.Description))}");
+            }
         }
     }
-}
 
-// Helper methods for generating random data
-private static string GenerateRandomPhone(Random random)
-{
-    return $"+380{random.Next(10, 100)}{random.Next(100, 1000)}{random.Next(1000, 10000)}";
-}
+    // Helper methods for generating random data
+    private static string GenerateRandomPhone(Random random)
+    {
+        return $"+380{random.Next(10, 100)}{random.Next(100, 1000)}{random.Next(1000, 10000)}";
+    }
 
-private static string GenerateRandomCountry(Random random)
-{
-    string[] countries = { "Україна", "Польща", "Німеччина", "США", "Велика Британія", "Канада", "Франція", "Італія" };
-    return countries[random.Next(countries.Length)];
-}
+    private static string GenerateRandomCountry(Random random)
+    {
+        string[] countries = { "Україна", "Польща", "Німеччина", "США", "Велика Британія", "Канада", "Франція", "Італія" };
+        return countries[random.Next(countries.Length)];
+    }
 
-private static string GenerateRandomCity(Random random)
-{
+    private static string GenerateRandomCity(Random random)
+    {
     string[] cities = { 
         "Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя", "Варшава", 
         "Берлін", "Лондон", "Нью-Йорк", "Торонто", "Париж", "Рим", "Мадрид"
     };
     return cities[random.Next(cities.Length)];
-}
+    }
 
-private static string GenerateRandomStreet(Random random)
-{
+    private static string GenerateRandomStreet(Random random)
+    {
     string[] streetNames = {
         "вул. Центральна", "вул. Героїв України", "вул. Шевченка", "вул. Франка", 
         "вул. Лесі Українки", "вул. Бандери", "вул. Незалежності", "вул. Свободи",
@@ -190,12 +190,12 @@ private static string GenerateRandomStreet(Random random)
             ApplicationDbContext context)
         {
             var email = "psychologist@example.com";
-            await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Psychologist123!", RoleNames.Psychologist,
-                fullName: "Д-р Анна Фройд", biography: "Досвідчений психолог із 10-річним стажем.",
+            await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Doctor123!", RoleNames.Doctor,
+                fullName: "Антоніна Смила", biography: "Досвідчений психолог із 10-річним стажем.",
                 phone: "+380501112233",
-    country: "Австрія",
-    city: "Відень",
-    street: "вул. Фройда 5");
+                country: "Україна",
+                city: "Київ",
+                street: "вул. Психологічна 15");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -215,6 +215,12 @@ private static string GenerateRandomStreet(Random random)
                     certificatesUrl: "https://example.com/psychologist-certs.pdf",
                     hourlyRate: psychologistRoleType.DefaultHourlyRate ?? 0m
                 );
+                qualification.SetWorkFormat(new List<string>
+                {
+                    "Онлайн консультації через Zoom",
+                    "Очні сесії в кабінеті (за домовленістю)",
+                    "Щотижневі терапевтичні плани"
+                });
                 qualification.UpdateStatus(QualificationStatus.Approved);
                 context.UserProfessionalQualifications.Add(qualification);
             }
@@ -236,12 +242,12 @@ private static string GenerateRandomStreet(Random random)
                         professionalLicenseNumber: "PSY-12345",
                         biography: user.Bio,
                         contactEmail: user.Email,
-                        contactPhone: "+1234567890",
-                        website: "https://drfreud.com",
+                        contactPhone: "+380501112233",
+                        website: "https://dronova-psychology.com",
                         yearsOfExperience: 10,
                         certifications: new List<string> { "Сертифікат CBT", "Сертифікат Гештальт-терапії" },
                         availability: "Пн-Пт, 9:00-17:00",
-                        clientTestimonials: "Відмінний спеціаліст, дуже допоміг!"
+                        clientTestimonials: "Відмінний спеціаліст, дуже допоміг у розв'язанні складних життєвих ситуацій!"
                     );
                     context.PsychologistDetails.Add(details);
                 }
@@ -256,11 +262,11 @@ private static string GenerateRandomStreet(Random random)
         {
             var email = "dietitian@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Dietitian123!", RoleNames.Dietitian,
-                fullName: "Д-р Олена Павлівна", biography: "Досвідчений дієтолог із 8-річним стажем.",
+                fullName: "Олеся Мамкіна", biography: "Досвідчений дієтолог із 8-річним стажем.",
                 phone: "+380502223344",
                 country: "Україна",
-                city: "Київ",
-                street: "пр. Перемоги 25");
+                city: "Львів",
+                street: "вул. Здорова 25");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -280,6 +286,12 @@ private static string GenerateRandomStreet(Random random)
                     certificatesUrl: "https://example.com/dietitian-certs.pdf",
                     hourlyRate: dietitianRoleType.DefaultHourlyRate.Value
                 );
+                qualification.SetWorkFormat(new List<string>
+                {
+                    "Онлайн супровід у Telegram",
+                    "Очні консультації (за домовленістю)",
+                    "Щотижневі корекції плану харчування"
+                });
                 qualification.UpdateStatus(QualificationStatus.Approved);
                 context.UserProfessionalQualifications.Add(qualification);
             }
@@ -301,12 +313,12 @@ private static string GenerateRandomStreet(Random random)
                         professionalLicenseNumber: "DIET-67890",
                         biography: user.Bio,
                         contactEmail: user.Email,
-                        contactPhone: "+0987654321",
-                        website: "https://dietitianelena.com",
+                        contactPhone: "+380502223344",
+                        website: "https://mamkina-dietology.com",
                         yearsOfExperience: 8,
                         certifications: new List<string> { "Сертифікат із спортивної дієтології" },
                         availability: "Вт, Чт, Сб, 10:00-18:00",
-                        clientTestimonials: "Олена допомогла мені досягти моїх цілей у харчуванні!"
+                        clientTestimonials: "Олеся допомогла мені досягти моїх цілей у харчуванні!"
                     );
                     context.DietitianDetails.Add(details);
                 }
@@ -321,11 +333,11 @@ private static string GenerateRandomStreet(Random random)
         {
             var email = "trainer@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Trainer123!", RoleNames.Trainer,
-                fullName: "Пан Іван Сильний", biography: "Професійний фітнес-тренер із 12-річним стажем.",
+                fullName: "Олексій Соколенко", biography: "Професійний фітнес-тренер із 12-річним стажем.",
                 phone: "+380503334455",
                 country: "Україна",
-                city: "Одеса",
-                street: "вул. Дерибасівська 10");
+                city: "Київ",
+                street: "пр. Спортивний 10");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -345,6 +357,12 @@ private static string GenerateRandomStreet(Random random)
                     certificatesUrl: "https://example.com/trainer-certs.pdf",
                     hourlyRate: trainerRoleType.DefaultHourlyRate.Value
                 );
+                qualification.SetWorkFormat(new List<string>
+                {
+                    "Онлайн супровід у Telegram",
+                    "Офлайн тренування в залі (за домовленістю)",
+                    "Щотижневі корекції плану"
+                });
                 qualification.UpdateStatus(QualificationStatus.Approved);
                 context.UserProfessionalQualifications.Add(qualification);
             }
@@ -365,12 +383,12 @@ private static string GenerateRandomStreet(Random random)
                         preferredWorkoutStyles: new List<string> { "HIIT", "Кросфіт", "Бодібілдинг" },
                         biography: user.Bio,
                         contactEmail: user.Email,
-                        contactPhone: "+1122334455",
-                        website: "https://ivanstrong.com",
+                        contactPhone: "+380503334455",
+                        website: "https://sokolenko-fitness.com",
                         yearsOfExperience: 12,
                         certifications: new List<string> { "Сертифікат CrossFit Level 1, ACE Certified" },
                         availability: "Пн, Ср, Пт, 7:00-11:00 і 16:00-20:00",
-                        clientTestimonials: "Іван допоміг мені набрати м’язову масу та покращити витривалість!"
+                        clientTestimonials: "Олексій допоміг мені набрати м'язову масу та покращити витривалість!"
                     );
                     context.TrainerDetails.Add(details);
                 }
@@ -378,14 +396,18 @@ private static string GenerateRandomStreet(Random random)
         }
 
         /// <summary>
-        /// Створює користувача-тренера 1 (Марина Фітнес), його кваліфікацію та деталі, якщо вони ще не існують.
+        /// Створює користувача-тренера 1 (Антоніна Смила), його кваліфікацію та деталі, якщо вони ще не існують.
         /// </summary>
         private static async Task CreateTrainer1Async(
             UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, ApplicationDbContext context)
         {
             var email = "trainer1@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Trainer1pass!", RoleNames.Trainer,
-                fullName: "Марина Фітнес", biography: "Спеціалістка з йоги та пілатесу, допомагає з гнучкістю.");
+                fullName: "Маргарита Дронова", biography: "Спеціалістка з йоги та пілатесу, допомагає з гнучкістю.",
+                phone: "+380504445566",
+                country: "Україна",
+                city: "Львів",
+                street: "вул. Гнучка 8");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -405,6 +427,12 @@ private static string GenerateRandomStreet(Random random)
                     certificatesUrl: "https://example.com/trainer1-certs.pdf",
                     hourlyRate: trainerRoleType.DefaultHourlyRate.Value
                 );
+                qualification.SetWorkFormat(new List<string>
+                {
+                    "Онлайн супровід у Telegram",
+                    "Офлайн тренування в залі (за домовленістю)",
+                    "Щотижневі корекції плану"
+                });
                 qualification.UpdateStatus(QualificationStatus.Approved);
                 context.UserProfessionalQualifications.Add(qualification);
             }
@@ -425,12 +453,12 @@ private static string GenerateRandomStreet(Random random)
                         preferredWorkoutStyles: new List<string> { "Хатха-йога", "Він'яса-йога", "Класичний пілатес" },
                         biography: user.Bio,
                         contactEmail: user.Email,
-                        contactPhone: "+380501234567",
-                        website: "https://marinayoga.com",
+                        contactPhone: "+380504445566",
+                        website: "https://smila-yoga.com",
                         yearsOfExperience: 7,
                         certifications: new List<string> { "RYT 200 Yoga Alliance", "Stott Pilates Certified" },
                         availability: "Вт, Чт, Сб, 8:00-12:00",
-                        clientTestimonials: "Марина допомогла мені знайти внутрішню гармонію та покращити гнучкість!"
+                        clientTestimonials: "Антоніна допомогла мені знайти внутрішню гармонію та покращити гнучкість!"
                     );
                     context.TrainerDetails.Add(details);
                 }
@@ -438,14 +466,18 @@ private static string GenerateRandomStreet(Random random)
         }
 
         /// <summary>
-        /// Створює користувача-тренера 2 (Олег Кардіо), його кваліфікацію та деталі, якщо вони ще не існують.
+        /// Створює користувача-тренера 2 (Андрій Кач), його кваліфікацію та деталі, якщо вони ще не існують.
         /// </summary>
         private static async Task CreateTrainer2Async(
             UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, ApplicationDbContext context)
         {
             var email = "trainer2@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Trainer2pass!", RoleNames.Trainer,
-                fullName: "Олег Кардіо", biography: "Експерт з кардіотренувань та витривалості.");
+                fullName: "Андрій Кач", biography: "Експерт з кардіотренувань та витривалості.",
+                phone: "+380505556677",
+                country: "Україна",
+                city: "Одеса",
+                street: "вул. Морська 12");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -465,6 +497,12 @@ private static string GenerateRandomStreet(Random random)
                     certificatesUrl: "https://example.com/trainer2-certs.pdf",
                     hourlyRate: trainerRoleType.DefaultHourlyRate.Value
                 );
+                qualification.SetWorkFormat(new List<string>
+                {
+                    "Онлайн супровід у Telegram",
+                    "Офлайн тренування в залі (за домовленістю)",
+                    "Щотижневі корекції плану"
+                });
                 qualification.UpdateStatus(QualificationStatus.Approved);
                 context.UserProfessionalQualifications.Add(qualification);
             }
@@ -485,12 +523,12 @@ private static string GenerateRandomStreet(Random random)
                         preferredWorkoutStyles: new List<string> { "Марафонська підготовка", "Кругові тренування" },
                         biography: user.Bio,
                         contactEmail: user.Email,
-                        contactPhone: "+380679876543",
-                        website: "https://olegcardio.com",
+                        contactPhone: "+380505556677",
+                        website: "https://kach-running.com",
                         yearsOfExperience: 9,
                         certifications: new List<string> { "NASM Certified Personal Trainer", "USA Track & Field Level 1" },
                         availability: "Пн, Ср, Пт, 17:00-21:00",
-                        clientTestimonials: "Олег допоміг мені покращити витривалість та підготуватися до марафону!"
+                        clientTestimonials: "Андрій допоміг мені покращити витривалість та підготуватися до марафону!"
                     );
                     context.TrainerDetails.Add(details);
                 }
@@ -498,14 +536,18 @@ private static string GenerateRandomStreet(Random random)
         }
 
         /// <summary>
-        /// Створює користувача-тренера 3 (Катерина Сила), його кваліфікацію та деталі, якщо вони ще не існують.
+        /// Створює користувача-тренера 3 (Дмитро Делитанович), його кваліфікацію та деталі, якщо вони ще не існують.
         /// </summary>
         private static async Task CreateTrainer3Async(
             UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, ApplicationDbContext context)
         {
             var email = "trainer3@example.com";
             await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Trainer3pass!", RoleNames.Trainer,
-                fullName: "Катерина Сила", biography: "Тренер з важкої атлетики та бодібілдингу, допомагає набрати м'язову масу.");
+                fullName: "Дмитро Делитанович", biography: "Тренер з важкої атлетики та бодібілдингу, допомагає набрати м'язову масу.",
+                phone: "+380506667788",
+                country: "Україна",
+                city: "Харків",
+                street: "вул. Силова 5");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -525,6 +567,12 @@ private static string GenerateRandomStreet(Random random)
                     certificatesUrl: "https://example.com/trainer3-certs.pdf",
                     hourlyRate: trainerRoleType.DefaultHourlyRate.Value
                 );
+                qualification.SetWorkFormat(new List<string>
+                {
+                    "Онлайн супровід у Telegram",
+                    "Офлайн тренування в залі (за домовленістю)",
+                    "Щотижневі корекції плану"
+                });
                 qualification.UpdateStatus(QualificationStatus.Approved);
                 context.UserProfessionalQualifications.Add(qualification);
             }
@@ -545,12 +593,12 @@ private static string GenerateRandomStreet(Random random)
                         preferredWorkoutStyles: new List<string> { "Спліт-тренування", "Full-body тренування" },
                         biography: user.Bio,
                         contactEmail: user.Email,
-                        contactPhone: "+380991112233",
-                        website: "https://katerynapower.com",
+                        contactPhone: "+380506667788",
+                        website: "https://delitanovich-power.com",
                         yearsOfExperience: 6,
                         certifications: new List<string> { "ISSA Certified Personal Trainer", "Certified Strength and Conditioning Specialist" },
                         availability: "Вт, Чт, Сб, 15:00-20:00",
-                        clientTestimonials: "Катерина допомогла мені значно збільшити силові показники!"
+                        clientTestimonials: "Дмитро допоміг мені значно збільшити силові показники!"
                     );
                     context.TrainerDetails.Add(details);
                 }
@@ -564,8 +612,12 @@ private static string GenerateRandomStreet(Random random)
             UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, ApplicationDbContext context)
         {
             var email = "doctor@example.com";
-            await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Doctor123!", RoleNames.Doctor,
-                fullName: "Д-р Олександр Медичний", biography: "Лікар загальної практики із 15-річним стажем.");
+            await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Psychologist123!", RoleNames.Psychologist,
+                fullName: "Олександр Медичний", biography: "Лікар загальної практики із 15-річним стажем.",
+                phone: "+380507778899",
+                country: "Україна",
+                city: "Київ",
+                street: "пр. Медичний 1");
 
             var user = await userManager.FindByEmailAsync(email);
             if (user == null) return;
@@ -585,6 +637,12 @@ private static string GenerateRandomStreet(Random random)
                     certificatesUrl: "https://example.com/doctor-certs.pdf",
                     hourlyRate: doctorRoleType.DefaultHourlyRate.Value
                 );
+                qualification.SetWorkFormat(new List<string>
+                {
+                    "Онлайн консультації через Zoom",
+                    "Очні прийоми в клініці (за домовленістю)",
+                    "Плани профілактики та лікування"
+                });
                 qualification.UpdateStatus(QualificationStatus.Approved);
                 context.UserProfessionalQualifications.Add(qualification);
             }
@@ -606,7 +664,7 @@ private static string GenerateRandomStreet(Random random)
                         clinicAffiliation: "Міська лікарня №1",
                         biography: user.Bio,
                         contactEmail: user.Email,
-                        contactPhone: "+9988776655",
+                        contactPhone: "+380507778899",
                         website: "https://dralex.com",
                         yearsOfExperience: 15,
                         certifications: new List<string> { "Ліцензія лікаря, Сертифікат із сімейної медицини" },

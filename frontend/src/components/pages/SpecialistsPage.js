@@ -86,46 +86,62 @@ const SpecialistsPage = () => {
     }
   ];
 
-  // Fetch specialists with authorization (optional, can be skipped if using only local data)
-  const fetchSpecialists = useCallback(async () => {
-    const token = getToken();
-    if (!token) {
-      console.warn("Токен не знайдено");
-      setSpecialists(specialistsData); // Fallback to local data
-      setSpecialistsLocal(specialistsData);
-      setIsLoading(false);
-      return;
-    }
+  // Fetch specialists with authorization (optional, fallback to local if no token or error)
+const fetchSpecialists = useCallback(async () => {
+  const token = getToken();
 
-    try {
-      setIsLoading(true);
-      const response = await axios.get(
-        `http://localhost:5260/api/ProfessionalQualification/all`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      setSpecialists(response.data);
-      setSpecialistsLocal(response.data); // Use API data if available
-    } catch (error) {
-      console.error("Помилка при завантаженні спеціалістів:", error);
-      setSpecialists(specialistsData); // Fallback to local data
-      setSpecialistsLocal(specialistsData);
-      if (error.response?.status === 401) {
-        navigate('/login');
+  // Якщо токен відсутній → одразу fallback на локальні
+  if (!token) {
+    console.info("🔑 Токен не знайдено, використовую локальні дані");
+    setSpecialists(specialistsData);
+    setSpecialistsLocal(specialistsData);
+    setIsLoading(false);
+    return;
+  }
+
+  try {
+    setIsLoading(true);
+
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/ProfessionalQualification/all`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
       }
-    } finally {
-      setIsLoading(false);
-    }
-  }, [navigate]);
+    );
 
-  // Load specialists on mount
-  useEffect(() => {
-    fetchSpecialists();
-  }, [fetchSpecialists]);
+    const apiData = response.data;
+
+    if (Array.isArray(apiData) && apiData.length > 0) {
+      setSpecialists(apiData);
+      setSpecialistsLocal(apiData);
+    } else {
+      console.warn("⚠️ API повернув порожній список, використовую локальні дані");
+      setSpecialists(specialistsData);
+      setSpecialistsLocal(specialistsData);
+    }
+  } catch (error) {
+    console.error("❌ Помилка при завантаженні спеціалістів:", error);
+
+    // fallback
+    setSpecialists(specialistsData);
+    setSpecialistsLocal(specialistsData);
+
+    if (error.response?.status === 401) {
+      navigate("/login");
+    }
+  } finally {
+    setIsLoading(false);
+  }
+}, [navigate]);
+
+// Load specialists on mount
+useEffect(() => {
+  fetchSpecialists();
+}, [fetchSpecialists]);
+
 
   // Apply client-side filtering
   useEffect(() => {
@@ -240,24 +256,27 @@ const SpecialistsPage = () => {
         </button>
       </div>
 
-      {/* Specialists List */}
-      <div className="specialists-list scroll-data">
-        {specialistsLocal.length === 0 ? (
-          <p>{t("no_specialists_found")}</p>
-        ) : (
-          specialistsLocal.map((spec, i) => (
-            <SpecCard key={spec.Id} specialist={spec} index={i} />
-          ))
-        )}
-      </div>
-      <div className="join-section">
-        <h1 className="text-wrapper">Приєднуйся до нас в команду!</h1>
-            
-        <div className="property-default-wrapper">
-          <span>Стати фахівцем</span>
+      {/* Specialists List + Join Section у скрол-контейнері */}
+      <div className="content-container scroll-data">
+        <div className="specialists-list"> 
+          {console.log(specialists)}
+          {specialists.length === 0 ? (
+            <p>{t("no_specialists_found")}</p>
+          ) : (
+            specialists.map((spec, i) => (
+              
+              <SpecCard key={spec.Id} specialist={spec} index={i} />
+            ))
+          )}
+        </div>
+        
+        <div className="join-section">
+          <h1 className="text-wrapper">{t("join_team")}</h1>
+          <div className="property-default-wrapper">
+            <span>{t("become_specialist")}</span>
+          </div>
         </div>
       </div>
-
     </div>
   );
 };

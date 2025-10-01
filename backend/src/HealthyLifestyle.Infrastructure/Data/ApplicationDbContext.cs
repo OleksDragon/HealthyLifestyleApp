@@ -237,6 +237,16 @@ namespace HealthyLifestyle.Infrastructure.Data
             modelBuilder.Entity<UserProfessionalQualification>(entity =>
             {
                 entity.Property(upq => upq.HourlyRate).HasPrecision(10, 2);
+                entity.Property(upq => upq.WorkFormat)
+                    .HasConversion(
+                        v => v != null ? string.Join(",", v) : string.Empty,
+                        v => string.IsNullOrEmpty(v) ? new List<string>() : v.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList(),
+                        new Microsoft.EntityFrameworkCore.ChangeTracking.ValueComparer<List<string>>(
+                            (c1, c2) => c1.SequenceEqual(c2),
+                            c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v != null ? v.GetHashCode() : 0)),
+                            c => c.ToList()
+                        )
+                    );
                 entity.HasOne(upq => upq.ProfessionalRoleType)
                    .WithMany(prt => prt.UserProfessionalQualifications)
                    .HasForeignKey(upq => upq.ProfessionalRoleTypeId)
@@ -283,7 +293,7 @@ namespace HealthyLifestyle.Infrastructure.Data
             modelBuilder.Entity<PsychologistDetails>(entity =>
             {
                 entity.HasKey(pd => pd.Id);
-                entity.Property(pd => pd.Specializations).HasConversion(
+                entity.Property(pd => pd.Specializations).HasConversion(
                     v => v == null ? string.Empty : string.Join(",", v),
                     v => string.IsNullOrEmpty(v) ? new List<string>() : v.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList(),
                     new ValueComparer<List<string>>(

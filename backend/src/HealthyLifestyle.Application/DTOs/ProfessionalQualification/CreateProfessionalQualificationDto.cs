@@ -32,6 +32,11 @@ namespace HealthyLifestyle.Application.DTOs.ProfessionalQualification
         public string? Description { get; set; }
 
         /// <summary>
+        /// Формати роботи спеціаліста (наприклад, онлайн, офлайн, корекції плану тощо).
+        /// </summary>
+        public List<string>? WorkFormat { get; set; }
+
+        /// <summary>
         /// URL до підтверджуючих документів або сертифікатів.
         /// Може бути null, але якщо вказано, має бути валідною URL-адресою.
         /// Максимальна довжина — 500 символів.

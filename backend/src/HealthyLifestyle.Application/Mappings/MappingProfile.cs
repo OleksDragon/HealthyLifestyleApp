@@ -129,10 +129,12 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ForMember(dest => dest.HourlyRate, opt => opt.MapFrom(src => src.HourlyRate ?? 0m))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.WorkFormat, opt => opt.MapFrom(src => src.WorkFormat ?? new List<string>()));
 
             CreateMap<UserProfessionalQualification, UserProfessionalQualificationDto>()
-                .ForMember(dest => dest.QualificationStatus, opt => opt.MapFrom(src => src.Status.ToString()));
+                .ForMember(dest => dest.QualificationStatus, opt => opt.MapFrom(src => src.Status.ToString()))
+                .ForMember(dest => dest.WorkFormat, opt => opt.MapFrom(src => src.WorkFormat));
         }
 
         /// <summary>

@@ -14,7 +14,7 @@ import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Menu from "./components/elements/Menu";
 import SpecialistsPage from "./components/pages/SpecialistsPage";
-
+import ExpertDetailsPage from "./components/pages/SpecialistPages/ExpertDetailsPage/ExpertDetailsPage";
 import HealthPageMenu from "./components/elements/Health/HealthPageMenu/HealthPageMenu";
 
 import MentalHealthPage from "./components/pages/HealthPages/MentalHealthPages/MentalHealthPage";
@@ -52,6 +52,7 @@ function AppRoutes() {
 
 
       <Route path="/specialists" element={<Menu><SpecialistsPage/></Menu>} />
+      <Route path="/specialists/:id" element={<Menu><ExpertDetailsPage/></Menu>} />
 
       <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
 

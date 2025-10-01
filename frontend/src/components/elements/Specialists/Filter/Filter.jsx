@@ -121,9 +121,8 @@ return (
                 className="f-select-option"
                 onClick={() => handleOptionClick(opt.label)}
               >
-                
-
-                <div>{opt.icon}</div> {opt.label}
+                <div className='icon'>{opt.icon}</div> 
+                {opt.label}
               </div>
             ))}
             {/* Option to clear the filter with translation */}

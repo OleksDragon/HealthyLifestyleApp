@@ -6,21 +6,25 @@
   padding-left: 75px;
 
 }
+.content-container {
+  
+    position: relative;
+    overflow-y: auto;
+    height: calc(100vh - 290px); /* відняти висоту шапки, якщо є */
+    width: 97%;
+    overflow-x: hidden;
 
+}
 .specialists-list {
   display: grid;
   gap: 30px;
-  width: 100%;
+  width: 95%;
   padding: 20px 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center; /* центрування карток, якщо менше 3 */
   justify-items: center; /* ← центрує по горизонталі */
   align-items: center;   /* ← центрує по вертикалі */
-
-   position: relative;
-  overflow-y: auto;   /* включає вертикальний скролл */
-  max-height: 70vh;  /* 🔑 задай висоту (або max-height) */
-  width: 95%;
+  
 }
 .filter-container {
   width: 90%;
@@ -160,7 +164,7 @@
   color: #ffffff;
   display: flex;
   font-family: "Roboto-Bold", Helvetica;
-  font-size: 70px;
+  font-size: 55px;
   font-weight: 700;
   height: 82px;
   justify-content: center;
@@ -207,29 +211,30 @@
   width: 100%;
   max-width: 1208px; /* твій контейнер */
   margin: 0 auto;    /* центрування */
+  margin-top: 200px;
   text-align: center;
 }
 
 .text-wrapper {
-  font-size: 32px;
   font-weight: 600;
   margin-bottom: 40px;
 }
 
 .property-default-wrapper {
+  font-family: var(--font-family);
   display: inline-block; /* щоб розмір підганявся під контент */
   padding: 14px 40px;    /* відступи для кнопки */
   background: #ffffff;   /* фон білий */
   color: #116fcf;        /* текст */
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 500;
   border-radius: 40px;
   border: 2px solid #116fcf;
   cursor: pointer;
   transition: all 0.3s ease;
+  line-height: 1.59;
 }
 
 .property-default-wrapper:hover {
-  background: #116fcf;
-  color: #ffffff;
+  background: #D6FF00;
 }

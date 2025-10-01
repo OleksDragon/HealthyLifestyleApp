@@ -99,7 +99,9 @@
   overflow: hidden;
   transform-origin: top center;
   transition: all 0.9s ease;
-  background: rgba(255, 255, 255, 0.50) !important;
+  -webkit-backdrop-filter: blur(15px) brightness(100%); /* 5px * 0.7142857 */
+  backdrop-filter: blur(15px) brightness(100%);
+  background-color: #ffffff36;
 }
 
 .f-select-options {
@@ -239,4 +241,9 @@
   transition: all 0.2s ease;
   border-radius: 20px;
   background: transparent!important;
+}
+
+.icon {
+  position: relative;
+  top: 1.5px;
 }

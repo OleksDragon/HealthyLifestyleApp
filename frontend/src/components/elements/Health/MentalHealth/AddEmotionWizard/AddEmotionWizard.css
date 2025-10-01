@@ -1,0 +1,406 @@
+/* Основний контейнер майстра додавання емоцій з напівпрозорим фоном та ефектом розмиття */
+.aew-emotion-wizard {
+  padding: 20px;
+  height: 420px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 30px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 1105px;
+  margin: 20px auto;
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Заголовок майстра - основний текст */
+.aew-wizard-title {
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Підзаголовок майстра - другорядний текст */
+.aew-wizard-subtitle {
+  color: var(--black);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Описовий текст майстра - допоміжна інформація */
+.aew-wizard-description {
+  color: var(--white);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.aew-left-progress-arrow {
+  transform: rotate(90deg);
+  width: 25px;
+  height: 25px;
+}
+
+.aew-right-progress-arrow {
+  transform: rotate(270deg);
+  width: 25px;
+  height: 25px;
+}
+
+/* Контейнер для кнопок навігації між категоріями */
+.aew-category-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Центруємо всі елементи */
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.aew-progress-nav-btn {
+  
+  border-radius: 15px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.aew-progress-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+  border-radius: 15px; 
+}
+
+/* Стиль вимкненої навігаційної кнопки */
+.aew-progress-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Контейнер для прогрес бару */
+.aew-progress-container {
+  position: relative;
+  width: 500px; /* Зменшуємо ширину */
+  margin: 0 5px; /* Зменшуємо бокові відступи */
+  height: 46px;
+}
+
+/* Лінія прогрес бару */
+.aew-progress-line {
+  position: absolute;
+  top: 0; /* Центруємо лінію по вертикалі */
+  left: 23px; /* Починаємо після першої крапки */
+  right: 23px; /* Закінчуємо перед останньою крапкою */
+  height: 46px;
+  background-color: var(--white);
+  border-radius: 0 40px 40px 0;
+  z-index: 0;
+}
+
+.aew-progress-line.with-radius {
+  border-radius: 40px;
+}
+
+/* Заповнена частина лінії */
+.aew-progress-fill {
+  height: 100%;
+  background-color: var(--bl);
+  width: 0%; /* Початкова ширина */
+  border-radius: 40px 0 0 40px;
+}
+
+/* Контейнер для крапок прогрес бару */
+.aew-progress-dots {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  z-index: 1;
+}
+
+.aew-progress-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #F1F1F1;
+  border: 2px solid var(--white);
+  position: relative;
+}
+
+/* Перша крапка - спеціальний стиль */
+.aew-progress-dot:first-child {
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+/* Остання крапка - спеціальний стиль */
+.aew-progress-dot:last-child {
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+/* Активна крапка прогресу */
+.aew-progress-dot.active {
+  width: 46px;
+  height: 46px;
+  background-color: var(--lim);
+  border: 2px solid var(--lim);
+}
+
+.aew-progress-dot.active:first-child {
+  width: 46px;
+  height: 46px;
+  background-color: var(--lim);
+  border: 2px solid var(--lim);
+}
+
+/* Заповнена (пройдена) крапка прогресу */
+.aew-progress-dot.completed {
+  background-color: #004D9C;
+  border: 2px solid #004D9C;
+}
+
+.aew-progress-dot.completed:first-child {
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+/* Сітка для кнопок емоцій - 3 колонки */
+.aew-emotion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 30px 0;
+}
+
+/* Кнопки вибору емоцій - базовий стиль */
+.aew-emotion-btn {
+  padding: 10px;
+  border-radius: 30px;
+  background: var(--bl);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+/* Ефект при наведенні на кнопку емоції */
+.aew-emotion-btn:hover {
+  background: var(--lim);
+  color: var(--bl);
+  transform: translateY(-2px);
+}
+
+/* Стиль обраної кнопки емоції */
+.aew-emotion-btn.selected {
+  background: var(--lim);
+  color: var(--bl);
+  font-weight: 600;
+}
+
+/* Контейнер для всіх категорій причин */
+.aew-cause-categories {
+  margin: 30px 0;
+  width: 100%;
+}
+
+/* Окремі категорії причин */
+.aew-cause-category {
+  margin-bottom: 26.3px;
+}
+
+/* Заголовок категорії причин */
+.aew-cause-category-title {
+  color: var(--black);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 5px 20px;
+  text-align: left;
+}
+
+/* Спеціальний клас для 5 колонок у сітці причин */
+.aew-cause-grid-5-col {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(80px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+/* Кнопки вибору причин - базовий стиль */
+.aew-cause-btn {
+  padding: 10px;
+  border-radius: 30px;
+  background: var(--bl);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* Ефект при наведенні на кнопку причини */
+.aew-cause-btn:hover {
+  background: var(--lim);
+  color: var(--bl);
+  transform: translateY(-2px);
+}
+
+/* Стиль обраної кнопки причини */
+.aew-cause-btn.selected {
+  background: var(--lim);
+  color: var(--bl);
+  border-color: var(--lim);
+  font-weight: 600;
+}
+
+/* Стилі для третього кроку */
+.aew-step3-content {
+  text-align: left;
+  width: 100%;
+}
+
+.aew-step3-subtitle {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 40px 0 -10px 20px;
+  text-align: left;
+}
+
+.aew-step3-description {
+  margin: -10px 0 50px 20px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--white);
+}
+
+.aew-notes-textarea-content {
+  width: 100%;
+  height: 150px;
+  border-radius:20px;
+  margin: 20px 0;
+  background: var(--bl);
+}
+
+/* Текстове поле для нотаток */
+.aew-notes-textarea {
+  width: 99%;
+  height: 130px;
+  padding: 10px 0 10px 20px;
+  border-radius: 10px;
+  border: 2px solid var(--bl);
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 300;
+  resize: none;
+  margin-top: 10px;
+}
+
+/* Стиль плейсхолдера для текстового поля */
+.aew-notes-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Стиль текстового поля при фокусі */
+.aew-notes-textarea:focus {
+  outline: none;
+}
+
+/* Стилізація прокрутки для Webkit (Chrome, Safari, Edge) */
+.aew-notes-textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.aew-notes-textarea::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.aew-notes-textarea::-webkit-scrollbar-thumb {
+    background: #a0aec0;
+    border-radius: 3px;
+}
+
+.aew-notes-textarea::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+/* Стилізація прокрутки для Firefox */
+.aew-notes-textarea {
+    scrollbar-width: thin;
+    scrollbar-color: #a0aec0 transparent;
+}
+
+/* Контейнер навігаційних кнопок */
+.aew-wizard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Базовий стиль навігаційних кнопок */
+.aew-nav-btn {
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+/* Ефект при наведенні на активну навігаційну кнопку */
+.aew-nav-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--lim);
+}
+
+/* Стиль вимкненої навігаційної кнопки */
+.aew-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.aew-wizard-nav .aew-nav-btn:first-child:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Стиль первинної (основної) навігаційної кнопки */
+.aew-nav-btn.aew-primary {
+  background: var(--lim);
+  color: var(--bl);
+  border-color: var(--lim);
+  font-weight: 600;
+}
+
+/* Ефект при наведенні на активну первинну кнопку */
+.aew-nav-btn.aew-primary:hover:not(:disabled) {
+  background: var(--lim);
+  transform: translateY(-2px);
+}

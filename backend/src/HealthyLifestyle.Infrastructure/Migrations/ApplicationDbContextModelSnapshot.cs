@@ -309,11 +309,17 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<int>("CycleDay")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("EntryDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsFertile")
                         .HasColumnType("bit");
+
+                    b.Property<int>("MenstDay")
+                        .HasColumnType("int");
 
                     b.Property<string>("MoodNotes")
                         .HasColumnType("nvarchar(max)");

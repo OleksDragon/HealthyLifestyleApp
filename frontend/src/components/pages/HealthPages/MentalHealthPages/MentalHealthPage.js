@@ -13,11 +13,11 @@ const MentalHealthPage = () => {
     };
 
     const handleTests = () => {
-        console.log("Перехід до тестів");
+        navigate(`${location.pathname}/mentaltest`)
     };
 
     const handleBreathing = () => {
-        console.log("Перехід до дихальних практик");
+        navigate(`${location.pathname}/breathing`)
     };
 
     const handleArticles = () => {

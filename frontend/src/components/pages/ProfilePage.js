@@ -140,10 +140,11 @@ const UserProfile = () => {
 
     } catch (error) {
       console.error("Помилка при завантаженні профілю:", error);
+      navigate('/login');
     } finally {
       setIsLoading(false);
     }
-  }, [t]);
+  }, [t, navigate]);
 
   // Форматування дати з бекенду
   const formatDateFromBackend = (dateString) => {

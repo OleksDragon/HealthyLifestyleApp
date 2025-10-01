@@ -99,9 +99,9 @@ namespace HealthyLifestyle.Core.Entities
                 throw new ArgumentException("Тривалість медитації не може бути від’ємною.", nameof(meditationDurationMinutes));
             if (breathingPracticeDurationMinutes < 0)
                 throw new ArgumentException("Тривалість дихальних практик не може бути від’ємною.", nameof(breathingPracticeDurationMinutes));
-            if (stressLevelScore < 1 || stressLevelScore > 10)
+            if (stressLevelScore < 0 || stressLevelScore > 10)
                 throw new ArgumentException("Рівень стресу повинен бути в діапазоні від 1 до 10.", nameof(stressLevelScore));
-            if (anxietyLevelScore < 1 || anxietyLevelScore > 10)
+            if (anxietyLevelScore < 0 || anxietyLevelScore > 10)
                 throw new ArgumentException("Рівень тривожності повинен бути в діапазоні від 1 до 10.", nameof(anxietyLevelScore));
 
             UserId = userId;
@@ -135,9 +135,9 @@ namespace HealthyLifestyle.Core.Entities
                 throw new ArgumentException("Тривалість медитації не може бути від’ємною.", nameof(meditationDurationMinutes));
             if (breathingPracticeDurationMinutes.HasValue && breathingPracticeDurationMinutes.Value < 0)
                 throw new ArgumentException("Тривалість дихальних практик не може бути від’ємною.", nameof(breathingPracticeDurationMinutes));
-            if (stressLevelScore.HasValue && (stressLevelScore.Value < 1 || stressLevelScore.Value > 10))
+            if (stressLevelScore.HasValue && (stressLevelScore.Value < 0 || stressLevelScore.Value > 10))
                 throw new ArgumentException("Рівень стресу повинен бути в діапазоні від 1 до 10.", nameof(stressLevelScore));
-            if (anxietyLevelScore.HasValue && (anxietyLevelScore.Value < 1 || anxietyLevelScore.Value > 10))
+            if (anxietyLevelScore.HasValue && (anxietyLevelScore.Value < 0 || anxietyLevelScore.Value > 10))
                 throw new ArgumentException("Рівень тривожності повинен бути в діапазоні від 1 до 10.", nameof(anxietyLevelScore));
 
             if (recordDate.HasValue) RecordDate = recordDate.Value;

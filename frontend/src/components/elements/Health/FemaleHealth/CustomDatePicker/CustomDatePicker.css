@@ -1,0 +1,50 @@
+.female-data-picker-placeholder {
+  color: #116FCF;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 17px;
+  text-align: center;
+  color: var(--white);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.female-custom-datepicker-display {
+  width: 340px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 40px;
+  padding: 0 40px;
+  color: #FFF;
+  
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  outline: none;
+  border: 0px solid transparent;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.female-custom-datepicker-display.has-value {
+  background: rgba(255, 255, 255, 0.50) !important;
+  caret-color: #FFF !important;
+  font-size: 17px;
+}
+
+.female-custom-datepicker-display{
+  background: rgba(255, 255, 255, 0.40);
+  caret-color: #116FCF;
+}
+.date-with-dots-clndr-icon {
+ margin: 0 0 3px 10px;
+}

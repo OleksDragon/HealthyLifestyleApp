@@ -20,53 +20,40 @@ i18n
           more_energy: "MORE ENERGY.",
           healthy_lifestyle: "YOUR HEALTHY LIFESTYLE IN ONE PLACE.",
           register: "Register",
-          description_part1:
-            "— a platform that helps you take care of yourself easily and with a smile.",
-          description_part2:
-            "Track your nutrition and workouts, monitor your health, and get support from specialists.",
-          description_part3:
-            "Find useful products and share motivation with the community.",
-          description_part4:
-            "Together with Nomyfy, you form healthy habits and feel better every day.",
+          description_part1: "— a platform that helps you take care of yourself easily and with a smile.",
+          description_part2: "Track your nutrition and workouts, monitor your health, and get support from specialists.",
+          description_part3: "Find useful products and share motivation with the community.",
+          description_part4: "Together with Nomyfy, you form healthy habits and feel better every day.",
           specialist_title_line1: "YOUR TALENT IS NEEDED HERE!",
           specialist_title_line2: "WE ARE LOOKING FOR PROS LIKE YOU!",
-          specialist_text_line1:
-            "If you are a specialist in psychology, nutrition, or you are a trainer,",
-          specialist_text_line2:
-            "let's make this world a better place. Work with professionals.",
+          specialist_text_line1: "If you are a specialist in psychology, nutrition, or you are a trainer,",
+          specialist_text_line2: "let's make this world a better place. Work with professionals.",
           specialist_text_line3: "You belong with us!",
           become_specialist: "Become a specialist",
           marketplace_title: "MARKETPLACE OF HEALTHY SOLUTIONS.",
-          marketplace_subtitle:
-            "Everything that helps you live a healthy life collected in one place.",
+          marketplace_subtitle: "Everything that helps you live a healthy life collected in one place.",
           marketplace_button: "Marketplace",
           faq_title: "Frequently Asked Questions",
           faq_q1_title: "What is NOMYFY?",
-          faq_q1_answer:
-            "NOMYFY is an individual therapy for emotional burnout.",
+          faq_q1_answer: "NOMYFY is an individual therapy for emotional burnout.",
           faq_q2_title: "Who is NOMYFY for?",
-          faq_q2_answer:
-            "For those who are looking for ways to improve their mental health.",
+          faq_q2_answer: "For those who are looking for ways to improve their mental health.",
           faq_q3_title: "How is NOMYFY useful?",
-          faq_q3_answer:
-            "NOMYFY helps you organize your life, starting with yourself.",
+          faq_q3_answer: "NOMYFY helps you organize your life, starting with yourself.",
           faq_q4_title: "Can I use the services for free?",
-          faq_q4_answer:
-            "Yes, we have free options, but most services are paid.",
+          faq_q4_answer: "Yes, we have free options, but most services are paid.",
           faq_q5_title: "How to start using it?",
-          faq_q5_answer:
-            "You need to register on our platform and choose a service.",
+          faq_q5_answer: "You need to register on our platform and choose a service.",
           faq_q6_title: "How to become a NOMYFY partner?",
-          faq_q6_answer:
-            "Leave a request on our website, and we will contact you.",
+          faq_q6_answer: "Leave a request on our website, and we will contact you.",
 
-          // --- Переклади для Footer ---
+          // --- Footer translations ---
           specialists: "Specialists",
           privacy_policy: "Privacy Policy",
           support_service: "Support Service",
           copyright: "© Nomyfy {{year}}.",
 
-          // --- Переклади для входу ---
+          // --- Login translations ---
           login1: "LOGIN",
           password: "password",
           forgot_password: "forgot password?",
@@ -74,7 +61,7 @@ i18n
           no_profile: "No profile? ",
           register2: "Register",
 
-          // --- Переклади для реєстрації ---
+          // --- Registration translations ---
           continue: "Continue",
           reg_success: "registration successful",
           start: "Start",
@@ -90,7 +77,7 @@ i18n
           confirm: "Confirm",
           password_new: "new password",
 
-          // --- Переклади для відновлення паролю ---
+          // --- Password recovery translations ---
           enter_email_to_restore: "enter e-main to send the code",
           send_code2: "Send code",
           reset_password: "password reset",
@@ -103,7 +90,7 @@ i18n
           user_exist: "User with the specified email already exists",
           auth_fail: "Authentication error. Check your data",
 
-          // Переклади для Menu
+          // Menu translations
           dashboard: "Home",
           profile: "Profile",
           health: "Health",
@@ -116,8 +103,9 @@ i18n
           search_placeholder: "Search",
           welcome: "Hi",
           health_one_place: "Your health in one place!",
+          mental: "Mental health",
 
-          // Переклади для віджетів дашборду
+          // Dashboard widgets translations
           kkal: "Calories",
           current_week: "Current week",
           water: "Water",
@@ -127,9 +115,8 @@ i18n
           bmi: "BMI",
           bmi_requires: "Fill in the information about height and weight",
 
-          // --- Переклади для профілю користувача ---
-          p_error_upadate:
-            "Failed to update profile. Please fill in all fields.",
+          // --- User profile translations ---
+          p_error_upadate: "Failed to update profile. Please fill in all fields.",
           p_male: "Male",
           p_female: "Female",
           p_other: "Other",
@@ -155,7 +142,7 @@ i18n
           p_btn_save: "Save",
           p_btn_saving: "Saving...",
 
-          // --- Переклади для кастомного календаря (день народження користувача) ---
+          // --- Custom calendar translations (user birthday) ---
           p_january: "january",
           p_february: "february",
           p_march: "march",
@@ -176,7 +163,7 @@ i18n
           p_saturday: "sa",
           p_sunday: "su",
 
-          // --- Переклади для країн ---
+          // --- Countries translations ---
           p_ukrain_country: "Ukraine",
           p_great_britain_country: "United Kingdom",
           p_germany_country: "Germany",
@@ -184,7 +171,7 @@ i18n
           p_spain_country: "Spain",
           p_usa_country: "USA",
 
-          // --- Переклади для посилань в мапінгу ---
+          // --- Links mapping translations ---
           mental: "Mental Health",
           diary: "Emotion Diary",
           articles: "Useful Articles",
@@ -197,7 +184,7 @@ i18n
           article_7: "Prevention and overcoming burnout",
           gender: "Health by gender",
 
-          // --- Переклади для соц. сторінки ---
+          // --- Social challenges translations ---
           ch_all_challenges_title: "All Challenges",
           ch_details_link: "Details",
           ch_no_challenges_message: "There are no challenges yet.",
@@ -230,8 +217,7 @@ i18n
           yes: "Yes",
           no: "No",
           ch_confirmDeleteTitle: "Confirm Deleting Challenge",
-          ch_confirmDeleteText:
-            "Are you sure you want to delete this challenge? This action cannot be undone.",
+          ch_confirmDeleteText: "Are you sure you want to delete this challenge? This action cannot be undone.",
           ch_joinedTitle: "Success!",
           ch_joinedText: "You have successfully joined the challenge.",
           ok: "OK",
@@ -254,8 +240,130 @@ i18n
           ch_leftTitle: "Challenge Left",
           ch_leftText: "You have successfully left the challenge.",
           ch_completedTitle: "Challenge Completed",
-          ch_completedText:
-            "Congratulations! You have completed the challenge.",
+          ch_completedText: "Congratulations! You have completed the challenge.",
+
+          // --- Menstrual calendar translations ---
+          last_cycle_first_day: "1st day of last cycle",
+          menstruation_calendar: "Menstrual calendar",
+          male: "Male",
+          female: "Female",
+          gender: "Health by gender",
+          female_health: "Women's health",
+          female_health_fine: "Women's health without taboos - honestly, simply, and with care for you.",
+          cycle_info: "All about your cycle",
+          reproductive_health: "Reproductive health",
+          hormonas: "Hormones",
+          gynecology: "Female doctor",
+          pregnancy: "Pregnancy and postpartum period",
+          prevention: "Prevention and regular check-ups",
+          useful_info: "Useful info",
+          day_tip: "Useful\ntip of\nthe day",
+          plan: "Schedule",
+          preventive_check: "a preventive check-up at least once a year",
+          hormonas_health: "Healthy hormones",
+          hormonas_important: "Why is it important to monitor hormone levels",
+          cycle_health: "Is the cycle important?",
+          cycle_important: "Why it's important to track each cycle",
+          examination_health: "General examinations",
+          examination_important: "Why is it important to monitor hormone levels",
+          find_doctor: "Find a doctor near you",
+          your_cycle: "Your cycle",
+          cycle_control: "Track your cycle, monitor your well-being and receive timely reminders",
+          calendar_cycle: "Menstrual calendar",
+          calc_cycle: "Calculate my menstrual calendar",
+          warning_calc: "*Our menstrual calendar calculations may not be 100% accurate because every body and every cycle is different. Help us make your calendar more accurate.",
+          cycle: "Cycle",
+          why_should_calendar: "Why keep a menstrual calendar?",
+          preview_calendar: "Keeping a menstrual calendar isn't just about remembering «those days». It's a little self-care ritual that helps you better understand your body and mood.",
+          predict_cycle: "Predict the cycle",
+          predict_cycle_desc: "You always know when your period and ovulation will start. This helps plan events, vacations, or important meetings.",
+          listen_yourself: "Listen to yourself",
+          listen_yourself_desc: "The calendar helps you notice how your energy, mood, and appetite change in different phases of the cycle.",
+          regularity: "Detect regularity",
+          regularity_desc: "Pain, PMS, mood swings, or skin changes become more noticeable. It's easy to track what repeats and what helps you feel better.",
+          doctor_help: "Helps the doctor",
+          doctor_help_desc: "If you need to see a gynecologist, accurate records of your cycle and symptoms make the consultation more effective.",
+          planing: "Health and fitness planning",
+          planing_desc: "You can adjust workouts, nutrition, or rest to your rhythm to get the most benefit.",
+          finalize_calendar: "A period calendar is not an obligation, but a tool for self-awareness. It helps you feel more confident, predict mood changes, and simply care for yourself.",
+          phase: "Phases of the menstrual cycle",
+          proccess_in_body: "What happens in a woman's body",
+          proccess_in_body_desc: "The menstrual cycle is not just 'those days'. It is a natural rhythm that helps the body function harmoniously. It is divided into several phases, each affecting our well-being, mood, and energy.",
+          phase_1_5: "Menstrual phase\n(1 — 5)",
+          phase_1_5_desc: "This is the start of the cycle. The body sheds the old uterine lining, which causes menstrual bleeding. Energy may be lower during this time, so it's good to allow yourself extra rest.",
+          phase_6_13: "Follicular phase\n(6 — 13)",
+          phase_6_13_desc: "Estrogen gradually rises, bringing back strength and motivation. This is a great period for new ideas, active work, and sports.",
+          phase_14_16: "Ovulatory phase\n(14 — 16)",
+          phase_14_16_desc: "A mature egg is released. Women may feel confident, attractive, and full of energy. These are the 'peak' days when the body is ready for conception.",
+          phase_17_28: "Luteal phase\n(17 — 28)",
+          phase_17_28_desc: "If pregnancy does not occur, progesterone becomes dominant. Sleepiness, mood changes, and cravings for sweets may appear. It's important to listen to yourself, rest more, and take care of emotional comfort during this time.",
+          finalize_cycle: "The menstrual cycle is not the enemy, but a natural calendar of our body. By paying attention to its phases, you can better plan your day, understand mood changes, and be more in harmony with yourself.",
+          go_back: "Go back",
+          now: "now",
+          menstruation: "menstruation",
+          scheduled_menstruation: "scheduled menstruation",
+          ovulation: "ovulation",
+          planned_ovulation: "planned ovulation",
+          ovulation_in: "ovulation in",
+          low_chance: "Low chance of getting pregnant",
+          average_chance: "Average chance of getting pregnant",
+          high_chance: "High chance of getting pregnant",
+          no_chance: "Very low chance of getting pregnant",
+          myth_facts: "Myths and facts",
+          one: 'day',
+          other: 'days',
+          c_long: "Your cycle lasted {{cLong}} days. Which is normal!",
+          phase_1: "You are currently in your menstrual phase!\nThis is the beginning of your cycle.\nYou may feel low on energy!\nIt is best to take care of yourself and rest during this time!",
+          phase_2: "You are now in the follicular phase!\nThe hormone estrogen is actively increasing.\nYour mood is improving. Your skin is improving!\nYou are ready to conquer the whole world!",
+          phase_3: "You are now in the ovulatory phase!\nA mature egg is being released.\nYou feel confident and full of energy!\nToday is a great day to do what brings you joy!",
+          phase_4: "You are now in the luteal phase!\nProgesterone begins to dominate!\nDuring this period, you may experience mood swings and drowsiness!\nTake care of your comfort and listen to your feelings!",
+          super: "Super!",
+          gynecology_sub: "Everything about regular check-ups, prevention, and caring for women's health — in simple language without taboos.",
+          womens_tests: "Examinations and tests",
+          regular_review: "Regular check-ups",
+          articles_: "Articles",
+          read: "Read",
+          how_often: "How often should\nyou visit\na gynecologist?",
+          top_5_tests: "TOP 5 tests for\nwomen's health",
+          review_sub: "Taking care of your health starts with prevention. Once a year, you're one step ahead of the problem.",
+          what_to_check_regulary: "What should be done regularly?",
+          gynecology_review: "Examination by a gynecologist",
+          one_time_per_year: "once a year",
+          pap_test: "Pap test",
+          _2_3_time_per_year: "once every 2–3 years",
+          blood_test: "Blood and urine test",
+          ultrasound_test: "Pelvic ultrasound",
+          if_need: "as needed",
+          mammography: "Mammography",
+          after_40_years: "after 40 years",
+          examination_head: "Examinations and tests",
+          examination_desc: "The right tests on time are the key to health confidence. Find out which tests and examinations you should have regularly.",
+          base_review: "Basic examination",
+          gynecology_examination: "Gynecological examination",
+          add_to_calendar: "Add to calendar",
+          ultrasound_glands: "Breast ultrasound",
+          need_I_test: "Do I need to do tests if I feel well?",
+          examination_tip_need: "Regular medical check-ups are important even when you have no complaints. Many diseases develop silently in their early stages, and timely basic tests (blood, urine, blood sugar, cholesterol) help detect problems before symptoms appear.\n\nAnnual check-ups are an investment in your health. They allow you to monitor your body, adjust your diet and lifestyle, and prevent complications.\n\nFeeling well is great, but prevention is always easier and cheaper than treatment.",
+          what_needed_blood: "What should I prepare before a blood test?",
+          what_needed_blood_info: "To get accurate blood test results, prepare in advance:\n\nFast before the test, your last meal should be 8–12 hours prior\n\nDrink only plain water, it does not affect results\n\nAvoid alcohol, fatty and very sweet foods for a day or two before\n\nOn the day of the test avoid intense physical activity and stress\n\nIf you take medications, be sure to inform your doctor",
+          what_diff_ultrasound_mam: "What is the difference between ultrasound and mammography?",
+          what_diff_ultrasound_mam_info: "Ultrasound uses sound waves to visualize tissues and shows soft structures of the breast well, especially in young women with dense tissue\n\nMammography is an X-ray examination that can detect small calcifications and early signs of tumors before lumps appear\n\nUltrasound does not use radiation and is suitable for additional control\nMammography remains the main screening method for women over 40\n\nBoth methods are often used together for more accurate diagnosis",
+          why_pap_test: "Why get a Pap smear and how often?",
+          why_pap_test_info: "A Pap smear helps detect changes in cervical cells at early stages when there are no symptoms\n\nRegular screening prevents the development of cancer and allows timely treatment of inflammatory processes\n\nUsually a Pap test is done once a year if there are no problems or more often as recommended by a doctor\n\nThe test is quick, painless, and takes only a few minutes\n\nEven if you feel well, the test helps take care of your health",
+          reproductive: "Reproductive health",
+          reproductive_sub: "Plan with us! Take care of your body and plan for the future with confidence.",
+          myth_main: "There are plenty of myths around periods.",
+          myth_sub: "Here's a little selection for you)",
+          cant_sport: "You can't exercise during your period",
+          cant_sport_desc: "In fact, light physical activity such as yoga, walking, or even moderate workouts can ease cramps and improve mood.",
+          c_long_: "The cycle always lasts exactly 28 days",
+          c_long_desc: "Everyone's cycle is individual: an interval of about 21 to 35 days is considered normal.",
+          cant_swim: "You can't bathe or swim during your period",
+          cant_swim_desc: "Bathing and showering are safe. Hygiene products (tampons, menstrual cups) let you swim comfortably and stay clean.",
+          cant_get_pregnant: "You can't get pregnant during your period",
+          cant_get_pregnant_desc: "The chance is lower but not zero: sperm can survive in the body for several days, and ovulation may occur earlier or later than expected.",
+          pain_is_ok: "Menstrual pain is always normal",
+          pain_is_ok_desc: "Mild discomfort is typical, but severe or debilitating pain may indicate endometriosis or other conditions and should be checked by a doctor.",
         },
       },
       uk: {
@@ -271,53 +379,40 @@ i18n
           more_energy: "БІЛЬШЕ ЕНЕРГІЇ.",
           healthy_lifestyle: "ТВІЙ ЗДОРОВИЙ ЛАЙФСТАЙЛ В ОДНОМУ МІСЦІ.",
           register: "Зареєструватись",
-          description_part1:
-            "— це платформа, що допомагає дбати про себе легко та з усмішкою.",
-          description_part2:
-            "Відстежуй харчування й тренування, слідкуй за здоров’ям і отримуй підтримку спеціалістів.",
-          description_part3:
-            "Знаходь корисні товари та ділися мотивацією зі спільнотою.",
-          description_part4:
-            "Разом із Nomyfy ти крок за кроком формуєш здорові звички та почуваєшся краще щодня.",
+          description_part1: "— це платформа, що допомагає дбати про себе легко та з усмішкою.",
+          description_part2: "Відстежуй харчування й тренування, слідкуй за здоров'ям і отримуй підтримку спеціалістів.",
+          description_part3: "Знаходь корисні товари та ділися мотивацією зі спільнотою.",
+          description_part4: "Разом із Nomyfy ти крок за кроком формуєш здорові звички та почуваєшся краще щодня.",
           specialist_title_line1: "ТВІЙ ТАЛАНТ ТУТ ПОТРІБЕН!",
           specialist_title_line2: "МИ ШУКАЄМО ПРОФІ ЯК ТИ!",
-          specialist_text_line1:
-            "Якщо ти спеціаліст в психології, нутриціології або ти тренер,",
-          specialist_text_line2:
-            "давай робити цей світ краще. Працювати з професіоналами.",
+          specialist_text_line1: "Якщо ти спеціаліст в психології, нутриціології або ти тренер,",
+          specialist_text_line2: "давай робити цей світ краще. Працювати з професіоналами.",
           specialist_text_line3: "Тобі до нас!",
           become_specialist: "Стати фахівцем",
           marketplace_title: "МАРКЕТПЛЕЙС ЗДОРОВИХ РІШЕНЬ.",
-          marketplace_subtitle:
-            "Все, що допомагає здорово жити зібрали в одному місці.",
+          marketplace_subtitle: "Все, що допомагає здорово жити зібрали в одному місці.",
           marketplace_button: "Маркетплейс",
           faq_title: "Часті запитання",
           faq_q1_title: "Що таке NOMYFY?",
-          faq_q1_answer:
-            "NOMYFY - це індивідуальна терапія від емоційного вигорання.",
+          faq_q1_answer: "NOMYFY - це індивідуальна терапія від емоційного вигорання.",
           faq_q2_title: "Для кого NOMYFY?",
-          faq_q2_answer:
-            "Для тих, хто шукає способи покращити своє ментальне здоровʼя.",
+          faq_q2_answer: "Для тих, хто шукає способи покращити своє ментальне здоровʼя.",
           faq_q3_title: "Чим корисний NOMYFY?",
-          faq_q3_answer:
-            "NOMYFY допомагає впорядкувати життя, починаючи із себе.",
+          faq_q3_answer: "NOMYFY допомагає впорядкувати життя, починаючи із себе.",
           faq_q4_title: "Чи можна скористатися послугами безкоштовно?",
-          faq_q4_answer:
-            "Так, у нас є безкоштовні можливості, але більшість послуг платні.",
+          faq_q4_answer: "Так, у нас є безкоштовні можливості, але більшість послуг платні.",
           faq_q5_title: "Як почати користуватись?",
-          faq_q5_answer:
-            "Необхідно зареєструватись на нашій платформі та обрати послугу.",
+          faq_q5_answer: "Необхідно зареєструватись на нашій платформі та обрати послугу.",
           faq_q6_title: "Як стати партнером NOMYFY?",
-          faq_q6_answer:
-            "Залиште заявку на нашому сайті, і ми звʼяжемося з вами.",
+          faq_q6_answer: "Залиште заявку на нашому сайті, і ми звʼяжемося з вами.",
 
-          // --- Переклади для Footer ---
+          // --- Footer translations ---
           specialists: "Фахівці",
           privacy_policy: "Політика конфіденційності",
           support_service: "Служба підтримки",
           copyright: "© Nomyfy {{year}}.",
 
-          // --- Переклади для входу ---
+          // --- Login translations ---
           login1: "ВХІД",
           password: "пароль",
           forgot_password: "забули пароль?",
@@ -325,7 +420,7 @@ i18n
           no_profile: "Немає профілю? ",
           register2: "Реєстрація",
 
-          // --- Переклади для реєстрації ---
+          // --- Registration translations ---
           continue: "Продовжити",
           reg_success: "реєстрація успішна",
           start: "Розпочати",
@@ -341,7 +436,7 @@ i18n
           confirm: "Підтвердити",
           password_new: "новий пароль",
 
-          // --- Переклади для відновлення паролю ---
+          // --- Password recovery translations ---
           enter_email_to_restore: "введіть e-mail, щоб надіслати код",
           send_code2: "Надіслати код",
           reset_password: "оновлення паролю",
@@ -354,7 +449,7 @@ i18n
           user_exist: "Користувач з вказаною поштою вже існує",
           auth_fail: "Помилка авторизації. Перевірте дані",
 
-          // Переклади для Menu
+          // Menu translations
           dashboard: "Головна",
           profile: "Профіль",
           health: "Здоров'я",
@@ -367,8 +462,9 @@ i18n
           search_placeholder: "Пошук",
           welcome: "Привіт",
           health_one_place: "Твоє здоров'я в одному місці!",
+          mental: "Ментальне здоров'я",
 
-          // Переклади для віджетів дашборду
+          // Dashboard widgets translations
           kkal: "Калорії",
           current_week: "Поточний тиждень",
           water: "Вода",
@@ -378,9 +474,8 @@ i18n
           bmi: "ІМТ",
           bmi_requires: "Заповніть інформацію щодо зросту та ваги",
 
-          // --- Переклади для профілю користувача ---
-          p_error_upadate:
-            "Не вдалося оновити профіль. Будь ласка, заповніть усі поля.",
+          // --- User profile translations ---
+          p_error_upadate: "Не вдалося оновити профіль. Будь ласка, заповніть усі поля.",
           p_male: "Чоловік",
           p_female: "Жінка",
           p_other: "Інше",
@@ -406,7 +501,7 @@ i18n
           p_btn_save: "Зберегти",
           p_btn_saving: "Збереження...",
 
-          // --- Переклади для кастомного календаря (день народження користувача) ---
+          // --- Custom calendar translations (user birthday) ---
           p_january: "січень",
           p_february: "лютий",
           p_march: "березень",
@@ -427,7 +522,7 @@ i18n
           p_saturday: "сб",
           p_sunday: "нд",
 
-          // --- Переклади для країн ---
+          // --- Countries translations ---
           p_ukrain_country: "Україна",
           p_great_britain_country: "Велика Британія",
           p_germany_country: "Німеччина",
@@ -435,8 +530,8 @@ i18n
           p_spain_country: "Іспанія",
           p_usa_country: "США",
 
-          // --- Переклади для посилань в мапінгу ---
-          mental: "Ментальне здоров'я", // що буде відображатись, в мапінгу!
+          // --- Links mapping translations ---
+          mental: "Ментальне здоров'я",
           diary: "Щоденник емоцій",
           articles: "Корисні статті",
           article_1: "10 простих технік зняття стресу",
@@ -446,10 +541,9 @@ i18n
           article_5: "Основи медитації для новачків",
           article_6: "Стратегії покращення самооцінки",
           article_7: "Профілактика та подолання вигорання",
-
           gender: "Здоров'я за статтю",
 
-          // --- Переклади для соц. сторінки ---
+          // --- Social challenges translations ---
           ch_all_challenges_title: "Усі челенджі",
           ch_details_link: "Детальніше",
           ch_no_challenges_message: "Поки що немає челенджів.",
@@ -478,13 +572,11 @@ i18n
           ch_create_success: "Челендж успішно створено!",
           ch_create_error: "Не вдалося створити челендж.",
           ch_confirmJoinTitle: "Підтвердіть приєднання до челленджа",
-          ch_confirmJoinText:
-            "Ви впевнені, що хочете приєднатися до цього челленджа?",
+          ch_confirmJoinText: "Ви впевнені, що хочете приєднатися до цього челленджа?",
           yes: "Так",
           no: "Ні",
           ch_confirmDeleteTitle: "Підтвердіть видалення челленджа",
-          ch_confirmDeleteText:
-            "Ви впевнені, що хочете видалити цей челлендж? Цю дію не можна скасувати.",
+          ch_confirmDeleteText: "Ви впевнені, що хочете видалити цей челлендж? Цю дію не можна скасувати.",
           ch_joinedTitle: "Успіх!",
           ch_joinedText: "Ви успішно приєдналися до челленджа.",
           ok: "ОК",
@@ -508,6 +600,130 @@ i18n
           ch_leftText: "Ви успішно покинули челендж.",
           ch_completedTitle: "Челендж завершено",
           ch_completedText: "Вітаємо! Ви успішно завершили челендж.",
+
+          // --- Menstrual calendar translations ---
+          last_cycle_first_day: "1-й день останнього циклу",
+          menstruation_calendar: "Календар місячних",
+          male: "Чоловік",
+          female: "Жінка",
+          gender: "Здоров'я за статтю",
+          female_health: "Жіноче здоров'я",
+          female_health_fine: "Жіноче здоров'я без табу - чесно, просто і з турботою про тебе.",
+          cycle_info: "Все про ваш цикл",
+          reproductive_health: "Репродуктивне здоров'я",
+          hormonas: "Гормони",
+          gynecology: "Жіночий лікар",
+          pregnancy: "Вагітність і післяпологовий період",
+          prevention: "Профілактика та регулярний огляд",
+          useful_info: "Корисна інформація",
+          day_tip: "Корисна\nпорада\nдня",
+          plan: "Плануй",
+          preventive_check: "профілактичний огляд хоча б раз на рік",
+          hormonas_health: "Здорові гормони",
+          hormonas_important: "Чому важливо контролювати рівень гормонів",
+          cycle_health: "Цикл - це важливо?",
+          cycle_important: "Чому важливо відстежувати кожний цикл",
+          examination_health: "Загальні обстеження",
+          examination_important: "Чому важливо контролювати рівень гормонів",
+          find_doctor: "Знайди лікаря поруч",
+          your_cycle: "Ваш цикл",
+          cycle_control: "Відстежуйте свій цикл, контролюй самопочуття та отримуй нагадування вчасно",
+          calendar_cycle: "Календар місячних",
+          calc_cycle: "Розрахувати мій календар місячних",
+          warning_calc: "*Розрахунки за наши календарем місячних можуть бути не на 100% точними, тому що кожне тіло і кожний цикл відрізняється. Допоможи нам зробити твій календар більш точним.",
+          cycle: "Цикл",
+          why_should_calendar: "Навіщо вести календар місячних?",
+          preview_calendar: "Вести календар місячних — це не лише про пам'ять про «ті дні». Це маленький ритуал турботи про себе, який допомагає краще розуміти своє тіло і настрій.",
+          predict_cycle: "Прогнозує цикл",
+          predict_cycle_desc: "Ти завжди знаєш, коли почнуться менструації та овуляція. Це допомагає планувати події, відпустки чи важливі зустрічі.",
+          listen_yourself: "Слухати себе",
+          listen_yourself_desc: "Календар допомагає помітити, як змінюється енергія, настрій і апетит у різні фази циклу.",
+          regularity: "Виявляти закономірність",
+          regularity_desc: "Біль, ПМС, коливання настрою чи зміни шкіри стають помітнішими. Можна легко відстежувати, що повторюється, і що допомагає почуватися краще.",
+          doctor_help: "Допомагає лікарю",
+          doctor_help_desc: "Якщо потрібно звернутися до гінеколога, точний запис циклу та симптомів робить консультацію ефективнішою.",
+          planing: "Планування здоров'я та фітнесу",
+          planing_desc: "Ти можеш підлаштовувати тренування, харчування чи відпочинок під свій ритм, щоб отримати максимальну користь.",
+          finalize_calendar: "Календар місячних -це не обов'язок, а інструмент самопізнання. Він допомагає відчувати себе впевненіше, передбачати зміни настрою і просто піклуватись про себе.",
+          phase: "Фази менструального циклу",
+          proccess_in_body: "Що відбувається в тілі жінки",
+          proccess_in_body_desc: "Менструальний цикл — це не лише «ті дні». Це цілий природний ритм, який допомагає організму працювати злагоджено. Він ділиться на кілька фаз, і кожна з них впливає на наше самопочуття, настрій та енергію.",
+          phase_1_5: "Менструальна фаза\n(1 — 5)",
+          phase_1_5_desc: "Це початок циклу. Організм позбувається старого шару слизової оболонки матки, тому з'являються менструальні виділення. У цей час енергії може бути менше, тож варто дозволити собі більше відпочинку.",
+          phase_6_13: "Фолікулярна фаза\n(6 — 13)",
+          phase_6_13_desc: "Поступово зростає рівень естрогену, і разом з ним повертається сила та мотивація. Це гарний період для нових ідей, активної роботи та спорту",
+          phase_14_16: "Овуляторна фаза\n(14 — 16)",
+          phase_14_16_desc: "Відбувається вихід зрілої яйцеклітини. Жінка може відчувати себе впевненою, привабливою, сповненою енергії. Це «пікові» дні, коли організм готовий до зачаття.",
+          phase_17_28: "Лютеїнова фаза\n(17 — 28)",
+          phase_17_28_desc: "Якщо вагітність не настала, починає домінувати прогестерон. Може з'явитися сонливість, зміни настрою, тяга до солодкого. У цей час важливо слухати себе, більше відпочивати й піклуватися про емоційний комфорт.",
+          finalize_cycle: "Менструальний цикл — це не ворог, а природний календар нашого тіла. Якщо прислухатися до його фаз, можна краще планувати свій день, розуміти зміни настрою та бути більш гармонійною із собою.",
+          go_back: "Повернутися назад",
+          now: "зараз",
+          menstruation: "місячні",
+          scheduled_menstruation: "заплановані місячні",
+          ovulation: "овуляція",
+          planned_ovulation: "запланована овуляція",
+          ovulation_in: "овуляція через",
+          low_chance: "Низький шанс завагітніти",
+          average_chance: "Середні шанси завагітніти",
+          high_chance: "Високий шанс завагітніти",
+          no_chance: "Дуже низька ймовірність завагітніти",
+          myth_facts: "Міфи і факти",
+          one: 'день',
+          few: 'дні',
+          other: 'днів',
+          c_long: "Твій цикл тривав {{cLong}} днів. Що є нормою!",
+          phase_1: "Зараз ти знаходишся у менструальній фазі!\nЦе початок циклу.\nТи можеш відчувати недостачу енергії!\nУ цей час краще потурбуватися про себе та відпочити!",
+          phase_2: "Зараз ти знаходишся у фолікулярній фазі!\nАктивно зростає гормон естроген.\nТвій настрій зростає. Покращується шкіра!\nТи готова до підкорення цілого світу!",
+          phase_3: "Зараз ти знаходишся у овуляторній фазі!\nВідбувається вихід зрілої яйцеклітини.\nТи відчуваєш себе впевненою та сповненою енергії!\nСьогодні - чудовий день, щоб робити те, що приносить тобі радість!",
+          phase_4: "Зараз ти знаходишся у лютеїновій фазі!\nПочинає домінувати прогестерон!\nУ цей період може відбуватися зміна настрою та відчуватися сонливість!\nПіклуйся про свій комфорт та прислухайся до відчуттів!",
+          super: "Супер!",
+          gynecology_sub: "Все про регулярні обстеження, профілактику, турботу про жіноче здоров'я — без табу простою мовою.",
+          womens_tests: "Обстеження та аналізи",
+          regular_review: "Регулярні огляди",
+          articles_: "Статті",
+          read: "Читати",
+          how_often: "Як часто потрібно\nвідвідувати\nгінеколога?",
+          top_5_tests: "ТОП-5 аналізів для\nжіночого здоров'я",
+          review_sub: "Турбота про здоров'я починається з профілактики. Раз на рік — і ти вже на крок попереду проблеми.",
+          what_to_check_regulary: "Що проходити регулярно?",
+          gynecology_review: "Огляд у гінеколога",
+          one_time_per_year: "раз на рік",
+          pap_test: "ПАП - тест",
+          _2_3_time_per_year: "раз на 2-3 роки",
+          blood_test: "Аналіз крові та сечі",
+          ultrasound_test: "УЗД органів малого тазу",
+          if_need: "за потреби",
+          mammography: "Мамографія",
+          after_40_years: "після 40 років",
+          examination_head: "Обстеження та аналізи",
+          examination_desc: "Правильні тести вчасно — запорукавпевненності у здоров'ї. Дізнайся, які аналізи та обстеження варто робити регулярно.",
+          base_review: "Базовий огляд",
+          gynecology_examination: "Гінекологічний огляд",
+          add_to_calendar: "Додати в календар",
+          ultrasound_glands: "УЗД молочних залоз",
+          need_I_test: "Чи потрібно робити аналізи, якщо я почуваюсь добре?",
+          examination_tip_need: "Регулярні медичні обстеження важливі навіть тоді, коли немає жодних скарг. Багато захворювань на ранніх етапах розвиваються безсимптомно, і вчасно зроблені базові аналізи (загальний аналіз крові, сечі, рівень цукру, холестерину) допомагають виявити проблеми ще до появи перших ознак.\n\nПланові перевірки раз на рік – це інвестиція у власне здоров'я. Вони дають можливість контролювати стан організму, своєчасно коригувати харчування, спосіб життя та уникати ускладнень.\n\nПочуваєтесь добре – чудово, але профілактика завжди легша та дешевша за лікування.",
+          what_needed_blood: "Що підготувати перед сдачею крові?",
+          what_needed_blood_info: "Щоб аналіз крові був точним підготуйтеся заздалегідь:\n\nЗдавайте кров натще останній прийом їжі має бути за 8–12 годин\n\nПийте тільки чисту воду без газу це не впливає на показники\n\nЗа день два не вживайте алкоголь жирні та дуже солодкі страви\n\nУ день здачі уникайте сильних фізичних навантажень і стресу\n\nЯкщо приймаєте ліки обов'язково скажіть про це лікарю",
+          what_diff_ultrasound_mam: "Чим відрізняється УЗД від мамографії?",
+          what_diff_ultrasound_mam_info: "УЗД (ультразвукове дослідження) використовує звукові хвилі для візуалізації тканин і добре показує м'які структури грудей, особливо у молодих жінок з щільною тканиною\n\nМамографія – це рентгенівське обстеження, яке дозволяє виявити дрібні кальцинати і ранні ознаки пухлин навіть до появи ущільнень\n\nУЗД не використовує випромінювання і підходить для додаткового контролю\nМамографія залишається основним скринінговим методом для жінок старше 40 років\n\nОбидва методи часто використовують разом для більш точної діагностики",
+          why_pap_test: "Навіщо робити цитологічний мазок (ПАП-тест) і як часто",
+          why_pap_test_info: "Цитологічний мазок або ПАП-тест допомагає виявити зміни клітин шийки матки на ранніх стадіях коли ще немає симптомів\n\nРегулярне обстеження дозволяє запобігти розвитку раку і своєчасно лікувати запальні процеси\n\nЗазвичай ПАП-тест роблять раз на рік якщо немає проблем або за рекомендацією лікаря частіше\n\nОбстеження швидке безболісне і займає кілька хвилин\n\nНавіть якщо ви почуваєтесь добре тест допомагає дбати про своє здоров'я",
+          reproductive: "Репродуктивне здоров'я",
+          reproductive_sub: "Плануй з нами! Дбай про своє тіло і плануй майбутнє з упевненністю.",
+          myth_main: "Існує купа міфів навкруги місячних.",
+          myth_sub: "Ось для тебе маленька підборка)",
+          cant_sport: "Під час місячних не можна займатись спортом",
+          cant_sport_desc: "Насправді легка фізична активність, як-от йога, піші прогулянки чи навіть помірні тренування, може полегшити спазми та покращити настрій.",
+          c_long_: "Цикл завжди триває рівно 28 днів",
+          c_long_desc: "Цикл у кожної людини індивідуальний: нормою вважають інтервал приблизно від 21 до 35 днів.",
+          cant_swim: "Не можна купатися чи приймати ванну під час місячних",
+          cant_swim_desc: "Купання та душ безпечні. Гігієнічні засоби (тампони, менструальні чаші) дозволяють комфортно плавати й підтримувати чистоту.",
+          cant_get_pregnant: "Під час місячних не можна завагітніти",
+          cant_get_pregnant_desc: "Ймовірність нижча, але не нульова: сперматозоїди можуть жити в тілі кілька днів, а овуляція інколи настає раніше або пізніше, ніж очікується.",
+          pain_is_ok: "Менструальний біль — це завжди нормально",
+          pain_is_ok_desc: "Легкий дискомфорт типовий, але сильний або виснажливий біль може свідчити про ендометріоз чи інші захворювання, і варто звернутися до лікаря.",
         },
       },
       de: {
@@ -523,53 +739,40 @@ i18n
           more_energy: "MEHR ENERGIE.",
           healthy_lifestyle: "DEIN GESUNDER LIFESTYLE AN EINEM ORT.",
           register: "Registrieren",
-          description_part1:
-            "— ist eine Plattform, die dir hilft, einfach und mit einem Lächeln auf dich selbst zu achten.",
-          description_part2:
-            "Verfolge deine Ernährung und dein Training, überwache deine Gesundheit und erhalte Unterstützung von Spezialisten.",
-          description_part3:
-            "Finde nützliche Produkte und teile Motivation mit der Community.",
-          description_part4:
-            "Zusammen mit Nomyfy bildest du Schritt für Schritt gesunde Gewohnheiten und fühlst dich jeden Tag besser.",
+          description_part1: "— ist eine Plattform, die dir hilft, einfach und mit einem Lächeln auf dich selbst zu achten.",
+          description_part2: "Verfolge deine Ernährung und dein Training, überwache deine Gesundheit und erhalte Unterstützung von Spezialisten.",
+          description_part3: "Finde nützliche Produkte und teile Motivation mit der Community.",
+          description_part4: "Zusammen mit Nomyfy bildest du Schritt für Schritt gesunde Gewohnheiten und fühlst dich jeden Tag besser.",
           specialist_title_line1: "DEIN TALENT WIRD HIER GEBRAUCHT!",
           specialist_title_line2: "WIR SUCHEN PROFIS WIE DICH!",
-          specialist_text_line1:
-            "Wenn du ein Spezialist für Psychologie, Ernährung oder ein Trainer bist,",
-          specialist_text_line2:
-            "lass uns diese Welt besser machen. Arbeite mit Profis.",
+          specialist_text_line1: "Wenn du ein Spezialist für Psychologie, Ernährung oder ein Trainer bist,",
+          specialist_text_line2: "lass uns diese Welt besser machen. Arbeite mit Profis.",
           specialist_text_line3: "Du gehörst zu uns!",
           become_specialist: "Spezialist werden",
           marketplace_title: "MARKPLATZ FÜR GESUNDE LÖSUNGEN.",
-          marketplace_subtitle:
-            "Alles, was dir hilft, gesund zu leben, an einem Ort gesammelt.",
+          marketplace_subtitle: "Alles, was dir hilft, gesund zu leben, an einem Ort gesammelt.",
           marketplace_button: "Marktplatz",
           faq_title: "Häufig gestellte Fragen",
           faq_q1_title: "Was ist NOMYFY?",
-          faq_q1_answer:
-            "NOMYFY ist eine individuelle Therapie gegen emotionales Burnout.",
+          faq_q1_answer: "NOMYFY ist eine individuelle Therapie gegen emotionales Burnout.",
           faq_q2_title: "Für wen ist NOMYFY?",
-          faq_q2_answer:
-            "Für diejenigen, die nach Wegen suchen, ihre geistige Gesundheit zu verbessern.",
+          faq_q2_answer: "Für diejenigen, die nach Wegen suchen, ihre geistige Gesundheit zu verbessern.",
           faq_q3_title: "Welchen Nutzen hat NOMYFY?",
-          faq_q3_answer:
-            "NOMYFY hilft, das Leben zu ordnen, angefangen bei sich selbst.",
+          faq_q3_answer: "NOMYFY hilft, das Leben zu ordnen, angefangen bei sich selbst.",
           faq_q4_title: "Kann ich die Dienste kostenlos nutzen?",
-          faq_q4_answer:
-            "Ja, wir haben kostenlose Möglichkeiten, aber die meisten Dienste sind kostenpflichtig.",
+          faq_q4_answer: "Ja, wir haben kostenlose Möglichkeiten, aber die meisten Dienste sind kostenpflichtig.",
           faq_q5_title: "Wie fange ich an?",
-          faq_q5_answer:
-            "Du musst dich auf unserer Plattform registrieren und einen Dienst auswählen.",
+          faq_q5_answer: "Du musst dich auf unserer Plattform registrieren und einen Dienst auswählen.",
           faq_q6_title: "Wie werde ich ein NOMYFY-Partner?",
-          faq_q6_answer:
-            "Hinterlasse eine Anfrage auf unserer Website, und wir werden uns mit dir in Verbindung setzen.",
+          faq_q6_answer: "Hinterlasse eine Anfrage auf unserer Website, und wir werden uns mit dir in Verbindung setzen.",
 
-          // --- Переводы для Footer ---
+          // --- Footer translations ---
           specialists: "Spezialisten",
           privacy_policy: "Datenschutzerklärung",
           support_service: "Kundendienst",
           copyright: "© Nomyfy {{year}}.",
 
-          // --- Переклади для входу ---
+          // --- Login translations ---
           login1: "ANMELDUNG",
           password: "passwort",
           forgot_password: "passwort vergessen?",
@@ -577,7 +780,7 @@ i18n
           no_profile: "Noch kein Profil? ",
           register2: "Registrieren",
 
-          // --- Переклади для реєстрації ---
+          // --- Registration translations ---
           continue: "Fortsetzen",
           reg_success: "Registrierung erfolgreich",
           start: "Starten",
@@ -593,7 +796,7 @@ i18n
           confirm: "Bestätigen",
           password_new: "neues Passwort",
 
-          // --- Переклади для відновлення паролю ---
+          // --- Password recovery translations ---
           enter_email_to_restore: "E-Mail eingeben, um den Code zu senden",
           send_code2: "Code senden",
           reset_password: "Passwort zurücksetzen",
@@ -601,14 +804,12 @@ i18n
           update_password: "Passwort aktualisieren",
           password_update_success: "Passwort erfolgreich aktualisiert",
           to_login: "Zurück zur Anmeldung",
-          user_not_exeist:
-            "Benutzer mit der angegebenen E-Mail existiert nicht",
-          reset_password_error:
-            "Fehler beim Aktualisieren des Passworts. Bitte versuche es erneut.",
+          user_not_exeist: "Benutzer mit der angegebenen E-Mail existiert nicht",
+          reset_password_error: "Fehler beim Aktualisieren des Passworts. Bitte versuche es erneut.",
           user_exist: "Benutzer mit der angegebenen E-Mail existiert bereits",
           auth_fail: "Authentifizierungsfehler. Überprüfe deine Daten",
 
-          // Переклади для Menu
+          // Menu translations
           dashboard: "Startseite",
           profile: "Profil",
           health: "Gesundheit",
@@ -621,8 +822,9 @@ i18n
           search_placeholder: "Suche",
           welcome: "Hi",
           health_one_place: "Deine Gesundheit an einem Ort!",
+          mental: "Psychische Gesundheit",
 
-          // Переклади для віджетів дашборду
+          // Dashboard widgets translations
           kkal: "Kalorien",
           current_week: "Aktuelle Woche",
           water: "Wasser",
@@ -632,9 +834,8 @@ i18n
           bmi: "BMI",
           bmi_requires: "Füllen Sie die Angaben zu Größe und Gewicht aus",
 
-          // --- Переклади для профілю користувача ---
-          p_error_upadate:
-            "Profil konnte nicht aktualisiert werden. Bitte füllen Sie alle Felder aus.",
+          // --- User profile translations ---
+          p_error_upadate: "Profil konnte nicht aktualisiert werden. Bitte füllen Sie alle Felder aus.",
           p_male: "Männlich",
           p_female: "Weiblich",
           p_other: "Andere",
@@ -660,7 +861,7 @@ i18n
           p_btn_save: "Speichern",
           p_btn_saving: "Speichern...",
 
-          // --- Переклади для кастомного календаря (день народження користувача) ---
+          // --- Custom calendar translations (user birthday) ---
           p_january: "januar",
           p_february: "februar",
           p_march: "märz",
@@ -681,7 +882,7 @@ i18n
           p_saturday: "sa",
           p_sunday: "so",
 
-          // --- Переклади для країн ---
+          // --- Countries translations ---
           p_ukrain_country: "Ukraine",
           p_great_britain_country: "Großbritannien",
           p_germany_country: "Deutschland",
@@ -689,14 +890,26 @@ i18n
           p_spain_country: "Spanien",
           p_usa_country: "USA",
 
-          // --- Переклади для соц. сторінки ---
+          // --- Links mapping translations ---
+          mental: "Psychische Gesundheit",
+          diary: "Emotionstagebuch",
+          articles: "Nützliche Artikel",
+          article_1: "10 einfache Techniken zur Stressbewältigung",
+          article_2: "Effektive Methoden zur Bekämpfung von Angstzuständen",
+          article_3: "Atemtechniken zur Entspannung",
+          article_4: "Der Zusammenhang zwischen Schlaf und psychischer Gesundheit",
+          article_5: "Grundlagen der Meditation für Anfänger",
+          article_6: "Strategien zur Verbesserung des Selbstwertgefühls",
+          article_7: "Prävention und Überwindung von Burnout",
+          gender: "Gesundheit nach Geschlecht",
+
+          // --- Social challenges translations ---
           ch_all_challenges_title: "Alle Herausforderungen",
           ch_details_link: "Details",
           ch_no_challenges_message: "Es gibt noch keine Herausforderungen.",
           ch_loading: "Wird geladen...",
           ch_error_loading: "Herausforderungen konnten nicht geladen werden.",
-          ch_details_error_loading:
-            "Fehler beim Laden der Herausforderungsdetails.",
+          ch_details_error_loading: "Fehler beim Laden der Herausforderungsdetails.",
           ch_not_found: "Herausforderung nicht gefunden.",
           ch_join: "Beitreten",
           ch_edit: "Bearbeiten",
@@ -719,22 +932,18 @@ i18n
           ch_create_success: "Herausforderung erfolgreich erstellt!",
           ch_create_error: "Herausforderung konnte nicht erstellt werden.",
           ch_confirmJoinTitle: "Beitritt zur Herausforderung bestätigen",
-          ch_confirmJoinText:
-            "Sind Sie sicher, dass Sie dieser Herausforderung beitreten möchten?",
+          ch_confirmJoinText: "Sind Sie sicher, dass Sie dieser Herausforderung beitreten möchten?",
           yes: "Ja",
           no: "Nein",
           ch_confirmDeleteTitle: "Löschung der Herausforderung bestätigen",
-          ch_confirmDeleteText:
-            "Sind Sie sicher, dass Sie diese Herausforderung löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+          ch_confirmDeleteText: "Sind Sie sicher, dass Sie diese Herausforderung löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
           ch_joinedTitle: "Erfolg!",
-          ch_joinedText:
-            "Sie sind der Herausforderung erfolgreich beigetreten.",
+          ch_joinedText: "Sie sind der Herausforderung erfolgreich beigetreten.",
           ok: "OK",
           ch_deletedTitle: "Herausforderung gelöscht",
           ch_deletedText: "Die Herausforderung wurde erfolgreich gelöscht.",
           ch_errorTitle: "Fehler",
-          ch_errorText:
-            "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+          ch_errorText: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
           ch_edit_title: "Herausforderung bearbeiten",
           ch_type_competition: "Wettbewerb",
           ch_type_personal: "Persönliches Ziel",
@@ -742,18 +951,138 @@ i18n
           ch_saving: "Wird gespeichert...",
           ch_edit_success: "Herausforderung erfolgreich aktualisiert!",
           ch_edit_success_title: "Erfolg!",
-          ch_edit_error:
-            "Fehler beim Aktualisieren der Herausforderung. Bitte versuchen Sie es erneut.",
+          ch_edit_error: "Fehler beim Aktualisieren der Herausforderung. Bitte versuchen Sie es erneut.",
           ch_leave: "Verlassen",
           ch_complete: "Abschließen",
           ch_confirmLeaveTitle: "Challenge verlassen bestätigen",
-          ch_confirmLeaveText:
-            "Sind Sie sicher, dass Sie diese Challenge verlassen möchten?",
+          ch_confirmLeaveText: "Sind Sie sicher, dass Sie diese Challenge verlassen möchten?",
           ch_leftTitle: "Challenge verlassen",
           ch_leftText: "Sie haben die Challenge erfolgreich verlassen.",
           ch_completedTitle: "Challenge abgeschlossen",
-          ch_completedText:
-            "Herzlichen Glückwunsch! Sie haben die Challenge erfolgreich abgeschlossen.",
+          ch_completedText: "Herzlichen Glückwunsch! Sie haben die Challenge erfolgreich abgeschlossen.",
+
+          // --- Menstrual calendar translations ---
+          last_cycle_first_day: "1. Tag des letzten Zyklus",
+          menstruation_calendar: "Menstruationskalender",
+          male: "Mann",
+          female: "Frau",
+          gender: "Gesundheit nach Geschlecht",
+          female_health: "Frauengesundheit",
+          female_health_fine: "Frauengesundheit ohne Tabus – ehrlich, einfach und mit Rücksicht auf Sie.",
+          cycle_info: "Alles rund um deinen Zyklus",
+          reproductive_health: "Reproduktive Gesundheit",
+          hormonas: "Hormone",
+          gynecology: "Ärztin",
+          pregnancy: "Schwangerschaft und Wochenbett",
+          prevention: "Prävention und regelmäßige Check-ups",
+          useful_info: "Nützliche Informationen",
+          day_tip: "Nützlicher\nTipp des\nTages",
+          plan: "Planen Sie",
+          preventive_check: "mindestens einmal im Jahr eine Vorsorgeuntersuchung ein",
+          hormonas_health: "Gesunde Hormone",
+          hormonas_important: "Warum ist es wichtig, den Hormonspiegel zu überwachen",
+          cycle_health: "Ist der Zyklus wichtig?",
+          cycle_important: "Warum es wichtig ist, jeden Zyklus zu verfolgen",
+          examination_health: "Allgemeine Untersuchungen",
+          examination_important: "Warum ist es wichtig, den Hormonspiegel zu überwachen",
+          find_doctor: "Finden Sie einen Arzt in Ihrer Nähe",
+          your_cycle: "Dein Zyklus",
+          cycle_control: "Verfolgen Sie Ihren Zyklus, überwachen Sie Ihr Wohlbefinden und erhalten Sie rechtzeitig Erinnerungen",
+          calendar_cycle: "Menstruationskalender",
+          calc_cycle: "Berechnen Sie meinen Menstruationskalender",
+          warning_calc: "*Unsere Menstruationskalenderberechnungen sind möglicherweise nicht 100% genau, da jeder Körper und jeder Zyklus anders ist. Helfen Sie uns, Ihren Kalender genauer zu gestalten.",
+          cycle: "Zyklus",
+          why_should_calendar: "Warum einen Menstruationskalender führen?",
+          preview_calendar: "Beim Führen eines Menstruationskalenders geht es nicht nur darum, sich an «diese Tage» zu erinnern. Es ist ein kleines Selbstpflegeritual, das Ihnen hilft, Ihren Körper und Ihre Stimmung besser zu verstehen.",
+          predict_cycle: "Zyklus vorhersagen",
+          predict_cycle_desc: "Du weißt immer, wann deine Periode und der Eisprung beginnen. Das hilft, Ereignisse, Urlaube oder wichtige Termine zu planen.",
+          listen_yourself: "Auf dich selbst hören",
+          listen_yourself_desc: "Der Kalender hilft dir zu bemerken, wie sich Energie, Stimmung und Appetit in den verschiedenen Phasen des Zyklus verändern.",
+          regularity: "Regelmäßigkeiten erkennen",
+          regularity_desc: "Schmerzen, PMS, Stimmungsschwankungen oder Hautveränderungen fallen stärker auf. Es ist leicht nachzuvollziehen, was sich wiederholt und was dir guttut.",
+          doctor_help: "Hilft dem Arzt",
+          doctor_help_desc: "Wenn du zum Gynäkologen gehst, machen genaue Aufzeichnungen deines Zyklus und deiner Symptome die Beratung effektiver.",
+          planing: "Gesundheits- und Fitnessplanung",
+          planing_desc: "Du kannst Training, Ernährung oder Erholung an deinen Rhythmus anpassen, um den größten Nutzen zu erzielen.",
+          finalize_calendar: "Ein Menstruationskalender ist keine Pflicht, sondern ein Werkzeug zur Selbsterkenntnis. Er hilft, sich sicherer zu fühlen, Stimmungsschwankungen vorherzusagen und gut für sich zu sorgen.",
+          phase: "Phasen des Menstruationszyklus",
+          proccess_in_body: "Was im Körper einer Frau passiert",
+          proccess_in_body_desc: "Der Menstruationszyklus sind nicht nur 'diese Tage'. Er ist ein natürlicher Rhythmus, der dem Körper hilft, harmonisch zu funktionieren. Er ist in mehrere Phasen unterteilt, die unser Wohlbefinden, unsere Stimmung und Energie beeinflussen.",
+          phase_1_5: "Menstruationsphase\n(1 — 5)",
+          phase_1_5_desc: "Dies ist der Beginn des Zyklus. Der Körper stößt die alte Gebärmutterschleimhaut ab, was zu Menstruationsblutungen führt. Die Energie kann in dieser Zeit geringer sein, daher ist es gut, sich mehr Ruhe zu gönnen.",
+          phase_6_13: "Follikelphase\n(6 — 13)",
+          phase_6_13_desc: "Der Östrogenspiegel steigt allmählich an, wodurch Kraft und Motivation zurückkehren. Dies ist eine gute Zeit für neue Ideen, aktive Arbeit und Sport.",
+          phase_14_16: "Ovulationsphase\n(14 — 16)",
+          phase_14_16_desc: "Eine reife Eizelle wird freigesetzt. Frauen können sich selbstbewusst, attraktiv und voller Energie fühlen. Dies sind die 'Höhepunkt'-Tage, an denen der Körper für eine Empfängnis bereit ist.",
+          phase_17_28: "Lutealphase\n(17 — 28)",
+          phase_17_28_desc: "Wenn keine Schwangerschaft eintritt, dominiert Progesteron. Müdigkeit, Stimmungsschwankungen und Heißhunger auf Süßes können auftreten. Es ist wichtig, auf sich selbst zu hören, mehr zu ruhen und auf das emotionale Wohlbefinden zu achten.",
+          finalize_cycle: "Der Menstruationszyklus ist kein Feind, sondern ein natürlicher Kalender unseres Körpers. Wenn man auf seine Phasen achtet, kann man den Tag besser planen, Stimmungsschwankungen verstehen und mehr Harmonie mit sich selbst finden.",
+          go_back: "Geh zurück",
+          now: "jetzt",
+          menstruation: "menstruation",
+          scheduled_menstruation: "geplante menstruation",
+          ovulation: "ovulation",
+          planned_ovulation: "geplanter eisprung",
+          ovulation_in: "eisprung in",
+          low_chance: "Geringe Wahrscheinlichkeit, schwanger zu werden",
+          average_chance: "Durchschnittliche Wahrscheinlichkeit, schwanger zu werden",
+          high_chance: "Hohe Wahrscheinlichkeit, schwanger zu werden",
+          no_chance: "Sehr geringe Wahrscheinlichkeit, schwanger zu werden",
+          myth_facts: "Mythen und Fakten",
+          one: 'Tag',
+          other: 'Tage',
+          c_long: "Ihr Zyklus dauerte {{cLong}} Tage. Das ist normal!",
+          phase_1: "Sie befinden sich derzeit in Ihrer Menstruationsphase!\nDies ist der Beginn Ihres Zyklus.\nSie fühlen sich möglicherweise energielos!\nAchten Sie in dieser Zeit am besten auf sich selbst und ruhen Sie sich aus!",
+          phase_2: "Sie befinden sich jetzt in der Follikelphase!\nDas Hormon Östrogen nimmt aktiv zu.\nIhre Stimmung verbessert sich. Ihre Haut wird besser!\nSie sind bereit, die ganze Welt zu erobern!",
+          phase_3: "Sie befinden sich jetzt in der Ovulationsphase!\nEine reife Eizelle wird freigesetzt.\nSie fühlen sich selbstbewusst und voller Energie!\nHeute ist ein großartiger Tag, um das zu tun, was Ihnen Freude bereitet!",
+          phase_4: "Sie befinden sich jetzt in der Lutealphase!\nProgesteron beginnt zu dominieren!\nWährend dieser Zeit können Stimmungsschwankungen und Schläfrigkeit auftreten!\nAchten Sie auf Ihr Wohlbefinden und hören Sie auf Ihre Gefühle!",
+          super: "Super!",
+          gynecology_sub: "Alles rund um regelmäßige Vorsorgeuntersuchungen, Prävention und die Pflege der Frauengesundheit – einfach und ohne Tabus.",
+          womens_tests: "Prüfungen und Tests",
+          regular_review: "Regelmäßige Kontrolluntersuchungen",
+          articles_: "Artikel",
+          read: "Lesen",
+          how_often: "Wie oft sollte\nman zum\nFrauenarzt gehen?",
+          top_5_tests: "TOP 5 Tests für die\nGesundheit von Frauen",
+          review_sub: "Die Sorge um Ihre Gesundheit beginnt mit der Prävention. Einmal im Jahr sind Sie dem Problem einen Schritt voraus.",
+          what_to_check_regulary: "Was sollte regelmäßig getan werden?",
+          gynecology_review: "Untersuchung beim Gynäkologen",
+          one_time_per_year: "einmal pro Jahr",
+          pap_test: "Pap-Test",
+          _2_3_time_per_year: "alle 2–3 Jahre",
+          blood_test: "Blut- und Urintest",
+          ultrasound_test: "Beckenultraschall",
+          if_need: "bei Bedarf",
+          mammography: "Mammographie",
+          after_40_years: "nach dem 40. Lebensjahr",
+          examination_head: "Prüfungen und Tests",
+          examination_desc: "Die richtigen und rechtzeitigen Tests sind der Schlüssel zur Gesundheit. Informieren Sie sich, welche Tests und Untersuchungen Sie regelmäßig durchführen lassen sollten.",
+          base_review: "Grunduntersuchung",
+          gynecology_examination: "Gynäkologische Untersuchung",
+          add_to_calendar: "Zum Kalender hinzufügen",
+          ultrasound_glands: "Brustultraschall",
+          need_I_test: "Muss ich Tests machen, wenn ich mich gut fühle?",
+          examination_tip_need: "Regelmäßige medizinische Untersuchungen sind wichtig, auch wenn Sie keine Beschwerden haben. Viele Krankheiten entwickeln sich in frühen Stadien still, und rechtzeitig durchgeführte Basisuntersuchungen (Blut, Urin, Blutzucker, Cholesterin) helfen, Probleme zu erkennen, bevor Symptome auftreten.\n\nJährliche Untersuchungen sind eine Investition in Ihre Gesundheit. Sie ermöglichen es, Ihren Körper zu überwachen, Ernährung und Lebensstil anzupassen und Komplikationen vorzubeugen.\n\nSich gut zu fühlen ist großartig, aber Prävention ist immer einfacher und kostengünstiger als Behandlung.",
+          what_needed_blood: "Was sollte ich vor einer Blutuntersuchung vorbereiten?",
+          what_needed_blood_info: "Um genaue Bluttestergebnisse zu erhalten, bereiten Sie sich im Voraus vor:\n\nVor der Untersuchung nüchtern bleiben, die letzte Mahlzeit sollte 8–12 Stunden zurückliegen\n\nNur stilles Wasser trinken, das beeinflusst die Ergebnisse nicht\n\nVermeiden Sie ein bis zwei Tage vorher Alkohol, fettige und sehr süße Speisen\n\nAm Tag der Untersuchung intensive körperliche Anstrengungen und Stress vermeiden\n\nWenn Sie Medikamente einnehmen, informieren Sie unbedingt Ihren Arzt",
+          what_diff_ultrasound_mam: "Was ist der Unterschied zwischen Ultraschall und Mammographie?",
+          what_diff_ultrasound_mam_info: "Ultraschall verwendet Schallwellen zur Darstellung von Gewebe und zeigt weiche Strukturen der Brust gut, besonders bei jungen Frauen mit dichtem Gewebe\n\nMammographie ist eine Röntgenuntersuchung, die kleine Verkalkungen und frühe Anzeichen von Tumoren erkennen kann, bevor Knoten auftreten\n\nUltraschall verwendet keine Strahlung und eignet sich zur zusätzlichen Kontrolle\nMammographie bleibt das wichtigste Screening-Verfahren für Frauen über 40\n\nBeide Methoden werden oft zusammen verwendet, um eine genauere Diagnose zu erhalten",
+          why_pap_test: "Warum einen Pap-Abstrich machen und wie oft?",
+          why_pap_test_info: "Ein Pap-Abstrich hilft, Veränderungen der Gebärmutterhalszellen frühzeitig zu erkennen, wenn noch keine Symptome vorliegen\n\nRegelmäßige Vorsorge verhindert die Entstehung von Krebs und ermöglicht eine rechtzeitige Behandlung von Entzündungsprozessen\n\nNormalerweise wird der Pap-Test einmal im Jahr durchgeführt, wenn keine Probleme bestehen, oder häufiger nach Empfehlung des Arztes\n\nDie Untersuchung ist schnell, schmerzlos und dauert nur wenige Minuten\n\nAuch wenn Sie sich wohl fühlen, hilft der Test, Ihre Gesundheit zu pflegen",
+          reproductive: "Reproduktive Gesundheit",
+          reproductive_sub: "Planen Sie mit uns! Achten Sie auf Ihren Körper und planen Sie mit Zuversicht für die Zukunft.",
+          myth_main: "Es gibt viele Mythen rund um die Menstruation.",
+          myth_sub: "Hier ist eine kleine Auswahl für dich)",
+          cant_sport: "Während der Periode darf man keinen Sport treiben",
+          cant_sport_desc: "Leichte körperliche Aktivität wie Yoga, Spaziergänge oder moderates Training kann Krämpfe lindern und die Stimmung verbessern.",
+          c_long_: "Der Zyklus dauert immer genau 28 Tage",
+          c_long_desc: "Jeder Zyklus ist individuell: Ein Intervall von etwa 21 bis 35 Tagen gilt als normal.",
+          cant_swim: "Man darf während der Periode nicht baden oder schwimmen",
+          cant_swim_desc: "Baden und Duschen sind sicher. Hygieneprodukte (Tampons, Menstruationstassen) ermöglichen komfortables Schwimmen und Sauberkeit.",
+          cant_get_pregnant: "Man kann während der Periode nicht schwanger werden",
+          cant_get_pregnant_desc: "Die Wahrscheinlichkeit ist geringer, aber nicht null: Spermien können mehrere Tage im Körper überleben, und der Eisprung kann früher oder später als erwartet auftreten.",
+          pain_is_ok: "Menstruationsschmerzen sind immer normal",
+          pain_is_ok_desc: "Leichte Beschwerden sind üblich, aber starke oder einschränkende Schmerzen können auf Endometriose oder andere Erkrankungen hinweisen und sollten ärztlich untersucht werden.",
         },
       },
       fr: {
@@ -769,53 +1098,40 @@ i18n
           more_energy: "PLUS D'ÉNERGIE.",
           healthy_lifestyle: "VOTRE STYLE DE VIE SAIN EN UN SEUL ENDROIT.",
           register: "S'inscrire",
-          description_part1:
-            "— est une plateforme qui vous aide à prendre soin de vous facilement et avec le sourire.",
-          description_part2:
-            "Suivez votre alimentation et vos entraînements, surveillez votre santé et obtenez le soutien de spécialistes.",
-          description_part3:
-            "Trouvez des produits utiles et partagez votre motivation avec la communauté.",
-          description_part4:
-            "Avec Nomyfy, vous formez pas à pas des habitudes saines et vous vous sentez mieux chaque jour.",
+          description_part1: "— est une plateforme qui vous aide à prendre soin de vous facilement et avec le sourire.",
+          description_part2: "Suivez votre alimentation et vos entraînements, surveillez votre santé et obtenez le soutien de spécialistes.",
+          description_part3: "Trouvez des produits utiles et partagez votre motivation avec la communauté.",
+          description_part4: "Avec Nomyfy, vous formez pas à pas des habitudes saines et vous vous sentez mieux chaque jour.",
           specialist_title_line1: "VOTRE TALENT EST RECHERCHÉ ICI!",
           specialist_title_line2: "NOUS CHERCHONS DES PROS COMME VOUS!",
-          specialist_text_line1:
-            "Si vous êtes spécialiste en psychologie, en nutrition, ou si vous êtes un entraîneur,",
-          specialist_text_line2:
-            "aidons à rendre ce monde meilleur. Travaillez avec des professionnels.",
+          specialist_text_line1: "Si vous êtes spécialiste en psychologie, en nutrition, ou si vous êtes un entraîneur,",
+          specialist_text_line2: "aidons à rendre ce monde meilleur. Travaillez avec des professionnels.",
           specialist_text_line3: "Vous êtes fait pour nous!",
           become_specialist: "Devenir un spécialiste",
           marketplace_title: "MARCHÉ DES SOLUTIONS SAINES.",
-          marketplace_subtitle:
-            "Tout ce qui vous aide à vivre sainement est réuni en un seul endroit.",
+          marketplace_subtitle: "Tout ce qui vous aide à vivre sainement est réuni en un seul endroit.",
           marketplace_button: "Marché",
           faq_title: "Questions fréquemment posées",
           faq_q1_title: "Qu'est-ce que NOMYFY ?",
-          faq_q1_answer:
-            "NOMYFY est une thérapie individuelle pour le burnout émotionnel.",
+          faq_q1_answer: "NOMYFY est une thérapie individuelle pour le burnout émotionnel.",
           faq_q2_title: "À qui s'adresse NOMYFY ?",
-          faq_q2_answer:
-            "À ceux qui cherchent des moyens d'améliorer leur santé mentale.",
+          faq_q2_answer: "À ceux qui cherchent des moyens d'améliorer leur santé mentale.",
           faq_q3_title: "En quoi NOMYFY est-il utile ?",
-          faq_q3_answer:
-            "NOMYFY aide à organiser sa vie, en commençant par soi-même.",
+          faq_q3_answer: "NOMYFY aide à organiser sa vie, en commençant par soi-même.",
           faq_q4_title: "Puis-je utiliser les services gratuitement ?",
-          faq_q4_answer:
-            "Oui, nous avons des options gratuites, mais la plupart des services sont payants.",
+          faq_q4_answer: "Oui, nous avons des options gratuites, mais la plupart des services sont payants.",
           faq_q5_title: "Comment commencer ?",
-          faq_q5_answer:
-            "Vous devez vous inscrire sur notre plateforme et choisir un service.",
+          faq_q5_answer: "Vous devez vous inscrire sur notre plateforme et choisir un service.",
           faq_q6_title: "Comment devenir partenaire de NOMYFY ?",
-          faq_q6_answer:
-            "Laissez une demande sur notre site Web, et nous vous contacterons.",
+          faq_q6_answer: "Laissez une demande sur notre site Web, et nous vous contacterons.",
 
-          // --- Переводы для Footer ---
+          // --- Footer translations ---
           specialists: "Spécialistes",
           privacy_policy: "Politique de confidentialité",
           support_service: "Service de soutien",
           copyright: "© Nomyfy {{year}}.",
 
-          // --- Переклади для входу ---
+          // --- Login translations ---
           login1: "CONNEXION",
           password: "mot de passe",
           forgot_password: "mot de passe oublié ?",
@@ -823,15 +1139,14 @@ i18n
           no_profile: "Pas de compte ? ",
           register2: "S'inscrire",
 
-          // --- Переклади для реєстрації ---
+          // --- Registration translations ---
           continue: "Continuer",
           reg_success: "inscription réussie",
           start: "Commencer",
           reg_top: "INSCRIPTION",
           success: "RÉUSSI",
           or: "ou",
-          code_create_error:
-            "Erreur lors de la création du code de confirmation",
+          code_create_error: "Erreur lors de la création du code de confirmation",
           code_error: "Code de confirmation incorrect",
           check_email: "veuillez vérifier votre e-mail",
           code_send: "le code a été envoyé à ",
@@ -840,7 +1155,7 @@ i18n
           confirm: "Confirmer",
           password_new: "nouveau mot de passe",
 
-          // --- Переклади для відновлення паролю ---
+          // --- Password recovery translations ---
           enter_email_to_restore: "entrez l'e-mail pour envoyer le code",
           send_code2: "Envoyer le code",
           reset_password: "réinitialisation du mot de passe",
@@ -849,12 +1164,11 @@ i18n
           password_update_success: "mot de passe mis à jour avec succès",
           to_login: "Retour à la connexion",
           user_not_exeist: "l'utilisateur avec l'e-mail spécifié n'existe pas",
-          reset_password_error:
-            "Erreur lors de la mise à jour du mot de passe. Veuillez réessayer.",
+          reset_password_error: "Erreur lors de la mise à jour du mot de passe. Veuillez réessayer.",
           user_exist: "L'utilisateur avec l'e-mail spécifié existe déjà",
           auth_fail: "Erreur d'authentification. Vérifiez vos données",
 
-          // Переклади для Menu
+          // Menu translations
           dashboard: "Accueil",
           profile: "Profil",
           health: "Santé",
@@ -867,8 +1181,9 @@ i18n
           search_placeholder: "Recherche",
           welcome: "Salut",
           health_one_place: "Votre santé en un seul endroit!",
+          mental: "Santé Mentale",
 
-          // Переклади для віджетів дашборду
+          // Dashboard widgets translations
           kkal: "Calories",
           current_week: "Semaine en cours",
           water: "Eau",
@@ -876,18 +1191,15 @@ i18n
           sleep: "Sommeil",
           H: "H",
           bmi: "IMC",
-          bmi_requires:
-            "Remplissez les informations concernant la taille et le poids",
+          bmi_requires: "Remplissez les informations concernant la taille et le poids",
 
-          // --- Переклади для профілю користувача ---
-          p_error_upadate:
-            "Échec de la mise à jour du profil. Veuillez remplir tous les champs.",
+          // --- User profile translations ---
+          p_error_upadate: "Échec de la mise à jour du profil. Veuillez remplir tous les champs.",
           p_male: "Homme",
           p_female: "Femme",
           p_other: "Autre",
           p_success_title: "Merci pour l'information!",
-          p_success_subtitle:
-            "Nos conseils seront encore meilleurs maintenant!",
+          p_success_subtitle: "Nos conseils seront encore meilleurs maintenant!",
           p_btn_home: "Accueil",
           p_about_placeholder: "À propos de moi...",
           p_first_name_placeholder: "Prénom",
@@ -908,7 +1220,7 @@ i18n
           p_btn_save: "Enregistrer",
           p_btn_saving: "Enregistrement...",
 
-          // --- Переклади для кастомного календаря (день народження користувача) ---
+          // --- Custom calendar translations (user birthday) ---
           p_january: "janvier",
           p_february: "février",
           p_march: "mars",
@@ -929,7 +1241,7 @@ i18n
           p_saturday: "sa",
           p_sunday: "di",
 
-          // --- Переклади для країн ---
+          // --- Countries translations ---
           p_ukrain_country: "Ukraine",
           p_great_britain_country: "Royaume-Uni",
           p_germany_country: "Allemagne",
@@ -937,7 +1249,20 @@ i18n
           p_spain_country: "Espagne",
           p_usa_country: "États-Unis",
 
-          // --- Переклади для соц. сторінки ---
+          // --- Links mapping translations ---
+          mental: "Santé Mentale",
+          diary: "Journal des Émotions",
+          articles: "Articles Utiles",
+          article_1: "10 techniques simples pour soulager le stress",
+          article_2: "Méthodes efficaces pour lutter contre l'anxiété",
+          article_3: "Techniques de respiration pour la relaxation",
+          article_4: "Le lien entre le sommeil et la santé mentale",
+          article_5: "Bases de la méditation pour les débutants",
+          article_6: "Stratégies pour améliorer l'estime de soi",
+          article_7: "Prévention et surmonter l'épuisement",
+          gender: "Santé par sexe",
+
+          // --- Social challenges translations ---
           ch_all_challenges_title: "Tous les défis",
           ch_details_link: "Détails",
           ch_no_challenges_message: "Il n'y a pas encore de défis.",
@@ -970,16 +1295,14 @@ i18n
           yes: "Oui",
           no: "Non",
           ch_confirmDeleteTitle: "Confirmer la suppression du défi",
-          ch_confirmDeleteText:
-            "Êtes-vous sûr de vouloir supprimer ce défi ? Cette action est irréversible.",
+          ch_confirmDeleteText: "Êtes-vous sûr de vouloir supprimer ce défi ? Cette action est irréversible.",
           ch_joinedTitle: "Succès !",
           ch_joinedText: "Vous avez rejoint le défi avec succès.",
           ok: "OK",
           ch_deletedTitle: "Défi supprimé",
           ch_deletedText: "Le défi a été supprimé avec succès.",
           ch_errorTitle: "Erreur",
-          ch_errorText:
-            "Une erreur est survenue. Veuillez réessayer plus tard.",
+          ch_errorText: "Une erreur est survenue. Veuillez réessayer plus tard.",
           ch_edit_title: "Modifier le défi",
           ch_type_competition: "Compétition",
           ch_type_personal: "Objectif personnel",
@@ -995,8 +1318,130 @@ i18n
           ch_leftTitle: "Défi quitté",
           ch_leftText: "Vous avez quitté le défi avec succès.",
           ch_completedTitle: "Défi terminé",
-          ch_completedText:
-            "Félicitations ! Vous avez terminé le défi avec succès.",
+          ch_completedText: "Félicitations ! Vous avez terminé le défi avec succès.",
+
+          // --- Menstrual calendar translations ---
+          last_cycle_first_day: "1er jour du dernier cycle",
+          menstruation_calendar: "Calendrier menstruel",
+          male: "Homme",
+          female: "Femme",
+          gender: "Santé par sexe",
+          female_health: "La santé des femmes",
+          female_health_fine: "La santé des femmes sans tabous - honnêtement, simplement et avec soin pour vous.",
+          cycle_info: "Tout sur votre cycle",
+          reproductive_health: "Santé reproductive",
+          hormonas: "Hormones",
+          gynecology: "Femme médecin",
+          pregnancy: "Grossesse et période post-partum",
+          prevention: "Prévention et contrôles réguliers",
+          useful_info: "Informations utiles",
+          day_tip: "Conseil\nutile\ndu jour",
+          plan: "Planifiez",
+          preventive_check: "un contrôle préventif au moins une fois par an",
+          hormonas_health: "Hormones saines",
+          hormonas_important: "Pourquoi est-il important de surveiller les niveaux d'hormones",
+          cycle_health: "Le cycle est-il important?",
+          cycle_important: "Pourquoi il est important de suivre chaque cycle",
+          examination_health: "Examens généraux",
+          examination_important: "Pourquoi est-il important de surveiller les niveaux d'hormones",
+          find_doctor: "Trouvez un médecin près de chez vous",
+          your_cycle: "Votre cycle",
+          cycle_control: "Suivez votre cycle, surveillez votre bien-être et recevez des rappels en temps opportun",
+          calendar_cycle: "Calendrier menstruel",
+          calc_cycle: "Calculer mon calendrier menstruel",
+          warning_calc: "*Nos calculs de calendrier menstruel peuvent ne pas être précis à 100%, car chaque corps et chaque cycle sont différents. Aidez-nous à améliorer la précision de votre calendrier.",
+          cycle: "Faire du vélo",
+          why_should_calendar: "Pourquoi tenir un calendrier menstruel?",
+          preview_calendar: "Tenir un calendrier menstruel ne se limite pas à se souvenir de ces jours. C'est un petit rituel de bien-être qui vous aide à mieux comprendre votre corps et votre humeur.",
+          predict_cycle: "Prédire le cycle",
+          predict_cycle_desc: "Tu sais toujours quand tes règles et ton ovulation vont commencer. Cela aide à planifier des événements, des vacances ou des rendez-vous importants.",
+          listen_yourself: "S'écouter",
+          listen_yourself_desc: "Le calendrier aide à remarquer comment l'énergie, l'humeur et l'appétit changent selon les phases du cycle.",
+          regularity: "Détecter la régularité",
+          regularity_desc: "Douleurs, SPM, sautes d'humeur ou changements de peau deviennent plus visibles. Il est facile de suivre ce qui se répète et ce qui aide à se sentir mieux.",
+          doctor_help: "Aide le médecin",
+          doctor_help_desc: "Si tu dois consulter un gynécologue, un enregistrement précis du cycle et des symptômes rend la consultation plus efficace.",
+          planing: "Planification santé et fitness",
+          planing_desc: "Tu peux adapter entraînement, alimentation ou repos à ton rythme pour en tirer le maximum de bénéfices.",
+          finalize_calendar: "Un calendrier menstruel n'est pas une obligation mais un outil de connaissance de soi. Il aide à se sentir plus confiante, à prévoir les changements d'humeur et simplement à prendre soin de soi.",
+          phase: "Phases du cycle menstruel",
+          proccess_in_body: "Ce qui se passe dans le corps d'une femme",
+          proccess_in_body_desc: "Le cycle menstruel n'est pas seulement 'ces jours'. C'est un rythme naturel qui aide le corps à fonctionner harmonieusement. Il se divise en plusieurs phases, chacune influençant notre bien-être, notre humeur et notre énergie.",
+          phase_1_5: "Phase menstruelle\n(1 — 5)",
+          phase_1_5_desc: "C'est le début du cycle. Le corps se débarrasse de l'ancienne muqueuse utérine, provoquant les règles. L'énergie peut être plus faible à ce moment, donc il est bon de se reposer davantage.",
+          phase_6_13: "Phase folliculaire\n(6 — 13)",
+          phase_6_13_desc: "Le taux d'œstrogène augmente progressivement, apportant force et motivation. C'est une période idéale pour de nouvelles idées, du travail actif et du sport.",
+          phase_14_16: "Phase ovulatoire\n(14 — 16)",
+          phase_14_16_desc: "Un ovule mature est libéré. Les femmes peuvent se sentir confiantes, attirantes et pleines d'énergie. Ce sont les jours 'de pic', lorsque le corps est prêt pour la conception.",
+          phase_17_28: "Phase lutéale\n(17 — 28)",
+          phase_17_28_desc: "Si la grossesse n'a pas lieu, le progestérone devient dominante. Somnolence, changements d'humeur et envie de sucré peuvent apparaître. Il est important de s'écouter, de se reposer davantage et de prendre soin de son confort émotionnel.",
+          finalize_cycle: "Le cycle menstruel n'est pas un ennemi, mais un calendrier naturel de notre corps. En prêtant attention à ses phases, on peut mieux planifier sa journée, comprendre les changements d'humeur et être plus en harmonie avec soi-même.",
+          go_back: "Retour",
+          now: "maintenant",
+          menstruation: "menstruation",
+          scheduled_menstruation: "menstruations programmées",
+          ovulation: "ovulation",
+          planned_ovulation: "ovulation planifiée",
+          ovulation_in: "ovulation dans",
+          low_chance: "Faible risque de tomber enceinte",
+          average_chance: "Chances moyennes de tomber enceinte",
+          high_chance: "Fortes chances de tomber enceinte",
+          no_chance: "Très faible chance de tomber enceinte",
+          myth_facts: "Mythes et faits",
+          one: 'jour',
+          other: 'jours',
+          c_long: "Votre cycle a duré {{cLong}} jours. C'est normal!",
+          phase_1: "Vous êtes actuellement dans votre phase menstruelle !\nC'est le début de votre cycle.\nVous vous sentez peut-être à court d'énergie !\nIl est préférable de prendre soin de vous et de vous reposer pendant cette période !",
+          phase_2: "Vous êtes maintenant en phase folliculaire !\nVotre taux d'œstrogènes augmente activement.\nVotre humeur s'améliore.\nVotre peau s'améliore !\nVous êtes prête à conquérir le monde entier !",
+          phase_3: "Vous êtes maintenant en phase ovulatoire !\nUn ovule mature est en train d'être libéré.\n​​Vous vous sentez confiant et plein d'énergie !\nAujourd'hui est un jour idéal pour faire ce qui vous apporte de la joie !",
+          phase_4: "Vous êtes maintenant en phase lutéale !\nLa progestérone commence à dominer ! \nPendant cette période, vous pouvez ressentir des sautes d'humeur et de la somnolence ! \nPrenez soin de votre confort et écoutez vos sentiments!",
+          super: "Super!",
+          gynecology_sub: "Tout sur les examens réguliers, la prévention et les soins de santé pour les femmes — dans un langage simple et sans tabous.",
+          womens_tests: "Examens et tests",
+          regular_review: "Contrôles réguliers",
+          articles_: "Articles",
+          read: "Lire",
+          how_often: "À quelle fréquence\nfaut-il consulter\nun gynécologue?",
+          top_5_tests: "TOP 5 des tests pour\nla santé des femmes",
+          review_sub: "Prendre soin de sa santé commence par la prévention. Une fois par an, vous avez une longueur d'avance sur le problème.",
+          what_to_check_regulary: "Que faut-il faire régulièrement?",
+          gynecology_review: "Examen par un gynécologue",
+          one_time_per_year: "une fois par an",
+          pap_test: "Test Pap",
+          _2_3_time_per_year: "une fois tous les 2–3 ans",
+          blood_test: "Analyse de sang et d'urine",
+          ultrasound_test: "Échographie pelvienne",
+          if_need: "si nécessaire",
+          mammography: "Mammographie",
+          after_40_years: "après 40 ans",
+          examination_head: "Examens et tests",
+          examination_desc: "Des examens appropriés et réalisés au bon moment sont la clé d'une bonne santé. Découvrez quels examens et tests vous devriez effectuer régulièrement.",
+          base_review: "Examen de base",
+          gynecology_examination: "Examen gynécologique",
+          add_to_calendar: "Ajouter au calendrier",
+          ultrasound_glands: "Échographie des seins",
+          need_I_test: "Faut-il faire des analyses si je me sens bien ?",
+          examination_tip_need: "Les examens médicaux réguliers sont importants même en l'absence de symptômes. De nombreuses maladies se développent silencieusement à leurs débuts, et des analyses de base effectuées à temps (sang, urine, glycémie, cholestérol) permettent de détecter les problèmes avant l'apparition des premiers signes.\n\nLes contrôles annuels sont un investissement pour votre santé. Ils permettent de surveiller votre organisme, d'ajuster votre alimentation et votre mode de vie, et d'éviter les complications.\n\nSe sentir bien est excellent, mais la prévention est toujours plus facile et moins coûteuse que le traitement.",
+          what_needed_blood: "Que faut-il préparer avant une prise de sang ?",
+          what_needed_blood_info: "Pour que les résultats de votre analyse de sang soient précis, préparez-vous à l'avance :\n\nÀ jeun, le dernier repas doit avoir eu lieu 8 à 12 heures avant\n\nBuvez uniquement de l'eau plate, cela n'affecte pas les résultats\n\nÉvitez l'alcool, les aliments gras et très sucrés un à deux jours avant\n\nLe jour de l'analyse, évitez les efforts physiques intenses et le stress\n\nSi vous prenez des médicaments, informez-en obligatoirement votre médecin",
+          what_diff_ultrasound_mam: "Quelle est la différence entre l'échographie et la mammographie ?",
+          what_diff_ultrasound_mam_info: "L'échographie utilise des ondes sonores pour visualiser les tissus et montre bien les structures molles du sein, surtout chez les jeunes femmes ayant une poitrine dense\n\nLa mammographie est un examen radiographique qui permet de détecter de petites calcifications et les premiers signes de tumeurs avant l'apparition de nodules\n\nL'échographie n'utilise pas de radiation et convient pour un contrôle supplémentaire\nLa mammographie reste la méthode de dépistage principale pour les femmes de plus de 40 ans\n\nLes deux méthodes sont souvent utilisées ensemble pour un diagnostic plus précis",
+          why_pap_test: "Pourquoi faire un frottis de dépistage (test Pap) et à quelle fréquence ?",
+          why_pap_test_info: "Le frottis de dépistage ou test Pap permet de détecter les modifications des cellules du col de l'utérus à un stade précoce, avant l'apparition des symptômes\n\nUn dépistage régulier permet de prévenir le développement du cancer et de traiter à temps les processus inflammatoires\n\nEn général, le test Pap se fait une fois par an s'il n'y a pas de problème, ou plus souvent sur recommandation du médecin\n\nL'examen est rapide, indolore et ne prend que quelques minutes\n\nMême si vous vous sentez bien, ce test aide à prendre soin de votre santé",
+          reproductive: "Santé reproductive",
+          reproductive_sub: "Planifiez avec nous ! Prenez soin de votre corps et préparez votre avenir en toute confiance.",
+          myth_main: "Il existe beaucoup de mythes autour des règles.",
+          myth_sub: "Voici une petite sélection pour toi)",
+          cant_sport: "On ne peut pas faire de sport pendant les règles",
+          cant_sport_desc: "En réalité, une activité physique légère comme le yoga, la marche ou même un entraînement modéré peut soulager les crampes et améliorer l'humeur.",
+          c_long_: "Le cycle dure toujours exactement 28 jours",
+          c_long_desc: "Chaque cycle est individuel : un intervalle d'environ 21 à 35 jours est considéré comme normal.",
+          cant_swim: "On ne peut pas se baigner ou prendre un bain pendant les règles",
+          cant_swim_desc: "Se baigner ou prendre une douche est sans danger. Les protections (tampons, coupes menstruelles) permettent de nager confortablement et de rester propre.",
+          cant_get_pregnant: "On ne peut pas tomber enceinte pendant les règles",
+          cant_get_pregnant_desc: "La probabilité est plus faible mais pas nulle : les spermatozoïdes peuvent survivre plusieurs jours dans le corps et l'ovulation peut survenir plus tôt ou plus tard que prévu.",
+          pain_is_ok: "La douleur menstruelle est toujours normale",
+          pain_is_ok_desc: "Un léger inconfort est courant, mais une douleur intense ou invalidante peut indiquer une endométriose ou d'autres troubles et doit être examinée par un médecin.",
         },
       },
       es: {
@@ -1012,53 +1457,40 @@ i18n
           more_energy: "MÁS ENERGÍA.",
           healthy_lifestyle: "TU ESTILO DE VIDA SALUDABLE EN UN SOLO LUGAR.",
           register: "Registrarse",
-          description_part1:
-            "— es una plataforma que te ayuda a cuidarte de forma fácil y con una sonrisa.",
-          description_part2:
-            "Lleva un registro de tu nutrición y entrenamientos, cuida tu salud y recibe el apoyo de especialistas.",
-          description_part3:
-            "Encuentra productos útiles y comparte motivación con la comunidad.",
-          description_part4:
-            "Junto con Nomyfy, paso a paso, creas hábitos saludables y te sientes mejor cada día.",
+          description_part1: "— es una plataforma que te ayuda a cuidarte de forma fácil y con una sonrisa.",
+          description_part2: "Lleva un registro de tu nutrición y entrenamientos, cuida tu salud y recibe el apoyo de especialistas.",
+          description_part3: "Encuentra productos útiles y comparte motivación con la comunidad.",
+          description_part4: "Junto con Nomyfy, paso a paso, creas hábitos saludables y te sientes mejor cada día.",
           specialist_title_line1: "¡TU TALENTO ES NECESARIO AQUÍ!",
           specialist_title_line2: "¡ESTAMOS BUSCANDO PROFESIONALES COMO TÚ!",
-          specialist_text_line1:
-            "Si eres especialista en psicología, nutrición o eres entrenador,",
-          specialist_text_line2:
-            "ayudemos a hacer de este mundo un lugar mejor. Trabaja con profesionales.",
+          specialist_text_line1: "Si eres especialista en psicología, nutrición o eres entrenador,",
+          specialist_text_line2: "ayudemos a hacer de este mundo un lugar mejor. Trabaja con profesionales.",
           specialist_text_line3: "¡Este es tu lugar!",
           become_specialist: "Convertirse en especialista",
           marketplace_title: "MERCADO DE SOLUCIONES SALUDABLES.",
-          marketplace_subtitle:
-            "Todo lo que te ayuda a vivir de forma saludable, reunido en un solo lugar.",
+          marketplace_subtitle: "Todo lo que te ayuda a vivir de forma saludable, reunido en un solo lugar.",
           marketplace_button: "Mercado",
           faq_title: "Preguntas frecuentes",
           faq_q1_title: "¿Qué es NOMYFY?",
-          faq_q1_answer:
-            "NOMYFY es una terapia individual para el agotamiento emocional.",
+          faq_q1_answer: "NOMYFY es una terapia individual para el agotamiento emocional.",
           faq_q2_title: "¿Para quién es NOMYFY?",
-          faq_q2_answer:
-            "Para aquellos que buscan formas de mejorar su salud mental.",
+          faq_q2_answer: "Para aquellos que buscan formas de mejorar su salud mental.",
           faq_q3_title: "¿Cómo es útil NOMYFY?",
-          faq_q3_answer:
-            "NOMYFY te ayuda a organizar tu vida, comenzando por ti mismo.",
+          faq_q3_answer: "NOMYFY te ayuda a organizar tu vida, comenzando por ti mismo.",
           faq_q4_title: "¿Puedo usar los servicios de forma gratuita?",
-          faq_q4_answer:
-            "Sí, tenemos opciones gratuitas, pero la mayoría de los servicios son de pago.",
+          faq_q4_answer: "Sí, tenemos opciones gratuitas, pero la mayoría de los servicios son de pago.",
           faq_q5_title: "¿Cómo empezar a usarlo?",
-          faq_q5_answer:
-            "Debes registrarte en nuestra plataforma y elegir un servicio.",
+          faq_q5_answer: "Debes registrarte en nuestra plataforma y elegir un servicio.",
           faq_q6_title: "¿Cómo convertirse en socio de NOMYFY?",
-          faq_q6_answer:
-            "Deja una solicitud en nuestro sitio web y nos pondremos en contacto contigo.",
+          faq_q6_answer: "Deja una solicitud en nuestro sitio web y nos pondremos en contacto contigo.",
 
-          // --- Переводы для Footer ---
+          // --- Footer translations ---
           specialists: "Especialistas",
           privacy_policy: "Política de privacidad",
           support_service: "Servicio de soporte",
           copyright: "© Nomyfy {{year}}.",
 
-          // --- Переклади для входу ---
+          // --- Login translations ---
           login1: "INICIO DE SESIÓN",
           password: "contraseña",
           forgot_password: "¿Olvidaste tu contraseña?",
@@ -1066,7 +1498,7 @@ i18n
           no_profile: "¿No tienes cuenta? ",
           register2: "Registrarse",
 
-          // --- Переклади для реєстрації ---
+          // --- Registration translations ---
           continue: "Continuar",
           reg_success: "registro exitoso",
           start: "Comenzar",
@@ -1082,24 +1514,20 @@ i18n
           confirm: "Confirmar",
           password_new: "nueva contraseña",
 
-          // --- Переклади для відновлення паролю ---
-          enter_email_to_restore:
-            "ingresa el correo electrónico para enviar el código",
+          // --- Password recovery translations ---
+          enter_email_to_restore: "ingresa el correo electrónico para enviar el código",
           send_code2: "Enviar código",
           reset_password: "restablecimiento de contraseña",
           password_confirm: "confirmación de contraseña",
           update_password: "Actualizar contraseña",
           password_update_success: "contraseña actualizada con éxito",
           to_login: "Volver al inicio de sesión",
-          user_not_exeist:
-            "el usuario con el correo electrónico especificado no existe",
-          reset_password_error:
-            "Error al actualizar la contraseña. Por favor, inténtalo de nuevo.",
-          user_exist:
-            "El usuario con el correo electrónico especificado ya existe",
+          user_not_exeist: "el usuario con el correo electrónico especificado no existe",
+          reset_password_error: "Error al actualizar la contraseña. Por favor, inténtalo de nuevo.",
+          user_exist: "El usuario con el correo electrónico especificado ya existe",
           auth_fail: "Error de autenticación. Verifica tus datos",
 
-          // Переклади для Menu
+          // Menu translations
           dashboard: "Inicio",
           profile: "Perfil",
           health: "Salud",
@@ -1112,8 +1540,9 @@ i18n
           search_placeholder: "Búsqueda",
           welcome: "Hola",
           health_one_place: "Tu salud en un solo lugar!",
+          mental: "Salud Mental",
 
-          // Переклади для віджетів дашборду
+          // Dashboard widgets translations
           kkal: "Calorías",
           current_week: "Semana en curso",
           water: "Agua",
@@ -1123,9 +1552,8 @@ i18n
           bmi: "IMC",
           bmi_requires: "Complete la información sobre la altura y el peso",
 
-          // --- Переклади для профілю користувача ---
-          p_error_upadate:
-            "No se pudo actualizar el perfil. Por favor, complete todos los campos.",
+          // --- User profile translations ---
+          p_error_upadate: "No se pudo actualizar el perfil. Por favor, complete todos los campos.",
           p_male: "Hombre",
           p_female: "Mujer",
           p_other: "Otro",
@@ -1151,7 +1579,7 @@ i18n
           p_btn_save: "Guardar",
           p_btn_saving: "Guardando...",
 
-          // --- Переклади для кастомного календаря (день народження користувача) ---
+          // --- Custom calendar translations (user birthday) ---
           p_january: "enero",
           p_february: "febrero",
           p_march: "marzo",
@@ -1172,7 +1600,7 @@ i18n
           p_saturday: "sa",
           p_sunday: "do",
 
-          // --- Переклади для країн ---
+          // --- Countries translations ---
           p_ukrain_country: "Ucrania",
           p_great_britain_country: "Reino Unido",
           p_germany_country: "Alemania",
@@ -1180,7 +1608,20 @@ i18n
           p_spain_country: "España",
           p_usa_country: "EE.UU.",
 
-          // --- Переклади для соц. сторінки ---
+          // --- Links mapping translations ---
+          mental: "Salud Mental",
+          diary: "Diario de Emociones",
+          articles: "Artículos Útiles",
+          article_1: "10 técnicas simples para aliviar el estrés",
+          article_2: "Métodos efectivos para combatir la ansiedad",
+          article_3: "Técnicas de respiración para la relajación",
+          article_4: "La conexión entre el sueño y la salud mental",
+          article_5: "Bases de la meditación para principiantes",
+          article_6: "Estrategias para mejorar la autoestima",
+          article_7: "Prevención y superación del agotamiento",
+          gender: "Salud por género",
+
+          // --- Social challenges translations ---
           ch_all_challenges_title: "Todos los desafíos",
           ch_details_link: "Detalles",
           ch_no_challenges_message: "Todavía no hay desafíos.",
@@ -1209,21 +1650,18 @@ i18n
           ch_create_success: "¡Desafío creado con éxito!",
           ch_create_error: "No se pudo crear el desafío.",
           ch_confirmJoinTitle: "Confirmar unión al desafío",
-          ch_confirmJoinText:
-            "¿Estás seguro de que quieres unirte a este desafío?",
+          ch_confirmJoinText: "¿Estás seguro de que quieres unirte a este desafío?",
           yes: "Sí",
           no: "No",
           ch_confirmDeleteTitle: "Confirmar eliminación del desafío",
-          ch_confirmDeleteText:
-            "¿Estás seguro de que quieres eliminar este desafío? Esta acción no se puede deshacer.",
+          ch_confirmDeleteText: "¿Estás seguro de que quieres eliminar este desafío? Esta acción no se puede deshacer.",
           ch_joinedTitle: "¡Éxito!",
           ch_joinedText: "Te has unido al desafío con éxito.",
           ok: "OK",
           ch_deletedTitle: "Desafío eliminado",
           ch_deletedText: "El desafío ha sido eliminado con éxito.",
           ch_errorTitle: "Error",
-          ch_errorText:
-            "Ocurrió un error. Por favor, inténtalo de nuevo más tarde.",
+          ch_errorText: "Ocurrió un error. Por favor, inténtalo de nuevo más tarde.",
           ch_edit_title: "Editar Desafío",
           ch_type_competition: "Competición",
           ch_type_personal: "Meta Personal",
@@ -1231,18 +1669,138 @@ i18n
           ch_saving: "Guardando...",
           ch_edit_success: "¡Desafío actualizado con éxito!",
           ch_edit_success_title: "¡Éxito!",
-          ch_edit_error:
-            "No se pudo actualizar el desafío. Por favor, inténtelo de nuevo.",
+          ch_edit_error: "No se pudo actualizar el desafío. Por favor, inténtelo de nuevo.",
           ch_leave: "Abandonar",
           ch_complete: "Completar",
           ch_confirmLeaveTitle: "Confirmar abandono del desafío",
-          ch_confirmLeaveText:
-            "¿Estás seguro de que quieres abandonar este desafío?",
+          ch_confirmLeaveText: "¿Estás seguro de que quieres abandonar este desafío?",
           ch_leftTitle: "Desafío abandonado",
           ch_leftText: "Has abandonado el desafío exitosamente.",
           ch_completedTitle: "Desafío completado",
-          ch_completedText:
-            "¡Felicitaciones! Has completado el desafío exitosamente.",
+          ch_completedText: "¡Felicitaciones! Has completado el desafío exitosamente.",
+
+          // --- Menstrual calendar translations ---
+          last_cycle_first_day: "1er día del último ciclo",
+          menstruation_calendar: "Calendario menstrual",
+          male: "Hombre",
+          female: "Mujer",
+          gender: "Salud por género",
+          female_health: "Salud de la mujer",
+          female_health_fine: "Salud femenina sin tabúes: honesta, sencilla y cuidando de ti.",
+          cycle_info: "Todo sobre tu ciclo",
+          reproductive_health: "Salud reproductiva",
+          hormonas: "Hormonas",
+          gynecology: "Doctora",
+          pregnancy: "Embarazo y posparto",
+          prevention: "Prevención y revisiones periódicas",
+          useful_info: "Información útil",
+          day_tip: "Consejo\nútil\ndel día",
+          plan: "Programe",
+          preventive_check: "un chequeo preventivo al menos una vez al año",
+          hormonas_health: "Hormonas saludables",
+          hormonas_important: "Por qué es importante monitorear los niveles hormonales",
+          cycle_health: "¿Es importante el ciclo?",
+          cycle_important: "Por qué es importante realizar un seguimiento de cada ciclo",
+          examination_health: "Exámenes generales",
+          examination_important: "Por qué es importante monitorear los niveles hormonales",
+          find_doctor: "Encuentre un médico cerca de usted",
+          your_cycle: "Tu ciclo",
+          cycle_control: "Realiza un seguimiento de tu ciclo, controla tu bienestar y recibe recordatorios oportunos.",
+          calendar_cycle: "Calendario menstrual",
+          calc_cycle: "Calcular mi calendario menstrual",
+          warning_calc: "*Nuestros cálculos del calendario menstrual pueden no ser 100% precisos, ya que cada cuerpo y cada ciclo son diferentes. Ayúdanos a mejorar la precisión de tu calendario.",
+          cycle: "Ciclo",
+          why_should_calendar: "¿Por qué llevar un calendario menstrual?",
+          preview_calendar: "Llevar un calendario menstrual no se trata solo de recordar «esos días». Es un pequeño ritual de autocuidado que te ayuda a comprender mejor tu cuerpo y tu estado de ánimo.",
+          predict_cycle: "Predecir el ciclo",
+          predict_cycle_desc: "Siempre sabes cuándo comenzarán tu menstruación y ovulación. Esto ayuda a planificar eventos, vacaciones o reuniones importantes.",
+          listen_yourself: "Escucharte a ti misma",
+          listen_yourself_desc: "El calendario ayuda a notar cómo cambian la energía, el estado de ánimo y el apetito en las diferentes fases del ciclo.",
+          regularity: "Detectar regularidad",
+          regularity_desc: "Dolor, síndrome premenstrual, cambios de humor o de la piel se vuelven más evidentes. Es fácil seguir lo que se repite y lo que ayuda a sentirse mejor.",
+          doctor_help: "Ayuda al médico",
+          doctor_help_desc: "Si necesitas acudir al ginecólogo, un registro preciso del ciclo y de los síntomas hace que la consulta sea más efectiva.",
+          planing: "Planificación de salud y fitness",
+          planing_desc: "Puedes adaptar entrenamientos, alimentación o descanso a tu ritmo para obtener el máximo beneficio.",
+          finalize_calendar: "El calendario menstrual no es una obligación, sino una herramienta de autoconocimiento. Ayuda a sentirse más segura, prever cambios de ánimo y simplemente cuidarse.",
+          phase: "Fases del ciclo menstrual",
+          proccess_in_body: "Qué ocurre en el cuerpo de una mujer",
+          proccess_in_body_desc: "El ciclo menstrual no son solo 'esos días'. Es un ritmo natural que ayuda al cuerpo a funcionar de manera armoniosa. Se divide en varias fases, cada una afectando nuestro bienestar, estado de ánimo y energía.",
+          phase_1_5: "Fase menstrual\n(1 — 5)",
+          phase_1_5_desc: "Es el inicio del ciclo. El cuerpo elimina la capa antigua del revestimiento uterino, lo que provoca sangrado menstrual. La energía puede ser menor durante este tiempo, por lo que es bueno permitirse más descanso.",
+          phase_6_13: "Fase folicular\n(6 — 13)",
+          phase_6_13_desc: "El nivel de estrógeno aumenta gradualmente, trayendo de vuelta fuerza y motivación. Es un buen momento para nuevas ideas, trabajo activo y deporte.",
+          phase_14_16: "Fase ovulatoria\n(14 — 16)",
+          phase_14_16_desc: "Se libera un óvulo maduro. La mujer puede sentirse segura, atractiva y llena de energía. Estos son los días 'pico', cuando el cuerpo está listo para la concepción.",
+          phase_17_28: "Fase lútea\n(17 — 28)",
+          phase_17_28_desc: "Si no ocurre el embarazo, el progesterona se vuelve dominante. Puede aparecer somnolencia, cambios de ánimo y antojos de dulce. Es importante escucharse, descansar más y cuidar el bienestar emocional durante este tiempo.",
+          finalize_cycle: "El ciclo menstrual no es un enemigo, sino un calendario natural de nuestro cuerpo. Prestando atención a sus fases, se puede planificar mejor el día, comprender los cambios de ánimo y estar más en armonía con uno mismo.",
+          go_back: "Volver",
+          now: "ahora",
+          menstruation: "menstruación",
+          scheduled_menstruation: "menstruación programada",
+          ovulation: "ovulación",
+          planned_ovulation: "ovulación planificada",
+          ovulation_in: "ovulación en",
+          low_chance: "Baja probabilidad de quedar embarazada",
+          average_chance: "Probabilidad promedio de quedar embarazada",
+          high_chance: "Alta probabilidad de quedar embarazada",
+          no_chance: "Muy baja probabilidad de quedar embarazada",
+          myth_facts: "Mitos y realidades",
+          one: 'día',
+          other: 'días',
+          c_long: "Tu ciclo duró {{cLong}} días. ¡Es normal!",
+          phase_1: "¡Actualmente estás en tu fase menstrual!\nEste es el comienzo de tu ciclo.\n¡Puede que te sientas baja de energía!\n¡Es mejor cuidarte y descansar durante este tiempo!",
+          phase_2: "¡Estás en la fase folicular!\nLa hormona estrógeno está aumentando activamente.\nTu estado de ánimo está mejorando. ¡Tu piel está mejorando!\n¡Estás lista para conquistar el mundo!",
+          phase_3: "¡Ahora estás en la fase ovulatoria!\nSe está liberando un óvulo maduro.\n¡Te sientes segura y llena de energía!\n¡Hoy es un gran día para hacer lo que te trae alegría!",
+          phase_4: "¡Ahora estás en la fase lútea!\n¡La progesterona comienza a predominar!\nDurante este período, puedes experimentar cambios de humor y somnolencia.\nCuida tu comodidad y escucha tus sentimientos!",
+          super: "Súper!",
+          gynecology_sub: "Todo sobre los controles periódicos, la prevención y el cuidado de la salud femenina, en un lenguaje sencillo y sin tabúes.",
+          womens_tests: "Exámenes y pruebas",
+          regular_review: "Chequeos regulares",
+          articles_: "Artículos",
+          read: "Leer",
+          how_often: "¿Con qué frecuencia\ndebes visitar\nal ginecólogo?",
+          top_5_tests: "TOP 5 pruebas para\nla salud femenina",
+          review_sub: "Cuidar tu salud empieza con la prevención. Una vez al año, estás un paso por delante del problema.",
+          what_to_check_regulary: "¿Qué se debe hacer periódicamente?",
+          gynecology_review: "Examen por un ginecólogo",
+          one_time_per_year: "una vez al año",
+          pap_test: "Prueba de Papanicolaou",
+          _2_3_time_per_year: "una vez cada 2–3 años",
+          blood_test: "Análisis de sangre y orina",
+          ultrasound_test: "Ecografía pélvica",
+          if_need: "según sea necesario",
+          mammography: "Mamografía",
+          after_40_years: "después de los 40 años",
+          examination_head: "Exámenes y pruebas",
+          examination_desc: "Realizarse las pruebas a tiempo es clave para tener confianza en la salud. Descubra qué pruebas y exámenes debe hacerse regularmente.",
+          base_review: "Examen básico",
+          gynecology_examination: "Examen ginecológico",
+          add_to_calendar: "Agregar al calendario",
+          ultrasound_glands: "Ecografía de mamas",
+          need_I_test: "¿Es necesario hacerse análisis si me siento bien?",
+          examination_tip_need: "Los chequeos médicos regulares son importantes incluso cuando no se presentan síntomas. Muchas enfermedades se desarrollan silenciosamente en sus primeras etapas, y las pruebas básicas realizadas a tiempo (sangre, orina, glucosa, colesterin) permiten detectar problemas antes de que aparezcan los síntomas.\n\nLos controles anuales son una inversión en su salud. Permiten monitorear su cuerpo, ajustar la alimentación y el estilo de vida, y prevenir complicaciones.\n\nSentirse bien es excelente, pero la prevención siempre es más fácil y económica que el tratamiento.",
+          what_needed_blood: "¿Qué debo preparar antes de un análisis de sangre?",
+          what_needed_blood_info: "Para obtener resultados precisos en un análisis de sangre, prepárese con antelación:\n\nAyune antes del análisis, la última comida debe ser 8–12 horas antes\n\nBeba solo agua sin gas, no afecta los resultados\n\nEvite el alcohol, alimentos grasos y muy dulces uno o dos días antes\n\nEl día del análisis evite esfuerzos físicos intensos y estrés\n\nSi toma medicamentos, asegúrese de informar a su médico",
+          what_diff_ultrasound_mam: "¿Cuál es la diferencia entre ecografía y mamografía?",
+          what_diff_ultrasound_mam_info: "La ecografía utiliza ondas sonoras para visualizar los tejidos y muestra bien las estructuras blandas de la mama, especialmente en mujeres jóvenes con tejido denso\n\nLa mamografía es un examen radiográfico que puede detectar pequeñas calcificaciones y signos tempranos de tumores antes de que aparezcan bultos\n\nLa ecografía no utiliza radiación y es adecuada para un control adicional\nLa mamografía sigue siendo el método de cribado principal para mujeres mayores de 40 años\n\nAmbos métodos se utilizan a menudo juntos para un diagnóstico más preciso",
+          why_pap_test: "¿Por qué hacerse una prueba de Papanicolaou y con qué frecuencia?",
+          why_pap_test_info: "La prueba de Papanicolaou ayuda a detectar cambios en las células del cuello uterino en etapas tempranas cuando aún no hay síntomas\n\nEl cribado regular previene el desarrollo de cáncer y permite un tratamiento oportuno de procesos inflamatorios\n\nPor lo general, la prueba se realiza una vez al año si no hay problemas, o con mayor frecuencia según lo recomiende el médico\n\nLa prueba es rápida, indolora y dura solo unos minutos\n\nIncluso si se siente bien, la prueba ayuda a cuidar su salud",
+          reproductive: "Salud reproductiva",
+          reproductive_sub: "¡Planifica con nosotros! Cuida tu cuerpo y planifica tu futuro con confianza.",
+          myth_main: "Existen muchos mitos sobre la menstruación.",
+          myth_sub: "Aquí tienes una pequeña selección)",
+          cant_sport: "No se puede hacer deporte durante la menstruación",
+          cant_sport_desc: "En realidad, la actividad física ligera como el yoga, caminar o incluso entrenamientos moderados puede aliviar los calambres y mejorar el estado de ánimo.",
+          c_long_: "El ciclo siempre dura exactamente 28 días",
+          c_long_desc: "Cada ciclo es individual: se considera normal un intervalo de aproximadamente 21 a 35 días.",
+          cant_swim: "No se puede bañar ni nadar durante la menstruación",
+          cant_swim_desc: "Bañarse y ducharse es seguro. Los productos de higiene (tampones, copas menstruales) permiten nadar cómodamente y mantener la limpieza.",
+          cant_get_pregnant: "No se puede quedar embarazada durante la menstruación",
+          cant_get_pregnant_desc: "La probabilidad es menor pero no nula: los espermatozoides pueden vivir varios días en el cuerpo y la ovulación puede ocurrir antes o después de lo esperado.",
+          pain_is_ok: "El dolor menstrual siempre es normal",
+          pain_is_ok_desc: "Una molestia leve es típica, pero el dolor intenso o incapacitante puede indicar endometriosis u otros problemas y debe ser evaluado por un médico.",
         },
       },
     },

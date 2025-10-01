@@ -8,7 +8,7 @@ const HealthPage = ({ children }) => {
     const location = useLocation();
 
     const healthSections = [
-        { path: '/health/your_health', label: 'Твоє здоров\'я' },
+        { path: '/health/your', label: 'Твоє здоров\'я' },
         { path: '/health/mental', label: 'Ментальне здоров\'я' },
         { path: '/health/gender', label: 'Здоров\'я за статтю' }
     ];

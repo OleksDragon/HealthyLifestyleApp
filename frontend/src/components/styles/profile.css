@@ -249,6 +249,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 17px;
   font-weight: 500;
+  margin-left: -17px;
   display: inline-block;
   width: 100%;
 }

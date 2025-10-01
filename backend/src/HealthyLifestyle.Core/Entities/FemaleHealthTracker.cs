@@ -27,9 +27,19 @@ namespace HealthyLifestyle.Core.Entities
         public DateTime RecordDate { get; set; }
 
         /// <summary>
-        /// День циклу (1-31).
+        /// Дата початку одного з циклів, використовується для календаря
+        /// </summary>
+        public DateTime EntryDate { get; set; }
+
+        /// <summary>
+        /// Довжина циклу
         /// </summary>
         public int CycleDay { get; set; }
+
+        /// <summary>
+        /// Довжина менструації
+        /// </summary>
+        public int MenstDay { get; set; }
 
         /// <summary>
         /// Позначає, чи є період фертильності.

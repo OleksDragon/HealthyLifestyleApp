@@ -51,7 +51,6 @@ const ArticlesPage = () => {
                     <h2>{t("mp_articles_title")}</h2>
                 </div>
                 <div className="mental-health-articles">
-                    <hr className="article-header-line-blure"/>
                     <div className="articles-list">
                         {articlesData.map((article) => (
                             <ArticleCard

@@ -53,7 +53,6 @@
 
 .db-timer.clickable:hover {
     transform: translateY(-2px);
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .db-timer.active {
@@ -63,7 +62,7 @@
 }
 
 .db-circle-container {
-    height: 208px; /* Зменшено ще на 10% (203px * 0.9) */
+    height: 208px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,9 +76,8 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     will-change: transform;
     transition: transform 5s ease-in-out;
-    /* Зменшено розмір круга ще на 10% від попереднього */
-    width: 116.44px; /* 129.375px * 0.9 */
-    height: 116.44px; /* 129.375px * 0.9 */
+    width: 116.44px;
+    height: 116.44px;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -108,8 +106,7 @@
         transform: scale(1);
     }
     50% {
-        /* Зменшено розмір пульсації ще на 10% */
-        box-shadow: 0 0 0 8.1px rgba(255, 255, 255, 0.3); /* 9px * 0.9 */
+        box-shadow: 0 0 0 8.1px rgba(255, 255, 255, 0.3);
         transform: scale(1.03);
     }
     100% {
@@ -129,9 +126,8 @@
         transform: scale(1);
     }
     50% {
-        /* Зменшено розміри пульсації ще на 10% */
-        box-shadow: 0 0 0 4.05px rgba(255, 255, 255, 0.3), /* 4.5px * 0.9 */
-                    0 0 0 12.15px rgba(52, 152, 219, 0.2); /* 13.5px * 0.9 */
+        box-shadow: 0 0 0 4.05px rgba(255, 255, 255, 0.3),
+                    0 0 0 12.15px rgba(52, 152, 219, 0.2);
         transform: scale(1.02);
     }
     100% {
@@ -150,8 +146,7 @@
     padding: 5px;
     z-index: 10;
     text-align: center;
-    /* Зменшено ширину тексту ще на 10% */
-    width: 116.44px; /* 129.375px * 0.9 */
+    width: 116.44px;
 }
 
 .db-breathing-circle.normal {
@@ -159,14 +154,12 @@
 }
 
 .db-breathing-circle.inhale {
-    /* Зменшено максимальний розмір ще на 10% */
-    transform: scale(1.31625); /* 1.4625 * 0.9 */
+    transform: scale(1.31625);
     transition-duration: 5s;
 }
 
 .db-breathing-circle.hold-inhale {
-    /* Зменшено максимальний розмір ще на 10% */
-    transform: scale(1.31625); /* 1.4625 * 0.9 */
+    transform: scale(1.31625);
     transition: none;
 }
 

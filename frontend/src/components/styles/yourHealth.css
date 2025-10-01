@@ -3,7 +3,6 @@
     margin: 0 auto;
 }
 
-/* header */
 .yh-health-header-block {
     width: 100%;
     padding: 30px 0 10px 0;
@@ -65,8 +64,8 @@
     height: 145px;
 }
 
-/* Контейнер для колонки */
 .yh-health-column-container {
+    width: 105%;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -83,7 +82,7 @@
 .yh-health-column-container::-webkit-scrollbar-track {
     background: #FFF;
     border-radius: 10px;
-    margin: 40px 0;
+    margin: 30px 0;
     box-shadow: 0px 0px 0px 1px #ffffff;
 }
 
@@ -96,9 +95,8 @@
     background: #0661CC;
 }
 
-/* Загальні стилі для блоків */
 .yh-health-info-block {
-    width: 99%;
+    width: 96%;
     position: relative;
     min-height: 179px;
 }
@@ -112,7 +110,7 @@
     display: flex;
     align-items: center;
     margin-top: 20px;
-
+    border: 1px solid rgba(255, 255, 255, 0.3);
     background-color: rgba(255,255,255,0.2);
 }
 

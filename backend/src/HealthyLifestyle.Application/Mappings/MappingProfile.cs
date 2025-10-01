@@ -341,9 +341,12 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
                 .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.TestosteroneLevel, opt => opt.Condition(src => src.TestosteroneLevel.HasValue))
-                .ForMember(dest => dest.EnergyLevelScore, opt => opt.Condition(src => src.EnergyLevelScore.HasValue))
+                .ForMember(dest => dest.FreeTestosterone, opt => opt.Condition(src => src.FreeTestosterone.HasValue))
+                .ForMember(dest => dest.LH, opt => opt.Condition(src => src.LH.HasValue))
+                .ForMember(dest => dest.Prolactin, opt => opt.Condition(src => src.Prolactin.HasValue))
+                .ForMember(dest => dest.Estradiol, opt => opt.Condition(src => src.Estradiol.HasValue))
+                .ForMember(dest => dest.FSH, opt => opt.Condition(src => src.FSH.HasValue))
                 .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
-
         }
 
         private void ConfigureGroupMappings()

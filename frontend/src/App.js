@@ -39,6 +39,10 @@ import FemaleRegularReviewPage from './components/pages/HealthPages/GenderHealth
 import FemaleExaminationPage from './components/pages/HealthPages/GenderHealthPages/FemaleExaminationPage';
 import FemaleReproductiveHealthPage from './components/pages/HealthPages/GenderHealthPages/FemaleReproductiveHealthPage';
 
+import MaleHealthPage from "./components/pages/HealthPages/GenderHealthPages/MaleHealthPage";
+import MaleHormonesFormPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesFormPage";
+import MaleHormonesDiagramPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesDiagramPage";
+
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
 
@@ -70,8 +74,6 @@ function AppRoutes() {
 
       <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
 
-      <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
-
       <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /><HealthPage /></Menu></PrivateRoute>} />
       <Route path="/health/your" element={<PrivateRoute><Menu><HealthPageMenu><YourHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       
@@ -93,6 +95,10 @@ function AppRoutes() {
       <Route path="/health/gender/female/checks" element={<PrivateRoute><Menu><HealthPageMenu><FemaleRegularReviewPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female/examination" element={<PrivateRoute><Menu><HealthPageMenu><FemaleExaminationPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female/reproductive" element={<PrivateRoute><Menu><HealthPageMenu><FemaleReproductiveHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
+
+      <Route path="/health/gender/male" element={<PrivateRoute><Menu><HealthPageMenu><MaleHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
+      <Route path="/health/gender/male/hormonas" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesFormPage /></HealthPageMenu></Menu></PrivateRoute>} />
+      <Route path="/health/gender/male/hormonas_diagram" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesDiagramPage /></HealthPageMenu></Menu></PrivateRoute>} />
 
     </Routes>
   );

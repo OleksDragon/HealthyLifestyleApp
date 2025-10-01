@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './BreathingPracticeCard.css';
 
 const BreathingPracticeCard = ({ title, descriptions = [], onButtonClick }) => {
+    const { t } = useTranslation();
+
     return (
         <div className="bpc-breathing-practice-card">
             <div className="bpc-breathing-card-default">
@@ -23,7 +26,7 @@ const BreathingPracticeCard = ({ title, descriptions = [], onButtonClick }) => {
                     className="bpc-breathing-card-button"
                     onClick={onButtonClick}
                 >
-                    Почнемо?
+                    {t("mp_btn_lets_start")}
                 </button>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import animationData from "../../../../assets/animation/mascot_breathing.json";
 import BreathingPracticeCard from "../../../elements/Health/MentalHealth/BreathingPracticeCard/BreathingPracticeCard";
 import InfoBlockWithAnimation from "../../../elements/Health/MentalHealth/InfoBlockWithAnimation/InfoBlockWithAnimation";
@@ -8,6 +9,7 @@ import '../../../styles/breathingPractices.css';
 const BreathingPracticesPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const { t } = useTranslation();
     
     const handleDiaphragmaticBreathing = () => {
         navigate(`${location.pathname}/diaphragmatic`);
@@ -22,11 +24,11 @@ const BreathingPracticesPage = () => {
     };
 
     const infoBlockContent = {
-        title: "Дихальні практики",
-        subtitle: "Видихни стрес — вдихни спокій 🌿",
+        title: t("mp_bpp_title"),
+        subtitle: t("mp_bpp_subtitle"),
         descriptions: [
-            "Прості вправи на дихання допомагають зняти напругу, відновити енергію та повернути ясність думок. Почати можна будь-де: вдома, на роботі чи навіть у транспорті.",
-            "Спробуй — і відчуй, як тіло розслабляється, а настрій стає легшим"
+            t("mp_bpp_description_1"),
+            t("mp_bpp_description_2")
         ],
         animationData: animationData
     };
@@ -38,26 +40,26 @@ const BreathingPracticesPage = () => {
                 
                 <div className="bp-breathing-practices-cards">
                     <BreathingPracticeCard
-                        title="Діафрагмальне дихання"
+                        title={t("mp_bpp_card_title_1")}
                         descriptions={[
-                            "Зменшить стрес і тривогу.",
-                            "Розслабляє, знімає напругу."
+                            t("mp_bpp_card_description_1_1"),
+                            t("mp_bpp_card_description_1_2")
                         ]}
                         onButtonClick={handleDiaphragmaticBreathing}
                     />
                     <BreathingPracticeCard
-                        title="Дихання Квадрат"
+                        title={t("mp_bpp_card_title_2")}
                         descriptions={[
-                            "Знімає тривогу й допомагає зосередитись."
+                            t("mp_bpp_card_description_2_1")
                         ]}
                         onButtonClick={handleSquareBreathing}
                     />
                     <BreathingPracticeCard
-                        title="Наді шодхана"
+                        title={t("mp_bpp_card_title_3")}
                         descriptions={[
-                            "Дихання по черзі через ніздрі.",
-                            "Допомагає зняти стрес.",
-                            "Повертає внутрішню рівновагу."
+                            t("mp_bpp_card_description_3_1"),
+                            t("mp_bpp_card_description_3_2"),
+                            t("mp_bpp_card_description_3_3")
                         ]}
                         onButtonClick={handleNadiShodhana}
                     />

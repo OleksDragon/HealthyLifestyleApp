@@ -12,7 +12,7 @@ const HealthPage = ({ children }) => {
     const healthSections = [
         { path: '/health/your', label: t("hmp_your_health") },
         { path: '/health/mental', label: t("hmp_mental_health") },
-        { path: '/health/gender', label: t("hmp_gender_health") }
+        { path: '/health/gender', label: t("gender") }
     ];
 
     const handleNavigation = (path) => {

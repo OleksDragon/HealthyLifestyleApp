@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Lottie from 'lottie-react';
+import { useTranslation } from 'react-i18next';
 import animationData1 from "../../../../assets/animation/mascot_breathing.json";
 import animationData2 from "../../../../assets/animation/mascot_breathing.json";
 import animationData3 from "../../../../assets/animation/mascot_breathing.json";
@@ -17,51 +18,52 @@ const MentalTestPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     
     const navigate = useNavigate();
+    const { t } = useTranslation();
     
     const testData = [
         {
             id: 1,
-            question: "Як ти прокидаєшся вранці?",
+            question: t("mp_mtp_test_data_question_1"),
             answers: [
-                "З ентузіазмом і планами",
-                "Зі склянкою води та тяжким зітханням",
-                "“Що знову цей день?”"
+                t("mp_mtp_test_data_answers_1_1"),
+                t("mp_mtp_test_data_answers_1_2"),
+                t("mp_mtp_test_data_answers_1_3")
             ]
         },
         {
             id: 2,
-            question: "Коли щось іде не так, твоя реакція:",
+            question: t("mp_mtp_test_data_question_2"),
             answers: [
-                "Ок, придумаю, як виправити",
-                "Ну, таке життя",
-                "Все пропало, я йду в плед"
+                t("mp_mtp_test_data_answers_2_1"),
+                t("mp_mtp_test_data_answers_2_2"),
+                t("mp_mtp_test_data_answers_2_3")
             ]
         },
         {
             id: 3,
-            question: "Що тебе рятує від стресу найчастіше?",
+            question: t("mp_mtp_test_data_question_3"),
             answers: [
-                "Спорт чи прогулянка",
-                "Їжа, серіальчик чи мемчики",
-                "Я просто зависаю без сил"
+                t("mp_mtp_test_data_answers_3_1"),
+                t("mp_mtp_test_data_answers_3_2"),
+                t("mp_mtp_test_data_answers_3_3")
             ]
         },
         {
             id: 4,
-            question: "Твоє відчуття енергії останнім часом:",
+            question: t("mp_mtp_test_data_question_4"),
             answers: [
-                "Нормально, заряд тримається",
-                "Як батарейка на 30%",
-                "Як телефон, що вимикається на холоді"
+                t("mp_mtp_test_data_answers_4_1"),
+                t("mp_mtp_test_data_answers_4_2"),
+                t("mp_mtp_test_data_answers_4_3")
             ]
         },
         {
             id: 5,
-            question: "Що ти думаєш, коли чуєш слово \"відпочинок\"?",
+            question: t("mp_mtp_test_data_question_5"),
             answers: [
-                "Планую, щось приємне",
-                "Лежати вдома й нічого не робити",
-                "У мене немає часу на відпочинок"
+                t("mp_mtp_test_data_answers_5_1"),
+                t("mp_mtp_test_data_answers_5_2"),
+                t("mp_mtp_test_data_answers_5_3")
             ]
         }
     ];
@@ -304,43 +306,43 @@ const MentalTestPage = () => {
 
         if (answerCounts[1] >= 4) {
             return {
-                title: "Твоя менталочка в нормі.",
-                description: "Ти маєш чудовий рівень енергії та оптимізму. Продовжуй дбати про себе та підтримувати цей стан!",
+                title: t("mp_mtp_test_result_title_1"),
+                description: t("mp_mtp_test_result_description_1"),
                 stressLevel: stressLevel,
                 animationType: 1
             };
         } else if (answerCounts[1] === 3 && answerCounts[2] === 2) {
             return {
-                title: "Менталочка переважно в нормі.",
-                description: "Більшість справ йдуть добре, але деякі сфери потребують трохи більше уваги та турботи.",
+                title: t("mp_mtp_test_result_title_2"),
+                description: t("mp_mtp_test_result_description_2"),
                 stressLevel: stressLevel,
                 animationType: 2
             };
         } else if ((answerCounts[2] >= 3 && answerCounts[3] <= 1) || (answerCounts[1] === 2 && answerCounts[2] === 2 && answerCounts[3] === 1)) {
             return {
-                title: "Менталочка трохи виснажена",
-                description: "Ти відчуваєш легку втому. Знайди час для відпочинку та маленьких радощів.",
+                title: t("mp_mtp_test_result_title_3"),
+                description: t("mp_mtp_test_result_description_3"),
                 stressLevel: stressLevel,
                 animationType: 3
             };
         } else if (answerCounts[2] >= 2 && answerCounts[3] >= 2) {
             return {
-                title: "Менталочка просить турботи",
-                description: "Тобі треба більше відпочинку, радощів і підтримки. Зверни увагу на свої потреби.",
+                title: t("mp_mtp_test_result_title_4"),
+                description: t("mp_mtp_test_result_description_4"),
                 stressLevel: stressLevel,
                 animationType: 4
             };
         } else if (answerCounts[3] >= 3) {
             return {
-                title: "Менталочка кричить SOS",
-                description: "Ти можеш відчувати вигорання. Не соромся звертатися за допомогою та знайди час для серйозного відпочинку.",
+                title: t("mp_mtp_test_result_title_5"),
+                description: t("mp_mtp_test_result_description_5"),
                 stressLevel: stressLevel,
                 animationType: 5
             };
         } else {
             return {
-                title: "Твоя менталочка — як американські гірки.",
-                description: "Твій стан часто міняється. Деякі дні чудові, інші - складніші. Намагайся знайти баланс.",
+                title: t("mp_mtp_test_result_title_6"),
+                description: t("mp_mtp_test_result_description_6"),
                 stressLevel: stressLevel,
                 animationType: 6
             };
@@ -352,13 +354,13 @@ const MentalTestPage = () => {
             return (
                 <div className="mtp-initial-content">
                     <div className="mtp-start-message">
-                        Увага! Тест не має діагностичної сили, але показує твій рівень стресу чи вигорання.
+                        {t("mp_mtp_start_message")}
                     </div>
                     <button 
                         className="mtp-start-button"
                         onClick={handleStartTest}
                     >
-                        Почати
+                        {t("mp_btn_start")}
                     </button>
                 </div>
             );
@@ -392,14 +394,14 @@ const MentalTestPage = () => {
                             className={`mtp-back-button ${currentStep === 1 ? 'hidden' : ''}`} 
                             onClick={handleBack}
                         >
-                            Назад
+                            {t("mp_btn_back")}
                         </button>
                         <button 
                             className={`mtp-next-button ${selectedAnswer === null ? 'disabled' : ''}`}
                             onClick={handleNext}
                             disabled={selectedAnswer === null}
                         >
-                            {isLastQuestion ? 'Результат' : 'Далі'}
+                            {isLastQuestion ? t("mp_btn_result") : t("mp_btn_next")}
                         </button>
                     </div>
                 </div>
@@ -429,7 +431,7 @@ const MentalTestPage = () => {
                         className="mtp-restart-button"
                         onClick={handleRestart}
                     >
-                        Спробувати ще раз
+                        {t("mp_btn_try_again")}
                     </button>
                 </div>
             );
@@ -444,10 +446,10 @@ const MentalTestPage = () => {
         <div className="mtp-mental-test-container">
             <div className="mtp-mental-test-info-block">
                 <h1 className="mtp-mental-test-title">
-                    Тест на стан твоєї менталочки
+                    {t("mp_mtp_test_title")}
                 </h1>
                 <p className="mtp-mental-test-description">
-                    Тицяй відповіді, які відповідають твоєму стану)
+                    {t("mp_mtp_test_description")}
                 </p>
             </div>
 

@@ -15,7 +15,6 @@
     gap: 35px;
 }
 
-/* Однакова ширина для всіх карток */
 .bp-breathing-practices-cards > * {
     min-width: 0;
 }

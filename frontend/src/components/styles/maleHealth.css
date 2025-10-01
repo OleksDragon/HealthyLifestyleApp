@@ -1,0 +1,308 @@
+.mhp-page {
+    width: 96.4%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+}
+
+.mhp-header-block {
+    grid-column: 1 / -1;
+    padding: 30px 0 10px 0;
+    height: 135px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+}
+
+.mhp-header-content {
+    background: var(--lim);
+    border-radius: 30px;
+    padding: 30px 25px;
+    max-height: 90px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.mhp-header-text {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    flex: 1;
+}
+
+.mhp-main-title {
+    color: var(--bl);
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.mhp-main-subtitle {
+    color: var(--bl);
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 400;
+    margin: 2px 0 0 20px;
+}
+
+.mhp-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 25px;
+    top: 49%;
+    transform: translateY(-50%);
+}
+
+.mhp-nomic-mascot {
+    width: 145px;
+    height: 145px;
+}
+
+.mhp-container {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.mhp-overflow-container {
+    width: 105%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 73vh;
+    margin-top: -10px;
+}
+
+.mhp-overflow-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.mhp-overflow-container::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 10px;
+    margin: 2px 0;
+    box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.mhp-overflow-container::-webkit-scrollbar-thumb {
+    background: #0661CC;
+    border-radius: 10px;
+}
+
+.mhp-overflow-container::-webkit-scrollbar-thumb:hover {   
+    background: #0661CC;
+}
+
+.mhp-button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: -5px 0 5px 0;
+}
+
+.mhp-main-button {
+    width: 31%;
+    height: 56px;
+    background: var(--lim);
+    border: 2px solid #0661CC;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mhp-main-button:hover {
+    background: var(--lim);
+}
+
+.mhp-button-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mhp-button-content svg {
+    width: 40px;
+    height: 40px;
+}
+
+.mhp-button-text {
+    color: #0661CC;
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.mhp-blocks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.mhp-block-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mhp-info-block {
+    position: relative;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.mhp-hormones-block {
+    height: 330px;
+    min-height: 330px;
+}
+
+.mhp-analysis-block {
+    height: 350px;
+    min-height: 350px;
+}
+
+.mhp-reproductive-block {
+    height: 220px;
+    min-height: 220px;
+}
+
+.mhp-urinary-block {
+    height: 220px;
+    min-height: 220px;
+}
+
+.mhp-potency-block {
+    height: 230px;
+    min-height: 230px;
+}
+
+.mhp-glass-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 40px;
+    z-index: -1;
+}
+
+.mhp-block-content {
+    border-radius: 40px;
+    padding: 12px 20px;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.mhp-block-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mhp-block-title {
+    color: var(--white);
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 900;
+    margin: 5px 0 25px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.mhp-content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    width: 100%;
+}
+
+.mhp-content-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+.mhp-content-label {
+    color: var(--white);
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-left: 30px;
+}
+
+.mhp-content-value {
+    color: var(--black);
+    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.mhp-hormones-button {
+    min-width: 280px;
+    height: 46px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    color: var(--blue);
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0 auto;
+    transform: translateY(-7px);
+    transition: all 0.1s ease;
+}
+
+.mhp-hormones-button:hover {
+    transform: translateY(-9px);
+    background-color: var(--lim);
+}
+
+.mhp-specialist-button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mhp-specialist-button {
+    min-width: 340px;
+    height: 50px;
+    background: var(--white);
+    border-radius: 30px;
+    color: var(--bl);
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+
+    border: 0 solid transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.mhp-specialist-button:hover {
+    background: var(--lim);
+}

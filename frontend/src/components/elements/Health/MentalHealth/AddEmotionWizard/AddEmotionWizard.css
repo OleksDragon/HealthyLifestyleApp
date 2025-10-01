@@ -1,4 +1,3 @@
-/* Основний контейнер майстра додавання емоцій з напівпрозорим фоном та ефектом розмиття */
 .aew-emotion-wizard {
   padding: 20px;
   height: 420px;
@@ -14,7 +13,6 @@
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Заголовок майстра - основний текст */
 .aew-wizard-title {
   color: var(--black);
   font-size: 20px;
@@ -22,7 +20,6 @@
   margin-bottom: 10px;
 }
 
-/* Підзаголовок майстра - другорядний текст */
 .aew-wizard-subtitle {
   color: var(--black);
   font-size: 24px;
@@ -30,7 +27,6 @@
   margin-bottom: 20px;
 }
 
-/* Описовий текст майстра - допоміжна інформація */
 .aew-wizard-description {
   color: var(--white);
   margin-bottom: 20px;
@@ -49,11 +45,10 @@
   height: 25px;
 }
 
-/* Контейнер для кнопок навігації між категоріями */
 .aew-category-nav {
   display: flex;
   align-items: center;
-  justify-content: center; /* Центруємо всі елементи */
+  justify-content: center;
   margin: 20px 0;
   gap: 10px;
 }
@@ -78,26 +73,24 @@
   border-radius: 15px; 
 }
 
-/* Стиль вимкненої навігаційної кнопки */
 .aew-progress-nav-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Контейнер для прогрес бару */
 .aew-progress-container {
   position: relative;
-  width: 500px; /* Зменшуємо ширину */
-  margin: 0 5px; /* Зменшуємо бокові відступи */
+  width: 500px;
+  margin: 0 5px;
   height: 46px;
+  touch-action: pan-y;
 }
 
-/* Лінія прогрес бару */
 .aew-progress-line {
   position: absolute;
-  top: 0; /* Центруємо лінію по вертикалі */
-  left: 23px; /* Починаємо після першої крапки */
-  right: 23px; /* Закінчуємо перед останньою крапкою */
+  top: 0;
+  left: 23px;
+  right: 23px;
   height: 46px;
   background-color: var(--white);
   border-radius: 0 40px 40px 0;
@@ -108,15 +101,13 @@
   border-radius: 40px;
 }
 
-/* Заповнена частина лінії */
 .aew-progress-fill {
   height: 100%;
   background-color: var(--bl);
-  width: 0%; /* Початкова ширина */
+  width: 0%;
   border-radius: 40px 0 0 40px;
 }
 
-/* Контейнер для крапок прогрес бару */
 .aew-progress-dots {
   position: relative;
   display: flex;
@@ -135,19 +126,16 @@
   position: relative;
 }
 
-/* Перша крапка - спеціальний стиль */
 .aew-progress-dot:first-child {
   background-color: transparent;
   border: 2px solid transparent;
 }
 
-/* Остання крапка - спеціальний стиль */
 .aew-progress-dot:last-child {
   background-color: transparent;
   border: 2px solid transparent;
 }
 
-/* Активна крапка прогресу */
 .aew-progress-dot.active {
   width: 46px;
   height: 46px;
@@ -162,7 +150,6 @@
   border: 2px solid var(--lim);
 }
 
-/* Заповнена (пройдена) крапка прогресу */
 .aew-progress-dot.completed {
   background-color: #004D9C;
   border: 2px solid #004D9C;
@@ -173,7 +160,6 @@
   border: 2px solid transparent;
 }
 
-/* Сітка для кнопок емоцій - 3 колонки */
 .aew-emotion-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -181,7 +167,6 @@
   margin: 30px 0;
 }
 
-/* Кнопки вибору емоцій - базовий стиль */
 .aew-emotion-btn {
   padding: 10px;
   border-radius: 30px;
@@ -194,32 +179,27 @@
   min-width: 100px;
 }
 
-/* Ефект при наведенні на кнопку емоції */
 .aew-emotion-btn:hover {
   background: var(--lim);
   color: var(--bl);
   transform: translateY(-2px);
 }
 
-/* Стиль обраної кнопки емоції */
 .aew-emotion-btn.selected {
   background: var(--lim);
   color: var(--bl);
   font-weight: 600;
 }
 
-/* Контейнер для всіх категорій причин */
 .aew-cause-categories {
   margin: 30px 0;
   width: 100%;
 }
 
-/* Окремі категорії причин */
 .aew-cause-category {
   margin-bottom: 26.3px;
 }
 
-/* Заголовок категорії причин */
 .aew-cause-category-title {
   color: var(--black);
   font-size: 17px;
@@ -228,7 +208,6 @@
   text-align: left;
 }
 
-/* Спеціальний клас для 5 колонок у сітці причин */
 .aew-cause-grid-5-col {
   display: grid;
   grid-template-columns: repeat(5, minmax(80px, 1fr));
@@ -236,7 +215,6 @@
   width: 100%;
 }
 
-/* Кнопки вибору причин - базовий стиль */
 .aew-cause-btn {
   padding: 10px;
   border-radius: 30px;
@@ -253,14 +231,12 @@
   box-sizing: border-box;
 }
 
-/* Ефект при наведенні на кнопку причини */
 .aew-cause-btn:hover {
   background: var(--lim);
   color: var(--bl);
   transform: translateY(-2px);
 }
 
-/* Стиль обраної кнопки причини */
 .aew-cause-btn.selected {
   background: var(--lim);
   color: var(--bl);
@@ -268,7 +244,6 @@
   font-weight: 600;
 }
 
-/* Стилі для третього кроку */
 .aew-step3-content {
   text-align: left;
   width: 100%;
@@ -296,7 +271,6 @@
   background: var(--bl);
 }
 
-/* Текстове поле для нотаток */
 .aew-notes-textarea {
   width: 99%;
   height: 130px;
@@ -312,17 +286,14 @@
   margin-top: 10px;
 }
 
-/* Стиль плейсхолдера для текстового поля */
 .aew-notes-textarea::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Стиль текстового поля при фокусі */
 .aew-notes-textarea:focus {
   outline: none;
 }
 
-/* Стилізація прокрутки для Webkit (Chrome, Safari, Edge) */
 .aew-notes-textarea::-webkit-scrollbar {
     width: 6px;
 }
@@ -342,13 +313,11 @@
     background: #718096;
 }
 
-/* Стилізація прокрутки для Firefox */
 .aew-notes-textarea {
     scrollbar-width: thin;
     scrollbar-color: #a0aec0 transparent;
 }
 
-/* Контейнер навігаційних кнопок */
 .aew-wizard-nav {
   display: flex;
   justify-content: space-between;
@@ -359,7 +328,6 @@
   box-sizing: border-box;
 }
 
-/* Базовий стиль навігаційних кнопок */
 .aew-nav-btn {
   padding: 12px 30px;
   border-radius: 25px;
@@ -373,13 +341,11 @@
   white-space: nowrap;
 }
 
-/* Ефект при наведенні на активну навігаційну кнопку */
 .aew-nav-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.2);
   border-color: var(--lim);
 }
 
-/* Стиль вимкненої навігаційної кнопки */
 .aew-nav-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -391,7 +357,6 @@
   transform: translateY(-2px);
 }
 
-/* Стиль первинної (основної) навігаційної кнопки */
 .aew-nav-btn.aew-primary {
   background: var(--lim);
   color: var(--bl);
@@ -399,7 +364,6 @@
   font-weight: 600;
 }
 
-/* Ефект при наведенні на активну первинну кнопку */
 .aew-nav-btn.aew-primary:hover:not(:disabled) {
   background: var(--lim);
   transform: translateY(-2px);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import './AddEmotionWizard.css';
 
@@ -9,6 +9,10 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
   const [selectedCauses, setSelectedCauses] = useState([]);
   const [notes, setNotes] = useState('');
   const { t } = useTranslation();
+
+  const progressContainerRef = useRef(null);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const emotionCategories = {
     [t("mp_aew_ok")]: {
@@ -55,7 +59,7 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
       [t("mp_aew_hopelessness")]: "Hopelessness",
       [t("mp_aew_self_directed_aggression")]: "Self-directed aggression"
     },
-    [t("mp_aew_cool")]: {
+    [t("mp_aew_сool")]: {
       [t("mp_aew_energy")]: "Energy",
       [t("mp_aew_satisfaction")]: "Satisfaction", 
       [t("mp_aew_connection")]: "Connection",
@@ -116,7 +120,36 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
   
   const emotionKeys = Object.keys(emotionCategories);
   const causeKeys = Object.keys(causeCategories);
-  
+
+  // Swipe-функції для прогрес-бару
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 30;
+    
+    if (Math.abs(distance) < minSwipeDistance) return;
+    
+    if (distance > minSwipeDistance) {
+      // Swipe вліво - наступна категорія
+      handleNextEmotionCategory();
+    } else if (distance < -minSwipeDistance) {
+      // Swipe вправо - попередня категорія
+      handlePrevEmotionCategory();
+    }
+    
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
   const handleEmotionSelect = (emotion) => {
     const currentCategory = emotionKeys[currentEmotionCategory];
     
@@ -225,7 +258,13 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
                 </svg>
               </button>
 
-              <div className="aew-progress-container">
+              <div 
+                ref={progressContainerRef}
+                className="aew-progress-container"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 <div 
                   className={`aew-progress-line ${currentEmotionCategory > 0 ? 'with-radius' : ''}`}
                 >
@@ -302,14 +341,14 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
             <h2 className="aew-wizard-title">{t("mp_aew_wizard_title_step_3")} {selectedEmotionsList.join(', ')}?</h2>
             
             <div className="aew-step3-content">
-              <h3 className="aew-wizard-subtitle aew-step3-subtitle">Нотатка</h3>
+              <h3 className="aew-wizard-subtitle aew-step3-subtitle">{t("mp_aew_notes")}</h3>
               
               <div className='aew-notes-textarea-content'>
                 <textarea
                   className="aew-notes-textarea"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Опишіть свої відчуття детальніше..."
+                  placeholder={t("mp_aew_describe_your_feelings")}
                 ></textarea>
               </div>
               
@@ -333,10 +372,10 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
 
   const getNextButtonText = () => {
     switch (step) {
-      case 1: return "Далі";
-      case 2: return "Далі";
-      case 3: return "Додати";
-      default: return "Далі";
+      case 1: return t("mp_btn_next");
+      case 2: return t("mp_btn_next");
+      case 3: return t("mp_btn_add");
+      default: return t("mp_btn_next");
     }
   };
 
@@ -357,7 +396,7 @@ const AddEmotionWizard = ({ onCancel, onSave }) => {
           className="aew-nav-btn" 
           onClick={step === 1 ? onCancel : () => setStep(step - 1)}
         >
-          {step === 1 ? "Скасувати" : "Назад"}
+          {step === 1 ? t("mp_btn_cancel") : t("mp_btn_back")}
         </button>
         <button 
           className="aew-nav-btn aew-primary" 

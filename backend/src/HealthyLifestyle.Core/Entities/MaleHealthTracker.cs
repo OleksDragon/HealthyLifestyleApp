@@ -7,7 +7,7 @@ namespace HealthyLifestyle.Core.Entities
 {
     /// <summary>
     /// Трекер чоловічого здоров'я.
-    /// Зберігає індивідуальні дані користувача, пов'язані з рівнем тестостерону, енергією та нотатками.
+    /// Зберігає індивідуальні дані користувача, пов'язані з гормонами та нотатками.
     /// Успадкований від базового класу <see cref="BaseEntity"/>.
     /// </summary>
     public class MaleHealthTracker : BaseEntity
@@ -28,16 +28,34 @@ namespace HealthyLifestyle.Core.Entities
         public DateTime RecordDate { get; set; }
 
         /// <summary>
-        /// Рівень тестостерона користувача (якщо вимірювався).
-        /// Може бути null, якщо користувач не вносив дані.
+        /// Рівень загального тестостерону користувача (якщо вимірювався).
         /// </summary>
         public double? TestosteroneLevel { get; set; }
 
         /// <summary>
-        /// Оцінка рівня енергії користувача за шкалою від 1 до 10.
-        /// Може бути null, якщо дані не вказано.
+        /// Рівень вільного тестостерону користувача (якщо вимірювався).
         /// </summary>
-        public int? EnergyLevelScore { get; set; }
+        public double? FreeTestosterone { get; set; }
+
+        /// <summary>
+        /// Рівень ЛГ (лютеїнізуючого гормону).
+        /// </summary>
+        public double? LH { get; set; }
+
+        /// <summary>
+        /// Рівень пролактину.
+        /// </summary>
+        public double? Prolactin { get; set; }
+
+        /// <summary>
+        /// Рівень естрадіолу.
+        /// </summary>
+        public double? Estradiol { get; set; }
+
+        /// <summary>
+        /// Рівень ФСГ (фолікулостимулюючого гормону).
+        /// </summary>
+        public double? FSH { get; set; }
 
         /// <summary>
         /// Додаткові примітки користувача.
@@ -59,18 +77,10 @@ namespace HealthyLifestyle.Core.Entities
 
         #region Конструктори
 
-        /// <summary>
-        /// Параметризатор за замовчуванням, необхідний для Entity Framework Core.
-        /// </summary>
         public MaleHealthTracker() : base()
         {
         }
 
-        /// <summary>
-        /// Ініціалізує новий екземпляр трекера мужского здоровья для заданого користувача.
-        /// </summary>
-        /// <param name="userId">Ідентифікатор користувача.</param>
-        /// <exception cref="ArgumentException">Виникає, якщо ідентифікатор користувача є порожнім.</exception>
         public MaleHealthTracker(Guid userId) : this()
         {
             if (userId == Guid.Empty)
@@ -86,20 +96,36 @@ namespace HealthyLifestyle.Core.Entities
         /// <summary>
         /// Оновлює дані трекера з новими значеннями (опціонально).
         /// </summary>
-        /// <param name="testosteroneLevel">Новий рівень тестостерона (опціонально).</param>
-        /// <param name="energyLevelScore">Нова оцінка рівня енергії (опціонально).</param>
-        /// <param name="notes">Нові примітки (опціонально).</param>
-        /// <exception cref="ArgumentException">Виникає, якщо передані недійсні значення (наприклад, оцінка енергії поза діапазоном 1-10).</exception>
-        public void UpdateTracker(double? testosteroneLevel = null, int? energyLevelScore = null, string? notes = null)
+        public void UpdateTracker(
+            double? testosteroneLevel = null,
+            double? freeTestosterone = null,
+            double? lh = null,
+            double? prolactin = null,
+            double? estradiol = null,
+            double? fsh = null,
+            string? notes = null)
         {
-            if (energyLevelScore.HasValue && (energyLevelScore.Value < 1 || energyLevelScore.Value > 10))
-                throw new ArgumentException("Оцінка рівня енергії повинна бути в діапазоні від 1 до 10.", nameof(energyLevelScore));
             if (testosteroneLevel.HasValue && testosteroneLevel.Value < 0)
                 throw new ArgumentException("Рівень тестостерона не може бути від’ємним.", nameof(testosteroneLevel));
+            if (freeTestosterone.HasValue && freeTestosterone.Value < 0)
+                throw new ArgumentException("Рівень вільного тестостерона не може бути від’ємним.", nameof(freeTestosterone));
+            if (lh.HasValue && lh.Value < 0)
+                throw new ArgumentException("Рівень ЛГ не може бути від’ємним.", nameof(lh));
+            if (prolactin.HasValue && prolactin.Value < 0)
+                throw new ArgumentException("Рівень пролактину не може бути від’ємним.", nameof(prolactin));
+            if (estradiol.HasValue && estradiol.Value < 0)
+                throw new ArgumentException("Рівень естрадіолу не може бути від’ємним.", nameof(estradiol));
+            if (fsh.HasValue && fsh.Value < 0)
+                throw new ArgumentException("Рівень ФСГ не може бути від’ємним.", nameof(fsh));
 
             if (testosteroneLevel.HasValue) TestosteroneLevel = testosteroneLevel.Value;
-            if (energyLevelScore.HasValue) EnergyLevelScore = energyLevelScore.Value;
+            if (freeTestosterone.HasValue) FreeTestosterone = freeTestosterone.Value;
+            if (lh.HasValue) LH = lh.Value;
+            if (prolactin.HasValue) Prolactin = prolactin.Value;
+            if (estradiol.HasValue) Estradiol = estradiol.Value;
+            if (fsh.HasValue) FSH = fsh.Value;
             if (notes != null) Notes = notes;
+
             SetUpdatedAt();
         }
 

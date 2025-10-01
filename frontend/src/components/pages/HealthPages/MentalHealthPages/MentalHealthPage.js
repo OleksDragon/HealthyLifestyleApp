@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import MentalHealthCard from "../../../elements/Health/MentalHealth/MentalHealthCardLink/MentalHealthCardLink";
 
 import '../../../styles/mental.css'
@@ -7,7 +8,8 @@ import '../../../styles/mental.css'
 const MentalHealthPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    
+    const { t } = useTranslation();
+
     const handleEmotionDiary = () => {
         navigate(`${location.pathname}/diary`)
     };
@@ -32,33 +34,33 @@ const MentalHealthPage = () => {
         <div className="mental-health-container">
             <div className="mental-health-content">
                 <div className="mental-health-info">
-                    <div className="title">Твій спокій починається тут.</div>
-                    <div className="sub-title">Ми зібрали інструменти, які допоможуть залишитись врівноваженим навіть у найстресовіші дні.</div>
+                    <div className="title">{t("mp_mhp_title")}</div>
+                    <div className="sub-title">{t("mp_mhp_sub_title")}</div>
                     <div className="info-image">Зображення</div>
                 </div>
                 <div className="mental-health-card-link">
                     <MentalHealthCard
                         image={<div className="mh-card-image"></div>}
-                        title="Щоденник емоцій"
-                        buttonText="Почати"
+                        title={t("mp_ebp_title")}
+                        buttonText={t("mp_btn_start")}
                         onButtonClick={handleEmotionDiary}
                     />
                     <MentalHealthCard
                         image={<div className="card-image"></div>}
-                        title="Тести на стан"
-                        buttonText="Пройти тест"
+                        title={t("mp_mhp_test_card_title")}
+                        buttonText={t("mp_mhp_test_card_btn_text")}
                         onButtonClick={handleTests}
                     />
                     <MentalHealthCard
                         image={<div className="card-image"></div>}
-                        title="Дихальні практики"
-                        buttonText="Обрати практику"
+                        title={t("mp_mhp_breathing_card_title")}
+                        buttonText={t("mp_mhp_breathing_card_btn_text")}
                         onButtonClick={handleBreathing}
                     />
                     <MentalHealthCard
                         image={<div className="card-image"></div>}
-                        title="Корисні статті"
-                        buttonText="Переглянути статті"
+                        title={t("mp_mhp_articles_card_title")}
+                        buttonText={t("mp_mhp_articles_card_btn_text")}
                         onButtonClick={handleArticles}
                     />
                 </div>
@@ -67,7 +69,7 @@ const MentalHealthPage = () => {
                         className="contact-to-specialist-btn"
                         onButtonClick={handleContactToSpecialist}
                     >
-                        Обрати спеціаліста
+                        {t("mp_mhp_choose_specialist")}
                     </button>
                 </div>
             </div>

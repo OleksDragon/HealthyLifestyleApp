@@ -415,14 +415,14 @@ input[type="number"] {
 }
 
 /* ==== Позиціонування карток achievements та purchases ==== */
-.achievements.card {
+.achievements.p-dc-card {
   grid-column: 1;
   grid-row: 5 / span 4;
   width: 341px;
   margin-left: 14px;
 }
 
-.purchases.card {
+.purchases.p-dc-card {
   grid-column: 2;
   grid-row: 5 / span 4;
   width: 328px;

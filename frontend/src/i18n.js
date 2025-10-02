@@ -186,9 +186,7 @@ i18n
           p_usa_country: "USA",
 
           // --- Links mapping translations ---
-          mental: "Mental Health",
           diary: "Emotion Diary",
-          articles: "Useful Articles",
           article_1: "10 simple stress relief techniques",
           article_2: "Effective methods for combating anxiety",
           article_3: "Breathing techniques for relaxation",
@@ -196,7 +194,6 @@ i18n
           article_5: "Basics of meditation for beginners",
           article_6: "Strategies for improving self-esteem",
           article_7: "Prevention and overcoming burnout",
-          gender: "Health by gender",
 
           // --- Social challenges translations ---
           ch_all_challenges_title: "All Challenges",
@@ -418,20 +415,12 @@ i18n
 
           // --- Mental Health translations ---
           your: "Your Health",
-          diary: "Emotion Journal",
           breathing: "Breathing Practices",
           diaphragmatic: "Diaphragmatic Breathing",
           square: "Box Breathing",
           nadishodhana: "Nadi Shodhana",
           mentaltest: "State Test",
           articles: "Useful Articles",
-          article_1: "10 Simple Stress Relief Techniques",
-          article_2: "Effective Methods to Combat Anxiety",
-          article_3: "Breathing Techniques for Relaxation",
-          article_4: "The Connection Between Sleep and Mental Health",
-          article_5: "Basics of Meditation for Beginners",
-          article_6: "Strategies for Improving Self-Esteem",
-          article_7: "Prevention and Overcoming Burnout",
 
           // --- Health menu translations ---
           hmp_your_health: "Your Health",
@@ -1105,9 +1094,7 @@ i18n
           p_usa_country: "США",
 
           // === ПОСИЛАННЯ ===
-          mental: "Ментальне здоров'я",
           diary: "Щоденник емоцій",
-          articles: "Корисні статті",
           article_1: "10 простих технік зняття стресу",
           article_2: "Ефективні методи боротьби з тривогою",
           article_3: "Дихальні техніки для релаксації",
@@ -1115,7 +1102,6 @@ i18n
           article_5: "Основи медитації для новачків",
           article_6: "Стратегії покращення самооцінки",
           article_7: "Профілактика та подолання вигорання",
-          gender: "Здоров'я за статтю",
 
           // === СОЦІАЛЬНІ ЧЕЛЕНДЖІ ===
           ch_all_challenges_title: "Усі челенджі",
@@ -1337,7 +1323,6 @@ i18n
 
           // === МЕНТАЛЬНЕ ЗДОРОВ'Я ===
           your: "Твоє здоров'я",
-          diary: "Щоденник емоцій",
           breathing: "Дихальні практики",
           diaphragmatic: "Діафрагмальне дихання",
           square: "Дихання Квадрат",
@@ -1358,6 +1343,139 @@ i18n
           mp_article_5: "Медитація для початківців",
           mp_article_6: "Як підвищити самооцінку",
           mp_article_7: "Ефективні методи боротьби з вигоранням",
+          mp_article_content_1: 
+            `
+            # 10 простих технік зняття стресу
+            ## Глибоке дихання
+            Зробіть кілька глибоких вдихів і видихів, концентруючись на диханні. Техніка «4-4-4» проста: вдих на 4 секунди, затримка дихання на 4 секунди, видих на 4 секунди. Це заспокоює нервову систему.
+            ## Прогресивна м'язова релаксація
+            Напружте та розслабьте всі групи м'язів по черзі, починаючи з пальців ніг і закінчуючи обличчям.
+            ## Медитація
+            Приділяйте 5-10 хвилин на день медитації. Сфокусуйтесь на диханні або використовуйте керовані медитації.
+            ## Прогулянка на свіжому повітрі
+            Щоденні 20-хвилинні прогулянки зменшують рівень кортизолу та покращують настрій.
+            ## Ароматерапія
+            Використовуйте ефірні олії лаванди, ромашки або бергамота для релаксації.
+            ## Ведення щоденника
+            Записуйте свої думки та почуття. Це допомагає структурувати думки та зменшити стрес.
+            ## Слухайте музику
+            Спокійна музика або звуки природи можуть значно знизити рівень стресу.
+            ## Техніка "5-4-3-2-1"
+            Назвіть: 5 речей, які бачите; 4 речі, які відчуваєте; 3 речі, які чуєте; 2 речі, які відчуваєте запах; 1 річ, яку можете скуштувати.
+            ## Йога та розтяжка
+            Прості вправи йоги допомагають зняти м'язове напруження.
+            ## Обмеження споживання новин
+            Обмежте час, який витрачаєте на перегляд новин, щоб зменшити інформаційне навантаження.
+                    `,
+          mp_article_content_2: 
+            `
+            # Ефективні методи боротьби з тривогою
+            ## Техніки заземлення
+            Використовуйте методи заземлення, щоб повернутися до реальності. Наприклад, зосередьтесь на физичних відчуттях.
+            ## Когнітивно-поведінкова терапія
+            Визначте негативні думки та замініть їх на більш реалістичні.
+            ## Регулярні вправи
+            Фізична активність зменшує тривожність та покращує настрій.
+            ## Обмеження кофеїну
+            Кофеїн може посилювати тривожність, тому обмежте його споживання.
+            ## Якісний сон
+            Регулярний режим сну допомагає зменшити тривожність.
+            ## Соціальна підтримка
+            Обговорюйте свої почуття з близькими людьми або фахівцем.
+            ## Практика вдячності
+            Щоденно записуйте 3 речі, за які ви вдячні.
+                    `,
+          mp_article_content_3: 
+            `
+            # Дихальні техніки для релаксації
+            ## Дихання животом
+            Ляжте або сядьте зручно. Одну руку покладіть на груди, іншу - на живіт. Повільно вдихайте через ніс, відчуваючи, як живіт піднімається. Видихайте через рот.
+            ## Техніка "4-7-8"
+            Вдихніть через ніс на 4 рахунки, затримайте дихання на 7 рахунків, видихніть через рот на 8 рахунків.
+            ## Равове дихання
+            Вдихайте та видихайте на однакову кількість рахунків (наприклад, 4-4 або 5-5).
+            ## Дихання з підвищеним видихом
+            Вдихайте на 4 рахунки, видихайте на 6-8 рахунків.
+            ## Альтернативне дихання ніздрями
+            Закрийте праву ніздрю, вдихніть лівою. Затримайте дихання. Закрийте ліву ніздрю, видихніть правою.
+                    `,
+          mp_article_content_4: 
+            `
+            # Взаємозв'язок сну та психічного здоров'я
+            ## Регулярний режим сну
+            Лягайте та вставайте в один і той же час кожного дня, навіть у вихідні.
+            ## Створення ідеальних умов для сну
+            Забезпечте темряву, тишу та комфортну температуру в спальні.
+            ## Обмеження екранного часу
+            Припиніть використовувати електронні пристрої за 1-2 години до сну.
+            ## Релаксаційні ритуали
+            Створіть вечірній ритуал: тепла ванна, читання, медитація.
+            ## Обмеження кофеїну та алкоголю
+            Уникайте кофеїну після обіду та алкоголю перед сном.
+            ## Регулярна фізична активність
+            Вправи покращують якість сну, але уникайте інтенсивних тренувань перед сном.
+            ## Збалансоване харчування
+            Уживайте їжу, багату на триптофан, магній та вітаміни групи B.
+                    `,
+          mp_article_content_5: 
+            `
+            # Основи медитації для новачків
+            ## Початок з малого
+            Почніть з 5-10 хвилин на день і поступово збільшуйте час.
+            ## Зосередження на диханні
+            Сфокусуйтесь на відчутті дихання - як повітря входить і виходить.
+            ## Спостереження за думками
+            Не намагайтеся зупинити думки, просто спостерігайте за ними без оцінки.
+            ## Використання керованих медитацій
+            Використовуйте додатки або аудіозаписи для керованих сесій.
+            ## Створення комфортного простору
+            Знайдіть тихе місце, де вас ніхто не турбуватиме.
+            ## Регулярність
+            Медитуйте регулярно, краще в один і той же час дня.
+            ## Терпіння до себе
+            Не критикуйте себе, якщо не виходить зосередитись. Це нормальна частина процесу.
+                    `,
+          mp_article_content_6: 
+            `
+            # Стратегії покращення самооцінки
+            ## Практика самоспівчуття
+            Ставтесь до себе так, як до друга, який потребує підтримки.
+            ## Визнання своїх сильних сторін
+            Складіть список своїх сильних сторін та досягнень.
+            ## Встановлення реалістичних цілей
+            Ставте досяжні цілі та відзначайте прогрес.
+            ## Обмеження негативного самомовлення
+            Замініть критичні думки на підтримуючі.
+            ## Оточення позитивними людьми
+            Проводьте час з людьми, які підтримують та надихають вас.
+            ## Догляд за собою
+            Регулярно робіть те, що приносить вам радість та розслаблення.
+            ## Професійна допомога
+            Зверніться до психолога, якщо самооцінка значно впливає на якість життя.
+                    `,
+          mp_article_content_7: 
+            `
+            # Профілактика та подолання вигорання
+            ## Встановлення меж
+            Навчіться говорити "ні" та встановлюйте здорові межі.
+            ## Регулярні перерви
+            Робіть короткі перерви протягом робочого дня.
+            ## Пріоритизація завдань
+            Фокусуйтесь на найважливіших завданнях та делегуйте, коли це можливо.
+            ## Пошук сенсу
+            Знайдіть особистий сенс у тому, що ви робите.
+            ## Фізична активність
+            Регулярні вправи допомагають боротися зі стресом.
+            ## Соціальна підтримка
+            Обговорюйте свої почуття з колегами, друзями або фахівцем.
+            ## Відновлення балансу
+            Знайдіть час для хобі та особистого життя поза роботою.
+            ## Професійна допомога
+            Не вагайтеся звернутися до психолога або коуча.
+                    `,
+          mp_article_not_found: "Статтю не знайдено",
+          mp_article_not_found_desc_1: "Стаття з ID",
+          mp_article_not_found_desc_2: "не існує.",
 
           // === ЕМОЦІЙНИЙ ЩОДЕННИК ===
           mp_aew_notes: "Нотатка",
@@ -1901,9 +2019,7 @@ i18n
           p_usa_country: "USA",
 
           // === LINKS ===
-          mental: "Psychische Gesundheit",
           diary: "Emotionstagebuch",
-          articles: "Nützliche Artikel",
           article_1: "10 einfache Techniken zum Stressabbau",
           article_2: "Effektive Methoden zur Bewältigung von Angst",
           article_3: "Atemtechniken zur Entspannung",
@@ -1912,7 +2028,6 @@ i18n
           article_5: "Grundlagen der Meditation für Anfänger",
           article_6: "Strategien zur Verbesserung des Selbstwertgefühls",
           article_7: "Prävention und Überwindung von Burnout",
-          gender: "Gesundheit nach Geschlecht",
 
           // === SOZIALE CHALLENGES ===
           ch_all_challenges_title: "Alle Challenges",
@@ -2142,7 +2257,6 @@ i18n
 
           // === PSYCHISCHE GESUNDHEIT ===
           your: "Deine Gesundheit",
-          diary: "Emotionstagebuch",
           breathing: "Atemübungen",
           diaphragmatic: "Zwerchfellatmung",
           square: "Quadratisches Atmen",
@@ -2163,6 +2277,139 @@ i18n
           mp_article_5: "Meditation für Anfänger",
           mp_article_6: "Wie man das Selbstwertgefühl steigert",
           mp_article_7: "Effektive Methoden zur Bekämpfung von Burnout",
+          mp_article_content_1: 
+            `
+            # 10 Einfache Techniken zum Stressabbau
+            ## Tiefes Atmen
+            Machen Sie einige tiefe Ein- und Ausatmungen und konzentrieren Sie sich auf das Atmen. Die "4-4-4"-Technik ist einfach: 4 Sekunden einatmen, den Atem 4 Sekunden anhalten, 4 Sekunden ausatmen. Dies beruhigt das Nervensystem.
+            ## Progressive Muskelentspannung
+            Spannen und entspannen Sie nacheinander alle Muskelgruppen, beginnend bei den Zehen bis hin zum Gesicht.
+            ## Meditation
+            Verbringen Sie 5-10 Minuten pro Tag mit Meditation. Konzentrieren Sie sich auf den Atem oder nutzen Sie geführte Meditationen.
+            ## Spaziergang an der frischen Luft
+            Tägliche 20-minütige Spaziergänge reduzieren den Cortisolspiegel und verbessern die Stimmung.
+            ## Aromatherapie
+            Verwenden Sie ätherische Öle von Lavendel, Kamille oder Bergamotte zur Entspannung.
+            ## Tagebuch führen
+            Schreiben Sie Ihre Gedanken und Gefühle auf. Dies hilft, Gedanken zu strukturieren und Stress abzubauen.
+            ## Musik hören
+            Ruhige Musik oder Naturgeräusche können den Stresspegel erheblich senken.
+            ## "5-4-3-2-1"-Technik
+            Nennen Sie: 5 Dinge, die Sie sehen; 4 Dinge, die Sie fühlen; 3 Dinge, die Sie hören; 2 Dinge, die Sie riechen; 1 Ding, das Sie schmecken können.
+            ## Yoga und Dehnung
+            Einfache Yoga-Übungen helfen, Muskelverspannungen zu lösen.
+            ## Nachrichtenkonsum einschränken
+            Begrenzen Sie die Zeit, die Sie mit dem Ansehen von Nachrichten verbringen, um die Informationsbelastung zu reduzieren.
+                    `,
+          mp_article_content_2: 
+            `
+            # Effektive Methoden zur Bekämpfung von Angstzuständen
+            ## Grounding-Techniken
+            Verwenden Sie Grounding-Techniken, um in die Realität zurückzukehren. Konzentrieren Sie sich zum Beispiel auf körperliche Empfindungen.
+            ## Kognitive Verhaltenstherapie
+            Identifizieren Sie negative Gedanken und ersetzen Sie sie durch realistischere.
+            ## Regelmäßige Bewegung
+            Körperliche Aktivität reduziert Angst und verbessert die Stimmung.
+            ## Koffeineinschränkung
+            Koffein kann Angst verstärken, daher sollten Sie den Konsum einschränken.
+            ## Qualitativer Schlaf
+            Ein regelmäßiger Schlafrhythmus hilft, Angst zu reduzieren.
+            ## Soziale Unterstützung
+            Besprechen Sie Ihre Gefühle mit nahestehenden Personen oder einem Fachmann.
+            ## Dankbarkeitspraxis
+            Schreiben Sie täglich 3 Dinge auf, für die Sie dankbar sind.
+                    `,
+          mp_article_content_3: 
+            `
+            # Atemtechniken zur Entspannung
+            ## Bauchatmung
+            Legen Sie sich hin oder setzen Sie sich bequem hin. Legen Sie eine Hand auf die Brust, die andere auf den Bauch. Atmen Sie langsam durch die Nase ein und spüren Sie, wie sich der Bauch hebt. Atmen Sie durch den Mund aus.
+            ## "4-7-8"-Technik
+            Atmen Sie durch die Nase für 4 Zählzeiten ein, halten Sie den Atem für 7 Zählzeiten an, atmen Sie durch den Mund für 8 Zählzeiten aus.
+            ## Gleiches Atmen
+            Atmen Sie für die gleiche Anzahl von Zählzeiten ein und aus (z.B. 4-4 oder 5-5).
+            ## Atmung mit verlängerter Ausatmung
+            Atmen Sie für 4 Zählzeiten ein, atmen Sie für 6-8 Zählzeiten aus.
+            ## Wechselatmung durch die Nasenlöcher
+            Schließen Sie das rechte Nasenloch, atmen Sie durch das linke ein. Halten Sie den Atem an. Schließen Sie das linke Nasenloch, atmen Sie durch das rechte aus.
+                    `,
+          mp_article_content_4: 
+            `
+            # Der Zusammenhang zwischen Schlaf und psychischer Gesundheit
+            ## Regelmäßiger Schlafrhythmus
+            Gehen Sie jeden Tag zur gleichen Zeit ins Bett und stehen Sie auf, auch am Wochenende.
+            ## Schaffen idealer Schlafbedingungen
+            Sorgen Sie für Dunkelheit, Ruhe und eine angenehme Temperatur im Schlafzimmer.
+            ## Bildschirmzeit einschränken
+            Hören Sie 1-2 Stunden vor dem Schlafengehen auf, elektronische Geräte zu benutzen.
+            ## Entspannungsrituale
+            Schaffen Sie ein Abendritual: ein warmes Bad, Lesen, Meditation.
+            ## Einschränkung von Koffein und Alkohol
+            Vermeiden Sie Koffein nach dem Mittagessen und Alkohol vor dem Schlafengehen.
+            ## Regelmäßige körperliche Aktivität
+            Bewegung verbessert die Schlafqualität, aber vermeiden Sie intensive Workouts vor dem Schlafengehen.
+            ## Ausgewogene Ernährung
+            Verzehren Sie Lebensmittel, die reich an Tryptophan, Magnesium und B-Vitaminen sind.
+                    `,
+          mp_article_content_5: 
+            `
+            # Grundlagen der Meditation für Anfänger
+            ## Klein anfangen
+            Beginnen Sie mit 5-10 Minuten pro Tag und steigern Sie die Zeit allmählich.
+            ## Fokus auf den Atem
+            Konzentrieren Sie sich auf die Empfindung des Atems - wie die Luft ein- und ausströmt.
+            ## Beobachten von Gedanken
+            Versuchen Sie nicht, Gedanken zu stoppen, beobachten Sie sie einfach, ohne sie zu bewerten.
+            ## Verwendung geführter Meditationen
+            Verwenden Sie Apps oder Audioaufnahmen für geführte Sitzungen.
+            ## Schaffen eines komfortablen Raums
+            Suchen Sie sich einen ruhigen Ort, an dem Sie niemand stört.
+            ## Regelmäßigkeit
+            Meditieren Sie regelmäßig, vorzugsweise zur gleichen Tageszeit.
+            ## Geduld mit sich selbst
+            Kritisieren Sie sich nicht, wenn Sie sich nicht konzentrieren können. Dies ist ein normaler Teil des Prozesses.
+                    `,
+          mp_article_content_6: 
+            `
+            # Strategien zur Verbesserung des Selbstwertgefühls
+            ## Selbstmitgefühl praktizieren
+            Behandeln Sie sich so, wie Sie einen Freund behandeln würden, der Unterstützung braucht.
+            ## Anerkennen der eigenen Stärken
+            Machen Sie eine Liste Ihrer Stärken und Erfolge.
+            ## Setzen realistischer Ziele
+            Setzen Sie erreichbare Ziele und feiern Sie Fortschritte.
+            ## Negatives Selbstgespräch einschränken
+            Ersetzen Sie kritische Gedanken durch unterstützende.
+            ## Umgeben mit positiven Menschen
+            Verbringen Sie Zeit mit Menschen, die Sie unterstützen und inspirieren.
+            ## Selbstfürsorge
+            Tun Sie regelmäßig Dinge, die Ihnen Freude und Entspannung bringen.
+            ## Professionelle Hilfe
+            Wenden Sie sich an einen Psychologen, wenn das Selbstwertgefühl Ihre Lebensqualität erheblich beeinträchtigt.
+                    `,
+          mp_article_content_7: 
+            `
+            # Prävention und Überwindung von Burnout
+            ## Grenzen setzen
+            Lernen Sie, "Nein" zu sagen und setzen Sie gesunde Grenzen.
+            ## Regelmäßige Pausen
+            Machen Sie kurze Pausen während des Arbeitstages.
+            ## Priorisierung von Aufgaben
+            Konzentrieren Sie sich auf die wichtigsten Aufgaben und delegieren Sie, wann immer möglich.
+            ## Sinnfindung
+            Finden Sie eine persönliche Bedeutung in dem, was Sie tun.
+            ## Körperliche Aktivität
+            Regelmäßige Bewegung hilft, Stress zu bekämpfen.
+            ## Soziale Unterstützung
+            Besprechen Sie Ihre Gefühle mit Kollegen, Freunden oder einem Fachmann.
+            ## Wiederherstellung des Gleichgewichts
+            Finden Sie Zeit für Hobbys und das Privatleben außerhalb der Arbeit.
+            ## Professionelle Hilfe
+            Zögern Sie nicht, einen Psychologen oder Coach zu kontaktieren.
+                    `,
+          mp_article_not_found: "Artikel nicht gefunden",
+          mp_article_not_found_desc_1: "Artikel mit ID",
+          mp_article_not_found_desc_2: "existiert nicht.",
 
           // === EMOTIONSTAGEBUCH ===
           mp_aew_notes: "Notiz",
@@ -2722,9 +2969,7 @@ i18n
           p_usa_country: "États-Unis",
 
           // === LIENS ===
-          mental: "Santé mentale",
           diary: "Journal des émotions",
-          articles: "Articles utiles",
           article_1: "10 techniques simples pour réduire le stress quotidien",
           article_2: "Méthodes efficaces pour gérer l'anxiété",
           article_3: "Techniques de respiration pour la relaxation",
@@ -2732,7 +2977,6 @@ i18n
           article_5: "Bases de la méditation pour les débutants",
           article_6: "Stratégies pour améliorer l'estime de soi",
           article_7: "Prévention et surmonter l'épuisement professionnel",
-          gender: "Santé par genre",
 
           // === DÉFIS SOCIAUX ===
           ch_all_challenges_title: "Tous les défis",
@@ -2960,7 +3204,6 @@ i18n
 
           // === SANTÉ MENTALE ===
           your: "Ta santé",
-          diary: "Journal des émotions",
           breathing: "Exercices de respiration",
           diaphragmatic: "Respiration diaphragmatique",
           square: "Respiration carrée",
@@ -2983,6 +3226,139 @@ i18n
           mp_article_6: "Comment améliorer l'estime de soi",
           mp_article_7:
             "Méthodes efficaces pour lutter contre l'épuisement professionnel",
+          mp_article_content_1: 
+            `
+            # 10 techniques simples pour soulager le stress
+            ## Respiration profonde
+            Prenez quelques respirations profondes en vous concentrant sur votre souffle. La technique « 4-4-4 » est simple : inspirez pendant 4 secondes, retenez votre respiration pendant 4 secondes, expirez pendant 4 secondes. Cela calme le système nerveux.
+            ## Relaxation musculaire progressive
+            Tendez et détendez tous les groupes musculaires tour à tour, en commençant par les orteils et en remontant jusqu'au visage.
+            ## Méditation
+            Accordez 5 à 10 minutes par jour à la méditation. Concentrez-vous sur votre respiration ou utilisez des méditations guidées.
+            ## Marche au grand air
+            Une marche quotidienne de 20 minutes réduit le niveau de cortisol et améliore l'humeur.
+            ## Aromathérapie
+            Utilisez des huiles essentielles de lavande, de camomille ou de bergamote pour vous détendre.
+            ## Tenue d'un journal
+            Notez vos pensées et vos sentiments. Cela aide à structurer les pensées et à réduire le stress.
+            ## Écoutez de la musique
+            Une musique calme ou des sons de la nature peuvent significativement réduire le niveau de stress.
+            ## Technique "5-4-3-2-1"
+            Nommez : 5 choses que vous voyez ; 4 choses que vous touchez ; 3 choses que vous entendez ; 2 choses que vous sentez ; 1 chose que vous goûtez.
+            ## Yoga et étirements
+            Des exercices simples de yoga aident à soulager les tensions musculaires.
+            ## Limiter la consommation d'actualités
+            Limitez le temps passé à regarder les informations pour réduire la charge mentale.
+                    `,
+          mp_article_content_2: 
+            `
+            # Méthodes efficaces pour lutter contre l'anxiété
+            ## Techniques de mise à la terre
+            Utilisez des techniques de mise à la terre pour revenir à la réalité. Par exemple, concentrez-vous sur les sensations physiques.
+            ## Thérapie cognitivo-comportementale
+            Identifiez les pensées négatives et remplacez-les par des pensées plus réalistes.
+            ## Exercice régulier
+            L'activité physique réduit l'anxiété et améliore l'humeur.
+            ## Limitation de la caféine
+            La caféine peut augmenter l'anxiété, il est donc conseillé d'en limiter la consommation.
+            ## Sommeil de qualité
+            Un rythme de sommeil régulier aide à réduire l'anxiété.
+            ## Soutien social
+            Parlez de vos sentiments avec vos proches ou un professionnel.
+            ## Pratique de la gratitude
+            Notez chaque jour 3 choses pour lesquelles vous êtes reconnaissant.
+                    `,
+          mp_article_content_3: 
+            `
+            # Techniques de respiration pour la relaxation
+            ## Respiration abdominale
+            Allongez-vous ou asseyez-vous confortablement. Placez une main sur votre poitrine, l'autre sur votre ventre. Inspirez lentement par le nez en sentant votre ventre se soulever. Expirez par la bouche.
+            ## Technique "4-7-8"
+            Inspirez par le nez sur 4 temps, retenez votre respiration sur 7 temps, expirez par la bouche sur 8 temps.
+            ## Respiration égale
+            Inspirez et expirez sur le même nombre de temps (par exemple, 4-4 ou 5-5).
+            ## Respiration avec expiration allongée
+            Inspirez sur 4 temps, expirez sur 6-8 temps.
+            ## Respiration alternée par les narines
+            Bouchez votre narine droite, inspirez par la gauche. Retenez votre respiration. Bouchez votre narine gauche, expirez par la droite.
+                    `,
+          mp_article_content_4: 
+            `
+            # Le lien entre le sommeil et la santé mentale
+            ## Rythme de sommeil régulier
+            Couchez-vous et levez-vous à la même heure chaque jour, même le week-end.
+            ## Création de conditions idéales pour le sommeil
+            Assurez l'obscurité, le silence et une température confortable dans la chambre.
+            ## Limitation du temps d'écran
+            Arrêtez d'utiliser les appareils électroniques 1 à 2 heures avant de dormir.
+            ## Rituels de relaxation
+            Créez un rituel du soir : bain chaud, lecture, méditation.
+            ## Limitation de la caféine et de l'alcool
+            Évitez la caféine après le déjeuner et l'alcool avant le coucher.
+            ## Activité physique régulière
+            L'exercice améliore la qualité du sommeil, mais évitez les entraînements intenses avant de dormir.
+            ## Alimentation équilibrée
+            Consommez des aliments riches en tryptophane, magnésium et vitamines B.
+                    `,
+          mp_article_content_5: 
+            `
+            # Les bases de la méditation pour les débutants
+            ## Commencez petit
+            Commencez par 5 à 10 minutes par jour et augmentez progressivement la durée.
+            ## Concentration sur la respiration
+            Concentrez-vous sur la sensation de la respiration - comment l'air entre et sort.
+            ## Observation des pensées
+            N'essayez pas d'arrêter vos pensées, observez-les simplement sans jugement.
+            ## Utilisation de méditations guidées
+            Utilisez des applications ou des enregistre audio pour des séances guidées.
+            ## Création d'un espace confortable
+            Trouvez un endroit calme où vous ne serez pas dérangé.
+            ## Régularité
+            Méditez régulièrement, de préférence à la même heure chaque jour.
+            ## Patience envers soi-même
+            Ne vous critiquez pas si vous avez du mal à vous concentrer. C'est une partie normale du processus.
+                    `,
+          mp_article_content_6: 
+            `
+            # Stratégies pour améliorer l'estime de soi
+            ## Pratique de l'auto-compassion
+            Traitez-vous comme vous traiteriez un ami qui a besoin de soutien.
+            ## Reconnaissance de ses points forts
+            Faites une liste de vos points forts et de vos réalisations.
+            ## Établissement d'objectifs réalistes
+            Fixez-vous des objectifs atteignables et célébrez vos progrès.
+            ## Limitation du discours intérieur négatif
+            Remplacez les pensées critiques par des pensées encourageantes.
+            ## S'entourer de personnes positives
+            Passez du temps avec des personnes qui vous soutiennent et vous inspirent.
+            ## Soins personnels
+            Faites régulièrement des choses qui vous apportent de la joie et de la détente.
+            ## Aide professionnelle
+            Consultez un psychologue si l'estime de soi affecte significativement votre qualité de vie.
+                    `,
+          mp_article_content_7: 
+            `
+            # Prévention et surmontement de l'épuisement
+            ## Établissement de limites
+            Apprenez à dire "non" et à établir des limites saines.
+            ## Pauses régulières
+            Prenez de courtes pauses tout au long de la journée de travail.
+            ## Priorisation des tâches
+            Concentrez-vous sur les tâches les plus importantes et déléguez lorsque c'est possible.
+            ## Recherche de sens
+            Trouvez un sens personnel à ce que vous faites.
+            ## Activité physique
+            L'exercice régulier aide à lutter contre le stress.
+            ## Soutien social
+            Parlez de vos sentiments avec des collègues, des amis ou un professionnel.
+            ## Rétablissement de l'équilibre
+            Trouvez du temps pour les loisirs et la vie personnelle en dehors du travail.
+            ## Aide professionnelle
+            N'hésitez pas à consulter un psychologue ou un coach.
+                    `,
+          mp_article_not_found: "Article non trouvé",
+          mp_article_not_found_desc_1: "L'article avec l'ID",
+          mp_article_not_found_desc_2: "n'existe pas.",
 
           // === JOURNAL DES ÉMOTIONS ===
           mp_aew_notes: "Note",
@@ -3543,9 +3919,7 @@ i18n
           p_usa_country: "EE.UU.",
 
           // === ENLACES ===
-          mental: "Salud mental",
           diary: "Diario de emociones",
-          articles: "Artículos útiles",
           article_1: "10 técnicas simples para reducir el estrés diario",
           article_2: "Métodos efectivos para manejar la ansiedad",
           article_3: "Técnicas de respiración para relajación",
@@ -3553,7 +3927,6 @@ i18n
           article_5: "Bases de meditación para principiantes",
           article_6: "Estrategias para mejorar la autoestima",
           article_7: "Prevención y superación del agotamiento",
-          gender: "Salud por género",
 
           // === DESAFÍOS SOCIALES ===
           ch_all_challenges_title: "Todos los desafíos",
@@ -3782,7 +4155,6 @@ i18n
 
           // === SALUD MENTAL ===
           your: "Tu salud",
-          diary: "Diario de emociones",
           breathing: "Ejercicios de respiración",
           diaphragmatic: "Respiración diafragmática",
           square: "Respiración cuadrada",
@@ -3803,6 +4175,139 @@ i18n
           mp_article_5: "Meditación para principiantes",
           mp_article_6: "Cómo mejorar la autoestima",
           mp_article_7: "Métodos efectivos para combatir el agotamiento",
+          mp_article_content_1: 
+            `
+            # 10 técnicas simples para aliviar el estrés
+            ## Respiración profunda
+            Toma algunas respiraciones profundas concentrándote en la respiración. La técnica «4-4-4» es simple: inhalar durante 4 segundos, retener la respiración durante 4 segundos, exhalar durante 4 segundos. Esto calma el sistema nervioso.
+            ## Relajación muscular progresiva
+            Tensa y relaja todos los grupos musculares uno por uno, comenzando por los dedos de los pies y terminando en el rostro.
+            ## Meditación
+            Dedica 5-10 minutos al día a la meditación. Concéntrate en la respiración o usa meditaciones guiadas.
+            ## Caminata al aire libre
+            Caminatas diarias de 20 minutos reducen el nivel de cortisol y mejoran el estado de ánimo.
+            ## Aromaterapia
+            Usa aceites esenciales de lavanda, manzanilla o bergamota para relajarte.
+            ## Llevar un diario
+            Anota tus pensamientos y sentimientos. Esto ayuda a estructurar los pensamientos y reducir el estrés.
+            ## Escuchar música
+            La música tranquila o los sonidos de la naturaleza pueden reducir significativamente el nivel de estrés.
+            ## Técnica "5-4-3-2-1"
+            Nombra: 5 cosas que ves; 4 cosas que tocas; 3 cosas que escuchas; 2 cosas que hueles; 1 cosa que saboreas.
+            ## Yoga y estiramientos
+            Ejercicios simples de yoga ayudan a aliviar la tensión muscular.
+            ## Limitar el consumo de noticias
+            Limita el tiempo que pasas viendo noticias para reducir la carga informativa.
+                    `,
+          mp_article_content_2: 
+            `
+            # Métodos efectivos para combatir la ansiedad
+            ## Técnicas de grounding
+            Usa técnicas de grounding para volver a la realidad. Por ejemplo, concéntrate en sensaciones físicas.
+            ## Terapia cognitivo-conductual
+            Identifica pensamientos negativos y reemplázalos por otros más realistas.
+            ## Ejercicio regular
+            La actividad física reduce la ansiedad y mejora el estado de ánimo.
+            ## Limitar la cafeína
+            La cafeína puede aumentar la ansiedad, por lo que se recomienda limitar su consumo.
+            ## Sueño de calidad
+            Una rutina regular de sueño ayuda a reducir la ansiedad.
+            ## Apoyo social
+            Habla de tus sentimientos con personas cercanas o un profesional.
+            ## Práctica de gratitud
+            Anota diariamente 3 cosas por las que estás agradecido.
+                    `,
+          mp_article_content_3: 
+            `
+            # Técnicas de respiración para relajación
+            ## Respiración abdominal
+            Acuéstate o siéntate cómodamente. Coloca una mano en el pecho, la otra en el abdomen. Inhala lentamente por la nariz, sintiendo cómo el abdomen se eleva. Exhala por la boca.
+            ## Técnica "4-7-8"
+            Inhala por la nariz contando 4, retén la respiración contando 7, exhala por la boca contando 8.
+            ## Respiración equitativa
+            Inhala y exhala en la misma cantidad de tiempos (por ejemplo, 4-4 o 5-5).
+            ## Respiración con exhalación alargada
+            Inhala en 4 tiempos, exhala en 6-8 tiempos.
+            ## Respiración alternada por fosas nasales
+            Cierra la fosa nasal derecha, inhala por la izquierda. Retén la respiración. Cierra la fosa nasal izquierda, exhala por la derecha.
+                    `,
+          mp_article_content_4: 
+            `
+            # La relación entre sueño y salud mental
+            ## Rutina regular de sueño
+            Acuéstate y levántate a la misma hora todos los días, incluso los fines de semana.
+            ## Crear condiciones ideales para dormir
+            Asegura oscuridad, silencio y temperatura cómoda en el dormitorio.
+            ## Limitar el tiempo de pantalla
+            Deja de usar dispositivos electrónicos 1-2 horas antes de dormir.
+            ## Rituales de relajación
+            Crea un ritual nocturno: baño caliente, lectura, meditación.
+            ## Limitar cafeína y alcohol
+            Evita la cafeína después del almuerzo y el alcohol antes de dormir.
+            ## Actividad física regular
+            El ejercicio mejora la calidad del sueño, pero evita entrenamientos intensos antes de dormir.
+            ## Alimentación equilibrada
+            Consume alimentos ricos en triptófano, magnesio y vitaminas del grupo B.
+                    `,
+          mp_article_content_5: 
+            `
+            # Bases de meditación para principiantes
+            ## Empezar poco a poco
+            Comienza con 5-10 minutos al día y aumenta gradualmente el tiempo.
+            ## Concentrarse en la respiración
+            Enfócate en la sensación de la respiración - cómo el aire entra y sale.
+            ## Observar los pensamientos
+            No intentes detener los pensamientos, simplemente obsérvalos sin juzgar.
+            ## Usar meditaciones guiadas
+            Usa aplicaciones o grabaciones de audio para sesiones guiadas.
+            ## Crear un espacio cómodo
+            Encuentra un lugar tranquilo donde no te molesten.
+            ## Regularidad
+            Medita regularmente, preferiblemente a la misma hora del día.
+            ## Paciencia contigo mismo
+            No te critiques si no puedes concentrarte. Es una parte normal del proceso.
+                    `,
+          mp_article_content_6: 
+            `
+            # Estrategias para mejorar la autoestima
+            ## Practicar la autocompasión
+            Trátate como tratarías a un amigo que necesita apoyo.
+            ## Reconocer tus fortalezas
+            Haz una lista de tus puntos fuertes y logros.
+            ## Establecer metas realistas
+            Fíjate objetivos alcanzables y celebra tus progresos.
+            ## Limitar el diálogo interno negativo
+            Reemplaza pensamientos críticos por otros de apoyo.
+            ## Rodearse de personas positivas
+            Pasa tiempo con personas que te apoyen y te inspiren.
+            ## Cuidado personal
+            Haz regularmente cosas que te traigan alegría y relajación.
+            ## Ayuda profesional
+            Consulta a un psicólogo si la autoestima afecta significativamente tu calidad de vida.
+                    `,
+          mp_article_content_7: 
+            `
+            # Prevención y superación del agotamiento
+            ## Establecer límites
+            Aprende a decir "no" y establece límites saludables.
+            ## Pausas regulares
+            Toma breves descansos durante la jornada laboral.
+            ## Priorizar tareas
+            Enfócate en las tareas más importantes y delega cuando sea posible.
+            ## Buscar significado
+            Encuentra un sentido personal en lo que haces.
+            ## Actividad física
+            El ejercicio regular ayuda a combatir el estrés.
+            ## Apoyo social
+            Habla de tus sentimientos con colegas, amigos o un profesional.
+            ## Recuperar el equilibrio
+            Encuentra tiempo para hobbies y vida personal fuera del trabajo.
+            ## Ayuda profesional
+            No dudes en consultar a un psicólogo o coach.
+                    `,
+          mp_article_not_found: "Artículo no encontrado",
+          mp_article_not_found_desc_1: "El artículo con ID",
+          mp_article_not_found_desc_2: "no existe.",
 
           // === DIARIO DE EMOCIONES ===
           mp_aew_notes: "Nota",

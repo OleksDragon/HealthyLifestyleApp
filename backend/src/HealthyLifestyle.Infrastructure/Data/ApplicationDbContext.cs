@@ -42,6 +42,8 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<HealthDashboard> HealthDashboards { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
+        public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
 
         #endregion
 
@@ -111,6 +113,8 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureNotification(modelBuilder);
             ConfigureUserChallengeParticipation(modelBuilder);
             ConfigureCalendarEvents(modelBuilder);
+            ConfigureAchievement(modelBuilder);
+            ConfigurePurchase(modelBuilder);
         }
         #endregion
 
@@ -673,6 +677,40 @@ namespace HealthyLifestyle.Infrastructure.Data
                     .WithMany();
             });
         }
+
+        /// <summary>
+        /// Додаємо конфігурацію сутності Achievement
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureAchievement(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Achievement>(entity =>
+            {
+                entity.Property(a => a.Icon).HasConversion<string>();
+                entity.HasOne(a => a.User)
+                      .WithMany(u => u.Achievements)
+                      .HasForeignKey(a => a.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
+        /// <summary>
+        /// Додаємо конфігурацію сутності Purchase
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigurePurchase(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Purchase>(entity =>
+            {
+                entity.Property(p => p.Icon).HasConversion<string>();
+                entity.Property(p => p.Amount).HasPrecision(18, 2);
+                entity.HasOne(p => p.User)
+                      .WithMany(u => u.Purchases)
+                      .HasForeignKey(p => p.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
         #endregion
     }
 }

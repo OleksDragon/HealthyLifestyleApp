@@ -1,21 +1,22 @@
 using AutoMapper;
+using HealthyLifestyle.Application.DTOs.APInfoBlock;
 using HealthyLifestyle.Application.DTOs.Auth;
+using HealthyLifestyle.Application.DTOs.Calendar;
+using HealthyLifestyle.Application.DTOs.Challenge;
+using HealthyLifestyle.Application.DTOs.Consultation;
 using HealthyLifestyle.Application.DTOs.DietPlan;
+using HealthyLifestyle.Application.DTOs.Group;
+using HealthyLifestyle.Application.DTOs.HealthTracker;
 using HealthyLifestyle.Application.DTOs.MealTracker;
 using HealthyLifestyle.Application.DTOs.Notification;
 using HealthyLifestyle.Application.DTOs.ProfessionalQualification;
 using HealthyLifestyle.Application.DTOs.Record;
 using HealthyLifestyle.Application.DTOs.Shop;
-using HealthyLifestyle.Application.DTOs.HealthTracker;
-using HealthyLifestyle.Core.Entities;
-using HealthyLifestyle.Core.Enums;
-using HealthyLifestyle.Application.DTOs.Challenge;
-using HealthyLifestyle.Application.DTOs.Consultation;
-using HealthyLifestyle.Application.DTOs.Group;
-using HealthyLifestyle.Application.DTOs.Workout;
 using HealthyLifestyle.Application.DTOs.Subscription;
 using HealthyLifestyle.Application.DTOs.User;
-using HealthyLifestyle.Application.DTOs.Calendar;
+using HealthyLifestyle.Application.DTOs.Workout;
+using HealthyLifestyle.Core.Entities;
+using HealthyLifestyle.Core.Enums;
 
 namespace HealthyLifestyle.Application.Mappings
 {
@@ -54,6 +55,8 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureSubscriptionMappings();
             ConfigureFitnessActivityMappings();
             ConfigureCalendarEventMapping();
+            ConfigureAchievementMappings();
+            ConfigurePurchaseMappings();
         }
         #endregion
 
@@ -766,6 +769,56 @@ namespace HealthyLifestyle.Application.Mappings
                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                .ForMember(dest => dest.MeetingParticipants, opt => opt.MapFrom(src => src.MettingParticipants.Select(id => new User { Id = id })))
                .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value } : null));
+        }
+
+        /// <summary>
+        /// Конфігурує мапінги для досягнень (Achievement).
+        /// </summary>
+        private void ConfigureAchievementMappings()
+        {
+            CreateMap<Achievement, AchievementDto>();
+
+            CreateMap<AchievementCreateDto, Achievement>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.AchievedDate, opt => opt.MapFrom(src => src.AchievedDate))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
+                .ForMember(dest => dest.Icon, opt => opt.MapFrom(src => src.Icon))
+                .ForMember(dest => dest.Duration, opt => opt.MapFrom(src => src.Duration))
+                .ForMember(dest => dest.Calories, opt => opt.MapFrom(src => src.Calories))
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value));
+        }
+
+        /// <summary>
+        /// Конфігурує мапінги для покупок (Purchase).
+        /// </summary>
+        private void ConfigurePurchaseMappings()
+        {
+            CreateMap<Purchase, PurchaseDto>();
+
+            CreateMap<PurchaseCreateDto, Purchase>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.PurchaseDate, opt => opt.MapFrom(src => src.PurchaseDate))
+                .ForMember(dest => dest.Amount, opt => opt.MapFrom(src => src.Amount))
+                .ForMember(dest => dest.OrderNumber, opt => opt.MapFrom(src => src.OrderNumber))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
+                .ForMember(dest => dest.ProductType, opt => opt.MapFrom(src => src.ProductType))
+                .ForMember(dest => dest.Icon, opt => opt.MapFrom(src => src.Icon))
+                .ForMember(dest => dest.TrackingNumber, opt => opt.MapFrom(src => src.TrackingNumber))
+                .ForMember(dest => dest.DeliveryDate, opt => opt.MapFrom(src => src.DeliveryDate))
+                .ForMember(dest => dest.PeriodStart, opt => opt.MapFrom(src => src.PeriodStart))
+                .ForMember(dest => dest.PeriodEnd, opt => opt.MapFrom(src => src.PeriodEnd));
         }
         #endregion
     }

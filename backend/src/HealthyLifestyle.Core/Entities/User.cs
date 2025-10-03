@@ -169,6 +169,16 @@ namespace HealthyLifestyle.Core.Entities
         public virtual ICollection<UserProfessionalQualification> ProfessionalQualifications { get; set; } = new List<UserProfessionalQualification>();
 
         /// <summary>
+        /// Колекція досягнень користувача.
+        /// </summary>
+        public virtual ICollection<Achievement> Achievements { get; set; } = new List<Achievement>();
+
+        /// <summary>
+        /// Колекція покупок користувача.
+        /// </summary>
+        public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
+
+        /// <summary>
         /// Трекер здоров'я для жінок (опціонально).
         /// </summary>
         public virtual FemaleHealthTracker? FemaleHealthTracker { get; set; }

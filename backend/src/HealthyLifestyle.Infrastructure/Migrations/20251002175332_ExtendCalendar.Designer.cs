@@ -4,6 +4,7 @@ using HealthyLifestyle.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthyLifestyle.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251002175332_ExtendCalendar")]
+    partial class ExtendCalendar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -487,26 +490,14 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<double?>("Estradiol")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("FSH")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("FreeTestosterone")
-                        .HasColumnType("float");
+                    b.Property<int?>("EnergyLevelScore")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double?>("LH")
-                        .HasColumnType("float");
-
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double?>("Prolactin")
-                        .HasColumnType("float");
 
                     b.Property<DateTime>("RecordDate")
                         .HasColumnType("datetime2");

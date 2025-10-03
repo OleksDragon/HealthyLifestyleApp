@@ -412,7 +412,9 @@ i18n
           pain_is_ok: "Menstrual pain is always normal",
           pain_is_ok_desc:
             "Mild discomfort is typical, but severe or debilitating pain may indicate endometriosis or other conditions and should be checked by a doctor.",
-
+          calendar: "Calendar",
+          calendar_info: "Your best calendar",
+          create_event: "Create",
           // --- Mental Health translations ---
           your: "Your Health",
           breathing: "Breathing Practices",
@@ -1829,6 +1831,10 @@ i18n
           mp_diagram_low: "Низький",
           mp_diagram_norm: "Норма",
           mp_diagram_high: "Високий",
+          calendar: "Календар",
+          calendar_info: "Твій найкращій календар",
+          create_event: "Створити",
+
         },
       },
       de: {
@@ -2777,7 +2783,10 @@ i18n
             "Fehler beim Laden der Daten. Bitte wende dich an den technischen Support.",
           mp_diagram_low: "Niedrig",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Hoch",
+          mp_diagram_high: "Hoch",          calendar: "Kalender",
+          calendar_info: "Ihr bester Kalender",
+          create_event: "Erstellen",
+
         },
       },
       fr: {
@@ -3729,7 +3738,10 @@ i18n
             "Erreur lors du chargement des données. Contacte le support technique.",
           mp_diagram_low: "Faible",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Élevé",
+          mp_diagram_high: "Élevé",          calendar: "Calendrier",
+          calendar_info: "Votre meilleur calendrier",
+          create_event: "Créer",
+
         },
       },
       es: {
@@ -4672,7 +4684,10 @@ i18n
             "Error al cargar los datos. Contacta al soporte técnico.",
           mp_diagram_low: "Bajo",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Alto",
+          mp_diagram_high: "Alto",          calendar: "Calendario",
+          calendar_info: "Tu mejor calendario",
+          create_event: "Crear",
+          
         },
       },
     },

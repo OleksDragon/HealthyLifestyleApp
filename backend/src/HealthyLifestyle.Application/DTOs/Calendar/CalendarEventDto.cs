@@ -1,4 +1,5 @@
 ﻿using HealthyLifestyle.Application.DTOs.User;
+using HealthyLifestyle.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace HealthyLifestyle.Application.DTOs.Calendar
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public string? MeetingLink { get; set; } = string.Empty;
+        public int? NotificationBefore { get; set; }
+        public TaskType? TaskToDo { get; set; }
         public Guid? WorkoutId { get; set; }
         public IEnumerable<UserDto> MettingParticipants { get; set; } = new List<UserDto>();
     }
@@ -34,6 +37,8 @@ namespace HealthyLifestyle.Application.DTOs.Calendar
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public string? MeetingLink { get; set; } = string.Empty;
+        public int? NotificationBefore { get; set; }
+        public TaskType? TaskToDo { get; set; }
         public Guid? WorkoutId { get; set; }
         public IEnumerable<Guid> MettingParticipants { get; set; } = new List<Guid>();
     }
@@ -49,6 +54,8 @@ namespace HealthyLifestyle.Application.DTOs.Calendar
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public string? MeetingLink { get; set; } = string.Empty;
+        public int? NotificationBefore { get; set; }
+        public TaskType? TaskToDo { get; set; }
         public Guid? WorkoutId { get; set; }
         public IEnumerable<Guid> MettingParticipants { get; set; } = new List<Guid>();
     }

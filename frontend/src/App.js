@@ -45,6 +45,7 @@ import FemaleReproductiveHealthPage from './components/pages/HealthPages/GenderH
 import MaleHealthPage from "./components/pages/HealthPages/GenderHealthPages/MaleHealthPage";
 import MaleHormonesFormPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesFormPage";
 import MaleHormonesDiagramPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesDiagramPage";
+import CalendarPage from './components/pages/CalendarPage';
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -110,6 +111,8 @@ function AppRoutes() {
       <Route path="/health/gender/female/checks" element={<PrivateRoute><Menu><HealthPageMenu><FemaleRegularReviewPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female/examination" element={<PrivateRoute><Menu><HealthPageMenu><FemaleExaminationPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female/reproductive" element={<PrivateRoute><Menu><HealthPageMenu><FemaleReproductiveHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
+
+      <Route path="/calendar" element={<PrivateRoute><Menu><CalendarPage /></Menu></PrivateRoute>} />
 
       {/* Мужское здоровье */}
       <Route path="/health/gender/male" element={<PrivateRoute><Menu><HealthPageMenu><MaleHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />

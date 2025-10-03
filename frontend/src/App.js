@@ -46,6 +46,8 @@ import MaleHealthPage from "./components/pages/HealthPages/GenderHealthPages/Mal
 import MaleHormonesFormPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesFormPage";
 import MaleHormonesDiagramPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesDiagramPage";
 
+import PremiumPage from "./components/pages/Premium/Premium";
+
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
 
@@ -115,6 +117,9 @@ function AppRoutes() {
       <Route path="/health/gender/male" element={<PrivateRoute><Menu><HealthPageMenu><MaleHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/male/hormonas" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesFormPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/male/hormonas_diagram" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesDiagramPage /></HealthPageMenu></Menu></PrivateRoute>} />
+
+      {/* Премиум */}
+      <Route path="/premium" element={<PrivateRoute><Menu><PremiumPage /></Menu></PrivateRoute>} />
     </Routes>
   );
 }

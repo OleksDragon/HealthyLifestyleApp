@@ -39,11 +39,6 @@ namespace HealthyLifestyle.Application.Services.UserS
         /// </summary>
         /// <param name="userId">Унікальний ідентифікатор користувача (Guid).</param>
         /// <returns>Об’єкт <see cref="UserDto"/> із даними профілю або null, якщо користувач не знайдений.</returns>
-        //public async Task<UserDto?> GetUserProfileAsync(Guid userId)
-        //{
-        //    var user = await _userManager.FindByIdAsync(userId.ToString());
-        //    return user == null ? null : _mapper.Map<UserDto>(user);
-        //}
         public async Task<UserDto?> GetUserProfileAsync(Guid userId)
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());

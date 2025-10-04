@@ -75,18 +75,6 @@ namespace HealthyLifestyle.Application.Services.UserS
             var user = await _userManager.FindByIdAsync(userId.ToString());
             if (user == null) return null;
 
-            //double? weightValue = null;
-            //if (!string.IsNullOrEmpty(updateDto.Weight) && double.TryParse(updateDto.Weight, out double w))
-            //{
-            //    weightValue = w;
-            //}
-
-            //double? heightValue = null;
-            //if (!string.IsNullOrEmpty(updateDto.Height) && double.TryParse(updateDto.Height, out double h))
-            //{
-            //    heightValue = h;
-            //}
-
             double? weightValue = null;
             if (!string.IsNullOrEmpty(updateDto.Weight) &&
                 double.TryParse(updateDto.Weight, NumberStyles.Any, CultureInfo.InvariantCulture, out double w))
@@ -110,15 +98,6 @@ namespace HealthyLifestyle.Application.Services.UserS
                 {
                     await _objectStorageService.DeleteFileAsync(user.ProfilePictureUrl);
                 }
-
-                //var fileName = $"{userId}_{Guid.NewGuid()}{Path.GetExtension(updateDto.ProfilePictureFile.FileName)}";
-
-                // Завантажуємо нове
-                //user.ProfilePictureUrl = await _objectStorageService.UploadFileAsync(
-                //    updateDto.ProfilePictureFile.OpenReadStream(),
-                //    fileName,
-                //    updateDto.ProfilePictureFile.ContentType
-                //);
 
                 var fileName = $"{userId}_{Guid.NewGuid()}{Path.GetExtension(updateDto.ProfilePictureFile.FileName)}";
 

@@ -62,6 +62,7 @@ public class MinioService : IObjectStorageService
     /// Удаляет файл из хранилища.
     /// </summary>
     /// <param name="fileUrl">URL-адрес файла для удаления.</param>
+    
     //public async Task DeleteFileAsync(string fileUrl)
     //{
     //    var uri = new Uri(fileUrl);

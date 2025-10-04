@@ -198,6 +198,19 @@ i18n
           article_7: "Prevention and overcoming burnout",
           gender: "Health by gender",
 
+          // --- Nutrition translations ---
+          welcome: "Welcome",
+          nt_tracker_tab: "Nutrition Tracker",
+          nt_recipes_tab: "Recipes",
+          nt_date_label: "Date",
+          nt_calories_label: "Calories",
+          nt_kcal_abbr: "kcal",
+          nt_protein_label: "Protein",
+          nt_g_abbr: "g",
+          nt_meals_title: "Meals",
+          nt_add_meal_button: "Add Meal",
+          nt_analytics_title: "Analytics",
+
           // --- Social challenges translations ---
           ch_all_challenges_title: "All Challenges",
           ch_details_link: "Details",
@@ -1116,6 +1129,19 @@ i18n
           article_6: "Стратегії покращення самооцінки",
           article_7: "Профілактика та подолання вигорання",
           gender: "Здоров'я за статтю",
+
+          // === Сторінка харчування ===
+          welcome: "Ласкаво просимо",
+          nt_tracker_tab: "Трекер харчування",
+          nt_recipes_tab: "Рецепти",
+          nt_date_label: "Дата",
+          nt_calories_label: "Калорії",
+          nt_kcal_abbr: "ккал",
+          nt_protein_label: "Білки",
+          nt_g_abbr: "г",
+          nt_meals_title: "Прийоми їжі",
+          nt_add_meal_button: "Додати прийом",
+          nt_analytics_title: "Аналітика",
 
           // === СОЦІАЛЬНІ ЧЕЛЕНДЖІ ===
           ch_all_challenges_title: "Усі челенджі",

@@ -19,6 +19,11 @@ import ChallengeDetailsPage from "./components/pages/social/ChallengeDetailsPage
 import CreateChallengePage from "./components/pages/social/CreateChallengePage";
 import EditChallengePage from "./components/pages/social/EditChallengePage";
 
+import NutritionTrackerPage from "./components/pages/Nutrition/NutritionTrackerPage";
+import RationPage from "./components/pages/Nutrition/RationPage";
+import RecipesPage from "./components/pages/Nutrition/RecipesPage";
+import RecipeDetailsPage from "./components/pages/Nutrition/RecipeDetailsPage";
+
 import HealthPageMenu from "./components/elements/Health/HealthPageMenu/HealthPageMenu";
 import HealthPage from "./components/pages/HealthPages/HealthPage";
 import YourHealthPage from "./components/pages/HealthPages/YourHealthPages/YourHealthPage";
@@ -86,10 +91,16 @@ function AppRoutes() {
       <Route path="/social/create-challenge" element={<PrivateRoute><Menu><CreateChallengePage /></Menu></PrivateRoute>} />
       <Route path="/social/:id/edit" element={<PrivateRoute><Menu><EditChallengePage /></Menu></PrivateRoute>} />
 
+      {/* Харчування */}
+      <Route path="/eating" element={<PrivateRoute><Menu><NutritionTrackerPage /></Menu></PrivateRoute>} />
+      <Route path="/eating/ration" element={<PrivateRoute><Menu><RationPage /></Menu></PrivateRoute>} />
+      <Route path="/eating/recipes" element={<PrivateRoute><Menu><RecipesPage /></Menu></PrivateRoute>} />
+      <Route path="/eating/recipes/:id" element={<PrivateRoute><Menu><RecipeDetailsPage /></Menu></PrivateRoute>} />
+      
       {/* Здоровье - Основные страницы */}
       <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /><HealthPage /></Menu></PrivateRoute>} />
       <Route path="/health/your" element={<PrivateRoute><Menu><HealthPageMenu><YourHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
-      
+ 
       {/* Ментальное здоровье */}
       <Route path="/health/mental" element={<PrivateRoute><Menu><HealthPageMenu><MentalHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/mental/diary" element={<PrivateRoute><Menu><HealthPageMenu><EmotionDiaryPage /></HealthPageMenu></Menu></PrivateRoute>} />

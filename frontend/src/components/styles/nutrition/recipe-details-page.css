@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;370&display=swap');
+
+/* ГОЛОВНИЙ КОНТЕЙНЕР */
+.scrollable-grid-content {
+    height: 80vh;
+    overflow-y: auto;
+    padding-right: 20px;    
+    scrollbar-gutter: stable;    
+}
+
+.recipe-page-grid-v2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    height: auto;
+    overflow: visible;
+
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.main-media-column,
+.details-sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* СТИЛІ КАРТОК */
+.header-details-card {
+    background: transparent;    
+}
+
+.glass-card {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.card-title-white {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Зображення */
+.main-image-card {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.recipe-main-image-v2 {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Кроки */
+.recipe-steps-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+/* Заголовок */
+.recipe-title-v2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #D6FF00;
+}
+
+.recipe-description-v2 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+/* Макроси */
+.macros-card-v2 {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* Верхняя линия */
+.macros-card-v2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100px;
+    right: -40px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Нижняя линия */
+.macros-card-v2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100px;
+    right: -40px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.macro-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.macro-item span {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #D6FF00;
+}
+
+.macro-item small {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 2px;
+}
+
+/* Інгредієнти */
+.ingredient-list-wrapper {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ingredient-item-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ingredient-amount {
+    font-weight: 700;
+    color: #D6FF00;
+}
+
+/* Відео */
+.video-placeholder-v2 {
+    width: 100%;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.play-icon {
+    font-size: 3rem;
+    color: #D6FF00;
+    opacity: 0.8;
+}
+
+/* Кнопка */
+.save-recipe-button {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #D6FF00;
+    color: #004aad;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 15px;
+}
+
+.save-recipe-button:hover {
+    background-color: #e6ff33;
+}
+
+/* СКРОЛ */
+.scroll-data::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-data::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.scroll-data::-webkit-scrollbar-thumb {
+    background: #0661CC;
+    border-radius: 10px;
+}
+
+.scroll-data::-webkit-scrollbar-thumb:hover {
+    background: #004aad;
+}

@@ -1,0 +1,123 @@
+.recipes-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.recipe-card {
+    height: 300px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.recipe-time-tag {
+    position: absolute;
+    top: 20px;
+    left: -15px;
+    background-color: #0661CC;
+    color: white;
+    padding: 8px 15px 8px 30px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    z-index: 20;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.heart-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #0661CC;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* 3. ОБЛАСТЬ ИЗОБРАЖЕНИЯ */
+.recipe-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.recipe-image-placeholder {
+    width: 100%;
+    height: 75%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    filter: blur(3px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 4. ИНФОРМАЦИЯ О РЕЦЕПТЕ */
+.recipe-info {
+    position: relative;
+    z-index: 15;
+    width: 100%;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.recipe-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0661CC;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.recipe-macros {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #0661CC;
+    opacity: 0.8;
+    text-align: left;
+}
+
+/* Карточка "Додати свій рецепт" */
+.recipe-card.add-recipe-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    background: none;
+}
+
+.add-icon {
+    font-size: 10rem;
+    font-weight: 200;
+    color: #A0C4FF;
+}
+
+.add-recipe-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #A0C4FF;
+    text-align: center;
+}

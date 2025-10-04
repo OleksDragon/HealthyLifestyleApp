@@ -129,6 +129,7 @@
 .day-of-week {
     font-size: 12px;
     font-weight: 600;
+    color: white !important;
 }
 
 .month-day {

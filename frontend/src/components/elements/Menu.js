@@ -11,6 +11,7 @@ import exitIcon from "../icons/Exit.png";
 import searchIcon from "../icons/GlassScale.png";
 import settingsIcon from "../icons/Settings.png";
 import stringsIcon from "../icons/Strings.png";
+import calendarIcon from "../icons/GeneralCalendar.png";
 import "../styles/menu.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -113,6 +114,10 @@ return (
             alt="premium"
           />
           <span className="menu-opt-text">{t("premium")}</span>
+        </div>
+        <div className="menu-option" onClick={() => navegate('/calendar')}>
+            <img style={{ opacity: window.location.pathname.startsWith("/calendar") ? 1 : 0 }} src={calendarIcon} alt="calendar"/>
+            <span className="menu-opt-text">{t("calendar")}</span>
         </div>
       </div>
       <div

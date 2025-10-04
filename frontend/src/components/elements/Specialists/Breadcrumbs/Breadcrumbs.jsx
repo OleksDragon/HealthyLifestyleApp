@@ -1,23 +1,43 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import "./Breadcrumbs.css";
 
 function Breadcrumbs() {
   const { t } = useTranslation();
   const location = useLocation();
+  const { id } = useParams(); // Get the id from the URL
+  const [specialistName, setSpecialistName] = useState(null);
 
-  // Пропускаємо "dashboard" у шляху
+  // Fetch specialist name when id is present
+  useEffect(() => {
+    if (id) {
+      // Replace with your actual API call
+      fetch(`${process.env.REACT_APP_API_URL}/api/ProfessionalQualification/${id}`)
+        .then((response) => response.json())
+        .then((data) => setSpecialistName(data.User.FullName))
+        .catch((error) => console.error("Error fetching specialist:", error));
+    }
+  }, [id]);
+
+  // Split the pathname and filter out empty strings and "dashboard"
   const pathnames = location.pathname
     .split("/")
     .filter((x) => x && x !== "dashboard");
 
   return (
     <div className="breadcrumbs">
-      <Link to="/dashboard" className={location.pathname === "/dashboard" ? "active" : ""}>
+      <Link
+        to="/dashboard"
+        className={location.pathname === "/dashboard" ? "active" : ""}
+      >
         {t("dashboard")}
       </Link>
       {pathnames.map((name, index) => {
-        const routeTo = "/" + pathnames.slice(0, index + 1).join("/");
+        // Use specialistName for the "id" segment
+        const displayName =
+          name === id && specialistName ? specialistName : t(name);
+        const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
         const isLast = index === pathnames.length - 1;
 
         return (
@@ -31,11 +51,8 @@ function Breadcrumbs() {
             >
               <path d="M1 1L4 4L1 7" stroke="white" />
             </svg>
-            <Link
-              to={routeTo}
-              className={isLast ? "active" : ""}
-            >
-              {t(name)}
+            <Link to={routeTo} className={isLast ? "active" : ""}>
+              {displayName}
             </Link>
           </span>
         );

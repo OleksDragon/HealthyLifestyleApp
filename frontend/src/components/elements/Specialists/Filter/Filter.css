@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+.f-custom-select {
+  position: relative;
+  min-width: 240px !important;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 12px;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.50) !important;
+  border: 0px solid transparent !important;
+}
+
+.f-custom-select.expanded {
+  border-radius: 27px;
+  z-index: 1001;
+  transition: all 0.1s ease;
+  background: rgba(255, 255, 255, 0.50) !important;
+  border: 0px solid transparent;
+}
+.f-custom-select.expanded .select-input {
+  color: #fff;
+}
+
+.f-custom-select.expanded .select-input::placeholder {
+  color: #fff;
+}
+
+/* ВИЩИЙ ПРІОРІТЕТ - для розгорнутого селекта з значенням */
+.f-custom-select.expanded.has-value {
+  background: rgba(255, 255, 255, 0.60) !important;
+}
+
+.f-custom-select.has-value {
+  background: rgba(255, 255, 255, 0.50) !important;
+}
+
+.f-select-header {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 0;
+  height: 45px;
+  cursor: pointer;
+  position: relative;
+  background: transparent !important;
+  
+}
+
+.f-select-input {
+  flex: 1;
+  background: transparent !important;
+  border: none;
+  outline: none;
+  color: #FFF;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  padding: 0;
+  padding-left: -2px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.f-select-input::placeholder {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.f-select-arrow {
+  color: #116FCF;
+  font-size: 17px;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.f-arrow-v-blue {
+  transform: rotate(180deg);
+}
+
+.f-custom-select.expanded .select-arrow {
+  transform: rotate(180deg);
+}
+
+.f-select-options-container {
+  position: absolute;
+  top: 140%;
+  left: -1.5px;
+  right: -1.4px;
+  border-radius: 25px;
+  overflow: hidden;
+  transform-origin: top center;
+  transition: all 0.9s ease;
+  -webkit-backdrop-filter: blur(15px) brightness(100%); /* 5px * 0.7142857 */
+  backdrop-filter: blur(15px) brightness(100%);
+  background-color: #ffffff36;
+}
+
+.f-select-options {
+  font-weight: 400; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px 0;
+  position: relative;
+  top: -5px;
+  right: 34px;
+}
+
+.f-select-option {
+  margin-top: 15px;
+  margin-left: 74px;
+  padding: 8px 16px; /* щоб був простір всередині */
+  color: #116FCF;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+  background: #D6FF00 !important;
+
+  display: flex;
+  align-items: center;   /* вертикальне вирівнювання */
+  justify-content: flex-start; /* текст зліва */
+  padding-left: 20px;    /* відступ вправо для тексту */
+}
+/* .select-option:hover {
+  background: rgba(93, 113, 226, 0.1);
+} */
+
+/* Стилі для прокрутки */
+.f-select-options::-webkit-scrollbar {
+  width: 12px;
+}
+
+.f-select-options::-webkit-scrollbar-track {
+  background: #0661CC;
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+.f-select-options::-webkit-scrollbar-thumb {
+  background: #FFF;
+  border-radius: 10px;
+}
+
+.f-select-options::-webkit-scrollbar-thumb:hover {
+  background: #f8f6f6;
+}
+
+/* Анімація */
+.f-select-options-container {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Базові стилі бордера */
+.f-custom-select {
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.f-custom-select.expanded {
+  border-bottom: none;
+}
+
+.f-select-options-container {
+  border-top: none;
+  margin-top: -2px;
+}
+
+.f-select-option {
+  width: 170 !important;
+  height: 32px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  margin-left: 74px;
+  padding: 0px 0px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+  background: transparent!important;
+}
+.f-select-option:active, 
+.f-select-option:hover {
+   width: 170 !important;
+  height: 32px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  margin-left: 74px;
+  padding: 8px 16px;
+  color: #116FCF;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+  background: #D6FF00 !important;
+}
+
+.clear_opption {
+  margin-left: 35px;
+  display: flex;
+  align-items: center;   /* вертикальне вирівнювання */
+  justify-content: center; /* текст зліва */
+}
+
+.f-select-option-heder {
+  
+  width: 170 !important;
+  height: 32px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  margin-left: 104px;
+  padding: 0px 0px;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+  background: transparent!important;
+}
+
+.icon {
+  position: relative;
+  top: 1.5px;
+}

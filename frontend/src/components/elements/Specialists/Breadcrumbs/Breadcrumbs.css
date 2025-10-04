@@ -12,7 +12,8 @@
   font-family: var(--font-family);
   gap: 4px;
   position: relative;
-  z-index: 9999;
+  z-index: 800;
+
 }
 
 .breadcrumbs a {

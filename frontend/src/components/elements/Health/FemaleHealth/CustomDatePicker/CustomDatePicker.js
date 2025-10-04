@@ -281,5 +281,5 @@ const CustomStyleDatePickerWrapper = styled.div`
   );
 };
 
-
 export default CustomBirthdateDatePicker;
+

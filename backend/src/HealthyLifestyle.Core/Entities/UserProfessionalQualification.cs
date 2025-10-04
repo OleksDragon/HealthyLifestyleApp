@@ -1,5 +1,7 @@
 ﻿using HealthyLifestyle.Core.Enums;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HealthyLifestyle.Core.Entities
 {
@@ -25,6 +27,11 @@ namespace HealthyLifestyle.Core.Entities
         /// Опис кваліфікації (наприклад, досвід, спеціалізації).
         /// </summary>
         public string Description { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Формати роботи спеціаліста (наприклад, онлайн, офлайн, корекції плану тощо).
+        /// </summary>
+        public List<string> WorkFormat { get; private set; } = new List<string>();
 
         /// <summary>
         /// URL-адреса сертифікатів (опціонально).
@@ -140,6 +147,16 @@ namespace HealthyLifestyle.Core.Entities
         #endregion
 
         #region Методи оновлення
+
+        /// <summary>
+        /// Встановлює формати роботи спеціаліста.
+        /// </summary>
+        /// <param name="formats">Колекція форматів роботи.</param>
+        public void SetWorkFormat(IEnumerable<string>? formats)
+        {
+            WorkFormat = formats?.ToList() ?? new List<string>();
+            SetUpdatedAt();
+        }
 
         /// <summary>
         /// Оновлює статус кваліфікації та дату схвалення, якщо статус схвалено.

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthyLifestyle.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,16 @@ namespace HealthyLifestyle.Core.Entities
         /// Посилання на відеоконференцію (наприклад, Zoom, Google Meet).
         /// </summary>
         public string? MeetingLink { get; set; } = string.Empty;
+
+        /// <summary>
+        /// За скільки хвилин до події надсилати повідомлення
+        /// </summary>
+        public int? NotificationBefore { get; set; }
+
+        /// <summary>
+        /// Тип задачі, що треба виконати
+        /// </summary>
+        public TaskType? TaskToDo { get; set; }
 
         #region Навігаційні властивості
 

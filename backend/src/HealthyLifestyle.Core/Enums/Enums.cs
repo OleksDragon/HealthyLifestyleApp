@@ -152,7 +152,6 @@ namespace HealthyLifestyle.Core.Enums
         Other
     }
 
-    // Тип досягнення.
     public enum AchievementType
     {
         Training,       // Звичайне тренування
@@ -191,5 +190,12 @@ namespace HealthyLifestyle.Core.Enums
         progress,       // (іконка колесу прогресу) В процесі (підготовка товару до доставки, якась обробка тощо)
         truck,          // (іконка вантажівки)      Доставка товару (товар вже їде)
         drop            // (іконка краплі)          Втрата ваги
+    }
+
+    public enum TaskType
+    {
+        Workout,
+        Eating,
+        Doctor
     }
 }

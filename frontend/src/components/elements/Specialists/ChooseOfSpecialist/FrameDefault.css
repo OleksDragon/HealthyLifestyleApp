@@ -1,0 +1,23 @@
+.frame-default {
+  display: flex;
+  left: 33290px;
+  position: relative;
+  top: 46953px;
+  width: 1012px;
+}
+
+.frame-default .text-wrapper {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 70px;
+  font-weight: 700;
+  height: 82px;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+  width: 1012px;
+}

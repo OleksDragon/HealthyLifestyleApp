@@ -132,10 +132,12 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ForMember(dest => dest.HourlyRate, opt => opt.MapFrom(src => src.HourlyRate ?? 0m))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.WorkFormat, opt => opt.MapFrom(src => src.WorkFormat ?? new List<string>()));
 
             CreateMap<UserProfessionalQualification, UserProfessionalQualificationDto>()
-                .ForMember(dest => dest.QualificationStatus, opt => opt.MapFrom(src => src.Status.ToString()));
+                .ForMember(dest => dest.QualificationStatus, opt => opt.MapFrom(src => src.Status.ToString()))
+                .ForMember(dest => dest.WorkFormat, opt => opt.MapFrom(src => src.WorkFormat));
         }
 
         /// <summary>
@@ -761,14 +763,18 @@ namespace HealthyLifestyle.Application.Mappings
                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                .ForMember(dest => dest.MeetingParticipants, opt => opt.MapFrom(src => src.MettingParticipants == null ? new List<User>() : src.MettingParticipants.Select(id => new User { Id = id })))
-               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value} : null));
+               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value} : null))
+               .ForMember(dest => dest.TaskToDo, opt => opt.Condition(e => e.TaskToDo.HasValue))
+               .ForMember(dest => dest.NotificationBefore, opt => opt.Condition(e => e.NotificationBefore.HasValue));
 
             CreateMap<CalendarEventUpdateDto, CalendarEvent>()
                .ForMember(dest => dest.Id, opt => opt.Ignore())
                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                .ForMember(dest => dest.MeetingParticipants, opt => opt.MapFrom(src => src.MettingParticipants.Select(id => new User { Id = id })))
-               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value } : null));
+               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value } : null))
+               .ForMember(dest => dest.TaskToDo, opt => opt.Condition(e => e.TaskToDo.HasValue))
+               .ForMember(dest => dest.NotificationBefore, opt => opt.Condition(e => e.NotificationBefore.HasValue)); ;
         }
 
         /// <summary>

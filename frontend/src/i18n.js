@@ -185,6 +185,69 @@ i18n
           p_spain_country: "Spain",
           p_usa_country: "USA",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1st day of last cycle",
+
+          // --- Translations for Specialists
+          filter_speciality: "Specialization",
+          filter_mode: "Online/Offline",
+          filter_experience: "Experience",
+          filter_price: "Price",
+
+          spec_psychologist: "Psychologist",
+          spec_doctor: "Doctor",
+          spec_trainer: "Trainer",
+          spec_dietitian: "Dietitian",
+
+          mode_online: "Online only",
+          mode_offline: "Offline only",
+          mode_hybrid: "Online / Offline",
+          select_city: "Locations",
+
+          experience_1: "Up to 1 year",
+          experience_3: "From 3 years",
+          experience_5: "From 5 years",
+          experience_10: "From 10 years",
+
+          price_50: "up to 50 $/hour",
+          price_75: "from 50 to 75 $/hour",
+          price_100: "from 75 to 100 $/hour",
+          price_150: "from 100 to 150 $/hour",
+          hourly_rate_title: "$/hour",
+
+          clear_option: "Clear",
+          clear_filter: "Clear filter",
+          unknown_specialist: "Unknown specialist",
+          top_5: "TOP - 5",
+          subscribe: "Subscribe",
+          no_specialists_found: "No specialists found",
+          recomend: "Recommended!",
+          join_team: "Join our team!",
+          become_specialist: "Become a specialist",
+
+          // Additional translations
+          tariffs: "Tariffs",
+          reviews: "Reviews",
+          choose: "Choose",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 days",
+          plan_start_30_price: "13 USD",
+          plan_result_30_price: "40 USD",
+          plan_vip_30_price: "107 USD",
+          plan_feature_1: "Individual training plan (2-3 days/week)",
+          plan_feature_2: "Nutrition suggestions",
+          plan_feature_3: "1 online consultation per week",
+          plan_feature_4: "Training plan + detailed diet",
+          plan_feature_5: "Weekly corrections + video analysis of technique",
+          plan_feature_6: "Support in messenger 5/7",
+          plan_feature_7: "Full online management",
+          plan_feature_8: "12 trainings per month",
+          plan_feature_9: "Nutrition analysis and individual recommendations",
+          plan_feature_10: "Full support in messenger",
           // --- Links mapping translations ---
           diary: "Emotion Diary",
           article_1: "10 simple stress relief techniques",
@@ -412,7 +475,9 @@ i18n
           pain_is_ok: "Menstrual pain is always normal",
           pain_is_ok_desc:
             "Mild discomfort is typical, but severe or debilitating pain may indicate endometriosis or other conditions and should be checked by a doctor.",
-
+          calendar: "Calendar",
+          calendar_info: "Your best calendar",
+          create_event: "Create",
           // --- Mental Health translations ---
           your: "Your Health",
           breathing: "Breathing Practices",
@@ -906,6 +971,22 @@ i18n
           mp_diagram_low: "Low",
           mp_diagram_norm: "Normal",
           mp_diagram_high: "High",
+
+          before_5: "In 5 minutes",
+          before_10: "In 10 minutes",
+          sign_for_doctor: "Doctor appointment",
+          sure_to_delete_event: "Are you sure you want to delete the event?",
+          notification: "Reminder",
+          task: "Task",
+          meeting: "Meeting",
+          choose_date: "Choose a date",
+          choose_time: "Choose a time",
+          choose_end_time: "Choose end time",
+          my_tasks: "My tasks",
+          invite_friend: "Invite a friend",
+          link: "Link",
+          add_title: "Add a title",
+
         },
       },
       uk: {
@@ -1025,8 +1106,8 @@ i18n
           welcome: "Привіт",
           health_one_place: "Твоє здоров'я в одному місці!",
           mental: "Ментальне здоров'я",
-
           // === ВІДЖЕТИ ДАШБОРДУ ===
+
           kkal: "Калорії",
           current_week: "Поточний тиждень",
           water: "Вода",
@@ -1170,6 +1251,76 @@ i18n
           male: "Чоловік",
           female: "Жінка",
           gender: "Здоров'я за статтю",
+
+          // --- Переклади для календара місячних для 1-й день останнього циклу
+          last_cycle_first_day: "1-й день останнього циклу",
+
+          // --- Переклади для Спеціалістів
+          filter_speciality: "Спеціалізація",
+          filter_mode: "Онлайн/офлайн",
+          filter_experience: "Досвід",
+          filter_price: "Ціна",
+
+          spec_psychologist: "Психолог",
+          spec_doctor: "Лікар",
+          spec_trainer: "Тренер",
+          spec_dietitian: "Дієтолог",
+
+          mode_online: "Тільки онлайн",
+          mode_offline: "Тільки офлайн",
+          mode_hybrid: "Онлайн / офлайн",
+          select_city: "Локації",
+
+          experience_1: "До 1 року",
+          experience_3: "Від 3 років",
+          experience_5: "Від 5 років",
+          experience_10: "Від 10 років",
+
+          // price_100: "від 100 грн/год",
+          // price_200: "від 200 грн/год",
+          // price_500: "від 500 грн/год",
+          // price_1000: "від 1000 грн/год",
+
+          price_50: "до 50 $/год",
+          price_75: "від 50 до 75 $/год",
+          price_100: "від 75 до 100 $/год",
+          price_150: "від 100 до 150 $/год",
+          hourly_rate_title: "$/год",
+
+          clear_option: "Очистити",
+          clear_filter:"Очистити філтр",
+          unknown_specialist: "Невідомий спеціаліст",
+          top_5: "ТОП - 5",
+          subscribe: "Підписатись",
+          no_specialists_found: "Спеціалістів не знайдено",
+          recomend: "Рекомендуємо!",
+          join_team: "Приєднуйся до нас в команду!",
+          become_specialist: "Стати фахівцем",
+
+          // Additional translations
+          tariffs: "Тарифи",
+          reviews: "Відгуки",
+          choose: "Обрати",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 днів",
+          plan_start_30_price: "500 грн",
+          plan_result_30_price: "1500 грн",
+          plan_vip_30_price: "4000 грн",
+          plan_feature_1: "Індивідуальний план тренувань (2–3 дні/тиждень)",
+          plan_feature_2: "Пропозиції щодо харчування",
+          plan_feature_3: "1 онлайн-консультація на тиждень",
+          plan_feature_4: "План тренувань + детальний раціон",
+          plan_feature_5: "Щотижневі корекції + відеоаналіз техніки",
+          plan_feature_6: "Підтримка в месенджері 5/7",
+          plan_feature_7: "Повне онлайн ведення",
+          plan_feature_8: "12 тренувань на місяць",
+          plan_feature_9: "Розбір харчування та індивідуальні рекомендації",
+          plan_feature_10: "Повна підтримка в месенджері",
+
           female_health: "Жіноче здоров'я",
           female_health_fine:
             "Жіноче здоров'я без табу - чесно, просто і з турботою про тебе.",
@@ -1830,6 +1981,24 @@ i18n
           mp_diagram_low: "Низький",
           mp_diagram_norm: "Норма",
           mp_diagram_high: "Високий",
+          calendar: "Календар",
+          calendar_info: "Твій найкращій календар",
+          create_event: "Створити",
+
+          before_5: "За 5 хвилин",
+          before_10: "За 10 хвилин",
+          sign_for_doctor: "Запис до лікаря",
+          sure_to_delete_event: "Ви впевнені, що хочете видалити подію?",
+          notification: "Нагадування",
+          task: "Завдання",
+          meeting: "Зустріч",
+          choose_date: "Оберіть дату",
+          choose_time: "Оберіть час",
+          choose_end_time: "Оберіть час закінчення",
+          my_tasks: "Мої завдання",
+          invite_friend: "Запросити друга",
+          link: "Посилання",
+          add_title: "Додай назву",
         },
       },
       de: {
@@ -1953,6 +2122,7 @@ i18n
           mental: "Psychische Gesundheit",
 
           // === DASHBOARD-WIDGETS ===
+
           kkal: "Kalorien",
           current_week: "Aktuelle Woche",
           water: "Wasser",
@@ -2018,7 +2188,69 @@ i18n
           p_france_country: "Frankreich",
           p_spain_country: "Spanien",
           p_usa_country: "USA",
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1. Tag des letzten Zyklus",
 
+          // --- Übersetzungen für Spezialisten
+          filter_speciality: "Spezialisierung",
+          filter_mode: "Online/Offline",
+          filter_experience: "Erfahrung",
+          filter_price: "Preis",
+
+          spec_psychologist: "Psychologe",
+          spec_doctor: "Arzt",
+          spec_trainer: "Trainer",
+          spec_dietitian: "Ernährungsberater",
+
+          mode_online: "Nur online",
+          mode_offline: "Nur offline",
+          mode_hybrid: "Online / Offline",
+          select_city: "Standorte",
+
+          experience_1: "Bis 1 Jahr",
+          experience_3: "Ab 3 Jahren",
+          experience_5: "Ab 5 Jahren",
+          experience_10: "Ab 10 Jahren",
+
+          price_50: "bis 50 $/Stunde",
+          price_75: "von 50 bis 75 $/Stunde",
+          price_100: "von 75 bis 100 $/Stunde",
+          price_150: "von 100 bis 150 $/Stunde",
+          hourly_rate_title: "$/Stunde",
+
+          clear_option: "Löschen",
+          clear_filter: "Filter löschen",
+          unknown_specialist: "Unbekannter Spezialist",
+          top_5: "TOP - 5",
+          subscribe: "Abonnieren",
+          no_specialists_found: "Keine Spezialisten gefunden",
+          recomend: "Empfohlen!",
+          join_team: "Tritt unserem Team bei!",
+          become_specialist: "Spezialist werden",
+
+          // Additional translations
+          tariffs: "Tarife",
+          reviews: "Bewertungen",
+          choose: "Wählen",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 Tage",
+          plan_start_30_price: "12 EUR",
+          plan_result_30_price: "38 EUR",
+          plan_vip_30_price: "102 EUR",
+          plan_feature_1: "Individueller Trainingsplan (2-3 Tage/Woche)",
+          plan_feature_2: "Ernährungsvorschläge",
+          plan_feature_3: "1 Online-Beratung pro Woche",
+          plan_feature_4: "Trainingsplan + detaillierte Diät",
+          plan_feature_5: "Wöchentliche Korrekturen + Videoanalyse der Technik",
+          plan_feature_6: "Support im Messenger 5/7",
+          plan_feature_7: "Vollständige Online-Betreuung",
+          plan_feature_8: "12 Trainings pro Monat",
+          plan_feature_9: "Ernährungsanalyse und individuelle Empfehlungen",
+          plan_feature_10: "Vollständige Unterstützung im Messenger",
           // === LINKS ===
           diary: "Emotionstagebuch",
           article_1: "10 einfache Techniken zum Stressabbau",
@@ -2778,7 +3010,25 @@ i18n
             "Fehler beim Laden der Daten. Bitte wende dich an den technischen Support.",
           mp_diagram_low: "Niedrig",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Hoch",
+          mp_diagram_high: "Hoch",          calendar: "Kalender",
+          calendar_info: "Ihr bester Kalender",
+          create_event: "Erstellen",
+
+          before_5: "In 5 Minuten",
+          before_10: "In 10 Minuten",
+          sign_for_doctor: "Arzttermin",
+          sure_to_delete_event: "Sind Sie sicher, dass Sie das Ereignis löschen möchten?",
+          notification: "Erinnerung",
+          task: "Aufgabe",
+          meeting: "Besprechung",
+          choose_date: "Datum auswählen",
+          choose_time: "Uhrzeit auswählen",
+          choose_end_time: "Endzeit auswählen",
+          my_tasks: "Meine Aufgaben",
+          invite_friend: "Freund einladen",
+          link: "Link",
+          add_title: "Titel hinzufügen",
+
         },
       },
       fr: {
@@ -2902,6 +3152,7 @@ i18n
           mental: "Santé mentale",
 
           // === WIDGETS DU TABLEAU DE BORD ===
+
           kkal: "Calories",
           current_week: "Semaine en cours",
           water: "Eau",
@@ -2969,6 +3220,69 @@ i18n
           p_spain_country: "Espagne",
           p_usa_country: "États-Unis",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1er jour du dernier cycle",
+
+          // --- Traductions pour Spécialistes
+          filter_speciality: "Spécialisation",
+          filter_mode: "En ligne/Hors ligne",
+          filter_experience: "Expérience",
+          filter_price: "Prix",
+
+          spec_psychologist: "Psychologue",
+          spec_doctor: "Médecin",
+          spec_trainer: "Entraîneur",
+          spec_dietitian: "Diététicien",
+
+          mode_online: "En ligne uniquement",
+          mode_offline: "Hors ligne uniquement",
+          mode_hybrid: "En ligne / Hors ligne",
+          select_city: "Lieux",
+
+          experience_1: "Jusqu'à 1 an",
+          experience_3: "À partir de 3 ans",
+          experience_5: "À partir de 5 ans",
+          experience_10: "À partir de 10 ans",
+
+          price_50: "jusqu'à 50 $/h",
+          price_75: "de 50 à 75 $/h",
+          price_100: "de 75 à 100 $/h",
+          price_150: "de 100 à 150 $/h",
+          hourly_rate_title: "$/h",
+
+          clear_option: "Effacer",
+          clear_filter: "Effacer le filtre",
+          unknown_specialist: "Spécialiste inconnu",
+          top_5: "TOP - 5",
+          subscribe: "S'abonner",
+          no_specialists_found: "Aucun spécialiste trouvé",
+          recomend: "Recommandé !",
+          join_team: "Rejoignez notre équipe !",
+          become_specialist: "Devenir spécialiste",
+
+          // Additional translations
+          tariffs: "Tarifs",
+          reviews: "Avis",
+          choose: "Choisir",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 jours",
+          plan_start_30_price: "12 EUR",
+          plan_result_30_price: "38 EUR",
+          plan_vip_30_price: "102 EUR",
+          plan_feature_1: "Plan d'entraînement individuel (2-3 jours/semaine)",
+          plan_feature_2: "Suggestions nutritionnelles",
+          plan_feature_3: "1 consultation en ligne par semaine",
+          plan_feature_4: "Plan d'entraînement + régime détaillé",
+          plan_feature_5: "Corrections hebdomadaires + analyse vidéo de la technique",
+          plan_feature_6: "Support en messagerie 5/7",
+          plan_feature_7: "Gestion complète en ligne",
+          plan_feature_8: "12 entraînements par mois",
+          plan_feature_9: "Analyse nutritionnelle et recommandations individuelles",
+          plan_feature_10: "Support complet en messagerie",
           // === LIENS ===
           diary: "Journal des émotions",
           article_1: "10 techniques simples pour réduire le stress quotidien",
@@ -3730,7 +4044,25 @@ i18n
             "Erreur lors du chargement des données. Contacte le support technique.",
           mp_diagram_low: "Faible",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Élevé",
+          mp_diagram_high: "Élevé",          calendar: "Calendrier",
+          calendar_info: "Votre meilleur calendrier",
+          create_event: "Créer",
+
+          before_5: "Dans 5 minutes",
+          before_10: "Dans 10 minutes",
+          sign_for_doctor: "Rendez-vous chez le médecin",
+          sure_to_delete_event: "Êtes-vous sûr de vouloir supprimer l’événement ?",
+          notification: "Rappel",
+          task: "Tâche",
+          meeting: "Réunion",
+          choose_date: "Choisir une date",
+          choose_time: "Choisir l’heure",
+          choose_end_time: "Choisir l’heure de fin",
+          my_tasks: "Mes tâches",
+          invite_friend: "Inviter un ami",
+          link: "Lien",
+          add_title: "Ajouter un titre",
+
         },
       },
       es: {
@@ -3745,7 +4077,7 @@ i18n
           balance_action: "Equilibrio en acción",
           less_chaos: "MENOS CAOS –",
           more_energy: "MÁS ENERGÍA.",
-          healthy_lifestyle: "TU ESTILO DE VIDA SALUDABLE EN UN SOLO LUGAR.",
+          healthy_lifestyle: "TU ESTILO DE VIE SALUDABLE EN UN SOLO LUGAR.",
           register: "Registrarse",
           description_part1:
             " es una plataforma que te ayuda a cuidarte fácilmente y con una sonrisa.",
@@ -3794,6 +4126,7 @@ i18n
             "Deja una solicitud en nuestro sitio y nos contactaremos contigo.",
 
           // === PIE DE PÁGINA ===
+
           specialists: "Especialistas",
           privacy_policy: "Política de privacidad",
           support_service: "Servicio de soporte",
@@ -3849,10 +4182,12 @@ i18n
           exit: "Cerrar sesión",
           search_placeholder: "Buscar",
           welcome: "Hola",
+
           health_one_place: "¡Tu salud en un solo lugar!",
           mental: "Salud mental",
 
           // === WIDGETS DEL TABLERO ===
+
           kkal: "Calorías",
           current_week: "Semana actual",
           water: "Agua",
@@ -3919,6 +4254,70 @@ i18n
           p_spain_country: "España",
           p_usa_country: "EE.UU.",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1er día del último ciclo",
+
+          // --- Traducciones para Especialistas
+          filter_speciality: "Especialización",
+          filter_mode: "En línea/Presencial",
+          filter_experience: "Experiencia",
+          filter_price: "Precio",
+
+          spec_psychologist: "Psicólogo",
+          spec_doctor: "Médico",
+          spec_trainer: "Entrenador",
+          spec_dietitian: "Nutricionista",
+
+          mode_online: "Solo en línea",
+          mode_offline: "Solo presencial",
+          mode_hybrid: "En línea / Presencial",
+          select_city: "Ubicaciones",
+
+          experience_1: "Hasta 1 año",
+          experience_3: "Desde 3 años",
+          experience_5: "Desde 5 años",
+          experience_10: "Desde 10 años",
+
+          price_50: "hasta 50 $/hora",
+          price_75: "de 50 a 75 $/hora",
+          price_100: "de 75 a 100 $/hora",
+          price_150: "de 100 a 150 $/hora",
+          hourly_rate_title: "$/hora",
+
+          clear_option: "Borrar",
+          clear_filter: "Borrar filtro",
+          unknown_specialist: "Especialista desconocido",
+          top_5: "TOP - 5",
+          subscribe: "Suscribirse",
+          no_specialists_found: "No se encontraron especialistas",
+          recomend: "¡Recomendado!",
+          join_team: "¡Únete a nuestro equipo!",
+          become_specialist: "Hazte especialista",
+
+          // Additional translations
+          tariffs: "Tarifas",
+          reviews: "Reseñas",
+          choose: "Elegir",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 días",
+          plan_start_30_price: "12 EUR",
+          plan_result_30_price: "38 EUR",
+          plan_vip_30_price: "102 EUR",
+          plan_feature_1: "Plan de entrenamiento individual (2-3 días/semana)",
+          plan_feature_2: "Sugerencias nutricionales",
+          plan_feature_3: "1 consulta en línea por semana",
+          plan_feature_4: "Plan de entrenamiento + dieta detallada",
+          plan_feature_5: "Correcciones semanales + análisis de video de la técnica",
+          plan_feature_6: "Soporte en mensajería 5/7",
+          plan_feature_7: "Gestión completa en línea",
+          plan_feature_8: "12 entrenamientos por mes",
+          plan_feature_9: "Análisis nutricional y recomendaciones individuales",
+          plan_feature_10: "Soporte completo en mensajería",
+          
           // === ENLACES ===
           diary: "Diario de emociones",
           article_1: "10 técnicas simples para reducir el estrés diario",
@@ -4673,7 +5072,24 @@ i18n
             "Error al cargar los datos. Contacta al soporte técnico.",
           mp_diagram_low: "Bajo",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Alto",
+          mp_diagram_high: "Alto",          calendar: "Calendario",
+          calendar_info: "Tu mejor calendario",
+          create_event: "Crear",
+          
+          before_5: "En 5 minutos",
+          before_10: "En 10 minutos",
+          sign_for_doctor: "Cita con el médico",
+          sure_to_delete_event: "¿Está seguro de que desea eliminar el evento?",
+          notification: "Recordatorio",
+          task: "Tarea",
+          meeting: "Reunión",
+          choose_date: "Elegir fecha",
+          choose_time: "Elegir hora",
+          choose_end_time: "Elegir hora de finalización",
+          my_tasks: "Mis tareas",
+          invite_friend: "Invitar a un amigo",
+          link: "Enlace",
+          add_title: "Agregar título",
         },
       },
     },

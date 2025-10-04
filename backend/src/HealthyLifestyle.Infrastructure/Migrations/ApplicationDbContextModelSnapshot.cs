@@ -110,8 +110,14 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<string>("MeetingLink")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("NotificationBefore")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("TaskToDo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -1355,6 +1361,10 @@ namespace HealthyLifestyle.Infrastructure.Migrations
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("WorkFormat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

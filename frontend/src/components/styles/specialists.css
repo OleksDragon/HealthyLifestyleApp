@@ -6,19 +6,44 @@
   padding-left: 75px;
 
 }
+.content-container {
+  
+    position: relative;
+    overflow-y: auto;
+    height: calc(100vh - 250px); /* відняти висоту шапки, якщо є */
+    width: 97%;
+    overflow-x: hidden;
 
-.grid-12 {
+}
+.specialists-list {
   display: grid;
   gap: 30px;
-  width: 100%;
+  width: 95%;
+  padding: 20px 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center; /* центрування карток, якщо менше 3 */
   justify-items: center; /* ← центрує по горизонталі */
   align-items: center;   /* ← центрує по вертикалі */
+  
 }
-
+.filter-container {
+  width: 90%;
+  display: flex;
+  align-items:flex-start;       /* центрує по вертикалі */
+  justify-content: space-around;  /* центрує по горизонталі */
+  flex-wrap: wrap;
+  gap: 5px;    
+  margin-left: 40px;
+}
+.location-btn {
+  min-width: 64px !important;
+  height: 45px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.50) !important;
+}
 /* картка */
-.glass-card-for-sepc {
+.glass-card-for-spec {
   border: 1px solid #fff;
   border-radius: 40px;
   width: 300px; /* фіксована ширина картки */
@@ -34,9 +59,183 @@
   transition: transform 0.3s ease;
 }
 
-.glass-card-for-sepc:hover {
+.glass-card-for-spec:hover {
   transform: scale(1.05);
   background: rgba(214, 255, 0, 0.5);
 }
 
- 
+/* Existing :root and breadcrumbs styles */
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --white: #ffffff;
+  --variable-collection-lim: #your-color-here; /* Replace with actual color value if known */
+}
+
+/* Ensure breadcrumbs is a flex container */
+.breadcrumbs {
+  margin: 0 50px 20px 50px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: var(--font-family);
+  gap: 4px;
+  position: relative;
+  z-index: 850;
+  font-size: 10px !important;
+  justify-content: flex-start; /* Align items from the start */
+}
+
+/* Style for the container of clear-filter to push it to the right */
+.clear-filter-container {
+  margin-left: auto; /* Pushes the clear filter to the right side */
+}
+
+/* New style for Clear Filter to match .text-wrapper-3 */
+.breadcrumbs a.clear-filter {
+  align-items: center;
+  white-space: nowrap;
+  padding: 0 10px; /* Optional padding for better appearance */
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  text-align: right;
+  color: var(--lim); /* Ensure --lim is defined in :root if not already */
+}
+
+/* Existing styles for consistency */
+.reset_align {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.breadcrumb-item {
+  padding-left: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breadcrumb-item svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--white);
+  fill: none;
+  margin: 0 5px;
+}
+
+.remove-icon {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.remove-icon:hover svg {
+  stroke: #ff0000; /* Change color on hover for feedback */
+}
+
+.scroll-data::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll-data::-webkit-scrollbar-track {
+  background: #FFF;
+  border-radius: 10px;
+  margin: 5px 0;
+  box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.scroll-data::-webkit-scrollbar-thumb {
+  background: #0661CC;
+  border-radius: 10px;
+}
+
+.scroll-data::-webkit-scrollbar-thumb:hover {   
+  background: #044a99;
+}
+
+.label {
+  height: 82px;
+  width: 1012px;
+}
+
+.label .text-wrapper {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 55px;
+  font-weight: 700;
+  height: 82px;
+  justify-content: center;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+.frame .frame-382-default {
+  left: unset !important;
+  margin-left: 174px !important;
+  margin-top: 140px !important;
+  position: unset !important;
+  top: unset !important;
+}
+
+.frame .group {
+  display: flex;
+  margin-left: 298px;
+  margin-top: 70px;
+  width: 764px;
+}
+
+.frame .component-108 {
+  left: unset !important;
+  top: unset !important;
+}
+
+.frame .component-108-instance {
+  left: 39.92% !important;
+  width: 20.29% !important;
+}.frame-default {
+ font-size: 20px;
+}
+
+.text-wrapper {
+  font-size: 50px;
+}
+
+.join-section {
+  width: 100%;
+  max-width: 1208px; /* твій контейнер */
+  margin: 0 auto;    /* центрування */
+  margin-top: 200px;
+  text-align: center;
+}
+
+.text-wrapper {
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.property-default-wrapper {
+  font-family: var(--font-family);
+  display: inline-block; /* щоб розмір підганявся під контент */
+  padding: 14px 40px;    /* відступи для кнопки */
+  background: #ffffff;   /* фон білий */
+  color: #116fcf;        /* текст */
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 40px;
+  border: 2px solid #116fcf;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1.59;
+  width: 35rem;
+}
+
+.property-default-wrapper:hover {
+  background: #D6FF00;
+}

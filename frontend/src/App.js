@@ -15,6 +15,9 @@ import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Menu from "./components/elements/Menu";
 import SpecialistsPage from "./components/pages/SpecialistsPage";
+
+import ExpertDetailsPage from "./components/pages/SpecialistPages/ExpertDetailsPage/ExpertDetailsPage";
+
 import ChallengesPage from "./components/pages/social/ChallengesPage";
 import ChallengeDetailsPage from "./components/pages/social/ChallengeDetailsPage";
 import CreateChallengePage from "./components/pages/social/CreateChallengePage";
@@ -46,6 +49,7 @@ import FemaleReproductiveHealthPage from './components/pages/HealthPages/GenderH
 import MaleHealthPage from "./components/pages/HealthPages/GenderHealthPages/MaleHealthPage";
 import MaleHormonesFormPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesFormPage";
 import MaleHormonesDiagramPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesDiagramPage";
+import CalendarPage from './components/pages/CalendarPage';
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -78,7 +82,13 @@ function AppRoutes() {
       
       {/* Основные маршруты */}
       <Route path="/dashboard" element={<PrivateRoute><Menu><DashboardPage/></Menu></PrivateRoute>} />
-      <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
+
+
+      <Route path="/specialists" element={<Menu><SpecialistsPage/></Menu>} />
+      <Route path="/specialists/:id" element={<Menu><ExpertDetailsPage/></Menu>} />
+
+      <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
+
       <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
 
       {/* Профіль спеціалістів */}
@@ -115,10 +125,14 @@ function AppRoutes() {
       <Route path="/health/gender/female/examination" element={<PrivateRoute><Menu><HealthPageMenu><FemaleExaminationPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female/reproductive" element={<PrivateRoute><Menu><HealthPageMenu><FemaleReproductiveHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
 
+      <Route path="/calendar" element={<PrivateRoute><Menu><CalendarPage /></Menu></PrivateRoute>} />
+
+
       {/* Мужское здоровье */}
       <Route path="/health/gender/male" element={<PrivateRoute><Menu><HealthPageMenu><MaleHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/male/hormonas" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesFormPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/male/hormonas_diagram" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesDiagramPage /></HealthPageMenu></Menu></PrivateRoute>} />
+
     </Routes>
   );
 }

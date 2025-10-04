@@ -10,7 +10,7 @@ function KkalWidget({className}) {
     const { t } = useTranslation();
     let today = new Date().getDay();
     const todayIdx = today != 0 ? today - 1 : 6;
-    const [weekProgress, setWeekProgress] = useState([1200, 2000, 2000, 2000, 940, 200, 200]);
+    const [weekProgress, setWeekProgress] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [kkalGoal, setKkalGoal] = useState(2000);
 
     const getWeekDates = () => {

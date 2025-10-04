@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using HealthyLifestyle.Application.DTOs.User;
+using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Enums;
 
 namespace HealthyLifestyle.Application.DTOs.ProfessionalQualification
@@ -22,14 +24,33 @@ namespace HealthyLifestyle.Application.DTOs.ProfessionalQualification
         /// </summary>
         [Required(ErrorMessage = "Ідентифікатор користувача є обов'язковим.")]
         public Guid UserId { get; set; }
-
+        public UserDto? User { get; set; }
         /// <summary>
         /// Тип професійної ролі (наприклад, тренер, дієтолог тощо).
         /// Не може бути null.
         /// </summary>
         [Required(ErrorMessage = "Тип професійної ролі є обов'язковим.")]
         public ProfessionalRoleTypeDto ProfessionalRoleType { get; set; } = null!;
+        /// <summary>
+        /// Навігаційна властивість для деталей психолога.
+        /// </summary>
+        /// [JsonIgnore]
+        public PsychologistDetailsDto? PsychologistDetails { get; set; }
 
+        /// <summary>
+        /// Навігаційна властивість для деталей дієтолога.
+        /// </summary>
+        public DietitianDetailsDto? DietitianDetails { get; set; }
+
+        /// <summary>
+        /// Навігаційна властивість для деталей тренера.
+        /// </summary>
+        public TrainerDetailsDto? TrainerDetails { get; set; }
+
+        /// <summary>
+        /// Навігаційна властивість для деталей лікаря.
+        /// </summary>
+        public DoctorDetailsDto? DoctorDetails { get; set; }
         /// <summary>
         /// Почасова ставка за послуги (може бути null, якщо не вказано).
         /// Повинна бути невід'ємною, якщо вказана.
@@ -43,6 +64,11 @@ namespace HealthyLifestyle.Application.DTOs.ProfessionalQualification
         /// </summary>
         [StringLength(1000, ErrorMessage = "Опис кваліфікації не може перевищувати 1000 символів.")]
         public string? Description { get; set; }
+
+        /// <summary>
+        /// Формати роботи спеціаліста (наприклад, онлайн, офлайн, корекції плану тощо).
+        /// </summary>
+        public List<string>? WorkFormat { get; set; }
 
         /// <summary>
         /// URL посилання на сертифікати (може бути null).

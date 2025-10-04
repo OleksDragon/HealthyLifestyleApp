@@ -1,0 +1,36 @@
+.property-default-wrapper {
+  border-radius: 100px;
+  height: 75px;
+  left: 20px;
+  position: relative;
+  width: 650px;
+}
+
+.property-default-wrapper .text-wrapper {
+  align-items: center;
+  color: var(--variable-collection-bl);
+  display: flex;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  height: 30.67%;
+  justify-content: center;
+  left: 38.09%;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 34.67%;
+  white-space: nowrap;
+  width: 23.82%;
+}
+
+.property-default-wrapper.default {
+  background-color: var(--variable-collection-white);
+  top: 20px;
+}
+
+.property-default-wrapper.variant-2 {
+  background-color: #d6ff00;
+  top: 115px;
+}

@@ -1,0 +1,174 @@
+.subscribe-section {
+  width: 100%;
+  padding: 20px;
+}
+
+.section-title {
+  width: 100%;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: left; /* вирівнювання вліво */
+  color: #fff;
+}
+
+.subscribe-container {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  justify-items: center;
+  align-items: start;
+}
+
+/* .subscribe-container {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+} */
+
+.subscribe-card {
+  background-color: transparent;
+  border-radius: 28.57px; /* 40px * 0.714 */
+  height: 350px; /* 490px * 0.714 */
+  overflow: hidden;
+  position: relative;
+  width: 300px; /* 420px * 0.714 */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.subscribe-card:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.327);
+}
+
+.subscribe-card .subscribe-bg {
+  -webkit-backdrop-filter: blur(3.57px) brightness(100%); /* 5px * 0.714 */
+  backdrop-filter: blur(3.57px) brightness(100%);
+  background-color: #ffffff66;
+  border-radius: 28.57px;
+  height: 350px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 300px;
+}
+
+.subscribe-card .subscribe-overlay {
+  -webkit-backdrop-filter: blur(16px) brightness(100%); /* 22.65px * 0.714 */
+  backdrop-filter: blur(16px) brightness(100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 100%);
+  height: 125.7px; /* 176px * 0.714 */
+  left: 0;
+  position: absolute;
+  top: 224.3px; /* 314px * 0.714 */
+  width: 300px;
+}
+
+.subscribe-card .subscribe-label {
+  background-color: var(--variable-collection-blu);
+  border-radius: 28.57px;
+  height: 37.14px; /* 52px * 0.714 */
+  left: -26.4px; /* -37px * 0.714 */
+  position: absolute;
+  top: 18.57px; /* 26px * 0.714 */
+  width: 130px; /* 158px * 0.714 */
+}
+
+.subscribe-card .subscribe-title {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-family: "Roboto-Black", Helvetica;
+  font-size: 14px; /* 20px * 0.714 */
+  font-weight: 900;
+  height: 20px;
+  justify-content: center;
+  left: 16px;
+  position: absolute;
+  top: 27px; /* 38px * 0.714 */
+  width: 80px;
+}
+
+.subscribe-card .subscribe-button-bg {
+  background-color: var(--variable-collection-lim);
+  border-radius: 28.57px;
+  height: 45.7px; /* 64px * 0.714 */
+  left: 204.3px; /* 287px * 0.714 */
+  position: absolute;
+  top: 290.7px; /* 407px * 0.714 */
+  width: 139.3px; /* 195px * 0.714 */
+}
+
+.subscribe-card .subscribe-btn {
+  align-items: center;
+  color: var(--variable-collection-blu);
+  display: flex;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 12px; /* 18px * 0.714 */
+  font-weight: 700;
+  height: 20px;
+  justify-content: center;
+  left: 230.8px; /* 319px * 0.714 */
+  position: absolute;
+  top: 302.9px; /* 431px * 0.714 */
+  white-space: nowrap;
+  background-color: transparent;
+}
+
+.subscribe-card .subscribe-duration {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 14px; /* 20px * 0.714 */
+  font-weight: 400;
+  height: 20px;
+  justify-content: center;
+  left: 211px; /* 296px * 0.714 */
+  position: absolute;
+  top: 96px; /* 135px * 0.714 */
+  white-space: nowrap;
+}
+
+.subscribe-card .subscribe-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 128.5px; /* 180px * 0.714 */
+  left: 28.6px; /* 40px * 0.714 */
+  position: absolute;
+  top: 141px; /* 198px * 0.714 */
+  width: 235px; /* 329px * 0.714 */
+}
+
+.subscribe-card .subscribe-feature {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 17px; /* 24px * 0.714 */
+  font-weight: 400;
+  justify-content: center;
+}
+
+.subscribe-card .subscribe-price {
+  align-items: center;
+  color: #d6ff00;
+  display: flex;
+  font-family: "Roboto-SemiBold", Helvetica;
+  font-size: 42.8px; /* 60px * 0.714 */
+  font-weight: 600;
+  justify-content: center;
+  left: 9.5%;
+  position: absolute;
+  top: 20.4%;
+  white-space: nowrap;
+  width: 58.5%;
+}

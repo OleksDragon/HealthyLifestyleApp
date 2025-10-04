@@ -59,8 +59,14 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<string>("MeetingLink")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("NotificationBefore")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("TaskToDo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -309,11 +315,17 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<int>("CycleDay")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("EntryDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsFertile")
                         .HasColumnType("bit");
+
+                    b.Property<int>("MenstDay")
+                        .HasColumnType("int");
 
                     b.Property<string>("MoodNotes")
                         .HasColumnType("nvarchar(max)");
@@ -475,14 +487,26 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EnergyLevelScore")
-                        .HasColumnType("int");
+                    b.Property<double?>("Estradiol")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("FSH")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("FreeTestosterone")
+                        .HasColumnType("float");
 
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<double?>("LH")
+                        .HasColumnType("float");
+
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("Prolactin")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("RecordDate")
                         .HasColumnType("datetime2");

@@ -33,26 +33,26 @@ const DataCard = ({
 
   // Функція для рендерингу списку елементів
   const renderList = () => (
-    <div className="list">
+    <div className="p-dc-list">
       {data.map((item, index) => {
         const iconSrc = getIcon(item.icon);
         return (
           <div 
             key={item.id || index} 
-            className="list-item"
+            className="p-dc-list-item"
           >
-            <span className="date">{item.date}</span>
-            <span className="text">{item.text}</span>
+            <span className="p-dc-date">{item.date}</span>
+            <span className="p-dc-text">{item.text}</span>
             {iconSrc && (
-              <span className="icon">
-                <img src={iconSrc} alt={item.icon} className="icon-image" />
+              <span className="p-dc-icon">
+                <img src={iconSrc} alt={item.icon} className="p-dc-icon-image" />
               </span>
             )}
-            <button className="dots" onClick={(e) => {
+            <button className="p-dc-dots" onClick={(e) => {
                 e.stopPropagation();
                 onItemClick(type, item);
               }}>
-            <img src={dots_menu} alt="menu dots" className="dots-icon" />
+            <img src={dots_menu} alt="menu dots" className="p-dc-dots-icon" />
           </button>
           </div>
         );
@@ -65,27 +65,27 @@ const DataCard = ({
     if (!selectedItem || !selectedItem.details) return null;
     
     return (
-      <div className="details-view">
-        <div className="details-header">
-          <button className="back-button" onClick={() => onBackClick(type)}>
-            <img src={arrow_long} alt="arrow long" className="arrow-long" />
+      <div className="p-dc-details-view">
+        <div className="p-dc-details-header">
+          <button className="p-dc-back-button" onClick={() => onBackClick(type)}>
+            <img src={arrow_long} alt="arrow long" className="p-dc-arrow-long" />
           </button>
         </div>
-        <div className="details-content">
-          <div className="detail-date">{selectedItem.details?.fullDate}</div>
-          <div className="detail-message-title">{selectedItem.details?.message_title}</div>
-          <div className="detail-message">{selectedItem.details?.message}</div>
-          <div className="detail-stats">
-            <div className="stat">
-              <span className="stat-label">Тривалість</span>
-              <span className="stat-value">{selectedItem.details?.duration}</span>
+        <div className="p-dc-details-content">
+          <div className="p-dc-detail-date">{selectedItem.details?.fullDate}</div>
+          <div className="p-dc-detail-message-title">{selectedItem.details?.message_title}</div>
+          <div className="p-dc-detail-message">{selectedItem.details?.message}</div>
+          <div className="p-dc-detail-stats">
+            <div className="p-dc-stat">
+              <span className="p-dc-stat-label">Тривалість</span>
+              <span className="p-dc-stat-value">{selectedItem.details?.duration}</span>
             </div>
-            <div className="stat">
-              <span className="stat-label">Спалено</span>
-              <span className="stat-value">{selectedItem.details?.calories}</span>
+            <div className="p-dc-stat">
+              <span className="p-dc-stat-label">Спалено</span>
+              <span className="p-dc-stat-value">{selectedItem.details?.calories}</span>
             </div>
           </div>
-          <div className="detail-motivation">{selectedItem.details?.motivation}</div>
+          <div className="p-dc-detail-motivation">{selectedItem.details?.motivation}</div>
         </div>
       </div>
     );
@@ -96,25 +96,25 @@ const DataCard = ({
     if (!selectedItem || !selectedItem.details) return null;
     
     return (
-      <div className="details-view">
-        <div className="details-header">
-          <button className="back-button" onClick={() => onBackClick(type)}>
-            <img src={arrow_long} alt="arrow long" className="arrow-long" />
+      <div className="p-dc-details-view">
+        <div className="p-dc-details-header">
+          <button className="p-dc-back-button" onClick={() => onBackClick(type)}>
+            <img src={arrow_long} alt="arrow long" className="p-dc-arrow-long" />
           </button>
         </div>
-        <div className="details-content">
-          <div className="purchase-info">
-            <div className="purchase-date">{selectedItem.details?.fullDate}</div>
-            <div className="purchase-title">{selectedItem.details?.title}</div>
-            <div className="purchase-product">{selectedItem.details?.product}</div>
-            <div className="purchase-price">Ціна: {selectedItem.details?.price}</div>
-            <div className="purchase-status">Статус: {selectedItem.details?.status}</div>
-            <div className="purchase-tracking">{selectedItem.details?.tracking}</div>
+        <div className="p-dc-details-content">
+          <div className="p-dc-purchase-info">
+            <div className="p-dc-purchase-date">{selectedItem.details?.fullDate}</div>
+            <div className="p-dc-purchase-title">{selectedItem.details?.title}</div>
+            <div className="p-dc-purchase-product">{selectedItem.details?.product}</div>
+            <div className="p-dc-purchase-price">Ціна: {selectedItem.details?.price}</div>
+            <div className="p-dc-purchase-status">Статус: {selectedItem.details?.status}</div>
+            <div className="p-dc-purchase-tracking">{selectedItem.details?.tracking}</div>
             {selectedItem.details?.deliveryDate && (
-              <div className="purchase-delivery">Доставка: {selectedItem.details?.deliveryDate}</div>
+              <div className="p-dc-purchase-delivery">Доставка: {selectedItem.details?.deliveryDate}</div>
             )}
             {selectedItem.details?.estimatedDelivery && (
-              <div className="purchase-delivery">Очікувана доставка: {selectedItem.details?.estimatedDelivery}</div>
+              <div className="p-dc-purchase-delivery">Очікувана доставка: {selectedItem.details?.estimatedDelivery}</div>
             )}
           </div>
         </div>
@@ -132,8 +132,8 @@ const DataCard = ({
   };
 
   return (
-    <div className={`data-card card ${type} ${isCardOpen ? 'card-open' : 'card-closed'}`}>
-      <h3>{title}</h3>
+    <div className={`p-dc-data-card p-dc-card ${type} ${isCardOpen ? 'p-dc-card-open' : 'p-dc-card-closed'}`}>
+      <h3 className="p-dc-title">{title}</h3>
       {activeView === 'list' ? renderList() : renderDetails()}
     </div>
   );

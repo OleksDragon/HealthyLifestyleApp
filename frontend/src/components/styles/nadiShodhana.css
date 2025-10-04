@@ -1,0 +1,132 @@
+.ns-breathing-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: -15px;
+}
+
+.ns-breathing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.ns-breathing-info-block {
+    width: 100%;
+    margin-top: -30px;
+}
+
+.ns-technique-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: -30px;
+    width: 100%;
+    color: white;
+    font-family: var(--font-family);
+}
+
+.ns-technique-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.ns-technique-steps {
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    counter-reset: technique-counter;
+}
+
+.ns-technique-steps li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 150px;
+    counter-increment: technique-counter;
+    color: var(--black);
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+
+.ns-technique-steps li::before {
+    content: counter(technique-counter);
+    position: absolute;
+    left: 50px;
+    top: -3px;
+    font-family: var(--font-family);
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--white);
+}
+
+.ns-result-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.ns-result-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--black);
+    margin: 0;
+    padding-left: 10px;
+}
+
+.ns-result-description p:first-child {
+    margin-bottom: 15px;
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+
+.ns-result-description p:last-child {
+    font-family: var(--font-family);
+    font-weight: 400;
+}
+
+.ns-back-button {
+    width: 180px;
+    margin-left: 10px;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: white;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.ns-back-button:hover {
+    opacity: 0.8;
+}
+
+.ns-technique-block,
+.ns-result-block {
+    height: 280px;
+    padding: 30px 20px;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.ns-technique-block {
+    width: 60%;
+}
+
+.ns-result-block {
+    width: 40%;
+}

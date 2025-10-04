@@ -343,9 +343,12 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
                 .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.TestosteroneLevel, opt => opt.Condition(src => src.TestosteroneLevel.HasValue))
-                .ForMember(dest => dest.EnergyLevelScore, opt => opt.Condition(src => src.EnergyLevelScore.HasValue))
+                .ForMember(dest => dest.FreeTestosterone, opt => opt.Condition(src => src.FreeTestosterone.HasValue))
+                .ForMember(dest => dest.LH, opt => opt.Condition(src => src.LH.HasValue))
+                .ForMember(dest => dest.Prolactin, opt => opt.Condition(src => src.Prolactin.HasValue))
+                .ForMember(dest => dest.Estradiol, opt => opt.Condition(src => src.Estradiol.HasValue))
+                .ForMember(dest => dest.FSH, opt => opt.Condition(src => src.FSH.HasValue))
                 .ForMember(dest => dest.Notes, opt => opt.Condition(src => src.Notes != null));
-
         }
 
         private void ConfigureGroupMappings()
@@ -404,10 +407,12 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
                 .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.EntryDate, opt => opt.MapFrom(src => src.EntryDate))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore()) // Навігаційне поле
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.CycleDay, opt => opt.MapFrom(src => src.CycleDay))
+                .ForMember(dest => dest.MenstDay, opt => opt.MapFrom(src => src.MenstDay))
                 .ForMember(dest => dest.IsFertile, opt => opt.MapFrom(src => src.IsFertile))
                 .ForMember(dest => dest.PmsSymptoms, opt => opt.MapFrom(src => src.PmsSymptoms))
                 .ForMember(dest => dest.MoodNotes, opt => opt.MapFrom(src => src.MoodNotes))
@@ -418,8 +423,10 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UserId, opt => opt.Ignore()) // UserId не оновлюється
                 .ForMember(dest => dest.RecordDate, opt => opt.MapFrom(src => src.RecordDate))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore()) // Дата створення не оновлюється
+                .ForMember(dest => dest.EntryDate, opt => opt.Condition(src => src.EntryDate.HasValue))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.CycleDay, opt => opt.Condition(src => src.CycleDay.HasValue))
+                .ForMember(dest => dest.MenstDay, opt => opt.Condition(src => src.MenstDay.HasValue))
                 .ForMember(dest => dest.IsFertile, opt => opt.Condition(src => src.IsFertile.HasValue))
                 .ForMember(dest => dest.PmsSymptoms, opt => opt.Condition(src => src.PmsSymptoms != null))
                 .ForMember(dest => dest.MoodNotes, opt => opt.Condition(src => src.MoodNotes != null))
@@ -753,14 +760,18 @@ namespace HealthyLifestyle.Application.Mappings
                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                .ForMember(dest => dest.MeetingParticipants, opt => opt.MapFrom(src => src.MettingParticipants == null ? new List<User>() : src.MettingParticipants.Select(id => new User { Id = id })))
-               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value} : null));
+               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value} : null))
+               .ForMember(dest => dest.TaskToDo, opt => opt.Condition(e => e.TaskToDo.HasValue))
+               .ForMember(dest => dest.NotificationBefore, opt => opt.Condition(e => e.NotificationBefore.HasValue));
 
             CreateMap<CalendarEventUpdateDto, CalendarEvent>()
                .ForMember(dest => dest.Id, opt => opt.Ignore())
                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                .ForMember(dest => dest.MeetingParticipants, opt => opt.MapFrom(src => src.MettingParticipants.Select(id => new User { Id = id })))
-               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value } : null));
+               .ForMember(dest => dest.Workout, opt => opt.MapFrom(src => src.WorkoutId.HasValue ? new Workout { Id = src.WorkoutId.Value } : null))
+               .ForMember(dest => dest.TaskToDo, opt => opt.Condition(e => e.TaskToDo.HasValue))
+               .ForMember(dest => dest.NotificationBefore, opt => opt.Condition(e => e.NotificationBefore.HasValue)); ;
         }
         #endregion
     }

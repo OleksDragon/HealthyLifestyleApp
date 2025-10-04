@@ -123,7 +123,7 @@ namespace HealthyLifestyle.Api.Controllers.User
         }
 
         /// <summary>
-        /// Отримує список усіх користувачів (тільки для адміністраторів).
+        /// Отримує список усіх користувачів.
         /// </summary>
         /// <returns>
         /// - <see cref="Ok(object)"/> з <see cref="IEnumerable{UserDto}"/> при успішному отриманні.
@@ -132,7 +132,7 @@ namespace HealthyLifestyle.Api.Controllers.User
         /// - <see cref="StatusCode(StatusCodes.Status500InternalServerError)"/> у випадку внутрішньої помилки.
         /// </returns>
         [HttpGet]
-        [Authorize(Roles = RoleNames.Admin)]
+        [Authorize]
         [ProducesResponseType(typeof(IEnumerable<UserDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -142,6 +142,35 @@ namespace HealthyLifestyle.Api.Controllers.User
             try
             {
                 var users = await _userService.GetAllUsersAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Внутрішня помилка сервера: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Отримує список усіх користувачів (тільки для адміністраторів).
+        /// </summary>
+        /// <param name="name">Містит частинку ім'я користувача</param>
+        /// <returns>
+        /// - <see cref="Ok(object)"/> з <see cref="IEnumerable{UserDto}"/> при успішному отриманні.
+        /// - <see cref="StatusCode(StatusCodes.Status401Unauthorized)"/> якщо користувач не аутентифікований.
+        /// - <see cref="StatusCode(StatusCodes.Status403Forbidden)"/> якщо користувач не є адміністратором.
+        /// - <see cref="StatusCode(StatusCodes.Status500InternalServerError)"/> у випадку внутрішньої помилки.
+        /// </returns>
+        [HttpGet("name/{name}")]
+        [Authorize]
+        [ProducesResponseType(typeof(IEnumerable<UserDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllUsersByName(String name)
+        {
+            try
+            {
+                var users = (await _userService.GetAllUsersAsync()).Where(u => u.FullName.ToUpper().Contains(name.ToUpper()));
                 return Ok(users);
             }
             catch (Exception ex)

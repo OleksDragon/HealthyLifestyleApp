@@ -1,0 +1,74 @@
+.bp-animation-container-transparent {
+    margin-top: -10px;
+    width: 100%;
+    border-radius: 30px;
+    margin-bottom: 35px;
+    position: relative;
+    overflow: hidden;
+    
+    display: flex;
+    align-items: center;
+}
+
+.bp-info-block-with-animation {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: var(--white);
+}
+
+.bp-info-block-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    width: 80%;
+}
+
+.bp-info-block-text {
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.bp-info-block-title {
+    color: var(--bl);
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.bp-info-block-subtitle {
+    color: var(--black);
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bp-info-block-descriptions {
+    display: flex;
+    flex-direction: column;
+}
+
+.bp-info-block-description {
+    color: var(--black);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.bp-info-block-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -10px;
+    top: 52%;
+    transform: translateY(-50%);
+}

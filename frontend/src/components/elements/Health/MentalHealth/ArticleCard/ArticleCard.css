@@ -9,7 +9,7 @@
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Розподіляє простір між заголовком і стрілкою */
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -18,14 +18,13 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.2);
-    /* border-color: rgba(255, 255, 255, 0.3); */
 }
 
 .article-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; /* Займає всю ширину картки */
+    width: 100%;
     gap: 15px;
 }
 
@@ -35,16 +34,16 @@
     font-weight: 600;
     color: var(--white);
     line-height: 1.4;
-    margin: 0; /* Видаляємо марджини */
-    flex: 1; /* Займає весь доступний простір */
-    text-align: left; /* Текст зліва */
+    margin: 0;
+    flex: 1;
+    text-align: left;
 }
 
 .article-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0; /* Забороняє стискання */
+    flex-shrink: 0;
 }
 
 .article-arrow-icon {
@@ -54,5 +53,5 @@
 }
 
 .article-card:hover .article-arrow-icon {
-    transform: translateX(3px); /* Ефект при наведенні */
+    transform: translateX(3px);
 }

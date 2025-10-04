@@ -4,6 +4,7 @@ using HealthyLifestyle.Application.Interfaces.Challenge;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
 using HealthyLifestyle.Core.Interfaces.Challenge;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthyLifestyle.Application.Services.Challenge
 {
@@ -57,17 +58,66 @@ namespace HealthyLifestyle.Application.Services.Challenge
         public async Task<IEnumerable<ChallengeDto>> GetAllChallengesAsync()
         {
             var challenges = await _challengeRepository.GetAllChallengesWithParticipantsAsync();
-            return _mapper.Map<IEnumerable<ChallengeDto>>(challenges);
+            var challengeDtos = _mapper.Map<IEnumerable<ChallengeDto>>(challenges);
+
+            return challengeDtos.Select(dto =>
+            {
+                dto.ParticipantsCount = dto.Participations?.Count ?? 0;
+                return dto;
+            });
         }
 
-        public async Task<ChallengeDto> GetChallengeByIdAsync(Guid id)
+        public async Task<ChallengeDto?> GetChallengeByIdAsync(Guid challengeId)
         {
-            var challenge = await _challengeRepository.GetChallengeByIdWithParticipantsAsync(id);
-            if (challenge == null)
-            {
-                throw new KeyNotFoundException($"Челендж з ID '{id}' не знайдено.");
-            }
-            return _mapper.Map<ChallengeDto>(challenge);
+            // var challenge = await _unitOfWork.Challenges.GetByIdAsync(challengeId);
+            // if (challenge == null) return null;
+
+            // // Подсчет участников
+            // var count = await _unitOfWork.ChallengeParticipants.CountByChallengeIdAsync(challengeId);
+
+            // var participations = challenge.Participations?.ToList() ?? new List<UserChallengeParticipation>();
+
+            // // ОТЛАДКА
+            // Console.WriteLine($"=== DEBUG Challenge {challengeId} ===");
+
+            // var count1 = await _unitOfWork.ChallengeParticipants.CountByChallengeIdAsync(challengeId);
+            // Console.WriteLine($"CountByChallengeIdAsync: {count1}");
+
+            // // Проверка через навигационное свойство
+            // var navigationCount = challenge.Participations?.Count ?? 0;
+            // Console.WriteLine($"Navigation count: {navigationCount}");
+
+            // Console.WriteLine($"=== END DEBUG ===");
+
+            // return new ChallengeDto
+            // {
+            //     Id = challenge.Id,
+            //     Name = challenge.Name,
+            //     Description = challenge.Description,
+            //     StartDate = challenge.StartDate,
+            //     EndDate = challenge.EndDate,
+            //     Type = challenge.Type,
+            //     CreatorId = challenge.CreatorId,
+            //     ParticipantsCount = count,
+            //     Participations = challenge.Participations?.Select(p => new ChallengeParticipationDto
+            //     {
+            //         UserId = p.UserId,
+            //         ChallengeId = p.ChallengeId,
+            //         Progress = p.Progress,
+            //         Status = p.Status,
+            //         JoinDate = p.JoinDate
+            //     }).ToList() ?? new List<ChallengeParticipationDto>()
+            // };
+
+            var challenge = await _challengeRepository.GetChallengeByIdWithParticipantsAsync(challengeId);
+            if (challenge == null) return null;
+
+            var challengeDto = _mapper.Map<ChallengeDto>(challenge);
+
+            // Принудительно обновляем ParticipantsCount
+            challengeDto.ParticipantsCount = challenge.Participations?.Count ?? 0;
+
+            return challengeDto;
         }
 
         public async Task<ChallengeDto> UpdateChallengeAsync(Guid id, ChallengeUpdateDto challengeUpdateDto)

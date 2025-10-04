@@ -1,0 +1,269 @@
+.mtp-mental-test-container {
+    width: 100%;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.mtp-mental-test-info-block {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px 40px;
+    border-radius: 30px;
+    background: var(--lim);
+}
+
+.mtp-mental-test-title {
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--bl);
+    margin-bottom: 5px;
+}
+
+.mtp-mental-test-description {
+    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--bl);
+    margin-bottom: 15px;
+}
+
+.mtp-mental-test-content-block {
+    width: 100%;
+    height: 372px;
+    border-radius: 30px;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.mtp-initial-content {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -80px;
+    text-align: center;
+}
+
+.mtp-start-message {
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 30px;
+}
+
+.mtp-start-button {
+    background: var(--white);
+    color: var(--bl);
+    border: none;
+    border-radius: 30px;
+    padding: 15px 50px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mtp-start-button:hover {
+    transform: translateY(-2px);
+    background-color: var(--lim);
+}
+
+.mtp-question-content {
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.mtp-question-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.mtp-question-number-circle {
+    background: var(--bl);
+    color: var(--white);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.mtp-question-text {
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.4;
+    text-align: left;
+}
+
+.mtp-answers-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mtp-answer-button {
+    padding: 10px 20px;
+    margin-bottom: 3px;
+    border-radius: 40px;
+    text-align: center;
+    min-width: 340px;
+    height: 46px;
+    border-radius: 70px;
+    color: var(--white);
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 500;
+    border: 0 solid transparent;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.mtp-answer-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.mtp-answer-button.selected {
+    background: var(--lim);
+    color: var(--bl);
+    border-color: var(--white);
+    font-weight: 600;
+}
+
+.mtp-navigation-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mtp-back-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 10px 123px;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.mtp-back-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.mtp-back-button.hidden {
+    visibility: hidden;
+}
+
+.mtp-next-button {
+    background: var(--white);
+    border: none;
+    border-radius: 20px;
+    padding: 12px 125px;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--bl);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mtp-next-button:hover:not(.disabled) {
+    background: var(--lim);
+    transform: translateY(-2px);
+}
+
+.mtp-next-button.disabled {
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--bl);
+    cursor: not-allowed;
+}
+
+.mtp-result-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.mtp-result-animation {
+    margin-top: -70px;
+    margin-bottom: -60px;
+}
+
+.mtp-result-title {
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.mtp-result-description {
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.4;
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+
+.mtp-restart-button {
+    background: var(--white);
+    color: var(--bl);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 35px;
+    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.mtp-restart-button:hover {
+    transform: translateY(-2px);
+    background-color: var(--lim);
+}

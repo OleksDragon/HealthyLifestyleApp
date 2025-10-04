@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.challenge-details-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    font-family: "Roboto", sans-serif;
+}
+
+.ch-details-title {
+    font-size: 2rem;
+    color: #0066C3;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.ch-details-description {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 102, 195, 0.3);
+}
+
+.ch-details-info {
+    font-size: 0.95rem;
+    color: #555;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 15px;
+}
+
+.ch-details-info strong {
+    color: #0066C3;
+}
+
+/* Контейнер для кнопок */
+.ch-details-actions {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Стиль для кнопок */
+.action-button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #0066C3;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #004a8f;
+    transform: scale(1.05);
+}
+

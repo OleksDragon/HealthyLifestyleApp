@@ -66,8 +66,8 @@ const ContentSection = () => {
   const currentLanguage = i18n.language;
 
   return (
-    <section id="functions-section" className="content-section">
-      <div className="cards-container">
+    <section id="functions-section" className="cs-content-section">
+      <div className="cs-cards-container">
         <Card 
           id="card1" 
           closedImage={images.card1.closed[currentLanguage] || images.card1.closed.uk} 
@@ -111,19 +111,19 @@ const ContentSection = () => {
           onClick={handleCardClick}
         />
       </div>
-      <div className="bottom-block">
-        <div className="bottom-text" id="specialists-section">
+      <div className="cs-bottom-block">
+        <div className="cs-bottom-text" id="specialists-section">
           <p>
             {t("specialist_title_line1")}<br />
             {t("specialist_title_line2")}
           </p>
-          <p className="bottom-subtext">
+          <p className="cs-bottom-subtext">
             {t("specialist_text_line1")}<br />
             {t("specialist_text_line2")}<br />
             {t("specialist_text_line3")}
           </p>
         </div>
-        <button className="bottom-cta">{t("become_specialist")}</button>
+        <button className="cs-bottom-cta">{t("become_specialist")}</button>
       </div>
     </section>
   );

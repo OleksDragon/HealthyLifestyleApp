@@ -1,0 +1,193 @@
+.db-diaphragmatic-breathing-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: -15px;
+}
+
+.db-diaphragmatic-breathing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.db-diaphragmatic-breathing-info-block {
+    width: 100%;
+    margin-top: -30px;
+}
+
+.db-breathing-exercise-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    margin-top: -30px;
+    width: 100%;
+    flex: 1;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    background-color: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.db-timer {
+    background: var(--white);
+    padding: 10px 50px;
+    border-radius: 30px;
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 15px 0 13px 0;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.db-timer.clickable {
+    background: var(--lim);
+    color: var(--bl);
+}
+
+.db-timer.clickable:hover {
+    transform: translateY(-2px);
+}
+
+.db-timer.active {
+    cursor: default;
+    background: var(--white);
+    color: #333;
+}
+
+.db-circle-container {
+    height: 208px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.db-breathing-circle {
+    border-radius: 50%;
+    background-color: var(--blue);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    will-change: transform;
+    transition: transform 5s ease-in-out;
+    width: 116.44px;
+    height: 116.44px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.db-pulse-effect {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    background-color: transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.db-pulse-effect.active {
+    animation: pulsate 2s ease-in-out infinite both;
+    opacity: 1;
+}
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 0 8.1px rgba(255, 255, 255, 0.3);
+        transform: scale(1.03);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+}
+
+.db-pulse-effect.alternative {
+    animation: pulsate-alternative 2s ease-in-out infinite both;
+}
+
+@keyframes pulsate-alternative {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7),
+                    0 0 0 0 rgba(52, 152, 219, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 0 4.05px rgba(255, 255, 255, 0.3),
+                    0 0 0 12.15px rgba(52, 152, 219, 0.2);
+        transform: scale(1.02);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0),
+                    0 0 0 0 rgba(52, 152, 219, 0);
+        transform: scale(1);
+    }
+}
+
+.db-circle-text {
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    position: absolute;
+    padding: 5px;
+    z-index: 10;
+    text-align: center;
+    width: 116.44px;
+}
+
+.db-breathing-circle.normal {
+    transform: scale(1);
+}
+
+.db-breathing-circle.inhale {
+    transform: scale(1.31625);
+    transition-duration: 5s;
+}
+
+.db-breathing-circle.hold-inhale {
+    transform: scale(1.31625);
+    transition: none;
+}
+
+.db-breathing-circle.exhale {
+    transform: scale(1);
+    transition-duration: 5s;
+}
+
+.db-breathing-circle.hold-exhale {
+    transform: scale(1);
+    transition: none;
+}
+
+.db-back-button {
+    width: 180px;
+    margin-left: 10px;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: white;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.db-back-button:hover {
+    opacity: 0.8;
+}

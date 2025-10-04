@@ -1,0 +1,20 @@
+.bp-breathing-practices-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.bp-breathing-practices-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.bp-breathing-practices-cards {
+    margin-top: -5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+
+.bp-breathing-practices-cards > * {
+    min-width: 0;
+}

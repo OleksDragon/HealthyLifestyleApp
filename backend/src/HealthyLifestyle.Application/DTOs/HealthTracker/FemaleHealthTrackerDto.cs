@@ -14,7 +14,11 @@ namespace HealthyLifestyle.Application.DTOs.HealthTracker
 
         public DateTime RecordDate { get; set; }
 
+        public DateTime EntryDate { get; set; }
+
         public int CycleDay { get; set; }
+
+        public int MenstDay { get; set; }
 
         public bool IsFertile { get; set; }
 
@@ -39,8 +43,13 @@ namespace HealthyLifestyle.Application.DTOs.HealthTracker
 
         public DateTime RecordDate { get; set; }
 
-        [Range(1, 31, ErrorMessage = "День циклу має бути в межах від 1 до 31.")]
+        public DateTime EntryDate { get; set; }
+
+        [Range(21, 35, ErrorMessage = "Тривалість циклу має бути в межах від 21 до 35.")]
         public int CycleDay { get; set; }
+
+        [Range(1, 10, ErrorMessage = "Тривалість менструації має бути в межах від 1 до 10.")]
+        public int MenstDay { get; set; }
 
         public bool IsFertile { get; set; }
 
@@ -57,9 +66,13 @@ namespace HealthyLifestyle.Application.DTOs.HealthTracker
     public class FemaleHealthTrackerUpdateDto
     {
         public DateTime RecordDate { get; set; }
+        public DateTime? EntryDate { get; set; }
 
-        [Range(1, 31, ErrorMessage = "День циклу має бути в межах від 1 до 31.")]
+        [Range(21, 35, ErrorMessage = "День циклу має бути в межах від 1 до 31.")]
         public int? CycleDay { get; set; }
+
+        [Range(1, 10, ErrorMessage = "Тривалість менструації має бути в межах від 1 до 10.")]
+        public int? MenstDay { get; set; }
 
         public bool? IsFertile { get; set; }
 

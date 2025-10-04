@@ -1,7 +1,9 @@
 ﻿using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
+using HealthyLifestyle.Core.Interfaces.Challenge;
 using HealthyLifestyle.Infrastructure.Data;
 using HealthyLifestyle.Infrastructure.Repositories;
+using HealthyLifestyle.Infrastructure.Repositories.Challenge;
 
 namespace HealthyLifestyle.Infrastructure.UnitOfWork
 {
@@ -13,6 +15,9 @@ namespace HealthyLifestyle.Infrastructure.UnitOfWork
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly ApplicationDbContext _dbContext;
+
+        private IChallengeRepository? _challengeRepository;
+        private IChallengeParticipantRepository? _challengeParticipantRepository;
 
         /// <summary>
         /// Словник для зберігання створених репозиторіїв за типом сутності.
@@ -49,6 +54,12 @@ namespace HealthyLifestyle.Infrastructure.UnitOfWork
 
             return repository;
         }
+
+        public IChallengeRepository Challenges =>
+            _challengeRepository ??= new ChallengeRepository(_dbContext);
+
+        public IChallengeParticipantRepository ChallengeParticipants =>
+            _challengeParticipantRepository ??= new ChallengeParticipantRepository(_dbContext);
 
         /// <summary>
         /// Асинхронно зберігає всі зміни в контексті бази даних.

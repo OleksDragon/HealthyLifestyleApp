@@ -26,6 +26,7 @@ namespace HealthyLifestyle.Api.Controllers.HealthTracker
 
         /// <summary>
         /// Отримує всі записи жіночого трекера.
+        /// <param name="id">Ідентифікатор користувача.</param>
         /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<FemaleHealthTrackerDto>), 200)]

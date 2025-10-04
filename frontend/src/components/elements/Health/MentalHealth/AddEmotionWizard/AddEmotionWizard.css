@@ -1,0 +1,370 @@
+.aew-emotion-wizard {
+  padding: 20px;
+  height: 420px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 30px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 1105px;
+  margin: 20px auto;
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.aew-wizard-title {
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.aew-wizard-subtitle {
+  color: var(--black);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.aew-wizard-description {
+  color: var(--white);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.aew-left-progress-arrow {
+  transform: rotate(90deg);
+  width: 25px;
+  height: 25px;
+}
+
+.aew-right-progress-arrow {
+  transform: rotate(270deg);
+  width: 25px;
+  height: 25px;
+}
+
+.aew-category-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.aew-progress-nav-btn {
+  
+  border-radius: 15px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.aew-progress-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+  border-radius: 15px; 
+}
+
+.aew-progress-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.aew-progress-container {
+  position: relative;
+  width: 500px;
+  margin: 0 5px;
+  height: 46px;
+  touch-action: pan-y;
+}
+
+.aew-progress-line {
+  position: absolute;
+  top: 0;
+  left: 23px;
+  right: 23px;
+  height: 46px;
+  background-color: var(--white);
+  border-radius: 0 40px 40px 0;
+  z-index: 0;
+}
+
+.aew-progress-line.with-radius {
+  border-radius: 40px;
+}
+
+.aew-progress-fill {
+  height: 100%;
+  background-color: var(--bl);
+  width: 0%;
+  border-radius: 40px 0 0 40px;
+}
+
+.aew-progress-dots {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  z-index: 1;
+}
+
+.aew-progress-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #F1F1F1;
+  border: 2px solid var(--white);
+  position: relative;
+}
+
+.aew-progress-dot:first-child {
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+.aew-progress-dot:last-child {
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+.aew-progress-dot.active {
+  width: 46px;
+  height: 46px;
+  background-color: var(--lim);
+  border: 2px solid var(--lim);
+}
+
+.aew-progress-dot.active:first-child {
+  width: 46px;
+  height: 46px;
+  background-color: var(--lim);
+  border: 2px solid var(--lim);
+}
+
+.aew-progress-dot.completed {
+  background-color: #004D9C;
+  border: 2px solid #004D9C;
+}
+
+.aew-progress-dot.completed:first-child {
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+.aew-emotion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.aew-emotion-btn {
+  padding: 10px;
+  border-radius: 30px;
+  background: var(--bl);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.aew-emotion-btn:hover {
+  background: var(--lim);
+  color: var(--bl);
+  transform: translateY(-2px);
+}
+
+.aew-emotion-btn.selected {
+  background: var(--lim);
+  color: var(--bl);
+  font-weight: 600;
+}
+
+.aew-cause-categories {
+  margin: 30px 0;
+  width: 100%;
+}
+
+.aew-cause-category {
+  margin-bottom: 26.3px;
+}
+
+.aew-cause-category-title {
+  color: var(--black);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 5px 20px;
+  text-align: left;
+}
+
+.aew-cause-grid-5-col {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(80px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.aew-cause-btn {
+  padding: 10px;
+  border-radius: 30px;
+  background: var(--bl);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.aew-cause-btn:hover {
+  background: var(--lim);
+  color: var(--bl);
+  transform: translateY(-2px);
+}
+
+.aew-cause-btn.selected {
+  background: var(--lim);
+  color: var(--bl);
+  border-color: var(--lim);
+  font-weight: 600;
+}
+
+.aew-step3-content {
+  text-align: left;
+  width: 100%;
+}
+
+.aew-step3-subtitle {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 40px 0 -10px 20px;
+  text-align: left;
+}
+
+.aew-step3-description {
+  margin: -10px 0 50px 20px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--white);
+}
+
+.aew-notes-textarea-content {
+  width: 100%;
+  height: 150px;
+  border-radius:20px;
+  margin: 20px 0;
+  background: var(--bl);
+}
+
+.aew-notes-textarea {
+  width: 99%;
+  height: 130px;
+  padding: 10px 0 10px 20px;
+  border-radius: 10px;
+  border: 2px solid var(--bl);
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 300;
+  resize: none;
+  margin-top: 10px;
+}
+
+.aew-notes-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.aew-notes-textarea:focus {
+  outline: none;
+}
+
+.aew-notes-textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.aew-notes-textarea::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.aew-notes-textarea::-webkit-scrollbar-thumb {
+    background: #a0aec0;
+    border-radius: 3px;
+}
+
+.aew-notes-textarea::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+.aew-notes-textarea {
+    scrollbar-width: thin;
+    scrollbar-color: #a0aec0 transparent;
+}
+
+.aew-wizard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.aew-nav-btn {
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.aew-nav-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--lim);
+}
+
+.aew-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.aew-wizard-nav .aew-nav-btn:first-child:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.aew-nav-btn.aew-primary {
+  background: var(--lim);
+  color: var(--bl);
+  border-color: var(--lim);
+  font-weight: 600;
+}
+
+.aew-nav-btn.aew-primary:hover:not(:disabled) {
+  background: var(--lim);
+  transform: translateY(-2px);
+}

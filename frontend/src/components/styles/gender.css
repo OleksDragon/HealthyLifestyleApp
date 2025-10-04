@@ -1,0 +1,583 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.female-health-container {
+    position: relative;
+    overflow-y: auto;
+    height: 73vh;
+    width: 105%;
+    padding-right: 5%;
+}
+
+.gender-health-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20vh;
+    height: 65vh; 
+}
+
+.gender-option {
+    width: 230px;
+    height: 290px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.1s ease;
+}
+
+.gender-option:hover {
+    transform: scale(1.05);
+}
+
+.img-but-div {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #D9D9D9;
+    margin-bottom: 16px;
+}
+
+.female-health-info {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 110px;
+    background: var(--lim);
+    border-radius: 30px;
+    padding-left: 50px;
+}
+
+.title {
+    font-family: var(--font-family);
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--title);
+    min-width: 300px;
+    margin-right: 20px;
+}
+
+.sub-title {
+    font-family: var(--font-family);
+    font-size: 14px;
+    text-align: left;
+    color: black;
+    max-width: 480px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.female-health-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+    width: 110vh;
+}
+
+.female-health-options button {
+    font-size: 14px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    color: white;
+    height: 60px;
+}
+
+.female-health-options button:hover {
+    background-color: #D6FF00;
+    color: #0066C3;
+}
+
+.mascot-img {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 300px;
+    z-index: 5;
+}
+
+.useful-info-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.useful-info {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.useful-info > div:first-child {
+    padding-top: 20px !important;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 20px;
+    width: 200px !important;
+    background-color: white;
+    color: #0066C3;
+    padding: 0;
+}
+
+.useful-info > div {
+    width: 260px;
+    height: 300px;
+    border-radius: 40px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.1s ease;
+    padding: 14px 30px;
+}
+
+.useful-info > div > h3 {
+    font-family: var(--font-family);
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.useful-info > div > h4 {
+    font-family: var(--font-family);
+    font-size: 13px;
+    margin-top: 4px;
+    text-align: left;
+    font-weight: 300;
+}
+
+.scroll-data::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-data::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 10px;
+    margin: 5px 0;
+    box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.scroll-data::-webkit-scrollbar-thumb {
+    background: #0661CC;
+    border-radius: 10px;
+}
+
+.scroll-data::-webkit-scrollbar-thumb:hover {   
+   background: #0661CC;
+}
+
+.center-img {
+    margin: 0px auto;
+    margin-top: 80px;
+}
+
+.find-doctor-div {
+    display: block;
+}
+
+.find-doctor-btn {
+    display: block;
+    font-family: var(--font-family);
+    background-color: white;
+    color: #0066C3;
+    margin: 20px auto;
+    width: 60vh;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 500;
+}
+
+.calendar-cycle > h3 {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.date-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 16px;
+}
+
+/* .date-info > div {
+    height: 60px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+    z-index: 6;
+    padding-top: 20px;
+} */
+
+.date-info > div {
+    z-index: 15;
+}
+
+.date-info > button {
+    grid-column: 1/4;
+    width: 85vh;
+    height: 60px;
+    border-radius: 30px;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 16px;
+    color: #0066C3;
+    font-weight: 600;
+}
+
+.warning-calc {
+    grid-column: 1/4;
+    display: block;
+    width: 85vh;
+    margin: 0 auto;
+    margin-top: -10px;
+    font-family: var(--font-family);
+    font-size: 10px;
+    padding: 0 10px;
+}
+
+.cycle-info {
+    grid-column: 1/4;
+}
+
+.cycle-info > div { 
+    position: relative;  
+    border-radius: 27px;
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-top: 12px;
+    margin-bottom: 10px;
+    z-index: 7;
+}
+
+.cycle-container {
+    overflow-y: auto;
+    height: 73vh;
+    width: 105%;
+    padding-right: 5%;
+    position: relative;
+}
+
+.cycle-info-header {
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 40px;
+}
+
+.cycle-info-header > h3 {
+    color: #D6FF00;
+}
+
+.arrow-bottom {
+    height: 14px;
+    width: 26px;
+}
+
+.cycle-info-content {
+    display: grid;
+    padding: 20px 50px;
+    grid-template-columns: 30% 70%;
+    gap: 20px;
+    place-items: center;
+}
+
+.f-row {
+    background-color: #D6FF00;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    white-space: pre-wrap;
+    text-align: center; 
+    height: 60px;
+    color: #0066C3;
+    width: 100%;
+}
+
+.s-row {
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.cycle-preview {
+    grid-column: 1/3;
+    background: none !important;
+    color: white !important;
+}
+
+.cycle-finalize {
+    grid-column: 1/3;
+    background: none !important;
+    color: white !important;
+}
+
+.cycle-info {
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+
+.woman-health-info {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 100px;
+    background: var(--lim);
+    border-radius: 30px;
+    padding-left: 50px;
+    align-items: center;
+}
+
+.woman-health-info .sub-title {
+    text-align: start;
+}
+
+.woman-health-info .title {
+    text-align: center;
+}
+
+.gynecology-content {
+    margin: 30px;
+}
+
+.female-health-options-gyn {
+    width: calc(100% - 60px) !important;
+    gap: 50px !important;
+    margin-bottom: 20px;
+}
+
+.articles > h3 {
+    font-family: var(--font-family);
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.gynecology-content > .useful-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gynecology-content > .useful-info > div {
+    width: auto !important;
+}
+
+.gynecology-content > .useful-info > div:first-child {
+    padding-top: 50px !important;
+}
+
+.img-center-top {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 20px auto;
+}
+
+.read-article {
+    height: 36px;
+    border-radius: 18px;
+    width: 120px;
+    background: white;
+    color: #0066C3;
+    font-family: var(--font-family);
+    font-weight: 500;
+    display: block;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.review-tips-container {
+    margin-top: 20px;
+}
+
+.review-tips-container > h3 {
+    font-family: var(--font-family);
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.review-tip {
+    margin: 10px 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+
+.tip-text {
+    height: 60px;
+    border-radius: 30px;
+    color: white;
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: var(--font-family);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.tip-icon {
+    width: 100px;
+    height: auto;
+    margin: 0px auto;
+}
+
+.review-tips-container .review-tip:last-child {
+    margin-top: -3px !important;
+}
+
+.tests-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 20px;
+}
+
+.radio-wrapper {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-left: 50px;
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+
+.radio-wrapper input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+    background-color: white;
+}
+
+.radio-wrapper:hover .custom-radio {
+    border-color: #333;
+}
+
+.radio-wrapper input[type="checkbox"]:checked + .custom-radio {
+    background: #0066C3;
+    border-color: #0066C3;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+.tests-options {
+    display: flex;
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    height: 360px;
+}
+
+.tests-options > button {
+    width: 180px;
+    height: 44px;
+    border-radius: 24px;
+    background-color: white;
+    color: #0066C3;
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+
+.tests-tips > div {
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 26px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+.examination-info-header {
+    width: 100%;
+    height: 54px;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 40px;
+}
+
+.examination-info-header > h3 {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--font-family);
+    margin-left: 50px;
+}
+
+.examination-info-header > div {
+    width: 100%;
+}
+
+.reproductive-info {
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.reproductive-info > div {
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 26px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    font-size: 20px;
+}
+
+.reproductive-info > button {
+    align-self: flex-end;
+}

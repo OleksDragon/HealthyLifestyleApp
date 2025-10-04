@@ -3,16 +3,17 @@
 :root {
     --font-family: 'Roboto', sans-serif;
     --white: #FFF;
+    --blue: #0661CC;
     --title: #1C6ED0;
     --bl: #116FCF;
     --lim: #D6FF00;
     --img: #AADAFF;
     --b-img: #D9D9D9;
+    --black: #343434;
 }
 
 .health-container {
     max-width: 90%;
-    /* background: green; */
     margin-left: 40px;
 }
 

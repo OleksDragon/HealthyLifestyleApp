@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -25,6 +26,7 @@ const getToken = () => {
 const SpecialistsPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const [specialists, setSpecialists] = useState([]);
   const [specialistsLocal, setSpecialistsLocal] = useState(specialistsData);
   const [selectedValues, setSelectedValues] = useState({

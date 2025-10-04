@@ -173,12 +173,12 @@ namespace HealthyLifestyle.Infrastructure.Data
         "вул. Мазепи", "вул. Сахарова", "вул. Грушевського", "вул. Липова",
         "вул. Дубова", "вул. Яблунева", "вул. Вишнева"
     };
-    
-    string[] streetTypes = { "вулиця", "проспект", "бульвар", "провулок" };
-    string[] prefixes = { "вул. ", "пр. ", "бульв. ", "пров. " };
-    
-    return $"{prefixes[random.Next(prefixes.Length)]}{streetNames[random.Next(streetNames.Length)]} {random.Next(1, 200)}";
-}
+
+            string[] streetTypes = { "вулиця", "проспект", "бульвар", "провулок" };
+            string[] prefixes = { "вул. ", "пр. ", "бульв. ", "пров. " };
+
+            return $"{prefixes[random.Next(prefixes.Length)]}{streetNames[random.Next(streetNames.Length)]} {random.Next(1, 200)}";
+        }
         #region Створення професіоналів
         /// <summary>
         /// Створює користувача-психолога, його кваліфікацію та деталі, якщо вони ще не існують.
@@ -603,6 +603,194 @@ namespace HealthyLifestyle.Infrastructure.Data
                     context.DoctorDetails.Add(details);
                 }
             }
+        }
+        #endregion
+
+        #region Створення челенджи
+        /// <summary>
+        /// Ініціалізує базу даних стандартними соціальними челенджами та їхніми учасниками.
+        /// </summary>
+        public static async Task SeedChallengesAsync(ApplicationDbContext context, UserManager<User> userManager)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(userManager);
+
+            Console.WriteLine("SeedChallengesAsync: Початок методу.");
+
+            // Перевіряємо, чи є вже челенджі, щоб уникнути дублювання
+            if (!await context.SocialChallenges.AnyAsync())
+            {
+                Console.WriteLine("SeedChallengesAsync: Таблиця SocialChallenges порожня, починаємо заповнення.");
+
+                // Отримуємо користувачів за їхніми email-адресами (як визначено в SeedDefaultUserAndRolesAsync)
+                var regularUser = await userManager.FindByEmailAsync("user@example.com");
+                var psychologist = await userManager.FindByEmailAsync("psychologist@example.com");
+                var dietitian = await userManager.FindByEmailAsync("dietitian@example.com");
+                var trainer = await userManager.FindByEmailAsync("trainer@example.com");
+                var trainer1 = await userManager.FindByEmailAsync("trainer1@example.com");
+                var trainer2 = await userManager.FindByEmailAsync("trainer2@example.com");
+                var trainer3 = await userManager.FindByEmailAsync("trainer3@example.com");
+
+                // Перевіряємо, чи всі необхідні користувачі існують
+                if (regularUser == null || psychologist == null || dietitian == null ||
+                    trainer == null || trainer1 == null || trainer2 == null || trainer3 == null)
+                {
+                    throw new InvalidOperationException("Необхідні користувачі відсутні. Спочатку виконайте SeedDefaultUserAndRolesAsync.");
+                }
+
+                // Визначаємо 6 челенджів
+                var challenges = new List<SocialChallenge>
+        {
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Марафон \"Здорові кроки\"",
+                Description = "Мета — проходити 10,000 кроків щодня.",
+                StartDate = new DateTime(2025, 9, 20),
+                EndDate = new DateTime(2025, 10, 20),
+                CreatorId = regularUser.Id,
+                Type = ChallengeType.Competition
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "30-денний біговий челендж",
+                Description = "Щоденний біг для покращення витривалості.",
+                StartDate = new DateTime(2025, 9, 25),
+                EndDate = new DateTime(2025, 10, 25),
+                CreatorId = trainer.Id,
+                Type = ChallengeType.Competition
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Йога для початківців",
+                Description = "20 хвилин йоги щодня для гнучкості.",
+                StartDate = new DateTime(2025, 9, 15),
+                EndDate = new DateTime(2025, 10, 15),
+                CreatorId = psychologist.Id,
+                Type = ChallengeType.PersonalGoal
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Плавання: від 0 до 1 км",
+                Description = "Навчіться плавати на довгі дистанції.",
+                StartDate = new DateTime(2025, 10, 1),
+                EndDate = new DateTime(2025, 11, 1),
+                CreatorId = trainer1.Id,
+                Type = ChallengeType.Competition
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Челендж \"Без цукру\"",
+                Description = "Повна відмова від цукру на 30 днів.",
+                StartDate = new DateTime(2025, 10, 10),
+                EndDate = new DateTime(2025, 11, 10),
+                CreatorId = dietitian.Id,
+                Type = ChallengeType.PersonalGoal
+            },
+            new SocialChallenge
+            {
+                Id = Guid.NewGuid(),
+                Name = "Силові тренування",
+                Description = "Щотижневі тренування для набору сили.",
+                StartDate = new DateTime(2025, 10, 20),
+                EndDate = new DateTime(2025, 11, 20),
+                CreatorId = trainer2.Id,
+                Type = ChallengeType.Competition
+            }
+        };
+
+                // Додаємо челенджі до бази даних
+                await context.SocialChallenges.AddRangeAsync(challenges);
+
+                // Визначаємо участі користувачів у челенджах
+                var participations = new List<UserChallengeParticipation>
+        {
+            // Учасники в "Марафоні 'Здорові кроки'"
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = regularUser.Id,
+                ChallengeId = challenges[0].Id,
+                Progress = 15000,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = psychologist.Id,
+                ChallengeId = challenges[0].Id,
+                Progress = 12000,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = trainer.Id,
+                ChallengeId = challenges[0].Id,
+                Progress = 25000,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            // Учасник у "Йога для початківців"
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = regularUser.Id,
+                ChallengeId = challenges[2].Id,
+                Progress = 10,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            // Учасники у "30-денному біговому челенджі"
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = regularUser.Id,
+                ChallengeId = challenges[1].Id,
+                Progress = 5.0,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = trainer1.Id,
+                ChallengeId = challenges[1].Id,
+                Progress = 7.5,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            },
+            new UserChallengeParticipation
+            {
+                Id = Guid.NewGuid(),
+                UserId = trainer2.Id,
+                ChallengeId = challenges[1].Id,
+                Progress = 10.0,
+                Status = ParticipationStatus.InProgress,
+                JoinDate = DateTime.UtcNow
+            }
+        };
+
+                // Додаємо участі до бази даних
+                await context.UserChallengeParticipations.AddRangeAsync(participations);
+
+                // Зберігаємо всі зміни
+                await context.SaveChangesAsync();
+
+                Console.WriteLine("SeedChallengesAsync: Дані успішно додано та збережено.");
+            }
+            else
+            {
+                Console.WriteLine("SeedChallengesAsync: Таблиця SocialChallenges вже містить дані. Заповнення пропущено.");
+            }
+
+            Console.WriteLine("SeedChallengesAsync: Кінець методу.");
         }
         #endregion
     }

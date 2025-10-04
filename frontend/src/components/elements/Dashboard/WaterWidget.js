@@ -10,7 +10,7 @@ function WaterWidget({className}) {
     const { t } = useTranslation();
      let today = new Date().getDay();
     const todayIdx = today != 0 ? today - 1 : 6;
-    const [weekProgress, setWeekProgress] = useState([1000, 2000, 1800, 1600, 2000, 200, 200]);
+    const [weekProgress, setWeekProgress] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [waterGoal, setWaterGoal] = useState(2000);
 
     const getWeekDates = () => {

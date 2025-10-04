@@ -13,6 +13,8 @@ namespace HealthyLifestyle.Application.DTOs.Challenge
         public Guid CreatorId { get; set; }
         public ChallengeType Type { get; set; }
         public ICollection<ChallengeParticipationDto> Participations { get; set; } = new List<ChallengeParticipationDto>();
+
+        public int ParticipantsCount { get; set; }
     }
 
     public class ChallengeParticipationDto
@@ -24,6 +26,7 @@ namespace HealthyLifestyle.Application.DTOs.Challenge
         public double Progress { get; set; }
         public ParticipationStatus Status { get; set; }
         public DateTime JoinDate { get; set; }
+        public bool IsCompleted { get; set; }
     }
 
     public class ChallengeCreateParticipationDto
@@ -34,6 +37,7 @@ namespace HealthyLifestyle.Application.DTOs.Challenge
         public double Progress { get; set; }
         public ParticipationStatus Status { get; set; }
         public DateTime JoinDate { get; set; }
+
     }
 
     public class ChallengeCreateDto

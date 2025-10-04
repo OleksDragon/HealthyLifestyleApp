@@ -151,4 +151,11 @@ namespace HealthyLifestyle.Core.Enums
         Antidepressants,
         Other
     }
+
+    public enum TaskType
+    {
+        Workout,
+        Eating,
+        Doctor
+    }
 }

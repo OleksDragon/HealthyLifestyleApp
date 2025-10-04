@@ -167,6 +167,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IConsultationService, ConsultationService>();
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IChallengeService, ChallengeService>();
+builder.Services.AddScoped<IChallengeParticipantService, ChallengeParticipantService>();
 builder.Services.AddScoped<IMaleHealthTrackerService, MaleHealthTrackerService>();
 builder.Services.AddScoped<IFemaleHealthTrackerService, FemaleHealthTrackerService>();
 builder.Services.AddScoped<IMentalHealthRecordService, MentalHealthRecordService>();
@@ -341,8 +342,8 @@ if (app.Environment.IsDevelopment())
             var roleManager = services.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
             var dbContext = services.GetRequiredService<ApplicationDbContext>();
 
-            logger.LogInformation("Waiting for 5 seconds before applying migrations...");
-            await Task.Delay(TimeSpan.FromSeconds(5));
+            logger.LogInformation("Waiting for 15 seconds before applying migrations...");
+            await Task.Delay(TimeSpan.FromSeconds(15));
             logger.LogInformation("Attempting to apply migrations...");
 
             // Застосовуємо міграції
@@ -351,6 +352,9 @@ if (app.Environment.IsDevelopment())
 
             // Заповнення початковими даними
             await ApplicationDbContextSeed.SeedDefaultUserAndRolesAsync(userManager, roleManager, dbContext);
+
+            await ApplicationDbContextSeed.SeedChallengesAsync(dbContext, userManager);
+
             logger.LogInformation("Database seeded successfully.");
         }
         catch (Exception ex)

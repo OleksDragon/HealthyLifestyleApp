@@ -4,7 +4,6 @@
 
 .articles-list {
     width: 99%;
-    /* height: 100%; */
 }
 
 .mental-health-articles {
@@ -13,37 +12,6 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
-
-.article-header-line-blure {
-    margin-right: 0;
-    margin-left: -1.5px;
-    top: 244px;
-    border: none;
-    position: fixed;
-    width: 70.8%;
-    height: 10px;
-    z-index: 1000;
-    background: transparent;
-
-    mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 20px,
-        black calc(100% - 10px),
-        transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 10px,
-        black calc(100% - 10px),
-        transparent 100%
-    );
-
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
 
 .mental-health-articles::-webkit-scrollbar {
     width: 11px;
@@ -87,14 +55,12 @@
     font-family: var(--font-family);
     font-size: 20px;
     font-weight: 900;
-    /* margin: -15px 0 20px 0; */
 }
 
 .articles-list .article-card:first-child {
     margin-top: 5px;
 }
 
-/* Ефект для останньої картки */
 .articles-list .article-card:last-child:hover {
     margin-bottom: 15px;
 }

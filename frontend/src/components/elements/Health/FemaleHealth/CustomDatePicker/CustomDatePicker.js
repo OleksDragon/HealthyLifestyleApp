@@ -8,7 +8,7 @@ import './CustomDatePicker.css';
 import styled from 'styled-components';
 
 // Спеціалізований CustomSelect для вибору місяців/років у стилі CustomSelect
-const YearMonthSelect = ({ value, options, onChange, className = '' }) => {
+export const YearMonthSelect = ({ value, options, onChange, className = '' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef(null);
 

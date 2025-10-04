@@ -55,7 +55,6 @@ namespace HealthyLifestyle.Application.Services.UserS
             return userDto;
         }
 
-
         /// <summary>
         /// Оновлює профіль користувача на основі наданих даних.
         /// </summary>

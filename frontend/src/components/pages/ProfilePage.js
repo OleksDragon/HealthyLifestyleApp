@@ -950,7 +950,7 @@ const handleCountryChange = async (value) => {
               className="pp-toggle-text"
               style={{ color: isSpecialistProfile ? '#343434' : '#FFF' }}
             >
-              Профіль спеціаліста
+              {t("p_specialist_profile")}
             </span>
             <div className="pp-toggle-switch">
               <input
@@ -974,25 +974,25 @@ const handleCountryChange = async (value) => {
                 className="pp-specialist-btn pp-doctor"
                 onClick={() => handleSpecialistButtonClick('doctor')}
               >
-                Лікар
+                {t("spec_doctor")}
               </button>
               <button 
                 className="pp-specialist-btn"
                 onClick={() => handleSpecialistButtonClick('coach')}
               >
-                Тренер
+                {t("spec_trainer")}
               </button>
               <button 
                 className="pp-specialist-btn"
                 onClick={() => handleSpecialistButtonClick('psychologist')}
               >
-                Психолог
+                {t("spec_psychologist")}
               </button>
               <button 
                 className="pp-specialist-btn"
                 onClick={() => handleSpecialistButtonClick('nutritionist')}
               >
-                Дієтолог
+                {t("spec_dietitian")}
               </button>
             </div>
           </div>

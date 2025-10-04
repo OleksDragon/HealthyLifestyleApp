@@ -155,6 +155,7 @@ i18n
           p_loading_streets: "Loading streets...",
           p_btn_save: "Save",
           p_btn_saving: "Saving...",
+          p_specialist_profile: "Specialist Profile",
 
           // --- Custom calendar translations (user birthday) ---
           p_january: "january",
@@ -223,7 +224,6 @@ i18n
           no_specialists_found: "No specialists found",
           recomend: "Recommended!",
           join_team: "Join our team!",
-          become_specialist: "Become a specialist",
 
           // Additional translations
           tariffs: "Tariffs",
@@ -319,7 +319,6 @@ i18n
             "Congratulations! You have completed the challenge.",
 
           // --- Menstrual calendar translations ---
-          last_cycle_first_day: "1st day of last cycle",
           menstruation_calendar: "Menstrual calendar",
           male: "Male",
           female: "Female",
@@ -1144,7 +1143,7 @@ i18n
           p_loading_streets: "Завантаження вулиць..",
           p_btn_save: "Зберегти",
           p_btn_saving: "Збереження...",
-          
+          p_specialist_profile: "Профіль спеціаліста",
 
           // === КАЛЕНДАР (ДЕНЬ НАРОДЖЕННЯ) ===
           p_january: "січень",
@@ -1252,9 +1251,6 @@ i18n
           female: "Жінка",
           gender: "Здоров'я за статтю",
 
-          // --- Переклади для календара місячних для 1-й день останнього циклу
-          last_cycle_first_day: "1-й день останнього циклу",
-
           // --- Переклади для Спеціалістів
           filter_speciality: "Спеціалізація",
           filter_mode: "Онлайн/офлайн",
@@ -1295,7 +1291,6 @@ i18n
           no_specialists_found: "Спеціалістів не знайдено",
           recomend: "Рекомендуємо!",
           join_team: "Приєднуйся до нас в команду!",
-          become_specialist: "Стати фахівцем",
 
           // Additional translations
           tariffs: "Тарифи",
@@ -2159,6 +2154,7 @@ i18n
           p_loading_streets: "Lade Straßen...",
           p_btn_save: "Speichern",
           p_btn_saving: "Wird gespeichert...",
+          p_specialist_profile: "Spezialistenprofil",
 
           // === KALENDER (GEBURTSTAG) ===
           p_january: "Januar",
@@ -2188,8 +2184,6 @@ i18n
           p_france_country: "Frankreich",
           p_spain_country: "Spanien",
           p_usa_country: "USA",
-          // --- Переклади для календара місячних
-          last_cycle_first_day: "1. Tag des letzten Zyklus",
 
           // --- Übersetzungen für Spezialisten
           filter_speciality: "Spezialisierung",
@@ -2226,7 +2220,6 @@ i18n
           no_specialists_found: "Keine Spezialisten gefunden",
           recomend: "Empfohlen!",
           join_team: "Tritt unserem Team bei!",
-          become_specialist: "Spezialist werden",
 
           // Additional translations
           tariffs: "Tarife",
@@ -3190,6 +3183,7 @@ i18n
           p_loading_streets: "Chargement des rues...",
           p_btn_save: "Sauvegarder",
           p_btn_saving: "Sauvegarde en cours...",
+          p_specialist_profile: "Spezialistenprofil",
 
           // === CALENDRIER (ANNIVERSAIRE) ===
           p_january: "janvier",
@@ -3219,9 +3213,6 @@ i18n
           p_france_country: "France",
           p_spain_country: "Espagne",
           p_usa_country: "États-Unis",
-
-          // --- Переклади для календара місячних
-          last_cycle_first_day: "1er jour du dernier cycle",
 
           // --- Traductions pour Spécialistes
           filter_speciality: "Spécialisation",
@@ -3258,7 +3249,6 @@ i18n
           no_specialists_found: "Aucun spécialiste trouvé",
           recomend: "Recommandé !",
           join_team: "Rejoignez notre équipe !",
-          become_specialist: "Devenir spécialiste",
 
           // Additional translations
           tariffs: "Tarifs",
@@ -4224,6 +4214,7 @@ i18n
           p_loading_streets: "Cargando calles...",
           p_btn_save: "Guardar",
           p_btn_saving: "Guardando...",
+          p_specialist_profile: "Spezialistenprofil",
 
           // === CALENDARIO (CUMPLEAÑOS) ===
           p_january: "enero",
@@ -4253,9 +4244,6 @@ i18n
           p_france_country: "Francia",
           p_spain_country: "España",
           p_usa_country: "EE.UU.",
-
-          // --- Переклади для календара місячних
-          last_cycle_first_day: "1er día del último ciclo",
 
           // --- Traducciones para Especialistas
           filter_speciality: "Especialización",
@@ -4292,7 +4280,6 @@ i18n
           no_specialists_found: "No se encontraron especialistas",
           recomend: "¡Recomendado!",
           join_team: "¡Únete a nuestro equipo!",
-          become_specialist: "Hazte especialista",
 
           // Additional translations
           tariffs: "Tarifas",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from "axios";
 import "../styles/profile.css";
@@ -11,11 +11,15 @@ import TruncatedInput from '../elements/truncated-input/TruncatedInput';
 
 // Імпорт сервісних функцій
 import { getCurrentLanguage, fetchCities, fetchStreets } from '../services/LocationService';
-import { achievementsData, purchasesData } from '../services/achiev_purchases_test_data'
 
 const UserProfile = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [isSpecialistProfile, setIsSpecialistProfile] = useState(false);
+  const [showSpecialistModal, setShowSpecialistModal] = useState(false);
+
   const [activeView, setActiveView] = useState({ achievements: 'list', purchases: 'list' });
   const [selectedItem, setSelectedItem] = useState({
     achievements: null,
@@ -23,6 +27,7 @@ const UserProfile = () => {
   });
   const [hasChanges, setHasChanges] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState("");
+  const [avatarFile, setAvatarFile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -31,6 +36,9 @@ const UserProfile = () => {
   const [streetOptions, setStreetOptions] = useState([]);
   const [loadingCities, setLoadingCities] = useState(false);
   const [loadingStreets, setLoadingStreets] = useState(false);
+
+  const [achievements, setAchievements] = useState([]);
+  const [purchases, setPurchases] = useState([]);
 
   // Кеш для збереження даних
   const citiesCache = useRef(new Map());
@@ -55,9 +63,6 @@ const UserProfile = () => {
 
   const [formData, setFormData] = useState(initialFormData);
   const [originalFormData, setOriginalFormData] = useState(initialFormData);
-
-  const achievements = achievementsData;
-  const purchases = purchasesData;
 
   // Отримання токена
   const getToken = () => {
@@ -85,6 +90,14 @@ const UserProfile = () => {
 
       const userData = response.data;
       
+      // ✅ ВИПРАВЛЕННЯ: Корекція URL аватара
+      let avatarUrl = userData.ProfilePictureUrl || '';
+      if (avatarUrl && !avatarUrl.startsWith('http')) {
+        // Додаємо протокол, якщо відсутній
+        avatarUrl = `/${avatarUrl}`;
+      }
+
+
       // Розбиваємо FullName на firstName та lastName
       const nameParts = userData.FullName?.split(' ') || [];
       const firstName = nameParts[0] || '';
@@ -127,16 +140,16 @@ const UserProfile = () => {
         phoneCode,
         phoneNumber,
         about: userData.Bio || '',
-        avatarUrl: userData.ProfilePictureUrl || ''
+        avatarUrl: avatarUrl
       };
 
       setFormData(newFormData);
       setOriginalFormData(newFormData);
-      
-      // Якщо є аватар, встановлюємо попередній перегляд
-      if (userData.ProfilePictureUrl) {
-        setAvatarPreview(userData.ProfilePictureUrl);
+
+      if (avatarUrl) {
+        setAvatarPreview(avatarUrl);
       }
+
 
     } catch (error) {
       console.error("Помилка при завантаженні профілю:", error);
@@ -177,7 +190,7 @@ const UserProfile = () => {
 
   const genderOptions = useMemo(() => [t("p_male"), t("p_female"), t("p_other")], [t]);
 
- const handleSelectChange = useCallback((field, value) => {
+  const handleSelectChange = useCallback((field, value) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -203,7 +216,6 @@ const STATIC_COUNTRIES = useMemo(() => [
 }), [t]);
 
 // Завантаження міст
-  // Завантаження міст
 const loadCities = useCallback(async (countryName) => {
   if (!countryName) {
     setCityOptions([]);
@@ -294,8 +306,6 @@ const loadCities = useCallback(async (countryName) => {
   }
 }, [i18n.language, formData.country, formData.city, loadCities, loadStreets]);
 
-
-
   // Завантаження міст при зміні країни
   useEffect(() => {
     if (!formData.country) return;
@@ -313,6 +323,42 @@ useEffect(() => {
     setFormData(prev => ({ ...prev, street: '' })); // Очищаємо вулицю, якщо немає міста або країни
   }
 }, [formData.city, formData.country, loadStreets]);
+
+useEffect(() => {
+  const fetchCardsData = async () => {
+    try {
+      const token = getToken();
+      const userId = localStorage.getItem('user-id');
+      
+      if (!token || !userId) {
+        console.error('Токен або ID користувача відсутні');
+        navigate('/login');
+        return;
+      }
+
+      // Паралельно завантажуємо досягнення та покупки
+      const [achievementsRes, purchasesRes] = await Promise.all([
+        axios.get(`${process.env.REACT_APP_API_URL}/api/achievements/user/${userId}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }),
+        axios.get(`${process.env.REACT_APP_API_URL}/api/purchases/user/${userId}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+      ]);
+
+      setAchievements(achievementsRes.data || []);
+      setPurchases(purchasesRes.data || []);
+
+    } catch (error) {
+      console.error("Помилка завантаження даних карток:", error);
+      // Встановлюємо пусті масиви у разі помилки
+      setAchievements([]);
+      setPurchases([]);
+    }
+  };
+
+  fetchCardsData();
+}, [navigate]);
 
 const handleCountryChange = async (value) => {
   handleSelectChange('country', value);
@@ -345,25 +391,21 @@ const handleCountryChange = async (value) => {
     return hasValue(value) ? `${baseClassName} has-value` : baseClassName;
   };
 
-  // Обробка вибору аватару
   const handleAvatarSelect = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      if (!file.type.startsWith('image/')) {
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setAvatarPreview(e.target.result);
-        setFormData(prev => ({
-          ...prev,
-          avatarUrl: ''
-        }));
-      };
-      reader.readAsDataURL(file);
+  const file = event.target.files[0];
+  if (file && file.type.startsWith('image/')) {
+    // Перевірка розміру (наприклад, 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Файл занадто великий. Максимальний розмір: 5MB");
+      return;
     }
-  };
+    setAvatarFile(file); // зберігаємо файл
+    const reader = new FileReader();
+    reader.onload = (e) => setAvatarPreview(e.target.result);
+    reader.readAsDataURL(file);
+    setHasChanges(true);
+  }
+};
 
   // Функція для обробки текстових полів
   const handleInputChange = (field, value) => {
@@ -384,42 +426,56 @@ const handleCountryChange = async (value) => {
     setSelectedItem(prev => ({ ...prev, [type]: null }));
   };
 
-  // Функція для відправки даних на бекенд
   const handleSubmit = async () => {
     try {
       setIsSaving(true);
       const token = getToken();
-      if (!token) {
-        console.log("Токен не знайдено.");
-        return;
-      }
+      if (!token) return;
 
       const genderMapping = {
         [t("p_male")]: 'Male',
-        [t("p_female")]: 'Female', 
+        [t("p_female")]: 'Female',
         [t("p_other")]: 'Other'
       };
 
       // Форматуємо дату для бекенду
-      let formattedBirthDate = "0001-01-01";
+      let formattedBirthDate = null;
       if (formData.birthDate) {
         const [day, month, year] = formData.birthDate.split(' ');
         formattedBirthDate = `${year}-${month}-${day}`;
       }
 
-      const dataToSend = {
-        FullName: `${formData.firstName} ${formData.lastName}`.trim(),
-        DateOfBirth: formattedBirthDate,
-        Gender: genderMapping[formData.gender] || genderMapping[t("p_other")],
-        Weight: parseFloat(formData.weight) || 0,
-        Height: parseInt(formData.height) || 0,
-        ProfilePictureUrl: 'https://webmaestro.com.ua/img/blog/20201016122530_.jpeg',
-        Bio: formData.about || '',
-        Phone: `${formData.phoneCode}${formData.phoneNumber}`,
-        Country: formData.country || '',
-        City: formData.city || '',
-        Street: formData.street|| ''
-      };
+      const dataToSend = new FormData();
+      
+      // Текстові поля
+      dataToSend.append("FullName", `${formData.firstName} ${formData.lastName}`.trim());
+      
+      if (formattedBirthDate) {
+        dataToSend.append("DateOfBirth", formattedBirthDate);
+      }
+      
+      if (formData.gender) {
+        dataToSend.append("Gender", genderMapping[formData.gender]);
+      }
+      
+      // Числові поля
+      dataToSend.append("Weight", formData.weight || "");
+      dataToSend.append("Height", formData.height || "");
+      
+      dataToSend.append("Bio", formData.about || '');
+      dataToSend.append("Phone", `${formData.phoneCode}${formData.phoneNumber}`);
+      dataToSend.append("Country", formData.country || '');
+      dataToSend.append("City", formData.city || '');
+      dataToSend.append("Street", formData.street || '');
+      
+      // Аватар
+      if (!avatarFile && !formData.avatarUrl) {
+        dataToSend.append("ProfilePictureUrl", "");
+      }
+
+      if (avatarFile) {
+        dataToSend.append("ProfilePictureFile", avatarFile);
+      }
 
       const response = await axios.put(
         `${process.env.REACT_APP_API_URL}/api/User/profile`,
@@ -427,20 +483,47 @@ const handleCountryChange = async (value) => {
         {
           headers: {
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
           }
         }
       );
 
       if (response.status === 200) {
-        setOriginalFormData(formData);
+        const updatedUser = response.data;
+        
+        // Корекція URL аватара
+        let newAvatarUrl = updatedUser.ProfilePictureUrl || '';
+        
+        // Оновлюємо стани
+        setFormData(prev => ({
+          ...prev,
+          avatarUrl: newAvatarUrl
+        }));
+        
+        setOriginalFormData(prev => ({
+          ...prev,
+          avatarUrl: newAvatarUrl
+        }));
+        
+        // Оновлюємо preview
+        if (newAvatarUrl) {
+          setAvatarPreview(newAvatarUrl);
+        } else {
+          setAvatarPreview("");
+        }
+        
+        setAvatarFile(null);
         setHasChanges(false);
         setIsSaved(true);
       }
 
     } catch (error) {
       console.error("Помилка при оновленні профілю:", error);
-      alert(t("p_error_upadate"));
+      
+      if (error.response?.data?.errors) {
+        const errorMessages = Object.values(error.response.data.errors).flat().join('\n');
+        console.log(`Помилки валідації:\n${errorMessages}`);
+      }
     } finally {
       setIsSaving(false);
     }
@@ -463,130 +546,160 @@ const handleCountryChange = async (value) => {
   }
 
   // Функції для обробки вводу (Зріст та вага)
-const handleHeightChange = (value) => {
-  // Дозволяємо тільки цифри
-  value = value.replace(/[^0-9]/g, '');
-  // Видаляємо ведучі нулі (крім випадку, коли це єдиний 0)
-  if (value.length > 1 && value.startsWith('0')) {
-    value = value.replace(/^0+/, '');
-  }
-  // Обмежуємо довжину до 3 символів
-  value = value.slice(0, 3);
-  // Перевіряємо, щоб значення не перевищувало 250
-  if (value && parseInt(value) > 250) {
-    value = '250';
-  }
-  return value;
-};
-
-const handleHeightKeyPress = (e) => {
-  // Дозволяємо тільки цифри
-  if (!/[0-9]/.test(e.key)) {
-    e.preventDefault();
-  }
-};
-
-const handleWeightChange = (value, currentValue) => {
-  // Дозволяємо тільки цифри та крапки
-  value = value.replace(/[^0-9.]/g, '');
-  // Замінюємо кому на крапку
-  value = value.replace(/,/g, '.');
-  // Не дозволяємо крапку на початку
-  if (value.startsWith('.')) {
-    return '';
-  }
-  // Перевіряємо кількість крапок
-  if ((value.match(/\./g) || []).length > 1) {
-    // Залишаємо тільки першу крапку
-    const parts = value.split('.');
-    value = parts[0] + '.' + parts.slice(1).join('');
-  }
-  if (value.includes('.')) {
-    const parts = value.split('.');
-    let beforeDot = parts[0];
-    let afterDot = parts[1] || '';
-    // Обмежуємо до 3 цифр перед крапкою
-    beforeDot = beforeDot.slice(0, 3);
-    // Видаляємо ведучі нулі перед крапкою (крім випадку "0.")
-    if (beforeDot.length > 1 && beforeDot.startsWith('0') && beforeDot !== '0') {
-      beforeDot = beforeDot.replace(/^0+/, '');
-    }
-    // Обмежуємо до 1 цифри після крапки
-    afterDot = afterDot.slice(0, 1);
-    // Перевіряємо, щоб значення не перевищувало 350
-    if (beforeDot && parseInt(beforeDot) > 350) {
-      beforeDot = '350';
-      afterDot = '00'; // Якщо перевищило, встановлюємо максимальне значення
-    } else if (beforeDot === '350' && afterDot && parseInt(afterDot) > 0) {
-      // Якщо рівно 350, не дозволяємо дрібну частину більшу за 0
-      afterDot = '00';
-    }
-    return beforeDot + '.' + afterDot;
-  } else {
-    // Якщо крапки немає, обмежуємо до 3 цифр
-    value = value.slice(0, 3);
-    // Видаляємо ведучі нулі (крім випадку "0")
-    if (value.length > 1 && value.startsWith('0') && value !== '0') {
+  const handleHeightChange = (value) => {
+    // Дозволяємо тільки цифри
+    value = value.replace(/[^0-9]/g, '');
+    // Видаляємо ведучі нулі (крім випадку, коли це єдиний 0)
+    if (value.length > 1 && value.startsWith('0')) {
       value = value.replace(/^0+/, '');
     }
-    // Перевіряємо, щоб значення не перевищувало 350
-    if (value && parseInt(value) > 350) {
-      value = '350';
+    // Обмежуємо довжину до 3 символів
+    value = value.slice(0, 3);
+    // Перевіряємо, щоб значення не перевищувало 250
+    if (value && parseInt(value) > 250) {
+      value = '250';
     }
     return value;
-  }
-};
+  };
 
-const handleWeightKeyPress = (e, currentValue) => {
-  // Дозволяємо цифри та крапки
-  if (!/[0-9.]/.test(e.key)) {
-    e.preventDefault();
-    return;
-  }
-  // Перевіряємо крапку
-  if (e.key === '.') {
+  const handleHeightKeyPress = (e) => {
+    // Дозволяємо тільки цифри
+    if (!/[0-9]/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  const handleWeightChange = (value, currentValue) => {
+    // Дозволяємо тільки цифри та крапки
+    value = value.replace(/[^0-9.]/g, '');
+    // Замінюємо кому на крапку
+    value = value.replace(/,/g, '.');
     // Не дозволяємо крапку на початку
-    if (currentValue === '') {
+    if (value.startsWith('.')) {
+      return '';
+    }
+    // Перевіряємо кількість крапок
+    if ((value.match(/\./g) || []).length > 1) {
+      // Залишаємо тільки першу крапку
+      const parts = value.split('.');
+      value = parts[0] + '.' + parts.slice(1).join('');
+    }
+    if (value.includes('.')) {
+      const parts = value.split('.');
+      let beforeDot = parts[0];
+      let afterDot = parts[1] || '';
+      // Обмежуємо до 3 цифр перед крапкою
+      beforeDot = beforeDot.slice(0, 3);
+      // Видаляємо ведучі нулі перед крапкою (крім випадку "0.")
+      if (beforeDot.length > 1 && beforeDot.startsWith('0') && beforeDot !== '0') {
+        beforeDot = beforeDot.replace(/^0+/, '');
+      }
+      // Обмежуємо до 1 цифри після крапки
+      afterDot = afterDot.slice(0, 1);
+      // Перевіряємо, щоб значення не перевищувало 350
+      if (beforeDot && parseInt(beforeDot) > 350) {
+        beforeDot = '350';
+        afterDot = '00'; // Якщо перевищило, встановлюємо максимальне значення
+      } else if (beforeDot === '350' && afterDot && parseInt(afterDot) > 0) {
+        // Якщо рівно 350, не дозволяємо дрібну частину більшу за 0
+        afterDot = '00';
+      }
+      return beforeDot + '.' + afterDot;
+    } else {
+      // Якщо крапки немає, обмежуємо до 3 цифр
+      value = value.slice(0, 3);
+      // Видаляємо ведучі нулі (крім випадку "0")
+      if (value.length > 1 && value.startsWith('0') && value !== '0') {
+        value = value.replace(/^0+/, '');
+      }
+      // Перевіряємо, щоб значення не перевищувало 350
+      if (value && parseInt(value) > 350) {
+        value = '350';
+      }
+      return value;
+    }
+  };
+
+  const handleWeightKeyPress = (e, currentValue) => {
+    // Дозволяємо цифри та крапки
+    if (!/[0-9.]/.test(e.key)) {
       e.preventDefault();
       return;
     }
-    // Не дозволяємо більше однієї крапки
-    if (currentValue.includes('.')) {
-      e.preventDefault();
-      return;
-    }
-    // Перевіряємо, чи не перевищить значення 350 після додавання крапки
-    const parts = currentValue.split('.');
-    const beforeDot = parts[0];
-    if (beforeDot && parseInt(beforeDot) > 350) {
-      e.preventDefault();
-    }
-  } else {
-    // Перевіряємо цифри
-    if (currentValue.includes('.')) {
-      // Якщо вже є крапка, перевіряємо частину після крапки
-      const parts = currentValue.split('.');
-      const beforeDot = parts[0];
-      const afterDot = parts[1] || '';
-      // Якщо перед крапкою вже 350, не дозволяємо вводити цифри після крапки
-      if (beforeDot === '350' && afterDot.length < 2) {
+    // Перевіряємо крапку
+    if (e.key === '.') {
+      // Не дозволяємо крапку на початку
+      if (currentValue === '') {
         e.preventDefault();
         return;
       }
-      // Перевіряємо загальне значення
-      const testValue = beforeDot + '.' + afterDot + e.key;
-      if (parseFloat(testValue) > 350) {
+      // Не дозволяємо більше однієї крапки
+      if (currentValue.includes('.')) {
+        e.preventDefault();
+        return;
+      }
+      // Перевіряємо, чи не перевищить значення 350 після додавання крапки
+      const parts = currentValue.split('.');
+      const beforeDot = parts[0];
+      if (beforeDot && parseInt(beforeDot) > 350) {
         e.preventDefault();
       }
     } else {
-      // Якщо крапки немає, перевіряємо частину до крапки
-      const testValue = currentValue + e.key;
-      if (testValue && parseInt(testValue) > 350) {
-        e.preventDefault();
+      // Перевіряємо цифри
+      if (currentValue.includes('.')) {
+        // Якщо вже є крапка, перевіряємо частину після крапки
+        const parts = currentValue.split('.');
+        const beforeDot = parts[0];
+        const afterDot = parts[1] || '';
+        // Якщо перед крапкою вже 350, не дозволяємо вводити цифри після крапки
+        if (beforeDot === '350' && afterDot.length < 2) {
+          e.preventDefault();
+          return;
+        }
+        // Перевіряємо загальне значення
+        const testValue = beforeDot + '.' + afterDot + e.key;
+        if (parseFloat(testValue) > 350) {
+          e.preventDefault();
+        }
+      } else {
+        // Якщо крапки немає, перевіряємо частину до крапки
+        const testValue = currentValue + e.key;
+        if (testValue && parseInt(testValue) > 350) {
+          e.preventDefault();
+        }
       }
     }
-  }
-};
+  };
+
+// Обробник для перемикача "Профіль спеціаліста"
+  const handleSpecialistToggle = (checked) => {
+    setIsSpecialistProfile(checked);
+    if (checked) {
+      setShowSpecialistModal(true);
+    } else {
+      setShowSpecialistModal(false);
+    }
+  };
+
+  // Обробники для кнопок спеціалістів
+  const handleSpecialistButtonClick = (specialistType) => {
+    
+    // Закриваємо модальне вікно після вибору
+    setShowSpecialistModal(false);
+    setIsSpecialistProfile(false);
+
+    // localStorage.getItem("helth-token")
+    localStorage.setItem("specialist-profile", specialistType)
+    navigate(`${location.pathname}/specialist`);
+  };
+
+  // Закриття модального вікна при кліку на затемнену область
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setShowSpecialistModal(false);
+      setIsSpecialistProfile(false);
+    }
+  };
 
   // Якщо дані успішно збережено, показуємо повідомлення
   if (isSaved) {
@@ -612,7 +725,16 @@ const handleWeightKeyPress = (e, currentValue) => {
 
   return (
     <div className="user-profile-wrapper">
-      <div className="user-profile">
+
+      {/* Затемнення при відкритті модального вікна */}
+      {showSpecialistModal && (
+        <div 
+          className="pp-modal-overlay" 
+          onClick={handleOverlayClick}
+        />
+      )}
+
+      <div className={`user-profile ${showSpecialistModal ? 'blurred' : ''}`}>
         {/* Лівий стовпець */}
         <div className="profile-info">
           <div className="avatar">
@@ -811,14 +933,71 @@ const handleWeightKeyPress = (e, currentValue) => {
 
       {/* Кнопка під профілем */}
       <div className="profile-actions">
-        <button 
-          onClick={handleSubmit}
-          className={hasChanges ? 'save' : 'save disabled'}
-          disabled={!hasChanges || isSaving}
-        >
-          {isSaving ? t("p_btn_saving") : t("p_btn_save")}
-        </button>
+        <div className="save-button-container">
+          <button 
+            onClick={handleSubmit}
+            className={hasChanges ? 'save' : 'save disabled'}
+            disabled={!hasChanges || isSaving}
+          >
+            {isSaving ? t("p_btn_saving") : t("p_btn_save")}
+          </button>
+        </div>
+
+        {/* Перемикач "Профіль спеціаліста" */}
+        <div className="pp-specialist-profile-toggle">
+          <label className="pp-toggle-label">
+            <span 
+              className="pp-toggle-text"
+              style={{ color: isSpecialistProfile ? '#343434' : '#FFF' }}
+            >
+              Профіль спеціаліста
+            </span>
+            <div className="pp-toggle-switch">
+              <input
+                type="checkbox"
+                checked={isSpecialistProfile}
+                onChange={(e) => handleSpecialistToggle(e.target.checked)}
+                className="pp-toggle-input"
+              />
+              <span className="pp-toggle-slider"></span>
+            </div>
+          </label>
+        </div>
       </div>
+
+      {/* Модальне вікно з кнопками спеціалістів */}
+      {showSpecialistModal && (
+        <div className="pp-specialist-modal">
+          <div className="pp-specialist-modal-content">
+            <div className="pp-specialist-buttons">
+              <button 
+                className="pp-specialist-btn pp-doctor"
+                onClick={() => handleSpecialistButtonClick('doctor')}
+              >
+                Лікар
+              </button>
+              <button 
+                className="pp-specialist-btn"
+                onClick={() => handleSpecialistButtonClick('coach')}
+              >
+                Тренер
+              </button>
+              <button 
+                className="pp-specialist-btn"
+                onClick={() => handleSpecialistButtonClick('psychologist')}
+              >
+                Психолог
+              </button>
+              <button 
+                className="pp-specialist-btn"
+                onClick={() => handleSpecialistButtonClick('nutritionist')}
+              >
+                Дієтолог
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

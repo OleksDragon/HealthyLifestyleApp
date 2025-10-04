@@ -41,7 +41,7 @@ return (
         <div className="menu-option" onClick={() => navegate("/profile")}>
           <img
             style={{
-              opacity: window.location.pathname === "/profile" ? 1 : 0,
+              opacity: window.location.pathname.startsWith("/profile") ? 1 : 0,
             }}
             src={profileIcon}
             alt="profile"

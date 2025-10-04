@@ -73,10 +73,12 @@ namespace HealthyLifestyle.Api.Controllers.User
         /// - <see cref="Unauthorized(object)"/> якщо ідентифікатор користувача відсутній або недійсний.
         /// </returns>
         [HttpPut("profile")]
+        [Consumes("multipart/form-data")]
+        [Produces("application/json")]
         [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> UpdateUserProfile([FromBody] UpdateUserDto request)
+        public async Task<IActionResult> UpdateUserProfile([FromForm] UpdateUserDto request)
         {
             if (request == null)
             {

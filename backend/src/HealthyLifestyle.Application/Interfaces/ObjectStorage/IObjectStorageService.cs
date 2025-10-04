@@ -24,5 +24,13 @@ namespace HealthyLifestyle.Application.Interfaces.ObjectStorage
         /// </summary>
         /// <param name="fileUrl">Полный URL-адрес файла для удаления.</param>
         Task DeleteFileAsync(string fileUrl);
+
+        /// <summary>
+        /// Presigned URL (тимчасові посилання)
+        /// </summary>
+        /// <param name="objectName"></param>
+        /// <param name="expiryInSeconds"></param>
+        /// <returns></returns>
+        Task<string> GetPresignedUrlAsync(string objectName, int expiryInSeconds);
     }
 }

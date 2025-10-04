@@ -132,8 +132,8 @@
   padding: 5px;
 
   position: absolute;
-  left: 15px;
-  top: 7px;
+  left: 10px;
+  top: -5px;
 }
 
 .p-dc-arrow-long {
@@ -297,4 +297,46 @@
   font-size: 14px;
   font-weight: 500;
   text-align: center;
+}
+
+/* Додаткові стилі для нових елементів */
+.p-dc-purchase-order {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #0661CC;
+}
+
+.p-dc-purchase-period {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+  color: #0661CC;
+}
+
+.p-dc-stat:only-child {
+  flex: none;
+  width: 100%;
+}
+
+.p-dc-stat:first-child:nth-last-child(2),
+.p-dc-stat:first-child:nth-last-child(2) ~ .p-dc-stat {
+  flex: 1;
+}
+
+/* Покращення адаптивності для довгих текстів */
+.p-dc-detail-message {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.p-dc-purchase-product {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-height: 60px;
+  overflow-y: auto;
 }

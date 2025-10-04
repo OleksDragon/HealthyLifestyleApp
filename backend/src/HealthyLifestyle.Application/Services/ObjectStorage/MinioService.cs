@@ -62,18 +62,37 @@ public class MinioService : IObjectStorageService
     /// Удаляет файл из хранилища.
     /// </summary>
     /// <param name="fileUrl">URL-адрес файла для удаления.</param>
-    public async Task DeleteFileAsync(string fileUrl)
+    //public async Task DeleteFileAsync(string fileUrl)
+    //{
+    //    var uri = new Uri(fileUrl);
+    //    var bucketName = uri.Segments[1].TrimEnd('/');
+    //    var objectName = string.Join("", uri.Segments.Skip(2));
+
+    //    var removeObjectArgs = new RemoveObjectArgs()
+    //        .WithBucket(bucketName)
+    //        .WithObject(objectName);
+
+    //    await _minioClient.RemoveObjectAsync(removeObjectArgs);
+    //}
+
+    public async Task DeleteFileAsync(string objectName)
     {
-        var uri = new Uri(fileUrl);
-        var bucketName = uri.Segments[1].TrimEnd('/');
-        var objectName = string.Join("", uri.Segments.Skip(2));
+        try
+        {
+            var removeObjectArgs = new RemoveObjectArgs()
+                .WithBucket(_settings.BucketName)
+                .WithObject(objectName);
 
-        var removeObjectArgs = new RemoveObjectArgs()
-            .WithBucket(bucketName)
-            .WithObject(objectName);
-
-        await _minioClient.RemoveObjectAsync(removeObjectArgs);
+            await _minioClient.RemoveObjectAsync(removeObjectArgs);
+            Console.WriteLine($"Файл '{objectName}' успішно видалено.");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Помилка видалення об'єкта {objectName}: {e.Message}");
+            throw;
+        }
     }
+
 
     public async Task<Stream> GetFileAsync(string objectName)
     {
@@ -105,4 +124,23 @@ public class MinioService : IObjectStorageService
             throw;
         }
     }
+
+    public async Task<string> GetPresignedUrlAsync(string objectName, int expiryInSeconds)
+    {
+        try
+        {
+            var args = new PresignedGetObjectArgs()
+                .WithBucket(_settings.BucketName)
+                .WithObject(objectName)
+                .WithExpiry(expiryInSeconds);
+
+            return await _minioClient.PresignedGetObjectAsync(args).ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Помилка генерації pre-signed URL: {e.Message}");
+            throw;
+        }
+    }
+
 }

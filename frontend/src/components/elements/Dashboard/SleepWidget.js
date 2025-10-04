@@ -10,7 +10,7 @@ function SleepWidget({className}) {
     const { t } = useTranslation();
     let today = new Date().getDay();
     const todayIdx = today != 0 ? today - 1 : 6;
-    const [weekProgress, setWeekProgress] = useState([180, 420, 300, 480, 420, 360, 480]);
+    const [weekProgress, setWeekProgress] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [sleepGoal, setSleepGoal] = useState(480);
 
     const getWeekDates = () => {

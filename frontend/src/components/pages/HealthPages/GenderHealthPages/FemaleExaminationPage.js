@@ -3,12 +3,93 @@ import arrowLeft from "../../../icons/ArrowLeft2.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import arrowBottom from "../../../icons/ArrowBottom.png";
+import axios from "axios";
 
 function FemaleExaminationPage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
     const [tipsOpen, setTipsOpen] = useState([false, false, false, false]);
+
+    const [gynec, setGynec] = useState(false);
+    const [pap, setPap] = useState(false);
+    const [ultra, setUltra] = useState(false);
+    const [ultraGl, setUltraGl] = useState(false);
+    const [blood, setBlood] = useState(false);
+
+    const dateToString = (date) => {
+        const dateStr = date.toLocaleDateString("en-CA");
+        const timeStr = date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+        return `${dateStr}T${timeStr}`;
+    }
+
+    const handleAddTestsToCalendar = async () => {
+        const msPerYear = 1000 * 60 * 60 * 24 * 365;
+        let tests = []
+
+        if (gynec) {
+            for (let i = 0; i < 4; i++) {
+                let date = new Date();
+                date.setHours(15, 0, 0, 0)
+                date.setTime(date.getTime() + msPerYear * i)
+                tests.push({title: t("gynecology_examination"), date: date});
+            }
+        }
+
+        if (pap) {
+            for (let i = 0; i < 2; i++) {
+                let date = new Date();
+                date.setHours(16, 0, 0, 0)
+                date.setTime(date.getTime() + msPerYear * i * 2)
+                tests.push({title: t("pap_test"), date: date});
+            }
+        }
+
+        if (ultra) {
+            for (let i = 0; i < 4; i++) {
+                let date = new Date();
+                date.setHours(17, 0, 0, 0)
+                date.setTime(date.getTime() + msPerYear * i)
+                tests.push({title: t("ultrasound_test"), date: date});
+            }
+        }
+
+        if (ultraGl) {
+            for (let i = 0; i < 4; i++) {
+                let date = new Date();
+                date.setHours(18, 0, 0, 0)
+                date.setTime(date.getTime() + msPerYear * i)
+                tests.push({title: t("ultrasound_glands"), date: date});
+            }
+        }
+
+        if (blood) {
+            for (let i = 0; i < 4; i++) {
+                let date = new Date();
+                date.setHours(19, 0, 0, 0)
+                date.setTime(date.getTime() + msPerYear * i)
+                tests.push({title: t("blood_test"), date: date});
+            }
+        }
+
+        tests.map(async t => {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/Calendar/`,
+                {
+                    AuthorId: localStorage.getItem("user-id"),
+                    Title: t.title,
+                    StartTime: dateToString(t.date),
+                    TaskToDo: "Doctor",
+                },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                    }
+                }
+            );
+        })
+
+        navigate("/calendar")
+    }
     
     return (
         <div className="scroll-data female-health-container">
@@ -26,31 +107,31 @@ function FemaleExaminationPage() {
                 <div className="tests-options">
                     <h3>{t("base_review")}</h3>
                     <label class="radio-wrapper">
-                        <input type="checkbox" name="color" value="red" />
+                        <input type="checkbox" checked={gynec} name="color" value="red" onChange={(e) => setGynec(e.target.checked)}/>
                         <span class="custom-radio"></span>
                         {t("gynecology_examination")}
                     </label>    
                     <label class="radio-wrapper">
-                        <input type="checkbox" name="color" value="red" />
+                        <input type="checkbox" checked={pap} name="color" value="red" onChange={(e) => setPap(e.target.checked)}/>
                         <span class="custom-radio"></span>
                         {t("pap_test")}
                     </label>
                     <label class="radio-wrapper">
-                        <input type="checkbox" name="color" value="red" />
+                        <input type="checkbox" checked={ultra} name="color" value="red" onChange={(e) => setUltra(e.target.checked)}/>
                         <span class="custom-radio"></span>
                         {t("ultrasound_test")}
                     </label>
                     <label class="radio-wrapper">
-                        <input type="checkbox" name="color" value="red" />
+                        <input type="checkbox" checked={ultraGl} name="color" value="red" onChange={(e) => setUltraGl(e.target.checked)}/>
                         <span class="custom-radio"></span>
                         {t("ultrasound_glands")}
                     </label>
                     <label class="radio-wrapper">
-                        <input type="checkbox" name="color" value="red" />
+                        <input type="checkbox" checked={blood} name="color" value="red" onChange={(e) => setBlood(e.target.checked)}/>
                         <span class="custom-radio"></span>
                         {t("blood_test")}
                     </label>
-                    <button>{t("add_to_calendar")}</button>
+                    <button onClick={() => handleAddTestsToCalendar()}>{t("add_to_calendar")}</button>
                 </div>
                 <div className="tests-tips">
                     <div
@@ -118,7 +199,7 @@ function FemaleExaminationPage() {
                         </div>}
                     </div>
                     <button className="find-doctor-btn" style={{width: "80%"}}>
-                        Знайти лабораторію поруч (фіг ми її знайдемо, краще до спеціаліста)
+                        {t("find_doctor")}
                     </button>
                 </div>
             </div>

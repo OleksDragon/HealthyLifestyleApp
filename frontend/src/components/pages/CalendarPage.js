@@ -12,10 +12,17 @@ import iconClock from "../icons/Clock.png";
 import iconCalendar from "../icons/CalendarEvent.png";
 import searchIcon from "../icons/GlassScale.png";
 import editIcon from "../icons/EditEvent.png";
+import deleteIcon from "../icons/DeleteEvent.png";
+import notificationIcon from "../icons/CalendarNotification.png";
+import meetingIcon from "../icons/CalendarMeet.png";
+import taskIcon from "../icons/TaskEvent.png";
+import crossIcon from "../icons/Cross.png";
+import { useNavigate } from 'react-router-dom';
 
 function CalendarPage() {
     const { t, i18n } = useTranslation();
     const inputRef = useRef(null);
+    const navigate = useNavigate();
 
     const [weekNums, setWeekNums] = useState([]);
     const [weekEvents, setWeekEvents] = useState([]);
@@ -24,11 +31,13 @@ function CalendarPage() {
     const [page, setPage] = useState(0);
     const [selectedWeekIdx, setSelectedWeekIdx] = useState(null);
     const [monthWeeks, setMonthWeeks] = useState([]);
-    const [meetType, setMeetType] = useState(0);
+    //const [meetType, setMeetType] = useState(0);
     const [users, setUsers] = useState([]);
     const [addNewPart, setAddNewPart] = useState(false);
     const [curPart, setCurPart] = useState("");
     const [activeEvent, setActiveEvent] = useState("");
+    const [eventToDelete, setEventToDelete] = useState("");
+    const [showModal, setShowModal] = useState(false);
     
     // Event
     const [id, setId] = useState("");
@@ -48,9 +57,9 @@ function CalendarPage() {
     ]
 
     const optionsTasks = [
-        { value: 'Workout', label: 'Тренування' },
-        { value: 'Eating', label: 'Харчування' },
-        { value: 'Doctor', label: 'Запис до лікаря' },
+        { value: 'Workout', label: t("workout") },
+        { value: 'Eating', label:  t("eating") },
+        { value: 'Doctor', label: t("sign_for_doctor") },
     ]
 
     const msPerDay = 1000 * 60 * 60 * 24;
@@ -61,7 +70,12 @@ function CalendarPage() {
         t("p_july"), t("p_august"), t("p_september"), t("p_october"), t("p_november"), t("p_december")
     ];
 
-    const currentYear = new Date().getFullYear();
+    const maxTime = new Date(today);
+    maxTime.setHours(23, 55, 0);
+    const minTime = new Date(today);
+    minTime.setHours(0, 0, 0);
+
+    const currentYear = new Date().getFullYear() + 5;
     const years = Array.from({ length: currentYear - 1900 + 1 }, (_, i) => currentYear - i);
     const monthsOptions = months.map((m, idx) => ({ value: idx, label: m }));
 
@@ -107,7 +121,7 @@ function CalendarPage() {
             const dayEvents = weekEvents.filter(e => Number(e.StartTime.split('T')[0].split('-')[2]) === d);
             return (
                 <div key={idx} className="day-container">
-                    {dayEventsGenerator(dayEvents, d)}
+                    {dayEventsGenerator(dayEvents, d, idx)}
                 </div>
             );
         });
@@ -243,12 +257,11 @@ function CalendarPage() {
             setCurPart("")
             setUsers([])
         }
-
     }
 
-    const handleEventUpdate = (event) => {
+    const getEventType = (event) => {
         let eventType = 0;
-        if (event.MettingParticipants.length !== 0) {
+        if (event.MettingParticipants.length !== 0 || event.EndTime != null || event.MeetingLink.length != 0) {
             eventType = 3
         }
         else if (event.TaskToDo !== null) {
@@ -258,25 +271,49 @@ function CalendarPage() {
             eventType = 1
         }
 
+        return eventType
+    }
+
+    const handleEventUpdate = (event) => {
         const defaultOption = optionsNotifications.find(
-            (o) => o.value === event.NotificationBefore.toString()
+            (o) => o.value === event.NotificationBefore
         );
 
         const defaultTask = optionsTasks.find(
             (o) => o.value === event.TaskToDo
         );
 
-        setId(event.Id);
-        setPage(eventType)
+        setId(event.Id)
+        setPage(getEventType(event))
         setTitle(event.Title)
         setDesc(event.Description)
         setDate(new Date(event.StartTime))
         setTime(new Date(event.StartTime))
-        setEnd(event.EndTime)
+        setEnd(new Date(event.EndTime))
         setLink(event.MeetingLink)
         setSelectedNotification(defaultOption)
         setSelectedTask(defaultTask)
         setParts(event.MettingParticipants.map(p => ({id: p.Id, name: p.FullName})))
+    }
+
+    const handleEventDelete = async () => { 
+        try {
+            await axios.delete(
+                `${process.env.REACT_APP_API_URL}/api/Calendar/${eventToDelete}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                    }
+                }
+            );
+
+            getSetWeekInfo(today);
+            setPage(0);
+            clearAllData();
+        } 
+        catch (error) {
+            console.log(error)
+        } 
     }
 
     const clearDiffData = () => {
@@ -285,41 +322,62 @@ function CalendarPage() {
         setAddNewPart(false)
         setCurPart("")
         setUsers([])
+        setEnd(null)
     }
 
-    const dayEventsGenerator = (events, d) => {
+    const delPart = (id) => {
+        setParts(parts.filter(p => p.id != id))
+    }
+
+    const dayEventsGenerator = (events, d, row) => {
         const cells = [];
         let timeLineRow = Math.floor(((today.getHours() + 1) * 60 + today.getMinutes()) / MINUTES_PER_CELL) + 1;
 
         for (let i = 0; i < 24; i++) {
             let col = i * (60 / MINUTES_PER_CELL) + 12
-            if (col !== timeLineRow || today.getDate() !== d)
-                cells.push(<div key={`line-${i}`} className="hour-line" style={{ gridRow: `${col}`, zIndex: "1", gridColumn: "1/2" }}></div>);
+            cells.push(<div key={`line-${i}`} className="hour-line" style={{ gridRow: `${col}`, zIndex: "1", gridColumn: "1/2" }}></div>);
         }
 
         events.forEach((e, idx) => {
             const startIdx = getCellIndex(e.StartTime);
-            const eventLen = Math.max(getCellIndex(e.EndTime) - startIdx, 5);
+            const eventLen = e.EndTime !== null ? Math.max(getCellIndex(e.EndTime) - startIdx, 5) : 5;
 
             cells.push(<div
                 onClick={() => setActiveEvent(e.Id)}
                 key={`event-${idx}`}
                 className={`event-item ${e.Id === activeEvent ? 'expanded' : ''}`}
-                style={{ gridRow: `${startIdx}/${startIdx + eventLen}`, zIndex: "2", gridColumn: "1/2" }}
+                style={{ gridRow: `${startIdx}/${startIdx + eventLen}`, zIndex: "2", gridColumn: "1/2", 
+                ...(row < 4 ? { left: "0px" } : { right: "0px" }) }}
             >
-                {e.Id === activeEvent && 
+                {e.Id === activeEvent ?
                     <div className="actions-event">
-                        <img src={editIcon} onClick={() => handleEventUpdate(e)}/>
-                        <img />
+                        {e.AuthorId === localStorage.getItem("user-id") && <img src={editIcon} style={{cursor: "pointer"}} onClick={() => handleEventUpdate(e)}/>}
+                        <span className="ppp" style={{gridColumn: "2/3"}}>{e.Title}</span>
+                        {e.AuthorId === localStorage.getItem("user-id") && <img src={deleteIcon} style={{cursor: "pointer"}} onClick={() => {setShowModal(true); setEventToDelete(e.Id)}}/>}
                     </div>
+                :
+                    <span className="ppp">{e.Title}</span>
                 }
 
-                <span className="ppp">{e.Title}</span>
                 {e.Id === activeEvent && 
                     <div>
-                        {new Date(e.StartTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} 
-                        {e.EndTime != null && <>- 
-                        {new Date(e.EndTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</>} 
+                        <div className="border-white time-show">
+                            <img className="clock-icon" src={iconClock}/>
+                            <div style={{marginLeft: "10px"}}>
+                                {new Date(e.StartTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} 
+                                {e.EndTime != null && <>-
+                                {new Date(e.EndTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</>}
+                            </div> 
+                        </div>
+                        <div className="participants scroll-data">
+                            {e.MettingParticipants.map((p, idx) => {
+                                return <div key={idx} className="border-white">
+                                    {p.FullName}
+                                </div>
+                            })}
+                        </div>
+                        <br />
+                        <a className="link-to-meet" href={e.MeetingLink} style={{marginTop: "4px", cursor: "pointer"}}>{e.MeetingLink}</a>
                     </div>
                 }
             </div>)
@@ -350,7 +408,7 @@ function CalendarPage() {
                         Title: title,
                         Description: desc,
                         StartTime: mergeDateAndTime(date, time),
-                        EndTime: end,
+                        EndTime: end !== null ? mergeDateAndTime(date, end) : null,
                         MeetingLink: link,
                         MettingParticipants: parts.map(u => u.id),
                         NotificationBefore: selectedNotification?.value,
@@ -369,7 +427,7 @@ function CalendarPage() {
                         Title: title,
                         Description: desc,
                         StartTime: mergeDateAndTime(date, time),
-                        EndTime: end,
+                        EndTime: end !== null ? mergeDateAndTime(date, end) : null,
                         MeetingLink: link,
                         MettingParticipants: parts.map(u => u.id),
                         NotificationBefore: selectedNotification?.value,
@@ -420,7 +478,8 @@ function CalendarPage() {
             setWeekEvents(response.data);
         } 
         catch (error) {
-            console.log(error)
+            console.log(error);
+            navigate('/login');
         } 
 
         let weekNumsTemp = [];
@@ -512,12 +571,54 @@ function CalendarPage() {
                         </div>
                     </div>
                     <div className="create-event-button" onClick={() => {setPage(page === 0 ? 1 : 0); clearAllData()}}>
-                        <div>Створити</div>
+                        <div>{t("ch_create_submit")}</div>
                         <img src={iconAddEvent}/>
                     </div>
+                    {showModal && (
+                        <>
+                            <div className="backdrop" onClick={() => setShowModal(false)} />
+
+                            <div className="modal">
+                                <h3>{t("sure_to_delete_event")}</h3>
+                                <div className="buttons">
+                                <button onClick={() => setShowModal(false)}>{t("no")}</button>
+                                <button
+                                    onClick={() => {
+                                        handleEventDelete();
+                                        setShowModal(false);
+                                    }}
+                                >
+                                    {t("yes")}
+                                </button>
+                                </div>
+                            </div>
+                        </>
+                    )}
                     {page === 0 && 
-                        <div className="today-events">
-                            
+                        <div className="today-events scroll-data">
+                            {weekEvents.filter(e => Number(e.StartTime.split('T')[0].split('-')[2]) === today.getDate()).sort((a, b) => new Date(a.StartTime) - new Date(b.StartTime)).map((e, idx) => {
+                                let icon;
+                                switch (getEventType(e)) {
+                                    case 3:
+                                        icon = meetingIcon
+                                        break;
+                                    case 2:
+                                        icon = taskIcon
+                                        break;
+                                    case 1:
+                                        icon = notificationIcon
+                                        break;
+                                }
+
+                                const [year, month, day] = e.StartTime.split('T')[0].split('-');
+
+                                return <div key={idx} className="small-event">
+                                    <img src={icon} />
+                                    <div style={{color: "#0661CC"}}>{`${day}.${month}.${year}`}</div>
+                                    <div style={{color: "#0661CC"}}>{e.StartTime.split('T')[1].slice(0, 5)}</div>
+                                    <div>{e.Title}</div>
+                                </div>
+                            })}
                         </div>
                     }
                 </div>
@@ -545,33 +646,33 @@ function CalendarPage() {
                     </div>
                 :
                     <div className="add-event-element scroll-data">
-                        <input value={title} className="event-title" placeholder="Додай назву" onChange={(e) => setTitle(e.target.value)}/>
+                        <input value={title} className="event-title" placeholder={t("add_title")} onChange={(e) => setTitle(e.target.value)}/>
                         <div className="event-options">
                             <div 
                             className={`event-option ${page === 1 && 'active-event-option'}`}
                             onClick={() => {setPage(1); clearDiffData()}}>
-                                Нагадування
+                                {t("notification")}
                             </div>
                             <div 
                             className={`event-option ${page === 2 && 'active-event-option'}`}
                             onClick={() => {setPage(2); clearDiffData()}}>
-                                Завдання
+                                {t("task")}
                             </div>
                             <div 
                             className={`event-option ${page === 3 && 'active-event-option'}`}
                             onClick={() => {setPage(3); clearDiffData()}}>
-                                Зустріч
+                                {t("meeting")}
                             </div>
                         </div>
                         <div className="date-time">
-                            <div className="date" style={{position: "relative", width: "100%"}}>
-                                <img className="clock-icon" src={iconCalendar}/>
+                            <div className="date" style={{position: "relative", width: "100%", gridColumn: `1/${page === 3 ? '3' : '2'}`}}>
+                                <img style={{position: "absolute", top: "50%", transform: "translateY(-50%)"}} className="clock-icon" src={iconCalendar}/>
                                 <DatePicker
                                     selected={date}
                                     onChange={(date) => setDate(date)}
                                     timeIntervals={5}
                                     dateFormat="dd.MM.yyyy"
-                                    placeholderText="Оберіть дату"
+                                    placeholderText={t("choose_date")}
                                     className="time-input date-input"
                                 />
                             </div>
@@ -584,10 +685,29 @@ function CalendarPage() {
                                     showTimeSelectOnly
                                     timeIntervals={5}
                                     dateFormat="HH:mm"
-                                    placeholderText="Оберіть час"
+                                    timeFormat="HH:mm"
+                                    placeholderText={t("choose_time")}
                                     className="time-input"
                                 />
                             </div>
+                            {page === 3 && 
+                                <div className="time" style={{position: "relative", width: "100%"}}>
+                                    <img className="clock-icon" src={iconClock}/>
+                                    <DatePicker
+                                        selected={end}
+                                        onChange={(date) => setEnd(date)}
+                                        showTimeSelect
+                                        showTimeSelectOnly
+                                        timeIntervals={5}
+                                        dateFormat="HH:mm"
+                                        timeFormat="HH:mm"
+                                        placeholderText={t("choose_end_time")}
+                                        className="time-input"
+                                        minTime={time != null ? time : minTime}
+                                        maxTime={maxTime}
+                                    />
+                                </div>
+                            }
                         </div>
                         {page === 1 &&
                             <>
@@ -596,7 +716,7 @@ function CalendarPage() {
                                     className="event-desc scroll-data"
                                     value={desc}
                                     onChange={(e) => setDesc(e.target.value)}
-                                    placeholder="Опис"
+                                    placeholder={t("ch_description")}
                                     rows={5}
                                 />
                             </>
@@ -605,7 +725,7 @@ function CalendarPage() {
                             <>
                                 <Select
                                     options={optionsTasks}
-                                    placeholder="Мої завдання"
+                                    placeholder={t("my_tasks")}
                                     components={{ DropdownIndicator }}
                                     onChange={(option) => {
                                         setSelectedTask(option)
@@ -660,14 +780,14 @@ function CalendarPage() {
                                     className="event-desc scroll-data"
                                     value={desc}
                                     onChange={(e) => setDesc(e.target.value)}
-                                    placeholder="Опис"
+                                    placeholder={t("ch_description")}
                                     rows={5}
                                 />
                             </>
                         }
                         {page === 3 && 
                             <>
-                                <div className="event-options" style={{marginTop: "20px"}}>
+                                {/* <div className="event-options" style={{marginTop: "20px"}}>
                                     <div 
                                     className={`event-option ${meetType === 0 && 'active-event-option'}`}
                                     style={{height: "46px", borderRadius: "23px"}}
@@ -686,14 +806,15 @@ function CalendarPage() {
                                     onClick={() => setMeetType(2)}>
                                         Місцезнаходження
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="multi-users" onClick={() => setAddNewPart(true)} style={{borderRadius: users.length !== 0 ? "30px 30px 0 0" : "30px", paddingLeft: parts.length === 0 ? "30px" : "10px"}}>
                                     {parts.map(p => 
                                         <div className="multi-users-element">
-                                            {p.name}
+                                            <span>{p.name}</span>
+                                            <img src={crossIcon} onClick={() => delPart(p.id)}/>
                                         </div>
                                     )}
-                                    {(parts.length === 0 && curPart.length === 0 && !addNewPart) && <span>Запросити друга</span>}
+                                    {(parts.length === 0 && curPart.length === 0 && !addNewPart) && <span>{t("invite_friend")}</span>}
                                     {(parts.length !== 0 && curPart.length === 0 && !addNewPart) && <span className="plus-part">+</span>}
                                     {(addNewPart || curPart.length !== 0) && 
                                         <div>
@@ -712,11 +833,12 @@ function CalendarPage() {
                                         )}
                                     </div>
                                 }
+                                <input placeholder={t("link")} className="event-desc" style={{paddingTop: "0px"}} value={link} onChange={(e) => setLink(e.target.value)} />
                             </>
                         }
                         <Select
                             options={optionsNotifications}
-                            placeholder="Нагадування"
+                            placeholder={t("notification")}
                             components={{ DropdownIndicator }}
                             onChange={(option) => {
                                 setSelectedNotification(option);
@@ -767,7 +889,7 @@ function CalendarPage() {
                             }}
                         />
                         <div className="save-event-container">
-                            <button disabled={title.length === 0 || date === null || time === null} className="save-event" onClick={async () => await handleAddEvent()}>Зберегти</button>
+                            <button disabled={title.length === 0 || date === null || time === null || (page === 3 && end === null)} className="save-event" onClick={async () => await handleAddEvent()}>{t("p_btn_save")}</button>
                         </div>
                     </div>
                 }

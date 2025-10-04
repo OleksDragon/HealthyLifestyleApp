@@ -79,34 +79,34 @@ services:
       retries: 5
     command: ["redis-server", "--appendonly", "no"]
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: healthy_frontend
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - REACT_APP_API_URL=${REACT_APP_API_URL}
-  #     - REACT_APP_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-  #   networks:
-  #     - healthy_net
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: healthy_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+      - REACT_APP_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+    networks:
+      - healthy_net
 
-  # rendertron:
-  #   build:
-  #     context: ./rendertron
-  #     dockerfile: Dockerfile
-  #   container_name: healthy_rendertron
-  #   networks:
-  #     - healthy_net
-  #   depends_on:
-  #     frontend:
-  #       condition: service_started
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "curl -f http://healthy_frontend:3000/_ping || exit 1"]
-  #     interval: 30s
-  #     timeout: 10s
-  #     retries: 3
+  rendertron:
+    build:
+      context: ./rendertron
+      dockerfile: Dockerfile
+    container_name: healthy_rendertron
+    networks:
+      - healthy_net
+    depends_on:
+      frontend:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://healthy_frontend:3000/_ping || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 volumes:
   mssql_data:

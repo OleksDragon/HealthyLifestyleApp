@@ -1,70 +1,5 @@
 export const specialistsData = [
   {
-    Id: "32f1c00a-cc41-4115-8109-7cf7a07c00bc",
-    UserId: "65ce81f6-dbf6-4314-f6fe-08ddfa8fdadb",
-    User: {
-      Id: "65ce81f6-dbf6-4314-f6fe-08ddfa8fdadb",
-      FullName: "Дмитро Делитанович",
-      Email: "trainer3@example.com",
-      DateOfBirth: "0001-01-01T00:00:00",
-      Gender: "Male",
-      Weight: 0,
-      Height: 0,
-      ProfilePictureUrl: null,
-      Bio: "Тренер з важкої атлетики та бодібілдингу, допомагає набрати м'язову масу.",
-      CreatedAt: "2025-09-23T10:56:33.0185623",
-      UpdatedAt: "2025-09-23T10:56:33.0185574",
-      Phone: "+380506667788",
-      Country: "Україна",
-      City: "Харків",
-      Street: "вул. Силова 5"
-    },
-    ProfessionalRoleType: {
-      Id: "76dfd6a5-c06b-4b7a-abfb-3db39a782a95",
-      Name: "Trainer",
-      DefaultHourlyRate: 60
-    },
-    PsychologistDetails: null,
-    DietitianDetails: null,
-    TrainerDetails: {
-      QualificationId: "32f1c00a-cc41-4115-8109-7cf7a07c00bc",
-      Biography: "Тренер з важкої атлетики та бодібілдингу, допомагає набрати м'язову масу.",
-      ContactEmail: "trainer3@example.com",
-      ContactPhone: "+380506667788",
-      Website: "https://delitanovich-power.com",
-      TrainingStyle: [
-        "Важка атлетика",
-        "Бодібілдинг",
-        "Силовий пауерліфтинг"
-      ],
-      YearsOfExperience: 6,
-      Certifications: [
-        "ISSA Certified Personal Trainer",
-        "Certified Strength and Conditioning Specialist"
-      ],
-      Availability: "Вт, Чт, Сб, 15:00-20:00",
-      ClientTestimonials: "Дмитро допоміг мені значно збільшити силові показники!",
-      PreferredWorkoutStyles: [
-        "Спліт-тренування",
-        "Full-body тренування"
-      ],
-      ProfessionalLicenseNumber: null,
-      HourlyRate: 0
-    },
-    DoctorDetails: null,
-    HourlyRate: 60,
-    Description: "Сертифікований тренер з важкої атлетики та функціонального бодібілдингу.",
-    workFormat: [
-      "Онлайн супровід у Telegram",
-      "Офлайн тренування в залі (за домовленістю)",
-      "Щотижневі корекції плану"
-    ],
-    CertificatesUrl: "https://example.com/trainer3-certs.pdf",
-    QualificationStatus: "Approved",
-    ApplicationDate: "2025-09-23T10:56:33.1452156",
-    ApprovalDate: "2025-09-23T10:56:33.1452157"
-  },
-  {
     Id: "aa75c926-4f79-4f8b-95ab-a82a0f9394ce",
     UserId: "4f961890-80a0-4dd2-f6f8-08ddfa8fdadb",
     User: {
@@ -105,7 +40,7 @@ export const specialistsData = [
       ContactEmail: "psychologist@example.com",
       ContactPhone: "+380501112233",
       Website: "https://dronova-psychology.com",
-      YearsOfExperience: 10,
+      YearsOfExperience: 5,
       Certifications: [
         "Сертифікат CBT",
         "Сертифікат Гештальт-терапії"
@@ -179,7 +114,7 @@ export const specialistsData = [
         "Кругові тренування"
       ],
       ProfessionalLicenseNumber: null,
-      HourlyRate: 0
+      HourlyRate: 50
     },
     DoctorDetails: null,
     workFormat: [
@@ -277,7 +212,7 @@ export const specialistsData = [
       UpdatedAt: "2025-09-23T10:56:32.3698545",
       Phone: "+380503334455",
       Country: "Україна",
-      City: "Київ",
+      City: "Париж",
       Street: "пр. Спортивний 10"
     },
     ProfessionalRoleType: {
@@ -317,7 +252,7 @@ export const specialistsData = [
       "Офлайн тренування в залі (за домовленістю)",
       "Щотижневі корекції плану"
     ],
-    HourlyRate: 60,
+    HourlyRate: 100,
     Description: "Сертифікований тренер із силових тренувань.",
     CertificatesUrl: "https://example.com/trainer-certs.pdf",
     QualificationStatus: "Approved",
@@ -438,7 +373,7 @@ export const specialistsData = [
       "Очні консультації (за домовленістю)",
       "Щотижневі корекції плану харчування"
     ],
-    HourlyRate: 75,
+    HourlyRate: 50,
     Description: "Сертифікований дієтолог, спеціаліст із спортивного харчування.",
     CertificatesUrl: "https://example.com/dietitian-certs.pdf",
     QualificationStatus: "Approved",

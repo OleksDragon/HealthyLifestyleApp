@@ -13,9 +13,9 @@ function Breadcrumbs() {
   useEffect(() => {
     if (id) {
       // Replace with your actual API call
-      fetch(`/api/specialists/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/api/ProfessionalQualification/${id}`)
         .then((response) => response.json())
-        .then((data) => setSpecialistName(data.name))
+        .then((data) => setSpecialistName(data.User.FullName))
         .catch((error) => console.error("Error fetching specialist:", error));
     }
   }, [id]);

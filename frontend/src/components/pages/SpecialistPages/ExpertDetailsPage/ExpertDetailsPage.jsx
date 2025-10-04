@@ -105,7 +105,7 @@ const SpecialistSocialLinks = ({ specialist }) => {
   };
 
 const ExpertDetailsPage = () => {
-
+  const { t } = useTranslation();
   const { id } = useParams(); // Get specialist ID from URL
   const [specialist, setSpecialist] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -263,18 +263,21 @@ return (
                   Записатися
                 </button>
               </div>
-            */}</div>
+              </div>
+            */}
+            
+            </div>
             <div className="view-3">
               <div className="action-button">
-              <button className="subscribe-button">Записатися</button>
+              <button className="subscribe-button">{t('subscribe')}</button>
             </div>
           </div>
       </div>
 
-      <h4 className="section-title">Тарифи</h4>
+      <h4 className="section-title">{t("tariffs")}</h4>
       <SubscribeSection/>
 
-      <h4 className="section-title">Відгуки</h4>
+      <h4 className="section-title">{t("reviews")}</h4>
       <ReviewSection/>
     </div>
   </div>

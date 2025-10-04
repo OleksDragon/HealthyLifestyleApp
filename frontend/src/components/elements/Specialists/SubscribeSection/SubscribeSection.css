@@ -106,7 +106,7 @@
   width: 139.3px; /* 195px * 0.714 */
 }
 
-.subscribe-card .subscribe-button {
+.subscribe-card .subscribe-btn {
   align-items: center;
   color: var(--variable-collection-blu);
   display: flex;
@@ -115,7 +115,7 @@
   font-weight: 700;
   height: 20px;
   justify-content: center;
-  left: 205.8px; /* 319px * 0.714 */
+  left: 230.8px; /* 319px * 0.714 */
   position: absolute;
   top: 302.9px; /* 431px * 0.714 */
   white-space: nowrap;

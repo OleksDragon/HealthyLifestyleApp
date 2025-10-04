@@ -47,27 +47,27 @@ return (
       />
       <div className="div" />
       <div className="text-wrapper">
-        {specialist.User?.FullName || t('unknown_specialist')}
+        {specialist.User?.FullName || t('unknown_specialist')} 
       </div>
       <p className="fitnessbik">
-        {specialist.ProfessionalRoleType?.Name || t('unknown_role')}
+        {specialist.ProfessionalRoleType?.Name || t('unknown_role')}  {specialist.HourlyRate} {t("hourly_rate_title")} {specialist?.Dietitian?.YearsOfExperience}
       </p>
       <p className="description">
         {/* {specialist.Description || t('no_description')} */}
       </p>
       <div
         className="rectangle-2"
-        style={specialist.IsTopRated ? {} : { width: '130.8571px' }}
+        style={index % 2 === 0 ? {} : { width: '130.8571px' }} //specialist.IsTopRated 
       >
         <div
           className="text-wrapper-2"
           style={
-            specialist.IsTopRated
+            index % 2 === 0
               ? { left: '50px', top: '12.5px' }
               : { left: '40.8571px', top: '12.5px' }
           }
         >
-          {specialist.IsTopRated ? t('top_5') : t('recomend')}
+          {index % 2 === 0 ? t('top_5') : t('recomend')}
         </div>
       </div>
       <div className="rectangle-3" />

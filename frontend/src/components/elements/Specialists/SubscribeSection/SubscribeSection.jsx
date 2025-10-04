@@ -1,42 +1,44 @@
 // components/SubscribeSection.jsx
-import React from "react";
+import { useTranslation } from 'react-i18next';
 import "./SubscribeSection.css"; // підключ свій CSS
 
-const plans = [
-  {
-    title: "Start 30",
-    duration: "/ 30 днів",
-    price: "500 грн",
-    features: [
-      "Індивідуальний план тренувань (2–3 дні/тиждень)",
-      "Пропозиції щодо харчування",
-      "1 онлайн-консультація на тиждень",
-    ],
-  },
-  {
-    title: "Result 30",
-    duration: "/ 30 днів",
-    price: "1500 грн",
-    features: [
-      "План тренувань + детальний раціон",
-      "Щотижневі корекції + відеоаналіз техніки",
-      "Підтримка в месенджері 5/7",
-    ],
-  },
-  {
-    title: "VIP 30",
-    duration: "/ 30 днів",
-    price: "4000 грн",
-    features: [
-      "Повне онлайн ведення",
-      "12 тренувань на місяць",
-      "Розбір харчування та індивідуальні рекомендації",
-      "Повна підтримка в месенджері",
-    ],
-  },
-];
-
 const SubscribeSection = () => {
+  const { t } = useTranslation();
+  
+  const plans = [
+    {
+      title: t("plan_start_30_title"),
+      duration: t("plan_duration"),
+      price: t("plan_start_30_price"),
+      features: [
+        t("plan_feature_1"),
+        t("plan_feature_2"),
+        t("plan_feature_3"),
+      ],
+    },
+    {
+      title: t("plan_result_30_title"),
+      duration: t("plan_duration"),
+      price: t("plan_result_30_price"),
+      features: [
+        t("plan_feature_4"),
+        t("plan_feature_5"),
+        t("plan_feature_6"),
+      ],
+    },
+    {
+      title: t("plan_vip_30_title"),
+      duration: t("plan_duration"),
+      price: t("plan_vip_30_price"),
+      features: [
+        t("plan_feature_7"),
+        t("plan_feature_8"),
+        t("plan_feature_9"),
+        t("plan_feature_10"),
+      ],
+    },
+  ];
+
   return (
     <div className="subscribe-section">
       
@@ -61,7 +63,7 @@ const SubscribeSection = () => {
             <div className="subscribe-price">{plan.price}</div>
 
             <div className="subscribe-button-bg" />
-            <div className="subscribe-button">Обрати</div>
+            <div className="subscribe-btn">{t("choose")}</div>
           </div>
         ))}
       </div>

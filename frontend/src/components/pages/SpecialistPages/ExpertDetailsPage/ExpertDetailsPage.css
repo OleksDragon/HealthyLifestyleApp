@@ -52,8 +52,8 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  backdrop-filter: blur(10px);
-background: rgba(255, 255, 255, 0.233);
+  /* backdrop-filter: blur(10px);
+background: rgba(255, 255, 255, 0.233); */
 border-radius: 40px;
 padding: 20px;
 }
@@ -209,10 +209,10 @@ padding: 20px;
 }
 
 .subscribe-button {
-  /* position: fixed;
+  position: fixed;
   display: block;
-  bottom: 30px; 
-  right: inherit; */
+  bottom: 4rem; 
+  right: 5rem;
   max-width: 300px;
   height: 50px;
   background-color: #d6ff00;
@@ -224,6 +224,10 @@ padding: 20px;
   padding: 12px 24px;
   cursor: pointer;
   transition: 0.3s ease;
+  z-index: 1200;
+
+  box-shadow: 0 0 50px  rgb(0, 94, 255);
+  
 }
 
 .subscribe-button:hover {

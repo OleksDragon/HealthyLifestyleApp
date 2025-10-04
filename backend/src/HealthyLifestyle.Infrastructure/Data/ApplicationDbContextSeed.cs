@@ -73,7 +73,6 @@ namespace HealthyLifestyle.Infrastructure.Data
 
             await CreateTrainer1Async(userManager, roleManager, context);
             await CreateTrainer2Async(userManager, roleManager, context);
-            await CreateTrainer3Async(userManager, roleManager, context);
             #endregion
 
             await context.SaveChangesAsync();
@@ -529,76 +528,6 @@ namespace HealthyLifestyle.Infrastructure.Data
                         certifications: new List<string> { "NASM Certified Personal Trainer", "USA Track & Field Level 1" },
                         availability: "Пн, Ср, Пт, 17:00-21:00",
                         clientTestimonials: "Андрій допоміг мені покращити витривалість та підготуватися до марафону!"
-                    );
-                    context.TrainerDetails.Add(details);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Створює користувача-тренера 3 (Дмитро Делитанович), його кваліфікацію та деталі, якщо вони ще не існують.
-        /// </summary>
-        private static async Task CreateTrainer3Async(
-            UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, ApplicationDbContext context)
-        {
-            var email = "trainer3@example.com";
-            await CreateUserWithRoleAndDetailsAsync(userManager, roleManager, email, "Trainer3pass!", RoleNames.Trainer,
-                fullName: "Дмитро Делитанович", biography: "Тренер з важкої атлетики та бодібілдингу, допомагає набрати м'язову масу.",
-                phone: "+380506667788",
-                country: "Україна",
-                city: "Харків",
-                street: "вул. Силова 5");
-
-            var user = await userManager.FindByEmailAsync(email);
-            if (user == null) return;
-
-            var trainerRoleType = await context.ProfessionalRoleTypes.FirstOrDefaultAsync(prt => prt.Name == RoleNames.Trainer);
-            if (trainerRoleType == null || !trainerRoleType.DefaultHourlyRate.HasValue) return;
-
-            var qualification = await context.UserProfessionalQualifications
-                .FirstOrDefaultAsync(upq => upq.UserId == user.Id && upq.ProfessionalRoleTypeId == trainerRoleType.Id);
-
-            if (qualification == null)
-            {
-                qualification = new UserProfessionalQualification(
-                    userId: user.Id,
-                    professionalRoleTypeId: trainerRoleType.Id,
-                    description: "Сертифікований тренер з важкої атлетики та функціонального бодібілдингу.",
-                    certificatesUrl: "https://example.com/trainer3-certs.pdf",
-                    hourlyRate: trainerRoleType.DefaultHourlyRate.Value
-                );
-                qualification.SetWorkFormat(new List<string>
-                {
-                    "Онлайн супровід у Telegram",
-                    "Офлайн тренування в залі (за домовленістю)",
-                    "Щотижневі корекції плану"
-                });
-                qualification.UpdateStatus(QualificationStatus.Approved);
-                context.UserProfessionalQualifications.Add(qualification);
-            }
-            else if (qualification.HourlyRate != trainerRoleType.DefaultHourlyRate || qualification.Status != QualificationStatus.Approved)
-            {
-                qualification.UpdateHourlyRate(trainerRoleType.DefaultHourlyRate.Value);
-                qualification.UpdateStatus(QualificationStatus.Approved);
-            }
-
-            if (context.TrainerDetails.Local.All(td => td.Id != qualification.Id))
-            {
-                var existingDetails = await context.TrainerDetails.FindAsync(qualification.Id);
-                if (existingDetails == null)
-                {
-                    var details = new TrainerDetails(
-                        qualificationId: qualification.Id,
-                        trainingStyle: new List<string> { "Важка атлетика", "Бодібілдинг", "Силовий пауерліфтинг" },
-                        preferredWorkoutStyles: new List<string> { "Спліт-тренування", "Full-body тренування" },
-                        biography: user.Bio,
-                        contactEmail: user.Email,
-                        contactPhone: "+380506667788",
-                        website: "https://delitanovich-power.com",
-                        yearsOfExperience: 6,
-                        certifications: new List<string> { "ISSA Certified Personal Trainer", "Certified Strength and Conditioning Specialist" },
-                        availability: "Вт, Чт, Сб, 15:00-20:00",
-                        clientTestimonials: "Дмитро допоміг мені значно збільшити силові показники!"
                     );
                     context.TrainerDetails.Add(details);
                 }

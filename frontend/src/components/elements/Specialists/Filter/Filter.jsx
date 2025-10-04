@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import './Filter.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import arrow_v_white from '../../../../assets/profile-icons/arrow_v_white.svg';
 import arrow_v_blue from '../../../../assets/profile-icons/arrow_v_blue.svg';
-import styled from 'styled-components';
+
 
 const CustomSelect = ({ 
   id, 
@@ -20,8 +20,13 @@ const CustomSelect = ({
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState(value || '');
   const [filteredOptions, setFilteredOptions] = useState(options || []);
-  const [displayValue, setDisplayValue] = useState('');
   const selectRef = useRef(null);
+
+  // Resolve selected label by value for display
+  const selectedLabel = useMemo(() => {
+    const opt = options.find(o => o.value === value);
+    return opt ? opt.label : '';
+  }, [options, value]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -38,37 +43,26 @@ const CustomSelect = ({
     setInputValue(value || '');
   }, [value]);
 
-  useEffect(() => {
-    if (isOpen || !maxVisibleChars || !value || value.length <= maxVisibleChars) {
-      setDisplayValue(value || '');
-    } else {
-      const truncated = value.substring(0, maxVisibleChars) + '...';
-      setDisplayValue(truncated);
-    }
-  }, [value, isOpen, maxVisibleChars]);
-
   const handleInputChange = (e) => {
-    let value = e.target.value;
+    let newValue = e.target.value;
 
     if (id === "phoneCode") {
-      value = value.replace(/[^\d]/g, '');
-      value = '+' + value;
-      value = value.slice(0, 4);
+      newValue = newValue.replace(/[^\d]/g, '');
+      newValue = '+' + newValue;
+      newValue = newValue.slice(0, 4);
     }
 
-    setInputValue(value);
-    onChange(value);
+    setInputValue(newValue);
     setIsOpen(true);
   };
 
   const handleOptionClick = (option) => {
-    setInputValue(option);
-    onChange(option);
+    // Pass option.value to parent and show option.label in UI
+    onChange(option.value);
     setIsOpen(false);
   };
 
   const handleResetCurrentFilterClick = () => {
-    // Скидання поточного значення фільтра
     setInputValue('');
     onChange('');
     setIsOpen(false);
@@ -78,29 +72,16 @@ const CustomSelect = ({
     setIsOpen(!isOpen);
   };
 
-  const hasValue = (value) => {
-    return value !== null && value !== undefined && value !== '';
+  const hasValue = (v) => {
+    return v !== null && v !== undefined && v !== '';
   };
-
-  const getArrowIcon = () => {
-    if (isOpen) {
-      return <img src={arrow_v_white} alt="arrow down" className="arrow-v-white" />;
-    }
-
-    if (hasValue(value)) {
-      return <img src={arrow_v_white} alt="arrow down" />;
-    }
-    
-    return <img src={arrow_v_blue} alt="arrow down" className="arrow-v-blue" />;
-  };
-
-return (
+  return (
     <button className={`f-custom-select ${className} ${isOpen ? 'expanded' : ''} ${hasValue(value) ? 'has-value' : ''}`} ref={selectRef} id={id}>
       <div className="f-select-header" onClick={toggleDropdown}>
         <input
           type="text"
           className="f-select-input"
-          value={isOpen ? inputValue : displayValue}
+          value={isOpen ? selectedLabel : selectedLabel}
           onChange={handleInputChange}
           placeholder={placeholder}
           onClick={(e) => {
@@ -119,7 +100,7 @@ return (
               <div
                 key={index}
                 className="f-select-option"
-                onClick={() => handleOptionClick(opt.label)}
+                onClick={() => handleOptionClick(opt)}
               >
                 <div className='icon'>{opt.icon}</div> 
                 {opt.label}

@@ -43,6 +43,11 @@ namespace HealthyLifestyle.Core.Entities
         public SubscriptionStatus Status { get; set; }
 
         /// <summary>
+        /// Колекція запрошених користувачів - членів сім'ї (Family Plan).
+        /// </summary>
+        public virtual ICollection<FamilySubscriptionMember> FamilyMembers { get; set; } = new List<FamilySubscriptionMember>();
+
+        /// <summary>
         /// Навігаційна властивість для доступу до пов’язаного користувача.
         /// </summary>
         public User User { get; set; } = null!;

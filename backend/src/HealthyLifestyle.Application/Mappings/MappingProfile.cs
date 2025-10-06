@@ -708,10 +708,14 @@ namespace HealthyLifestyle.Application.Mappings
 
         private void ConfigureSubscriptionMappings()
         {
-            CreateMap<Subscription, SubscriptionDto>();
+            // Основний мапінг для звичайних підписок
+            CreateMap<Subscription, SubscriptionDto>()
+                .ForMember(dest => dest.IsActive, opt =>
+                    opt.MapFrom(src => src.Status == SubscriptionStatus.Active && src.EndDate > DateTime.UtcNow))
+                .ForMember(dest => dest.FamilyMembers, opt => opt.MapFrom(src => src.FamilyMembers));
 
             CreateMap<SubscriptionCreateDto, Subscription>()
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(_ => SubscriptionStatus.Active))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(_ => SubscriptionStatus.Active))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.StartDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
@@ -729,6 +733,20 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
+
+            // Мапінг для учасників Family Plan
+            CreateMap<FamilySubscriptionMember, FamilySubscriptionMemberDto>();
+
+            // Мапінг для створення Family Plan
+            CreateMap<FamilySubscriptionCreateDto, Subscription>()
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.OwnerId))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(_ => SubscriptionType.Family))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(_ => SubscriptionStatus.Active))
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
 
         private void ConfigureFitnessActivityMappings()

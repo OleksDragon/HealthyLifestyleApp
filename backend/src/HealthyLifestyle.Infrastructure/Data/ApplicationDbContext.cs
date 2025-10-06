@@ -29,6 +29,7 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<FamilySubscriptionMember> FamilySubscriptionMembers { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<FitnessActivity> FitnessActivities { get; set; }
         public DbSet<Group> Groups { get; set; }
@@ -100,6 +101,7 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureOrder(modelBuilder);
             ConfigureOrderItem(modelBuilder);
             ConfigureSubscription(modelBuilder);
+            ConfigureFamilySubscriptionMember(modelBuilder);
             ConfigureWorkout(modelBuilder);
             ConfigureFitnessActivity(modelBuilder);
             ConfigureGroup(modelBuilder);
@@ -444,10 +446,34 @@ namespace HealthyLifestyle.Infrastructure.Data
                 entity.Property(s => s.Price).HasPrecision(18, 2);
                 entity.Property(s => s.Type).HasConversion<string>();
                 entity.Property(s => s.Status).HasConversion<string>();
+
                 entity.HasOne(s => s.User)
-                   .WithMany(u => u.Subscriptions)
-                   .HasForeignKey(s => s.UserId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                    .WithMany(u => u.Subscriptions)
+                    .HasForeignKey(s => s.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasMany(s => s.FamilyMembers)
+                    .WithOne(fm => fm.Subscription)
+                    .HasForeignKey(fm => fm.SubscriptionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
+        private void ConfigureFamilySubscriptionMember(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<FamilySubscriptionMember>(entity =>
+            {
+                entity.HasKey(fm => new { fm.SubscriptionId, fm.MemberId });
+
+                entity.HasOne(fm => fm.Subscription)
+                    .WithMany(s => s.FamilyMembers)
+                    .HasForeignKey(fm => fm.SubscriptionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(fm => fm.Member)
+                    .WithMany(u => u.FamilyMemberships)
+                    .HasForeignKey(fm => fm.MemberId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
 

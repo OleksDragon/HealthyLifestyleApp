@@ -99,6 +99,16 @@ namespace HealthyLifestyle.Core.Entities
         public virtual ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
 
         /// <summary>
+        /// Колекція Family-підписок, де користувач є власником.
+        /// </summary>
+        public virtual ICollection<Subscription> OwnedFamilySubscriptions { get; set; } = new List<Subscription>();
+
+        /// <summary>
+        /// Колекція Family-підписок, у яких користувач є запрошеним.
+        /// </summary>
+        public virtual ICollection<FamilySubscriptionMember> FamilyMemberships { get; set; } = new List<FamilySubscriptionMember>();
+
+        /// <summary>
         /// Колекція фізичних активностей користувача.
         /// </summary>
         public virtual ICollection<FitnessActivity> FitnessActivities { get; set; } = new List<FitnessActivity>();

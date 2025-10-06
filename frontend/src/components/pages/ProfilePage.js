@@ -97,7 +97,6 @@ const UserProfile = () => {
         avatarUrl = `/${avatarUrl}`;
       }
 
-
       // Розбиваємо FullName на firstName та lastName
       const nameParts = userData.FullName?.split(' ') || [];
       const firstName = nameParts[0] || '';

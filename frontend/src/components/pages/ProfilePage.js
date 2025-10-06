@@ -90,12 +90,7 @@ const UserProfile = () => {
 
       const userData = response.data;
       
-      // ✅ ВИПРАВЛЕННЯ: Корекція URL аватара
       let avatarUrl = userData.ProfilePictureUrl || '';
-      if (avatarUrl && !avatarUrl.startsWith('http')) {
-        // Додаємо протокол, якщо відсутній
-        avatarUrl = `/${avatarUrl}`;
-      }
 
       // Розбиваємо FullName на firstName та lastName
       const nameParts = userData.FullName?.split(' ') || [];

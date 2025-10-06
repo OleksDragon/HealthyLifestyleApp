@@ -43,12 +43,14 @@ SA_PASSWORD=118MtdRtra8LbzVSC
 MSSQL_DB=HealthyLifestyleDb
 MSSQL_USER=sa
 MSSQL_PORT=1433
-JWT_KEY=72O3^G4BUrXY$T:LM\*7Asdhtp^vpCt>l1CDK4DMua1<+SaUC4viz\04:HnLkLGSh
+JWT_KEY=72O3^G4BUrXY$T:LM*7Asdhtp^vpCt>l1CDK4DMua1<+SaUC4viz\04:HnLkLGSh
 JWT_ISSUER=HealthyLifestyleApi
 JWT_AUDIENCE=HealthyLifestyleClients
 REACT_APP_API_URL=http://localhost:5000
 GOOGLE_CLIENT_ID=596782705647-sa9h8d11i8grjh3jukglih9c9hnsp3co.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=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
+MINIO_ACCESS_KEY=VoKSFVKFGlQRLeBJFzNHTJwy
+MINIO_SECRET_KEY=YRs3EsL7BtDHGaIxlBVsBTxGm3rX9m1
 
 Важно: Для продакшн-среды нужно использовать более надежные и безопасные методы управления секретами.
 

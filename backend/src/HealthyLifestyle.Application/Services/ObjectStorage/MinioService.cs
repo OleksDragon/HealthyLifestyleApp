@@ -9,6 +9,7 @@ namespace HealthyLifestyle.Application.Services.ObjectStorage;
 public class MinioService : IObjectStorageService
 {
     private readonly IMinioClient _minioClient;
+    private readonly IMinioClient _publicClient;
     private readonly MinioSettings _settings;
 
     public MinioService(IOptions<MinioSettings> settings)
@@ -19,6 +20,11 @@ public class MinioService : IObjectStorageService
             .WithEndpoint(_settings.Endpoint)
             .WithCredentials(_settings.AccessKey, _settings.SecretKey)
             .Build();
+
+        _publicClient = new MinioClient()
+        .WithEndpoint(_settings.PublicEndpoint)
+        .WithCredentials(_settings.AccessKey, _settings.SecretKey)
+        .Build();
     }
 
     public async Task<string> UploadFileAsync(Stream stream, string objectName, string contentType)
@@ -44,7 +50,8 @@ public class MinioService : IObjectStorageService
             await _minioClient.PutObjectAsync(putObjectArgs).ConfigureAwait(false);
             Console.WriteLine($"Файл '{objectName}' успешно загружен.");
 
-            return $"{_settings.Endpoint}/{_settings.BucketName}/{objectName}";
+            //return $"{_settings.Endpoint}/{_settings.BucketName}/{objectName}";
+            return $"{_settings.PublicEndpoint}/{_settings.BucketName}/{objectName}";
         }
         catch (MinioException e)
         {
@@ -128,20 +135,12 @@ public class MinioService : IObjectStorageService
 
     public async Task<string> GetPresignedUrlAsync(string objectName, int expiryInSeconds)
     {
-        try
-        {
-            var args = new PresignedGetObjectArgs()
-                .WithBucket(_settings.BucketName)
-                .WithObject(objectName)
-                .WithExpiry(expiryInSeconds);
+        var args = new PresignedGetObjectArgs()
+            .WithBucket(_settings.BucketName)
+            .WithObject(objectName)
+            .WithExpiry(expiryInSeconds);
 
-            return await _minioClient.PresignedGetObjectAsync(args).ConfigureAwait(false);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Помилка генерації pre-signed URL: {e.Message}");
-            throw;
-        }
+        return await _publicClient.PresignedGetObjectAsync(args);
     }
 
 }

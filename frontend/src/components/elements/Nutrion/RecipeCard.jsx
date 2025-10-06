@@ -1,51 +1,57 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import '../../styles/nutrition/recipes-page.css'; 
 import '../../styles/nutrition/nutrition-tracker.css';
 
 /**
- * Карточка одного рецепта.
- * @param {object} recipe - Объект рецепта.
- * @param {number} recipe.id - ID рецепта.
- * @param {string} recipe.name - Название блюда.
- * @param {number} recipe.kkal - Калории.
- * @param {number} recipe.protein - Белки.
- * @param {number} recipe.fat - Жиры (добавим для полноты, хотя на макете его нет).
- * @param {string} recipe.time - Время приготовления (напр., "10 хв").
- * @param {string} recipe.image - URL/путь к изображению.
+ * Функція для очищення рядків від зайвих зовнішніх лапок, 
+ * які іноді з'являються при серіалізації C#.
  */
-const RecipeCard = ({ recipe }) => {
-    const navigate = useNavigate(); 
+const cleanString = (str) => {
+    if (typeof str !== 'string') return str;
+    // Видаляємо пробіли та зовнішні лапки (")
+    return str.replace(/^"|"$/g, '').trim(); 
+};
+
+/**
+ * Карточка одного рецепта.
+ * @param {object} recipe - Об'єкт рецепта (з API).
+ * @param {function} onRecipeClick - Функція, викликається при кліку, приймає ID рецепта.
+ */
+const RecipeCard = ({ recipe, onRecipeClick }) => {
     const { t } = useTranslation();
     
-    // Функция-заглушка для обработки клика
+    // Очищаємо назву від зайвих лапок
+    const recipeName = cleanString(recipe.Name); 
+    
+    // Функція, яка викликає навігацію в батьківському компоненті
     const handleCardClick = () => {
-        console.log(`Открываем рецепт: ${recipe.name} (ID: ${recipe.id})`);
-        navigate(`/eating/recipes/${recipe.id}`);
+        if (onRecipeClick && recipe.Id) {
+            // Передаємо Id (зверніть увагу, що у вашому JSON поле називається "Id", а не "id")
+            onRecipeClick(recipe.Id); 
+        }
     };
     
-    // Функция-заглушка для добавления в избранное
+    // Функція-заглушка для додавання в обране
     const handleFavoriteClick = (e) => {
-        e.stopPropagation(); // Важно: предотвращаем срабатывание клика по всей карточке
-        console.log(`Добавить/Убрать из избранного: ${recipe.name}`);
-        // Здесь будет логика изменения состояния избранного
+        e.stopPropagation(); // Важливо: запобігаємо спрацьовуванню handleCardClick
+        console.log(`Додати/Убрати з обраного: ${recipe.Name}`);
     };
 
     return (
         <div 
             className="recipe-card glass-card" 
-            onClick={handleCardClick}
+            onClick={handleCardClick} 
             role="button" 
             tabIndex={0} 
         >
             
-            {/* 1. ТЕГ ВРЕМЕНИ */}
+            {/* 1. ТЕГ ЧАСУ */}
             <div className="recipe-time-tag">
-                {recipe.time || 'N/A'}
+                {recipe.Time || 'N/A'}
             </div>
 
-            {/* 2. ИКОНКА ИЗБРАННОГО (Сердечко) */}
+            {/* 2. ІКОНКА ІЗБРАНОГО (Сердечко) */}
             <div 
                 className="heart-icon"
                 onClick={handleFavoriteClick}
@@ -53,21 +59,26 @@ const RecipeCard = ({ recipe }) => {
                 ♡
             </div>
 
-            {/* 3. ОБЛАСТЬ ИЗОБРАЖЕНИЯ */}
+            {/* 3. ОБЛАСТЬ ІЗОБРАЖЕННЯ */}
             <div className="recipe-image-wrapper">
-                <div className="recipe-image-placeholder">
-                    <span style={{color: 'rgba(255, 255, 255, 0.6)', zIndex: 6}}>
-                        {t("image_placeholder") || 'Зображення'}
-                    </span>
-                </div>
+                {/* Використовуємо поле ImageUrl з API */}
+                {recipe.ImageUrl && recipe.ImageUrl.startsWith('http') ? (
+                    <img src={recipe.ImageUrl} alt={recipeName} className="recipe-image" />
+                ) : (
+                    <div className="recipe-image-placeholder">
+                         <span style={{color: 'rgba(255, 255, 255, 0.6)', zIndex: 6}}>
+                             {t("image_placeholder") || 'Зображення'}
+                         </span>
+                    </div>
+                )}
             </div>
 
-            {/* 4. ИНФОРМАЦИЯ О РЕЦЕПТЕ */}
+            {/* 4. ІНФОРМАЦІЯ ПРО РЕЦЕПТ */}
             <div className="recipe-info">
-                <h4 className="recipe-name">{recipe.name}</h4>
+                <h4 className="recipe-name">{recipeName}</h4>
                 <p className="recipe-macros">
-                    {recipe.kkal ?? 0} {t("nt_kcal_abbr") || 'ккал'}, 
-                    {recipe.protein ?? 0}{t("nt_g_abbr") || 'г'} {t("nt_b_abbr") || 'білка'}
+                    {recipe.Kkal ?? 0} {t("nt_kcal_abbr") || 'ккал'}, 
+                    {recipe.Protein ?? 0}{t("nt_g_abbr") || 'г'} {t("nt_b_abbr") || 'білка'}
                 </p>
             </div>
         </div>

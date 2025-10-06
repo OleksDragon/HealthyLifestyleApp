@@ -1,26 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import RecipeCard from '../../elements/Nutrion/RecipeCard';
 import "../../styles/nutrition/nutrition-tracker.css";
 import "../../styles/nutrition/recipes-page.css";
 
-// --- Заглушка для Рецептов ---
-const mockRecipes = [
-    { id: 1, name: "Вівсянка з ягодами та горіхами", kkal: 300, protein: 10, fat: 9, time: "10 хв", image: "oats_image_url" },
-    { id: 2, name: "Омлет із шпинатом та грибами", kkal: 286, protein: 20, fat: 15, time: "15 хв", image: "omelet_image_url" },
-    { id: 3, name: "Зелене смузі", kkal: 200, protein: 8, fat: 3, time: "5 хв", image: "smoothie_image_url" },
-    { id: 4, name: "Курячий салат з кіноа", kkal: 450, protein: 35, fat: 18, time: "30 хв", image: "salad_image_url" },
-    { id: 5, name: "Лосось з овочами на пару", kkal: 480, protein: 40, fat: 25, time: "35 хв", image: "salmon_image_url" },
-    { id: 6, name: "Салат з тунцем і яйцем", kkal: 320, protein: 30, fat: 10, time: "8 хв", image: "tuna_image_url" },
-    { id: 7, name: "Суп-пюре з броколі", kkal: 220, protein: 12, fat: 7, time: "25 хв", image: "soup_image_url" },
-    { id: 8, name: "Мексиканський боул", kkal: 520, protein: 45, fat: 20, time: "40 хв", image: "bowl_image_url" },
-];
-
-
 const RecipesPage = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate(); 
     
+    // Змінні стану
+    const [recipes, setRecipes] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const handleCardClick = (recipeId) => {
+        navigate(`/eating/recipes/${recipeId}`);
+    };
+
+    useEffect(() => {
+        const fetchRecipes = async () => {
+            try {                
+                const response = await axios.get("http://localhost:5000/api/Recipes");
+                               
+                setRecipes(response.data); 
+            } catch (err) {
+                setError(t("error_loading_recipes") || "Помилка завантаження рецептів. Перевірте консоль.");
+                console.error("Error fetching recipes:", err);
+            } finally {
+                setLoading(false); 
+            }
+        };
+
+        fetchRecipes();
+    }, [t]); 
+
+
+    if (loading) {
+        return (
+            <div className="nutrition-tracker-page-content">
+                 <div className="navigation-tabs-wrapper">
+                     <span className="tab-item active">{t("nt_recipes_tab") || 'Рецепти'}</span> 
+                 </div>
+                 <div className="scrollable-main-content scroll-data">
+                     <p>{t("loading_text") || "Завантаження рецептів..."}</p>
+                 </div>
+             </div>
+         );
+    }
+
+    if (error) {
+        return (
+            <div className="nutrition-tracker-page-content">
+                 <div className="navigation-tabs-wrapper">
+                     <span className="tab-item active">{t("nt_recipes_tab") || 'Рецепти'}</span> 
+                 </div>
+                 <div className="scrollable-main-content scroll-data">
+                     <p style={{ color: 'red' }}>{error}</p>
+                 </div>
+             </div>
+         );
+    }
 
     return (
         <div className="nutrition-tracker-page-content"> 
@@ -37,14 +78,23 @@ const RecipesPage = () => {
                 
                 {/* Сетка карточек рецептов */}
                 <div className="recipes-grid-wrapper">
-                    {mockRecipes.map(recipe => (
-                        <RecipeCard key={recipe.id} recipe={recipe} />
-                    ))}
+                    {recipes.length > 0 ? (
+                            recipes.map(recipe => (
+                                <RecipeCard 
+                                    key={recipe.id} 
+                                    recipe={recipe}
+                                    onRecipeClick={handleCardClick}
+                                />
+                            ))
+                        ) : (
+                        <p>{t("no_recipes_found") || "Рецепти не знайдено."}</p>
+                    )}
+                    
                     {/* Карточка "Додати свій рецепт" */}
-                    <div className="recipe-card glass-card add-recipe-card">
+                    <Link to="/eating/recipes/add" className="recipe-card glass-card add-recipe-card" role="button" tabIndex={0}>
                         <span className="add-icon">+</span>
                         <h4 className="add-recipe-text">{t("add_recipe_text") || 'Додати свій рецепт'}</h4>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

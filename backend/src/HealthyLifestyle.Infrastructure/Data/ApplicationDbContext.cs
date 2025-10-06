@@ -42,6 +42,9 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<HealthDashboard> HealthDashboards { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<RecipeStep> RecipeSteps { get; set; }
 
         #endregion
 

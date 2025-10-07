@@ -58,6 +58,7 @@ import SubscriptionPaymentPage from './components/pages/Subscription/Subscriptio
 
 import PaymentSuccessPage from "./components/pages/PaymentSuccessPage";
 
+import MarketplacePage from "./components/pages/MarketplacePage";
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -150,6 +151,8 @@ function AppRoutes() {
 
       {/* Not found */}
       <Route path="*" element={<NotFoundPage />} />
+
+      <Route path="/marketplace" element={<PrivateRoute><Menu><MarketplacePage /></Menu></PrivateRoute>} />
 
     </Routes>
   );

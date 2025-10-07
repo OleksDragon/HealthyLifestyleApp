@@ -75,7 +75,7 @@ namespace HealthyLifestyle.Core.Enums
     public enum ProductCategory
     {
         SportsNutrition, // Спортивне харчування
-        Vitamins,        // Вітаміни
+        Other,           // Інше
         Gadgets,         // Гаджети
         Apparel          // Спортивний одяг
     }

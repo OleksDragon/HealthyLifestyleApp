@@ -19,7 +19,7 @@ namespace HealthyLifestyle.Application.Services.Email
         public async Task SendEmailAsync(string toEmail, string subject, string message)
         {
             _logger.LogInformation("Отправка email: To={To}, Subject={Subject}, Message={Message}", toEmail, subject, message);
-            // Адреса відправника буде змінена згодом
+
             MailAddress from = new MailAddress("nomyfy@gmail.com", "Nomyfy Team");
             MailAddress to = new MailAddress(toEmail);
             MailMessage m = new MailMessage(from, to);

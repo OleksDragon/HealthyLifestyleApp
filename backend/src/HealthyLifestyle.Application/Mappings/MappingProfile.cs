@@ -17,6 +17,7 @@ using HealthyLifestyle.Application.DTOs.User;
 using HealthyLifestyle.Application.DTOs.Workout;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Enums;
+using System.Globalization;
 
 namespace HealthyLifestyle.Application.Mappings
 {
@@ -250,7 +251,10 @@ namespace HealthyLifestyle.Application.Mappings
             CreateMap<ProductCreateDto, Product>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id генерується автоматично
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(p => decimal.Parse(p.Price)))
+                .ForMember(dest => dest.StockQuantity, opt => opt.MapFrom(p => int.Parse(p.StockQuantity)))
+                .ForMember(dest => dest.PlatformCommissionPercentage, opt => opt.MapFrom(p => decimal.Parse(p.PlatformCommissionPercentage)));
 
             CreateMap<ProductUpdateDto, Product>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id не оновлюється через DTO
@@ -258,11 +262,23 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.Name, opt => opt.Condition(src => src.Name != null))
                 .ForMember(dest => dest.Category, opt => opt.Condition(src => src.Category.HasValue)) // Для Enum
-                .ForMember(dest => dest.Price, opt => opt.Condition(src => src.Price.HasValue))
+                .ForMember(dest => dest.Price, opt =>
+                {
+                    opt.Condition(src => !string.IsNullOrWhiteSpace(src.Price));
+                    opt.MapFrom(src => decimal.Parse(src.Price, CultureInfo.InvariantCulture));
+                })
                 .ForMember(dest => dest.Brand, opt => opt.Condition(src => src.Brand != null))
                 .ForMember(dest => dest.Description, opt => opt.Condition(src => src.Description != null))
-                .ForMember(dest => dest.StockQuantity, opt => opt.Condition(src => src.StockQuantity.HasValue))
-                .ForMember(dest => dest.PlatformCommissionPercentage, opt => opt.Condition(src => src.PlatformCommissionPercentage.HasValue))
+                .ForMember(dest => dest.StockQuantity, opt =>
+                {
+                    opt.Condition(src => !string.IsNullOrWhiteSpace(src.StockQuantity));
+                    opt.MapFrom(src => int.Parse(src.StockQuantity, CultureInfo.InvariantCulture));
+                })
+                .ForMember(dest => dest.PlatformCommissionPercentage, opt =>
+                {
+                    opt.Condition(src => !string.IsNullOrWhiteSpace(src.PlatformCommissionPercentage));
+                    opt.MapFrom(src => decimal.Parse(src.PlatformCommissionPercentage, CultureInfo.InvariantCulture));
+                })
                 .ForMember(dest => dest.ImageUrl, opt => opt.Condition(src => src.ImageUrl != null));
         }
 

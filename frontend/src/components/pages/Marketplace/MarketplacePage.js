@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import "../styles/marketplace.css";
-import basketIcon from "../icons/Basket.png";
-import heartEmptyIcon from "../icons/HeartEmpty.png";
-import testIcon from "../img/mascot.png";
+import "../../styles/marketplace.css";
+import basketIcon from "../../icons/Basket.png";
+import heartEmptyIcon from "../../icons/HeartEmpty.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function MarketplacePage() {
     const [category, setCategory] = useState("SportsNutrition");
     const [products, setProducts] = useState([]);
-    const [selectedProduct, setSelectedProduct] = useState("");
+    const [selectedProducts, setSelectedProducts] = useState([]);
+    const navigate = useNavigate();
 
     const fetchProducts = async () => {
         try {
@@ -24,7 +25,7 @@ function MarketplacePage() {
 
     useEffect(() => {
         fetchProducts()
-    })
+    }, [])
 
     return (
         <div className="marketplace-container">
@@ -87,11 +88,15 @@ function MarketplacePage() {
                 </div>
             </div>
             <div className="marketplace scroll-data">
-                {products.map(p => {
+                {products.map((p, idx) => {
                     return (
-                        <div className="product-card" onClick={() => setSelectedProduct(p.Id)}>
-                            <img src={heartEmptyIcon} className="favorite-product"/>
-                            <img src={testIcon} className="product-foto" />
+                        <div 
+                            key={idx} 
+                            className="product-card" 
+                            onClick={() => navigate("/marketplace/product", { state: {prod: p} })}
+                        >
+                            <img src={heartEmptyIcon} className="favorite-product" alt="Heart"/>
+                            <img src={p.ImageUrl} className="product-foto" alt="Product image" />
                             <div className="product-info-footer">
                                 <h3>{p.Name}</h3>
                                 <h4>{p.Price}$</h4>

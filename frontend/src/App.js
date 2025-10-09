@@ -58,7 +58,8 @@ import SubscriptionPaymentPage from './components/pages/Subscription/Subscriptio
 
 import PaymentSuccessPage from "./components/pages/PaymentSuccessPage";
 
-import MarketplacePage from "./components/pages/MarketplacePage";
+import MarketplacePage from "./components/pages/Marketplace/MarketplacePage";
+import ProductPage from "./components/pages/Marketplace/ProductPage";
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -153,6 +154,7 @@ function AppRoutes() {
       <Route path="*" element={<NotFoundPage />} />
 
       <Route path="/marketplace" element={<PrivateRoute><Menu><MarketplacePage /></Menu></PrivateRoute>} />
+      <Route path="/marketplace/product" element={<PrivateRoute><Menu><ProductPage /></Menu></PrivateRoute>} />
 
     </Routes>
   );

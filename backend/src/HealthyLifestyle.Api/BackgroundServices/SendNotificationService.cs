@@ -41,7 +41,6 @@ namespace HealthyLifestyle.BackgroundServices
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                Console.WriteLine("================================");
                 var emailService = scope.ServiceProvider.GetRequiredService<IEmailService>();
                 var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
                 var calendarService = scope.ServiceProvider.GetRequiredService<ICalendarService>();
@@ -52,9 +51,6 @@ namespace HealthyLifestyle.BackgroundServices
 
                 foreach (var calendarEvent in futureEvents)
                 {
-                    Console.WriteLine("================================");
-                    Console.WriteLine("================================");
-                    Console.WriteLine("================================");
                     var author = await userService.GetUserProfileAsync(calendarEvent.AuthorId);
                     if (author == null)
                     {

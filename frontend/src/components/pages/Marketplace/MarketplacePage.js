@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import "../../styles/marketplace.css";
 import basketIcon from "../../icons/Basket.png";
 import heartEmptyIcon from "../../icons/HeartEmpty.png";
+import heartFullIcon from "../../icons/HeartFull.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function MarketplacePage() {
     const [category, setCategory] = useState("SportsNutrition");
     const [products, setProducts] = useState([]);
-    const [selectedProducts, setSelectedProducts] = useState([]);
+    const [favorites, setFavorites] = useState([]);
     const navigate = useNavigate();
 
     const fetchProducts = async () => {
@@ -23,8 +24,58 @@ function MarketplacePage() {
         }
     }
 
+    const fetchFavorites = async () => {
+        try {
+            const response = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/Products/favorites`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                    }
+                }
+            );
+
+            setFavorites(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleClickHeart = async (id) => {
+        try {
+            if (favorites.some(f => f === id)) {
+                await axios.delete(
+                    `${process.env.REACT_APP_API_URL}/api/Products/favorites/${id}`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                        }
+                    }
+                );
+                
+                let filtered = favorites.filter(f => f !== id);
+                setFavorites(filtered);
+            } else {
+                await axios.post(
+                    `${process.env.REACT_APP_API_URL}/api/Products/favorites/${id}`,
+                    {},
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                        }
+                    }
+                );
+                
+                setFavorites(fav => [...fav, id])
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         fetchProducts()
+        fetchFavorites()
     }, [])
 
     return (
@@ -95,7 +146,14 @@ function MarketplacePage() {
                             className="product-card" 
                             onClick={() => navigate("/marketplace/product", { state: {prod: p} })}
                         >
-                            <img src={heartEmptyIcon} className="favorite-product" alt="Heart"/>
+                            <img 
+                                src={favorites.some(f => f === p.Id) ? heartFullIcon : heartEmptyIcon} 
+                                className="favorite-product" 
+                                alt="Heart"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleClickHeart(p.Id);
+                                }}/>
                             <img src={p.ImageUrl} className="product-foto" alt="Product image" />
                             <div className="product-info-footer">
                                 <h3>{p.Name}</h3>

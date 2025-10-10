@@ -149,6 +149,7 @@
 
 .product-buy-container {
     margin: 0 50px;
+    max-height: 50vh;
 }
 
 .product-container {
@@ -168,13 +169,15 @@
 }
 
 .product-info > h3 {
-    font-family: var(--font-size);
+    font-family: var(--font-family);
+    color: var(--lim);
     font-size: 30px;
     margin-bottom: 20px;
 }
 
 .product-info > h4 {
-    font-family: var(--font-size);
+    font-family: var(--font-family);
+    color: var(--lim);
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 20px;
@@ -195,5 +198,25 @@
 }
 
 .horizontal-scroll-products {
+    display: flex;
     scroll-behavior: smooth;
+    margin-top: 30px;
+}
+
+.similar-products {
+    margin-top: 30px;
+}
+
+.similar-products > h3 {
+    font-family: var(--font-family);
+    font-weight: 300;
+}
+
+.product-desc > h3 {
+    font-family: var(--font-family);
+    font-weight: 300;
+}
+
+.horizontal-scroll-products .product-card {
+    height: 200px;
 }

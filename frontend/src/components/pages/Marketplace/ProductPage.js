@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import heartEmptyIcon from "../../icons/HeartEmpty.png";
+import heartFullIcon from "../../icons/HeartFull.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ProductPage() {
     const { state } = useLocation();
     const scrollRef = useRef(null);
+    const navigate = useNavigate();
 
     const prod = state?.prod;
     const [products, setProducts] = useState([]);
+    const [favorites, setFavorites] = useState([]);
 
     const fetchProducts = async () => {
         try {
@@ -21,8 +25,58 @@ function ProductPage() {
         }
     }
 
+    const fetchFavorites = async () => {
+        try {
+            const response = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/Products/favorites`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                    }
+                }
+            );
+
+            setFavorites(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleClickHeart = async (id) => {
+        try {
+            if (favorites.some(f => f === id)) {
+                await axios.delete(
+                    `${process.env.REACT_APP_API_URL}/api/Products/favorites/${id}`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                        }
+                    }
+                );
+                
+                let filtered = favorites.filter(f => f !== id);
+                setFavorites(filtered);
+            } else {
+                await axios.post(
+                    `${process.env.REACT_APP_API_URL}/api/Products/favorites/${id}`,
+                    {},
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                        }
+                    }
+                );
+                
+                setFavorites(fav => [...fav, id])
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         fetchProducts()
+        fetchFavorites()
     }, [])
 
     useEffect(() => {
@@ -52,7 +106,7 @@ function ProductPage() {
                     <h3>{prod.Name}</h3>
                     <h4>{prod.Price} $</h4>
                     <button>В кошик</button>
-                    <div>
+                    <div className="product-desc">
                         <h3>Опис</h3>
                         <div>{prod.Description}</div>
                     </div>
@@ -61,7 +115,29 @@ function ProductPage() {
             <div className="similar-products">
                 <h3>Схожі продукти</h3>
                 <div ref={scrollRef} className="horizontal-scroll-products">
-
+                    {products.map((p, idx) => {
+                        return (
+                            <div 
+                                key={idx} 
+                                className="product-card" 
+                                onClick={() => navigate("/marketplace/product", { state: {prod: p} })}
+                            >
+                                <img 
+                                    src={favorites.some(f => f === p.Id) ? heartFullIcon : heartEmptyIcon} 
+                                    className="favorite-product" 
+                                    alt="Heart"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleClickHeart(p.Id);
+                                    }}/>
+                                <img src={p.ImageUrl} className="product-foto" alt="Product image" />
+                                <div className="product-info-footer">
+                                    <h3>{p.Name}</h3>
+                                    <h4>{p.Price}$</h4>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>

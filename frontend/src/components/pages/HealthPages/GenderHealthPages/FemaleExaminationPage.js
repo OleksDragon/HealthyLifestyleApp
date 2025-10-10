@@ -17,12 +17,6 @@ function FemaleExaminationPage() {
     const [ultraGl, setUltraGl] = useState(false);
     const [blood, setBlood] = useState(false);
 
-    const dateToString = (date) => {
-        const dateStr = date.toLocaleDateString("en-CA");
-        const timeStr = date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-        return `${dateStr}T${timeStr}`;
-    }
-
     const handleAddTestsToCalendar = async () => {
         const msPerYear = 1000 * 60 * 60 * 24 * 365;
         let tests = []
@@ -77,7 +71,7 @@ function FemaleExaminationPage() {
                 {
                     AuthorId: localStorage.getItem("user-id"),
                     Title: t.title,
-                    StartTime: dateToString(t.date),
+                    StartTime: t.date.toISOString(),
                     TaskToDo: "Doctor",
                 },
                 {

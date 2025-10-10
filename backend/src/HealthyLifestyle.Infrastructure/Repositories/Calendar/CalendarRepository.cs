@@ -27,18 +27,17 @@ namespace HealthyLifestyle.Infrastructure.Repositories.Calendar
 
         public async Task<IEnumerable<CalendarEvent>> GetAllCalendarEventsToRemindAsync()
         {
+            var now = DateTime.UtcNow;
+            var from = now;
+            var to = now.AddMinutes(1);
+
             return await _dbContext.CalendarEvents
                 .Include(e => e.MeetingParticipants)
-                .Where(e => 
-                    e.StartTime >= DateTime.Now.AddMinutes(
-                        e.NotificationBefore.HasValue ?
-                        double.Parse(e.NotificationBefore.Value.ToString()) - 1
-                        : 0) && 
-                    e.StartTime <= DateTime.Now.AddMinutes(
-                        e.NotificationBefore.HasValue ? 
-                        double.Parse(e.NotificationBefore.Value.ToString()) 
-                        : -1))
-                .Select(e => e).ToListAsync();
+                .Where(e =>
+                    e.NotificationBefore.HasValue &&
+                    e.StartTime.AddMinutes(-e.NotificationBefore.Value) >= from &&
+                    e.StartTime.AddMinutes(-e.NotificationBefore.Value) <= to)
+                .ToListAsync();
         }
 
         public async Task<CalendarEvent> GetEventWithParticipantsAsync(Guid id)

@@ -7,19 +7,13 @@ namespace HealthyLifestyle.BackgroundServices
     // Сервіс, що відправляє повідомлення щодо подій у календарі
     public class SendNotificationService : BackgroundService
     {
-        private readonly IEmailService _emailService;
-        private readonly IUserService _userService;
-        private readonly ICalendarService _calendarService;
         private readonly ILogger<SendNotificationService> _logger;
         private readonly IServiceProvider _serviceProvider;
 
-        public SendNotificationService(IEmailService emailService, IUserService userService, ICalendarService calendarService, ILogger<SendNotificationService> logger, IServiceProvider serviceProvider)
+        public SendNotificationService(ILogger<SendNotificationService> logger, IServiceProvider serviceProvider)
         {
-            _emailService = emailService;
-            _userService = userService;
             _logger = logger;
             _serviceProvider = serviceProvider;
-            _calendarService = calendarService;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -47,11 +41,21 @@ namespace HealthyLifestyle.BackgroundServices
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var futureEvents = await _calendarService.GetAllCalendarEventsToRemindAsync();
+                Console.WriteLine("================================");
+                var emailService = scope.ServiceProvider.GetRequiredService<IEmailService>();
+                var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+                var calendarService = scope.ServiceProvider.GetRequiredService<ICalendarService>();
+
+                var futureEvents = await calendarService.GetAllCalendarEventsToRemindAsync();
+
+                Console.WriteLine(futureEvents.Count());
 
                 foreach (var calendarEvent in futureEvents)
                 {
-                    var author = await _userService.GetUserProfileAsync(calendarEvent.AuthorId);
+                    Console.WriteLine("================================");
+                    Console.WriteLine("================================");
+                    Console.WriteLine("================================");
+                    var author = await userService.GetUserProfileAsync(calendarEvent.AuthorId);
                     if (author == null)
                     {
                         continue;
@@ -122,7 +126,7 @@ namespace HealthyLifestyle.BackgroundServices
 </body>
 </html>";
 
-                        Task.Run(() => _emailService.SendEmailAsync(participant.Email, "Calendar event", emailHtml));
+                        Task.Run(() => emailService.SendEmailAsync(participant.Email, "Calendar event", emailHtml));
                     }
                 }
             }

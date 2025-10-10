@@ -36,6 +36,7 @@ using HealthyLifestyle.Application.Services.Shop;
 using HealthyLifestyle.Application.Services.SubscriptionS;
 using HealthyLifestyle.Application.Services.UserS;
 using HealthyLifestyle.Application.Services.WorkoutS;
+using HealthyLifestyle.BackgroundServices;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
 using HealthyLifestyle.Core.Interfaces.APInfoBlock;
@@ -313,6 +314,9 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+// Регеструємо фоновий сервіс
+builder.Services.AddHostedService<SendNotificationService>();
 
 // --- Створюємо та налаштовуємо конвеєр обробки запитів ---
 

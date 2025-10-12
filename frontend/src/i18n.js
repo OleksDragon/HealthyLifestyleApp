@@ -156,6 +156,7 @@ i18n
           p_btn_save: "Save",
           p_btn_saving: "Saving...",
           p_specialist_profile: "Specialist Profile",
+          p_profile_incomplete_alert: "Please complete your user profile",
 
           // --- Custom calendar translations (user birthday) ---
           p_january: "january",
@@ -1144,6 +1145,7 @@ i18n
           p_btn_save: "Зберегти",
           p_btn_saving: "Збереження...",
           p_specialist_profile: "Профіль спеціаліста",
+          p_profile_incomplete_alert: "Будь ласка, заповніть профіль користувача",
 
           // === КАЛЕНДАР (ДЕНЬ НАРОДЖЕННЯ) ===
           p_january: "січень",
@@ -2156,6 +2158,7 @@ i18n
           p_btn_save: "Speichern",
           p_btn_saving: "Wird gespeichert...",
           p_specialist_profile: "Spezialistenprofil",
+          p_profile_incomplete_alert: "Bitte vervollständigen Sie Ihr Benutzerprofil",
 
           // === KALENDER (GEBURTSTAG) ===
           p_january: "Januar",
@@ -3185,6 +3188,7 @@ i18n
           p_btn_save: "Sauvegarder",
           p_btn_saving: "Sauvegarde en cours...",
           p_specialist_profile: "Spezialistenprofil",
+          p_profile_incomplete_alert: "Veuillez compléter votre profil utilisateur",
 
           // === CALENDRIER (ANNIVERSAIRE) ===
           p_january: "janvier",
@@ -4216,6 +4220,7 @@ i18n
           p_btn_save: "Guardar",
           p_btn_saving: "Guardando...",
           p_specialist_profile: "Spezialistenprofil",
+          p_profile_incomplete_alert: "Por favor, completa tu perfil de usuario",
 
           // === CALENDARIO (CUMPLEAÑOS) ===
           p_january: "enero",

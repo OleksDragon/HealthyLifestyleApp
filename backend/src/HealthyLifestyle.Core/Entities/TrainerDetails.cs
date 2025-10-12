@@ -40,6 +40,8 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="availability">Доступність тренера (опціонально).</param>
         /// <param name="hourlyRate">Погодинна ставка (опціонально).</param>
         /// <param name="clientTestimonials">Відгуки клієнтів (опціонально).</param>
+        /// <param name="expertDetailsPictureUrl">URL зображення для детальної сторінки (опціонально).</param>
+        /// <param name="cardPictureUrl">URL зображення для картки експерта (опціонально).</param>
         public TrainerDetails(
             Guid qualificationId,
             List<string>? trainingStyle = null,
@@ -53,7 +55,9 @@ namespace HealthyLifestyle.Core.Entities
             List<string>? certifications = null,
             string? availability = null,
             decimal? hourlyRate = null,
-            string? clientTestimonials = null)
+            string? clientTestimonials = null,
+            string? expertDetailsPictureUrl = null,
+            string? cardPictureUrl = null)
             : base(qualificationId,
                    biography,
                    yearsOfExperience,
@@ -64,7 +68,9 @@ namespace HealthyLifestyle.Core.Entities
                    contactEmail,
                    contactPhone,
                    website,
-                   clientTestimonials)
+                   clientTestimonials,
+                   expertDetailsPictureUrl,
+                   cardPictureUrl)
         {
             TrainingStyle = trainingStyle ?? new List<string>();
             PreferredWorkoutStyles = preferredWorkoutStyles ?? new List<string>();

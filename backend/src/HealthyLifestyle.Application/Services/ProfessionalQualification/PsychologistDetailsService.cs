@@ -113,7 +113,9 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 yearsOfExperience: createDto.YearsOfExperience,
                 certifications: createDto.Certifications,
                 availability: createDto.Availability,
-                clientTestimonials: createDto.ClientTestimonials
+                clientTestimonials: createDto.ClientTestimonials,
+                expertDetailsPictureUrl: createDto.ExpertDetailsPictureUrl,
+                cardPictureUrl: createDto.CardPictureUrl
             );
 
             await _unitOfWork.GetRepository<PsychologistDetails>().AddAsync(psychologistDetails);
@@ -180,6 +182,12 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 availability: updateDto.Availability,
                 clientTestimonials: updateDto.ClientTestimonials
             );
+
+            // Оновлення зображень
+            if (updateDto.ExpertDetailsPictureUrl != null)
+                psychologistDetails.UpdateExpertDetailsPictureUrl(updateDto.ExpertDetailsPictureUrl);
+            if (updateDto.CardPictureUrl != null)
+                psychologistDetails.UpdateCardPictureUrl(updateDto.CardPictureUrl);
 
             _unitOfWork.GetRepository<PsychologistDetails>().Update(psychologistDetails);
             await _unitOfWork.SaveChangesAsync();

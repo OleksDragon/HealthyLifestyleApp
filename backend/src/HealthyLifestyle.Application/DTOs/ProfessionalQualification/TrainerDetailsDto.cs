@@ -92,8 +92,24 @@ namespace HealthyLifestyle.Application.DTOs.ProfessionalQualification
         /// <summary>
         /// Погодинна ставка тренера.
         /// </summary>
-        [Range(0, double.MaxValue, ErrorMessage = "Погодинна ставка не може бути від’ємною.")]
+        [Range(0, double.MaxValue, ErrorMessage = "Погодинна ставка не може бути від'ємною.")]
         public decimal? HourlyRate { get; set; }
+
+        /// <summary>
+        /// URL зображення для детальної сторінки експерта (опціонально).
+        /// Максимальна довжина — 500 символів; має відповідати формату URL.
+        /// </summary>
+        [Url(ErrorMessage = "Невірний формат URL для зображення детальної сторінки експерта.")]
+        [StringLength(500, ErrorMessage = "URL зображення детальної сторінки експерта не може перевищувати 500 символів.")]
+        public string? ExpertDetailsPictureUrl { get; set; }
+
+        /// <summary>
+        /// URL зображення для картки експерта (прев'ю у списках) (опціонально).
+        /// Максимальна довжина — 500 символів; має відповідати формату URL.
+        /// </summary>
+        [Url(ErrorMessage = "Невірний формат URL для зображення картки експерта.")]
+        [StringLength(500, ErrorMessage = "URL зображення картки експерта не може перевищувати 500 символів.")]
+        public string? CardPictureUrl { get; set; }
         #endregion
     }
 }

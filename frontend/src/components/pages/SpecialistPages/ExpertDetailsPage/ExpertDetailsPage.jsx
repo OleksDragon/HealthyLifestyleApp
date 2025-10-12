@@ -90,18 +90,47 @@ const SpecialistSocialLinks = ({ specialist }) => {
     </div>
   );
 };
- // Map images to specialists based on their ID
-  const getSpecialistImage = (id) => {
+  // Get specialist image from API or fallback to local images
+  const getSpecialistImage = (specialist) => {
+    // First try to get ExpertDetailsPictureUrl from API
+    if (specialist.PsychologistDetails?.ExpertDetailsPictureUrl) {
+      return specialist.PsychologistDetails.ExpertDetailsPictureUrl;
+    }
+    if (specialist.DietitianDetails?.ExpertDetailsPictureUrl) {
+      return specialist.DietitianDetails.ExpertDetailsPictureUrl;
+    }
+    if (specialist.TrainerDetails?.ExpertDetailsPictureUrl) {
+      return specialist.TrainerDetails.ExpertDetailsPictureUrl;
+    }
+    if (specialist.DoctorDetails?.ExpertDetailsPictureUrl) {
+      return specialist.DoctorDetails.ExpertDetailsPictureUrl;
+    }
+    
+    // Then try SpecialistCardPictureUrl
+    if (specialist.PsychologistDetails?.SpecialistCardPictureUrl) {
+      return specialist.PsychologistDetails.SpecialistCardPictureUrl;
+    }
+    if (specialist.DietitianDetails?.SpecialistCardPictureUrl) {
+      return specialist.DietitianDetails.SpecialistCardPictureUrl;
+    }
+    if (specialist.TrainerDetails?.SpecialistCardPictureUrl) {
+      return specialist.TrainerDetails.SpecialistCardPictureUrl;
+    }
+    if (specialist.DoctorDetails?.SpecialistCardPictureUrl) {
+      return specialist.DoctorDetails.SpecialistCardPictureUrl;
+    }
+    
+    // Fallback to local images
     const imageMap = {
-      'Маргарита Дронова': card1Img, // Маргарита Дронова
-      'Олексій Соколенко': card4Img, // Олексій Соколенко
-      'Антоніна Смила': card5Img, // Антоніна Смила
-      'Олександр Медичний': card3Img, // Д-р Олександр Медичний
-      'Андрій Кач': card6Img, // Андрій Кач
-      'Олеся Мамкіна': card2Img, // Олеся Мамкіна
-      'Дмитро Делитанович': card6Img, // Дмитро Делитанович
+      'Маргарита Дронова': card1Img,
+      'Олексій Соколенко': card4Img,
+      'Антоніна Смила': card5Img,
+      'Олександр Медичний': card3Img,
+      'Андрій Кач': card6Img,
+      'Олеся Мамкіна': card2Img,
+      'Дмитро Делитанович': card6Img,
     };
-    return imageMap[id] || card6Img; // Use card-6.png as fallback
+    return imageMap[specialist.User?.FullName] || card6Img;
   };
 
 const ExpertDetailsPage = () => {
@@ -204,7 +233,7 @@ return (
               <img
                 className="specialist-image"
                 alt={specialist.fullName || "Specialist"}
-                src={getSpecialistImage(specialist.User?.FullName)}
+                src={getSpecialistImage(specialist)}
                 onError={(e) => {
                   e.target.src = card4Img;
                 }}
@@ -268,7 +297,7 @@ return (
             
             </div>
             <div className="view-3">
-              <div className="action-button">
+              <div className="action-box">
               <button className="subscribe-button">{t('subscribe')}</button>
             </div>
           </div>

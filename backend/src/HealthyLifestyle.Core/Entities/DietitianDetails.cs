@@ -40,6 +40,8 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="clientTestimonials">Відгуки клієнтів (опціонально).</param>
         /// <param name="specializations">Список спеціалізацій (опціонально).</param>
         /// <param name="nutritionalApproach">Підхід до харчування (опціонально).</param>
+        /// <param name="expertDetailsPictureUrl">URL зображення для детальної сторінки (опціонально).</param>
+        /// <param name="cardPictureUrl">URL зображення для картки експерта (опціонально).</param>
         public DietitianDetails(
             Guid qualificationId,
             string? biography = null,
@@ -53,7 +55,9 @@ namespace HealthyLifestyle.Core.Entities
             string? website = null,
             string? clientTestimonials = null,
             List<string>? specializations = null,
-            string? nutritionalApproach = null)
+            string? nutritionalApproach = null,
+            string? expertDetailsPictureUrl = null,
+            string? cardPictureUrl = null)
             : base(qualificationId,
                    biography,
                    yearsOfExperience,
@@ -64,7 +68,9 @@ namespace HealthyLifestyle.Core.Entities
                    contactEmail,
                    contactPhone,
                    website,
-                   clientTestimonials)
+                   clientTestimonials,
+                   expertDetailsPictureUrl,
+                   cardPictureUrl)
         {
             Specializations = specializations ?? new List<string>();
             NutritionalApproach = nutritionalApproach;

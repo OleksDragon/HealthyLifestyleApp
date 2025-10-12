@@ -51,6 +51,36 @@ function LoginPage() {
                 localStorage.setItem("user-name", response.data.FullName);
                 localStorage.setItem("user-id", response.data.UserId);
                 // Також можна отримати та зберігти інші дані, що прийшли з сервера
+
+                try {
+                    const subscriptionResponse = await axios.get(
+                        process.env.REACT_APP_API_URL + `/api/Subscription/check/${response.data.UserId}`,
+                        {
+                            headers: {
+                                'Authorization': `Bearer ${response.data.Token}`
+                            }
+                        }
+                    );
+                    
+                    if (subscriptionResponse.data && typeof subscriptionResponse.data === 'object') {
+                        const subscriptionData = {
+                            SId: subscriptionResponse.data.Id,
+                            OwnerId: subscriptionResponse.data.UserId,
+                            Type: subscriptionResponse.data.Type,
+                            EndDate: subscriptionResponse.data.EndDate,
+                            IsFamilyMember: subscriptionResponse.data.IsFamilyMember
+                        };
+                        
+                        localStorage.setItem("Subscription", JSON.stringify(subscriptionData));
+                        console.log("Subscription data saved:", subscriptionData);
+                    } else {
+                        localStorage.removeItem("Subscription");
+                        console.log("No active subscription found");
+                    }
+                } catch (subscriptionError) {
+                    console.log("Помилка при перевірці підписки: ", subscriptionError);
+                }
+
                 setError('');
                 navigate("/dashboard");
             }

@@ -12,6 +12,13 @@ namespace HealthyLifestyle.Core.Interfaces.SubscriptionIR
 
         Task<List<Subscription>> GetActiveSubscriptionsByUserIdAsync(Guid userId);
 
+        Task<Subscription?> GetByIdWithMembersAsync(Guid id);
+
+        Task<List<Subscription>> GetSubscriptionsByUserIdWithMembersAsync(Guid userId);
+        Task<List<Subscription>> GetAllWithMembersAsync();
+        Task<List<Subscription>> GetActiveSubscriptionsByUserIdWithMembersAsync(Guid userId);
+
+
         // Приклад: Якщо вам знадобиться специфічний для Subscription метод,
         // який не є загальним CRUD, ви можете додати його сюди.
     }

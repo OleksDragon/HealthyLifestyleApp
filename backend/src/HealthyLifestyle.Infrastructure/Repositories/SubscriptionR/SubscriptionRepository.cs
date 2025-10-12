@@ -30,6 +30,43 @@ namespace HealthyLifestyle.Infrastructure.Repositories.SubscriptionR
                            s.Status == SubscriptionStatus.Active)
                 .ToListAsync();
         }
+
+        public async Task<Subscription?> GetByIdWithMembersAsync(Guid id)
+        {
+            return await _dbContext.Subscriptions
+                .Include(s => s.FamilyMembers)
+                .ThenInclude(fm => fm.Member)
+                .Include(s => s.User)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+        }
+
+        public async Task<List<Subscription>> GetSubscriptionsByUserIdWithMembersAsync(Guid userId)
+        {
+            return await _dbSet
+                .Include(s => s.FamilyMembers)
+                    .ThenInclude(fm => fm.Member) // ← Критично важливо!
+                .Where(s => s.UserId == userId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Subscription>> GetAllWithMembersAsync()
+        {
+            return await _dbSet
+                .Include(s => s.FamilyMembers)
+                    .ThenInclude(fm => fm.Member)
+                .ToListAsync();
+        }
+
+        public async Task<List<Subscription>> GetActiveSubscriptionsByUserIdWithMembersAsync(Guid userId)
+        {
+            return await _dbSet
+                .Include(s => s.FamilyMembers)
+                    .ThenInclude(fm => fm.Member)
+                .Where(s => s.UserId == userId &&
+                           s.Status == SubscriptionStatus.Active)
+                .ToListAsync();
+        }
         // Тут можна додати специфічні методи для роботи з Subscription, якщо потрібно.
     }
 }

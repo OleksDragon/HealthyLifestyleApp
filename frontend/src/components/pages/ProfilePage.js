@@ -64,6 +64,35 @@ const UserProfile = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [originalFormData, setOriginalFormData] = useState(initialFormData);
 
+  // Функція для перевірки заповненості всіх полів профілю
+  const isProfileComplete = useCallback(() => {
+    const requiredFields = [
+      'firstName',
+      'lastName', 
+      'gender',
+      'birthDate',
+      'height',
+      'weight',
+      'country',
+      'city',
+      'street',
+      'phoneCode',
+      'phoneNumber',
+      'about'
+    ];
+
+    // Перевіряємо, чи всі обов'язкові поля заповнені
+    const allFieldsFilled = requiredFields.every(field => {
+      const value = formData[field];
+      return value !== null && value !== undefined && value !== '';
+    });
+
+    // Додатково перевіряємо наявність аватара (або файл, або URL)
+    const hasAvatar = avatarFile || formData.avatarUrl;
+
+    return allFieldsFilled && hasAvatar;
+  }, [formData, avatarFile]);
+
   // Отримання токена
   const getToken = () => {
     return localStorage.getItem("helth-token");
@@ -667,12 +696,18 @@ const handleCountryChange = async (value) => {
 
 // Обробник для перемикача "Профіль спеціаліста"
   const handleSpecialistToggle = (checked) => {
-    setIsSpecialistProfile(checked);
     if (checked) {
+      // Перевіряємо, чи заповнений профіль
+      if (!isProfileComplete()) {
+        alert(t("p_profile_incomplete_alert"));
+        setIsSpecialistProfile(false);
+        return;
+      }
       setShowSpecialistModal(true);
     } else {
       setShowSpecialistModal(false);
     }
+    setIsSpecialistProfile(checked);
   };
 
   // Обробники для кнопок спеціалістів

@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font-family: 'Roboto', sans-serif;
+    --white: #FFF;
+    --blue: #0661CC;
+    --title: #1C6ED0;
+    --bl: #116FCF;
+    --lim: #D6FF00;
+    --img: #AADAFF;
+    --b-img: #D9D9D9;
+    --black: #343434;
+}
+
+/* Subscription Details Page Styles */
+
+.sdp-subscription-details-main-page {
+    max-width: 90%;
+    margin-left: 40px;
+}
+
+.sdp-subscription-details-page {
+    max-height: 76vh;
+    /* background: orange; */
+    /* padding: 0 20px 20px 20px; */
+    margin-top: -20px;
+    font-family: var(--font-family);
+    color: var(--white);
+}
+
+.sdp-subscription-back-btn {
+    background: var(--white);
+    color: var(--blue);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sdp-subscription-back-btn:hover {
+    background: #e6e6e6;
+    transform: translateY(-2px);
+}
+
+.sdp-subscription-details {
+    display: flex;
+    justify-content: center;
+}
+
+/* Subscription Details Card */
+.sdp-subscription-details-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px 40px 0 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* max-width: 800px; */
+    width: 100%;
+}
+
+.sdp-subscription-details-card h2 {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--lim);
+    padding-bottom: 15px;
+}
+
+.sdp-subscription-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sdp-subscription-details-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sdp-subscription-details-section h3 {
+    color: var(--blue);
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.sdp-subscription-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sdp-subscription-detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sdp-subscription-detail-label {
+    font-weight: 500;
+    color: var(--blue);
+    font-size: 1.1rem;
+}
+
+.sdp-subscription-detail-value {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--white);
+}
+
+.sdp-subscription-detail-value.sdp-subscription-status {
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.sdp-subscription-detail-value.sdp-subscription-status.active {
+    background: var(--lim);
+    color: var(--blue);
+}
+
+.sdp-subscription-detail-value.sdp-subscription-status.expired {
+    background: #ff6b6b;
+    color: var(--white);
+}
+
+/* Family Members List */
+.sdp-subscription-family-members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sdp-subscription-family-member-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sdp-subscription-member-email {
+    font-weight: 500;
+    color: var(--white);
+}
+
+.sdp-subscription-member-added {
+    font-size: 0.9rem;
+    color: var(--lim);
+    opacity: 0.8;
+}
+
+/* Subscription Actions */
+.sdp-subscription-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sdp-subscription-manage-family-btn,
+.sdp-subscription-renew-btn {
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.sdp-subscription-manage-family-btn {
+    background: var(--white);
+    color: var(--blue);
+}
+
+.sdp-subscription-manage-family-btn:hover {
+    background: #e6e6e6;
+    transform: translateY(-2px);
+}
+
+.sdp-subscription-renew-btn {
+    background: var(--lim);
+    color: var(--blue);
+}
+
+.sdp-subscription-renew-btn:hover {
+    background: #c4e600;
+    transform: translateY(-2px);
+}
+
+.sdp-subscription-manage-family-btn:disabled,
+.sdp-subscription-renew-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* No Subscription State */
+.sdp-subscription-no-subscription {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.sdp-subscription-no-subscription h2 {
+    color: var(--white);
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* Loading State */
+.sdp-subscription-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    font-size: 1.3rem;
+    color: var(--white);
+    text-align: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sdp-subscription-loading:after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--lim);
+    border-radius: 50%;
+    animation: sdp-subscription-spin 1s linear infinite;
+}
+
+@keyframes sdp-subscription-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Family Modal Styles */
+.sdp-family-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.sdp-family-modal {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    color: var(--black);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: sdp-family-modalAppear 0.3s ease-out;
+}
+
+@keyframes sdp-family-modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.sdp-family-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--img);
+}
+
+.sdp-family-modal-header h3 {
+    color: var(--blue);
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.sdp-family-modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--black);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.sdp-family-modal-close:hover {
+    color: var(--blue);
+    background: rgba(0,0,0,0.05);
+}
+
+.sdp-family-modal-close:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.sdp-family-modal-instruction {
+    color: var(--black);
+    margin-bottom: 25px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+.sdp-family-email-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.sdp-family-email-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sdp-family-email-input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid var(--img);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+}
+
+.sdp-family-email-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(6, 97, 204, 0.1);
+}
+
+.sdp-family-email-input:disabled {
+    background-color: var(--b-img);
+    cursor: not-allowed;
+}
+
+.sdp-family-modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--b-img);
+}
+
+.sdp-family-modal-actions .sdp-family-cancel-btn,
+.sdp-family-modal-actions .sdp-family-save-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    min-width: 120px;
+}
+
+.sdp-family-modal-actions .sdp-family-cancel-btn {
+    background: var(--b-img);
+    color: var(--black);
+}
+
+.sdp-family-modal-actions .sdp-family-cancel-btn:hover {
+    background: #c9c9c9;
+}
+
+.sdp-family-modal-actions .sdp-family-save-btn {
+    background: var(--lim);
+    color: var(--blue);
+}
+
+.sdp-family-modal-actions .sdp-family-save-btn:hover {
+    background: #c4e600;
+}
+
+.sdp-family-modal-actions .sdp-family-cancel-btn:disabled,
+.sdp-family-modal-actions .sdp-family-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}

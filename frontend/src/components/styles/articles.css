@@ -1,9 +1,9 @@
 .mental-health-articles {
-    width: 100%;
+    width: 105%;
 }
 
 .articles-list {
-    width: 99%;
+    width: 96.1%;
 }
 
 .mental-health-articles {
@@ -14,7 +14,7 @@
 }
 
 .mental-health-articles::-webkit-scrollbar {
-    width: 11px;
+    width: 12px;
 }
 
 .mental-health-articles::-webkit-scrollbar-track {

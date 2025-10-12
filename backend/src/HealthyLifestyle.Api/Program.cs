@@ -213,6 +213,7 @@ builder.Services.AddScoped<IDietPlanRepository, DietPlanRepository>();
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IFitnessActivityRepository, FitnessActivityRepository>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+builder.Services.AddScoped<IFamilySubscriptionRepository, FamilySubscriptionRepository>();
 builder.Services.AddScoped<ICalendarRepository, CalendarRepository>();
 builder.Services.Configure<MinioSettings>(builder.Configuration.GetSection("MinIO"));
 builder.Services.AddScoped<IAchievementRepository, AchievementRepository>();

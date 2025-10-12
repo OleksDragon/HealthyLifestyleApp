@@ -109,6 +109,15 @@ namespace HealthyLifestyle.Core.Entities
         {
             return (EndDate - DateTime.UtcNow).Days;
         }
+
+        /// <summary>
+        /// Позначає підписку як прострочену.
+        /// </summary>
+        public void MarkAsExpired()
+        {
+            Status = SubscriptionStatus.Expired;
+            SetUpdatedAt();
+        }
         #endregion
     }
 }

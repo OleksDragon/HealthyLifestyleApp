@@ -1,12 +1,37 @@
 .mental-health-container {
-    width: 100%;
+    width: 105%;
     margin: 0 auto;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    max-height: 69vh;
+}
+
+.mental-health-container::-webkit-scrollbar {
+    width: 15px;
+}
+
+.mental-health-container::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 10px;
+    margin: 10px 0 15px 0;
+}
+
+.mental-health-container::-webkit-scrollbar-thumb {
+    background: var(--bl);
+    border: 0.5px solid var(--white);
+    border-radius: 10px;
+}
+
+.mental-health-container::-webkit-scrollbar-thumb:hover {
+    background: var(--title);
 }
 
 .mental-health-content {
+    width: 96.4%;
     display: flex;
     flex-direction: column;
-    
 }
 
 .mental-health-info {
@@ -53,10 +78,17 @@
 }
 
 .mental-health-card-link {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 35px;
+    display: flex;
+    gap: 20px;
     margin: 35px 0;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.mental-health-card-link > * {
+    flex: 1;
+    min-width: 200px;
+    max-width: 280px;
 }
 
 .contact-to-specialist-btn {
@@ -74,12 +106,43 @@
     border: 0 solid transparent;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(10px);
-
     display: block;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
 
 .contact-to-specialist-btn:hover {
     background: var(--lim);
+}
+
+/* Адаптація для менших екранів */
+@media (max-width: 1200px) {
+    .mental-health-card-link {
+        gap: 15px;
+    }
+    
+    .mental-health-card-link > * {
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .mental-health-card-link {
+        gap: 12px;
+    }
+    
+    .mental-health-card-link > * {
+        min-width: 170px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .mental-health-card-link {
+        gap: 10px;
+    }
+    
+    .mental-health-card-link > * {
+        min-width: 160px;
+    }
 }

@@ -629,11 +629,11 @@ namespace HealthyLifestyle.Infrastructure.Data
                 var trainer = await userManager.FindByEmailAsync("trainer@example.com");
                 var trainer1 = await userManager.FindByEmailAsync("trainer1@example.com");
                 var trainer2 = await userManager.FindByEmailAsync("trainer2@example.com");
-                var trainer3 = await userManager.FindByEmailAsync("trainer3@example.com");
+                //var trainer3 = await userManager.FindByEmailAsync("trainer3@example.com");
 
                 // Перевіряємо, чи всі необхідні користувачі існують
                 if (regularUser == null || psychologist == null || dietitian == null ||
-                    trainer == null || trainer1 == null || trainer2 == null || trainer3 == null)
+                    trainer == null || trainer1 == null || trainer2 == null /*|| trainer3 == null */)
                 {
                     throw new InvalidOperationException("Необхідні користувачі відсутні. Спочатку виконайте SeedDefaultUserAndRolesAsync.");
                 }

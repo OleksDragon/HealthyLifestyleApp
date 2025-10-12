@@ -473,7 +473,7 @@ namespace HealthyLifestyle.Infrastructure.Data
                 entity.HasOne(fm => fm.Member)
                     .WithMany(u => u.FamilyMemberships)
                     .HasForeignKey(fm => fm.MemberId)
-                    .OnDelete(DeleteBehavior.Cascade);
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
 

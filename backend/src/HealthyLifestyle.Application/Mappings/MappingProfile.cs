@@ -708,11 +708,16 @@ namespace HealthyLifestyle.Application.Mappings
 
         private void ConfigureSubscriptionMappings()
         {
-            // Основний мапінг для звичайних підписок
+            // Основний мапінг для підписок
             CreateMap<Subscription, SubscriptionDto>()
                 .ForMember(dest => dest.IsActive, opt =>
                     opt.MapFrom(src => src.Status == SubscriptionStatus.Active && src.EndDate > DateTime.UtcNow))
-                .ForMember(dest => dest.FamilyMembers, opt => opt.MapFrom(src => src.FamilyMembers));
+                .ForMember(dest => dest.FamilyMembers, opt =>
+                    opt.MapFrom(src => src.Type == SubscriptionType.Family ? src.FamilyMembers : null))
+                .ForMember(dest => dest.IsFamilyMember, opt =>
+                    opt.MapFrom(_ => false)) // Для власника підписки завжди false
+                .ForMember(dest => dest.NotFoundEmails, opt =>
+                    opt.Ignore()); // Це поле заповнюється вручну в сервісі
 
             CreateMap<SubscriptionCreateDto, Subscription>()
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(_ => SubscriptionStatus.Active))
@@ -720,7 +725,12 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.StartDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
-                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+                .ForMember(dest => dest.FamilyMembers, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
 
             CreateMap<SubscriptionUpdateDto, Subscription>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
@@ -732,10 +742,15 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
+                .ForMember(dest => dest.FamilyMembers, opt => opt.Ignore());
 
-            // Мапінг для учасників Family Plan
-            CreateMap<FamilySubscriptionMember, FamilySubscriptionMemberDto>();
+            // Мапінг для учасників Family Plan з захистом від null
+            CreateMap<FamilySubscriptionMember, FamilySubscriptionMemberDto>()
+                .ForMember(dest => dest.Email, opt =>
+                    opt.MapFrom(src => src.Member != null ? src.Member.Email : string.Empty))
+                .ForMember(dest => dest.MemberId, opt => opt.MapFrom(src => src.MemberId))
+                .ForMember(dest => dest.AddedAt, opt => opt.MapFrom(src => src.AddedAt));
 
             // Мапінг для створення Family Plan
             CreateMap<FamilySubscriptionCreateDto, Subscription>()
@@ -746,7 +761,10 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(_ => SubscriptionStatus.Active))
                 .ForMember(dest => dest.User, opt => opt.Ignore())
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.FamilyMembers, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
         }
 
         private void ConfigureFitnessActivityMappings()

@@ -32,9 +32,17 @@ namespace HealthyLifestyle.Application.DTOs.Subscription
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Показує, чи користувач отримує доступ як член сімейної підписки.
+        /// </summary>
+        public bool IsFamilyMember { get; set; }
+
+        /// <summary>
         /// Список членів сімейної підписки (Family Plan).
         /// </summary>
         public List<FamilySubscriptionMemberDto>? FamilyMembers { get; set; }
+
+        // Нове поле для зворотного повідомлення користувачу
+        public List<string>? NotFoundEmails { get; set; }
     }
 
     /// <summary>
@@ -83,12 +91,17 @@ namespace HealthyLifestyle.Application.DTOs.Subscription
     /// </summary>
     public class FamilySubscriptionCreateDto
     {
+        [Required] // ← Додати
         public Guid OwnerId { get; set; }
 
-        public List<string> MemberEmails { get; set; } = new(); // До 3 email
+        [MaxLength(3, ErrorMessage = "До сімейного плану можна додати максимум 3 членів родини.")]
+        public List<string> MemberEmails { get; set; } = new();
 
+        [Required] // ← Додати
         public DateTime EndDate { get; set; }
 
+        [Required] // ← Додати
+        [Range(0, double.MaxValue, ErrorMessage = "Ціна на підписку не може бути від'ємною!")]
         public decimal Price { get; set; }
     }
 

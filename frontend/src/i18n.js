@@ -1144,6 +1144,7 @@ i18n
           p_btn_save: "Зберегти",
           p_btn_saving: "Збереження...",
           p_specialist_profile: "Профіль спеціаліста",
+          p_profile_incomplete_alert: "Будь ласка, заповніть профіль",
 
           // === КАЛЕНДАР (ДЕНЬ НАРОДЖЕННЯ) ===
           p_january: "січень",
@@ -1961,7 +1962,7 @@ i18n
           mp_form_free_testosterone_2: "Вільний Т",
           mp_form_prolactin: "Пролактин",
           mp_form_estradiol: "Естрадіол",
-          mp_form_lh: "ЛГ(лютейнзуючий гармон)",
+          mp_form_lh: "ЛГ(лютейнзуючий гормон)",
           mp_form_lh_2: "ЛГ",
           mp_form_fsh: "ФСГ",
           mp_form_ng_dl: "нг/дл",

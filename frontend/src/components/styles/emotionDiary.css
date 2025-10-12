@@ -86,6 +86,7 @@
 .ed-info-btn {
   width: 18px;
   height: 18px;
+  margin-top: 5px;
   margin-left: 10px;
   border-radius: 50%;
   border: 2px solid var(--white);

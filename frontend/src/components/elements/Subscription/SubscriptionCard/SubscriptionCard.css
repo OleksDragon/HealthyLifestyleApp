@@ -1,0 +1,177 @@
+.sp-sc-subscription-card {
+    background-color: transparent;
+    border-radius: 28.57px;
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+    width: 320px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.sp-sc-subscription-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-bg {
+    -webkit-backdrop-filter: blur(3.57px) brightness(100%);
+    backdrop-filter: blur(3.57px) brightness(100%);
+    background-color: #ffffff66;
+    border-radius: 28.57px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-overlay {
+    -webkit-backdrop-filter: blur(16px) brightness(100%);
+    backdrop-filter: blur(16px) brightness(100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 100%);
+    height: 125.7px;
+    left: 0;
+    position: absolute;
+    top: 254.3px;
+    width: 100%;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-label {
+    background-color: var(--blue);
+    border-radius: 28.57px;
+    height: 37.14px;
+    left: -22.4px;
+    position: absolute;
+    top: 18.57px;
+    width: 130px;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-title {
+    align-items: center;
+    color: var(--white);
+    display: flex;
+    font-family: "Roboto-Black", Helvetica;
+    font-size: 18px;
+    font-weight: 900;
+    height: 20px;
+    justify-content: center;
+    left: 16px;
+    position: absolute;
+    top: 27px;
+    width: 80px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-button-bg {
+    background-color: var(--lim);
+    border-radius: 28.57px;
+    height: 45.7px;
+    left: 50%;
+    position: absolute;
+    top: 310px;
+    transform: translateX(-50%);
+    width: 139.3px;
+    transition: all 0.3s ease;
+}
+
+.sp-sc-subscription-card:hover .sp-sc-subscription-button-bg {
+    background-color: var(--lim);
+    transform: translateX(-50%) scale(1.05);
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-btn {
+    align-items: center;
+    color: var(--blue);
+    display: flex;
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 15px;
+    font-weight: 700;
+    height: 45.7px;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: 310px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 139.3px;
+    border-radius: 28.57px;
+    transition: all 0.3s ease;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-btn:hover {
+    transform: translateX(-50%) scale(1.06);
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-btn:disabled {
+    font-size: 14px;
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: translateX(-50%) !important;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-duration {
+    align-items: center;
+    color: #ffffff;
+    display: flex;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    height: 20px;
+    justify-content: center;
+    right: 48px;
+    position: absolute;
+    top: 102px;
+    white-space: nowrap;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 150px;
+    left: 28.6px;
+    position: absolute;
+    top: 175px;
+    width: 260px;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-feature {
+    align-items: flex-start;
+    color: #ffffff;
+    display: flex;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    justify-content: flex-start;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    padding: 5px 0;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-feature:before {
+    content: "✓";
+    color: var(--lim);
+    font-weight: bold;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.sp-sc-subscription-card .sp-sc-subscription-price {
+    align-items: center;
+    color: #d6ff00;
+    display: flex;
+    font-family: "Roboto-SemiBold", Helvetica;
+    font-size: 42.8px;
+    font-weight: 600;
+    justify-content: center;
+    right: 31%;
+    position: absolute;
+    top: 20.4%;
+    white-space: nowrap;
+    width: 58.5%;
+}

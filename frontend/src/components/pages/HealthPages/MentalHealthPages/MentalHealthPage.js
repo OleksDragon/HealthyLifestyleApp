@@ -67,7 +67,7 @@ const MentalHealthPage = () => {
                 <div>
                     <button 
                         className="contact-to-specialist-btn"
-                        onButtonClick={handleContactToSpecialist}
+                        onClick={handleContactToSpecialist}
                     >
                         {t("mp_mhp_choose_specialist")}
                     </button>

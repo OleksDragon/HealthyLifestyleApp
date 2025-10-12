@@ -52,6 +52,7 @@ import MaleHormonesDiagramPage from "./components/pages/HealthPages/GenderHealth
 import CalendarPage from './components/pages/CalendarPage';
 
 import SubscriptionPage from './components/pages/Subscription/SubscriptionPage';
+import SubscriptionDetailsPage from './components/pages/Subscription/SubscriptionDetailsPage';
 
 
 function App() {
@@ -130,7 +131,6 @@ function AppRoutes() {
 
       <Route path="/calendar" element={<PrivateRoute><Menu><CalendarPage /></Menu></PrivateRoute>} />
 
-
       {/* Мужское здоровье */}
       <Route path="/health/gender/male" element={<PrivateRoute><Menu><HealthPageMenu><MaleHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/male/hormonas" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesFormPage /></HealthPageMenu></Menu></PrivateRoute>} />
@@ -138,6 +138,7 @@ function AppRoutes() {
 
       {/* Подписки */}
       <Route path="/premium" element={<PrivateRoute><Menu><SubscriptionPage /></Menu></PrivateRoute>} />
+      <Route path="/premium/details" element={<PrivateRoute><Menu><SubscriptionDetailsPage /></Menu></PrivateRoute>} />
 
     </Routes>
   );

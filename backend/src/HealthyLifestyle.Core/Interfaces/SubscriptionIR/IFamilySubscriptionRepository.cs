@@ -15,8 +15,20 @@ namespace HealthyLifestyle.Core.Interfaces.SubscriptionIR
         Task<FamilySubscriptionMember?> GetMemberAsync(Guid ownerId, Guid memberId);
 
         /// <summary>
-        /// (Опціонально) Повертає всіх членів конкретної підписки.
+        /// Повертає всіх членів конкретної підписки.
         /// </summary>
         Task<List<FamilySubscriptionMember>> GetMembersBySubscriptionIdAsync(Guid subscriptionId);
+
+        Task<FamilySubscriptionMember?> GetActiveFamilyMembershipByUserIdAsync(Guid userId);
+
+        /// <summary>
+        /// Додає кількох нових членів у сімейну підписку.
+        /// </summary>
+        Task AddMembersAsync(IEnumerable<FamilySubscriptionMember> members);
+
+        /// <summary>
+        /// Видаляє члена сімейної підписки.
+        /// </summary>
+        Task RemoveMemberAsync(Guid ownerId, Guid memberId);
     }
 }

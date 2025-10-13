@@ -1,0 +1,32 @@
+.not-found-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.ups-mascot {
+    max-height: 70%;
+    width: 100%;
+    bottom: 50%;
+    position: absolute;
+    pointer-events: none;
+}
+
+.not-found-container button {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 40px;
+    height: 80px;
+    width: 40%;
+    font-family: var(--font-family);
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    bottom: 10%;
+}

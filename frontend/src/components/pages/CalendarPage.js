@@ -52,8 +52,8 @@ function CalendarPage() {
     const [selectedTask, setSelectedTask] = useState(null);
 
     const optionsNotifications = [
-        { value: '5', label: 'За 5 хвилин' },
-        { value: '10', label: 'За 10 хвилин' },
+        { value: 5, label: 'За 5 хвилин' },
+        { value: 10, label: 'За 10 хвилин' },
     ]
 
     const optionsTasks = [
@@ -78,6 +78,11 @@ function CalendarPage() {
     const currentYear = new Date().getFullYear() + 5;
     const years = Array.from({ length: currentYear - 1900 + 1 }, (_, i) => currentYear - i);
     const monthsOptions = months.map((m, idx) => ({ value: idx, label: m }));
+
+    const toLocalISOString = (date) => {
+        const pad = n => n.toString().padStart(2, '0');
+        return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+    }
 
     const getWeekdays = (locale, format = 'short') => {
         const base = new Date(Date.UTC(2025, 0, 5)); // Sunday
@@ -104,8 +109,8 @@ function CalendarPage() {
         end.setHours(0, 0, 0, 0);
 
         return {
-            start: start.toLocaleDateString('en-CA'),
-            end: end.toLocaleDateString('en-CA')
+            start: start.toISOString(),
+            end: end.toISOString()
         };
     };
 
@@ -118,7 +123,12 @@ function CalendarPage() {
 
     const generateWeek = () => {
         return weekNums.map((d, idx) => {
-            const dayEvents = weekEvents.filter(e => Number(e.StartTime.split('T')[0].split('-')[2]) === d);
+            const dayEvents = weekEvents.filter(e => (new Date(e.StartTime)).getDate() === d)
+            .map(ev => ({
+                ...ev,
+                StartTime: toLocalISOString(new Date(ev.StartTime + "Z"))
+            }));
+
             return (
                 <div key={idx} className="day-container">
                     {dayEventsGenerator(dayEvents, d, idx)}
@@ -394,9 +404,16 @@ function CalendarPage() {
     }
 
     function mergeDateAndTime(datePart, timePart) {
-        const dateStr = datePart.toLocaleDateString("en-CA");
-        const timeStr = timePart.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" }); 
-        return `${dateStr}T${timeStr}`;
+        const merged = new Date(
+            datePart.getFullYear(),
+            datePart.getMonth(),
+            datePart.getDate(),
+            timePart.getHours(),
+            timePart.getMinutes(),
+            timePart.getSeconds()
+        );
+
+        return merged.toISOString();
     }
 
     const handleAddEvent = async () => {
@@ -465,6 +482,7 @@ function CalendarPage() {
 
     const getSetWeekInfo = async (date) => {
         const range = getWeekRange(date);
+        console.log(range)
         try {
             const response = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/Calendar/user/${localStorage.getItem("user-id")}/${range.start}/${range.end}`,
@@ -596,7 +614,11 @@ function CalendarPage() {
                     )}
                     {page === 0 && 
                         <div className="today-events scroll-data">
-                            {weekEvents.filter(e => Number(e.StartTime.split('T')[0].split('-')[2]) === today.getDate()).sort((a, b) => new Date(a.StartTime) - new Date(b.StartTime)).map((e, idx) => {
+                            {weekEvents.filter(e => (new Date(e.StartTime + "Z")).getDate() === today.getDate()).sort((a, b) => new Date(a.StartTime) - new Date(b.StartTime))
+                            .map(ev => ({
+                                ...ev,
+                                StartTime: toLocalISOString(new Date(ev.StartTime + "Z"))
+                            })).map((e, idx) => {
                                 let icon;
                                 switch (getEventType(e)) {
                                     case 3:

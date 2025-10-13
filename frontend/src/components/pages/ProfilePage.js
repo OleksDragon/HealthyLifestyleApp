@@ -173,7 +173,6 @@ const UserProfile = () => {
         setAvatarPreview(avatarUrl);
       }
 
-
     } catch (error) {
       console.error("Помилка при завантаженні профілю:", error);
       navigate('/login');
@@ -311,7 +310,6 @@ const loadCities = useCallback(async (countryName) => {
     setLoadingStreets(false);
   }
 }, [COUNTRY_CODES]);
-
 
   // Реакція на зміну мови
   useEffect(() => {

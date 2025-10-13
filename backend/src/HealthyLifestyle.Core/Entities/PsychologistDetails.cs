@@ -40,6 +40,8 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="availability">Доступність психолога (опціонально).</param>
         /// <param name="hourlyRate">Погодинна ставка (опціонально).</param>
         /// <param name="clientTestimonials">Відгуки клієнтів (опціонально).</param>
+        /// <param name="expertDetailsPictureUrl">URL зображення для детальної сторінки (опціонально).</param>
+        /// <param name="cardPictureUrl">URL зображення для картки експерта (опціонально).</param>
         public PsychologistDetails(
             Guid qualificationId,
             List<string>? specializations = null,
@@ -53,7 +55,9 @@ namespace HealthyLifestyle.Core.Entities
             List<string>? certifications = null,
             string? availability = null,
             decimal? hourlyRate = null,
-            string? clientTestimonials = null)
+            string? clientTestimonials = null,
+            string? expertDetailsPictureUrl = null,
+            string? cardPictureUrl = null)
             : base(qualificationId,
                    biography,
                    yearsOfExperience,
@@ -64,7 +68,9 @@ namespace HealthyLifestyle.Core.Entities
                    contactEmail,
                    contactPhone,
                    website,
-                   clientTestimonials)
+                   clientTestimonials,
+                   expertDetailsPictureUrl,
+                   cardPictureUrl)
         {
             Specializations = specializations ?? new List<string>();
             TherapyApproaches = therapyApproaches ?? new List<string>();

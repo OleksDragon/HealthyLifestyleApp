@@ -180,7 +180,7 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 .Include(q => q.PsychologistDetails)
                 .Include(q => q.DoctorDetails)
                 .Include(q => q.TrainerDetails)
-                .Include(q => q.PsychologistDetails)
+                .Include(q => q.DietitianDetails)
                 .FirstOrDefaultAsync(upq => upq.Id == qualificationId);
             return qualification == null ? null : _mapper.Map<UserProfessionalQualificationDto>(qualification);
         }
@@ -200,7 +200,7 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 .Include(q => q.PsychologistDetails)
                 .Include(q => q.DoctorDetails)
                 .Include(q => q.TrainerDetails)
-                .Include(q => q.PsychologistDetails)
+                .Include(q => q.DietitianDetails)
                 .FirstOrDefaultAsync(upq => upq.Id == qualificationId);
             return qualification == null ? null : _mapper.Map<UserProfessionalQualificationDto>(qualification);
         }

@@ -11,6 +11,8 @@ namespace HealthyLifestyle.Core.Interfaces.Calendar
     {
         Task<IEnumerable<CalendarEvent>> GetAllCalendarEventsByUserIdInDateRangeAsync(Guid userId, DateTime start, DateTime end);
 
+        Task<IEnumerable<CalendarEvent>> GetAllCalendarEventsToRemindAsync();
+
         Task<CalendarEvent> GetEventWithParticipantsAsync(Guid id);
     }
 }

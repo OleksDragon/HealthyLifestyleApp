@@ -127,6 +127,12 @@ function LoginPage() {
         }
     }
 
+    useEffect(() => {
+        localStorage.removeItem("helth-token");
+        localStorage.removeItem("user-name");
+        localStorage.removeItem("user-id");
+    }, [])
+
     return (
         <div className='bg'>
             <div className='nomyfy'>

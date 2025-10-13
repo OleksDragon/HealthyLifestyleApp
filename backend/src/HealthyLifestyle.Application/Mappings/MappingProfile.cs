@@ -155,6 +155,8 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Availability, opt => opt.Condition(src => src.Availability != null))
                 .ForMember(dest => dest.PreferredWorkoutStyles, opt => opt.Condition(src => src.PreferredWorkoutStyles != null))
                 .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.Condition(src => src.ProfessionalLicenseNumber != null))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.Condition(src => src.ExpertDetailsPictureUrl != null))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.Condition(src => src.CardPictureUrl != null))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
@@ -178,6 +180,8 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.NutritionalApproach, opt => opt.Condition(src => src.NutritionalApproach != null))
                 .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.Condition(src => src.ProfessionalLicenseNumber != null))
                 .ForMember(dest => dest.Availability, opt => opt.Condition(src => src.Availability != null))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.Condition(src => src.ExpertDetailsPictureUrl != null))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.Condition(src => src.CardPictureUrl != null))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
@@ -200,6 +204,8 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.ClinicAffiliation, opt => opt.Condition(src => src.ClinicAffiliation != null))
                 .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.Condition(src => src.ProfessionalLicenseNumber != null))
                 .ForMember(dest => dest.Availability, opt => opt.Condition(src => src.Availability != null))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.Condition(src => src.ExpertDetailsPictureUrl != null))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.Condition(src => src.CardPictureUrl != null))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
@@ -225,6 +231,8 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Certifications, opt => opt.Condition(src => src.Certifications != null))
                 .ForMember(dest => dest.Availability, opt => opt.Condition(src => src.Availability != null))
                 .ForMember(dest => dest.ClientTestimonials, opt => opt.Condition(src => src.ClientTestimonials != null))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.Condition(src => src.ExpertDetailsPictureUrl != null))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.Condition(src => src.CardPictureUrl != null))
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 

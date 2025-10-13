@@ -10,7 +10,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     background-color: #0066C3;
-    background-image: url("../img/FigureBack2.png");
+    background-image: url("../img/BackRotate.png");
     background-size: cover;
     z-index: -1;
 }
@@ -38,7 +38,6 @@
     align-items: center;
     gap: 8px;
     margin-top: 12px;
-    margin-botton: 20px;
     cursor: pointer;
 }
 

@@ -50,6 +50,7 @@ import MaleHealthPage from "./components/pages/HealthPages/GenderHealthPages/Mal
 import MaleHormonesFormPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesFormPage";
 import MaleHormonesDiagramPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesDiagramPage";
 import CalendarPage from './components/pages/CalendarPage';
+import NotFoundPage from "./components/pages/NotFoundPage";
 
 import SubscriptionPage from './components/pages/Subscription/SubscriptionPage';
 import SubscriptionDetailsPage from './components/pages/Subscription/SubscriptionDetailsPage';
@@ -139,6 +140,9 @@ function AppRoutes() {
       {/* Подписки */}
       <Route path="/premium" element={<PrivateRoute><Menu><SubscriptionPage /></Menu></PrivateRoute>} />
       <Route path="/premium/details" element={<PrivateRoute><Menu><SubscriptionDetailsPage /></Menu></PrivateRoute>} />
+
+      {/* Not found */}
+      <Route path="*" element={<NotFoundPage />} />
 
     </Routes>
   );

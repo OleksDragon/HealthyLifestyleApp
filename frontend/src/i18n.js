@@ -320,6 +320,8 @@ i18n
             "Congratulations! You have completed the challenge.",
 
           // --- Menstrual calendar translations ---
+          m_long: "Duration of menstruation (days)",
+          c_long_wh: "Cycle length",
           menstruation_calendar: "Menstrual calendar",
           male: "Male",
           female: "Female",
@@ -1625,6 +1627,8 @@ i18n
           mp_article_not_found: "Статтю не знайдено",
           mp_article_not_found_desc_1: "Стаття з ID",
           mp_article_not_found_desc_2: "не існує.",
+          m_long: "Тривалість місячних(дні)",
+          c_long_wh: "Тривалість циклу",
 
           // === ЕМОЦІЙНИЙ ЩОДЕННИК ===
           mp_aew_notes: "Нотатка",
@@ -2484,6 +2488,8 @@ i18n
           pain_is_ok: "Menstruationsbeschwerden sind immer normal",
           pain_is_ok_desc:
             "Leichtes Unbehagen ist typisch, aber starke oder erschöpfende Schmerzen können auf Endometriose oder andere Erkrankungen hinweisen, und es lohnt sich, einen Arzt aufzusuchen.",
+          m_long: "Dauer der Menstruation (Tage)",
+          c_long_wh: "Zykluslänge",
 
           // === PSYCHISCHE GESUNDHEIT ===
           your: "Deine Gesundheit",
@@ -3669,6 +3675,8 @@ i18n
           mp_article_not_found: "Article non trouvé",
           mp_article_not_found_desc_1: "L'article avec l'ID",
           mp_article_not_found_desc_2: "n'existe pas.",
+          m_long: "Durée des menstruations (jours)",
+          c_long_wh: "Durée du cycle",
 
           // === JOURNAL DES ÉMOTIONS ===
           mp_aew_notes: "Note",
@@ -4701,6 +4709,8 @@ i18n
           mp_article_not_found: "Artículo no encontrado",
           mp_article_not_found_desc_1: "El artículo con ID",
           mp_article_not_found_desc_2: "no existe.",
+          m_long: "Duración de la menstruación (días)",
+          c_long_wh: "Duración del ciclo",
 
           // === DIARIO DE EMOCIONES ===
           mp_aew_notes: "Nota",

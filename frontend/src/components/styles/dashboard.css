@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 .dashboard {
-    margin: 10px 20px;
+    margin: 20px 0;
     width: 90%;
     height: 80vh;
+    margin-left: 40px;
 }
 
 .welcome-message {

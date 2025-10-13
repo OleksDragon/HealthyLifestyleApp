@@ -26,8 +26,7 @@ namespace HealthyLifestyle.Infrastructure.Repositories.SubscriptionR
         public async Task<List<Subscription>> GetActiveSubscriptionsByUserIdAsync(Guid userId)
         {
             return await _dbSet
-                .Where(s => s.UserId == userId &&
-                           s.Status == SubscriptionStatus.Active)
+                .Where(s => s.UserId == userId && s.Status == SubscriptionStatus.Active)
                 .ToListAsync();
         }
 
@@ -38,14 +37,13 @@ namespace HealthyLifestyle.Infrastructure.Repositories.SubscriptionR
                 .ThenInclude(fm => fm.Member)
                 .Include(s => s.User)
                 .FirstOrDefaultAsync(s => s.Id == id);
-
         }
 
         public async Task<List<Subscription>> GetSubscriptionsByUserIdWithMembersAsync(Guid userId)
         {
             return await _dbSet
                 .Include(s => s.FamilyMembers)
-                    .ThenInclude(fm => fm.Member) // ← Критично важливо!
+                .ThenInclude(fm => fm.Member) // ← Критично важливо!
                 .Where(s => s.UserId == userId)
                 .ToListAsync();
         }
@@ -54,7 +52,7 @@ namespace HealthyLifestyle.Infrastructure.Repositories.SubscriptionR
         {
             return await _dbSet
                 .Include(s => s.FamilyMembers)
-                    .ThenInclude(fm => fm.Member)
+                .ThenInclude(fm => fm.Member)
                 .ToListAsync();
         }
 
@@ -62,9 +60,8 @@ namespace HealthyLifestyle.Infrastructure.Repositories.SubscriptionR
         {
             return await _dbSet
                 .Include(s => s.FamilyMembers)
-                    .ThenInclude(fm => fm.Member)
-                .Where(s => s.UserId == userId &&
-                           s.Status == SubscriptionStatus.Active)
+                .ThenInclude(fm => fm.Member)
+                .Where(s => s.UserId == userId && s.Status == SubscriptionStatus.Active)
                 .ToListAsync();
         }
         // Тут можна додати специфічні методи для роботи з Subscription, якщо потрібно.

@@ -318,20 +318,50 @@ namespace HealthyLifestyle.Application.Services.SubscriptionS
             // Отримуємо поточних членів
             var currentMembers = await familyRepo.GetMembersBySubscriptionIdAsync(subscriptionId);
 
-            // Видаляємо всіх поточних членів (крім власника)
-            foreach (var member in currentMembers)
-            {
-                familyRepo.Delete(member);
-            }
+            // Створюємо словник поточних членів для швидкого пошуку
+            var currentMemberEmails = currentMembers
+                .Select(m => m.Member?.Email?.ToLower())
+                .Where(email => !string.IsNullOrEmpty(email))
+                .ToHashSet();
 
-            // Додаємо нових членів
+            // Визначаємо, яких членів треба додати, а яких видалити
+            var newEmails = memberEmails
+                .Where(email => !string.IsNullOrWhiteSpace(email))
+                .Select(email => email.ToLower())
+                .Distinct()
+                .Take(3)
+                .ToList();
+
+            // Знаходимо emails для видалення (які є в поточних, але відсутні в нових)
+            var emailsToRemove = currentMemberEmails
+                .Where(currentEmail => !newEmails.Contains(currentEmail))
+                .ToList();
+
+            // Знаходимо emails для додавання (які є в нових, але відсутні в поточних)
+            var emailsToAdd = newEmails
+                .Where(newEmail => !currentMemberEmails.Contains(newEmail))
+                .ToList();
+
             var foundMembers = new List<FamilySubscriptionMember>();
             var notFoundEmails = new List<string>();
 
-            foreach (var email in memberEmails.Distinct().Take(3))
+            // Видаляємо членів, яких більше немає в списку
+            foreach (var emailToRemove in emailsToRemove)
+            {
+                var memberToRemove = currentMembers
+                    .FirstOrDefault(m => m.Member?.Email?.ToLower() == emailToRemove);
+
+                if (memberToRemove != null)
+                {
+                    familyRepo.Delete(memberToRemove);
+                }
+            }
+
+            // Додаємо нових членів
+            foreach (var email in emailsToAdd)
             {
                 var user = await _userManager.Users
-                    .FirstOrDefaultAsync(u => u.Email != null && u.Email.ToLower() == email.ToLower());
+                    .FirstOrDefaultAsync(u => u.Email != null && u.Email.ToLower() == email);
 
                 if (user != null)
                 {
@@ -350,9 +380,9 @@ namespace HealthyLifestyle.Application.Services.SubscriptionS
                         continue;
                     }
 
-                    // Перевірка участі в інших сімейних підписках
-                    var existingFamilyMembership = await familyRepo.GetActiveFamilyMembershipByUserIdAsync(user.Id);
-                    if (existingFamilyMembership != null)
+                    // Перевірка участі в АКТИВНИХ сімейних підписках
+                    var existingActiveFamilyMembership = await familyRepo.GetActiveFamilyMembershipByUserIdAsync(user.Id);
+                    if (existingActiveFamilyMembership != null)
                     {
                         notFoundEmails.Add($"{email} (вже є членом іншої сімейної підписки)");
                         continue;
@@ -371,6 +401,7 @@ namespace HealthyLifestyle.Application.Services.SubscriptionS
                 }
             }
 
+            // Додаємо нових членів
             if (foundMembers.Any())
             {
                 await familyRepo.AddMembersAsync(foundMembers);
@@ -381,6 +412,7 @@ namespace HealthyLifestyle.Application.Services.SubscriptionS
             return new FamilySubscriptionUpdateResultDto
             {
                 UpdatedMembers = foundMembers.Count,
+                RemovedMembers = emailsToRemove.Count,
                 NotFoundEmails = notFoundEmails
             };
         }
@@ -388,6 +420,7 @@ namespace HealthyLifestyle.Application.Services.SubscriptionS
         public class FamilySubscriptionUpdateResultDto
         {
             public int UpdatedMembers { get; set; }
+            public int RemovedMembers { get; set; }
             public List<string> NotFoundEmails { get; set; } = new();
         }
 

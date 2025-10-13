@@ -281,7 +281,7 @@ namespace HealthyLifestyle.Api.Controllers.Subscription
         }
 
         /// <summary>
-        /// Оновлює список сімейних користувачів для підписки
+        /// Оновлює список користувачів для сімейної підписки
         /// </summary>
         [HttpPatch("{subscriptionId}/family-members")]
         [ProducesResponseType(typeof(FamilySubscriptionUpdateResultDto), 200)]

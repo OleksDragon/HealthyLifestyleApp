@@ -129,9 +129,9 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 .Include(q => q.ProfessionalRoleType)
                 .Include(q => q.User)
                 .Include(q => q.PsychologistDetails)
+                .Include(q => q.DietitianDetails)
                 .Include(q => q.DoctorDetails)
                 .Include(q => q.TrainerDetails)
-                .Include(q => q.PsychologistDetails)
                 .ToListAsync();
 
             return _mapper.Map<IEnumerable<UserProfessionalQualificationDto>>(qualifications);

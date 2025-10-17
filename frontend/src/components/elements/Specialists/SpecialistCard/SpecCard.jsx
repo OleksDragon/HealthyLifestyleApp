@@ -14,7 +14,10 @@ const SpecialistCard = ({ specialist, index }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  // Map images to specialists based on their ID
+  // API base URL - можна винести в конфіг
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+  // Map images to specialists based on their ID (fallback for static images)
   const getSpecialistImage = (id) => {
     const imageMap = {
       'Маргарита Дронова': card1Img, // Маргарита Дронова
@@ -28,6 +31,58 @@ const SpecialistCard = ({ specialist, index }) => {
     return imageMap[id] || card6Img; // Use card-6.png as fallback
   };
 
+  // Get CardPictureUrl from specialist details (MinIO URL)
+  const getCardPictureUrlMinio = (specialist) => {
+    console.log('🖼️ [FRONTEND] getCardPictureUrlMinio called for specialist:', specialist);
+    
+    if (!specialist) {
+      console.log('🖼️ [FRONTEND] No specialist provided');
+      return null;
+    }
+
+    // Find the non-null details object
+    const details = specialist.TrainerDetails || 
+                   specialist.DoctorDetails || 
+                   specialist.DietitianDetails || 
+                   specialist.PsychologistDetails;
+
+    console.log('🖼️ [FRONTEND] Found details:', details?.constructor?.name, 'CardPictureUrl:', details?.CardPictureUrl);
+
+    if (details && details.CardPictureUrl) {
+      // Виправити подвійний images/ шлях
+      let correctedPath = details.CardPictureUrl;
+      if (correctedPath.startsWith('images/images/')) {
+        correctedPath = correctedPath.replace('images/images/', 'images/');
+        console.log('🖼️ [FRONTEND] Corrected double images/ path:', correctedPath);
+      }
+      
+      // Form full URL for MinIO proxy endpoint
+      const minioUrl = `${API_BASE_URL}/api/SpecialistImage/proxy/${correctedPath}`;
+      console.log('🖼️ [FRONTEND] Generated MinIO URL:', minioUrl);
+      return minioUrl;
+    }
+
+    console.log('🖼️ [FRONTEND] No CardPictureUrl found in details');
+    return null;
+  };
+
+  // Get image with fallback: try MinIO first, then static images
+  const getSpecialistImageWithFallback = (specialist) => {
+    console.log('🖼️ [FRONTEND] getSpecialistImageWithFallback called for specialist:', specialist?.User?.FullName);
+    
+    // Try to get MinIO URL first
+    const minioUrl = getCardPictureUrlMinio(specialist);
+    if (minioUrl) {
+      console.log('🖼️ [FRONTEND] Using MinIO URL:', minioUrl);
+      return minioUrl;
+    }
+
+    // Fallback to static images
+    const staticImage = getSpecialistImage(specialist.User?.FullName);
+    console.log('🖼️ [FRONTEND] Using static image fallback:', staticImage);
+    return staticImage;
+  };
+
   const handleClick = () => {
     navigate(`/specialists/${specialist.Id}`);
   };
@@ -38,7 +93,19 @@ return (
       <img
         className="element"
         alt={specialist.User?.FullName || 'Specialist'}
-        src={getSpecialistImage(specialist.User?.FullName) || 'https://example.com/placeholder.jpg'} // Use CardPictureUrl with fallback
+        src={getSpecialistImageWithFallback(specialist) || card1Img} // Use MinIO URL with static fallback
+        onError={(e) => {
+          console.log('🖼️ [FRONTEND] Image load error for specialist:', specialist?.User?.FullName, 'src:', e.target.src);
+          // Fallback to static image on error
+          const staticImage = getSpecialistImage(specialist.User?.FullName);
+          if (e.target.src !== staticImage) {
+            console.log('🖼️ [FRONTEND] Switching to static image fallback:', staticImage);
+            e.target.src = staticImage;
+          }
+        }}
+        onLoad={(e) => {
+          console.log('🖼️ [FRONTEND] Image loaded successfully for specialist:', specialist?.User?.FullName, 'src:', e.target.src);
+        }}
       />
       <SolarHeartLinear
         property1="one"

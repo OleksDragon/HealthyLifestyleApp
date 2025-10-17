@@ -144,4 +144,42 @@ public class MinioService : IObjectStorageService
         }
     }
 
+    /// <summary>
+    /// Перевіряє чи існує файл в MinIO.
+    /// </summary>
+    /// <param name="objectName">Ім'я файлу в MinIO.</param>
+    /// <returns>True якщо файл існує, false якщо ні.</returns>
+    public async Task<bool> FileExistsAsync(string objectName)
+    {
+        try
+        {
+            var statObjectArgs = new StatObjectArgs()
+                .WithBucket(_settings.BucketName)
+                .WithObject(objectName);
+
+            await _minioClient.StatObjectAsync(statObjectArgs).ConfigureAwait(false);
+            return true;
+        }
+        catch (MinioException)
+        {
+            return false;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Отримує список файлів в bucket з префіксом.
+    /// </summary>
+    /// <param name="prefix">Префікс для пошуку файлів.</param>
+    /// <returns>Список імен файлів.</returns>
+    public async Task<List<string>> ListFilesAsync(string prefix = "")
+    {
+        await Task.CompletedTask;
+        // TODO: Implement list files - MinIO SDK method needs to be checked
+        throw new NotImplementedException("List files functionality is not yet implemented");
+    }
+
 }

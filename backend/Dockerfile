@@ -22,6 +22,9 @@ RUN dotnet restore
 # Копируем все остальные файлы исходного кода
 COPY src/ src/
 
+# Копируем папку Assets
+COPY Assets/ Assets/
+
 # Публикация конкретного проекта API
 RUN dotnet publish "src/HealthyLifestyle.Api/HealthyLifestyle.Api.csproj" -c Release -o /out
 
@@ -31,6 +34,11 @@ WORKDIR /app
 
 # Копируем опубликованный вывод из этапа сборки
 COPY --from=build /out .
+
+# Копируем папку Assets в контейнер
+COPY --from=build /src/Assets /app/Assets
+
+
 
 # Указываем, какой DLL файл запускать при старте контейнера
 ENTRYPOINT ["dotnet", "HealthyLifestyle.Api.dll"]

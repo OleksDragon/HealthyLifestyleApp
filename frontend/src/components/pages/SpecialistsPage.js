@@ -261,7 +261,7 @@ const SpecialistsPage = () => {
   }, []);
 
   if (isLoading) {
-    return <div>{t("loading")}</div>;
+    return <div>{/*{t("loading")}*/}</div>;
   }
 
 

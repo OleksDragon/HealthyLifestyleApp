@@ -137,7 +137,11 @@ namespace HealthyLifestyle.Application.Mappings
 
             CreateMap<UserProfessionalQualification, UserProfessionalQualificationDto>()
                 .ForMember(dest => dest.QualificationStatus, opt => opt.MapFrom(src => src.Status.ToString()))
-                .ForMember(dest => dest.WorkFormat, opt => opt.MapFrom(src => src.WorkFormat));
+                .ForMember(dest => dest.WorkFormat, opt => opt.MapFrom(src => src.WorkFormat))
+                .ForMember(dest => dest.PsychologistDetails, opt => opt.MapFrom(src => src.PsychologistDetails))
+                .ForMember(dest => dest.DietitianDetails, opt => opt.MapFrom(src => src.DietitianDetails))
+                .ForMember(dest => dest.TrainerDetails, opt => opt.MapFrom(src => src.TrainerDetails))
+                .ForMember(dest => dest.DoctorDetails, opt => opt.MapFrom(src => src.DoctorDetails));
         }
 
         /// <summary>

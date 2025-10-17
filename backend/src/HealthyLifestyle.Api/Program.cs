@@ -36,6 +36,8 @@ using HealthyLifestyle.Application.Services.Shop;
 using HealthyLifestyle.Application.Services.SubscriptionS;
 using HealthyLifestyle.Application.Services.UserS;
 using HealthyLifestyle.Application.Services.WorkoutS;
+using HealthyLifestyle.Application.Services.ImageUpload;
+using HealthyLifestyle.Application.Interfaces.ImageUpload;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
 using HealthyLifestyle.Core.Interfaces.APInfoBlock;
@@ -192,6 +194,10 @@ Console.WriteLine("Используется MinIO.");
 builder.Services.AddSingleton<IObjectStorageService, MinioService>();
 builder.Services.AddScoped<IAchievementService, AchievementService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+builder.Services.AddScoped<SpecialistImageService>();
+builder.Services.AddScoped<ISpecialistImageStartupService, SpecialistImageStartupService>();
+builder.Services.AddScoped<HealthyLifestyle.Infrastructure.Interfaces.ISpecialistImageDatabaseService, HealthyLifestyle.Infrastructure.Services.SpecialistImageDatabaseService>();
+builder.Services.AddScoped<HealthyLifestyle.Infrastructure.Services.SpecialistImageStartupDatabaseService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -362,6 +368,14 @@ if (app.Environment.IsDevelopment())
             await ApplicationDbContextSeed.SeedDefaultUserAndRolesAsync(userManager, roleManager, dbContext);
 
             await ApplicationDbContextSeed.SeedChallengesAsync(dbContext, userManager);
+
+            // Ініціалізація зображень спеціалістів
+            var specialistImageStartupService = services.GetRequiredService<ISpecialistImageStartupService>();
+            await specialistImageStartupService.InitializeSpecialistImagesAsync();
+
+            // Збереження URL зображень спеціалістів в базу даних
+            var specialistImageStartupDatabaseService = services.GetRequiredService<HealthyLifestyle.Infrastructure.Services.SpecialistImageStartupDatabaseService>();
+            await specialistImageStartupDatabaseService.SaveAllSpecialistImageUrlsWithUkrainianNamesAsync();
 
             logger.LogInformation("Database seeded successfully.");
         }

@@ -33,3 +33,4 @@ try {
 } catch {
     Write-Host "❌ Помилка API: $($_.Exception.Message)" -ForegroundColor Red
 }
+

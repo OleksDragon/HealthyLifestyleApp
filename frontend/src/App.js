@@ -84,8 +84,8 @@ function AppRoutes() {
       <Route path="/dashboard" element={<PrivateRoute><Menu><DashboardPage/></Menu></PrivateRoute>} />
 
 
-      <Route path="/specialists" element={<Menu><SpecialistsPage/></Menu>} />
-      <Route path="/specialists/:id" element={<Menu><ExpertDetailsPage/></Menu>} />
+      <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
+      <Route path="/specialists/:id" element={<PrivateRoute><Menu><ExpertDetailsPage/></Menu></PrivateRoute>} />
 
       <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
 

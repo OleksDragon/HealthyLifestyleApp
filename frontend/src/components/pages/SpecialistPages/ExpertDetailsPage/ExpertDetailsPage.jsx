@@ -90,8 +90,69 @@ const SpecialistSocialLinks = ({ specialist }) => {
     </div>
   );
 };
+  // API base URL - можна винести в конфіг
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+  // Get CardPictureUrl from specialist details (MinIO URL)
+  const getCardPictureUrlMinio = (specialist) => {
+    console.log('🖼️ [EXPERT_DETAILS] getCardPictureUrlMinio called for specialist:', specialist?.User?.FullName);
+    
+    if (!specialist) {
+      console.log('🖼️ [EXPERT_DETAILS] No specialist provided');
+      return null;
+    }
+
+    // Find the non-null details object
+    const details = specialist.TrainerDetails || 
+                   specialist.DoctorDetails || 
+                   specialist.DietitianDetails || 
+                   specialist.PsychologistDetails;
+
+    console.log('🖼️ [EXPERT_DETAILS] Found details:', details?.constructor?.name, 'CardPictureUrl:', details?.CardPictureUrl);
+
+    if (details && details.CardPictureUrl) {
+      // Виправити подвійний images/ шлях
+      let correctedPath = details.CardPictureUrl;
+      if (correctedPath.startsWith('images/images/')) {
+        correctedPath = correctedPath.replace('images/images/', 'images/');
+        console.log('🖼️ [EXPERT_DETAILS] Corrected double images/ path:', correctedPath);
+      }
+      
+      // Form full URL for MinIO proxy endpoint
+      const minioUrl = `${API_BASE_URL}/api/SpecialistImage/proxy/${correctedPath}`;
+      console.log('🖼️ [EXPERT_DETAILS] Generated MinIO URL:', minioUrl);
+      return minioUrl;
+    }
+
+    console.log('🖼️ [EXPERT_DETAILS] No CardPictureUrl found in details');
+    return null;
+  };
+
+  // Map images to specialists based on their ID (fallback for static images)
+  const getSpecialistImageStatic = (id) => {
+    const imageMap = {
+      'Маргарита Дронова': card1Img, // Маргарита Дронова
+      'Олексій Соколенко': card4Img, // Олексій Соколенко
+      'Антоніна Смила': card5Img, // Антоніна Смила
+      'Олександр Медичний': card3Img, // Д-р Олександр Медичний
+      'Андрій Кач': card6Img, // Андрій Кач
+      'Олеся Мамкіна': card2Img, // Олеся Мамкіна
+      'Дмитро Делитанович': card6Img, // Дмитро Делитанович
+    };
+    return imageMap[id] || card6Img; // Use card-6.png as fallback
+  };
+
   // Get specialist image from API or fallback to local images
   const getSpecialistImage = (specialist) => {
+    console.log('🖼️ [EXPERT_DETAILS] getSpecialistImage called for specialist:', specialist?.User?.FullName);
+    
+    // Try to get MinIO URL first
+    const minioUrl = getCardPictureUrlMinio(specialist);
+    if (minioUrl) {
+      console.log('🖼️ [EXPERT_DETAILS] Using MinIO URL:', minioUrl);
+      return minioUrl;
+    }
+
     // First try to get ExpertDetailsPictureUrl from API
     if (specialist.PsychologistDetails?.ExpertDetailsPictureUrl) {
       return specialist.PsychologistDetails.ExpertDetailsPictureUrl;
@@ -120,17 +181,10 @@ const SpecialistSocialLinks = ({ specialist }) => {
       return specialist.DoctorDetails.SpecialistCardPictureUrl;
     }
     
-    // Fallback to local images
-    const imageMap = {
-      'Маргарита Дронова': card1Img,
-      'Олексій Соколенко': card4Img,
-      'Антоніна Смила': card5Img,
-      'Олександр Медичний': card3Img,
-      'Андрій Кач': card6Img,
-      'Олеся Мамкіна': card2Img,
-      'Дмитро Делитанович': card6Img,
-    };
-    return imageMap[specialist.User?.FullName] || card6Img;
+    // Fallback to static images
+    const staticImage = getSpecialistImageStatic(specialist.User?.FullName);
+    console.log('🖼️ [EXPERT_DETAILS] Using static image fallback:', staticImage);
+    return staticImage;
   };
 
 const ExpertDetailsPage = () => {
@@ -214,11 +268,13 @@ useEffect(() => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    // return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    // return <div>Error: {error}</div>;
+    return <div></div>;
   }
 
 return (
@@ -235,7 +291,16 @@ return (
                 alt={specialist.fullName || "Specialist"}
                 src={getSpecialistImage(specialist)}
                 onError={(e) => {
-                  e.target.src = card4Img;
+                  console.log('🖼️ [EXPERT_DETAILS] Image load error for specialist:', specialist?.User?.FullName, 'src:', e.target.src);
+                  // Fallback to static image on error
+                  const staticImage = getSpecialistImageStatic(specialist.User?.FullName);
+                  if (e.target.src !== staticImage) {
+                    console.log('🖼️ [EXPERT_DETAILS] Switching to static image fallback:', staticImage);
+                    e.target.src = staticImage;
+                  }
+                }}
+                onLoad={(e) => {
+                  console.log('🖼️ [EXPERT_DETAILS] Image loaded successfully for specialist:', specialist?.User?.FullName, 'src:', e.target.src);
                 }}
               />
             </div>

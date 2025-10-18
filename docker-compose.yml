@@ -28,6 +28,8 @@ services:
       - MinIO__AccessKey=${MINIO_ACCESS_KEY}
       - MinIO__SecretKey=${MINIO_SECRET_KEY}
       - MinIO__BucketName=images
+      - Stripe__PublishableKey=${STRIPE_PUBLISHABLE_KEY}
+      - Stripe__SecretKey=${STRIPE_SECRET_KEY}
     networks:
       - healthy_net
     command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"
@@ -90,6 +92,7 @@ services:
     environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL}
       - REACT_APP_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - REACT_APP_STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
     networks:
       - healthy_net
 

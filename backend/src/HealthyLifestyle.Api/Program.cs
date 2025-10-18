@@ -30,6 +30,7 @@ using HealthyLifestyle.Application.Services.GroupS;
 using HealthyLifestyle.Application.Services.HealthTracker;
 using HealthyLifestyle.Application.Services.Location;
 using HealthyLifestyle.Application.Services.ObjectStorage;
+using HealthyLifestyle.Application.Services.Payments;
 using HealthyLifestyle.Application.Services.ProfessionalQualification;
 using HealthyLifestyle.Application.Services.Record;
 using HealthyLifestyle.Application.Services.Shop;
@@ -193,6 +194,7 @@ Console.WriteLine("Используется MinIO.");
 builder.Services.AddSingleton<IObjectStorageService, MinioService>();
 builder.Services.AddScoped<IAchievementService, AchievementService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

@@ -54,6 +54,7 @@ import NotFoundPage from "./components/pages/NotFoundPage";
 
 import SubscriptionPage from './components/pages/Subscription/SubscriptionPage';
 import SubscriptionDetailsPage from './components/pages/Subscription/SubscriptionDetailsPage';
+import SubscriptionPaymentPage from './components/pages/Subscription/SubscriptionPaymentPage';
 
 
 function App() {
@@ -140,6 +141,7 @@ function AppRoutes() {
       {/* Подписки */}
       <Route path="/premium" element={<PrivateRoute><Menu><SubscriptionPage /></Menu></PrivateRoute>} />
       <Route path="/premium/details" element={<PrivateRoute><Menu><SubscriptionDetailsPage /></Menu></PrivateRoute>} />
+      <Route path="/premium/payment" element={<PrivateRoute><Menu><SubscriptionPaymentPage /></Menu></PrivateRoute>} />
 
       {/* Not found */}
       <Route path="*" element={<NotFoundPage />} />

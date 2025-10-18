@@ -10,7 +10,7 @@
   
     position: relative;
     overflow-y: auto;
-    height: calc(100vh - 250px); /* відняти висоту шапки, якщо є */
+    height: calc(100vh - 250px);
     width: 97%;
     overflow-x: hidden;
 

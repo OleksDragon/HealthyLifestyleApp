@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -17,10 +17,34 @@ const SubscriptionPage = () => {
     const [showHistory, setShowHistory] = useState(false);
     const [historyLoading, setHistoryLoading] = useState(false);
 
+    // Додаємо реф для контейнера
+    const wrapperRef = useRef(null);
+
     const userId = localStorage.getItem("user-id");
     const token = localStorage.getItem("helth-token");
 
-    // Отримання поточної підписки (useCallback для стабільної функції)
+    // Ефект для прокрутки при зміні стану showHistory
+    useEffect(() => {
+        if (wrapperRef.current) {
+            if (showHistory) {
+                // Прокручуємо вниз при розкритті
+                setTimeout(() => {
+                    wrapperRef.current.scrollTo({
+                        top: wrapperRef.current.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }, 500); // Невелика затримка для того, щоб контент встиг відрендеритись
+            } else {
+                // Прокручуємо вгору при закритті
+                wrapperRef.current.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }, [showHistory]);
+
+    // Отримання поточної підписки
     const fetchCurrentSubscription = useCallback(async () => {
         try {
             const response = await axios.get(
@@ -63,7 +87,6 @@ const SubscriptionPage = () => {
             );
             
             if (response.data && Array.isArray(response.data)) {
-                // Сортуємо історію в зворотньому порядку (новіші спочатку)
                 const sortedHistory = response.data.sort((a, b) => 
                     new Date(b.CreatedAt || b.StartDate) - new Date(a.CreatedAt || a.StartDate)
                 );
@@ -85,14 +108,14 @@ const SubscriptionPage = () => {
         } else {
             setLoading(false);
         }
-    }, [userId, token, fetchCurrentSubscription]); // Додано fetchCurrentSubscription в залежності
+    }, [userId, token, fetchCurrentSubscription]);
 
     const plans = [
         {
             id: 'basic',
             title: 'Базова',
             duration: '/ 30 днів',
-            price: '250 грн',
+            price: '5$',
             features: [
                 'Трекери',
                 'Базова аналітика'
@@ -103,9 +126,8 @@ const SubscriptionPage = () => {
             id: 'premium',
             title: 'Преміум',
             duration: '/ 30 днів',
-            price: '600 грн',
+            price: '15$',
             features: [
-                'ШІ-рекомендації',
                 'Курси',
                 'Індивідуальні плани'
             ],
@@ -115,7 +137,7 @@ const SubscriptionPage = () => {
             id: 'family',
             title: 'Сімейна',
             duration: '/ 30 днів',
-            price: '1000 грн',
+            price: '25$',
             features: [
                 'Всі можливості "Преміум" підписки',
                 'Можливість надання доступу 3-м користувачам'
@@ -130,7 +152,6 @@ const SubscriptionPage = () => {
             return;
         }
 
-        // Перенаправляємо на сторінку оплати з типом підписки
         navigate(`/premium/payment?type=${plan.id}`);
     };
 
@@ -138,31 +159,26 @@ const SubscriptionPage = () => {
         navigate("/premium/details")
     };
 
-    // Перевіряємо чи є активна підписка (Status: "Active")
     const hasActiveSubscription = () => {
         if (!currentSubscription) return false;
         return currentSubscription.Status === 'Active';
     };
 
-    // Отримуємо тип поточної активної підписки
     const getCurrentSubscriptionType = () => {
         if (!currentSubscription || !hasActiveSubscription()) return null;
         return currentSubscription.Type || currentSubscription.type;
     };
 
-    // Перевіряємо чи конкретна картка є активною підпискою
     const isPlanActive = (planType) => {
         const currentType = getCurrentSubscriptionType();
         if (!currentType) return false;
         
-        // Приводимо типи до одного формату для порівняння
         const normalizedPlanType = planType.toLowerCase();
         const normalizedCurrentType = currentType.toLowerCase();
         
         return normalizedPlanType === normalizedCurrentType;
     };
 
-    // Обробник для перемикача історії
     const handleToggleHistory = () => {
         const newShowHistory = !showHistory;
         setShowHistory(newShowHistory);
@@ -172,7 +188,6 @@ const SubscriptionPage = () => {
         }
     };
 
-    // Форматування дати
     const formatDate = (dateString) => {
         return new Date(dateString).toLocaleDateString('uk-UA', {
             day: '2-digit',
@@ -181,7 +196,6 @@ const SubscriptionPage = () => {
         });
     };
 
-    // Отримання статусу підписки з класом для стилізації
     const getStatusInfo = (status) => {
         switch (status) {
             case 'Active':
@@ -212,7 +226,8 @@ const SubscriptionPage = () => {
                 <div className="sp-subscription-info-image">Зображення</div>
             </div>
 
-            <div className='sp-subscription-wraper'>
+            {/* Додаємо ref до контейнера */}
+            <div className='sp-subscription-wraper' ref={wrapperRef}>
                 <div className='sp-subscription-main-container'>
                     {/* Карточки тарифних планів */}
                 <div className="sp-subscription-section">
@@ -230,77 +245,83 @@ const SubscriptionPage = () => {
                     </div>
                 </div>
 
-                {/* Блок історії підписок */}
-                <div className="sp-subscription-history-section">
-                    <div className={`sp-subscription-history-container ${showHistory ? 'sp-subscription-history-container-expanded' : ''}`}>
-                        {/* Кнопка для розгортання/згортання */}
-                        <button 
-                            className="sp-subscription-history-toggle"
-                            onClick={handleToggleHistory}
-                        >
-                            <span className="sp-subscription-history-label">Історія підписок</span>
-                            <span className={`sp-subscription-history-arrow ${showHistory ? 'sp-subscription-history-arrow-up' : 'sp-subscription-history-arrow-down'}`}>
-                                <img src={arrow_v_white} alt="arrow" />
-                            </span>
-                        </button>
-                        
-                        {/* Контент історії */}
-                        <div className="sp-subscription-history-content">
-                            <div className="sp-subscription-history-inner">
-                                <div className='sp-subscription-h-wrapper'>
-                                    {historyLoading ? (
-                                    <div className="sp-subscription-history-loading">Завантаження історії...</div>
-                                    ) : subscriptionHistory.length > 0 ? (
-                                        <div className="sp-subscription-history-list">
-                                            {subscriptionHistory.map((subscription) => {
-                                                const statusInfo = getStatusInfo(subscription.Status);
-                                                return (
-                                                    <div key={subscription.Id} className="sp-subscription-history-item">
-                                                        <div className="sp-subscription-history-main">
-                                                            <div className="sp-subscription-history-type">
-                                                                <strong>{subscription.Type}</strong>
-                                                                <span className={`sp-subscription-status sp-subscription-status-${statusInfo.class}`}>
-                                                                    {statusInfo.text}
-                                                                </span>
-                                                            </div>
-                                                            <div className="sp-subscription-history-dates">
-                                                                <span>{formatDate(subscription.StartDate)} - {formatDate(subscription.EndDate)}</span>
-                                                            </div>
-                                                            <div className="sp-subscription-history-price">
-                                                                {subscription.Price > 0 ? `${subscription.Price} грн` : 'Безкоштовно'}
+                    {/* Блок історії підписок */}
+                    <div className="sp-subscription-history-section">
+                        <div className={`sp-subscription-history-container ${showHistory ? 'sp-subscription-history-container-expanded' : ''}`}>
+                            {/* Додаємо блюр для основного контейнера */}
+                            <div className="sp-subscription-history-blur"></div>
+                            
+                            <button 
+                                className="sp-subscription-history-toggle"
+                                onClick={handleToggleHistory}
+                            >
+                                <span className="sp-subscription-history-label">Історія підписок</span>
+                                <span className={`sp-subscription-history-arrow ${showHistory ? 'sp-subscription-history-arrow-up' : 'sp-subscription-history-arrow-down'}`}>
+                                    <img src={arrow_v_white} alt="arrow" />
+                                </span>
+                            </button>
+                            
+                            <div className="sp-subscription-history-content">
+                                <div className="sp-subscription-history-inner">
+                                    <div className='sp-subscription-h-wrapper'>
+                                        {historyLoading ? (
+                                        <div className="sp-subscription-history-loading">Завантаження історії...</div>
+                                        ) : subscriptionHistory.length > 0 ? (
+                                            <div className="sp-subscription-history-list">
+                                                {subscriptionHistory.map((subscription) => {
+                                                    const statusInfo = getStatusInfo(subscription.Status);
+                                                    return (
+                                                        <div key={subscription.Id} className="sp-subscription-history-item">
+                                                            {/* Додаємо блюр фон */}
+                                                            <div className="sp-subscription-history-item-blur"></div>
+                                                            
+                                                            {/* Контент поверх блюру */}
+                                                            <div className="sp-subscription-history-item-content">
+                                                                <div className="sp-subscription-history-main">
+                                                                    <div className="sp-subscription-history-type">
+                                                                        <strong>{subscription.Type}</strong>
+                                                                        <span className={`sp-subscription-status sp-subscription-status-${statusInfo.class}`}>
+                                                                            {statusInfo.text}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="sp-subscription-history-dates">
+                                                                        <span>{formatDate(subscription.StartDate)} - {formatDate(subscription.EndDate)}</span>
+                                                                    </div>
+                                                                    <div className="sp-subscription-history-price">
+                                                                        {subscription.Price > 0 ? `${subscription.Price} грн` : 'Безкоштовно'}
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                {subscription.FamilyMembers && subscription.FamilyMembers.length > 0 && (
+                                                                    <div className="sp-subscription-family-members">
+                                                                        <div className="sp-subscription-family-title">Додані користувачі</div>
+                                                                        <div className="sp-subscription-family-list">
+                                                                            {subscription.FamilyMembers.map((member, index) => (
+                                                                                <div key={index} className="sp-subscription-family-member">
+                                                                                    <span className="sp-subscription-family-email">{member.Email}</span>
+                                                                                    <span className="sp-subscription-family-date">
+                                                                                        додано {formatDate(member.AddedAt)}
+                                                                                    </span>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
-                                                        
-                                                        {/* Інформація про сімейних користувачів */}
-                                                        {subscription.FamilyMembers && subscription.FamilyMembers.length > 0 && (
-                                                            <div className="sp-subscription-family-members">
-                                                                <div className="sp-subscription-family-title">Додані користувачі:</div>
-                                                                <div className="sp-subscription-family-list">
-                                                                    {subscription.FamilyMembers.map((member, index) => (
-                                                                        <div key={index} className="sp-subscription-family-member">
-                                                                            <span className="sp-subscription-family-email">{member.Email}</span>
-                                                                            <span className="sp-subscription-family-date">
-                                                                                додано {formatDate(member.AddedAt)}
-                                                                            </span>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    ) : (
-                                        <div className="sp-subscription-history-empty">
-                                            У вас ще немає історії підписок
-                                        </div>
-                                    )}
+                                                    );
+                                                })}
+                                            </div>
+                                        ) : (
+                                            <div className="sp-subscription-history-empty">
+                                                У вас ще немає історії підписок
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

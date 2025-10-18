@@ -21,30 +21,46 @@
 
 .sdp-subscription-details-page {
     max-height: 76vh;
-    /* background: orange; */
-    /* padding: 0 20px 20px 20px; */
     margin-top: -20px;
     font-family: var(--font-family);
     color: var(--white);
 }
 
+.sdp-subscription-details-page-no-item {
+    transform: translateY(40%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sdp-subscription-no-subscription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
 .sdp-subscription-back-btn {
+    width: 300px;
+    height: 47px;
+    margin-top: 20px;
+    text-align: center;
     background: var(--white);
     color: var(--blue);
     border: none;
-    padding: 12px 20px;
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    transition: all 0.2s ease;
+    font-size: 16px;
 }
 
 .sdp-subscription-back-btn:hover {
-    background: #e6e6e6;
+    background: var(--lim);
     transform: translateY(-2px);
 }
 
@@ -55,46 +71,122 @@
 
 /* Subscription Details Card */
 .sdp-subscription-details-card {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    background: transparent;
+    border-radius: 35px;
     padding: 20px 40px 0 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    /* max-width: 800px; */
     width: 100%;
+    height: 521px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sdp-subscription-card-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    border-radius: 35px;
+}
+
+.sdp-subscription-card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .sdp-subscription-details-card h2 {
     text-align: center;
     color: var(--white);
-    margin-bottom: 30px;
-    font-weight: 600;
-    font-size: 2rem;
-    border-bottom: 2px solid var(--lim);
+    margin-bottom: 20px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 27px;
     padding-bottom: 15px;
+    position: relative;
+}
+
+.sdp-subscription-details-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 91%;
+    height: 2px;
+    background-color: var(--lim);
 }
 
 .sdp-subscription-details-content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    min-height: 345px;
+    max-height: 410px;
+    width: 102%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
 }
 
+.sdp-subscription-details-content-wrapper {
+    width: 98%;
+}
+
+.sdp-subscription-details-content::-webkit-scrollbar {
+    width: 14px;
+}
+
+.sdp-subscription-details-content::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 10px;
+    margin: 10px 0 15px 0;
+}
+
+.sdp-subscription-details-content::-webkit-scrollbar-thumb {
+    background: var(--bl);
+    border: 0.5px solid var(--white);
+    border-radius: 10px;
+}
+
+.sp-subscription-wraper::-webkit-scrollbar-thumb:hover {
+    background: var(--title);
+}
+
+/* Subscription Sections with Separate Blur */
 .sdp-subscription-details-section {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-
-    border-radius: 15px;
-    padding: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    margin-bottom: 15px;
+    border-radius: 35px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3)
 }
 
-.sdp-subscription-details-section h3 {
-    color: var(--blue);
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 1.4rem;
+.sdp-subscription-section-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    border-radius: 35px;
+}
+
+.sdp-subscription-section-content {
+    position: relative;
+    z-index: 2;
+    padding: 25px;
 }
 
 .sdp-subscription-details-grid {
@@ -112,14 +204,16 @@
 }
 
 .sdp-subscription-detail-label {
+    font-family: var(--font-family);
     font-weight: 500;
-    color: var(--blue);
-    font-size: 1.1rem;
+    color: var(--white);
+    font-size: 17px;
 }
 
 .sdp-subscription-detail-value {
+    font-family: var(--font-family);
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 17px;
     color: var(--white);
 }
 
@@ -136,7 +230,7 @@
 }
 
 .sdp-subscription-detail-value.sdp-subscription-status.expired {
-    background: #ff6b6b;
+    background: rgba(255, 255, 255, 0.45);
     color: var(--white);
 }
 
@@ -145,16 +239,41 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-top: 10px;
 }
 
 .sdp-subscription-family-member-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 0;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sdp-family-member-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.sdp-family-member-content {
+    position: relative;
+    z-index: 2;
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sdp-subscription-member-email {
@@ -164,7 +283,7 @@
 
 .sdp-subscription-member-added {
     font-size: 0.9rem;
-    color: var(--lim);
+    color: var(--white);
     opacity: 0.8;
 }
 
@@ -172,7 +291,8 @@
 .sdp-subscription-actions {
     display: flex;
     gap: 15px;
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -180,34 +300,30 @@
 .sdp-subscription-manage-family-btn,
 .sdp-subscription-renew-btn {
     border: none;
-    padding: 15px 30px;
+    height: 47px;
+    margin-top: -15px;
     border-radius: 25px;
-    font-weight: 600;
+    font-family: var(--font-family);
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    font-size: 17px;
     flex: 1;
-    min-width: 200px;
+    max-width: 35%;
     text-align: center;
-}
 
-.sdp-subscription-manage-family-btn {
-    background: var(--white);
-    color: var(--blue);
+    color: var(--bl);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
 }
 
 .sdp-subscription-manage-family-btn:hover {
-    background: #e6e6e6;
+    background: var(--lim);
     transform: translateY(-2px);
 }
 
-.sdp-subscription-renew-btn {
-    background: var(--lim);
-    color: var(--blue);
-}
-
 .sdp-subscription-renew-btn:hover {
-    background: #c4e600;
+    background: var(--lim);
     transform: translateY(-2px);
 }
 
@@ -265,24 +381,57 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     padding: 20px;
+}
+
+.sdp-family-modal-backdrop-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .sdp-family-modal {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 35px;
     max-width: 500px;
     width: 100%;
     color: var(--black);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: sdp-family-modalAppear 0.3s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.sdp-family-modal-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05); /* Темний за замовчуванням */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sdp-family-modal-blur.sdp-family-modal-blur-active {
+    background: rgba(255, 255, 255, 0.15); /* Світліший при введенні */
+}
+
+.sdp-family-modal-content-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
 }
 
 @keyframes sdp-family-modalAppear {
@@ -296,53 +445,14 @@
     }
 }
 
-.sdp-family-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid var(--img);
-}
-
-.sdp-family-modal-header h3 {
-    color: var(--blue);
-    margin: 0;
-    font-weight: 700;
-    font-size: 1.5rem;
-}
-
-.sdp-family-modal-close {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--black);
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.3s ease;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.sdp-family-modal-close:hover {
-    color: var(--blue);
-    background: rgba(0,0,0,0.05);
-}
-
-.sdp-family-modal-close:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .sdp-family-modal-instruction {
-    color: var(--black);
+    text-align: center;
+    color: var(--white);
     margin-bottom: 25px;
     line-height: 1.5;
-    font-size: 1.1rem;
+    font-family: var(--font-family);
+    font-size: 19px;
+    font-weight: 500;
 }
 
 .sdp-family-email-inputs {
@@ -360,18 +470,34 @@
 
 .sdp-family-email-input {
     flex: 1;
-    padding: 15px;
-    border: 2px solid var(--img);
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    height: 47px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 17px;
+    transition: all 0.2s ease;
     font-family: var(--font-family);
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--white);
+}
+
+.sdp-family-email-input::placeholder {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--bl);
+}
+
+.sdp-family-email-input.sdp-family-email-input-active {
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--white);
 }
 
 .sdp-family-email-input:focus {
     outline: none;
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(6, 97, 204, 0.1);
 }
 
 .sdp-family-email-input:disabled {
@@ -379,13 +505,17 @@
     cursor: not-allowed;
 }
 
+.sdp-family-email-input.sdp-family-email-input-invalid {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid red !important;
+    color: red !important;
+}
+
 .sdp-family-modal-actions {
     display: flex;
-    gap: 15px;
-    justify-content: flex-end;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid var(--b-img);
+    gap: 60px;
+    justify-content: center;
+    margin-top: 35px;
 }
 
 .sdp-family-modal-actions .sdp-family-cancel-btn,
@@ -393,20 +523,25 @@
     padding: 12px 24px;
     border: none;
     border-radius: 25px;
+    font-family: var(--font-family);
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-size: 1rem;
     min-width: 120px;
 }
 
 .sdp-family-modal-actions .sdp-family-cancel-btn {
-    background: var(--b-img);
-    color: var(--black);
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
 }
 
 .sdp-family-modal-actions .sdp-family-cancel-btn:hover {
-    background: #c9c9c9;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
 }
 
 .sdp-family-modal-actions .sdp-family-save-btn {
@@ -415,7 +550,7 @@
 }
 
 .sdp-family-modal-actions .sdp-family-save-btn:hover {
-    background: #c4e600;
+    background: var(--lim);
 }
 
 .sdp-family-modal-actions .sdp-family-cancel-btn:disabled,

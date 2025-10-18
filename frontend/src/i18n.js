@@ -211,6 +211,39 @@ i18n
           nt_add_meal_button: "Add Meal",
           nt_analytics_title: "Analytics",
 
+          nt_motivation_title: "Motivation",
+          nt_motivation_loading: "Loading smart motivation...",
+          
+          nt_motivation_general_1: "Your health is your biggest investment. Keep going, you are on the right track! 💪",
+          nt_motivation_general_2: "Healthy choices today mean strength tomorrow. Take action!",
+          nt_motivation_general_3: "Remember to hydrate! Even a small glass of water makes you feel better.",
+          nt_motivation_general_4: "Daily self-improvement yields results. Great job being here!",
+          nt_motivation_general_5: "Small, consistent efforts always win over quick, chaotic jumps. Stay steady!",
+          nt_motivation_general_6: "Remember: your goal is a marathon, not a sprint. The main thing is not to stop!",
+          
+          nt_motivation_no_meals: "Looks like you haven't logged anything today. Let's start with a nutritious breakfast!",
+          
+          nt_motivation_calories_on_target: "🎉 Great job! You fit perfectly within your calorie limit. A true champion!",
+          nt_motivation_calories_on_target_M: "🎉 Great job! You fitted perfectly within your calorie limit, Champion!",
+          nt_motivation_calories_on_target_F: "🎉 Great job! You fitted perfectly within your calorie limit, Queen!",
+          
+          nt_motivation_calories_over: "Careful! You've consumed {{calories}} kcal so far (which is above target). Focus on your last meal.",
+          nt_motivation_calories_critical_over: "🔴 Critical! {{calories}} kcal is a significant overshoot. Focus on light protein and fiber today.",
+          
+          nt_motivation_almost_protein: "You've almost reached your protein goal! A little more and your muscles will thank you!",
+          nt_motivation_almost_protein_M: "You've almost reached your protein goal! Keep pushing, man!",
+          nt_motivation_almost_protein_F: "You've almost reached your protein goal! That's excellent progress!",
+          
+          nt_motivation_low_protein: "You're a bit low on protein today. Try adding yogurt or nuts to your next snack. Need {{protein}}g more!",
+          nt_motivation_high_fat: "I see a lot of fat in your diet. Maybe replace one snack with fruit or vegetables? 🥑",
+          nt_motivation_low_carbs: "Feeling tired after lunch? It might be due to low carbs. Try adding whole grains to dinner.",
+          nt_motivation_evening_low: "You're doing great! Focus on light food for dinner to perfectly hit your remaining calories.",
+          
+          nt_motivation_morning: "Good morning! Start this day with the right breakfast and a positive mood 🌞",
+          nt_motivation_morning_M: "Good morning, warrior! Start this day with the right breakfast for energy. 🌞",
+          nt_motivation_morning_F: "Good morning, beautiful! Start this day with the right breakfast for energy. 🌞",
+          nt_motivation_evening: "Great day! Remember that quality rest is part of your nutrition plan.",
+
           // --- Social challenges translations ---
           ch_all_challenges_title: "All Challenges",
           ch_details_link: "Details",
@@ -270,6 +303,7 @@ i18n
           ch_completedTitle: "Challenge Completed",
           ch_completedText:
             "Congratulations! You have completed the challenge.",
+          ch_type_personalgoal: "Personal Goal",
 
           // --- Menstrual calendar translations ---
           last_cycle_first_day: "1st day of last cycle",
@@ -1143,6 +1177,46 @@ i18n
           nt_add_meal_button: "Додати прийом",
           nt_analytics_title: "Аналітика",
 
+          nt_tracker_tab: "Трекер харчування",
+          nt_ration_tab: "Раціон",
+          nt_recipes_tab: "Рецепти",
+          nt_loading: "Завантаження...",
+          nt_g_abbr: "г",
+          nt_motivation_title: "Мотивація",
+  
+          nt_motivation_loading: "Завантаження мотивації...",
+  
+          // --- Общие/Гендерно-Нейтральные ---
+          nt_motivation_general_1: "Твоє здоров'я — це твоя найбільша інвестиція. Продовжуй, ти на правильному шляху! 💪",
+          nt_motivation_general_2: "Здоровий вибір сьогодні — це сила завтра. Дій!",
+          nt_motivation_general_3: "Пам'ятай про водний баланс! Навіть маленька склянка води робить тебе краще.",
+          nt_motivation_general_4: "Щоденна праця над собою дає результат. Ти молодець, що тут!",
+          nt_motivation_general_5: "Невеликі, послідовні зусилля завжди перемагають швидкі, але хаотичні стрибки. Залишайся стійким!",
+          nt_motivation_general_6: "Пам'ятай: твоя ціль — це марафон, а не спринт. Головне — не зупинятися!",
+          
+          // --- Прогресс ---
+          nt_motivation_no_meals: "Схоже, ти ще нічого не записав(-ла) сьогодні. Почнімо з поживного сніданку!",
+          nt_motivation_calories_on_target: "🎉 Чудова робота! Ти ідеально вписався(-лася) у свій ліміт калорій. Справжній чемпіон!",
+          nt_motivation_calories_on_target_M: "🎉 Чудова робота! Ти ідеально вписався у свій ліміт калорій. Справжній чемпіон!",
+          nt_motivation_calories_on_target_F: "🎉 Чудова робота! Ти ідеально вписалася у свій ліміт калорій. Справжня чемпіонка!",
+          nt_motivation_calories_over: "Обережно! Наразі ти спожив(-ла) {{calories}} ккал (це вже вище цілі). Зосередься на останньому прийомі їжі.",
+          nt_motivation_calories_critical_over: "🔴 Критично! {{calories}} ккал — це значний перебір. Зроби упор на легкий білок і клітковину сьогодні.",
+          nt_motivation_almost_protein: "Ти майже досяг(-ла) цілі по білку! Ще трохи, і твій м'язовий каркас скаже тобі 'дякую'!",
+          nt_motivation_almost_protein_M: "Ти майже досяг цілі по білку! Ще трохи, і твій м'язовий каркас скаже тобі 'дякую'!",
+          nt_motivation_almost_protein_F: "Ти майже досягла цілі по білку! Ще трохи, і твій м'язовий каркас скаже тобі 'дякую'!",
+  
+          // --- Рекомендации ---
+          nt_motivation_low_protein: "Сьогодні трохи не вистачає білка. Спробуй додати йогурт або горіхи до наступного перекусу. Потрібно більше {{protein}}г!",
+          nt_motivation_high_fat: "Бачу багато жирів у раціоні. Можливо, варто замінити один перекус на фрукти чи овочі? 🥑",
+          nt_motivation_low_carbs: "Після обіду відчуваєш втому? Це може бути через нестачу вуглеводів. Спробуй додати до вечері цільні злаки.",
+          nt_motivation_evening_low: "Ти добре тримаєшся! На сьогоднішній вечерю зосередься на легкій їжі, щоб ідеально добити калорії.",
+  
+          // --- Время суток ---
+          nt_motivation_morning: "Доброго ранку! Почни цей день з правильного сніданку та позитивного настрою 🌞",
+          nt_motivation_morning_M: "Доброго ранку, воїне! Почни цей день з правильного сніданку для енергії. 🌞",
+          nt_motivation_morning_F: "Доброго ранку, красуне! Почни цей день з правильного сніданку для енергії. 🌞",
+          nt_motivation_evening: "Чудовий день! Не забувай, що якісний відпочинок — це частина твого плану харчування.",
+
           // === СОЦІАЛЬНІ ЧЕЛЕНДЖІ ===
           ch_all_challenges_title: "Усі челенджі",
           ch_details_link: "Детальніше",
@@ -1202,6 +1276,7 @@ i18n
           ch_leftText: "Ви успішно покинули челендж.",
           ch_completedTitle: "Челендж завершено",
           ch_completedText: "Вітаємо! Ви успішно завершили челендж.",
+          ch_type_personalgoal: "Особиста ціль",
 
           // === КАЛЕНДАР МІСЯЧНИХ ===
           last_cycle_first_day: "1-й день останнього циклу",
@@ -1940,6 +2015,40 @@ i18n
           article_7: "Prävention und Überwindung von Burnout",
           gender: "Gesundheit nach Geschlecht",
 
+
+          nt_motivation_title: "Motivation",
+          nt_motivation_loading: "Intelligente Motivation wird geladen...",
+          
+          nt_motivation_general_1: "Ihre Gesundheit ist Ihre größte Investition. Machen Sie weiter so, Sie sind auf dem richtigen Weg! 💪",
+          nt_motivation_general_2: "Gesunde Entscheidungen heute bedeuten Stärke morgen. Handeln Sie!",
+          nt_motivation_general_3: "Denken Sie an die Hydratation! Sogar ein kleines Glas Wasser macht Sie besser.",
+          nt_motivation_general_4: "Tägliche Arbeit an sich selbst zahlt sich aus. Gut gemacht, dass Sie hier sind!",
+          nt_motivation_general_5: "Kleine, konsequente Anstrengungen gewinnen immer über schnelle, chaotische Sprünge. Bleiben Sie standhaft!",
+          nt_motivation_general_6: "Denken Sie daran: Ihr Ziel ist ein Marathon, kein Sprint. Das Wichtigste ist, nicht aufzuhören!",
+          
+          nt_motivation_no_meals: "Es sieht so aus, als hätten Sie heute noch nichts protokolliert. Beginnen wir mit einem nahrhaften Frühstück!",
+          
+          nt_motivation_calories_on_target: "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst. Ein wahrer Champion!",
+          nt_motivation_calories_on_target_M: "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst, Champion!",
+          nt_motivation_calories_on_target_F: "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst, Königin!",
+          
+          nt_motivation_calories_over: "Vorsicht! Sie haben bisher {{calories}} kcal konsumiert (das liegt über dem Ziel). Konzentrieren Sie sich auf Ihre letzte Mahlzeit.",
+          nt_motivation_calories_critical_over: "🔴 Kritisch! {{calories}} kcal ist eine deutliche Überschreitung. Konzentrieren Sie sich heute auf leichtes Protein und Ballaststoffe.",
+          
+          nt_motivation_almost_protein: "Sie haben Ihr Proteinziel fast erreicht! Ein bisschen mehr, und Ihre Muskeln werden es Ihnen danken!",
+          nt_motivation_almost_protein_M: "Sie haben Ihr Proteinziel fast erreicht! Machen Sie weiter so, Mann!",
+          nt_motivation_almost_protein_F: "Sie haben Ihr Proteinziel fast erreicht! Das ist ein ausgezeichneter Fortschritt!",
+          
+          nt_motivation_low_protein: "Sie haben heute etwas wenig Protein. Versuchen Sie, Ihrem nächsten Snack Joghurt oder Nüsse hinzuzufügen. {{protein}}g fehlen noch!",
+          nt_motivation_high_fat: "Ich sehe viel Fett in Ihrer Ernährung. Vielleicht ersetzen Sie einen Snack durch Obst oder Gemüse? 🥑",
+          nt_motivation_low_carbs: "Fühlen Sie sich nach dem Mittagessen müde? Das könnte an Kohlenhydratmangel liegen. Versuchen Sie, Vollkornprodukte zum Abendessen hinzuzufügen.",
+          nt_motivation_evening_low: "Sie machen sich gut! Konzentrieren Sie sich beim Abendessen auf leichte Kost, um Ihre verbleibenden Kalorien perfekt zu erreichen.",
+          
+          nt_motivation_morning: "Guten Morgen! Starten Sie diesen Tag mit dem richtigen Frühstück und einer positiven Stimmung 🌞",
+          nt_motivation_morning_M: "Guten Morgen, Krieger! Starten Sie diesen Tag mit dem richtigen Frühstück für Energie. 🌞",
+          nt_motivation_morning_F: "Guten Morgen, Schönheit! Starten Sie diesen Tag mit dem richtigen Frühstück für Energie. 🌞",
+          nt_motivation_evening: "Ein toller Tag! Denken Sie daran, dass hochwertige Ruhe Teil Ihres Ernährungsplans ist.",
+
           // === SOZIALE CHALLENGES ===
           ch_all_challenges_title: "Alle Challenges",
           ch_details_link: "Mehr Details",
@@ -2002,6 +2111,7 @@ i18n
           ch_completedTitle: "Challenge abgeschlossen",
           ch_completedText:
             "Herzlichen Glückwunsch! Du hast die Challenge erfolgreich abgeschlossen.",
+          ch_type_personalgoal: "Persönliches Ziel",
 
           // === MENSTRUATIONSKALENDER ===
           last_cycle_first_day: "1. Tag der letzten Periode",
@@ -2760,6 +2870,40 @@ i18n
           article_7: "Prévention et surmonter l'épuisement professionnel",
           gender: "Santé par genre",
 
+
+          nt_motivation_title: "Motivation",
+          nt_motivation_loading: "Chargement de la motivation intelligente...",
+          
+          nt_motivation_general_1: "Votre santé est votre plus grand investissement. Continuez, vous êtes sur la bonne voie! 💪",
+          nt_motivation_general_2: "Des choix sains aujourd'hui signifient la force de demain. Agissez!",
+          nt_motivation_general_3: "N'oubliez pas l'hydratation! Même un petit verre d'eau vous rend meilleur.",
+          nt_motivation_general_4: "Le travail quotidien sur soi-même donne des résultats. Bravo d'être là!",
+          nt_motivation_general_5: "De petits efforts constants l'emportent toujours sur des sauts rapides et chaotiques. Restez stable!",
+          nt_motivation_general_6: "Rappelez-vous: votre objectif est un marathon, pas un sprint. Le principal est de ne pas s'arrêter!",
+          
+          nt_motivation_no_meals: "Il semble que vous n'ayez rien enregistré aujourd'hui. Commençons par un petit-déjeuner nutritif!",
+          
+          nt_motivation_calories_on_target: "🎉 Excellent travail! Vous vous êtes parfaitement intégré(e) à votre limite de calories. Un(e) vrai(e) champion(ne)!",
+          nt_motivation_calories_on_target_M: "🎉 Excellent travail! Tu t'es parfaitement intégré à ta limite de calories, Champion!",
+          nt_motivation_calories_on_target_F: "🎉 Excellent travail! Tu t'es parfaitement intégrée à ta limite de calories, Reine!",
+          
+          nt_motivation_calories_over: "Attention! Vous avez consommé {{calories}} kcal jusqu'à présent (ce qui est au-dessus de l'objectif). Concentrez-vous sur votre dernier repas.",
+          nt_motivation_calories_critical_over: "🔴 Critique! {{calories}} kcal est un dépassement important. Concentrez-vous sur des protéines légères et des fibres aujourd'hui.",
+          
+          nt_motivation_almost_protein: "Vous avez presque atteint votre objectif de protéines! Encore un peu et vos muscles vous remercieront!",
+          nt_motivation_almost_protein_M: "Vous avez presque atteint votre objectif de protéines! Continuez à pousser!",
+          nt_motivation_almost_protein_F: "Vous avez presque atteint votre objectif de protéines! C'est un excellent progrès!",
+          
+          nt_motivation_low_protein: "Vous êtes un peu faible en protéines aujourd'hui. Essayez d'ajouter du yaourt ou des noix à votre prochaine collation. Il manque {{protein}}g!",
+          nt_motivation_high_fat: "Je vois beaucoup de graisses dans votre alimentation. Peut-être remplacer une collation par des fruits ou des légumes? 🥑",
+          nt_motivation_low_carbs: "Vous vous sentez fatigué(e) après le déjeuner? Cela pourrait être dû à un manque de glucides. Essayez d'ajouter des céréales complètes au dîner.",
+          nt_motivation_evening_low: "Vous vous en sortez très bien! Concentrez-vous sur des aliments légers pour le dîner afin d'atteindre parfaitement vos calories restantes.",
+          
+          nt_motivation_morning: "Bonjour! Commencez cette journée avec le bon petit-déjeuner et une humeur positive 🌞",
+          nt_motivation_morning_M: "Bonjour, guerrier! Commencez cette journée avec le bon petit-déjeuner pour l'énergie. 🌞",
+          nt_motivation_morning_F: "Bonjour, beauté! Commencez cette journée avec le bon petit-déjeuner pour l'énergie. 🌞",
+          nt_motivation_evening: "Super journée! N'oubliez pas qu'un repos de qualité fait partie de votre plan de nutrition.",
+
           // === DÉFIS SOCIAUX ===
           ch_all_challenges_title: "Tous les défis",
           ch_details_link: "Plus de détails",
@@ -2820,6 +2964,7 @@ i18n
           ch_completedTitle: "Défi terminé",
           ch_completedText:
             "Félicitations ! Tu as terminé le défi avec succès.",
+          ch_type_personalgoal: "Objectif personnel",
 
           // === CALENDRIER MENSTRUEL ===
           last_cycle_first_day: "1er jour des dernières règles",
@@ -3581,6 +3726,39 @@ i18n
           article_7: "Prevención y superación del agotamiento",
           gender: "Salud por género",
 
+          nt_motivation_title: "Motivación",
+          nt_motivation_loading: "Cargando motivación inteligente...",
+          
+          nt_motivation_general_1: "Tu salud es tu mayor inversión. ¡Sigue adelante, estás en el camino correcto! 💪",
+          nt_motivation_general_2: "Las elecciones saludables de hoy significan fuerza mañana. ¡Actúa!",
+          nt_motivation_general_3: "¡Recuerda hidratarte! Incluso un vaso pequeño de agua te hace sentir mejor.",
+          nt_motivation_general_4: "El trabajo diario en uno mismo da resultados. ¡Buen trabajo por estar aquí!",
+          nt_motivation_general_5: "Los esfuerzos pequeños y constantes siempre ganan a los saltos rápidos y caóticos. ¡Mantente firme!",
+          nt_motivation_general_6: "Recuerda: tu objetivo es un maratón, no un sprint. ¡Lo principal es no detenerse!",
+          
+          nt_motivation_no_meals: "Parece que no has registrado nada hoy. ¡Comencemos con un desayuno nutritivo!",
+          
+          nt_motivation_calories_on_target: "🎉 ¡Gran trabajo! Te ajustaste perfectamente a tu límite de calorías. ¡Un(a) verdadero(a) campeón(a)!",
+          nt_motivation_calories_on_target_M: "🎉 ¡Gran trabajo! Te ajustaste perfectamente a tu límite de calorías, Campeón!",
+          nt_motivation_calories_on_target_F: "🎉 ¡Gran trabajo! Te ajustaste perfectamente a tu límite de calorías, Reina!",
+          
+          nt_motivation_calories_over: "¡Cuidado! Has consumido {{calories}} kcal hasta ahora (lo cual está por encima del objetivo). Concéntrate en tu última comida.",
+          nt_motivation_calories_critical_over: "🔴 ¡Crítico! {{calories}} kcal es un exceso significativo. Concéntrate en proteínas ligeras y fibra hoy.",
+          
+          nt_motivation_almost_protein: "¡Casi alcanzas tu objetivo de proteínas! Un poco más y tus músculos te lo agradecerán.",
+          nt_motivation_almost_protein_M: "¡Casi alcanzas tu objetivo de proteínas! ¡Sigue esforzándote, hombre!",
+          nt_motivation_almost_protein_F: "¡Casi alcanzas tu objetivo de proteínas! ¡Es un progreso excelente!",
+          
+          nt_motivation_low_protein: "Hoy tienes un poco de déficit de proteínas. Intenta añadir yogur o nueces a tu próximo snack. ¡Faltan {{protein}}g!",
+          nt_motivation_high_fat: "Veo mucha grasa en tu dieta. ¿Quizás reemplazar una merienda por fruta o verdura? 🥑",
+          nt_motivation_low_carbs: "¿Te sientes cansado(a) después del almuerzo? Podría ser por falta de carbohidratos. Intenta añadir cereales integrales a la cena.",
+          nt_motivation_evening_low: "¡Lo estás haciendo genial! Concéntrate en alimentos ligeros para la cena para alcanzar perfectamente tus calorías restantes.",
+          
+          nt_motivation_morning: "¡Buenos días! Comienza este día con el desayuno adecuado y un estado de ánimo positivo 🌞",
+          nt_motivation_morning_M: "¡Buenos días, guerrero! Comienza este día con el desayuno adecuado para la energía. 🌞",
+          nt_motivation_morning_F: "¡Buenos días, belleza! Comienza este día con el desayuno adecuado para la energía. 🌞",
+          nt_motivation_evening: "¡Un gran día! Recuerda que un descanso de calidad es parte de tu plan de nutrición.",
+
           // === DESAFÍOS SOCIALES ===
           ch_all_challenges_title: "Todos los desafíos",
           ch_details_link: "Más detalles",
@@ -3643,6 +3821,7 @@ i18n
           ch_completedTitle: "Desafío completado",
           ch_completedText:
             "¡Felicidades! Has completado el desafío exitosamente.",
+          ch_type_personalgoal: "Objetivo personal",
 
           // === CALENDARIO MENSTRUAL ===
           last_cycle_first_day: "Primer día del último ciclo",

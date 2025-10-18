@@ -1,65 +1,110 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/nutrition/recipe-details-page.css";
 
 const RecipeDetailsPage = () => {
   const { t } = useTranslation();
   const { id } = useParams(); 
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
-
-useEffect(() => {
-  const fetchRecipe = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/api/recipes/${id}`);
-      const data = response.data;
-
-      // Нормализация данных
-      const normalizedRecipe = {
-        id: data.Id,
-        name: data.Name,
-        description: data.Description,
-        kkal: data.Kkal,
-        protein: data.Protein,
-        fat: data.Fat,
-        carbs: data.Carbs,
-        time: data.Time,
-        imageUrl: data.ImageUrl,
-        videoUrl: data.VideoUrl,
-        ingredients: data.Ingredients?.map(i => ({
-          name: i.Name,
-          amount: i.Amount
-        })),
-        steps: data.Steps
-      };
-
-      setRecipe(normalizedRecipe);
-      console.log("✅ Normalized recipe:", normalizedRecipe);
-    } catch (error) {
-      console.error("❌ Ошибка загрузки рецепта:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchRecipe();
-}, [id]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [message, setMessage] = useState({ text: "", type: "" });
 
   useEffect(() => {
-  console.log("Recipe data:", recipe);
-    }, [recipe]);
+    const checkAdminRights = () => {
+      const userRole = localStorage.getItem("userRole");
+      return userRole === "admin" || userRole === "administrator";
+    };
+    
+    setIsAdmin(checkAdminRights());
+  }, []);
+
+  const showMessage = (text, type) => {
+    setMessage({ text, type });
+    setTimeout(() => {
+      setMessage({ text: "", type: "" });
+    }, 5000);
+  };
+
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const data = response.data;
+
+        const normalizedRecipe = {
+          id: data.Id,
+          name: data.Name,
+          description: data.Description,
+          kkal: data.Kkal,
+          protein: data.Protein,
+          fat: data.Fat,
+          carbs: data.Carbs,
+          time: data.Time,
+          imageUrl: data.ImageUrl,
+          videoUrl: data.VideoUrl,
+          ingredients: data.Ingredients?.map(i => ({
+            name: i.Name,
+            amount: i.Amount
+          })),
+          steps: data.Steps
+        };
+
+        setRecipe(normalizedRecipe);
+      } catch (error) {
+        console.error("❌ Помилка завантаження рецепта:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecipe();
+  }, [id]);
 
   if (loading) return <p className="loading-text">Завантаження рецепта...</p>;
   if (!recipe) return <p className="error-text">Рецепт не знайдено</p>;
+
+  const handleDeleteRecipe = async () => {
+    if (!window.confirm("Ви впевнені, що хочете видалити цей рецепт? Цю дію неможливо скасувати.")) {
+      return;
+    }
+
+    setDeleteLoading(true);
+    try {
+      await axios.delete(`http://localhost:5000/api/recipes/${id}`);
+      
+      showMessage("✅ Рецепт успішно видалено!", "success");
+      
+      setTimeout(() => {
+        navigate("/eating/recipes");
+      }, 2000);
+      
+    } catch (error) {
+      console.error("❌ Помилка видалення рецепта:", error);
+      const errorMessage = error.response?.data?.message || "Помилка видалення рецепта";
+      showMessage(`❌ ${errorMessage}`, "error");
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
+
+  const handleGoBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/eating/recipes");
+    }
+  };
 
   return (
     <div className="recipe-page-content-wrapper">
       <div className="scrollable-grid-content scroll-data">
         <div className="recipe-page-grid-v2">
 
-          {/* Ліва колонка */}
           <div className="main-media-column">
             <div className="main-image-card glass-card">
               <img src={recipe.imageUrl} alt={recipe.name} className="recipe-main-image-v2" />
@@ -77,7 +122,6 @@ useEffect(() => {
             </div>
           </div>
 
-          {/* Права колонка */}
           <div className="details-sidebar-column">
             <div className="header-details-card">
               <h1 className="recipe-title-v2">{recipe.name}</h1>
@@ -117,9 +161,30 @@ useEffect(() => {
               </div>
             </div>
 
-            <button className="save-recipe-button">
-              {t("save_button") || "Зберегти Рецепт"}
-            </button>
+            {message.text && (
+              <div className={`message-alert ${message.type}`}>
+                {message.text}
+              </div>
+            )}
+
+            <div className="buttons-section">
+              <button 
+                className="back-recipe-button"
+                onClick={handleGoBack}
+              >
+                Назад до рецептів
+              </button>
+
+              {isAdmin && (
+                <button 
+                  className="delete-recipe-button"
+                  onClick={handleDeleteRecipe}
+                  disabled={deleteLoading}
+                >
+                  {deleteLoading ? "Видалення..." : "Видалити Рецепт"}
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

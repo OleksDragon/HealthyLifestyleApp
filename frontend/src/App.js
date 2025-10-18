@@ -23,6 +23,7 @@ import NutritionTrackerPage from "./components/pages/Nutrition/NutritionTrackerP
 import RationPage from "./components/pages/Nutrition/RationPage";
 import RecipesPage from "./components/pages/Nutrition/RecipesPage";
 import RecipeDetailsPage from "./components/pages/Nutrition/RecipeDetailsPage";
+import AddRecipePage from "./components/pages/Nutrition/AddRecipePage";
 
 import HealthPageMenu from "./components/elements/Health/HealthPageMenu/HealthPageMenu";
 import HealthPage from "./components/pages/HealthPages/HealthPage";
@@ -96,7 +97,8 @@ function AppRoutes() {
       <Route path="/eating/ration" element={<PrivateRoute><Menu><RationPage /></Menu></PrivateRoute>} />
       <Route path="/eating/recipes" element={<PrivateRoute><Menu><RecipesPage /></Menu></PrivateRoute>} />
       <Route path="/eating/recipes/:id" element={<PrivateRoute><Menu><RecipeDetailsPage /></Menu></PrivateRoute>} />
-      
+      <Route path="/eating/recipes/add" element={<PrivateRoute><Menu><AddRecipePage /></Menu></PrivateRoute>} />
+
       {/* Здоровье - Основные страницы */}
       <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /><HealthPage /></Menu></PrivateRoute>} />
       <Route path="/health/your" element={<PrivateRoute><Menu><HealthPageMenu><YourHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />

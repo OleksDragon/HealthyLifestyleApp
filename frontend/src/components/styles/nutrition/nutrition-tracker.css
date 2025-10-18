@@ -4,7 +4,7 @@
 .nutrition-tracker-page-content {
     font-family: "Roboto", sans-serif;
     color: #fff;
-    padding: 20px;
+    padding: 0px 40px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -20,7 +20,7 @@
 .navigation-tabs-wrapper {
     display: flex;
     gap: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .navigation-tabs-wrapper .tab-item {
@@ -60,37 +60,11 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.25) 100%);
 }
 
-/* --- Секция выбора даты --- */
-.date-picker-section {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #a0c4ff;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    font-weight: 900;
-}
-
-.date-label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.date-display {
-    font-weight: 900;
-    color: #fff;
-}
-
-.hidden-date-input {
-    display: none;
-}
-
 /* --- ГЛАВНЫЙ КОНТЕЙНЕР --- */
 .scrollable-main-content {
     position: relative;
-    overflow-y: auto;height: 65vh;
+    overflow-y: auto;
+    height: 65vh;
     width: 100%;
     padding-right: 15px;
     box-sizing: border-box;
@@ -143,10 +117,17 @@
 }
 
 .card-title-blue {
-    color: #A0C4FF;
+    color: #ffffff;
+    /* Белый, как на скриншоте */
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    /* Уменьшаем отступ */
+    padding-bottom: 10px;
+    /* Добавляем отступ для линии */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* Светлая линия-разделитель */
+    text-align: left;
 }
 
 /* Прогресс-бары */
@@ -157,16 +138,63 @@
 .progress-card p {
     font-size: 1rem;
     font-weight: 500;
+}
+
+/* --- Стили для прогресс-баров --- */
+.progress-item {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     margin-bottom: 5px;
+}
+
+.progress-info {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex: 1;
+}
+
+.progress-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.progress-value {
+    font-size: 1.0rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+.progress-percentage {
+    font-size: 1.1rem;
+    color: #D6FF00;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.progress-bar-container {
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
 }
 
 .progress-bar {
     width: 100%;
-    height: 10px;
+    height: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.3);
-    margin-bottom: 15px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -174,7 +202,7 @@
 
 .progress-bar::-webkit-progress-bar {
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 /* Цвет заполнения */
@@ -183,12 +211,12 @@
 .progress-bar.fat-bar::-webkit-progress-value,
 .progress-bar.carbs-bar::-webkit-progress-value {
     background-color: #D6FF00;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 /* Приемы пищи */
 .meals-card {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .meals-table-header,
@@ -263,9 +291,104 @@
 
 .motivation-widget {
     margin-top: 20px;
+    text-align: left;
+    font-size: 1.8rem;
 }
 
 .motivation-text {
     font-weight: 300;
+    font-size: 1.3rem;
     line-height: 1.5;
+
+    /* ВИДАЛИТИ "text-align: left;" ТУТ, ЯКЩО ВОНО БУЛО ТРИЧІ! */
+
+    /* ВИПРАВЛЕННЯ: Змінюємо на inline-block, щоб він міг взаємодіяти з vertical-align */
+    display: inline-block !important;
+    /* Змінюємо на inline-block */
+    width: 100%;
+    
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- СТИЛІ ДЛЯ БЛОКУ 4: ВВЕДЕННЯ ВАГИ (WeightEntryWidget) --- */
+.weight-entry-widget {
+    margin-top: 20px;
+    /* Відступ від WeightChartWidget */
+    text-align: left;
+    padding: 25px;
+}
+
+.weight-info {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.current-weight-value {
+    font-weight: 700;
+    color: #D6FF00;
+    margin-left: 10px;
+}
+
+.weight-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.weight-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.weight-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.weight-input:focus {
+    border-color: #D6FF00;
+}
+
+.weight-submit-button {
+    padding: 10px 20px;
+    background-color: #D6FF00;
+    color: #004aad;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.weight-submit-button:hover:not(:disabled) {
+    background-color: #e6ff33;
+}
+
+.weight-submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.status-message {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.status-message.success {
+    color: #D6FF00;
+}
+
+.status-message.error {
+    color: #ff4d4d;
 }

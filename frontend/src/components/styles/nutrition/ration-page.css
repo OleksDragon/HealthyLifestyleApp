@@ -4,35 +4,54 @@
     grid-template-columns: 2fr 1fr;
     gap: 20px;
     padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 /* Секция прогресса в Ration */
 .ration-progress-bar-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    text-align: center;
+    grid-auto-rows: min-content;
+    gap: 10px;
+
+    background: transparent;
+    border-top: #fff 1px solid;
+    border-bottom: #fff 1px solid;
+    padding: 10px;
     margin-bottom: 20px;
 }
 
+/* Кожен елемент макросу */
+.macro-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 5px;
+}
+
+.macro-calories {
+    grid-column: span 1;
+    margin-bottom: 0;
+}
+
+/* Стили для названий (Калорії, Білки и т.д.) */
 .ration-progress-bar-container .progress-value {
     color: #A0C4FF;
     font-size: 1rem;
     font-weight: 500;
-    margin-top: 15px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-align: left;
 }
 
+/* Стили для крупных значений */
 .ration-progress-bar-container .progress-value-large {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 900;
-    grid-column: span 1;
-    margin-bottom: 5px;
+    color: #D6FF00;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: left;
+    white-space: nowrap;
 }
 
 /* Сетка карточек блюд */
@@ -40,19 +59,36 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
+    padding: 0;
+    /* Видалено внутрішній відступ */
 }
 
+/* Основная карточка блюда */
 .meal-ration-card {
-    height: 300px;
+    height: 350px;
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* Вирівнювання на початок */
     align-items: flex-start;
     position: relative;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    color: #fff;
+    /* Основний колір тексту */
 }
 
+.meal-ration-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Тег (тип приема пищи) */
 .meal-tag {
     position: absolute;
     top: 15px;
@@ -65,20 +101,96 @@
     z-index: 10;
 }
 
+/* Иконка сердца */
+.heart-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.2rem;
+    color: #ff4d4d;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Обгортка зображення */
+.meal-image-wrapper {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Placeholder изображения */
+.meal-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Информация о блюде */
+.meal-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* justify-content: space-between; */
+    /* Вимкнено для кращого контролю висоти */
+}
+
 .meal-name {
     font-size: 1.1rem;
     font-weight: 700;
     color: #D6FF00;
     margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .meal-macros {
     font-size: 0.9rem;
     font-weight: 400;
     color: #fff;
+    margin: 5px 0 10px 0;
 }
 
-/* Карточка "Додати" */
+.meal-ingredients {
+    margin-top: 5px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.ingredients-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #fff;
+    max-height: 50px;
+    /* Обмеження висоти */
+    overflow-y: auto;
+}
+
+.ingredients-list li {
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Карточка "Добавить" */
 .meal-ration-card.add-meal-card {
     display: flex;
     flex-direction: column;
@@ -86,6 +198,13 @@
     align-items: center;
     border: 2px dashed rgba(255, 255, 255, 0.5);
     background: none;
+    height: 300px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.meal-ration-card.add-meal-card:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .add-icon {
@@ -105,6 +224,8 @@
     height: auto;
     padding: 25px;
     background: linear-gradient(180deg, rgba(160, 196, 255, 0.3) 0%, rgba(160, 196, 255, 0.1) 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ingredients-title {
@@ -114,6 +235,13 @@
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 10px;
+}
+
+.ingredients-list-wrapper {
+    max-height: 400px;
+    /* Для прокрутки */
+    overflow-y: auto;
+    padding-right: 10px;
 }
 
 .ingredient-item {
@@ -127,11 +255,13 @@
 
 .ingredient-name {
     font-weight: 400;
+    color: #fff;
 }
 
 .ingredient-amount {
     font-weight: 500;
     text-align: right;
+    color: #D6FF00;
 }
 
 .ingredient-checkbox {
@@ -146,6 +276,7 @@
     appearance: none;
     position: relative;
     justify-self: center;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 /* Чекбокс в активном состоянии */
@@ -156,7 +287,8 @@
 
 /* Кнопки Редагувати/Зберегти */
 .edit-button,
-.save-button {
+.save-button,
+.delete-meal-button {
     width: 100%;
     padding: 15px 0;
     background-color: #D6FF00;
@@ -171,10 +303,78 @@
 }
 
 .edit-button:hover,
-.save-button:hover {
+.save-button:hover,
+.delete-meal-button {
     background-color: #e6ff33;
 }
 
 .save-button {
     margin-top: 10px;
+}
+
+/* Стили для секции выбора даты */
+.date-picker-section {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0 10px 10px;
+    background: transparent;
+    padding: 0;
+}
+
+.date-arrow {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 8px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease-in-out;
+    font-weight: bold;
+    user-select: none;
+}
+
+.date-arrow:hover {
+    color: #D6FF00;
+}
+
+.date-wrapper {
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.date-display-label {
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px 15px;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* АДАПТИВНІСТЬ */
+@media (max-width: 1024px) {
+    .ration-grid-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .ration-right-column {
+        position: static;
+        order: 1;
+        /* Інгредієнти вище на мобільних */
+    }
+
+    .ration-left-column {
+        order: 2;
+    }
+
+    .meal-cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
 }

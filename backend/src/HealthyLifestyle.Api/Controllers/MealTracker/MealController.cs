@@ -100,5 +100,19 @@ namespace HealthyLifestyle.Api.Controllers
             var meals = await _mealService.GetByUserAndDateAsync(userId, date);
             return Ok(meals);
         }
+
+        [HttpGet("user/{userId}/date/{date}/grouped")]
+        [ProducesResponseType(typeof(object), 200)]
+        public async Task<IActionResult> GetMealsByDateGrouped(Guid userId, DateTime date)
+        {
+            var meals = await _mealService.GetByUserAndDateAsync(userId, date);
+
+            var grouped = meals
+                .GroupBy(m => m.MealType)
+                .ToDictionary(g => g.Key.ToString(), g => g.ToList());
+
+            return Ok(grouped);
+        }
+
     }
 }

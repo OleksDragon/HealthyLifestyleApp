@@ -1,0 +1,45 @@
+/* Стили для секции выбора даты */
+.date-picker-section {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0 10px 10px;
+    background: transparent;
+    padding: 0;
+}
+
+.date-arrow {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 8px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease-in-out;
+    font-weight: bold;
+    user-select: none;
+}
+
+.date-arrow:hover {
+    color: #D6FF00;
+}
+
+.date-wrapper {
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.date-display-label {
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px 15px;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+}

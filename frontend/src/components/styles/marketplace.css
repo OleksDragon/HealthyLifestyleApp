@@ -33,6 +33,10 @@
     margin: 0 50px;
 }
 
+.products-filters {
+    z-index: 10;
+}
+
 .products-filters h3 {
     color: var(--lim);
     margin-top: 20px;
@@ -40,13 +44,15 @@
 }
 
 .products-filters > div {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr) 70px;
     margin-top: 20px;
     gap: 14px;
 }
 
-.products-filters > div > div {
+.filter-product-marketplace {
+    position: relative;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -56,10 +62,27 @@
     height: 50px;
     cursor: pointer;
     border-radius: 30px;
+    z-index: 20;
 }
 
-.products-filters > div > div:hover {
+.scale-filter:hover {
     scale: 1.03;
+}
+
+.price-selector {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    background: #6AA0E0;
+    border-radius: 20px;
+    z-index: 50;
+}
+
+.price-selector:hover {
+    scale: none !important;
 }
 
 .marketplace {
@@ -105,7 +128,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 40%;
+    height: 50%;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     z-index: 4;
@@ -128,19 +151,21 @@
 
     background: linear-gradient(
         to top,
-        rgba(255, 255, 255, 0.4),
-        rgba(255, 255, 255, 0.1)
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.5) 30%,
+        rgba(255, 255, 255, 0.6) 60%,
+        rgba(255, 255, 255, 1) 90%
     );
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(55px);
+    -webkit-backdrop-filter: blur(55px);
 
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 
     z-index: -1;
 
-    mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%);
 }
 
 .product-info-footer > h3 {
@@ -149,7 +174,11 @@
 
 .product-buy-container {
     margin: 0 50px;
-    max-height: 50vh;
+    max-height: 86vh;
+    height: auto;
+    overflow: auto;
+    padding-bottom: 50px;
+    padding-right: 5%;
 }
 
 .product-container {
@@ -201,6 +230,16 @@
     display: flex;
     scroll-behavior: smooth;
     margin-top: 30px;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.horizontal-scroll-products::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-scroll-products::-webkit-scrollbar-thumb {
+    display: none;
 }
 
 .similar-products {
@@ -218,5 +257,86 @@
 }
 
 .horizontal-scroll-products .product-card {
-    height: 200px;
+    height: 260px;
+    width: 240px;
+    margin-right: 20px;
+    flex: 0 0 auto;
+}
+
+.brand-selector {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    background: #6AA0E0;
+    border-radius: 20px;
+    z-index: 50;
+    border-radius: 0 0 30px 30px;
+}
+
+.brand-name {
+    text-align: center;
+    padding: 8px;
+    width: 80%;
+    margin: 6px auto;
+    border-radius: 30px;
+}
+
+.brand-name:hover {
+    background: #0661CC;
+}
+
+.clear-marketplace-filter {
+    grid-column: 5/6;
+    background-color: var(--lim);
+    border-radius: 30px;
+    color: #0661CC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clear-marketplace-filter:hover {
+    scale: 1.03;
+}
+
+.shopping-cart-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 20px 40px;
+    font-family: var(--font-family);
+}
+
+.shopping-cart-title {
+    font-weight: 500;
+    font-size: 26px;
+    grid-column: 1/3;
+    margin-bottom: 30px;
+}
+
+.shopping-cart-total {
+    background: rgba(255, 255, 255, 0.34);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: 50vh;
+    border-radius: 30px;
+}
+
+.products-in-cart {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+
+.cart-header {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+
+.cart-header h3 {
+    font-weight: 300;
 }

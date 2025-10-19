@@ -58,6 +58,7 @@ namespace HealthyLifestyle.Application.Mappings
             ConfigureCalendarEventMapping();
             ConfigureAchievementMappings();
             ConfigurePurchaseMappings();
+            ConfigureShoppingCartMappings();
         }
         #endregion
 
@@ -888,6 +889,15 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.PeriodStart, opt => opt.MapFrom(src => src.PeriodStart))
                 .ForMember(dest => dest.PeriodEnd, opt => opt.MapFrom(src => src.PeriodEnd));
         }
+
+        private void ConfigureShoppingCartMappings()
+        {
+            CreateMap<ShoppingCart, ShoppingCartDto>();
+            CreateMap<ShoppingCartItem, ShoppingCartItemDto>();
+            CreateMap<ShoppingCartDto, ShoppingCart>();
+            CreateMap<ShoppingCartItemDto, ShoppingCartItem>();
+        }
+
         #endregion
     }
 }

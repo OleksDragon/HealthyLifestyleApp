@@ -736,3 +736,7 @@
 .link-to-meet {
     color: #0661CC;
 }
+
+.small-calendar-header .year-month-select .select-options-container {
+    background: white !important;
+}

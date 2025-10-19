@@ -200,6 +200,7 @@ builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IWebhookHandler, SubscriptionWebhookHandler>();
 builder.Services.AddScoped<WebhookProcessingService>();
+builder.Services.AddScoped<IShopCartService, ShopCartService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -226,6 +227,7 @@ builder.Services.AddScoped<ICalendarRepository, CalendarRepository>();
 builder.Services.Configure<MinioSettings>(builder.Configuration.GetSection("MinIO"));
 builder.Services.AddScoped<IAchievementRepository, AchievementRepository>();
 builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+builder.Services.AddScoped<IShopCartRepository, ShopCartRepository>();
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>

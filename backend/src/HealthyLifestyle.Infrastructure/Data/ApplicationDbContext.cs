@@ -27,6 +27,8 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<MealEntry> MealEntries { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<FamilySubscriptionMember> FamilySubscriptionMembers { get; set; }
@@ -117,6 +119,8 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureCalendarEvents(modelBuilder);
             ConfigureAchievement(modelBuilder);
             ConfigurePurchase(modelBuilder);
+            ConfigureShoppingCarts(modelBuilder);
+            ConfigureShoppingCartItems(modelBuilder);
         }
         #endregion
 
@@ -711,6 +715,43 @@ namespace HealthyLifestyle.Infrastructure.Data
                     .OnDelete(DeleteBehavior.SetNull);
                 entity.HasMany(ce => ce.MeetingParticipants)
                     .WithMany();
+            });
+        }
+
+        /// <summary>
+        /// Налаштовує спільну конфігурацію для ShoppingCart.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureShoppingCarts(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ShoppingCart>(entity =>
+            {
+                entity.HasOne(sc => sc.User)
+                    .WithMany()
+                    .HasForeignKey(sc => sc.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasIndex(sc => sc.UserId)
+                    .IsUnique();
+            });
+        }
+
+        /// <summary>
+        /// Налаштовує спільну конфігурацію для ShoppingCartItem.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureShoppingCartItems(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ShoppingCartItem>(entity =>
+            {
+                entity.HasOne(oi => oi.ShoppingCart)
+                   .WithMany(o => o.CartItems)
+                   .HasForeignKey(oi => oi.ShoppingCartId)
+                   .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(oi => oi.Product)
+                    .WithMany()
+                    .HasForeignKey(oi => oi.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
 

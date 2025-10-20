@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HealthyLifestyle.Application.Services.Payments
+namespace HealthyLifestyle.Application.Services.Payment
 {
     /// <summary>
     /// Сервіс для роботи з Stripe: створення сесій оплати, підписок, тощо.
@@ -15,18 +15,18 @@ namespace HealthyLifestyle.Application.Services.Payments
     public class PaymentService : IPaymentService
     {
         private readonly string _secretKey;
-        private readonly string _successUrl;
-        private readonly string _cancelUrl;
+        private readonly string _defaultSuccessUrl;
+        private readonly string _defaultCancelUrl;
 
         public PaymentService(IConfiguration config)
         {
             _secretKey = config["Stripe:SecretKey"]
                 ?? throw new ArgumentNullException("Stripe Secret Key not configured");
 
-            _successUrl = config["Stripe:SuccessUrl"]
+            _defaultSuccessUrl = config["Stripe:SuccessUrl"]
                 ?? throw new ArgumentNullException("Stripe Success URL not configured");
 
-            _cancelUrl = config["Stripe:CancelUrl"]
+            _defaultCancelUrl = config["Stripe:CancelUrl"]
                 ?? throw new ArgumentNullException("Stripe Cancel URL not configured");
         }
 
@@ -43,6 +43,10 @@ namespace HealthyLifestyle.Application.Services.Payments
                 ? "payment"
                 : request.PaymentType;
 
+            // Використовуємо кастомні URL або URL з конфігурації
+            var successUrl = request.SuccessUrl ?? _defaultSuccessUrl;
+            var cancelUrl = request.CancelUrl ?? _defaultCancelUrl;
+
             var options = new SessionCreateOptions
             {
                 LineItems = new List<SessionLineItemOptions>
@@ -54,8 +58,8 @@ namespace HealthyLifestyle.Application.Services.Payments
                     }
                 },
                 Mode = mode,
-                SuccessUrl = _successUrl,
-                CancelUrl = _cancelUrl,
+                SuccessUrl = successUrl, // Використовуємо локальну змінну successUrl
+                CancelUrl = cancelUrl,   // Використовуємо локальну змінну cancelUrl
                 Metadata = request.Metadata ?? new Dictionary<string, string>()
             };
 
@@ -79,6 +83,10 @@ namespace HealthyLifestyle.Application.Services.Payments
         /// <returns>
         /// URL для перенаправлення користувача на Stripe Checkout.
         /// </returns>
+        /// 
+        /// Важливо! Для того, щоб при натисканні на Back (на сторінці оплати) повернуло назад (де ти натискаєш оплатити) -
+        /// потрібно зробити по аналогії як в CreateSessionAsync передавати (CancelUrl = cancelUrl), додати поля в 
+        /// DynamicPaymentDto. На фронті глянь приклад на сторінці SubscriptionPage функція handleInstantPayment
         public async Task<string> CreateDynamicPaymentAsync(
             string name,
             decimal amount,

@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import "../../styles/subscriptionDetails.css";
 
 const SubscriptionDetailsPage = () => {
+    const navigate = useNavigate();
+    const { t } = useTranslation();
     const [currentSubscription, setCurrentSubscription] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showFamilyModal, setShowFamilyModal] = useState(false);
     const [familyEmails, setFamilyEmails] = useState(['', '', '']);
     const [familyLoading, setFamilyLoading] = useState(false);
     const [emailValidity, setEmailValidity] = useState([true, true, true]);
-    const navigate = useNavigate();
 
     const userId = localStorage.getItem("user-id");
     const token = localStorage.getItem("helth-token");
 
     // Регулярний вираз для перевірки email
-    const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+    const emailRegex = useMemo(() => /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
+    []);
 
     useEffect(() => {
         const fetchCurrentSubscription = async () => {
@@ -62,7 +65,7 @@ const SubscriptionDetailsPage = () => {
         } else {
             setLoading(false);
         }
-    }, [userId, token]);
+    }, [userId, token, emailRegex]);
 
     // Перевіряємо чи потрібно показувати кнопку продовження (залишилось <= 5 днів)
     const shouldShowRenewButton = () => {
@@ -137,7 +140,7 @@ const SubscriptionDetailsPage = () => {
         );
 
         if (invalidEmails.length > 0) {
-            alert('Будь ласка, введіть коректні email адреси');
+            alert(t("spp_please_input_correct_email"));
             return;
         }
 
@@ -156,17 +159,17 @@ const SubscriptionDetailsPage = () => {
             if (result.NotFoundEmails && result.NotFoundEmails.length > 0) {
                 const errorMessages = result.NotFoundEmails.map(email => {
                     if (email.includes('вже має активну підписку')) {
-                        return `${email.split(' ')[0]} - вже має активну підписку`;
+                        return `${email.split(' ')[0]} - ${t("sdp_already_have_active_sub")}`;
                     } else if (email.includes('вже є членом іншої сімейної підписки')) {
-                        return `${email.split(' ')[0]} - вже є членом іншої сімейної підписки`;
+                        return `${email.split(' ')[0]} - ${t("sdp_already_a_member_of_another_family_subscription")}`;
                     } else if (email.includes('це власник підписки')) {
-                        return `${email.split(' ')[0]} - це власник підписки`;
+                        return `${email.split(' ')[0]} - ${t("sdp_this_is_the_subscription_owner")}`;
                     } else {
-                        return `${email} - користувача не знайдено`;
+                        return `${email} - ${t("sdp_user_not_found")}`;
                     }
                 });
                 
-                alert(`Деяких користувачів не вдалося додати:\n${errorMessages.join('\n')}`);
+                alert(`${t("sdp_some_users_could_not_be_added")}:\n${errorMessages.join('\n')}`);
                 
                 // Оновлюємо стан валідності для проблемних email
                 const newValidity = [...emailValidity];
@@ -190,11 +193,11 @@ const SubscriptionDetailsPage = () => {
                 );
                 setCurrentSubscription(response.data);
                 setShowFamilyModal(false);
-                alert('Список сімейних користувачів успішно оновлено!');
+                alert(t("sdp_family_member_list_successfully_updated"));
             }
             
         } catch (error) {
-            alert('Помилка при оновленні сімейних користувачів: ' + (error.response?.data || error.message));
+            alert(t("sdp_error_updating_family_users") + (error.response?.data || error.message));
         } finally {
             setFamilyLoading(false);
         }
@@ -221,7 +224,7 @@ const SubscriptionDetailsPage = () => {
     if (loading) {
         return (
             <div className="sdp-subscription-details-page">
-                <div className="sdp-subscription-loading">Завантаження...</div>
+                <div className="sdp-subscription-loading">{t("sp_loading")}</div>
             </div>
         );
     }
@@ -230,9 +233,9 @@ const SubscriptionDetailsPage = () => {
         return (
             <div className="sdp-subscription-details-page-no-item">
                 <div className="sdp-subscription-no-subscription">
-                    <h2>Підписка не знайдена</h2>
+                    <h2>{t("sdp_subscription_not_found")}</h2>
                     <button onClick={() => navigate('/premium')} className="sdp-subscription-back-btn">
-                        Повернутись до тарифів
+                        {t("sdp_return_to_tariffs")}
                     </button>
                 </div>
             </div>
@@ -245,7 +248,7 @@ const SubscriptionDetailsPage = () => {
                 <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 23.0703L3 12.5703L11 2.07031" stroke="white" strokeWidth="4" />
                 </svg>
-                <span>Повернутись назад</span>
+                <span>{t("mp_return_back")}</span>
             </div>
 
             <div className="sdp-subscription-details-page">                
@@ -254,7 +257,7 @@ const SubscriptionDetailsPage = () => {
                     <div className="sdp-subscription-details-card">
                         <div className="sdp-subscription-card-blur"></div>
                         <div className="sdp-subscription-card-content">
-                            <h2>Ваша поточна підписка</h2>
+                            <h2>{t("sdp_your_current_subscription")}</h2>
                             
                             <div className="sdp-subscription-details-content">
                                 <div className='sdp-subscription-details-content-wrapper'>
@@ -264,30 +267,30 @@ const SubscriptionDetailsPage = () => {
                                         <div className="sdp-subscription-section-content">
                                             <div className="sdp-subscription-details-grid">
                                                 <div className="sdp-subscription-detail-item">
-                                                    <span className="sdp-subscription-detail-label">Тип підписки</span>
+                                                    <span className="sdp-subscription-detail-label">{t("sdp_subscription_type")}</span>
                                                     <span className="sdp-subscription-detail-value">{currentSubscription.Type || currentSubscription.type}</span>
                                                 </div>
                                                 <div className="sdp-subscription-detail-item">
-                                                    <span className="sdp-subscription-detail-label">Статус</span>
+                                                    <span className="sdp-subscription-detail-label">{t("sdp_subscription_status")}</span>
                                                     <span className={`sdp-subscription-detail-value sdp-subscription-status ${getSubscriptionStatus()}`}>
-                                                        {getSubscriptionStatus() === 'active' ? 'Активна' : 'Закінчилась'}
+                                                        {getSubscriptionStatus() === 'active' ? t("sp_active") : t("sp_expired")}
                                                     </span>
                                                 </div>
                                                 <div className="sdp-subscription-detail-item">
-                                                    <span className="sdp-subscription-detail-label">Дата початку</span>
+                                                    <span className="sdp-subscription-detail-label">{t("sdp_subscription_start_date")}</span>
                                                     <span className="sdp-subscription-detail-value">
                                                         {formatDate(currentSubscription.StartDate || currentSubscription.startDate)}
                                                     </span>
                                                 </div>
                                                 <div className="sdp-subscription-detail-item">
-                                                    <span className="sdp-subscription-detail-label">Дійсна до</span>
+                                                    <span className="sdp-subscription-detail-label">{t("sdp_subscription_end_date")}</span>
                                                     <span className="sdp-subscription-detail-value">
                                                         {formatDate(currentSubscription.EndDate || currentSubscription.endDate)}
                                                     </span>
                                                 </div>
                                                 <div className="sdp-subscription-detail-item">
-                                                    <span className="sdp-subscription-detail-label">Ціна</span>
-                                                    <span className="sdp-subscription-detail-value">{currentSubscription.Price || currentSubscription.price} грн</span>
+                                                    <span className="sdp-subscription-detail-label">{t("sdp_subscription_price")}</span>
+                                                    <span className="sdp-subscription-detail-value">{currentSubscription.Price || currentSubscription.price} $</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,11 +301,11 @@ const SubscriptionDetailsPage = () => {
                                         <div className="sdp-subscription-details-section">
                                             <div className="sdp-subscription-section-blur"></div>
                                             <div className="sdp-subscription-section-content">
-                                                <h3>Сімейний доступ</h3>
+                                                <h3>{t("sdp_subscription_section_content")}</h3>
                                                 <div className="sdp-subscription-details-grid">
                                                     <div className="sdp-subscription-detail-item">
-                                                        <span className="sdp-subscription-detail-label">Тип доступу</span>
-                                                        <span className="sdp-subscription-detail-value">Член сімейної підписки</span>
+                                                        <span className="sdp-subscription-detail-label">{t("sdp_subscription_detail_label")}</span>
+                                                        <span className="sdp-subscription-detail-value">{t("sdp_subscription_detail_value")}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -316,14 +319,14 @@ const SubscriptionDetailsPage = () => {
                                         <div className="sdp-subscription-details-section">
                                             <div className="sdp-subscription-section-blur"></div>
                                             <div className="sdp-subscription-section-content">
-                                                <h3>Члени сім'ї</h3>
+                                                <h3>{t("sdp_subscription_section_content_title")}</h3>
                                                 <div className="sdp-subscription-family-members-list">
                                                     {currentSubscription.FamilyMembers.map((member, index) => (
                                                         <div key={index} className="sdp-subscription-family-member-item">
                                                             <div className="sdp-family-member-blur"></div>
                                                             <div className="sdp-family-member-content">
                                                                 <span className="sdp-subscription-member-email">{member.Email}</span>
-                                                                <span className="sdp-subscription-member-added">Додано {formatDate(member.AddedAt)}</span>
+                                                                <span className="sdp-subscription-member-added">{t("sdp_subscription_member_added")} {formatDate(member.AddedAt)}</span>
                                                             </div>
                                                         </div>
                                                     ))}
@@ -343,7 +346,7 @@ const SubscriptionDetailsPage = () => {
                                             className="sdp-subscription-renew-btn"
                                             onClick={handleRenewSubscription}
                                         >
-                                            Продовжити підписку
+                                            {t("sdp_subscription_renew_btn")}
                                         </button>
                                     )}
                                     
@@ -353,7 +356,7 @@ const SubscriptionDetailsPage = () => {
                                             className="sdp-subscription-manage-family-btn"
                                             onClick={handleManageFamily}
                                         >
-                                            Керувати членами сім'ї
+                                            {t("sdp_subscription_manage_family_btn")}
                                         </button>
                                     )}
                                 </div>
@@ -372,7 +375,7 @@ const SubscriptionDetailsPage = () => {
                         <div className="sdp-family-modal-content-wrapper">
                             <div className="sdp-family-modal-content">
                                 <p className="sdp-family-modal-instruction">
-                                    Додайте або видаліть email адреси членів сім'ї
+                                    {t("sdp_family_modal_instruction")}
                                 </p>
                                 
                                 <div className="sdp-family-email-inputs">
@@ -380,7 +383,7 @@ const SubscriptionDetailsPage = () => {
                                         <div key={index} className="sdp-family-email-input-group">
                                             <input
                                                 type="email"
-                                                placeholder={`Електронна пошта члена сім'ї ${index + 1}`}
+                                                placeholder={`${t("sdp_family_member_email")} ${index + 1}`}
                                                 value={email}
                                                 onChange={(e) => handleFamilyEmailChange(index, e.target.value)}
                                                 className={`sdp-family-email-input ${email.trim() !== '' ? 'sdp-family-email-input-active' : ''} ${!emailValidity[index] && email.trim() !== '' ? 'sdp-family-email-input-invalid' : ''}`}
@@ -401,14 +404,14 @@ const SubscriptionDetailsPage = () => {
                                     onClick={handleCloseFamilyModal}
                                     disabled={familyLoading}
                                 >
-                                    Скасувати
+                                    {t("mp_btn_cancel")}
                                 </button>
                                 <button
                                     className="sdp-family-save-btn"
                                     onClick={handleSaveFamilyMembers}
                                     disabled={familyLoading || familyEmails.some((email, index) => email.trim() !== '' && !emailValidity[index])}
                                 >
-                                    {familyLoading ? 'Збереження...' : 'Зберегти'}
+                                    {familyLoading ? t("sdp_sub_saving") : t("mp_btn_save")}
                                 </button>
                             </div>
                         </div>

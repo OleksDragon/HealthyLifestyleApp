@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font-family: 'Roboto', sans-serif;
+    --white: #FFF;
+    --blue: #0661CC;
+    --title: #1C6ED0;
+    --bl: #116FCF;
+    --lim: #D6FF00;
+    --img: #AADAFF;
+    --b-img: #D9D9D9;
+    --black: #343434;
+}
+
+.ps-payment-success-page {
+    max-height: 76vh;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 20px;
+    font-family: var(--font-family);
+}
+
+.ps-payment-success-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 5rem 2rem;
+    border-radius: 35px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.ps-payment-success-header {
+    position: relative;
+}
+
+.ps-payment-success-mascot {
+    position: absolute;
+    top: -45%;
+    left: 57%;
+}
+
+.ps-payment-mascot-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.ps-payment-success-main-title {
+    font-size: 135px;
+    font-weight: 900;
+}
+
+.ps-payment-success-title {
+    margin-top: -20px;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--lim);
+}
+
+.ps-payment-success-description {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--lim);
+}
+
+.ps-payment-success-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.ps-payment-success-btn {
+    padding: 0 24px;
+    height: 47px;
+    border: none;
+    border-radius: 25px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    min-width: 600px;
+    width: 100%;
+    background: var(--lim);
+    color: var(--blue);
+}
+
+.ps-payment-success-btn:hover {
+    background: var(--lim);
+    transform: translateY(-2px);
+}

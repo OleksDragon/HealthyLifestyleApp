@@ -1,4 +1,4 @@
-﻿using HealthyLifestyle.Application.Services.Payments;
+﻿using HealthyLifestyle.Application.Services.Payment;
 using Microsoft.AspNetCore.Mvc;
 using HealthyLifestyle.Application.Services.Payment.Model;
 using HealthyLifestyle.Application.DTOs.Payment;
@@ -15,11 +15,13 @@ namespace HealthyLifestyle.Api.Controllers
     {
         private readonly IPaymentService _paymentService;
         private readonly ILogger<PaymentsController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger)
+        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger, IConfiguration configuration)
         {
             _paymentService = paymentService;
             _logger = logger;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -40,6 +42,14 @@ namespace HealthyLifestyle.Api.Controllers
 
             try
             {
+                // Якщо передано cancelUrl - використовуємо його для redirect при скасуванні
+                if (!string.IsNullOrEmpty(request.CancelUrl))
+                {
+                    // Додаємо returnUrl в metadata для додаткової безпеки
+                    request.Metadata ??= new Dictionary<string, string>();
+                    request.Metadata["returnUrl"] = request.CancelUrl;
+                }
+
                 var sessionUrl = await _paymentService.CreateSessionAsync(request);
                 return Ok(new { url = sessionUrl });
             }

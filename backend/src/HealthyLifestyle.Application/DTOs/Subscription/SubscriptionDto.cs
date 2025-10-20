@@ -43,6 +43,8 @@ namespace HealthyLifestyle.Application.DTOs.Subscription
 
         // Нове поле для зворотного повідомлення користувачу
         public List<string>? NotFoundEmails { get; set; }
+
+        public string? StripeSubscriptionId { get; set; }
     }
 
     /// <summary>
@@ -62,6 +64,8 @@ namespace HealthyLifestyle.Application.DTOs.Subscription
         [Required]
         [Range(0, double.MaxValue, ErrorMessage = "Ціна на підписку не може бути від’ємною!")]
         public decimal Price { get; set; }
+
+        public string? StripeSubscriptionId { get; set; }
     }
 
     /// <summary>
@@ -84,6 +88,8 @@ namespace HealthyLifestyle.Application.DTOs.Subscription
 
         [Required]
         public SubscriptionStatus Status { get; set; }
+
+        public string? StripeSubscriptionId { get; set; }
     }
 
     /// <summary>

@@ -30,6 +30,7 @@ services:
       - MinIO__BucketName=images
       - Stripe__PublishableKey=${STRIPE_PUBLISHABLE_KEY}
       - Stripe__SecretKey=${STRIPE_SECRET_KEY}
+      - WebhookSecret=whsec_9mm2ZUMIHpuspkbji0xTuuzqvYKVX5gN # змінити whsec_... пілся заміни url webhook 
     networks:
       - healthy_net
     command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"

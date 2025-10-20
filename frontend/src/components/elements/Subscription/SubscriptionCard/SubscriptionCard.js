@@ -1,7 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './SubscriptionCard.css';
 
-const SubscriptionCard = ({ plan, onChoosePlan, isActive, hasActiveSubscription, onViewDetails }) => {
+const SubscriptionCard = ({ 
+    plan, 
+    onChoosePlan, 
+    isActive, 
+    hasActiveSubscription, 
+    onViewDetails,
+    isLoading = false
+}) => {
+    const { t } = useTranslation();
+
     const handleButtonClick = () => {
         if (isActive) {
             onViewDetails();
@@ -11,17 +21,34 @@ const SubscriptionCard = ({ plan, onChoosePlan, isActive, hasActiveSubscription,
     };
 
     const getButtonText = () => {
+        if (isLoading) {
+            return t("sc_processing");
+        }
         if (isActive) {
-            return 'Активна';
+            return t("sp_active");
         }
         if (hasActiveSubscription) {
-            return 'Обрати';
+            return t("sc_select");
         }
-        return 'Обрати';
+        return t("sc_select");
     };
 
     const isButtonDisabled = () => {
-        return hasActiveSubscription && !isActive;
+        return (hasActiveSubscription && !isActive) || isLoading;
+    };
+
+    const getButtonClass = () => {
+        let className = "sp-sc-subscription-btn";
+        
+        if (isLoading) {
+            className += " sp-sc-subscription-btn-loading";
+        } else if (isActive) {
+            className += " sp-sc-subscription-btn-active";
+        } else if (hasActiveSubscription && !isActive) {
+            className += " sp-sc-subscription-btn-disabled";
+        }
+        
+        return className;
     };
 
     return (
@@ -45,7 +72,7 @@ const SubscriptionCard = ({ plan, onChoosePlan, isActive, hasActiveSubscription,
 
             <div className="sp-sc-subscription-button-bg" />
             <button 
-                className="sp-sc-subscription-btn"
+                className={getButtonClass()}
                 onClick={handleButtonClick}
                 disabled={isButtonDisabled()}
             >

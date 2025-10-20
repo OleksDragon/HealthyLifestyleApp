@@ -64,6 +64,23 @@ namespace HealthyLifestyle.Infrastructure.Repositories.SubscriptionR
                 .Where(s => s.UserId == userId && s.Status == SubscriptionStatus.Active)
                 .ToListAsync();
         }
+
+        public async Task<Subscription?> GetByStripeSubscriptionIdAsync(string stripeSubscriptionId)
+        {
+            return await _dbSet
+                .Include(s => s.FamilyMembers)
+                .ThenInclude(fm => fm.Member)
+                .FirstOrDefaultAsync(s => s.StripeSubscriptionId == stripeSubscriptionId);
+        }
+
+        public async Task<Subscription?> GetActiveSubscriptionByUserIdAsync(Guid userId)
+        {
+            return await _dbSet
+                .Include(s => s.FamilyMembers)
+                .ThenInclude(fm => fm.Member)
+                .FirstOrDefaultAsync(s => s.UserId == userId && s.Status == SubscriptionStatus.Active);
+        }
+
         // Тут можна додати специфічні методи для роботи з Subscription, якщо потрібно.
     }
 }

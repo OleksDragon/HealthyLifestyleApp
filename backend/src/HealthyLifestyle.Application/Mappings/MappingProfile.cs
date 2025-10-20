@@ -738,7 +738,8 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.StripeSubscriptionId, opt => opt.MapFrom(src => src.StripeSubscriptionId));
 
             CreateMap<SubscriptionUpdateDto, Subscription>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
@@ -751,7 +752,8 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
-                .ForMember(dest => dest.FamilyMembers, opt => opt.Ignore());
+                .ForMember(dest => dest.FamilyMembers, opt => opt.Ignore())
+                .ForMember(dest => dest.StripeSubscriptionId, opt => opt.MapFrom(src => src.StripeSubscriptionId));
 
             // Мапінг для учасників Family Plan з захистом від null
             CreateMap<FamilySubscriptionMember, FamilySubscriptionMemberDto>()

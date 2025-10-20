@@ -1,184 +1,190 @@
-/* styles/subscriptionPayment.css */
-.subscription-payment-page {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font-family: 'Roboto', sans-serif;
+    --white: #FFF;
+    --blue: #0661CC;
+    --title: #1C6ED0;
+    --bl: #116FCF;
+    --lim: #D6FF00;
+    --img: #AADAFF;
+    --b-img: #D9D9D9;
+    --black: #343434;
+}
+
+.spp-subscription-payment-main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
-}
-
-.payment-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.back-button {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 8px;
-    margin-right: 15px;
-}
-
-.payment-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.subscription-info-section {
-    background: #f8f9fa;
-    border-radius: 12px;
     padding: 20px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.subscription-details h3 {
-    margin: 0 0 5px 0;
-    font-size: 18px;
-}
-
-.subscription-duration {
-    margin: 0;
-    color: #666;
-    font-size: 14px;
-}
-
-.subscription-price {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-}
-
-.payment-methods-section {
-    margin-bottom: 30px;
-}
-
-.section-title {
-    font-size: 18px;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.payment-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.payment-method {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.payment-method.selected {
-    border-color: #007bff;
-    background: #f0f8ff;
-}
-
-.payment-method input {
-    margin-right: 12px;
-}
-
-.method-name {
-    flex: 1;
-    font-weight: 500;
-}
-
-.method-icon {
-    font-size: 20px;
-}
-
-.payment-form-section {
-    margin-bottom: 30px;
-}
-
-.form-row {
-    margin-bottom: 20px;
-}
-
-.form-row.double {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: #333;
-}
-
-.form-input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-}
-
-.form-input:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
-.payment-summary-section {
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-
-.total-amount {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 18px;
-}
-
-.total-label {
-    font-weight: 500;
-}
-
-.total-price {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.pay-now-button {
     width: 100%;
-    padding: 15px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
+}
+
+.spp-back-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    color: var(--white);
+    font-family: var(--font-family);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+    align-self: flex-start;
+    margin-left: 40px;
+}
+
+.spp-back-button:hover {
+    opacity: 0.8;
+}
+
+.spp-back-button span {
     font-size: 16px;
+}
+
+.spp-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+
+.spp-family-modal {
+    border-radius: 35px;
+    max-width: 500px;
+    width: 100%;
+    color: var(--black);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.spp-family-modal-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.spp-family-modal-content-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+
+.spp-family-modal-content h2 {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 15px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 27px;
+}
+
+.spp-family-modal-instruction {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 25px;
+    line-height: 1.5;
+    font-family: var(--font-family);
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.spp-family-email-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.spp-family-email-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.spp-family-email-input {
+    flex: 1;
+    height: 47px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 17px;
+    transition: all 0.2s ease;
+    font-family: var(--font-family);
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--white);
+    border: 1px solid transparent;
+}
+
+.spp-family-email-input::placeholder {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--bl);
+}
+
+.spp-family-email-input.spp-family-email-input-active {
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--white);
+}
+
+.spp-family-email-input:focus {
+    outline: none;
+}
+
+.spp-family-email-input:disabled {
+    background-color: var(--b-img);
+    cursor: not-allowed;
+}
+
+.spp-family-email-input.spp-family-email-input-invalid {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid red !important;
+    color: red !important;
+}
+
+.spp-family-modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.spp-family-save-btn {
+    padding: 0 24px;
+    height: 47px;
+    border: none;
+    border-radius: 25px;
+    font-family: var(--font-family);
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    min-width: 120px;
+    background: var(--lim);
+    color: var(--blue);
 }
 
-.pay-now-button:hover {
-    background: #0056b3;
+.spp-family-save-btn:hover {
+    background: var(--lim);
+    transform: translateY(-2px);
 }
 
-.security-notice {
-    text-align: center;
-    color: #666;
-    font-size: 14px;
-    margin-top: 15px;
+.spp-family-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
 }

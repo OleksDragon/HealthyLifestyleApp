@@ -172,3 +172,41 @@
     white-space: nowrap;
     width: 58.5%;
 }
+
+.sp-sc-subscription-btn-loading {
+    cursor: not-allowed !important;
+    opacity: 0.8 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.sp-sc-subscription-btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Адаптуємо існуючі стани кнопки */
+.sp-sc-subscription-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}

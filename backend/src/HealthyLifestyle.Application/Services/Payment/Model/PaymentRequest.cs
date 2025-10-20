@@ -30,5 +30,9 @@ namespace HealthyLifestyle.Application.Services.Payment.Model
         /// (наприклад, productId, specialistId).
         /// </summary>
         public Dictionary<string, string>? Metadata { get; set; }
+
+        // Нові властивості для кастомних URL
+        public string? SuccessUrl { get; set; }
+        public string? CancelUrl { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HealthyLifestyle.Application.Services.Payment.Model;
 
-namespace HealthyLifestyle.Application.Services.Payments
+namespace HealthyLifestyle.Application.Services.Payment
 {
     /// <summary>
     /// Інтерфейс для роботи з оплатами Stripe.

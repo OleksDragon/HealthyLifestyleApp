@@ -2142,6 +2142,16 @@ i18n
           ps_payment_success_title: "УСПІШНА ОПЛАТА",
           ps_payment_success_description: "квитанція про оплату прийшла вам на пошту",
           ps_payment_success_btn: "На головну",
+
+          // Marketplace
+          sport_eating: "Спортивне харчування",
+          sport_cloth: "Спортивний одяг",
+          sport_gadgets: "Гаджети",
+          sport_other: "Інше",
+          marketplace_filter: "Фільтр",
+          brand: "Бренд",
+          from: "Від",
+          to: "до"
         },
       },
       de: {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HealthyLifestyle.Application.DTOs.Shop;
+using HealthyLifestyle.Application.Interfaces.ObjectStorage;
 using HealthyLifestyle.Application.Interfaces.Shop;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
@@ -19,13 +20,15 @@ namespace HealthyLifestyle.Application.Services.Shop
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IObjectStorageService _objectStorageService;
 
-        public ShopCartService(IShopCartRepository shopCartRepository, IMapper mapper, IUnitOfWork unitOfWork, IProductRepository productRepository)
+        public ShopCartService(IShopCartRepository shopCartRepository, IMapper mapper, IUnitOfWork unitOfWork, IProductRepository productRepository, IObjectStorageService objectStorageService)
         {
             _shopCartRepository = shopCartRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _productRepository = productRepository;
+            _objectStorageService = objectStorageService;
         }
 
         public async Task AddProductAsync(Guid userId, ShoppingCartItemDto productDto)
@@ -115,7 +118,28 @@ namespace HealthyLifestyle.Application.Services.Shop
         {
             var shoppingCart = await _shopCartRepository.GetShoppingCartByUserIdAsync(userId);
 
-            return _mapper.Map<ShoppingCartDto>(shoppingCart);
+            if (shoppingCart == null)
+            {
+                return null;
+            }
+
+            var cart = new ShoppingCartDto();
+            cart.Id = shoppingCart.Id;
+            cart.UserId = userId;
+            cart.CartItems = shoppingCart.CartItems.Select(ci => new ShoppingCartItemProductDto { Product = ci.Product, Quantity = ci.Quantity } ).ToList();
+
+            var items = new List<ShoppingCartItemProductDto>();
+
+            foreach ( var item in cart.CartItems)
+            {
+                var fixUrl = item;
+                fixUrl.Product!.ImageUrl = await _objectStorageService.GetPresignedUrlAsync(item.Product.ImageUrl, 3600);
+                items.Add(fixUrl);
+            }
+
+            cart.CartItems = items;
+
+            return cart;
         }
     }
 }

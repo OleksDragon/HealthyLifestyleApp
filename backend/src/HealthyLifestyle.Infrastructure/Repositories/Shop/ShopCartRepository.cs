@@ -20,6 +20,7 @@ namespace HealthyLifestyle.Infrastructure.Repositories.Shop
         {
             return await _dbSet
                 .Include(sc => sc.CartItems)
+                    .ThenInclude(ci => ci.Product)
                 .Where(sc => sc.UserId == userId)
                 .FirstOrDefaultAsync();
         }

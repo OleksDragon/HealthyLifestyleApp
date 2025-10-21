@@ -13,6 +13,8 @@ function ProductPage() {
     const prod = state?.prod;
     const [products, setProducts] = useState([]);
     const [favorites, setFavorites] = useState([]);
+    const [quantity, setQuantity] = useState(1);
+    const [cart, setCart] = useState(null);
 
     const fetchProducts = async () => {
         try {
@@ -20,7 +22,7 @@ function ProductPage() {
                 `${process.env.REACT_APP_API_URL}/api/Products`,
             );
 
-            setProducts(response.data.filter(p => p.Category === prod.Category));
+            setProducts(response.data.filter(p => p.Category === prod.Category && p.Id != prod.Id));
         } catch (error) {
             console.log(error);
         }
@@ -38,6 +40,24 @@ function ProductPage() {
             );
 
             setFavorites(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const fetchCart = async () => {
+        try {
+            const response = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/ShoppingCart`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                    }
+                }
+            );
+
+            setCart(response.data);
+            console.log(response.data)
         } catch (error) {
             console.log(error);
         }
@@ -75,9 +95,31 @@ function ProductPage() {
         }
     }
 
+    const handleAddToCart = async (id) => {
+        try {
+            await axios.put(
+                `${process.env.REACT_APP_API_URL}/api/ShoppingCart/add`,
+                {
+                    ProductId: id,
+                    Quantity: quantity,
+                },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("helth-token")}`
+                    }
+                }
+            );
+
+            navigate("/marketplace/shopping_cart");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
-        fetchProducts()
-        fetchFavorites()
+        fetchProducts();
+        fetchFavorites();
+        fetchCart();
     }, [])
 
     useEffect(() => {
@@ -106,7 +148,31 @@ function ProductPage() {
                 <div className="product-info">
                     <h3>{prod.Name}</h3>
                     <h4>{prod.Price} $</h4>
-                    <button>В кошик</button>
+                    {cart && cart.CartItems && cart.CartItems.some(ci => ci.Product.Id === prod.Id) ? 
+                        <div style={{color: "var(--lim)"}} className="quantity-selector-container">{cart.CartItems.filter(ci => ci.Product.Id === prod.Id)[0].Quantity} шт.</div>
+                    :
+                        <div className="quantity-selector-container">
+                            <div 
+                                className="option-selector-marketplace"
+                                onClick={() => setQuantity(Math.max(quantity - 1, 1))}
+                            >-</div>
+                            <input
+                                className="quantity-selector-marketplace"
+                                type="number"
+                                value={quantity}
+                                disabled
+                            />
+                            <div 
+                                className="option-selector-marketplace" 
+                                onClick={() => setQuantity(Math.min(quantity + 1, 99))}
+                            >+</div>
+                        </div>
+                    }
+                    <button 
+                        onClick={() => handleAddToCart(prod.Id)}
+                    >
+                        {cart && cart.CartItems && cart.CartItems.some(ci => ci.Product.Id === prod.Id) ? "Вже у кошику" : "В кошик"}
+                    </button>
                     <div className="product-desc">
                         <h3>Опис</h3>
                         <div>{prod.Description}</div>

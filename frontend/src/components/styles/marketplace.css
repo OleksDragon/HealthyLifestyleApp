@@ -306,10 +306,16 @@
 }
 
 .shopping-cart-container {
+    position: relative;
+    margin: 20px 30px;
+    font-family: var(--font-family);
+    padding: 10px;
+}
+
+.cart-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    margin: 20px 40px;
-    font-family: var(--font-family);
+    column-gap: 50px;
 }
 
 .shopping-cart-title {
@@ -325,18 +331,117 @@
     -webkit-backdrop-filter: blur(10px);
     height: 50vh;
     border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .products-in-cart {
     display: grid;
-    grid-template-columns: 50% 25% 25%;
+    grid-template-columns: 40% 20% 20% 20%;
+    background: rgba(255, 255, 255, 0.34);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.products-in-cart div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding: 10px;
+}
+
+.products-in-cart img {
+    max-height: 100%;
+    width: auto;
 }
 
 .cart-header {
     display: grid;
-    grid-template-columns: 50% 25% 25%;
+    grid-template-columns: 40% 20% 20% 20%;
+    margin-bottom: 20px;
 }
 
 .cart-header h3 {
     font-weight: 300;
+    text-align: center;
+}
+
+.shopping-cart-total > div:first-child {
+    font-size: 22px;
+    text-align: center;
+}
+
+.marketplace-total-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.marketplace-total-container > div {
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.left-info-market {
+    text-align: start;
+    margin-left: 10px;
+}
+
+.right-info-market {
+    text-align: end;
+    margin-right: 10px;
+}
+
+.marketplace-cart-list {
+    position: relative;
+    grid-row: 2/4;
+    height: 60vh;
+    overflow: auto;
+    padding-right: 3%;
+}
+
+.marketplace-btn-pay {
+    border-radius: 30px;
+    height: 26px;
+    background-color: var(--lim);
+    font-weight: 500;
+}
+
+.btns-marketplace {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.quantity-selector-marketplace {
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    width: 50px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.quantity-selector-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.option-selector-marketplace {
+    font-size: 40px;
+    color: var(--lim);
+    margin: 0 10px;
+    cursor: pointer;
+    user-select: none;
 }

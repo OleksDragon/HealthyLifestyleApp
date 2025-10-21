@@ -41,7 +41,10 @@ namespace HealthyLifestyle.Api.Controllers.shop
 
                 if (cart == null)
                 {
-                    return NotFound();
+                    var tmpCart = new ShoppingCartDto();
+                    tmpCart.Id = Guid.Empty;
+                    tmpCart.UserId = userId.Value;
+                    return Ok(tmpCart);
                 }
 
                 return Ok(cart);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthyLifestyle.Core.Enums;
+using System;
 
 namespace HealthyLifestyle.Core.Entities
 {
@@ -201,11 +202,11 @@ namespace HealthyLifestyle.Core.Entities
     /// <summary>
     /// Перелік типів прийомів їжі.
     /// </summary>
-    public enum MealType
-    {
-        Breakfast,
-        Lunch,
-        Dinner,
-        Snack
-    }
+    //public enum MealType
+    //{
+    //    Breakfast,
+    //    Lunch,
+    //    Dinner,
+    //    Snack
+    //}
 }

@@ -6,8 +6,10 @@ import heartFullIcon from "../../icons/HeartFull.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import RangeSlider from "../../elements/Marketplace/Slider";
+import { useTranslation } from "react-i18next";
 
 function MarketplacePage() {
+    const { t } = useTranslation();
     const [category, setCategory] = useState(null);
     const [priceFrom, setPriceFrom] = useState(0); // USD
     const [priceTo, setPriceTo] = useState(null); // USD
@@ -133,42 +135,42 @@ function MarketplacePage() {
                     className={`${category === "SportsNutrition" ? "active-category" : ""}`}
                     onClick={() => setCategory("SportsNutrition")}
                 >
-                    Спортивне харчування
+                    {t("sport_eating")}
                 </div>
                 <div
                     className={`${category === "Apparel" ? "active-category" : ""}`}
                     onClick={() => setCategory("Apparel")}
                 >
-                    Спортивний одяг
+                    {t("sport_cloth")}
                 </div>
                 <div
                     className={`${category === "Gadgets" ? "active-category" : ""}`}
                     onClick={() => setCategory("Gadgets")}
                 >
-                    Гаджети
+                    {t("sport_gadgets")}
                 </div>
                 <div
                     className={`${category === "Other" ? "active-category" : ""}`}
                     onClick={() => setCategory("Other")}
                 >
-                    Інше
+                    {t("sport_other")}
                 </div>
                 <div onClick={() => navigate("/marketplace/shopping_cart")}>
                     <img src={basketIcon} />
                 </div>
             </div>
             <div className="products-filters">
-                <h3>Фільтр</h3>
+                <h3>{t("marketplace_filter")}</h3>
                 <div>
                     <div 
                         className={`filter-product-marketplace ${openP ? "" : "scale-filter"}`}
                         onClick={() => setOpenP(true)}
                     >
-                        { priceTo ? `Від ${priceFrom} до ${priceTo}` : "Ціна"}
+                        { priceTo ? `${t("from")} ${priceFrom} ${t("to")} ${priceTo}` : t("filter_price")}
                         {openP && (
                             <div ref={priceRef} className="price-selector">
                                 <RangeSlider min={0} max={100} valueFrom={priceFrom} valueTo={priceTo} 
-                                onChange={(f, t) => {setPriceFrom(f); setPriceTo(t); setOpenP(false);}} />
+                                onChange={(f, to) => {setPriceFrom(f); setPriceTo(to); setOpenP(false);}} />
                             </div>
                         )}
                     </div>
@@ -177,7 +179,7 @@ function MarketplacePage() {
                         onClick={() => setOpenB(true)}
                         style={{borderRadius: openB ? "30px 30px 0 0" : "30px"}}
                     >
-                        {brand ? brand : "Бренд"}
+                        {brand ? brand : t("brand")}
                         {openB && (
                             <div 
                                 ref={brandRef} 

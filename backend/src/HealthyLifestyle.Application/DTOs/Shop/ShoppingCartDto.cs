@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthyLifestyle.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,15 @@ namespace HealthyLifestyle.Application.DTOs.Shop
 
         public Guid UserId { get; set; }
 
-        public ICollection<ShoppingCartItemDto> CartItems { get; set; } = new List<ShoppingCartItemDto>();
+        public ICollection<ShoppingCartItemProductDto> CartItems { get; set; } = new List<ShoppingCartItemProductDto>();
+    }
+
+    public class ShoppingCartItemProductDto
+    {
+        public Product? Product { get; set; }
+
+        public int Quantity { get; set; }
+
     }
 
     public class ShoppingCartItemDto

@@ -57,8 +57,6 @@ import SubscriptionDetailsPage from './components/pages/Subscription/Subscriptio
 import SubscriptionPaymentPage from './components/pages/Subscription/SubscriptionPaymentPage';
 
 import PaymentSuccessPage from "./components/pages/PaymentSuccessPage";
-import Workout from "./components/pages/Workout";
-
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -148,7 +146,6 @@ function AppRoutes() {
 
       {/* Success and canceled payment */}
       <Route path="/success" element={<PrivateRoute><Menu><PaymentSuccessPage /></Menu></PrivateRoute>} />
-      <Route path="/workout" element={<PrivateRoute><Menu><Workout /></Menu></PrivateRoute>} />
 
       {/* Not found */}
       <Route path="*" element={<NotFoundPage />} />

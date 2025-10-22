@@ -1052,6 +1052,7 @@ i18n
           sdp_sub_saving: "Saving...",
           sdp_family_member_email: "Family member email",
           payment: "Payment",
+          details: "Details",
 
           // === Success Payment ===
           ps_payment_success_main_title: "YAY",
@@ -2134,6 +2135,7 @@ i18n
           sdp_sub_saving: "Збереження...",
           sdp_family_member_email: "Електронна пошта члена сім'ї",
           payment: "Оплата",
+          details: "Деталі",
 
           // === Success Payment ===
           ps_payment_success_main_title: "УРА",
@@ -3234,6 +3236,7 @@ i18n
           sdp_sub_saving: "Speichern...",
           sdp_family_member_email: "E-Mail des Familienmitglieds",
           payment: "Zahlung",
+          details: "Einzelheiten",
 
           // === Success Payment ===
           ps_payment_success_main_title: "JUCHHU",
@@ -4338,6 +4341,7 @@ i18n
           sdp_sub_saving: "Enregistrement...",
           sdp_family_member_email: "E-mail du membre de la famille",
           payment: "Paiement",
+          details: "Détails",
 
           // === Success Payment ===
           ps_payment_success_main_title: "SUPER",
@@ -5436,6 +5440,7 @@ i18n
           sdp_sub_saving: "Guardando...",
           sdp_family_member_email: "Correo electrónico del miembro de la familia",
           payment: "Pago",
+          details: "Detalles",
 
           // === Success Payment ===
           ps_payment_success_main_title: "¡GENIAL!",

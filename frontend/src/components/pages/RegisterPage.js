@@ -19,7 +19,7 @@ import successIcon from "../icons/success.png";
 import eyeOpen from "../icons/EyeOpen.png";
 import eyeClose from "../icons/EyeClose.png";
 
-function Form1({emailCorrect, email, setEmail, password, setPassword, passwordCorrect, show, setShow, setConfirmPassword, toggleForm, t}) {
+function Form1({emailCorrect, email, setEmail, password, setPassword, passwordCorrect, confirmPassword, setConfirmPassword, show, setShow, toggleForm, t}) {
   return (
     <div className='form-content'>
         <input
@@ -32,29 +32,51 @@ function Form1({emailCorrect, email, setEmail, password, setPassword, passwordCo
             required
         />
 
-            <div style={{ position: "relative", width: "100%" }}>
-                <input
-                    className='input'
-                    type={show ? "text" : "password"}
-                    placeholder={t("password")}
-                    style={{color: passwordCorrect ? 'white' : 'red', border: passwordCorrect ? '' : '2px solid red'}}
-                    value={password}
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                        setConfirmPassword(e.target.value);
-                    }}
-                    required
-                />
+        <div style={{ position: "relative", width: "100%" }}>
+            <input
+                className='input'
+                type={show ? "text" : "password"}
+                placeholder={t("password")}
+                style={{color: passwordCorrect ? 'white' : 'red', border: passwordCorrect ? '' : '2px solid red'}}
+                value={password}
+                onChange={(e) => {
+                    setPassword(e.target.value);
+                }}
+                required
+            />
 
-                <img 
-                    src={show ? eyeOpen : eyeClose} 
-                    alt={show ? "Hide" : "Show"} 
-                    onClick={() => setShow(!show)} 
-                    className='eye'
-                />
-                <br />
-            </div>
-        <button className='continue' onClick={toggleForm} disabled={!passwordCorrect | !emailCorrect | email.length === 0 | password.length === 0}>{t("continue")}</button>
+            <img 
+                src={show ? eyeOpen : eyeClose} 
+                alt={show ? "Hide" : "Show"} 
+                onClick={() => setShow(!show)} 
+                className='eye'
+            />
+            <br />
+        </div>
+
+        <div style={{ position: "relative", width: "100%" }}>
+            <input
+                className='input'
+                type={show ? "text" : "password"}
+                placeholder={t("password")}
+                style={{color: confirmPassword === password ? 'white' : 'red', border: confirmPassword === password ? '' : '2px solid red'}}
+                value={confirmPassword}
+                onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                }}
+                required
+            />
+
+            <img 
+                src={show ? eyeOpen : eyeClose} 
+                alt={show ? "Hide" : "Show"} 
+                onClick={() => setShow(!show)} 
+                className='eye'
+            />
+            <br />
+        </div>
+
+        <button className='continue' onClick={toggleForm} disabled={!passwordCorrect | !emailCorrect | email.length === 0 | password.length === 0 | confirmPassword !== password}>{t("continue")}</button>
     </div>
   );
 }
@@ -221,7 +243,7 @@ function RegisterPage() {
             <div className='bb'>
                     <img src={bb} alt='blue ball'/>
             </div>
-            <div className='glass' style={{height: activeForm !== 3 ? "480px" : "300px", transition: "height 0.8s ease"}}>
+            <div className='glass' style={{height: activeForm !== 3 ? "520px" : "300px", transition: "height 0.8s ease"}}>
                 {activeForm !== 3 ? (
                     <div>
                         <div style={{ textAlign: "left", marginTop: "20px" }}>
@@ -244,7 +266,7 @@ function RegisterPage() {
                     <div className={`forms-container ${
                         activeForm === 1 ? '' : activeForm === 2 ? 'slide-left' : 'slide-left-2'
                     }`}>
-                        <Form1 emailCorrect={emailCorrect} password={password} setPassword={setPassword} email={email} setEmail={setEmail} passwordCorrect={passwordCorrect} show={show} setShow={setShow} setConfirmPassword={setConfirmPassword} toggleForm={toggleForm} t={t}/>
+                        <Form1 emailCorrect={emailCorrect} password={password} setPassword={setPassword} email={email} setEmail={setEmail} passwordCorrect={passwordCorrect} confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword} show={show} setShow={setShow} toggleForm={toggleForm} t={t}/>
                         <EmailConfirmation email={email} toggleForm={toggleForm} ref={emailConf} t={t}/>
                         <Form3 t={t}/>
                     </div>

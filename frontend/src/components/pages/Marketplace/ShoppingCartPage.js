@@ -10,6 +10,7 @@ function ShoppingCartPage() {
     const [cart, setCart] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [removePos, setRemovePos] = useState("");
+    const [productsSum, setProductsSum] = useState(0);
     const navigate = useNavigate();
 
     const fetchCart = async () => {
@@ -23,6 +24,7 @@ function ShoppingCartPage() {
                 }
             );
 
+            setProductsSum(response.data.CartItems.reduce((sum, p) => sum + p.Quantity * p.Product.Price, 0))
             setCart(response.data);
         } catch (error) {
             console.log(error);
@@ -55,13 +57,13 @@ function ShoppingCartPage() {
 
     return (
         <div className="shopping-cart-container">
-            <div className="shopping-cart-title">Кошик</div>
+            <div className="shopping-cart-title">{t("basket_marketplace")}</div>
             {showModal && (
                 <>
                     <div className="backdrop" onClick={() => setShowModal(false)} />
 
                     <div className="modal">
-                        <h3>Ви впевнені, що хочете видалити товар з корзини</h3>
+                        <h3>{t("sure_to_delete_product_from_cart")}</h3>
                         <div className="buttons">
                         <button onClick={() => setShowModal(false)}>{t("no")}</button>
                         <button
@@ -76,11 +78,11 @@ function ShoppingCartPage() {
                     </div>
                 </>
             )}
-            {(cart && cart.CartItems) && <div className="cart-container">
+            {(cart && cart.CartItems && cart.CartItems.length > 0) ? <div className="cart-container">
                 <div className="cart-header">
-                    <h3>Продукт</h3>
-                    <h3>Кількість</h3>
-                    <h3>Ціна</h3>
+                    <h3>{t("product")}</h3>
+                    <h3>{t("amount_marketplace")}</h3>
+                    <h3>{t("filter_price")}</h3>
                 </div>
                 <div />
                 <div className="scroll-data marketplace-cart-list">
@@ -103,17 +105,32 @@ function ShoppingCartPage() {
                     ))}
                 </div>
                 <div className="shopping-cart-total">
-                    <div>Моє замовлення</div>
+                    <div>{t("my_order")}</div>
                     <div className="marketplace-total-container">
-                        <div className="left-info-market">Сума</div>
-                        <div className="right-info-market">{cart.CartItems.reduce((sum, p) => sum + p.Quantity * p.Product.Price, 0)} $</div>
+                        <div className="left-info-market">{t("order_sum")}</div>
+                        <div className="right-info-market">{productsSum} $</div>
+                        <div className="marketplace-total-total">
+                            <div className="left-info-market">
+                                {t("marketplace_total")}:
+                            </div>
+                            <div className="right-info-market">
+                                {productsSum} $
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="btns-marketplace">
-                    <button className="marketplace-btn-pay">Деталі</button>
-                    <button className="marketplace-btn-pay" onClick={() => navigate("/marketplace/payment")}>До сплати</button>
+                    <button className="marketplace-btn-pay">{t("order_details")}</button>
+                    <button className="marketplace-btn-pay" onClick={() => navigate("/marketplace/payment")}>{t("to_payment")}</button>
                 </div>
-            </div>}
+            </div> 
+            : 
+            <div className="no-products-in-cart-message">
+                У корзину не додано жодного товару
+                <br />
+                <button onClick={() => navigate("/marketplace")}>До магазину</button>
+            </div>
+            }
         </div>
     )
 }

@@ -152,26 +152,15 @@ function AppRoutes() {
       {/* Success and canceled payment */}
       <Route path="/success" element={<PrivateRoute><Menu><PaymentSuccessPage /></Menu></PrivateRoute>} />
 
-      {/* Not found */}
-      <Route path="*" element={<NotFoundPage />} />
-
-      {/* Подписки */}
-      <Route path="/premium" element={<PrivateRoute><Menu><SubscriptionPage /></Menu></PrivateRoute>} />
-      <Route path="/premium/details" element={<PrivateRoute><Menu><SubscriptionDetailsPage /></Menu></PrivateRoute>} />
-      <Route path="/premium/payment" element={<PrivateRoute><Menu><SubscriptionPaymentPage /></Menu></PrivateRoute>} />
-
-      {/* Success and canceled payment */}
-      <Route path="/success" element={<PrivateRoute><Menu><PaymentSuccessPage /></Menu></PrivateRoute>} />
-
-      {/* Not found */}
-      <Route path="*" element={<NotFoundPage />} />
-
       {/* Магазин */}
       <Route path="/marketplace" element={<PrivateRoute><Menu><MarketplacePage /></Menu></PrivateRoute>} />
       <Route path="/marketplace/product" element={<PrivateRoute><Menu><ProductPage /></Menu></PrivateRoute>} />
       <Route path="/marketplace/shopping_cart" element={<PrivateRoute><Menu><ShoppingCartPage /></Menu></PrivateRoute>} />
       <Route path="/marketplace/payment" element={<PrivateRoute><Menu><MarketplacePayment /></Menu></PrivateRoute>} />
 
+      {/* Not found */}
+      <Route path="*" element={<NotFoundPage />} />
+      
     </Routes>
   );
 }

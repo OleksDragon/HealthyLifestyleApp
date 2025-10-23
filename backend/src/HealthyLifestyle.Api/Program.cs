@@ -77,6 +77,7 @@ using System.Text.Json.Serialization;
 using YourProject.Application.Services;
 using HealthyLifestyle.Application.Services.Payments;
 using HealthyLifestyle.Application.Services.Payments.Handlers;
+using HealthyLifestyle.Application.Services.Payment.Handlers;
 
 
 // Створюємо білдер для веб-програми
@@ -199,6 +200,7 @@ builder.Services.AddScoped<IAchievementService, AchievementService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IWebhookHandler, SubscriptionWebhookHandler>();
+builder.Services.AddScoped<IWebhookHandler, OrderWebhookHandler>();
 builder.Services.AddScoped<WebhookProcessingService>();
 builder.Services.AddScoped<IShopCartService, ShopCartService>();
 

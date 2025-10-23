@@ -4,8 +4,10 @@ import heartEmptyIcon from "../../icons/HeartEmpty.png";
 import heartFullIcon from "../../icons/HeartFull.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../styles/marketplace.css";
+import { useTranslation } from "react-i18next";
 
 function ProductPage() {
+    const { t } = useTranslation();
     const { state } = useLocation();
     const scrollRef = useRef(null);
     const navigate = useNavigate();
@@ -149,7 +151,7 @@ function ProductPage() {
                     <h3>{prod.Name}</h3>
                     <h4>{prod.Price} $</h4>
                     {cart && cart.CartItems && cart.CartItems.some(ci => ci.Product.Id === prod.Id) ? 
-                        <div style={{color: "var(--lim)"}} className="quantity-selector-container">{cart.CartItems.filter(ci => ci.Product.Id === prod.Id)[0].Quantity} шт.</div>
+                        <div style={{color: "var(--lim)"}} className="quantity-selector-container">{cart.CartItems.filter(ci => ci.Product.Id === prod.Id)[0].Quantity} {t("one_thing")}</div>
                     :
                         <div className="quantity-selector-container">
                             <div 
@@ -171,16 +173,16 @@ function ProductPage() {
                     <button 
                         onClick={() => handleAddToCart(prod.Id)}
                     >
-                        {cart && cart.CartItems && cart.CartItems.some(ci => ci.Product.Id === prod.Id) ? "Вже у кошику" : "В кошик"}
+                        {cart && cart.CartItems && cart.CartItems.some(ci => ci.Product.Id === prod.Id) ? t("already_in_cart") : t("put_in_cart")}
                     </button>
                     <div className="product-desc">
-                        <h3>Опис</h3>
+                        <h3>{t("ch_description")}</h3>
                         <div>{prod.Description}</div>
                     </div>
                 </div>
             </div>
             <div className="similar-products">
-                <h3>Схожі продукти</h3>
+                <h3>{t("similar_products")}</h3>
                 <div ref={scrollRef} className="horizontal-scroll-products">
                     {products.map((p, idx) => {
                         return (

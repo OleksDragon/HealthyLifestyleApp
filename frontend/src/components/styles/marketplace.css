@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;600;700&display=swap');
+
 .products-categories {
     display: grid;
     grid-template-columns: repeat(4, 1fr) 70px;
@@ -376,8 +378,10 @@
 }
 
 .marketplace-total-container {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    height: 300px;
 }
 
 .marketplace-total-container > div {
@@ -444,4 +448,79 @@ input:focus {
     margin: 0 10px;
     cursor: pointer;
     user-select: none;
+}
+
+.marketplace-total-total {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+}
+
+.personal-info-payment-marketplace {
+    display: grid;
+    gap: 20px;
+}
+
+.delivery-address {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.personal-info-payment-marketplace > button {
+    background-color: var(--lim);
+    height: 40px;
+    border-radius: 10px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.personal-info-payment-marketplace > button:disabled {
+    color: black;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.delivery-address .select-input {
+    color: white;
+}
+
+.delivery-address .select-input::placeholder {
+    color: white;
+}
+
+.post-index-marketplace {
+    border: none;
+    height: 45px;
+    border-radius: 30px;
+    padding-left: 30px;
+    color: white;
+    font-size: 17px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.no-products-in-cart-message {
+    height: 70vh;
+    text-align: center;
+    color: var(--lim);
+    padding-top: 24vh;
+    font-size: 24px;
+}
+
+.no-products-in-cart-message button {
+    background-color: var(--lim);
+    border-radius: 30px;
+    height: 40px;
+    width: 200px;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #0661CC;
 }

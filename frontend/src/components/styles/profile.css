@@ -574,27 +574,42 @@ input {
 
 /* Стилі для перемикача "Профіль спеціаліста" */
 .pp-specialist-profile-toggle {
-  display: flex;
+  position: relative !important;
+  margin-left: 0 !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center;
   align-items: center;
-  position: absolute;
-  margin-left: 861px;
-  z-index: 1001;
+  margin-top: -40px;
+  margin-bottom: 60px;
+  padding: 10px 0;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
 }
 
 .pp-toggle-label {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
   cursor: pointer;
   padding: 10px;
+  width: auto;
+  background: rgba(255, 255, 255, 0.3); /* Додаємо фон для контрасту */
+  border-radius: 40px; /* Закруглені кути */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .pp-toggle-text {
-  font-size: 14px;
-  color: #FFF;
+  font-size: 16px;
+  color: #FFF !important; /* Білий текст */
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: 600; /* Товщий шрифт */
   white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Тінь для кращої читабельності */
 }
 
 .pp-toggle-switch {
@@ -629,18 +644,18 @@ input {
   content: "";
   height: 26px;
   width: 26px;
-  background-color: #D6FF00; /* Жовтий колір кружечка при ввімкненні */
+  background-color: #D6FF00;
   transition: .4s;
   border-radius: 50%;
 }
 
 .pp-toggle-input:checked + .pp-toggle-slider {
-  background-color: rgba(255, 255, 255, 0.40); /* Колір еліпса залишається як є */
+  background-color: rgba(255, 255, 255, 0.40);
 }
 
 .pp-toggle-input:checked + .pp-toggle-slider:before {
   transform: translateX(26px);
-  background-color: #D6FF00; /* Жовтий колір кружечка */
+  background-color: #D6FF00;
 }
 
 .pp-toggle-input:focus + .pp-toggle-slider {
@@ -707,4 +722,444 @@ input {
   color: #116FCF;
   background: #D6FF00;
   transform: translateY(-2px);
+}
+
+/* Мобільна адаптація - профілю */
+@media (max-width: 431px) {
+  .user-profile-wrapper {
+    padding: 0 15px;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    position: relative;
+    min-height: 40px;
+  }
+
+  .mobile-back-button {
+    background: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background-color 0.2s ease;
+    z-index: 1;
+  }
+
+  .mobile-back-button:hover {
+    background: transparent;
+  }
+
+  .mobile-back-arrow {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+
+  .mobile-profile-title {
+    color: #D6FF00;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    transform: none;
+    left: auto;
+  }
+
+  .user-profile {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 8px;
+    margin-bottom: 20px;
+    overflow-y: visible;
+  }
+
+  .profile-info {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .avatar {
+    width: 220px;
+    height: 220px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+
+  .profile-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .about {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .about input {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .profile-fields {
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-columns: 49% 49%;
+    gap: 8px;
+    padding: 0;
+    margin-top: 0;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .profile-fields .long {
+    width: 100%;
+  }
+
+  .profile-fields .short {
+    width: 100%;
+  }
+
+  /* Розміщення полів у дві колонки */
+  .profile-fields .first-name {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  
+  .profile-fields .last-name {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+  
+  .profile-fields .gender {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  #gender .select-options {
+  height: 65px;
+}
+  
+  .profile-fields .custom-datepicker-container {
+    grid-column: 2;
+    grid-row: 3;
+    width: 100%;
+  }
+  
+  .profile-fields .height {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  
+  .profile-fields .weight {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  .custom-datepicker-container {
+    width: 100%;
+  }
+
+  .custom-datepicker-display {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px !important;
+  }
+
+  .input-with-suffix .profile-fields-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .extra-fields {
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .extra-fields .country,
+  .extra-fields .city,
+  .extra-fields .street {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .extra-fields .country {
+    margin-top: 10px;
+  }
+
+  .extra-fields .phone {
+    width: 100% !important;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+
+  .extra-fields .phone-code {
+    flex-shrink: 0;
+  }
+
+  .extra-fields .p_phone_number {
+    flex: 1;
+  }
+
+  .phone input:last-child {
+    max-width: 75%;
+    margin-top: -13px;
+  }
+
+  #phoneCode.custom-select.expanded {
+    border-radius: 40px 40px 0 0 !important;
+  }
+
+  #phoneCode .select-options-container {
+    position: absolute !important;
+    top: 100% !important;
+    bottom: auto !important;
+    border-radius: 0 0 40px 40px !important;
+    transform-origin: top center !important;
+    animation: slideDown 0.3s ease !important;
+    border: 2px solid #D6FF00 !important;
+    border-top: none !important;
+    margin-top: -2px !important;
+  }
+
+  #phoneCode .select-options {
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  #phoneCode .select-arrow {
+  margin-left: -20px;
+}
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .achievements.p-dc-card,
+  .purchases.p-dc-card {
+    grid-column: 1;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .achievements.p-dc-card {
+    grid-row: 4;
+    margin: 0 0 40px 0;
+  }
+
+  .purchases.p-dc-card {
+    grid-row: 5;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    margin-top: 40px; 
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .save-button-container {
+    width: 100%;
+  }
+
+  .success-message .success-title {
+    margin: -20px 0 10px 0;
+  }
+
+  .profile-actions .save {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  .pp-specialist-profile-toggle {
+    position: relative !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px 0;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  .pp-toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    cursor: pointer;
+    padding: 10px;
+    width: auto;
+  }
+
+  .pp-toggle-text {
+    font-size: 16px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    padding-left: 5px;
+  }
+
+  .pp-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    z-index: 2;
+  }
+
+  .pp-toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .pp-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #AFBBC2;
+    transition: .4s;
+    border-radius: 34px;
+    border: 4px solid #FFF;
+  }
+
+  .pp-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    background-color: #D6FF00;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  .pp-toggle-input:checked + .pp-toggle-slider {
+    background-color: rgba(255, 255, 255, 0.40);
+  }
+
+  .pp-toggle-input:checked + .pp-toggle-slider:before {
+    transform: translateX(26px);
+    background-color: #D6FF00;
+  }
+
+  .pp-specialist-modal {
+    top: 68%;
+    left: 50%;
+    min-width: 300px;
+    transform: translate(-50%, -50%);
+  }
+
+  .pp-specialist-buttons {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .pp-specialist-btn {
+    min-width: 150px;
+    min-height: 50px;
+  }
+
+  .input-suffix {
+    right: 20px;
+    font-size: 15px;
+  }
+
+  .user-profile-wrapper::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .user-profile-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  .user-profile-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+
+  .user-profile-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .profile-fields .custom-datepicker-display .date-with-dots {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+  
+  .profile-fields .custom-datepicker-display .date-part {
+    flex: 0 0 auto;
+    min-width: 2ch;
+    font-size: 16px;
+  }
+  
+  .profile-fields .custom-datepicker-display .dot-separator {
+    flex: 0 0 auto;
+    margin: 0 2px;
+  }
+
+  .mobile-profile-header {
+    display: flex;
+  }
+
+  .data-picker-placeholder {
+    padding-left: 10px;
+  }
+}
+
+/* Приховуємо мобільний заголовок на десктопі */
+@media (min-width: 432px) {
+  .mobile-profile-header {
+    display: none;
+  }
 }

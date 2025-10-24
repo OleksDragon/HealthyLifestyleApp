@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import axios from "axios";
 import "../styles/profile.css";
 import ProfileIcon from "../../assets/profile-icons/ProfileIcon.svg";
+import ArrowLeft from "../../assets/profile-icons/ArrowLeft.svg"
 import CustomSelect from "../elements/Profile/custom-profile-data-select/CustomSelect";
 import CustomDatePicker from "../elements/Profile/custom-birthdate-date-picker/CustomBirthdateDatePicker";
 import DataCard from "../elements/Profile/data-card/DataCard";
@@ -752,6 +753,17 @@ const handleCountryChange = async (value) => {
 
   return (
     <div className="user-profile-wrapper">
+
+      {/* Мобільний заголовок зі стрілкою назад */}
+      <div className="mobile-profile-header">
+        <button 
+          className="mobile-back-button"
+          onClick={() => window.location.href = '/dashboard'}
+        >
+          <img src={ArrowLeft} alt="Back" className="mobile-back-arrow" />
+        </button>
+        <h1 className="mobile-profile-title">{t("profile")}</h1>
+      </div>
 
       {/* Затемнення при відкритті модального вікна */}
       {showSpecialistModal && (

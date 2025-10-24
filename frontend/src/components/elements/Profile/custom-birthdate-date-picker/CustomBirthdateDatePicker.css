@@ -429,6 +429,140 @@
 
 /* Ховер для поточної дати */
 .custom-datepicker-container .react-datepicker__day--today:hover {
-  /* background: rgba(6, 97, 204, 1); */
   color: #FFF;
+}
+
+/* Мобільна адаптація для календаря */
+@media (max-width: 431px) {
+  .custom-datepicker-popper .react-datepicker {
+    margin-left: -24% !important;
+    width: 420px !important; /* Ще більша ширина */
+    height: 360px !important; /* Ще більша висота */
+  }
+
+  /* Збільшені розміри контейнера місяця */
+  .react-datepicker__month-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Збільшені заголовки днів тижня */
+  .react-datepicker__day-name {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Збільшені клітинки днів */
+  .react-datepicker__day {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 10px !important;
+  }
+
+  /* Збільшені рядки */
+  .react-datepicker__week {
+    height: 42px !important;
+  }
+
+  /* Збільшені селектори місяця/року */
+  .year-month-selectors {
+    padding: 12px 20px !important;
+  }
+
+  .month-selector,
+  .year-selector {
+    transform: scale(1.15);
+  }
+
+  .month-selector .select-input,
+  .year-selector .select-input {
+    font-size: 20px !important;
+  }
+
+  /* Збільшені кнопки навігації */
+  .nav-button {
+    font-size: 32px !important;
+    padding: 0px 40px !important;
+  }
+
+  /* Збільшені опції в селекторах */
+  .year-month-select .select-option {
+    font-size: 18px !important;
+    padding: 10px 16px !important;
+  }
+
+  /* Збільшений контейнер опцій */
+  .year-month-select .select-options-container {
+    max-height: 280px !important;
+  }
+
+  .supp-date-container {
+    max-height: 280px !important;
+  }
+
+  /* Збільшені стрілки */
+  .date-select-arrow {
+    transform: scale(1.3) rotate(180deg) !important;
+  }
+
+  .date-arrow-v-blue {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  /* Збільшені заголовки та контейнери */
+  .react-datepicker__header {
+    padding: 8px 0 !important;
+  }
+
+  .react-datepicker__day-names {
+    margin-left: 20px !important;
+    padding: 6px 8px 6px 10px !important;
+  }
+
+  .react-datepicker__month {
+    margin-left: 22px !important;
+    padding: 0 8px 12px 10px !important;
+  }
+
+  .react-datepicker-wrapper {
+    width: 100% !important;
+  }
+
+  /* Адаптація для дуже маленьких екранів */
+  @media (max-width: 380px) {
+    .custom-datepicker-popper .react-datepicker {
+      width: 360px !important;
+      height: 320px !important;
+      margin-left: -25% !important;
+    }
+
+    .react-datepicker__day {
+      width: 28px !important;
+      height: 28px !important;
+      font-size: 14px !important;
+    }
+
+    .react-datepicker__week {
+      height: 36px !important;
+    }
+  }
+
+  /* Адаптація для середніх мобільних */
+  @media (min-width: 381px) and (max-width: 410px) {
+    .custom-datepicker-popper .react-datepicker {
+      width: 390px !important;
+      height: 340px !important;
+    }
+  }
+
+  /* Адаптація для великих мобільних */
+  @media (min-width: 411px) and (max-width: 431px) {
+    .custom-datepicker-popper .react-datepicker {
+      width: 420px !important;
+      height: 360px !important;
+    }
+  }
 }

@@ -574,42 +574,27 @@ input {
 
 /* Стилі для перемикача "Профіль спеціаліста" */
 .pp-specialist-profile-toggle {
-  position: relative !important;
-  margin-left: 0 !important;
-  width: 100% !important;
-  display: flex !important;
-  justify-content: center;
+  display: flex;
   align-items: center;
-  margin-top: -40px;
-  margin-bottom: 60px;
-  padding: 10px 0;
-  left: auto !important;
-  right: auto !important;
-  top: auto !important;
-  bottom: auto !important;
+  position: absolute;
+  margin-left: 861px;
+  z-index: 1001;
 }
 
 .pp-toggle-label {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 15px;
   cursor: pointer;
   padding: 10px;
-  width: auto;
-  background: rgba(255, 255, 255, 0.3); /* Додаємо фон для контрасту */
-  border-radius: 40px; /* Закруглені кути */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .pp-toggle-text {
-  font-size: 16px;
-  color: #FFF !important; /* Білий текст */
+  font-size: 14px;
+  color: #FFF;
   font-family: 'Roboto', sans-serif;
-  font-weight: 600; /* Товщий шрифт */
+  font-weight: 500;
   white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Тінь для кращої читабельності */
 }
 
 .pp-toggle-switch {
@@ -644,18 +629,18 @@ input {
   content: "";
   height: 26px;
   width: 26px;
-  background-color: #D6FF00;
+  background-color: #D6FF00; /* Жовтий колір кружечка при ввімкненні */
   transition: .4s;
   border-radius: 50%;
 }
 
 .pp-toggle-input:checked + .pp-toggle-slider {
-  background-color: rgba(255, 255, 255, 0.40);
+  background-color: rgba(255, 255, 255, 0.40); /* Колір еліпса залишається як є */
 }
 
 .pp-toggle-input:checked + .pp-toggle-slider:before {
   transform: translateX(26px);
-  background-color: #D6FF00;
+  background-color: #D6FF00; /* Жовтий колір кружечка */
 }
 
 .pp-toggle-input:focus + .pp-toggle-slider {
@@ -1018,6 +1003,7 @@ input {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    margin-bottom: 50px;
     padding: 10px 0;
     left: auto !important;
     right: auto !important;
@@ -1091,7 +1077,7 @@ input {
   }
 
   .pp-specialist-modal {
-    top: 68%;
+    top: 69%;
     left: 50%;
     min-width: 300px;
     transform: translate(-50%, -50%);

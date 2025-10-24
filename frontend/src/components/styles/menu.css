@@ -162,6 +162,12 @@
         align-items: center;
     }
 
+    .header, .navbar, .container {
+        position: relative;
+        overflow: visible; /* забороняє обрізання */
+        z-index: 1002;
+    }
+
     /* Mobile Header Layout */
     .mobile-header-content {
         display: flex;

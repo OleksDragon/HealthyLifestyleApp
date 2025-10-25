@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
-/* --- Общие стили страницы и контейнеров --- */
 .nutrition-tracker-page-content {
     font-family: "Roboto", sans-serif;
     color: #fff;
@@ -16,7 +15,6 @@
     margin-bottom: 20px;
 }
 
-/* --- Навигационные табы --- */
 .navigation-tabs-wrapper {
     display: flex;
     gap: 15px;
@@ -37,7 +35,6 @@
     box-sizing: border-box;
 }
 
-/* 1. Активный таб: Трекер харчування */
 .navigation-tabs-wrapper .tab-item.active {
     background-color: #D6FF00;
     color: #004aad;
@@ -45,7 +42,6 @@
     border: none;
 }
 
-/* 2. Неактивные табы: Раціон, Рецепти */
 .navigation-tabs-wrapper .tab-item.gradient-tab {
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(4px);
@@ -60,7 +56,6 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.25) 100%);
 }
 
-/* --- ГЛАВНЫЙ КОНТЕЙНЕР --- */
 .scrollable-main-content {
     position: relative;
     overflow-y: auto;
@@ -70,7 +65,7 @@
     box-sizing: border-box;
 }
 
-/* --- СТИЛИ СКРОЛЛБАРА --- */
+
 .scroll-data::-webkit-scrollbar {
     width: 12px;
 }
@@ -91,7 +86,6 @@
     background: #0661CC;
 }
 
-/* --- Сетка контента и Glass-Card --- */
 .tracker-grid-wrapper {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -108,7 +102,6 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
-/* --- Карточки (Прогресс дня и Приемы пищи) --- */
 .card-title-yellow {
     color: #D6FF00;
     font-size: 1.8rem;
@@ -118,19 +111,14 @@
 
 .card-title-blue {
     color: #ffffff;
-    /* Белый, как на скриншоте */
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 10px;
-    /* Уменьшаем отступ */
     padding-bottom: 10px;
-    /* Добавляем отступ для линии */
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    /* Светлая линия-разделитель */
     text-align: left;
 }
 
-/* Прогресс-бары */
 .progress-card {
     background-color: transparent;
 }
@@ -140,7 +128,6 @@
     font-weight: 500;
 }
 
-/* --- Стили для прогресс-баров --- */
 .progress-item {
     margin-bottom: 10px;
     position: relative;
@@ -205,7 +192,6 @@
     border-radius: 6px;
 }
 
-/* Цвет заполнения */
 .progress-bar.kkal-bar::-webkit-progress-value,
 .progress-bar.protein-bar::-webkit-progress-value,
 .progress-bar.fat-bar::-webkit-progress-value,
@@ -214,7 +200,6 @@
     border-radius: 6px;
 }
 
-/* Приемы пищи */
 .meals-card {
     margin-top: 40px;
 }
@@ -225,14 +210,30 @@
     grid-template-columns: 2fr 0.5fr 0.5fr 0.5fr 0.5fr;
     gap: 10px;
     padding: 10px 0;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meals-table-header .col-name,
+.meal-item .col-name {
+    text-align: left;
+}
+
+.meals-table-header .col-kkal,
+.meal-item .col-kkal,
+.meals-table-header .col-protein,
+.meal-item .col-protein,
+.meals-table-header .col-fat,
+.meal-item .col-fat,
+.meals-table-header .col-carbs,
+.meal-item .col-carbs {
+    text-align: right;
 }
 
 .meals-table-header {
     color: #a0c4ff;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -250,12 +251,13 @@
 .add-meal-button {
     display: block;
     width: 100%;
-    padding: 15px 0;
+    padding: 25px 0;
     background-color: #D6FF00;
     color: #004aad;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 20px;
     text-decoration: none;
+    font-size: 1.2rem;
     font-weight: 700;
     margin-top: 20px;
     transition: background-color 0.2s;
@@ -265,7 +267,6 @@
     background-color: #e6ff33;
 }
 
-/* Аналитика и Мотивация */
 .analytics-widget .weight-target {
     font-size: 1.8rem;
     font-weight: 900;
@@ -299,22 +300,13 @@
     font-weight: 300;
     font-size: 1.3rem;
     line-height: 1.5;
-
-    /* ВИДАЛИТИ "text-align: left;" ТУТ, ЯКЩО ВОНО БУЛО ТРИЧІ! */
-
-    /* ВИПРАВЛЕННЯ: Змінюємо на inline-block, щоб він міг взаємодіяти з vertical-align */
     display: inline-block !important;
-    /* Змінюємо на inline-block */
     width: 100%;
-    
-
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* --- СТИЛІ ДЛЯ БЛОКУ 4: ВВЕДЕННЯ ВАГИ (WeightEntryWidget) --- */
 .weight-entry-widget {
     margin-top: 20px;
-    /* Відступ від WeightChartWidget */
     text-align: left;
     padding: 25px;
 }
@@ -391,4 +383,35 @@
 
 .status-message.error {
     color: #ff4d4d;
+}
+
+.input-with-clear {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.clear-input-button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-input-button:hover {
+    color: #fff;
+}
+
+.weight-input {
+    padding-right: 35px;
+    cursor: text !important;
 }

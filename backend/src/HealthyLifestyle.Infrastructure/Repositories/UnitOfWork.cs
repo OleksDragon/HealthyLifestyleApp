@@ -1,6 +1,7 @@
 ﻿using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
 using HealthyLifestyle.Core.Interfaces.Challenge;
+using HealthyLifestyle.Core.Interfaces.MealTracker;
 using HealthyLifestyle.Infrastructure.Data;
 using HealthyLifestyle.Infrastructure.Repositories;
 using HealthyLifestyle.Infrastructure.Repositories.Challenge;
@@ -17,6 +18,7 @@ namespace HealthyLifestyle.Infrastructure.UnitOfWork
         private readonly ApplicationDbContext _dbContext;
 
         private IChallengeRepository? _challengeRepository;
+        private IRecipeRepository? _recipeRepository;
         private IChallengeParticipantRepository? _challengeParticipantRepository;
 
         /// <summary>
@@ -60,6 +62,9 @@ namespace HealthyLifestyle.Infrastructure.UnitOfWork
 
         public IChallengeParticipantRepository ChallengeParticipants =>
             _challengeParticipantRepository ??= new ChallengeParticipantRepository(_dbContext);
+
+        public IRecipeRepository Recipes =>
+            _recipeRepository ??= new RecipeRepository(_dbContext);
 
         /// <summary>
         /// Асинхронно зберігає всі зміни в контексті бази даних.

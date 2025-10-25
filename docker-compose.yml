@@ -29,7 +29,7 @@ services:
       - MinIO__BucketName=images
     networks:
       - healthy_net
-    command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"
+    command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"    
 
   minio:
     image: minio/minio:latest

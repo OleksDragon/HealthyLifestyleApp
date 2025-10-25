@@ -133,7 +133,11 @@ namespace HealthyLifestyle.Application.Services
         public async Task UpdateAsync(Guid id, UpdateRecipeDto dto)
         {
             var recipe = await _repository.GetByIdAsync(id);
-            if (recipe == null) return;
+
+            if (recipe == null)
+            {
+                throw new ArgumentException($"Recipe with ID {id} not found.");
+            }
 
             recipe.Name = dto.Name ?? recipe.Name;
             recipe.Description = dto.Description ?? recipe.Description;
@@ -142,24 +146,60 @@ namespace HealthyLifestyle.Application.Services
             recipe.Fat = dto.Fat ?? recipe.Fat;
             recipe.Carbs = dto.Carbs ?? recipe.Carbs;
             recipe.Time = dto.Time ?? recipe.Time;
+            recipe.VideoUrl = dto.VideoUrl ?? recipe.VideoUrl;
 
-            // Если новое изображение передано — загружаем в MinIO
             if (dto.ImageFile != null)
             {
                 recipe.ImageUrl = await _objectStorageService.UploadFileAsync(
                     dto.ImageFile.OpenReadStream(),
-                    "recipes",
+                    $"recipe-{id}-{DateTime.UtcNow:yyyyMMddHHmmss}{Path.GetExtension(dto.ImageFile.FileName)}",
                     dto.ImageFile.ContentType
                 );
             }
-            else
+
+            else if (dto.ImageUrl != null)
             {
-                recipe.ImageUrl = dto.ImageUrl ?? recipe.ImageUrl;
+                recipe.ImageUrl = dto.ImageUrl;
             }
 
-            recipe.VideoUrl = dto.VideoUrl ?? recipe.VideoUrl;
+            if (dto.Ingredients != null)
+            {
+                recipe.Ingredients.Clear();
+                foreach (var ingredientString in dto.Ingredients)
+                {
+                    var parts = ingredientString.Split(':', 2);
 
-            await _repository.UpdateAsync(recipe);
+                    if (parts.Length == 2)
+                    {
+                        var name = parts[0].Trim();
+                        var amount = parts[1].Trim();
+
+                        recipe.Ingredients.Add(new Ingredient
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = name,
+                            Amount = amount,
+                            RecipeId = id
+                        });
+                    }
+                }
+            }
+
+            if (dto.Steps != null)
+            {
+                recipe.Steps.Clear(); 
+                for (int i = 0; i < dto.Steps.Count; i++)
+                {
+                    recipe.Steps.Add(new RecipeStep
+                    {
+                        Id = Guid.NewGuid(),
+                        StepText = dto.Steps[i],
+                        Order = i,
+                        RecipeId = id
+                    });
+                }
+            }
+
             await _unitOfWork.SaveChangesAsync();
         }
 

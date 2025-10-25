@@ -6,6 +6,37 @@ import RecipeCard from '../../elements/Nutrion/RecipeCard';
 import "../../styles/nutrition/nutrition-tracker.css";
 import "../../styles/nutrition/recipes-page.css";
 
+const CrossIcon = ({ size = "100%", color = "currentColor", ...props }) => (
+    <svg 
+        width={size} 
+        height={size} 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+    >
+        <path 
+            d="M12 4V20M4 12H20" 
+            stroke={color}
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+);
+
+const AddRecipeCardContent = ({ t }) => (
+    <>
+        <CrossIcon className="add-icon" size="100%" color="white" /> 
+        
+        <div className="add-gradient-effect" />
+
+        <h4 className="add-recipe-text">
+             {t("add_recipe_text") || 'Додати свій рецепт'}
+        </h4>
+    </>
+);
+
 const RecipesPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate(); 
@@ -83,10 +114,19 @@ const RecipesPage = () => {
                         <p>{t("no_recipes_found") || "Рецепти не знайдено."}</p>
                     )}
                     
-                    <Link to="/eating/recipes/add" className="recipe-card glass-card add-recipe-card">
-                        <span className="add-icon">+</span>
-                        <h4 className="add-recipe-text">{t("add_recipe_text") || 'Додати свій рецепт'}</h4>
-                    </Link>
+                    <div 
+                        className="recipe-card glass-card add-recipe-card"
+                        onClick={() => navigate("/eating/recipes/add")}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                navigate("/eating/recipes/add");
+                            }
+                        }}
+                    >
+                        <AddRecipeCardContent t={t} />
+                    </div>
                 </div>
             </div>
         </div>

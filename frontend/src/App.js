@@ -24,6 +24,7 @@ import RationPage from "./components/pages/Nutrition/RationPage";
 import RecipesPage from "./components/pages/Nutrition/RecipesPage";
 import RecipeDetailsPage from "./components/pages/Nutrition/RecipeDetailsPage";
 import AddRecipePage from "./components/pages/Nutrition/AddRecipePage";
+import EditRecipePage from "./components/pages/Nutrition/EditRecipePage";
 
 import HealthPageMenu from "./components/elements/Health/HealthPageMenu/HealthPageMenu";
 import HealthPage from "./components/pages/HealthPages/HealthPage";
@@ -98,6 +99,7 @@ function AppRoutes() {
       <Route path="/eating/recipes" element={<PrivateRoute><Menu><RecipesPage /></Menu></PrivateRoute>} />
       <Route path="/eating/recipes/:id" element={<PrivateRoute><Menu><RecipeDetailsPage /></Menu></PrivateRoute>} />
       <Route path="/eating/recipes/add" element={<PrivateRoute><Menu><AddRecipePage /></Menu></PrivateRoute>} />
+      <Route path="/eating/recipes/edit/:id" element={<PrivateRoute><Menu><EditRecipePage /></Menu></PrivateRoute>} />      
 
       {/* Здоровье - Основные страницы */}
       <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /><HealthPage /></Menu></PrivateRoute>} />

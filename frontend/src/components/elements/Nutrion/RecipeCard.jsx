@@ -26,7 +26,7 @@ const RecipeCard = ({ recipe, onRecipeClick }) => {
 
     return (
         <div 
-            className="recipe-card glass-card" 
+            className="recipe-card" 
             onClick={handleCardClick} 
             role="button" 
             tabIndex={0} 

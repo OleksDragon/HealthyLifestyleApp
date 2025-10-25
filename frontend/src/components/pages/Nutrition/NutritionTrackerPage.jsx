@@ -5,16 +5,17 @@ import axios from "axios";
 import DatePickerComponent from "../../elements/Nutrion/DatePickerComponent";
 import WeightChartWidget from "../../elements/Nutrion/WeightChartWidget";
 import WeightEntryWidget from "../../elements/Nutrion/WeightEntryWidget";
+import AddMealModal from '../Nutrition/AddMealModal';
 import { useSmartMotivation } from '../../useSmartMotivation';
 import "../../styles/nutrition/nutrition-tracker.css";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const MEAL_TYPES_MAP = {
-    1: "Сніданок", 
-    2: "Обід", 
-    3: "Вечеря", 
-    4: "Перекус"
+    1: "nt_unspecified_meal_1",
+    2: "nt_unspecified_meal_2",
+    3: "nt_unspecified_meal_3",
+    4: "nt_unspecified_meal_4"
 };
 
 const getUserIdFromToken = () => {
@@ -36,6 +37,8 @@ const NutritionTrackerPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [userId, setUserId] = useState(null);
+    const [refreshWeightTrigger, setRefreshWeightTrigger] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const motivationKey = useSmartMotivation(dailyData);
     const motivationMessage = t(motivationKey, { 
@@ -59,7 +62,7 @@ const NutritionTrackerPage = () => {
 
         const token = localStorage.getItem("helth-token");
         if (!token) {
-            setError("Токен відсутній");
+            setError(t("error_token_missing") || "Токен відсутній");
             setIsLoading(false);
             return;
         }
@@ -76,13 +79,14 @@ const NutritionTrackerPage = () => {
 
             const groupedMeals = {};
             rawMeals.forEach(meal => {
-                const mealType = meal.mealType || meal.MealType;
+                const mealType = meal.mealType || meal.MealType; 
+                if (mealType === undefined || mealType === null) return; 
                 if (!groupedMeals[mealType]) {
                     groupedMeals[mealType] = [];
                 }
                 
                 groupedMeals[mealType].push({
-                    mealName: meal.FoodItemName || 'Не вказано',
+                    mealName: meal.FoodItemName || t("nt_unspecified_dish_name") || 'Не вказано',
                     kkal: meal.Calories || 0,
                     protein: meal.ProteinsG || 0,
                     fat: meal.FatsG || 0,
@@ -91,10 +95,12 @@ const NutritionTrackerPage = () => {
                 });
             });
 
-            const meals = Object.keys(groupedMeals).map(mealType => ({
-                mealType: parseInt(mealType),
-                items: groupedMeals[mealType]
-            }));
+            const meals = Object.keys(groupedMeals)
+                .map(mealType => ({
+                    mealType: parseInt(mealType),
+                    items: groupedMeals[mealType]
+                }))
+                .sort((a, b) => a.mealType - b.mealType);
 
             const totalProgress = {
                 calories: 0,
@@ -151,14 +157,14 @@ const NutritionTrackerPage = () => {
                     meals: []
                 });
             } else if (err.response?.status === 401) {
-                setError("Помилка авторизації");
+                setError(t("error_auth") || "Помилка авторизації");
             } else {
-                setError("Помилка завантаження даних");
+                setError(t("error_loading_data") || "Помилка завантаження даних");
             }
         } finally {
             setIsLoading(false);
         }
-    }, [userId, selectedDate]);
+    }, [userId, selectedDate, t]);
 
     useEffect(() => {
         if (userId) {
@@ -182,6 +188,18 @@ const NutritionTrackerPage = () => {
         setSelectedDate(newDate);
     };
 
+    const openAddMealModal = () => setIsModalOpen(true);
+    const closeAddMealModal = () => setIsModalOpen(false);
+    
+    const handleMealAdded = () => {
+        closeAddMealModal();
+        console.log("Прийом їжі успішно додано, оновлюємо дані...");
+    };
+
+    const handleWeightLogged = () => {
+        setRefreshWeightTrigger(prev => prev + 1);
+    };
+
     const progress = dailyData?.progress || {};
     const meals = dailyData?.meals || [];
     
@@ -201,7 +219,7 @@ const NutritionTrackerPage = () => {
             
             <div className="navigation-tabs-wrapper">
                 <span className="tab-item active">{t("nt_tracker_tab") || 'Трекер харчування'}</span>
-                <Link to="/eating/ration" className="tab-item gradient-tab">{t("nt_ration_tab") || 'Раціон'}</Link>  
+                <Link to="/eating/ration" className="tab-item gradient-tab">{t("nt_ration_tab") || 'Раціон'}</Link>  
                 <Link to="/eating/recipes" className="tab-item gradient-tab">{t("nt_recipes_tab") || 'Рецепти'}</Link> 
             </div>
             
@@ -221,6 +239,7 @@ const NutritionTrackerPage = () => {
                         <div className="progress-card">
                             <h2 className="card-title-yellow">{t("nt_daily_progress") || 'Прогрес дня'}</h2>
                             
+                            {/* Calories */}
                             <div className="progress-item">
                                 <div className="progress-header">
                                     <div className="progress-info">
@@ -240,6 +259,7 @@ const NutritionTrackerPage = () => {
                                 </div>
                             </div>
 
+                            {/* Protein */}
                             <div className="progress-item">
                                 <div className="progress-header">
                                     <div className="progress-info">
@@ -259,6 +279,7 @@ const NutritionTrackerPage = () => {
                                 </div>
                             </div>
 
+                            {/* Fat */}
                             <div className="progress-item">
                                 <div className="progress-header">
                                     <div className="progress-info">
@@ -278,6 +299,7 @@ const NutritionTrackerPage = () => {
                                 </div>
                             </div>
 
+                            {/* Carbs */}
                             <div className="progress-item">
                                 <div className="progress-header">
                                     <div className="progress-info">
@@ -312,10 +334,7 @@ const NutritionTrackerPage = () => {
                                 
                                 {meals.length > 0 ? (
                                     meals.map((meal, index) => (
-                                        <React.Fragment key={index}>
-                                            <div className="meal-group-title">
-                                                {MEAL_TYPES_MAP[meal.mealType] || t("nt_unspecified_meal")}
-                                            </div>
+                                        <React.Fragment key={index}>                                            
                                             {meal.items.map((item, itemIndex) => (
                                                 <div key={`${index}-${itemIndex}`} className="meal-item">
                                                     <span className="col-name">{item.mealName}</span>
@@ -332,25 +351,41 @@ const NutritionTrackerPage = () => {
                                 )}
                             </div>
 
-                            <Link to="/nutrition/add-meal" className="add-meal-button">
-                                {t("nt_add_meal_button") || 'Додати прийом'}
-                            </Link>
+                            <button 
+                                className="add-meal-button" 
+                                onClick={openAddMealModal}
+                            >
+                                {t('nt_add_meal_button') || "Додати прийом їжі"}
+                            </button>                            
                         </div>
                     </div>
 
                     <div className="right-column">
-                        <WeightChartWidget t={t} />
-                        <WeightEntryWidget t={t} userId={userId} fetchDailyData={fetchDailyData} />
+                        <WeightChartWidget t={t} userId={userId} refreshTrigger={refreshWeightTrigger} />
+                        <WeightEntryWidget t={t} userId={userId}
+                            onWeightLogged={handleWeightLogged}
+                            date={selectedDate}
+                            onDateChange={handleDateChange}
+                            onPrevDay={handlePrevDay}
+                            onNextDay={handleNextDay} />
                         <div className="widget motivation-widget glass-card">
                             <h2 className="card-title-blue">{t("nt_motivation_title") || 'Мотивація'}</h2>
                             <p className="motivation-text">
                                 {motivationMessage}
                             </p>
                         </div>
-                    </div>                  
+                    </div>                  
                 </div>
             </div>
-        </div>
+            {isModalOpen && (
+                <AddMealModal
+                    onClose={closeAddMealModal}
+                    onMealAdded={handleMealAdded}
+                    selectedDate={selectedDate} 
+                    userId={userId} 
+                />
+            )}
+        </div>        
     );
 };
 

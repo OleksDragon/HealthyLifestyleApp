@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../styles/nutrition/add-recipe-page.css";
 
-const AddRecipePage = () => {
+const EditRecipePage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -22,7 +23,9 @@ const AddRecipePage = () => {
   });
 
   const [imageFile, setImageFile] = useState(null);
+  const [currentImageUrl, setCurrentImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [fetchLoading, setFetchLoading] = useState(true);
   const [message, setMessage] = useState({ text: "", type: "" });
 
   const showMessage = (text, type) => {
@@ -31,6 +34,41 @@ const AddRecipePage = () => {
       setMessage({ text: "", type: "" });
     }, 5000);
   };
+
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const data = response.data;
+
+        const normalizedRecipe = {
+          name: data.Name || "",
+          description: data.Description || "",
+          kkal: data.Kkal || "",
+          protein: data.Protein || "",
+          fat: data.Fat || "",
+          carbs: data.Carbs || "",
+          time: data.Time || "",
+          videoUrl: data.VideoUrl || "",
+          ingredients: data.Ingredients?.map(i => ({
+            name: i.Name || "",
+            amount: i.Amount || ""
+          })) || [{ name: "", amount: "" }],
+          steps: data.Steps || [""]
+        };
+
+        setFormData(normalizedRecipe);
+        setCurrentImageUrl(data.ImageUrl || "");
+      } catch (error) {
+        console.error("❌ Помилка завантаження рецепта:", error);
+        showMessage(t("loadRecipeError"), "error");
+      } finally {
+        setFetchLoading(false);
+      }
+    };
+
+    fetchRecipe();
+  }, [id, t]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -149,26 +187,30 @@ const AddRecipePage = () => {
         submitData.append(`Steps[${index}]`, step);
       });
 
-      await axios.post("http://localhost:5000/api/recipes", submitData, {
+      await axios.put(`http://localhost:5000/api/recipes/${id}`, submitData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      showMessage(t("recipeAddedSuccess"), "success");
+      showMessage(t("recipeUpdatedSuccess"), "success");
 
       setTimeout(() => {
-        navigate("/eating/recipes");
+        navigate(`/eating/recipes/${id}`);
       }, 2000);
 
     } catch (error) {
-      console.error("❌ Помилка при додаванні рецепта:", error);
-      const errorMessage = error.response?.data?.message || t("addRecipeError");
+      console.error("❌ Помилка при оновленні рецепта:", error);
+      const errorMessage = error.response?.data?.message || t("updateRecipeError");
       showMessage(`❌ ${errorMessage}`, "error");
     } finally {
       setLoading(false);
     }
   };
+
+  if (fetchLoading) {
+    return <p className="loading-text">{t("loadingRecipeForEdit")}</p>;
+  }
 
   return (
     <div className="recipe-page-content-wrapper">
@@ -181,7 +223,7 @@ const AddRecipePage = () => {
                 <div className="image-upload-section">
                   <h2 className="card-title-white">{t("recipeImage")}</h2>                
                   <div 
-                    className={`image-upload-placeholder ${imageFile ? 'has-image' : ''}`}
+                    className={`image-upload-placeholder ${imageFile || currentImageUrl ? 'has-image' : ''}`}
                     onClick={() => document.getElementById('image-upload-input').click()}
                   >
                     {imageFile ? (
@@ -189,6 +231,17 @@ const AddRecipePage = () => {
                         <img 
                           src={URL.createObjectURL(imageFile)} 
                           alt="Preview" 
+                          className="recipe-main-image-v2"
+                        />
+                        <div className="image-overlay">
+                          <span className="change-image-text">{t("changeImage")}</span>
+                        </div>
+                      </div>
+                    ) : currentImageUrl ? (
+                      <div className="image-preview">
+                        <img 
+                          src={currentImageUrl} 
+                          alt="Current recipe" 
                           className="recipe-main-image-v2"
                         />
                         <div className="image-overlay">
@@ -257,7 +310,7 @@ const AddRecipePage = () => {
 
           <div className="details-sidebar-column">
             <div className="header-details-card">
-              <h1 className="recipe-title-v2">{t("addNewRecipe")}</h1>         
+              <h1 className="recipe-title-v2">{t("editRecipe")}</h1>         
               
               <div className="form-group">
                 <label>{t("recipeName")} *</label>
@@ -406,12 +459,19 @@ const AddRecipePage = () => {
 
             <div className="submit-section">
               <button 
+                type="button"
+                className="back-recipe-button"
+                onClick={() => navigate(`/eating/recipes/${id}`)}
+              >
+                {t("cancel")}
+              </button>
+              <button 
                 type="submit" 
                 className="add-recipe-button"
                 onClick={handleSubmit}
                 disabled={loading}
               >
-                {loading ? t("saving") : t("saveRecipe")}
+                {loading ? t("saving") : t("updateRecipe")}
               </button>
             </div>
           </div>
@@ -421,4 +481,4 @@ const AddRecipePage = () => {
   );
 };
 
-export default AddRecipePage;
+export default EditRecipePage;

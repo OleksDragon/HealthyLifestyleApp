@@ -20,14 +20,14 @@ namespace HealthyLifestyle.Application.Services.MealTracker
         private readonly IRecipeRepository _recipeRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepository; // Добавляем репозиторий пользователей
+        private readonly IUserRepository _userRepository;
 
         public MealService(
             IMealRepository mealRepository,
             IRecipeRepository recipeRepository,
             IUnitOfWork unitOfWork,
             IMapper mapper,
-            IUserRepository userRepository) // Добавляем в конструктор
+            IUserRepository userRepository)
         {
             _mealRepository = mealRepository;
             _recipeRepository = recipeRepository;
@@ -62,7 +62,6 @@ namespace HealthyLifestyle.Application.Services.MealTracker
 
         public async Task<MealDto> CreateAsync(CreateMealDto dto)
         {
-            // Получаем пользователя для обязательного свойства User
             var user = await _userRepository.GetByIdAsync(dto.UserId);
             if (user == null)
                 throw new KeyNotFoundException($"Пользователь с ID '{dto.UserId}' не найден.");
@@ -76,20 +75,17 @@ namespace HealthyLifestyle.Application.Services.MealTracker
                 if (recipe == null)
                     throw new KeyNotFoundException($"Рецепт с ID '{dto.RecipeId}' не найден.");
 
-                // Используем название рецепта, если FoodItemName не указан
                 if (string.IsNullOrEmpty(foodItemName))
                 {
                     foodItemName = recipe.Name;
                 }
             }
 
-            // Убедимся, что название блюда не пустое
             if (string.IsNullOrEmpty(foodItemName))
             {
                 foodItemName = "Без названия";
             }
 
-            // Создаем запись о приеме пищи
             var meal = new MealEntry(
                 userId: dto.UserId,
                 user: user,

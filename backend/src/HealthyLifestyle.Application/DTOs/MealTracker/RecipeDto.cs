@@ -91,16 +91,12 @@ namespace HealthyLifestyle.Application.DTOs
         public int? Carbs { get; set; }
 
         public string? Time { get; set; }
-
+        
         [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png", ".gif" }, ErrorMessage = "Дозволені лише файли зображень.")]
         public IFormFile? ImageFile { get; set; }
-
         public string? ImageUrl { get; set; }
-
         public string? VideoUrl { get; set; }
-
-        public List<IngredientDto>? Ingredients { get; set; }
-
+        public List<string>? Ingredients { get; set; }
         public List<string>? Steps { get; set; }
     }
 

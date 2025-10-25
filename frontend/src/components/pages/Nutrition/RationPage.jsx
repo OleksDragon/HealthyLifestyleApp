@@ -11,6 +11,25 @@ import "../../styles/nutrition/ration-page.css";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
+const CrossIcon = ({ size = 24, color = "currentColor", ...props }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path 
+      d="M12 4V20M4 12H20"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const getUserIdFromToken = () => {
     try {
         const token = localStorage.getItem("helth-token");
@@ -83,7 +102,6 @@ const RationPage = () => {
     const [combinedIngredients, setCombinedIngredients] = useState([]);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [isEditing, setIsEditing] = useState(false); 
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -101,7 +119,6 @@ const RationPage = () => {
 
         setLoading(true);
         setError("");
-        setIsEditing(false);
 
         const token = localStorage.getItem("helth-token");
         if (!token) {
@@ -178,7 +195,6 @@ const RationPage = () => {
     const handleSelectMeal = useCallback((meal) => {
         if (selectedMeal && selectedMeal.id === meal.id) {
             setSelectedMeal(null);
-            setIsEditing(false);
             
             const firstMealWithIngredients = meals.find(m => m.recipeIngredients.length > 0);
             if (firstMealWithIngredients) {
@@ -190,7 +206,6 @@ const RationPage = () => {
         } else {
             setSelectedMeal(meal);
             setCombinedIngredients(meal.recipeIngredients);
-            setIsEditing(false);
         }
     }, [selectedMeal, meals]); 
     
@@ -206,19 +221,6 @@ const RationPage = () => {
         } catch (error) {
             console.error("Помилка при видаленні прийому їжі:", error);
             setError(t("error_deleting_meal") || "Помилка при видаленні прийому їжі.");
-        }
-    };
-    
-    const handleEditClick = () => {
-        if (selectedMeal) {
-            setIsEditing(true); 
-        }
-    };
-
-    const handleSaveClick = () => {
-        if (selectedMeal && isEditing) {
-            setIsEditing(false);
-            alert(t("save_logic_placeholder") || "Логіка збереження оновлених інгредієнтів повинна бути тут.");
         }
     };
 
@@ -361,14 +363,18 @@ const RationPage = () => {
                                     />
                                 ))
                             ))}
+                            
                             <div
-                                className="meal-ration-card add-meal-card"
+                                className="meal-ration-card add-meal-card" 
                                 onClick={handleOpenAddModal}
                                 role="button"
                                 tabIndex={0}
                             >
-                                <span className="add-icon">+</span>
-                                <h4 className="add-meal-text">{t("nt_add_meal_button") || "Додати прийом"}</h4>
+                                <CrossIcon className="add-icon" size="100%" color="white" /> 
+                                <div className="add-gradient-effect" />
+                                <h4 className="add-meal-text">
+                                    {t("nt_add_meal_button_multiline") || <>Додайте свій<br />прийом їжі</>}
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -392,11 +398,6 @@ const RationPage = () => {
                                         <div className="ingredient-item" key={index}>
                                             <span className="ingredient-name">{item.name}</span>
                                             <span className="ingredient-amount">{item.amount}</span>
-                                            <input 
-                                                type="checkbox" 
-                                                className="ingredient-checkbox" 
-                                                disabled={!isEditing} 
-                                            />
                                         </div>
                                     ))
                                 ) : selectedMeal ? (
@@ -411,22 +412,6 @@ const RationPage = () => {
                             </div>
                             
                             <div className="ingredients-actions">
-                                {selectedMeal && !isEditing && (
-                                    <button className="edit-button" onClick={handleEditClick}>
-                                        {t("nt_edit_button") || "Редагувати"}
-                                    </button>
-                                )}
-                                {isEditing && (
-                                    <button className="save-button" onClick={handleSaveClick}>
-                                        {t("nt_save_button") || "Зберегти"}
-                                    </button>
-                                )}
-                                {!selectedMeal && (
-                                    <>
-                                        <button className="edit-button" disabled>{t("nt_edit_button") || "Редагувати"}</button>
-                                        <button className="save-button" disabled>{t("nt_save_button") || "Зберегти"}</button>
-                                    </>
-                                )}
                                 {selectedMeal && (
                                     <button 
                                         className="delete-meal-button"

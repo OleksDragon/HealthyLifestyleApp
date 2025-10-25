@@ -210,39 +210,201 @@ i18n
           nt_meals_title: "Meals",
           nt_add_meal_button: "Add Meal",
           nt_analytics_title: "Analytics",
-
+          nt_ration_tab: "Ration",
+          nt_loading: "Loading...",
           nt_motivation_title: "Motivation",
-          nt_motivation_loading: "Loading smart motivation...",
-          
-          nt_motivation_general_1: "Your health is your biggest investment. Keep going, you are on the right track! 💪",
-          nt_motivation_general_2: "Healthy choices today mean strength tomorrow. Take action!",
-          nt_motivation_general_3: "Remember to hydrate! Even a small glass of water makes you feel better.",
-          nt_motivation_general_4: "Daily self-improvement yields results. Great job being here!",
-          nt_motivation_general_5: "Small, consistent efforts always win over quick, chaotic jumps. Stay steady!",
-          nt_motivation_general_6: "Remember: your goal is a marathon, not a sprint. The main thing is not to stop!",
-          
-          nt_motivation_no_meals: "Looks like you haven't logged anything today. Let's start with a nutritious breakfast!",
-          
-          nt_motivation_calories_on_target: "🎉 Great job! You fit perfectly within your calorie limit. A true champion!",
-          nt_motivation_calories_on_target_M: "🎉 Great job! You fitted perfectly within your calorie limit, Champion!",
-          nt_motivation_calories_on_target_F: "🎉 Great job! You fitted perfectly within your calorie limit, Queen!",
-          
-          nt_motivation_calories_over: "Careful! You've consumed {{calories}} kcal so far (which is above target). Focus on your last meal.",
-          nt_motivation_calories_critical_over: "🔴 Critical! {{calories}} kcal is a significant overshoot. Focus on light protein and fiber today.",
-          
-          nt_motivation_almost_protein: "You've almost reached your protein goal! A little more and your muscles will thank you!",
-          nt_motivation_almost_protein_M: "You've almost reached your protein goal! Keep pushing, man!",
-          nt_motivation_almost_protein_F: "You've almost reached your protein goal! That's excellent progress!",
-          
-          nt_motivation_low_protein: "You're a bit low on protein today. Try adding yogurt or nuts to your next snack. Need {{protein}}g more!",
-          nt_motivation_high_fat: "I see a lot of fat in your diet. Maybe replace one snack with fruit or vegetables? 🥑",
-          nt_motivation_low_carbs: "Feeling tired after lunch? It might be due to low carbs. Try adding whole grains to dinner.",
-          nt_motivation_evening_low: "You're doing great! Focus on light food for dinner to perfectly hit your remaining calories.",
-          
-          nt_motivation_morning: "Good morning! Start this day with the right breakfast and a positive mood 🌞",
-          nt_motivation_morning_M: "Good morning, warrior! Start this day with the right breakfast for energy. 🌞",
-          nt_motivation_morning_F: "Good morning, beautiful! Start this day with the right breakfast for energy. 🌞",
-          nt_motivation_evening: "Great day! Remember that quality rest is part of your nutrition plan.",
+          nt_motivation_loading: "Loading motivation...",
+          nt_daily_progress: "Daily Progress",
+          nt_fat_label: "Fats",
+          nt_carbs_label: "Carbohydrates",
+          nt_dish_name: "Dish Name",
+
+          nt_k_abbr: "kcal",
+          nt_b_abbr: "P",
+          nt_zh_abbr: "F",
+          nt_v_abbr: "C",
+
+          nt_unspecified_meal_1: "Breakfast",
+          nt_unspecified_meal_2: "Lunch",
+          nt_unspecified_meal_3: "Dinner",
+          nt_unspecified_meal_4: "Snack",
+
+          loadingRecipe: "Loading recipe...",
+          recipeNotFound: "Recipe not found",
+          confirmDeleteRecipe:
+            "Are you sure you want to delete this recipe? This action cannot be undone.",
+          recipeDeletedSuccess: "✅ Recipe successfully deleted!",
+          deleteRecipeError: "Error deleting recipe",
+          recipeInUseError:
+            "Cannot delete recipe. It may be used in user diets.",
+          recipeSteps: "Recipe Steps",
+          videoRecipe: "Video Recipe",
+          clickToWatch: "Click to watch",
+          backToRecipes: "Back to Recipes",
+          deleting: "Deleting...",
+          loadRecipeError: "❌ Error loading recipe",
+          fillRequiredFields:
+            "Please fill in the required fields (marked with *)",
+          addAtLeastOneIngredient: "Add at least one ingredient",
+          addAtLeastOneStep: "Add at least one cooking step",
+          recipeUpdatedSuccess: "✅ Recipe successfully updated!",
+          updateRecipeError: "Error updating recipe",
+          loadingRecipeForEdit: "Loading recipe for editing...",
+          recipeImage: "Recipe Image",
+          changeImage: "Change image",
+          clickToUploadImage: "Click to upload image",
+          imageFormats: "PNG, JPG, WEBP up to 5MB",
+          cookingSteps: "Cooking Steps",
+          step: "Step",
+          describeStepPlaceholder: "Describe the cooking step...",
+          addStep: "Add step",
+          recipeName: "Recipe Name",
+          description: "Description",
+          cookingTime: "Cooking Time",
+          cookingTimePlaceholder: "e.g., 30 min",
+          videoLink: "Video Link",
+          ingredientNamePlaceholder: "Ingredient name",
+          ingredientAmountPlaceholder: "Amount",
+          addIngredient: "Add ingredient",
+          cancel: "Cancel",
+          saving: "Saving...",
+          updateRecipe: "Update Recipe",
+          addNewRecipe: "Add New Recipe",
+          saveRecipe: "Save Recipe",
+          addRecipeError: "Error adding recipe",
+          recipeAddedSuccess: "✅ Recipe successfully added!",
+          error_token_missing: "Token missing",
+          error_auth: "Authentication error",
+          error_loading_data: "Error loading data",
+          nt_no_meals_message: "No meals for this day yet.",
+          nt_unspecified_dish_name: "Unspecified",
+          auth_error: "Authentication error. Please log in again.",
+          error_deleting_meal: "Error deleting meal",
+          breakfast: "Breakfast",
+          lunch: "Lunch",
+          dinner: "Dinner",
+          snack: "Snack",
+          meal: "Meal",
+          nt_add_meal_button_multiline: "Add your\nmeal",
+          nt_ingredients_for: "Ingredients for",
+          nt_ingredients_title_day: "Ingredients for day",
+          loading_ingredients: "Loading ingredients...",
+          no_recipe_ingredients: "This meal has no detailed ingredients.",
+          no_ingredients_today:
+            "No recipes with detailed ingredients in the ration.",
+          nt_delete_meal_button: "Delete meal",
+          add_recipe_text: "Add your recipe",
+          error_loading_recipes: "Error loading recipes. Check console.",
+          loading_text: "Loading recipes...",
+          no_recipes_found: "No recipes found.",
+          add_element: "Add element",
+          error_auth_recipes: "Authentication error when loading recipes.",
+          error_no_user: "Failed to determine user. Please log in.",
+          error_no_recipe_selected: "Select a recipe.",
+          error_invalid_quantity: "Number of portions must be greater than 0.",
+          add_meal_title: "Add Meal",
+          meal_type_label: "Meal Type",
+          portions_label: "Quantity (portions)",
+          selected_recipe_label: "Selected Recipe",
+          no_recipe_selected: "Nothing selected",
+          adding_meal: "Adding...",
+          add_to_ration_button: "Add to Ration",
+          cancel_button: "Cancel",
+          search_recipes_placeholder: "Search recipes...",
+          refresh_button: "Refresh",
+          loading_recipes: "Loading recipes...",
+          calories: "Calories",
+          proteins: "Proteins",
+          fats: "Fats",
+          carbs: "Carbs",
+          ingredients: "Ingredients",
+          editRecipe: "Edit Recipe",
+          deleteRecipe: "Delete Recipe",
+
+          weight_analytics: "Weight Analytics",
+          we_no_data_chart: "No data available to display the chart.",
+          we_no_chart_data: "At least 2 entries are required.",
+          we_mode_month: "Month",
+          we_mode_7days: "7 Days",
+          we_last_7_days: "Last 7 Days",
+
+          we_title: "Log Weight",
+          we_current_label: "Current Weight:",
+          we_no_data: "No data",
+          we_error_data: "Error",
+          we_kg_abbr: "kg",
+          we_placeholder: "Enter weight (kg)",
+          we_submitting: "Saving...",
+          we_save_button: "Save",
+          we_saved: "Weight saved!",
+          we_error: "Save error.",
+
+          nt_january: "January",
+          nt_february: "February",
+          nt_march: "March",
+          nt_april: "April",
+          nt_may: "May",
+          nt_june: "June",
+          nt_july: "July",
+          nt_august: "August",
+          nt_september: "September",
+          nt_october: "October",
+          nt_november: "November",
+          nt_december: "December",
+
+          // --- Nutrition motivation messages ---
+          nt_motivation_general_1:
+            "Your health is your biggest investment. Keep going, you are on the right track! 💪",
+          nt_motivation_general_2:
+            "Healthy choices today mean strength tomorrow. Take action!",
+          nt_motivation_general_3:
+            "Remember to hydrate! Even a small glass of water makes you feel better.",
+          nt_motivation_general_4:
+            "Daily self-improvement yields results. Great job being here!",
+          nt_motivation_general_5:
+            "Small, consistent efforts always win over quick, chaotic jumps. Stay steady!",
+          nt_motivation_general_6:
+            "Remember: your goal is a marathon, not a sprint. The main thing is not to stop!",
+
+          nt_motivation_no_meals:
+            "Looks like you haven't logged anything today. Let's start with a nutritious breakfast!",
+
+          nt_motivation_calories_on_target:
+            "🎉 Great job! You fit perfectly within your calorie limit. A true champion!",
+          nt_motivation_calories_on_target_M:
+            "🎉 Great job! You fitted perfectly within your calorie limit, Champion!",
+          nt_motivation_calories_on_target_F:
+            "🎉 Great job! You fitted perfectly within your calorie limit, Queen!",
+
+          nt_motivation_calories_over:
+            "Careful! You've consumed {{calories}} kcal so far (which is above target). Focus on your last meal.",
+          nt_motivation_calories_critical_over:
+            "🔴 Critical! {{calories}} kcal is a significant overshoot. Focus on light protein and fiber today.",
+
+          nt_motivation_almost_protein:
+            "You've almost reached your protein goal! A little more and your muscles will thank you!",
+          nt_motivation_almost_protein_M:
+            "You've almost reached your protein goal! Keep pushing, man!",
+          nt_motivation_almost_protein_F:
+            "You've almost reached your protein goal! That's excellent progress!",
+
+          nt_motivation_low_protein:
+            "You're a bit low on protein today. Try adding yogurt or nuts to your next snack. Need {{protein}}g more!",
+          nt_motivation_high_fat:
+            "I see a lot of fat in your diet. Maybe replace one snack with fruit or vegetables? 🥑",
+          nt_motivation_low_carbs:
+            "Feeling tired after lunch? It might be due to low carbs. Try adding whole grains to dinner.",
+          nt_motivation_evening_low:
+            "You're doing great! Focus on light food for dinner to perfectly hit your remaining calories.",
+
+          nt_motivation_morning:
+            "Good morning! Start this day with the right breakfast and a positive mood 🌞",
+          nt_motivation_morning_M:
+            "Good morning, warrior! Start this day with the right breakfast for energy. 🌞",
+          nt_motivation_morning_F:
+            "Good morning, beautiful! Start this day with the right breakfast for energy. 🌞",
+          nt_motivation_evening:
+            "Great day! Remember that quality rest is part of your nutrition plan.",
 
           // --- Social challenges translations ---
           ch_all_challenges_title: "All Challenges",
@@ -1174,48 +1336,205 @@ i18n
           nt_protein_label: "Білки",
           nt_g_abbr: "г",
           nt_meals_title: "Прийоми їжі",
-          nt_add_meal_button: "Додати прийом",
+          nt_add_meal_button: "Додати їжу",
           nt_analytics_title: "Аналітика",
-
-          nt_tracker_tab: "Трекер харчування",
           nt_ration_tab: "Раціон",
-          nt_recipes_tab: "Рецепти",
           nt_loading: "Завантаження...",
-          nt_g_abbr: "г",
           nt_motivation_title: "Мотивація",
-  
           nt_motivation_loading: "Завантаження мотивації...",
-  
-          // --- Общие/Гендерно-Нейтральные ---
-          nt_motivation_general_1: "Твоє здоров'я — це твоя найбільша інвестиція. Продовжуй, ти на правильному шляху! 💪",
-          nt_motivation_general_2: "Здоровий вибір сьогодні — це сила завтра. Дій!",
-          nt_motivation_general_3: "Пам'ятай про водний баланс! Навіть маленька склянка води робить тебе краще.",
-          nt_motivation_general_4: "Щоденна праця над собою дає результат. Ти молодець, що тут!",
-          nt_motivation_general_5: "Невеликі, послідовні зусилля завжди перемагають швидкі, але хаотичні стрибки. Залишайся стійким!",
-          nt_motivation_general_6: "Пам'ятай: твоя ціль — це марафон, а не спринт. Головне — не зупинятися!",
-          
-          // --- Прогресс ---
-          nt_motivation_no_meals: "Схоже, ти ще нічого не записав(-ла) сьогодні. Почнімо з поживного сніданку!",
-          nt_motivation_calories_on_target: "🎉 Чудова робота! Ти ідеально вписався(-лася) у свій ліміт калорій. Справжній чемпіон!",
-          nt_motivation_calories_on_target_M: "🎉 Чудова робота! Ти ідеально вписався у свій ліміт калорій. Справжній чемпіон!",
-          nt_motivation_calories_on_target_F: "🎉 Чудова робота! Ти ідеально вписалася у свій ліміт калорій. Справжня чемпіонка!",
-          nt_motivation_calories_over: "Обережно! Наразі ти спожив(-ла) {{calories}} ккал (це вже вище цілі). Зосередься на останньому прийомі їжі.",
-          nt_motivation_calories_critical_over: "🔴 Критично! {{calories}} ккал — це значний перебір. Зроби упор на легкий білок і клітковину сьогодні.",
-          nt_motivation_almost_protein: "Ти майже досяг(-ла) цілі по білку! Ще трохи, і твій м'язовий каркас скаже тобі 'дякую'!",
-          nt_motivation_almost_protein_M: "Ти майже досяг цілі по білку! Ще трохи, і твій м'язовий каркас скаже тобі 'дякую'!",
-          nt_motivation_almost_protein_F: "Ти майже досягла цілі по білку! Ще трохи, і твій м'язовий каркас скаже тобі 'дякую'!",
-  
-          // --- Рекомендации ---
-          nt_motivation_low_protein: "Сьогодні трохи не вистачає білка. Спробуй додати йогурт або горіхи до наступного перекусу. Потрібно більше {{protein}}г!",
-          nt_motivation_high_fat: "Бачу багато жирів у раціоні. Можливо, варто замінити один перекус на фрукти чи овочі? 🥑",
-          nt_motivation_low_carbs: "Після обіду відчуваєш втому? Це може бути через нестачу вуглеводів. Спробуй додати до вечері цільні злаки.",
-          nt_motivation_evening_low: "Ти добре тримаєшся! На сьогоднішній вечерю зосередься на легкій їжі, щоб ідеально добити калорії.",
-  
-          // --- Время суток ---
-          nt_motivation_morning: "Доброго ранку! Почни цей день з правильного сніданку та позитивного настрою 🌞",
-          nt_motivation_morning_M: "Доброго ранку, воїне! Почни цей день з правильного сніданку для енергії. 🌞",
-          nt_motivation_morning_F: "Доброго ранку, красуне! Почни цей день з правильного сніданку для енергії. 🌞",
-          nt_motivation_evening: "Чудовий день! Не забувай, що якісний відпочинок — це частина твого плану харчування.",
+          nt_daily_progress: "Щоденний прогрес",
+          nt_fat_label: "Жири",
+          nt_carbs_label: "Вуглеводи",
+          nt_dish_name: "Назва страви",
+
+          nt_k_abbr: "ккал",
+          nt_b_abbr: "Б",
+          nt_zh_abbr: "Ж",
+          nt_v_abbr: "В",
+
+          nt_unspecified_meal_1: "Сніданок",
+          nt_unspecified_meal_2: "Обід",
+          nt_unspecified_meal_3: "Вечеря",
+          nt_unspecified_meal_4: "Перекус",
+
+          loadingRecipe: "Завантаження рецепта...",
+          recipeNotFound: "Рецепт не знайдено",
+          confirmDeleteRecipe:
+            "Ви впевнені, що хочете видалити цей рецепт? Цю дію неможливо скасувати.",
+          recipeDeletedSuccess: "✅ Рецепт успішно видалено!",
+          deleteRecipeError: "Помилка видалення рецепта",
+          recipeInUseError:
+            "Неможливо видалити рецепт. Можливо, він використовується в раціоні користувачів.",
+          recipeSteps: "Кроки рецепта",
+          videoRecipe: "Відео-рецепт",
+          clickToWatch: "Натисніть для перегляду",
+          backToRecipes: "Назад до рецептів",
+          deleting: "Видалення...",
+          loadRecipeError: "❌ Помилка завантаження рецепта",
+          fillRequiredFields:
+            "Будь ласка, заповніть обов'язкові поля (позначені *)",
+          addAtLeastOneIngredient: "Додайте хоча б один інгредієнт",
+          addAtLeastOneStep: "Додайте хоча б один крок приготування",
+          recipeUpdatedSuccess: "✅ Рецепт успішно оновлено!",
+          updateRecipeError: "Помилка при оновленні рецепта",
+          loadingRecipeForEdit: "Завантаження рецепта для редагування...",
+          recipeImage: "Зображення рецепта",
+          changeImage: "Змінити зображення",
+          clickToUploadImage: "Натисніть для завантаження зображення",
+          imageFormats: "PNG, JPG, WEBP до 5MB",
+          cookingSteps: "Кроки приготування",
+          step: "Крок",
+          describeStepPlaceholder: "Опишіть крок приготування...",
+          addStep: "Додати крок",
+          recipeName: "Назва рецепта",
+          description: "Опис",
+          cookingTime: "Час приготування",
+          cookingTimePlaceholder: "наприклад: 30 хв",
+          videoLink: "Посилання на відео",
+          ingredientNamePlaceholder: "Назва інгредієнта",
+          ingredientAmountPlaceholder: "Кількість",
+          addIngredient: "Додати інгредієнт",
+          cancel: "Скасувати",
+          saving: "Збереження...",
+          updateRecipe: "Оновити Рецепт",
+          addNewRecipe: "Додати новий рецепт",
+          saveRecipe: "Зберегти Рецепт",
+          addRecipeError: "Помилка при додаванні рецепта",
+          recipeAddedSuccess: "✅ Рецепт успішно додано!",
+          error_token_missing: "Токен відсутній",
+          error_auth: "Помилка авторизації",
+          error_loading_data: "Помилка завантаження даних",
+          nt_no_meals_message: "Поки що немає прийомів їжі за цей день.",
+          nt_unspecified_dish_name: "Не вказано",
+          auth_error: "Помилка авторизації. Будь ласка, увійдіть знову.",
+          error_deleting_meal: "Помилка при видаленні прийому їжі",
+          breakfast: "Сніданок",
+          lunch: "Обід",
+          dinner: "Вечеря",
+          snack: "Перекус",
+          meal: "Прийом їжі",
+          nt_add_meal_button_multiline: "Додайте свій\nприйом їжі",
+          nt_ingredients_for: "Інгредієнти для",
+          nt_ingredients_title_day: "Інгредієнти за день",
+          loading_ingredients: "Завантаження інгредієнтів...",
+          no_recipe_ingredients:
+            "Цей прийом їжі не має детальних інгредієнтів.",
+          no_ingredients_today:
+            "В раціоні немає рецептів з детальними інгредієнтами.",
+          nt_delete_meal_button: "Видалити прийом їжі",
+          add_recipe_text: "Додати свій рецепт",
+          error_loading_recipes:
+            "Помилка завантаження рецептів. Перевірте консоль.",
+          loading_text: "Завантаження рецептів...",
+          no_recipes_found: "Рецепти не знайдено.",
+          add_element: "Додати елемент",
+          error_auth_recipes: "Помилка авторизації при завантаженні рецептів.",
+          error_no_user:
+            "Не вдалося визначити користувача. Будь ласка, авторизуйтесь.",
+          error_no_recipe_selected: "Виберіть рецепт.",
+          error_invalid_quantity: "Кількість порцій має бути більшою за 0.",
+          add_meal_title: "Додати прийом їжі",
+          meal_type_label: "Прийом їжі",
+          portions_label: "Кількість (порцій)",
+          selected_recipe_label: "Вибраний рецепт",
+          no_recipe_selected: "Нічого не обрано",
+          adding_meal: "Додавання...",
+          add_to_ration_button: "Додати до раціону",
+          cancel_button: "Скасувати",
+          search_recipes_placeholder: "Пошук рецептів...",
+          refresh_button: "Оновити",
+          loading_recipes: "Завантаження рецептів...",
+          calories: "Калорії",
+          proteins: "Білки",
+          fats: "Жири",
+          carbs: "Вуглеводи",
+          ingredients: "Інгредієнти",
+          editRecipe: "Редагувати рецепт",
+          deleteRecipe: "Видалити рецепт",
+
+          weight_analytics: "Аналітика ваги",
+          we_no_data_chart: "Немає даних для відображення графіка.",
+          we_no_chart_data: "Потрібно щонайменше 2 записи.",
+          we_mode_month: "Місяць",
+          we_mode_7days: "7 днів",
+          we_last_7_days: "Останні 7 днів",
+
+          we_title: "Записати вагу",
+          we_current_label: "Поточна вага:",
+          we_no_data: "Немає даних",
+          we_error_data: "Помилка",
+          we_kg_abbr: "кг",
+          we_placeholder: "Введіть вагу (кг)",
+          we_submitting: "Збереження...",
+          we_save_button: "Зберегти",
+          we_saved: "Вага збережена!",
+          we_error: "Помилка збереження.",
+
+          nt_january: "Січень",
+          nt_february: "Лютий",
+          nt_march: "Березень",
+          nt_april: "Квітень",
+          nt_may: "Травень",
+          nt_june: "Червень",
+          nt_july: "Липень",
+          nt_august: "Серпень",
+          nt_september: "Вересень",
+          nt_october: "Жовтень",
+          nt_november: "Листопад",
+          nt_december: "Грудень",
+
+          nt_motivation_general_1:
+            "Ваше здоров'я - найбільша інвестиція. Продовжуйте, ви на правильному шляху! 💪",
+          nt_motivation_general_2:
+            "Здорові вибори сьогодні - це сила завтра. Дійте!",
+          nt_motivation_general_3:
+            "Не забувайте пити воду! Навіть невелика склянка води покращує самопочуття.",
+          nt_motivation_general_4:
+            "Щоденна робота над собою дає результати. Ви велика молодець, що тут!",
+          nt_motivation_general_5:
+            "Малі, але регулярні зусилля завжди перемагають швидкі, хаотичні стрибки. Будьте стабільні!",
+          nt_motivation_general_6:
+            "Пам'ятайте: ваша мета - це марафон, а не спринт. Головне - не зупинятися!",
+
+          nt_motivation_no_meals:
+            "Схоже, ви ще нічого не записали сьогодні. Почніть з поживного сніданку!",
+
+          nt_motivation_calories_on_target:
+            "🎉 Чудова робота! Ви вклалися в ліміт калорій. Справжній чемпіон!",
+          nt_motivation_calories_on_target_M:
+            "🎉 Чудова робота! Ви вклалися в ліміт калорій, Чемпіоне!",
+          nt_motivation_calories_on_target_F:
+            "🎉 Чудова робота! Ви вклалися в ліміт калорій, Королево!",
+
+          nt_motivation_calories_over:
+            "Обережно! Ви спожили {{calories}} ккал (це вище за ціль). Зосередьтеся на останньому прийомі їжі.",
+          nt_motivation_calories_critical_over:
+            "🔴 Критично! {{calories}} ккал - це значний перебій. Зосередьтеся на легкому білку та клітковині сьогодні.",
+
+          nt_motivation_almost_protein:
+            "Ви майже досягли мети по білку! Трохи більше - і ваші м'язи скажуть дякую!",
+          nt_motivation_almost_protein_M:
+            "Ви майже досягли мети по білку! Продовжуйте, чоловіче!",
+          nt_motivation_almost_protein_F:
+            "Ви майже досягли мети по білку! Це чудовий прогрес!",
+
+          nt_motivation_low_protein:
+            "У вас сьогодні трохи замало білку. Спробуйте додати йогурт або горіхи до наступного перекусу. Потрібно ще {{protein}}г!",
+          nt_motivation_high_fat:
+            "Я бачу багато жирів у вашому раціоні. Можливо, замініть один перекус на фрукти або овочі? 🥑",
+          nt_motivation_low_carbs:
+            "Відчуваєте втому після обіду? Можливо, це через низькі вуглеводи. Спробуйте додати цільнозернові продукти на вечерю.",
+          nt_motivation_evening_low:
+            "Ви чудово справляєтеся! Зосередьтеся на легкій їжі на вечерю, щоб ідеально вкластися в залишок калорій.",
+
+          nt_motivation_morning:
+            "Доброго ранку! Почніть цей день з правильного сніданку та позитивного настрою 🌞",
+          nt_motivation_morning_M:
+            "Доброго ранку, воїне! Почніть цей день з правильного сніданку для енергії. 🌞",
+          nt_motivation_morning_F:
+            "Доброго ранку, красуне! Почніть цей день з правильного сніданку для енергії. 🌞",
+          nt_motivation_evening:
+            "Чудовий день! Пам'ятайте, що якісний відпочинок - це частина вашого плану харчування.",
 
           // === СОЦІАЛЬНІ ЧЕЛЕНДЖІ ===
           ch_all_challenges_title: "Усі челенджі",
@@ -2015,39 +2334,219 @@ i18n
           article_7: "Prävention und Überwindung von Burnout",
           gender: "Gesundheit nach Geschlecht",
 
-
+          welcome: "Willkommen",
+          nt_tracker_tab: "Ernährungs-Tracker",
+          nt_recipes_tab: "Rezepte",
+          nt_date_label: "Datum",
+          nt_calories_label: "Kalorien",
+          nt_kcal_abbr: "kcal",
+          nt_protein_label: "Protein",
+          nt_g_abbr: "g",
+          nt_meals_title: "Mahlzeiten",
+          nt_add_meal_button: "Mahlzeit hinzufügen",
+          nt_analytics_title: "Analytik",
+          nt_ration_tab: "Ration",
+          nt_loading: "Lädt...",
           nt_motivation_title: "Motivation",
-          nt_motivation_loading: "Intelligente Motivation wird geladen...",
-          
-          nt_motivation_general_1: "Ihre Gesundheit ist Ihre größte Investition. Machen Sie weiter so, Sie sind auf dem richtigen Weg! 💪",
-          nt_motivation_general_2: "Gesunde Entscheidungen heute bedeuten Stärke morgen. Handeln Sie!",
-          nt_motivation_general_3: "Denken Sie an die Hydratation! Sogar ein kleines Glas Wasser macht Sie besser.",
-          nt_motivation_general_4: "Tägliche Arbeit an sich selbst zahlt sich aus. Gut gemacht, dass Sie hier sind!",
-          nt_motivation_general_5: "Kleine, konsequente Anstrengungen gewinnen immer über schnelle, chaotische Sprünge. Bleiben Sie standhaft!",
-          nt_motivation_general_6: "Denken Sie daran: Ihr Ziel ist ein Marathon, kein Sprint. Das Wichtigste ist, nicht aufzuhören!",
-          
-          nt_motivation_no_meals: "Es sieht so aus, als hätten Sie heute noch nichts protokolliert. Beginnen wir mit einem nahrhaften Frühstück!",
-          
-          nt_motivation_calories_on_target: "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst. Ein wahrer Champion!",
-          nt_motivation_calories_on_target_M: "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst, Champion!",
-          nt_motivation_calories_on_target_F: "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst, Königin!",
-          
-          nt_motivation_calories_over: "Vorsicht! Sie haben bisher {{calories}} kcal konsumiert (das liegt über dem Ziel). Konzentrieren Sie sich auf Ihre letzte Mahlzeit.",
-          nt_motivation_calories_critical_over: "🔴 Kritisch! {{calories}} kcal ist eine deutliche Überschreitung. Konzentrieren Sie sich heute auf leichtes Protein und Ballaststoffe.",
-          
-          nt_motivation_almost_protein: "Sie haben Ihr Proteinziel fast erreicht! Ein bisschen mehr, und Ihre Muskeln werden es Ihnen danken!",
-          nt_motivation_almost_protein_M: "Sie haben Ihr Proteinziel fast erreicht! Machen Sie weiter so, Mann!",
-          nt_motivation_almost_protein_F: "Sie haben Ihr Proteinziel fast erreicht! Das ist ein ausgezeichneter Fortschritt!",
-          
-          nt_motivation_low_protein: "Sie haben heute etwas wenig Protein. Versuchen Sie, Ihrem nächsten Snack Joghurt oder Nüsse hinzuzufügen. {{protein}}g fehlen noch!",
-          nt_motivation_high_fat: "Ich sehe viel Fett in Ihrer Ernährung. Vielleicht ersetzen Sie einen Snack durch Obst oder Gemüse? 🥑",
-          nt_motivation_low_carbs: "Fühlen Sie sich nach dem Mittagessen müde? Das könnte an Kohlenhydratmangel liegen. Versuchen Sie, Vollkornprodukte zum Abendessen hinzuzufügen.",
-          nt_motivation_evening_low: "Sie machen sich gut! Konzentrieren Sie sich beim Abendessen auf leichte Kost, um Ihre verbleibenden Kalorien perfekt zu erreichen.",
-          
-          nt_motivation_morning: "Guten Morgen! Starten Sie diesen Tag mit dem richtigen Frühstück und einer positiven Stimmung 🌞",
-          nt_motivation_morning_M: "Guten Morgen, Krieger! Starten Sie diesen Tag mit dem richtigen Frühstück für Energie. 🌞",
-          nt_motivation_morning_F: "Guten Morgen, Schönheit! Starten Sie diesen Tag mit dem richtigen Frühstück für Energie. 🌞",
-          nt_motivation_evening: "Ein toller Tag! Denken Sie daran, dass hochwertige Ruhe Teil Ihres Ernährungsplans ist.",
+          nt_motivation_loading: "Motivation wird geladen...",
+          nt_daily_progress: "Tagesfortschritt",
+          nt_fat_label: "Fette",
+          nt_carbs_label: "Kohlenhydrate",
+          nt_dish_name: "Gerichtname",
+
+          nt_k_abbr: "kcal",
+          nt_b_abbr: "P",
+          nt_zh_abbr: "F",
+          nt_v_abbr: "K",
+
+          nt_unspecified_meal_1: "Frühstück",
+          nt_unspecified_meal_2: "Mittagessen",
+          nt_unspecified_meal_3: "Abendessen",
+          nt_unspecified_meal_4: "Snack",
+
+          loadingRecipe: "Rezept wird geladen...",
+          recipeNotFound: "Rezept nicht gefunden",
+          confirmDeleteRecipe:
+            "Sind Sie sicher, dass Sie dieses Rezept löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+          recipeDeletedSuccess: "✅ Rezept erfolgreich gelöscht!",
+          deleteRecipeError: "Fehler beim Löschen des Rezepts",
+          recipeInUseError:
+            "Rezept kann nicht gelöscht werden. Es wird möglicherweise in Benutzerdiäten verwendet.",
+          recipeSteps: "Rezeptschritte",
+          videoRecipe: "Video-Rezept",
+          clickToWatch: "Zum Anschauen klicken",
+          backToRecipes: "Zurück zu Rezepten",
+          deleting: "Löschen...",
+          loadRecipeError: "❌ Fehler beim Laden des Rezepts",
+          fillRequiredFields:
+            "Bitte füllen Sie die erforderlichen Felder aus (mit * gekennzeichnet)",
+          addAtLeastOneIngredient: "Fügen Sie mindestens eine Zutat hinzu",
+          addAtLeastOneStep:
+            "Fügen Sie mindestens einen Zubereitungsschritt hinzu",
+          recipeUpdatedSuccess: "✅ Rezept erfolgreich aktualisiert!",
+          updateRecipeError: "Fehler beim Aktualisieren des Rezepts",
+          loadingRecipeForEdit: "Rezept wird zum Bearbeiten geladen...",
+          recipeImage: "Rezeptbild",
+          changeImage: "Bild ändern",
+          clickToUploadImage: "Klicken Sie zum Hochladen des Bildes",
+          imageFormats: "PNG, JPG, WEBP bis zu 5MB",
+          cookingSteps: "Zubereitungsschritte",
+          step: "Schritt",
+          describeStepPlaceholder: "Beschreiben Sie den Zubereitungsschritt...",
+          addStep: "Schritt hinzufügen",
+          recipeName: "Rezeptname",
+          description: "Beschreibung",
+          cookingTime: "Zubereitungszeit",
+          cookingTimePlaceholder: "z.B. 30 Min.",
+          videoLink: "Video-Link",
+          ingredientNamePlaceholder: "Zutatenname",
+          ingredientAmountPlaceholder: "Menge",
+          addIngredient: "Zutat hinzufügen",
+          cancel: "Abbrechen",
+          saving: "Wird gespeichert...",
+          updateRecipe: "Rezept aktualisieren",
+          addNewRecipe: "Neues Rezept hinzufügen",
+          saveRecipe: "Rezept speichern",
+          addRecipeError: "Fehler beim Hinzufügen des Rezepts",
+          recipeAddedSuccess: "✅ Rezept erfolgreich hinzugefügt!",
+          error_token_missing: "Token fehlt",
+          error_auth: "Authentifizierungsfehler",
+          error_loading_data: "Fehler beim Laden der Daten",
+          nt_no_meals_message: "Noch keine Mahlzeiten für diesen Tag.",
+          nt_unspecified_dish_name: "Nicht angegeben",
+          auth_error:
+            "Authentifizierungsfehler. Bitte melden Sie sich erneut an.",
+          error_deleting_meal: "Fehler beim Löschen der Mahlzeit",
+          breakfast: "Frühstück",
+          lunch: "Mittagessen",
+          dinner: "Abendessen",
+          snack: "Snack",
+          meal: "Mahlzeit",
+          nt_add_meal_button_multiline: "Fügen Sie Ihre\nMahlzeit hinzu",
+          nt_ingredients_for: "Zutaten für",
+          nt_ingredients_title_day: "Zutaten für den Tag",
+          loading_ingredients: "Zutaten werden geladen...",
+          no_recipe_ingredients:
+            "Diese Mahlzeit hat keine detaillierten Zutaten.",
+          no_ingredients_today:
+            "Keine Rezepte mit detaillierten Zutaten in der Ration.",
+          nt_delete_meal_button: "Mahlzeit löschen",
+          add_recipe_text: "Fügen Sie Ihr Rezept hinzu",
+          error_loading_recipes:
+            "Fehler beim Laden der Rezepte. Überprüfen Sie die Konsole.",
+          loading_text: "Rezepte werden geladen...",
+          no_recipes_found: "Keine Rezepte gefunden.",
+          add_element: "Element hinzufügen",
+          error_auth_recipes:
+            "Authentifizierungsfehler beim Laden der Rezepte.",
+          error_no_user:
+            "Benutzer konnte nicht ermittelt werden. Bitte melden Sie sich an.",
+          error_no_recipe_selected: "Wählen Sie ein Rezept aus.",
+          error_invalid_quantity:
+            "Die Anzahl der Portionen muss größer als 0 sein.",
+          add_meal_title: "Mahlzeit hinzufügen",
+          meal_type_label: "Mahlzeittyp",
+          portions_label: "Menge (Portionen)",
+          selected_recipe_label: "Ausgewähltes Rezept",
+          no_recipe_selected: "Nichts ausgewählt",
+          adding_meal: "Wird hinzugefügt...",
+          add_to_ration_button: "Zur Ration hinzufügen",
+          cancel_button: "Abbrechen",
+          search_recipes_placeholder: "Rezepte suchen...",
+          refresh_button: "Aktualisieren",
+          loading_recipes: "Rezepte werden geladen...",
+          calories: "Kalorien",
+          proteins: "Proteine",
+          fats: "Fette",
+          carbs: "Kohlenhydrate",
+          ingredients: "Zutaten",
+          editRecipe: "Rezept bearbeiten",
+          deleteRecipe: "Rezept löschen",
+
+          weight_analytics: "Gewichtsanalytik",
+          we_no_data_chart:
+            "Keine Daten verfügbar, um das Diagramm anzuzeigen.",
+          we_no_chart_data: "Mindestens 2 Einträge sind erforderlich.",
+          we_mode_month: "Monat",
+          we_mode_7days: "7 Tage",
+          we_last_7_days: "Letzte 7 Tage",
+
+          we_title: "Gewicht protokollieren",
+          we_current_label: "Aktuelles Gewicht:",
+          we_no_data: "Keine Daten",
+          we_error_data: "Fehler",
+          we_kg_abbr: "kg",
+          we_placeholder: "Gewicht eingeben (kg)",
+          we_submitting: "Wird gespeichert...",
+          we_save_button: "Speichern",
+          we_saved: "Gewicht gespeichert!",
+          we_error: "Speicherfehler.",
+
+          nt_january: "Januar",
+          nt_february: "Februar",
+          nt_march: "März",
+          nt_april: "April",
+          nt_may: "Mai",
+          nt_june: "Juni",
+          nt_july: "Juli",
+          nt_august: "August",
+          nt_september: "September",
+          nt_october: "Oktober",
+          nt_november: "November",
+          nt_december: "Dezember",
+
+          nt_motivation_general_1:
+            "Ihre Gesundheit ist Ihre größte Investition. Weiter so, Sie sind auf dem richtigen Weg! 💪",
+          nt_motivation_general_2:
+            "Gesunde Entscheidungen heute bedeuten Stärke morgen. Handeln Sie!",
+          nt_motivation_general_3:
+            "Denken Sie ans Hydrieren! Selbst ein kleines Glas Wasser verbessert Ihr Wohlbefinden.",
+          nt_motivation_general_4:
+            "Tägliche Selbstverbesserung bringt Ergebnisse. Großartig, dass Sie hier sind!",
+          nt_motivation_general_5:
+            "Kleine, konsequente Anstrengungen gewinnen immer über schnelle, chaotische Sprünge. Bleiben Sie stabil!",
+          nt_motivation_general_6:
+            "Denken Sie daran: Ihr Ziel ist ein Marathon, kein Sprint. Hauptsache, nicht aufhören!",
+
+          nt_motivation_no_meals:
+            "Scheint, als hätten Sie heute noch nichts protokolliert. Beginnen Sie mit einem nahrhaften Frühstück!",
+
+          nt_motivation_calories_on_target:
+            "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst. Ein wahrer Champion!",
+          nt_motivation_calories_on_target_M:
+            "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst, Champion!",
+          nt_motivation_calories_on_target_F:
+            "🎉 Großartige Arbeit! Sie haben perfekt in Ihr Kalorienlimit gepasst, Königin!",
+
+          nt_motivation_calories_over:
+            "Vorsicht! Sie haben {{calories}} kcal verbraucht (das ist über dem Ziel). Konzentrieren Sie sich auf Ihre letzte Mahlzeit.",
+          nt_motivation_calories_critical_over:
+            "🔴 Kritisch! {{calories}} kcal ist eine erhebliche Überschreitung. Konzentrieren Sie sich heute auf leichtes Protein und Ballaststoffe.",
+
+          nt_motivation_almost_protein:
+            "Sie haben Ihr Proteinziel fast erreicht! Ein bisschen mehr - und Ihre Muskeln werden sich bedanken!",
+          nt_motivation_almost_protein_M:
+            "Sie haben Ihr Proteinziel fast erreicht! Weiter so, Mann!",
+          nt_motivation_almost_protein_F:
+            "Sie haben Ihr Proteinziel fast erreicht! Das ist ausgezeichneter Fortschritt!",
+
+          nt_motivation_low_protein:
+            "Sie haben heute etwas zu wenig Protein. Versuchen Sie, Joghurt oder Nüsse zu Ihrem nächsten Snack hinzuzufügen. Noch {{protein}}g benötigt!",
+          nt_motivation_high_fat:
+            "Ich sehe viel Fett in Ihrer Ernährung. Vielleicht ersetzen Sie einen Snack durch Obst oder Gemüse? 🥑",
+          nt_motivation_low_carbs:
+            "Fühlen Sie sich nach dem Mittagessen müde? Das könnte an niedrigen Kohlenhydraten liegen. Versuchen Sie, Vollkornprodukte zum Abendessen hinzuzufügen.",
+          nt_motivation_evening_low:
+            "Sie machen das großartig! Konzentrieren Sie sich auf leichte Nahrung zum Abendessen, um perfekt in Ihre verbleibenden Kalorien zu passen.",
+
+          nt_motivation_morning:
+            "Guten Morgen! Starten Sie diesen Tag mit dem richtigen Frühstück und einer positiven Stimmung 🌞",
+          nt_motivation_morning_M:
+            "Guten Morgen, Krieger! Starten Sie diesen Tag mit dem richtigen Frühstück für Energie. 🌞",
+          nt_motivation_morning_F:
+            "Guten Morgen, Schöne! Starten Sie diesen Tag mit dem richtigen Frühstück für Energie. 🌞",
+          nt_motivation_evening:
+            "Großartiger Tag! Denken Sie daran, dass qualitative Erholung Teil Ihres Ernährungsplans ist.",
 
           // === SOZIALE CHALLENGES ===
           ch_all_challenges_title: "Alle Challenges",
@@ -2870,39 +3369,216 @@ i18n
           article_7: "Prévention et surmonter l'épuisement professionnel",
           gender: "Santé par genre",
 
-
+          welcome: "Bienvenue",
+          nt_tracker_tab: "Suivi Nutritionnel",
+          nt_recipes_tab: "Recettes",
+          nt_date_label: "Date",
+          nt_calories_label: "Calories",
+          nt_kcal_abbr: "kcal",
+          nt_protein_label: "Protéines",
+          nt_g_abbr: "g",
+          nt_meals_title: "Repas",
+          nt_add_meal_button: "Ajouter un repas",
+          nt_analytics_title: "Analytique",
+          nt_ration_tab: "Ration",
+          nt_loading: "Chargement...",
           nt_motivation_title: "Motivation",
-          nt_motivation_loading: "Chargement de la motivation intelligente...",
-          
-          nt_motivation_general_1: "Votre santé est votre plus grand investissement. Continuez, vous êtes sur la bonne voie! 💪",
-          nt_motivation_general_2: "Des choix sains aujourd'hui signifient la force de demain. Agissez!",
-          nt_motivation_general_3: "N'oubliez pas l'hydratation! Même un petit verre d'eau vous rend meilleur.",
-          nt_motivation_general_4: "Le travail quotidien sur soi-même donne des résultats. Bravo d'être là!",
-          nt_motivation_general_5: "De petits efforts constants l'emportent toujours sur des sauts rapides et chaotiques. Restez stable!",
-          nt_motivation_general_6: "Rappelez-vous: votre objectif est un marathon, pas un sprint. Le principal est de ne pas s'arrêter!",
-          
-          nt_motivation_no_meals: "Il semble que vous n'ayez rien enregistré aujourd'hui. Commençons par un petit-déjeuner nutritif!",
-          
-          nt_motivation_calories_on_target: "🎉 Excellent travail! Vous vous êtes parfaitement intégré(e) à votre limite de calories. Un(e) vrai(e) champion(ne)!",
-          nt_motivation_calories_on_target_M: "🎉 Excellent travail! Tu t'es parfaitement intégré à ta limite de calories, Champion!",
-          nt_motivation_calories_on_target_F: "🎉 Excellent travail! Tu t'es parfaitement intégrée à ta limite de calories, Reine!",
-          
-          nt_motivation_calories_over: "Attention! Vous avez consommé {{calories}} kcal jusqu'à présent (ce qui est au-dessus de l'objectif). Concentrez-vous sur votre dernier repas.",
-          nt_motivation_calories_critical_over: "🔴 Critique! {{calories}} kcal est un dépassement important. Concentrez-vous sur des protéines légères et des fibres aujourd'hui.",
-          
-          nt_motivation_almost_protein: "Vous avez presque atteint votre objectif de protéines! Encore un peu et vos muscles vous remercieront!",
-          nt_motivation_almost_protein_M: "Vous avez presque atteint votre objectif de protéines! Continuez à pousser!",
-          nt_motivation_almost_protein_F: "Vous avez presque atteint votre objectif de protéines! C'est un excellent progrès!",
-          
-          nt_motivation_low_protein: "Vous êtes un peu faible en protéines aujourd'hui. Essayez d'ajouter du yaourt ou des noix à votre prochaine collation. Il manque {{protein}}g!",
-          nt_motivation_high_fat: "Je vois beaucoup de graisses dans votre alimentation. Peut-être remplacer une collation par des fruits ou des légumes? 🥑",
-          nt_motivation_low_carbs: "Vous vous sentez fatigué(e) après le déjeuner? Cela pourrait être dû à un manque de glucides. Essayez d'ajouter des céréales complètes au dîner.",
-          nt_motivation_evening_low: "Vous vous en sortez très bien! Concentrez-vous sur des aliments légers pour le dîner afin d'atteindre parfaitement vos calories restantes.",
-          
-          nt_motivation_morning: "Bonjour! Commencez cette journée avec le bon petit-déjeuner et une humeur positive 🌞",
-          nt_motivation_morning_M: "Bonjour, guerrier! Commencez cette journée avec le bon petit-déjeuner pour l'énergie. 🌞",
-          nt_motivation_morning_F: "Bonjour, beauté! Commencez cette journée avec le bon petit-déjeuner pour l'énergie. 🌞",
-          nt_motivation_evening: "Super journée! N'oubliez pas qu'un repos de qualité fait partie de votre plan de nutrition.",
+          nt_motivation_loading: "Chargement de la motivation...",
+          nt_daily_progress: "Progrès quotidien",
+          nt_fat_label: "Lipides",
+          nt_carbs_label: "Glucides",
+          nt_dish_name: "Nom du plat",
+
+          nt_k_abbr: "kcal",
+          nt_b_abbr: "P",
+          nt_zh_abbr: "L",
+          nt_v_abbr: "G",
+
+          nt_unspecified_meal_1: "Petit-déjeuner",
+          nt_unspecified_meal_2: "Déjeuner",
+          nt_unspecified_meal_3: "Dîner",
+          nt_unspecified_meal_4: "Collation",
+
+          loadingRecipe: "Chargement de la recette...",
+          recipeNotFound: "Recette non trouvée",
+          confirmDeleteRecipe:
+            "Êtes-vous sûr de vouloir supprimer cette recette ? Cette action ne peut pas être annulée.",
+          recipeDeletedSuccess: "✅ Recette supprimée avec succès !",
+          deleteRecipeError: "Erreur lors de la suppression de la recette",
+          recipeInUseError:
+            "Impossible de supprimer la recette. Elle est peut-être utilisée dans les régimes des utilisateurs.",
+          recipeSteps: "Étapes de la recette",
+          videoRecipe: "Recette en vidéo",
+          clickToWatch: "Cliquer pour regarder",
+          backToRecipes: "Retour aux recettes",
+          deleting: "Suppression...",
+          loadRecipeError: "❌ Erreur lors du chargement de la recette",
+          fillRequiredFields:
+            "Veuillez remplir les champs obligatoires (marqués d'un *)",
+          addAtLeastOneIngredient: "Ajoutez au moins un ingrédient",
+          addAtLeastOneStep: "Ajoutez au moins une étape de cuisson",
+          recipeUpdatedSuccess: "✅ Recette mise à jour avec succès !",
+          updateRecipeError: "Erreur lors de la mise à jour de la recette",
+          loadingRecipeForEdit: "Chargement de la recette pour modification...",
+          recipeImage: "Image de la recette",
+          changeImage: "Changer l'image",
+          clickToUploadImage: "Cliquez pour télécharger l'image",
+          imageFormats: "PNG, JPG, WEBP jusqu'à 5MB",
+          cookingSteps: "Étapes de cuisson",
+          step: "Étape",
+          describeStepPlaceholder: "Décrivez l'étape de cuisson...",
+          addStep: "Ajouter une étape",
+          recipeName: "Nom de la recette",
+          description: "Description",
+          cookingTime: "Temps de cuisson",
+          cookingTimePlaceholder: "ex: 30 min",
+          videoLink: "Lien vidéo",
+          ingredientNamePlaceholder: "Nom de l'ingrédient",
+          ingredientAmountPlaceholder: "Quantité",
+          addIngredient: "Ajouter un ingrédient",
+          cancel: "Annuler",
+          saving: "Enregistrement...",
+          updateRecipe: "Mettre à jour la recette",
+          addNewRecipe: "Ajouter une nouvelle recette",
+          saveRecipe: "Enregistrer la recette",
+          addRecipeError: "Erreur lors de l'ajout de la recette",
+          recipeAddedSuccess: "✅ Recette ajoutée avec succès !",
+          error_token_missing: "Jeton manquant",
+          error_auth: "Erreur d'authentification",
+          error_loading_data: "Erreur de chargement des données",
+          nt_no_meals_message: "Aucun repas pour ce jour pour le moment.",
+          nt_unspecified_dish_name: "Non spécifié",
+          auth_error: "Erreur d'authentification. Veuillez vous reconnecter.",
+          error_deleting_meal: "Erreur lors de la suppression du repas",
+          breakfast: "Petit-déjeuner",
+          lunch: "Déjeuner",
+          dinner: "Dîner",
+          snack: "Collation",
+          meal: "Repas",
+          nt_add_meal_button_multiline: "Ajoutez votre\nrepas",
+          nt_ingredients_for: "Ingrédients pour",
+          nt_ingredients_title_day: "Ingrédients pour le jour",
+          loading_ingredients: "Chargement des ingrédients...",
+          no_recipe_ingredients: "Ce repas n'a pas d'ingrédients détaillés.",
+          no_ingredients_today:
+            "Aucune recette avec des ingrédients détaillés dans la ration.",
+          nt_delete_meal_button: "Supprimer le repas",
+          add_recipe_text: "Ajoutez votre recette",
+          error_loading_recipes:
+            "Erreur lors du chargement des recettes. Vérifiez la console.",
+          loading_text: "Chargement des recettes...",
+          no_recipes_found: "Aucune recette trouvée.",
+          add_element: "Ajouter un élément",
+          error_auth_recipes:
+            "Erreur d'authentification lors du chargement des recettes.",
+          error_no_user:
+            "Impossible de déterminer l'utilisateur. Veuillez vous connecter.",
+          error_no_recipe_selected: "Sélectionnez une recette.",
+          error_invalid_quantity:
+            "Le nombre de portions doit être supérieur à 0.",
+          add_meal_title: "Ajouter un repas",
+          meal_type_label: "Type de repas",
+          portions_label: "Quantité (portions)",
+          selected_recipe_label: "Recette sélectionnée",
+          no_recipe_selected: "Rien sélectionné",
+          adding_meal: "Ajout en cours...",
+          add_to_ration_button: "Ajouter à la ration",
+          cancel_button: "Annuler",
+          search_recipes_placeholder: "Rechercher des recettes...",
+          refresh_button: "Actualiser",
+          loading_recipes: "Chargement des recettes...",
+          calories: "Calories",
+          proteins: "Protéines",
+          fats: "Lipides",
+          carbs: "Glucides",
+          ingredients: "Ingrédients",
+          editRecipe: "Modifier la recette",
+          deleteRecipe: "Supprimer la recette",
+
+          weight_analytics: "Analytique du poids",
+          we_no_data_chart:
+            "Aucune donnée disponible pour afficher le graphique.",
+          we_no_chart_data: "Au moins 2 entrées sont requises.",
+          we_mode_month: "Mois",
+          we_mode_7days: "7 jours",
+          we_last_7_days: "7 derniers jours",
+
+          we_title: "Enregistrer le poids",
+          we_current_label: "Poids actuel :",
+          we_no_data: "Aucune donnée",
+          we_error_data: "Erreur",
+          we_kg_abbr: "kg",
+          we_placeholder: "Entrez le poids (kg)",
+          we_submitting: "Enregistrement...",
+          we_save_button: "Enregistrer",
+          we_saved: "Poids enregistré !",
+          we_error: "Erreur d'enregistrement.",
+
+          nt_january: "Janvier",
+          nt_february: "Février",
+          nt_march: "Mars",
+          nt_april: "Avril",
+          nt_may: "Mai",
+          nt_june: "Juin",
+          nt_july: "Juillet",
+          nt_august: "Août",
+          nt_september: "Septembre",
+          nt_october: "Octobre",
+          nt_november: "Novembre",
+          nt_december: "Décembre",
+
+          nt_motivation_general_1:
+            "Votre santé est votre plus grand investissement. Continuez, vous êtes sur la bonne voie ! 💪",
+          nt_motivation_general_2:
+            "Des choix sains aujourd'hui signifient de la force demain. Passez à l'action !",
+          nt_motivation_general_3:
+            "N'oubliez pas de vous hydrater ! Même un petit verre d'eau améliore votre bien-être.",
+          nt_motivation_general_4:
+            "L'amélioration quotidienne de soi donne des résultats. Excellent travail d'être ici !",
+          nt_motivation_general_5:
+            "Les petits efforts constants l'emportent toujours sur les sauts rapides et chaotiques. Restez stable !",
+          nt_motivation_general_6:
+            "Rappelez-vous : votre objectif est un marathon, pas un sprint. L'essentiel est de ne pas s'arrêter !",
+
+          nt_motivation_no_meals:
+            "Il semble que vous n'ayez encore rien enregistré aujourd'hui. Commençons par un petit-déjeuner nutritif !",
+
+          nt_motivation_calories_on_target:
+            "🎉 Excellent travail ! Vous vous êtes parfaitement intégré dans votre limite de calories. Un vrai champion !",
+          nt_motivation_calories_on_target_M:
+            "🎉 Excellent travail ! Vous vous êtes parfaitement intégré dans votre limite de calories, Champion !",
+          nt_motivation_calories_on_target_F:
+            "🎉 Excellent travail ! Vous vous êtes parfaitement intégré dans votre limite de calories, Reine !",
+
+          nt_motivation_calories_over:
+            "Attention ! Vous avez consommé {{calories}} kcal jusqu'à présent (ce qui est au-dessus de l'objectif). Concentrez-vous sur votre dernier repas.",
+          nt_motivation_calories_critical_over:
+            "🔴 Critique ! {{calories}} kcal est un dépassement significatif. Concentrez-vous sur des protéines légères et des fibres aujourd'hui.",
+
+          nt_motivation_almost_protein:
+            "Vous avez presque atteint votre objectif de protéines ! Un peu plus - et vos muscles vous remercieront !",
+          nt_motivation_almost_protein_M:
+            "Vous avez presque atteint votre objectif de protéines ! Continuez, mon gars !",
+          nt_motivation_almost_protein_F:
+            "Vous avez presque atteint votre objectif de protéines ! C'est un progrès excellent !",
+
+          nt_motivation_low_protein:
+            "Vous manquez un peu de protéines aujourd'hui. Essayez d'ajouter du yaourt ou des noix à votre prochaine collation. Encore {{protein}}g nécessaires !",
+          nt_motivation_high_fat:
+            "Je vois beaucoup de graisses dans votre alimentation. Peut-être remplacer une collation par des fruits ou des légumes ? 🥑",
+          nt_motivation_low_carbs:
+            "Vous sentez-vous fatigué après le déjeuner ? Cela pourrait être dû à un faible taux de glucides. Essayez d'ajouter des céréales complètes au dîner.",
+          nt_motivation_evening_low:
+            "Vous vous débrouillez très bien ! Concentrez-vous sur des aliments légers pour le dîner pour parfaitement respecter vos calories restantes.",
+
+          nt_motivation_morning:
+            "Bonjour ! Commencez cette journée avec le bon petit-déjeuner et une humeur positive 🌞",
+          nt_motivation_morning_M:
+            "Bonjour, guerrier ! Commencez cette journée avec le bon petit-déjeuner pour l'énergie. 🌞",
+          nt_motivation_morning_F:
+            "Bonjour, belle ! Commencez cette journée avec le bon petit-déjeuner pour l'énergie. 🌞",
+          nt_motivation_evening:
+            "Belle journée ! N'oubliez pas qu'un repos de qualité fait partie de votre plan nutritionnel.",
 
           // === DÉFIS SOCIAUX ===
           ch_all_challenges_title: "Tous les défis",
@@ -3726,38 +4402,216 @@ i18n
           article_7: "Prevención y superación del agotamiento",
           gender: "Salud por género",
 
+          welcome: "Bienvenido",
+          nt_tracker_tab: "Seguimiento de Nutrición",
+          nt_recipes_tab: "Recetas",
+          nt_date_label: "Fecha",
+          nt_calories_label: "Calorías",
+          nt_kcal_abbr: "kcal",
+          nt_protein_label: "Proteínas",
+          nt_g_abbr: "g",
+          nt_meals_title: "Comidas",
+          nt_add_meal_button: "Agregar comida",
+          nt_analytics_title: "Analítica",
+          nt_ration_tab: "Ración",
+          nt_loading: "Cargando...",
           nt_motivation_title: "Motivación",
-          nt_motivation_loading: "Cargando motivación inteligente...",
-          
-          nt_motivation_general_1: "Tu salud es tu mayor inversión. ¡Sigue adelante, estás en el camino correcto! 💪",
-          nt_motivation_general_2: "Las elecciones saludables de hoy significan fuerza mañana. ¡Actúa!",
-          nt_motivation_general_3: "¡Recuerda hidratarte! Incluso un vaso pequeño de agua te hace sentir mejor.",
-          nt_motivation_general_4: "El trabajo diario en uno mismo da resultados. ¡Buen trabajo por estar aquí!",
-          nt_motivation_general_5: "Los esfuerzos pequeños y constantes siempre ganan a los saltos rápidos y caóticos. ¡Mantente firme!",
-          nt_motivation_general_6: "Recuerda: tu objetivo es un maratón, no un sprint. ¡Lo principal es no detenerse!",
-          
-          nt_motivation_no_meals: "Parece que no has registrado nada hoy. ¡Comencemos con un desayuno nutritivo!",
-          
-          nt_motivation_calories_on_target: "🎉 ¡Gran trabajo! Te ajustaste perfectamente a tu límite de calorías. ¡Un(a) verdadero(a) campeón(a)!",
-          nt_motivation_calories_on_target_M: "🎉 ¡Gran trabajo! Te ajustaste perfectamente a tu límite de calorías, Campeón!",
-          nt_motivation_calories_on_target_F: "🎉 ¡Gran trabajo! Te ajustaste perfectamente a tu límite de calorías, Reina!",
-          
-          nt_motivation_calories_over: "¡Cuidado! Has consumido {{calories}} kcal hasta ahora (lo cual está por encima del objetivo). Concéntrate en tu última comida.",
-          nt_motivation_calories_critical_over: "🔴 ¡Crítico! {{calories}} kcal es un exceso significativo. Concéntrate en proteínas ligeras y fibra hoy.",
-          
-          nt_motivation_almost_protein: "¡Casi alcanzas tu objetivo de proteínas! Un poco más y tus músculos te lo agradecerán.",
-          nt_motivation_almost_protein_M: "¡Casi alcanzas tu objetivo de proteínas! ¡Sigue esforzándote, hombre!",
-          nt_motivation_almost_protein_F: "¡Casi alcanzas tu objetivo de proteínas! ¡Es un progreso excelente!",
-          
-          nt_motivation_low_protein: "Hoy tienes un poco de déficit de proteínas. Intenta añadir yogur o nueces a tu próximo snack. ¡Faltan {{protein}}g!",
-          nt_motivation_high_fat: "Veo mucha grasa en tu dieta. ¿Quizás reemplazar una merienda por fruta o verdura? 🥑",
-          nt_motivation_low_carbs: "¿Te sientes cansado(a) después del almuerzo? Podría ser por falta de carbohidratos. Intenta añadir cereales integrales a la cena.",
-          nt_motivation_evening_low: "¡Lo estás haciendo genial! Concéntrate en alimentos ligeros para la cena para alcanzar perfectamente tus calorías restantes.",
-          
-          nt_motivation_morning: "¡Buenos días! Comienza este día con el desayuno adecuado y un estado de ánimo positivo 🌞",
-          nt_motivation_morning_M: "¡Buenos días, guerrero! Comienza este día con el desayuno adecuado para la energía. 🌞",
-          nt_motivation_morning_F: "¡Buenos días, belleza! Comienza este día con el desayuno adecuado para la energía. 🌞",
-          nt_motivation_evening: "¡Un gran día! Recuerda que un descanso de calidad es parte de tu plan de nutrición.",
+          nt_motivation_loading: "Cargando motivación...",
+          nt_daily_progress: "Progreso diario",
+          nt_fat_label: "Grasas",
+          nt_carbs_label: "Carbohidratos",
+          nt_dish_name: "Nombre del plato",
+
+          nt_k_abbr: "kcal",
+          nt_b_abbr: "P",
+          nt_zh_abbr: "G",
+          nt_v_abbr: "C",
+
+          nt_unspecified_meal_1: "Desayuno",
+          nt_unspecified_meal_2: "Almuerzo",
+          nt_unspecified_meal_3: "Cena",
+          nt_unspecified_meal_4: "Merienda",
+
+          loadingRecipe: "Cargando receta...",
+          recipeNotFound: "Receta no encontrada",
+          confirmDeleteRecipe:
+            "¿Estás seguro de que quieres eliminar esta receta? Esta acción no se puede deshacer.",
+          recipeDeletedSuccess: "✅ ¡Receta eliminada con éxito!",
+          deleteRecipeError: "Error al eliminar la receta",
+          recipeInUseError:
+            "No se puede eliminar la receta. Puede que esté siendo utilizada en dietas de usuarios.",
+          recipeSteps: "Pasos de la receta",
+          videoRecipe: "Receta en video",
+          clickToWatch: "Haz clic para ver",
+          backToRecipes: "Volver a recetas",
+          deleting: "Eliminando...",
+          loadRecipeError: "❌ Error al cargar la receta",
+          fillRequiredFields:
+            "Por favor, complete los campos obligatorios (marcados con *)",
+          addAtLeastOneIngredient: "Agregue al menos un ingrediente",
+          addAtLeastOneStep: "Agregue al menos un paso de cocción",
+          recipeUpdatedSuccess: "✅ ¡Receta actualizada con éxito!",
+          updateRecipeError: "Error al actualizar la receta",
+          loadingRecipeForEdit: "Cargando receta para editar...",
+          recipeImage: "Imagen de la receta",
+          changeImage: "Cambiar imagen",
+          clickToUploadImage: "Haga clic para subir imagen",
+          imageFormats: "PNG, JPG, WEBP hasta 5MB",
+          cookingSteps: "Pasos de cocción",
+          step: "Paso",
+          describeStepPlaceholder: "Describa el paso de cocción...",
+          addStep: "Agregar paso",
+          recipeName: "Nombre de la receta",
+          description: "Descripción",
+          cookingTime: "Tiempo de cocción",
+          cookingTimePlaceholder: "ej: 30 min",
+          videoLink: "Enlace de video",
+          ingredientNamePlaceholder: "Nombre del ingrediente",
+          ingredientAmountPlaceholder: "Cantidad",
+          addIngredient: "Agregar ingrediente",
+          cancel: "Cancelar",
+          saving: "Guardando...",
+          updateRecipe: "Actualizar receta",
+          addNewRecipe: "Agregar nueva receta",
+          saveRecipe: "Guardar receta",
+          addRecipeError: "Error al agregar la receta",
+          recipeAddedSuccess: "✅ ¡Receta agregada con éxito!",
+          error_token_missing: "Token faltante",
+          error_auth: "Error de autenticación",
+          error_loading_data: "Error al cargar datos",
+          nt_no_meals_message: "Aún no hay comidas para este día.",
+          nt_unspecified_dish_name: "No especificado",
+          auth_error:
+            "Error de autenticación. Por favor, inicie sesión nuevamente.",
+          error_deleting_meal: "Error al eliminar la comida",
+          breakfast: "Desayuno",
+          lunch: "Almuerzo",
+          dinner: "Cena",
+          snack: "Merienda",
+          meal: "Comida",
+          nt_add_meal_button_multiline: "Agregue su\ncomida",
+          nt_ingredients_for: "Ingredientes para",
+          nt_ingredients_title_day: "Ingredientes para el día",
+          loading_ingredients: "Cargando ingredientes...",
+          no_recipe_ingredients:
+            "Esta comida no tiene ingredientes detallados.",
+          no_ingredients_today:
+            "No hay recetas con ingredientes detallados en la ración.",
+          nt_delete_meal_button: "Eliminar comida",
+          add_recipe_text: "Agregue su receta",
+          error_loading_recipes:
+            "Error al cargar recetas. Verifique la consola.",
+          loading_text: "Cargando recetas...",
+          no_recipes_found: "No se encontraron recetas.",
+          add_element: "Agregar elemento",
+          error_auth_recipes: "Error de autenticación al cargar recetas.",
+          error_no_user:
+            "No se pudo determinar el usuario. Por favor, inicie sesión.",
+          error_no_recipe_selected: "Seleccione una receta.",
+          error_invalid_quantity:
+            "El número de porciones debe ser mayor que 0.",
+          add_meal_title: "Agregar comida",
+          meal_type_label: "Tipo de comida",
+          portions_label: "Cantidad (porciones)",
+          selected_recipe_label: "Receta seleccionada",
+          no_recipe_selected: "Nada seleccionado",
+          adding_meal: "Agregando...",
+          add_to_ration_button: "Agregar a la ración",
+          cancel_button: "Cancelar",
+          search_recipes_placeholder: "Buscar recetas...",
+          refresh_button: "Actualizar",
+          loading_recipes: "Cargando recetas...",
+          calories: "Calorías",
+          proteins: "Proteínas",
+          fats: "Grasas",
+          carbs: "Carbohidratos",
+          ingredients: "Ingredientes",
+          editRecipe: "Editar receta",
+          deleteRecipe: "Eliminar receta",
+
+          weight_analytics: "Analítica de peso",
+          we_no_data_chart: "No hay datos disponibles para mostrar el gráfico.",
+          we_no_chart_data: "Se requieren al menos 2 entradas.",
+          we_mode_month: "Mes",
+          we_mode_7days: "7 días",
+          we_last_7_days: "Últimos 7 días",
+
+          we_title: "Registrar peso",
+          we_current_label: "Peso actual:",
+          we_no_data: "Sin datos",
+          we_error_data: "Error",
+          we_kg_abbr: "kg",
+          we_placeholder: "Ingrese peso (kg)",
+          we_submitting: "Guardando...",
+          we_save_button: "Guardar",
+          we_saved: "¡Peso guardado!",
+          we_error: "Error de guardado.",
+
+          nt_january: "Enero",
+          nt_february: "Febrero",
+          nt_march: "Marzo",
+          nt_april: "Abril",
+          nt_may: "Mayo",
+          nt_june: "Junio",
+          nt_july: "Julio",
+          nt_august: "Agosto",
+          nt_september: "Septiembre",
+          nt_october: "Octubre",
+          nt_november: "Noviembre",
+          nt_december: "Diciembre",
+
+          nt_motivation_general_1:
+            "Tu salud es tu mayor inversión. ¡Sigue adelante, vas por buen camino! 💪",
+          nt_motivation_general_2:
+            "Las decisiones saludables hoy significan fuerza mañana. ¡Actúa!",
+          nt_motivation_general_3:
+            "¡Recuerda hidratarte! Incluso un pequeño vaso de agua mejora tu bienestar.",
+          nt_motivation_general_4:
+            "La superación personal diaria da resultados. ¡Excelente trabajo por estar aquí!",
+          nt_motivation_general_5:
+            "Los pequeños esfuerzos constantes siempre ganan a los saltos rápidos y caóticos. ¡Mantente estable!",
+          nt_motivation_general_6:
+            "Recuerda: tu objetivo es un maratón, no un sprint. ¡Lo principal es no parar!",
+
+          nt_motivation_no_meals:
+            "Parece que aún no has registrado nada hoy. ¡Empecemos con un desayuno nutritivo!",
+
+          nt_motivation_calories_on_target:
+            "🎉 ¡Excelente trabajo! Te ajustaste perfectamente a tu límite de calorías. ¡Un verdadero campeón!",
+          nt_motivation_calories_on_target_M:
+            "🎉 ¡Excelente trabajo! Te ajustaste perfectamente a tu límite de calorías, ¡Campeón!",
+          nt_motivation_calories_on_target_F:
+            "🎉 ¡Excelente trabajo! Te ajustaste perfectamente a tu límite de calorías, ¡Reina!",
+
+          nt_motivation_calories_over:
+            "¡Cuidado! Has consumido {{calories}} kcal hasta ahora (que está por encima del objetivo). Concéntrate en tu última comida.",
+          nt_motivation_calories_critical_over:
+            "🔴 ¡Crítico! {{calories}} kcal es un exceso significativo. Concéntrate en proteínas ligeras y fibra hoy.",
+
+          nt_motivation_almost_protein:
+            "¡Casi alcanzas tu objetivo de proteínas! Un poco más - ¡y tus músculos te lo agradecerán!",
+          nt_motivation_almost_protein_M:
+            "¡Casi alcanzas tu objetivo de proteínas! ¡Sigue adelante, hombre!",
+          nt_motivation_almost_protein_F:
+            "¡Casi alcanzas tu objetivo de proteínas! ¡Eso es un progreso excelente!",
+
+          nt_motivation_low_protein:
+            "Te falta un poco de proteína hoy. Intenta agregar yogur o nueces a tu próximo refrigerio. ¡Necesitas {{protein}}g más!",
+          nt_motivation_high_fat:
+            "Veo mucha grasa en tu dieta. ¿Quizás reemplazar un refrigerio con frutas o verduras? 🥑",
+          nt_motivation_low_carbs:
+            "¿Te sientes cansado después del almuerzo? Podría deberse a los bajos carbohidratos. Intenta agregar granos integrales a la cena.",
+          nt_motivation_evening_low:
+            "¡Lo estás haciendo genial! Concéntrate en alimentos ligeros para la cena para ajustarte perfectamente a tus calorías restantes.",
+
+          nt_motivation_morning:
+            "¡Buenos días! Comienza este día con el desayuno correcto y un estado de ánimo positivo 🌞",
+          nt_motivation_morning_M:
+            "¡Buenos días, guerrero! Comienza este día con el desayuno correcto para la energía. 🌞",
+          nt_motivation_morning_F:
+            "¡Buenos días, hermosa! Comienza este día con el desayuno correcto para la energía. 🌞",
+          nt_motivation_evening:
+            "¡Gran día! Recuerda que el descanso de calidad es parte de tu plan de nutrición.",
 
           // === DESAFÍOS SOCIALES ===
           ch_all_challenges_title: "Todos los desafíos",

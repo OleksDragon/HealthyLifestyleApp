@@ -39,8 +39,24 @@ namespace HealthyLifestyle.Api.Controllers.MealTracker
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Update(Guid id, [FromForm] UpdateRecipeDto dto)
         {
-            await _recipeService.UpdateAsync(id, dto);
-            return Ok("Recipe updated successfully");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                await _recipeService.UpdateAsync(id, dto);
+                return Ok("Recipe updated successfully");
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]

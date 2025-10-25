@@ -37,12 +37,6 @@ namespace HealthyLifestyle.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Recipe recipe)
-        {
-            _context.Recipes.Update(recipe);
-            await _context.SaveChangesAsync();
-        }
-
         public async Task DeleteAsync(Guid id)
         {
             var recipe = await _context.Recipes.FindAsync(id);

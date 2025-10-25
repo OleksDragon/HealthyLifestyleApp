@@ -1,4 +1,3 @@
-/* --- Стили для страницы "Раціон" --- */
 .ration-grid-wrapper {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -7,7 +6,6 @@
     padding-top: 20px;
 }
 
-/* Секция прогресса в Ration */
 .ration-progress-bar-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -21,7 +19,6 @@
     margin-bottom: 20px;
 }
 
-/* Кожен елемент макросу */
 .macro-item {
     display: flex;
     flex-direction: column;
@@ -34,7 +31,6 @@
     margin-bottom: 0;
 }
 
-/* Стили для названий (Калорії, Білки и т.д.) */
 .ration-progress-bar-container .progress-value {
     color: #A0C4FF;
     font-size: 1rem;
@@ -44,7 +40,6 @@
     text-align: left;
 }
 
-/* Стили для крупных значений */
 .ration-progress-bar-container .progress-value-large {
     color: #D6FF00;
     font-size: 1.8rem;
@@ -54,23 +49,19 @@
     white-space: nowrap;
 }
 
-/* Сетка карточек блюд */
 .meal-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
     padding: 0;
-    /* Видалено внутрішній відступ */
 }
 
-/* Основная карточка блюда */
 .meal-ration-card {
     height: 350px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* Вирівнювання на початок */
     align-items: flex-start;
     position: relative;
     overflow: hidden;
@@ -81,14 +72,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
     color: #fff;
-    /* Основний колір тексту */
 }
 
 .meal-ration-card:hover {
     transform: translateY(-5px);
 }
 
-/* Тег (тип приема пищи) */
 .meal-tag {
     position: absolute;
     top: 15px;
@@ -101,18 +90,16 @@
     z-index: 10;
 }
 
-/* Иконка сердца */
 .heart-icon {
     position: absolute;
     top: 15px;
     right: 15px;
     font-size: 1.2rem;
-    color: #ff4d4d;
+    color: #ffffff;
     z-index: 10;
     cursor: pointer;
 }
 
-/* Обгортка зображення */
 .meal-image-wrapper {
     width: 100%;
     height: 150px;
@@ -121,7 +108,6 @@
     overflow: hidden;
 }
 
-/* Placeholder изображения */
 .meal-image-placeholder {
     width: 100%;
     height: 100%;
@@ -132,14 +118,11 @@
     justify-content: center;
 }
 
-/* Информация о блюде */
 .meal-info {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* justify-content: space-between; */
-    /* Вимкнено для кращого контролю висоти */
 }
 
 .meal-name {
@@ -179,7 +162,6 @@
     font-size: 0.8rem;
     color: #fff;
     max-height: 50px;
-    /* Обмеження висоти */
     overflow-y: auto;
 }
 
@@ -190,36 +172,87 @@
     text-overflow: ellipsis;
 }
 
-/* Карточка "Добавить" */
 .meal-ration-card.add-meal-card {
+    background: rgba(255, 255, 255, 0.4);
+    height: 350px;
+    width: 370px;
+    border-radius: 30px;
+    position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px dashed rgba(255, 255, 255, 0.5);
-    background: none;
-    height: 300px;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(55px);
+    backdrop-filter: blur(55px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s, scale 0.2s;
     cursor: pointer;
-    transition: background-color 0.2s;
 }
 
 .meal-ration-card.add-meal-card:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+    scale: 1.01;
+}
+
+.add-gradient-effect {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0.75) 0%,
+            rgba(255, 255, 255, 0.5) 30%,
+            rgba(255, 255, 255, 0.6) 60%,
+            rgba(255, 255, 255, 1) 90%);
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
 .add-icon {
-    font-size: 4rem;
-    font-weight: 200;
-    color: #A0C4FF;
+    position: absolute;
+    z-index: 5;
+    height: 76.3%;
+    width: 76.67%;
+    left: 11.67%;
+    top: 10.43%;
+
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+
+    & path {
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
 }
 
 .add-meal-text {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #A0C4FF;
+    color: #0661CC;
+    font-family: "Roboto-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0;
+    position: absolute;
+    z-index: 6;
+    bottom: 40px;
+    left: 43px;
+    width: 234px;
+    height: 62px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    text-align: left;
+    white-space: pre-line;
 }
 
-/* Боковая панель Ингредиенты */
 .ingredients-card {
     height: auto;
     padding: 25px;
@@ -239,14 +272,13 @@
 
 .ingredients-list-wrapper {
     max-height: 400px;
-    /* Для прокрутки */
     overflow-y: auto;
     padding-right: 10px;
 }
 
 .ingredient-item {
     display: grid;
-    grid-template-columns: 2fr 1fr 50px;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
     padding: 8px 0;
     font-size: 1rem;
@@ -264,28 +296,6 @@
     color: #D6FF00;
 }
 
-.ingredient-checkbox {
-    width: 20px;
-    height: 20px;
-    background: none;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    position: relative;
-    justify-self: center;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-/* Чекбокс в активном состоянии */
-.ingredient-checkbox:checked {
-    background-color: #D6FF00;
-    border-color: #D6FF00;
-}
-
-/* Кнопки Редагувати/Зберегти */
 .edit-button,
 .save-button,
 .delete-meal-button {
@@ -312,7 +322,6 @@
     margin-top: 10px;
 }
 
-/* Стили для секции выбора даты */
 .date-picker-section {
     display: flex;
     align-items: center;
@@ -367,7 +376,6 @@
     .ration-right-column {
         position: static;
         order: 1;
-        /* Інгредієнти вище на мобільних */
     }
 
     .ration-left-column {

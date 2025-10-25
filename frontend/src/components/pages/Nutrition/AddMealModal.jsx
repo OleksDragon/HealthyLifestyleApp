@@ -3,12 +3,6 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import "../../styles/nutrition/add-meal-modal.css";
 
-const SearchIcon = () => (
-  <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-  </svg>
-);
-
 const ImagePlaceholderIcon = () => (
   <svg className="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
@@ -30,10 +24,10 @@ const AddMealModal = ({ onClose, onMealAdded, selectedDate, userId: propUserId }
 
   const MEAL_TYPE_MAP = ["Breakfast", "Lunch", "Dinner", "Snack"];
   const MEAL_TYPE_LABELS = [
-    t("meal_type_1") || "Сніданок",
-    t("meal_type_2") || "Обід",
-    t("meal_type_3") || "Вечеря",
-    t("meal_type_4") || "Перекус",
+    t("nt_unspecified_meal_1") || "Сніданок",
+    t("nt_unspecified_meal_2") || "Обід",
+    t("nt_unspecified_meal_3") || "Вечеря",
+    t("nt_unspecified_meal_4") || "Перекус",
   ];
 
   const API_URL = process.env.REACT_APP_API_URL || "";
@@ -130,6 +124,12 @@ const AddMealModal = ({ onClose, onMealAdded, selectedDate, userId: propUserId }
       setError(t("error_no_recipe_selected") || "Виберіть рецепт.");
       return;
     }
+  
+    const parsedQuantity = Number(quantity);
+    if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
+        setError(t("error_invalid_quantity") || "Кількість порцій має бути більшою за 0.");
+        return;
+    }
 
     setSubmitting(true);
 
@@ -139,7 +139,7 @@ const AddMealModal = ({ onClose, onMealAdded, selectedDate, userId: propUserId }
         dietPlanId: null,
         recipeId: selectedRecipe.Id ?? selectedRecipe.id,
         foodItemName: selectedRecipe.Name ?? selectedRecipe.name ?? "",
-        quantity: Number(quantity) || 1,
+        quantity: parsedQuantity, // Використовуємо перетворене значення
         proteinsG: Number(safeRecipeField(selectedRecipe, "Protein")) || 0,
         carbsG: Number(safeRecipeField(selectedRecipe, "Carbs")) || 0,
         fatsG: Number(safeRecipeField(selectedRecipe, "Fat")) || 0,
@@ -193,35 +193,46 @@ const AddMealModal = ({ onClose, onMealAdded, selectedDate, userId: propUserId }
                   <option value={i} key={i}>{lab}</option>
                 ))}
               </select>
-            </div>
+            </div>            
 
             <div className="form-section">
               <label className="section-label">{t("portions_label") || "Кількість (порцій)"}</label>
-              <input
-                className="portions-input"
-                type="number"
-                min="0.01"
-                step="0.01"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-              />
+              <select
+                className="portions-input" 
+                value={quantity} 
+                onChange={(e) => {
+                  const newQuantity = Number(e.target.value);
+                  setQuantity(newQuantity);
+                }}
+              >
+                {[1, 2, 3, 4].map(num => (
+                  <option value={num} key={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="form-section">
               <label className="section-label">{t("selected_recipe_label") || "Вибраний рецепт"}</label>
-              <div className="selected-recipe-section">
+              <div className="selected-recipe-section">                
                 {selectedRecipe ? (
-                  <div className="selected-recipe-info">
-                    <div className="recipe-name">{selectedRecipe.Name ?? selectedRecipe.name}</div>
+                  <div>
+                    <div className="recipe-name">
+                      {selectedRecipe.Name ?? selectedRecipe.name}
+                    </div>
+
                     <div className="recipe-macros">
-                      <span className="meal-macro-item">{Math.round(safeRecipeField(selectedRecipe, "Kkal"))} ккал</span>
-                      <span className="meal-macro-item">{safeRecipeField(selectedRecipe, "Protein")}г біл</span>
-                      <span className="meal-macro-item">{safeRecipeField(selectedRecipe, "Fat")}г жир</span>
-                      <span className="meal-macro-item">{safeRecipeField(selectedRecipe, "Carbs")}г вугл</span>
+                      <span className="macros-text">{Math.round(safeRecipeField(selectedRecipe, "Kkal")) * quantity} ккал</span>
+                      <span className="macros-text">{safeRecipeField(selectedRecipe, "Protein") * quantity}г біл</span>
+                      <span className="macros-text">{safeRecipeField(selectedRecipe, "Fat") * quantity}г жир</span>
+                      <span className="macros-text">{safeRecipeField(selectedRecipe, "Carbs") * quantity}г вугл</span>
                     </div>
                   </div>
                 ) : (
-                  <div className="no-recipe-selected">{t("no_recipe_selected") || "Нічого не обрано"}</div>
+                  <div className="no-recipe-selected">
+                    {t("no_recipe_selected") || "Нічого не обрано"}
+                  </div>
                 )}
               </div>
             </div>
@@ -244,13 +255,15 @@ const AddMealModal = ({ onClose, onMealAdded, selectedDate, userId: propUserId }
 
           <div className="modal-right-panel">
             <div className="search-section">
-              <div className="search-wrapper">
-                <SearchIcon />
+              <div className="search-wrapper">                
                 <input
                   className="search-input"
                   placeholder={t("search_recipes_placeholder") || "Пошук рецептів..."}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') fetchRecipes(searchQuery);
+                  }}
                 />
               </div>
 

@@ -20,7 +20,7 @@ namespace HealthyLifestyle.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<MealDto>), 200)]
-        [Authorize(Roles = "Admin")] // Typically only admins can get all meals
+        [Authorize(Roles = "Admin")] 
         public async Task<IActionResult> GetAll()
         {
             var meals = await _mealService.GetAllAsync();

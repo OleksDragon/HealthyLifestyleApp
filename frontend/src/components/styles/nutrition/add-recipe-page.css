@@ -1,19 +1,10 @@
-/* ========================================================================= */
-/* ПОВНИЙ CSS-ФАЙЛ З АДАПТИВНІСТЮ (БЕЗ ЗМІННИХ :ROOT) */
-/* ========================================================================= */
-
-/* --- ЗАГАЛЬНІ СКИДИ ТА КОНТЕЙНЕРИ --- */
-
 body {
-    /* Збільшення відступу (30px) для розширення контенту та відведення скролбару */
-    padding: 0 30px; 
+    padding: 0 30px;
     margin: 0;
-    /* Рекомендовано для сучасного скролу */
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 .recipe-page-content-wrapper {
-    /* Забезпечуємо, що контент займає всю доступну ширину */
     min-height: 80vh;
 }
 
@@ -25,32 +16,29 @@ body {
     padding: 20px 0;
 }
 
-/* --- ОСНОВНА СІТКА ТА КАРТКИ (GLASSMORPHISM) --- */
-
 .recipe-page-grid-v2 {
     display: grid;
     grid-template-columns: 1fr 400px;
-    gap: 40px; 
-    max-width: 1280px; 
+    gap: 40px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
 .glass-card {
-    /* Glassmorphism ефект */
     background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px); 
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-radius: 20px; 
-    padding: 30px; 
+    border-radius: 20px;
+    padding: 30px;
     margin-bottom: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.4); 
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 .card-title-white {
     color: #FFFFFF;
     margin-bottom: 25px;
-    font-size: 1.6em; 
+    font-size: 1.6em;
     font-weight: 700;
 }
 
@@ -62,9 +50,8 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* --- СТИЛІ ЕЛЕМЕНТІВ ФОРМИ (ПОЛЯ ВВЕДЕННЯ) --- */
-
-.form-group, .macros-card-v2 {
+.form-group,
+.macros-card-v2 {
     margin-bottom: 20px;
 }
 
@@ -75,7 +62,6 @@ body {
     color: #FFFFFF;
 }
 
-/* Загальний стиль для всіх полів введення */
 .form-input,
 .form-textarea,
 .macro-input,
@@ -83,18 +69,17 @@ body {
 .ingredient-amount-input,
 .step-textarea {
     width: 100%;
-    padding: 14px 16px; 
-    border: 1px solid rgba(255, 255, 255, 0.4); 
-    border-radius: 10px; 
-    background: rgba(255, 255, 255, 0.1); 
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
     color: #FFFFFF;
-    font-size: 16px; 
+    font-size: 16px;
     transition: all 0.3s ease;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 
-/* Фокусний стан (зелений акцент) */
 .form-input:focus,
 .form-textarea:focus,
 .macro-input:focus,
@@ -102,9 +87,9 @@ body {
 .ingredient-amount-input:focus,
 .step-textarea:focus {
     outline: none;
-    border-color: #d6ff00; /* Primary Color */
-    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.5); 
-    background: rgba(255, 255, 255, 0.2); 
+    border-color: #d6ff00;
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.5);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .form-textarea {
@@ -112,7 +97,31 @@ body {
     resize: vertical;
 }
 
-/* --- МАКРОСИ --- */
+.macros-card-v2 {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px 0;
+}
+
+.macros-card-v2::before,
+.macros-card-v2::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.macros-card-v2::before {
+    top: 0;
+}
+
+.macros-card-v2::after {
+    bottom: 0;
+}
 
 .macro-input-group {
     display: grid;
@@ -129,7 +138,7 @@ body {
 .macro-item label {
     font-size: 12px;
     margin-bottom: 5px;
-    color: rgba(255, 255, 255, 0.8); /* Secondary Text */
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
 }
 
@@ -138,8 +147,6 @@ body {
     border-radius: 8px;
     font-size: 14px;
 }
-
-/* --- ІНГРЕДІЄНТИ --- */
 
 .ingredient-input-group {
     display: flex;
@@ -162,13 +169,13 @@ body {
     font-size: 14px;
 }
 
-/* --- КРОКИ ПРИГОТУВАННЯ --- */
 
 .step-input-group {
     margin-bottom: 15px;
     position: relative;
     padding-bottom: 10px;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
 }
 
 .step-input-group label {
@@ -182,35 +189,37 @@ body {
     border-radius: 8px;
 }
 
-/* --- СТИЛІ КНОПОК --- */
+.step-textarea::placeholder {
+    color: white;
+    opacity: 0.7;
+}
 
-/* Кнопка "Додати крок/інгредієнт" (Яскраво-жовта) */
-.add-button { 
-    background: #d6ff00; /* Yellow */
-    color: #333333; 
+.add-button {
+    background: #d6ff00;
+    color: #333333;
     border: none;
-    padding: 12px 25px; 
+    padding: 12px 25px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 700;
     margin-top: 15px;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 15px rgba(255, 255, 0, 0.4); 
+    box-shadow: 0 4px 15px rgba(255, 255, 0, 0.4);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    width: 100%; 
+    width: 100%;
 }
 
 .add-button:hover {
-    background: #a3c400; 
+    background: #a3c400;
     box-shadow: 0 6px 20px rgba(255, 255, 0, 0.6);
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
 }
 
-/* Основна кнопка збереження (Зелена) */
+/* Основна кнопка збереження) */
 .add-recipe-button {
-    background: #d6ff00; /* Primary Color */
+    background: #d6ff00;
     color: #333333;
     border: none;
     padding: 14px 25px;
@@ -222,11 +231,11 @@ body {
     transition: all 0.2s ease;
     box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
     text-transform: uppercase;
-    width: 100%; 
+    width: 100%;
 }
 
 .add-recipe-button:hover:not(:disabled) {
-    background: #a3c400; 
+    background: #a3c400;
     box-shadow: 0 6px 20px rgba(46, 204, 113, 0.6);
     transform: translateY(-2px);
 }
@@ -239,14 +248,15 @@ body {
 
 /* Кнопки видалення */
 .remove-button {
-    background: #004F9F; /* Error Color */
+    background: #004F9F;
+    /* Error Color */
     color: white;
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px;
-    margin-top: 5px; 
+    margin-top: 5px;
     align-self: flex-start;
 }
 
@@ -260,19 +270,18 @@ body {
 }
 
 .remove-button:hover {
-    background: #00376e; 
+    background: #00376e;
 }
 
-/* --- ЗАВАНТАЖЕННЯ ЗОБРАЖЕНЬ (Існуючі стилі) --- */
 
 .image-upload-section {
     text-align: center;
 }
 
 .image-upload-placeholder {
-    width: 100%; 
+    width: 100%;
     height: 200px;
-    border: 2px dashed rgba(255, 255, 255, 0.4); 
+    border: 2px dashed rgba(255, 255, 255, 0.4);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -282,7 +291,7 @@ body {
     background: rgba(255, 255, 255, 0.15);
     position: relative;
     overflow: hidden;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .image-upload-placeholder:hover {
@@ -376,7 +385,6 @@ body {
     color: #d6ff00;
 }
 
-/* --- ПОВІДОМЛЕННЯ ТА ІНШІ СТИЛІ --- */
 
 .message-alert {
     padding: 12px 16px;
@@ -414,34 +422,33 @@ body {
     }
 }
 
-/* ========================================================================= */
-/* --- АДАПТИВНІСТЬ ДЛЯ РІЗНИХ ПРИСТРОЇВ (MEDIA QUERIES) --- */
-/* ========================================================================= */
-
-/* Адаптація для планшетів (до 1024px) */
 @media (max-width: 1024px) {
     .recipe-page-grid-v2 {
-        /* Зменшуємо ширину правої колонки та проміжок */
         grid-template-columns: 1fr 350px;
         gap: 25px;
     }
+
+    .macros-card-v2::before,
+    .macros-card-v2::after {
+        left: 15px;
+        right: 15px;
+    }
 }
 
-/* Адаптація для планшетів у вертикальному режимі та більших телефонів (до 768px) */
+
 @media (max-width: 768px) {
-    /* Зменшуємо відступ від країв вікна */
+
     body {
         padding: 0 15px;
     }
 
     .recipe-page-grid-v2 {
-        /* Перебудовуємо сітку в один стовпець */
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .glass-card {
-        padding: 20px; /* Зменшуємо внутрішній відступ карток */
+        padding: 20px;
         margin-bottom: 20px;
     }
 
@@ -451,12 +458,16 @@ body {
     }
 
     .macro-input-group {
-        /* Макроси в один стовпець */
         grid-template-columns: 1fr;
         gap: 10px;
     }
 
-    /* Адаптація блоку завантаження зображень */
+    .macros-card-v2::before,
+    .macros-card-v2::after {
+        left: 0;
+        right: 0;
+    }
+
     .image-upload-placeholder {
         height: 250px;
         width: 100%;
@@ -467,8 +478,8 @@ body {
     }
 }
 
-/* Адаптація для малих мобільних пристроїв (до 480px) */
 @media (max-width: 480px) {
+
     .form-input,
     .form-textarea,
     .macro-input,
@@ -478,19 +489,19 @@ body {
         padding: 10px 12px;
         font-size: 14px;
     }
-    
-    .add-button, .add-recipe-button {
+
+    .add-button,
+    .add-recipe-button {
         padding: 10px 20px;
         font-size: 14px;
     }
 
     .ingredient-input-group {
-        /* На малих екранах краще перенести видалення на окремий рядок або зменшити елементи */
         gap: 5px;
     }
-    
+
     .remove-button.small {
-        padding: 5px 8px; /* Трохи більша зона для натискання */
+        padding: 5px 8px;
         font-size: 11px;
     }
 }

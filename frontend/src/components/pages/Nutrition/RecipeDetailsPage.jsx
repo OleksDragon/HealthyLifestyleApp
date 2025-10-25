@@ -4,6 +4,23 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/nutrition/recipe-details-page.css";
 
+const decodeJWT = (token) => {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
+    );
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    console.error("❌ Ошибка декодирования токена:", error);
+    return null;
+  }
+};
+
 const RecipeDetailsPage = () => {
   const { t } = useTranslation();
   const { id } = useParams(); 
@@ -15,12 +32,36 @@ const RecipeDetailsPage = () => {
   const [message, setMessage] = useState({ text: "", type: "" });
 
   useEffect(() => {
-    const checkAdminRights = () => {
-      const userRole = localStorage.getItem("userRole");
-      return userRole === "admin" || userRole === "administrator";
+    const checkAdminFromToken = () => {
+      const token = localStorage.getItem("helth-token");
+      
+      if (!token) {
+        console.log("❌ Токен не найден");
+        setIsAdmin(false);
+        return;
+      }
+
+      try {
+        const decodedToken = decodeJWT(token);
+        console.log("🔍 Декодированный токен:", decodedToken);
+        
+        const userRole = decodedToken?.role || 
+                        decodedToken?.Role || 
+                        decodedToken?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+        
+        console.log("🏷️ Найденная роль:", userRole);
+        
+        const adminStatus = userRole?.toLowerCase() === "admin";
+        console.log("✅ Статус администратора:", adminStatus);
+        
+        setIsAdmin(adminStatus);
+      } catch (error) {
+        console.error("❌ Ошибка при проверке токена:", error);
+        setIsAdmin(false);
+      }
     };
-    
-    setIsAdmin(checkAdminRights());
+
+    checkAdminFromToken();
   }, []);
 
   const showMessage = (text, type) => {
@@ -65,19 +106,25 @@ const RecipeDetailsPage = () => {
     fetchRecipe();
   }, [id]);
 
-  if (loading) return <p className="loading-text">Завантаження рецепта...</p>;
-  if (!recipe) return <p className="error-text">Рецепт не знайдено</p>;
+  if (loading) return <p className="loading-text">{t("loadingRecipe")}</p>;
+  if (!recipe) return <p className="error-text">{t("recipeNotFound")}</p>;
 
   const handleDeleteRecipe = async () => {
-    if (!window.confirm("Ви впевнені, що хочете видалити цей рецепт? Цю дію неможливо скасувати.")) {
+    if (!window.confirm(t("confirmDeleteRecipe"))) {
       return;
     }
 
     setDeleteLoading(true);
     try {
-      await axios.delete(`http://localhost:5000/api/recipes/${id}`);
+      const token = localStorage.getItem("helth-token");
       
-      showMessage("✅ Рецепт успішно видалено!", "success");
+      await axios.delete(`http://localhost:5000/api/recipes/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      showMessage(t("recipeDeletedSuccess"), "success");
       
       setTimeout(() => {
         navigate("/eating/recipes");
@@ -85,7 +132,17 @@ const RecipeDetailsPage = () => {
       
     } catch (error) {
       console.error("❌ Помилка видалення рецепта:", error);
-      const errorMessage = error.response?.data?.message || "Помилка видалення рецепта";
+      
+      let errorMessage = t("deleteRecipeError");
+      
+      if (error.response?.status === 500) {
+        errorMessage = t("recipeInUseError");
+      } else if (error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
       showMessage(`❌ ${errorMessage}`, "error");
     } finally {
       setDeleteLoading(false);
@@ -106,19 +163,20 @@ const RecipeDetailsPage = () => {
         <div className="recipe-page-grid-v2">
 
           <div className="main-media-column">
-            <div className="main-image-card glass-card">
+            <div className="main-image-card">
               <img src={recipe.imageUrl} alt={recipe.name} className="recipe-main-image-v2" />
             </div>
 
-            <div className="recipe-steps-card glass-card">
+            <div className="recipe-steps-card">
               <h2 className="card-title-white">
-                {t("recipe_title") || "Рецепт Приготування"}
+                {t("recipeSteps")}
               </h2>
-              <ol className="recipe-steps-list">
-                {recipe.steps?.map((step, index) => (
-                  <li key={index}>{step}</li>
+              {recipe.steps?.map((step, index) => (
+                  <div key={index} className="recipe-step-item">
+                    <div className="step-number">{index + 1}</div>
+                    <p className="step-text">{step}</p>
+                  </div>
                 ))}
-              </ol>
             </div>
           </div>
 
@@ -128,16 +186,28 @@ const RecipeDetailsPage = () => {
               <p className="recipe-description-v2">{recipe.description}</p>
 
               <div className="macros-card-v2">
-                <div className="macro-item"><span>{recipe.kkal}</span><small>Ккал</small></div>
-                <div className="macro-item"><span>{recipe.protein}</span><small>Білки</small></div>
-                <div className="macro-item"><span>{recipe.fat}</span><small>Жири</small></div>
-                <div className="macro-item"><span>{recipe.carbs}</span><small>Вуглеводи</small></div>
+                <div className="macro-item">
+                  <span>{recipe.kkal}</span>
+                  <small>{t("calories")}</small>
+                </div>
+                <div className="macro-item">
+                  <span>{recipe.protein}</span>
+                  <small>{t("proteins")}</small>
+                </div>
+                <div className="macro-item">
+                  <span>{recipe.fat}</span>
+                  <small>{t("fats")}</small>
+                </div>
+                <div className="macro-item">
+                  <span>{recipe.carbs}</span>
+                  <small>{t("carbs")}</small>
+                </div>
               </div>
             </div>
 
             <div className="ingredients-card glass-card">
               <h2 className="card-title-white">
-                {t("ingredients_title") || "Інгредієнти"}
+                {t("ingredients")}
               </h2>
               <ul className="ingredient-list-wrapper">
                 {recipe.ingredients?.map((item, index) => (
@@ -151,13 +221,14 @@ const RecipeDetailsPage = () => {
 
             <div className="video-recipe-card glass-card">
               <h2 className="card-title-white">
-                {t("video_title") || "Відео-рецепт"}
+                {t("videoRecipe")}
               </h2>
               <div
                 className="video-placeholder-v2"
                 onClick={() => window.open(recipe.videoUrl, "_blank")}
               >
                 <span className="play-icon">▶</span>
+                <span className="video-click-text">{t("clickToWatch")}</span>
               </div>
             </div>
 
@@ -168,21 +239,29 @@ const RecipeDetailsPage = () => {
             )}
 
             <div className="buttons-section">
-              <button 
-                className="back-recipe-button"
-                onClick={handleGoBack}
-              >
-                Назад до рецептів
-              </button>
-
-              {isAdmin && (
                 <button 
-                  className="delete-recipe-button"
-                  onClick={handleDeleteRecipe}
-                  disabled={deleteLoading}
+                  className="back-recipe-button"
+                  onClick={handleGoBack}
                 >
-                  {deleteLoading ? "Видалення..." : "Видалити Рецепт"}
+                  {t("backToRecipes")}
                 </button>
+
+                {isAdmin && (
+                <>
+                  <button 
+                    className="edit-recipe-button"
+                    onClick={() => navigate(`/eating/recipes/edit/${id}`)}
+                  >
+                    {t("editRecipe")}
+                  </button>
+                  <button 
+                    className="delete-recipe-button"
+                    onClick={handleDeleteRecipe}
+                    disabled={deleteLoading}
+                  >
+                    {deleteLoading ? t("deleting") : t("deleteRecipe")}
+                  </button>
+                </>
               )}
             </div>
           </div>

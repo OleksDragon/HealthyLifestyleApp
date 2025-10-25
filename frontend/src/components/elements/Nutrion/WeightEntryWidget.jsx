@@ -15,53 +15,99 @@ const WeightIcon = ({ size = 24, color = '#D6FF00' }) => (
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
-const WeightEntryWidget = ({ t, userId, fetchDailyData }) => {
+const WeightEntryWidget = ({ t, userId, onWeightLogged, date, onDateChange, onPrevDay, onNextDay }) => {
     const [currentWeight, setCurrentWeight] = useState('');
     const [newWeight, setNewWeight] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [status, setStatus] = useState(null);
 
-    const fetchCurrentWeight = async () => {
+    const formatDateForAPI = (dateObj) => {
+        const year = dateObj.getFullYear();
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    const parseWeightValue = (weightValue) => {
+        if (typeof weightValue === 'number') return weightValue;
+        if (typeof weightValue === 'string') {
+            return parseFloat(weightValue.replace(',', '.'));
+        }
+        return 0;
+    };
+
+    const fetchWeightForSelectedDate = async (targetDate) => {
         if (!userId) return;
         const token = localStorage.getItem("helth-token");
         if (!token) return;
 
+        const formattedDate = formatDateForAPI(targetDate);
+        console.log("Шукаємо вагу за дату:", formattedDate);
+
         try {
-            const response = await axios.get(`${API_URL}/api/weight/latest/${userId}`, {
+            const response = await axios.get(`${API_URL}/api/weight/last-7-days`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
-            const latestWeight = response.data?.weight || '';
-            setCurrentWeight(latestWeight);
-            setNewWeight(latestWeight);
+            const logs = response.data || [];
+            console.log("Отримані логи:", logs);
+            
+            const weightForDate = logs.find(log => {
+                const logDate = new Date(log.DateLogged);
+                const logFormattedDate = formatDateForAPI(logDate);
+                console.log("Порівнюємо:", logFormattedDate, "з", formattedDate);
+                return logFormattedDate === formattedDate;
+            });
+
+            if (weightForDate) {
+                const weightValue = parseWeightValue(weightForDate.Weight);
+                console.log("Знайдена вага:", weightValue);
+                setCurrentWeight(weightValue.toString().replace('.', ','));
+            } else {
+                console.log("Вагу за цю дату не знайдено");
+                setCurrentWeight(t("we_no_data") || 'Немає даних');
+            }
+
         } catch (error) {
-            console.error("Помилка завантаження ваги:", error);
-            setCurrentWeight(t("we_no_data") || 'Немає даних');
+            console.error("Помилка завантаження історії ваги:", error);
+            setCurrentWeight(t("we_error_data") || 'Помилка');
         }
     };
 
     useEffect(() => {
-        fetchCurrentWeight();
-    }, [userId]);
+        fetchWeightForSelectedDate(date);
+    }, [userId, date]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         if (!userId || !newWeight || isSubmitting) return;
 
         setIsSubmitting(true);
         setStatus('loading');
         const token = localStorage.getItem("helth-token");
         
+        const formattedDate = formatDateForAPI(date);
+
         try {
+            const weightToSend = parseFloat(newWeight.replace(',', '.'));
+            
             await axios.post(`${API_URL}/api/weight/log`, 
-                { userId, weight: parseFloat(newWeight) }, 
+                { 
+                    weight: weightToSend,
+                    date: formattedDate
+                }, 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
             setStatus('success');
             setCurrentWeight(newWeight);
             
-            if (fetchDailyData) fetchDailyData(); 
+            setTimeout(() => {
+                fetchWeightForSelectedDate(date);
+            }, 500);
+            
+            if (onWeightLogged) onWeightLogged(); 
 
         } catch (error) {
             setStatus('error');
@@ -70,6 +116,10 @@ const WeightEntryWidget = ({ t, userId, fetchDailyData }) => {
             setIsSubmitting(false);
             setTimeout(() => setStatus(null), 3000); 
         }
+    };
+
+    const handleClearInput = () => {
+        setNewWeight('');
     };
 
     return (
@@ -82,25 +132,43 @@ const WeightEntryWidget = ({ t, userId, fetchDailyData }) => {
                 <WeightIcon size={24} style={{ color: '#D6FF00', marginRight: '10px' }} />
                 <span>{t("we_current_label") || 'Поточна вага:'} </span>
                 <span className="current-weight-value">
-                    {currentWeight} {t("we_kg_abbr") || 'кг'}
+                    {currentWeight} {currentWeight !== 'Немає даних' && currentWeight !== 'Помилка' ? t("we_kg_abbr") || 'кг' : ''}
                 </span>
             </div>
 
             <form onSubmit={handleSubmit} className="weight-form">
-                <input
-                    type="number"
-                    step="0.1"
-                    min="1"
-                    value={newWeight}
-                    onChange={(e) => setNewWeight(e.target.value)}
-                    placeholder={t("we_placeholder") || "Введіть вагу (кг)"}
-                    disabled={isSubmitting}
-                    className="weight-input"
-                    required
-                />
+                <div className="input-with-clear">
+                    <input
+                        type="text"
+                        inputMode="decimal"
+                        value={newWeight}
+                        onChange={(e) => {
+                            const value = e.target.value.replace(/[^0-9.,]/g, '');
+                            setNewWeight(value.replace('.', ','));
+                        }}
+                        placeholder={t("we_placeholder") || "Введіть вагу (кг)"}
+                        disabled={isSubmitting}
+                        className="weight-input"
+                        required
+                        style={{ 
+                            cursor: 'text',
+                            color: newWeight ? '#ffffff' : '#888888'
+                        }}
+                    />
+                    {newWeight && (
+                        <button 
+                            type="button"
+                            className="clear-input-button"
+                            onClick={handleClearInput}
+                            disabled={isSubmitting}
+                        >
+                            ×
+                        </button>
+                    )}
+                </div>
                 <button 
                     type="submit" 
-                    disabled={isSubmitting} 
+                    disabled={isSubmitting || !newWeight} 
                     className="weight-submit-button"
                 >
                     {isSubmitting ? t("we_submitting") || 'Збереження...' : t("we_save_button") || 'Зберегти'}
@@ -109,6 +177,7 @@ const WeightEntryWidget = ({ t, userId, fetchDailyData }) => {
 
             {status === 'success' && <p className="status-message success">{t("we_saved") || 'Вага збережена!'}</p>}
             {status === 'error' && <p className="status-message error">{t("we_error") || 'Помилка збереження.'}</p>}
+            
         </div>
     );
 };

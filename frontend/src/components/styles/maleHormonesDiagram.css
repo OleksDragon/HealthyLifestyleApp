@@ -227,3 +227,238 @@
     color: var(--bl);
     transform: rotateY(-2px);
 }
+
+/* Мобільна адаптація для Male Hormones Diagram Page */
+@media (max-width: 431px) {
+    .health-content {
+        padding: 0;
+        margin-left: -10px;
+    }
+
+    .mhd-male-hormones-page {
+        border-radius: 20px;
+        margin-top: 15px;
+        margin-left: 10px;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mhd-male-hormones-page-error {
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mhd-hormones-header {
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .mhd-page-title {
+        font-size: 18px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .mhd-header-spacer {
+        display: none;
+    }
+
+    .mhd-hormones-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mhd-norms-table {
+        padding: 0;
+        font-size: 10px;
+        overflow-x: auto;
+        order: 1;
+    }
+
+    .mhd-table-header {
+        grid-template-columns: 140px 1fr 1fr 1fr;
+        gap: 8px;
+        padding: 10px 5px;
+        min-width: 400px;
+    }
+
+    .mhd-table-row {
+        grid-template-columns: 140px 1fr 1fr 1fr;
+        gap: 8px;
+        padding: 8px 5px;
+        min-width: 400px;
+    }
+
+    .mhd-hormone-name {
+        font-size: 12px;
+    }
+
+    .mhd-hormone-name:first-child {
+        font-size: 12px;
+    }
+
+    .mhd-hormone-unit {
+        font-size: 9px;
+    }
+
+    .mhd-value-cell {
+        font-size: 12px;
+        padding: 2px;
+    }
+
+    .mhd-legend-item {
+        flex-direction: column;
+        gap: 3px;
+        text-align: center;
+    }
+
+    .mhd-legend-text {
+        font-size: 10px;
+        line-height: 1.1;
+    }
+
+    .mhd-legend-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .mhd-diagram-container {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .mhd-diagram-container .recharts-wrapper {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .recharts-polar-angle-axis-tick text {
+        font-size: 11px !important;
+        transform: translateY(2px);
+    }
+
+    .mhd-error-container {
+        height: 40vh;
+        padding: 20px;
+    }
+
+    .mhd-error-message {
+        padding: 20px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .mhd-fill-form-button {
+        min-width: 100%;
+        height: 44px;
+        font-size: 16px;
+        border-radius: 25px;
+    }
+
+    .mhd-fill-form-button:hover {
+        transform: none;
+    }
+
+    .mhd-custom-tooltip {
+        padding: 4px 8px;
+        border-radius: 12px;
+    }
+
+    .mhd-tooltip-value {
+        font-size: 12px;
+        margin: 0;
+    }
+}
+
+/* Додаткові стилі для дуже маленьких екранів */
+@media (min-width: 350px) and (max-width: 390px) {
+    .mhd-male-hormones-page {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    .mhd-page-title {
+        font-size: 17px;
+    }
+
+    .mhd-diagram-container {
+        height: 280px;
+        margin-top: -30px;
+    }
+
+    .recharts-polar-angle-axis-tick text {
+        font-size: 10px !important;
+    }
+
+    .mhd-norms-table {
+        font-size: 9px;
+        overflow-x: auto;
+        padding: 0 5px;
+    }
+
+    .mhd-table-header {
+        grid-template-columns: 95px 65px 65px 65px;
+        gap: 4px;
+        padding: 5px 5px;
+        min-width: 300px;
+        font-size: 9px;
+        margin-bottom: 1px;
+    }
+
+    .mhd-table-row {
+        grid-template-columns: 95px 65px 65px 65px;
+        gap: 3px;
+        padding: 3px 5px;
+        min-width: 300px;
+        margin-bottom: 2px;
+    }
+
+    .mhd-table-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .mhd-hormone-name {
+        font-size: 10px;
+        line-height: 1.1;
+    }
+
+    .mhd-hormone-name:first-child {
+        font-size: 10px;
+    }
+
+    .mhd-hormone-unit {
+        font-size: 7px;
+        margin-top: 1px;
+    }
+
+    .mhd-value-cell {
+        font-size: 10px;
+        padding: 1px;
+        line-height: 1.1;
+    }
+
+    .mhd-legend-text {
+        font-size: 9px;
+    }
+
+    .mhd-error-message {
+        font-size: 15px;
+        padding: 15px;
+    }
+
+    .mhd-fill-form-button {
+        height: 42px;
+        font-size: 15px;
+    }
+}

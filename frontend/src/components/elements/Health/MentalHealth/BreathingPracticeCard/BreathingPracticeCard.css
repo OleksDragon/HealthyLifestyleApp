@@ -128,3 +128,62 @@
     background: var(--lim);
     transform: translateY(-2px);
 }
+
+/* Мобільна версія для BreathingPracticeCard */
+@media (max-width: 431px) {
+    .bpc-breathing-practice-card {
+        padding: 20px 15px;
+        border-radius: 20px;
+        height: 70px;
+        min-height: 70px;
+    }
+
+    .bpc-breathing-practice-card:hover {
+        height: 190px;
+        transform: translateY(-2px);
+    }
+
+    .bpc-breathing-card-title {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .bpc-breathing-card-hover .bpc-breathing-card-title {
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    .bpc-breathing-card-descriptions {
+        margin-bottom: 20px;
+    }
+
+    .bpc-breathing-card-description {
+        font-size: 12px;
+        line-height: 1.4;
+        padding: 0 5px;
+        margin: 5px 0;
+    }
+
+    .bpc-breathing-card-button {
+        padding: 10px 25px;
+        font-size: 14px;
+        border-radius: 20px;
+        margin-top: auto;
+    }
+
+    .bpc-breathing-practice-card {
+        cursor: pointer;
+    }
+
+    .bpc-breathing-practice-card:active .bpc-breathing-card-default,
+    .bpc-breathing-practice-card:focus .bpc-breathing-card-default {
+        opacity: 0;
+    }
+
+    .bpc-breathing-practice-card:active .bpc-breathing-card-hover,
+    .bpc-breathing-practice-card:focus .bpc-breathing-card-hover {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}

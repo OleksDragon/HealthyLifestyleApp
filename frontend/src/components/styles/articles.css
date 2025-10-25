@@ -64,3 +64,58 @@
 .articles-list .article-card:last-child:hover {
     margin-bottom: 15px;
 }
+
+/* Мобільна версія для ArticlesPage */
+@media (max-width: 431px) {
+    .mental-health-article-container {
+        /* padding-left: 10px; */
+        box-sizing: border-box;
+    }
+
+    .mental-health-article-content {
+        width: 105%;
+    }
+
+    .mental-health-articles {
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        overflow-y: auto;
+        margin: 0 auto;
+    }
+
+    .articles-list {
+        width: 100%;
+        padding: 0 5px;
+        box-sizing: border-box;
+    }
+
+    .ap-title {
+        padding: 12px 0;
+        border-radius: 30px;
+        margin: 0 0 20px 7px;
+        width: 97%;
+    }
+
+    .ap-title h2 {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .mental-health-articles::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .mental-health-articles::-webkit-scrollbar-track {
+        margin: 10px 0;
+        border-radius: 8px;
+    }
+
+    .articles-list .article-card:first-child {
+        margin-top: 0;
+    }
+
+    .articles-list .article-card:last-child {
+        margin-bottom: 10px;
+    }
+}

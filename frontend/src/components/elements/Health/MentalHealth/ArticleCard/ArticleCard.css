@@ -55,3 +55,26 @@
 .article-card:hover .article-arrow-icon {
     transform: translateX(3px);
 }
+
+/* Мобільна версія для ArticleCard */
+@media (max-width: 431px) {
+    .article-card {
+        padding: 16px 20px;
+        border-radius: 20px;
+        margin-bottom: 15px;
+    }
+
+    .article-title {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+    .article-arrow-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .article-content {
+        gap: 12px;
+    }
+}

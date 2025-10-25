@@ -586,3 +586,316 @@
     scrollbar-width: thin;
     scrollbar-color: #a0aec0 transparent;
 }
+
+/* Мобільна версія для EmotionDiaryPage */
+@media (max-width: 431px) {
+  .ed-mental-health-diary-container {
+    margin-left: 5px;
+    width: 103%;
+  }
+
+  .ed-title {
+    padding: 12px 0;
+    border-radius: 25px;
+    margin: -5px 0 15px 0;
+  }
+
+  .ed-title h2 {
+    font-size: 18px;
+  }
+
+  .ed-emotion-main-block {
+    height: auto;
+    min-height: 80px;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 20px 0 15px 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ed-emotion-left {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .ed-emotion-feeling {
+    font-size: 16px;
+    margin: 0 0 8px 5px;
+  }
+
+  .ed-emotion-cause {
+    font-size: 13px;
+    margin-left: 5px;
+  }
+
+  .ed-emotion-right {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ed-emotion-time {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .ed-emotion-date {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .ed-factors-header {
+    margin-left: 15px;
+    margin-bottom: 8px;
+  }
+
+  .ed-factors-header h4 {
+    font-size: 16px;
+  }
+
+  .ed-factor-info-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ed-info-btn {
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    margin-left: 8px;
+  }
+
+  .ed-factors-section {
+    padding: 8px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+  }
+
+  .ed-factors-list {
+    gap: 10px;
+  }
+
+  .ed-factors-section:not(.ed-has-factors) .ed-add-factor-block {
+    padding: 15px;
+    border-radius: 25px;
+  }
+
+  .ed-add-factor-btn-inline {
+    width: 25px;
+    height: 25px;
+    margin: 0 8px 0 10px;
+    font-size: 16px;
+  }
+
+  .ed-factor-item {
+    padding: 6px 0;
+  }
+
+  .ed-factor-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ed-factor-name {
+    font-size: 12px;
+  }
+
+  .ed-add-emotion-block {
+    height: 120px;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 20px 0;
+  }
+
+  .ed-add-emotion-block h3 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+
+  .ed-add-emotion-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .ed-add-factor-btn {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    font-size: 16px;
+  }
+
+  .ed-add-factor-text {
+    font-size: 14px;
+    padding-left: 15px;
+  }
+
+  .ed-factors-info-container {
+    min-height: 500px;
+    padding: 15px;
+    border-radius: 25px;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+
+  .ed-factors-info-container::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .ed-factors-info-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 2px;
+  }
+
+  .ed-factors-info-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+
+  .ed-factors-info-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .ed-factors-info-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  }
+
+  .ed-factors-info-header h2 {
+    font-size: 18px;
+  }
+
+  .ed-factors-intro,
+  .ed-factors-analytics {
+    font-size: 14px;
+  }
+
+  .ed-factors-examples h3 {
+    font-size: 16px;
+  }
+
+  .ed-factor-example p {
+    font-size: 14px;
+  }
+
+  .ed-factors-selection-container {
+    height: 480px;
+    padding: 15px;
+    border-radius: 25px;
+    margin-top: -5px;
+  }
+
+  .ed-selected-factors h4,
+  .ed-available-factors h4 {
+    font-size: 16px;
+  }
+
+  .ed-factor-name-list {
+    font-size: 12px;
+  }
+
+  .ed-remove-factor-btn,
+  .ed-add-factor-select-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .ed-save-factors-btn {
+    width: 40%;
+    padding: 8px 16px;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  .ed-notes-section {
+    margin-top: 15px;
+    height: 90px;
+    border-radius: 20px;
+  }
+
+  .ed-notes-textarea {
+    height: 70px;
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+
+  .ed-error {
+    width: 80%;
+    padding: 15px 0;
+    font-size: 16px;
+    border-radius: 25px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+  .ed-mental-health-diary-container {
+    padding: 0 8px;
+  }
+
+  .ed-title {
+    padding: 10px 0;
+    margin: -5px 0 12px 0;
+  }
+
+  .ed-title h2 {
+    font-size: 16px;
+  }
+
+  .ed-emotion-main-block {
+    padding: 12px;
+    margin: 15px 0 12px 0;
+  }
+
+  .ed-emotion-feeling {
+    font-size: 15px;
+  }
+
+  .ed-emotion-cause {
+    font-size: 12px;
+  }
+
+  .ed-emotion-time {
+    font-size: 13px;
+  }
+
+  .ed-emotion-date {
+    font-size: 11px;
+  }
+
+  .ed-factors-header h4 {
+    font-size: 15px;
+  }
+
+  .ed-add-emotion-block {
+    height: 110px;
+    padding: 12px;
+  }
+
+  .ed-add-emotion-block h3 {
+    font-size: 16px;
+  }
+
+  .ed-add-emotion-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+  }
+
+  .ed-add-factor-text {
+    font-size: 13px;
+  }
+
+  .ed-factors-info-container {
+    padding: 12px;
+    max-height: 75vh;
+  }
+
+  .ed-factors-info-header h2 {
+    font-size: 17px;
+  }
+}

@@ -110,3 +110,29 @@
 .option-link-btn:hover {
     background: var(--lim);
 }
+
+@media (max-width: 431px) {
+    .m-card-link {
+        padding: 18px 14px;
+        border-radius: 20px;
+        max-width: 160px;
+    }
+
+    .card-image {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 10px;
+    }
+
+    .m-card-link .title {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .option-link-btn {
+        width: 120px;
+        height: 36px;
+        font-size: 13px;
+        border-radius: 20px;
+    }
+}

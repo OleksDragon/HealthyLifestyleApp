@@ -437,3 +437,296 @@
     font-weight: 300;
     color: #474646;
 }
+
+/* Мобільна версія для SubscriptionPage */
+@media (max-width: 431px) {
+  .sp-subscription-page {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 0 15px;
+    height: 95vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .sp-subscription-main-container {
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .sp-subscription-wraper {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    overflow-y: visible;
+    overflow-x: visible;
+  }
+
+  /* Прибираємо скрол з wrapper, оскільки скролить вся сторінка */
+  .sp-subscription-wraper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sp-subscription-health-info {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .sp-subscription-health-info .sp-subscription-title {
+    font-size: 22px;
+    min-width: auto;
+    margin-right: 0;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .sp-subscription-health-info .sp-subscription-sub-title {
+    font-size: 14px;
+    max-width: 100%;
+    margin-right: 0;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .sp-subscription-health-info .sp-subscription-info-image {
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+  }
+
+  .sp-subscription-section {
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .sp-subscription-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .sp-subscription-container > * {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    min-height: 300px;
+  }
+
+  .sp-subscription-history-section {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+
+  .sp-subscription-history-container {
+    border-radius: 20px;
+  }
+
+  .sp-subscription-history-blur {
+    border-radius: 20px;
+  }
+
+  .sp-subscription-history-toggle {
+    padding: 15px 20px;
+  }
+
+  .sp-subscription-history-label {
+    font-size: 1rem;
+  }
+
+  .sp-subscription-history-arrow img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Змінюємо максимальну висоту для розгорнутої історії */
+  .sp-subscription-history-container-expanded .sp-subscription-history-content {
+    max-height: none;
+  }
+
+  .sp-subscription-history-inner {
+    max-width: 100%;
+    padding: 0 15px 20px 15px;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  /* Прибираємо скрол з історії */
+  .sp-subscription-history-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sp-subscription-h-wrapper {
+    max-width: 100%;
+  }
+
+  .sp-subscription-history-item {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .sp-subscription-history-item-blur {
+    border-radius: 15px;
+  }
+
+  .sp-subscription-history-item-content {
+    padding: 15px;
+  }
+
+  .sp-subscription-history-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .sp-subscription-history-type {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .sp-subscription-history-type strong {
+    font-size: 1.1rem;
+    min-width: auto;
+  }
+
+  .sp-subscription-history-dates {
+    text-align: left;
+    width: 100%;
+  }
+
+  .sp-subscription-history-price {
+    text-align: left;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .sp-subscription-family-members {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .sp-subscription-family-member {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .sp-subscription-family-date {
+    font-size: 0.8rem;
+  }
+
+  /* Додаємо скрол для всієї сторінки */
+  .sp-subscription-page::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .sp-subscription-page::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+
+  .sp-subscription-page::-webkit-scrollbar-thumb {
+    background: var(--bl);
+    border: 0.5px solid var(--white);
+    border-radius: 10px;
+  }
+
+  .sp-subscription-page::-webkit-scrollbar-thumb:hover {
+    background: var(--title);
+  }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+  .sp-subscription-page {
+    padding: 0 10px;
+  }
+
+  .sp-subscription-health-info {
+    padding: 15px;
+  }
+
+  .sp-subscription-health-info .sp-subscription-title {
+    font-size: 20px;
+  }
+
+  .sp-subscription-health-info .sp-subscription-sub-title {
+    font-size: 13px;
+  }
+
+  .sp-subscription-health-info .sp-subscription-info-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .sp-subscription-container {
+    gap: 15px;
+  }
+
+  .sp-subscription-container > * {
+    max-width: 300px;
+    min-height: 280px;
+  }
+
+  .sp-subscription-history-toggle {
+    padding: 12px 15px;
+  }
+
+  .sp-subscription-history-label {
+    font-size: 0.95rem;
+  }
+
+  .sp-subscription-history-inner {
+    padding: 0 10px 15px 10px;
+  }
+
+  .sp-subscription-history-item-content {
+    padding: 12px;
+  }
+
+  .sp-subscription-history-type strong {
+    font-size: 1rem;
+  }
+
+  .sp-subscription-history-dates {
+    font-size: 0.9rem;
+  }
+
+  .sp-subscription-history-price {
+    font-size: 1rem;
+  }
+}
+
+/* Додаткові стилі для кращого відображення на мобільних */
+@media (max-width: 431px) {
+  .sp-subscription-loading, 
+  .sp-subscription-error-message {
+    height: 150px;
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+
+  .sp-subscription-loading:after {
+    width: 30px;
+    height: 30px;
+  }
+
+  .sp-subscription-history-loading,
+  .sp-subscription-history-empty {
+    padding: 30px 20px;
+    font-size: 1rem;
+  }
+
+  .sp-subscription-status {
+    font-size: 0.8rem;
+    padding: 3px 10px;
+  }
+}

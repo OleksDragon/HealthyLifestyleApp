@@ -165,7 +165,6 @@
     .header, .navbar, .container {
         position: relative;
         overflow: visible; /* забороняє обрізання */
-        z-index: 1002;
     }
 
     /* Mobile Header Layout */
@@ -411,5 +410,11 @@
 
     .mobile-menu-option.exit:hover {
         background-color: rgba(255, 59, 48, 0.1);
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .mobile-menu-panel {
+        height: 85vh;
     }
 }

@@ -130,3 +130,119 @@
 .ns-result-block {
     width: 40%;
 }
+
+/* Мобільна версія для NadiShodhanaPage */
+@media (max-width: 431px) {
+    .ns-breathing-container {
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .ns-back-button {
+        width: 70%;
+        margin-left: 0;
+        margin-bottom: 20px;
+        gap: 8px;
+    }
+
+    .ns-back-button svg {
+        width: 10px;
+        height: 20px;
+    }
+
+    .ns-breathing-info-block {
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .ns-technique-container {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 0;
+    }
+
+    .ns-technique-block,
+    .ns-result-block {
+        width: 100%;
+        height: auto;
+        padding: 20px 15px;
+        border-radius: 20px;
+        min-height: auto;
+    }
+
+    .ns-technique-title,
+    .ns-result-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .ns-technique-steps {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .ns-technique-steps li {
+        padding-left: 40px;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    .ns-technique-steps li::before {
+        left: 0;
+        top: -2px;
+        font-size: 18px;
+    }
+
+    .ns-result-description {
+        font-size: 14px;
+        line-height: 1.5;
+        padding-left: 0;
+    }
+
+    .ns-result-description p:first-child {
+        margin-bottom: 12px;
+    }
+
+    .ns-back-button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .ns-technique-steps li:last-child {
+        margin-bottom: 0;
+    }
+
+    .ns-result-description p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .ns-breathing-container {
+        height: 80vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 10px;
+        margin-top: 0;
+        width: 95vw;
+    }
+
+    /* Стилізація скроллбара */
+    .ns-breathing-container::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .ns-breathing-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        margin: 10px 0;
+    }
+
+    .ns-breathing-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+    }
+
+    .ns-breathing-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+}

@@ -741,7 +741,6 @@ input {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: background-color 0.2s ease;
-    z-index: 1;
   }
 
   .mobile-back-button:hover {

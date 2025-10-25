@@ -104,48 +104,50 @@ const ArticleDetailPage = () => {
     // Розділяємо техніки на два стовбці
     const techniques = items.filter(item => item.type === 'technique');
     const otherItems = items.filter(item => item.type !== 'technique');
-    
-    const half = Math.ceil(techniques.length / 2);
-    const leftColumn = techniques.slice(0, half);
-    const rightColumn = techniques.slice(half);
 
     return (
         <>
-            {otherItems.map((item) => {
-                if (item.type === 'title') {
-                    return <h1 key={item.key} className="ad-main-title">{item.content}</h1>;
-                } else if (item.type === 'subsection') {
-                    return <h3 key={item.key} className="ad-subsection">{item.content}</h3>;
-                } else if (item.type === 'section') {
-                    return <h2 key={item.key} className="ad-section-title">{item.content}</h2>;
-                } else {
-                    return <p key={item.key} className="ad-text">{item.content}</p>;
-                }
-            })}
+            {/* Статичний контент - заголовки і текст */}
+            <div className="ad-static-content">
+                {otherItems.map((item) => {
+                    if (item.type === 'title') {
+                        return <h1 key={item.key} className="ad-main-title">{item.content}</h1>;
+                    } else if (item.type === 'subsection') {
+                        return <h3 key={item.key} className="ad-subsection">{item.content}</h3>;
+                    } else if (item.type === 'section') {
+                        return <h2 key={item.key} className="ad-section-title">{item.content}</h2>;
+                    } else {
+                        return <p key={item.key} className="ad-text">{item.content}</p>;
+                    }
+                })}
+            </div>
             
+            {/* Скроляться тільки техніки */}
             {techniques.length > 0 && (
-                <div className="ad-techniques-grid">
-                    <div className="ad-column">
-                        {leftColumn.map((item) => (
-                            <div key={item.key} className="ad-technique-item">
-                                <div className="ad-number">{item.number}</div>
-                                <div className="ad-technique-content">
-                                    <h3 className="ad-technique-title">{item.title}</h3>
-                                    <p className="ad-technique-text">{item.text}</p>
+                <div className="ad-scrollable-techniques">
+                    <div className="ad-techniques-grid">
+                        <div className="ad-column">
+                            {techniques.slice(0, Math.ceil(techniques.length / 2)).map((item) => (
+                                <div key={item.key} className="ad-technique-item">
+                                    <div className="ad-number">{item.number}</div>
+                                    <div className="ad-technique-content">
+                                        <h3 className="ad-technique-title">{item.title}</h3>
+                                        <p className="ad-technique-text">{item.text}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="ad-column">
-                        {rightColumn.map((item) => (
-                            <div key={item.key} className="ad-technique-item">
-                                <div className="ad-number">{item.number}</div>
-                                <div className="ad-technique-content">
-                                    <h3 className="ad-technique-title">{item.title}</h3>
-                                    <p className="ad-technique-text">{item.text}</p>
+                            ))}
+                        </div>
+                        <div className="ad-column">
+                            {techniques.slice(Math.ceil(techniques.length / 2)).map((item) => (
+                                <div key={item.key} className="ad-technique-item">
+                                    <div className="ad-number">{item.number}</div>
+                                    <div className="ad-technique-content">
+                                        <h3 className="ad-technique-title">{item.title}</h3>
+                                        <p className="ad-technique-text">{item.text}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             )}

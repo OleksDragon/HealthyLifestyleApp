@@ -245,13 +245,6 @@ input::placeholder {
     font-family: 'Kumbh Sans', sans-serif;
 }
 
-.social-btns {
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-    margin-top: 24px;
-}
-
 .btn-log-another-way {
     display: flex;
     align-items: center;

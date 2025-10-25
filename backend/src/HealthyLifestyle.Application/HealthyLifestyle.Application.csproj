@@ -8,6 +8,7 @@
 
       <ItemGroup>
         <ProjectReference Include="..\HealthyLifestyle.Core\HealthyLifestyle.Core.csproj" />
+        <ProjectReference Include="..\HealthyLifestyle.Infrastructure\HealthyLifestyle.Infrastructure.csproj" />
       </ItemGroup>
 
       <ItemGroup>

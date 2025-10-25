@@ -37,7 +37,7 @@ namespace HealthyLifestyle.Core.Entities
         /// <summary>
         /// Статус замовлення (Pending, Processing, Shipped, Completed і т.д.).
         /// </summary>
-        public OrderStatus Status { get; set; } = OrderStatus.Pending;
+        public OrderStatus Status { get; set; } = OrderStatus.Cancelled;
 
         #endregion
 

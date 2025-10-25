@@ -33,7 +33,7 @@ services:
       - WebhookSecret=whsec_9mm2ZUMIHpuspkbji0xTuuzqvYKVX5gN # змінити whsec_... пілся заміни url webhook 
     networks:
       - healthy_net
-    command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"
+    command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"    
 
   minio:
     image: minio/minio:latest
@@ -93,7 +93,6 @@ services:
     environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL}
       - REACT_APP_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-      - REACT_APP_STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
     networks:
       - healthy_net
 

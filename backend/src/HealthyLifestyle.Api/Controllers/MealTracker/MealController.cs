@@ -20,7 +20,7 @@ namespace HealthyLifestyle.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<MealDto>), 200)]
-        [Authorize(Roles = "Admin")] // Typically only admins can get all meals
+        [Authorize(Roles = "Admin")] 
         public async Task<IActionResult> GetAll()
         {
             var meals = await _mealService.GetAllAsync();
@@ -100,5 +100,19 @@ namespace HealthyLifestyle.Api.Controllers
             var meals = await _mealService.GetByUserAndDateAsync(userId, date);
             return Ok(meals);
         }
+
+        [HttpGet("user/{userId}/date/{date}/grouped")]
+        [ProducesResponseType(typeof(object), 200)]
+        public async Task<IActionResult> GetMealsByDateGrouped(Guid userId, DateTime date)
+        {
+            var meals = await _mealService.GetByUserAndDateAsync(userId, date);
+
+            var grouped = meals
+                .GroupBy(m => m.MealType)
+                .ToDictionary(g => g.Key.ToString(), g => g.ToList());
+
+            return Ok(grouped);
+        }
+
     }
 }

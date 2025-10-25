@@ -219,9 +219,9 @@ function LoginPage() {
                         <FontAwesomeIcon icon={faGoogle} style={{ color: '#0066C3', fontSize: '20px' }} />
                     </button>
 
-                    <button className='btn-log-another-way'>
+                    {/* <button className='btn-log-another-way'>
                         <img src={telegramIcon} alt="Telegram" style={{ width: '16x', height: '16px', marginLeft: '-2px'}} />
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

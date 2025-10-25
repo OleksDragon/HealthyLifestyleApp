@@ -321,7 +321,7 @@ input::placeholder {
 
 .form-content {
     min-width: 430px;
-   flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .slide-left {

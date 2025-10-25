@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+.nutrition-tracker-page-content {
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.breadcrumbs {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.navigation-tabs-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.navigation-tabs-wrapper .tab-item {
+    flex: 1;
+    padding: 15px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.navigation-tabs-wrapper .tab-item.active {
+    background-color: #D6FF00;
+    color: #004aad;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+.navigation-tabs-wrapper .tab-item.gradient-tab {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    border: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.navigation-tabs-wrapper .tab-item.gradient-tab:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.25) 100%);
+}
+
+.scrollable-main-content {
+    position: relative;
+    overflow-y: auto;
+    height: 65vh;
+    width: 100%;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+
+.scroll-data::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-data::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 10px;
+    margin: 5px;
+    box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.scroll-data::-webkit-scrollbar-thumb {
+    background: #0661CC;
+    border-radius: 10px;
+}
+
+.scroll-data::-webkit-scrollbar-thumb:hover {
+    background: #0661CC;
+}
+
+.tracker-grid-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.glass-card-nutrion-tracker {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-title-yellow {
+    color: #D6FF00;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+.card-title-blue {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+}
+
+.progress-card {
+    background-color: transparent;
+}
+
+.progress-card p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.progress-item {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+}
+
+.progress-info {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex: 1;
+}
+
+.progress-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.progress-value {
+    font-size: 1.0rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+.progress-percentage {
+    font-size: 1.1rem;
+    color: #D6FF00;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.progress-bar-container {
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.3);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.progress-bar::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+}
+
+.progress-bar.kkal-bar::-webkit-progress-value,
+.progress-bar.protein-bar::-webkit-progress-value,
+.progress-bar.fat-bar::-webkit-progress-value,
+.progress-bar.carbs-bar::-webkit-progress-value {
+    background-color: #D6FF00;
+    border-radius: 6px;
+}
+
+.meals-card {
+    margin-top: 40px;
+}
+
+.meals-table-header,
+.meal-item {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meals-table-header .col-name,
+.meal-item .col-name {
+    text-align: left;
+}
+
+.meals-table-header .col-kkal,
+.meal-item .col-kkal,
+.meals-table-header .col-protein,
+.meal-item .col-protein,
+.meals-table-header .col-fat,
+.meal-item .col-fat,
+.meals-table-header .col-carbs,
+.meal-item .col-carbs {
+    text-align: right;
+}
+
+.meals-table-header {
+    color: #a0c4ff;
+    font-weight: 700;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.meal-item {
+    font-weight: 400;
+}
+
+.meal-group-title {
+    font-weight: 700;
+    color: #D6FF00;
+    padding: 10px 0 5px 0;
+    font-size: 1rem;
+}
+
+.add-meal-button {
+    display: block;
+    width: 100%;
+    padding: 25px 0;
+    background-color: #D6FF00;
+    color: #004aad;
+    text-align: center;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+.add-meal-button:hover {
+    background-color: #e6ff33;
+}
+
+.analytics-widget .weight-target {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #D6FF00;
+    margin-bottom: 5px;
+}
+
+.analytics-widget .current-month {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.analytics-widget .chart-placeholder {
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.motivation-widget {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 1.8rem;
+}
+
+.motivation-text {
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    display: inline-block !important;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.weight-entry-widget {
+    margin-top: 20px;
+    text-align: left;
+    padding: 25px;
+}
+
+.weight-info {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.current-weight-value {
+    font-weight: 700;
+    color: #D6FF00;
+    margin-left: 10px;
+}
+
+.weight-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.weight-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.weight-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.weight-input:focus {
+    border-color: #D6FF00;
+}
+
+.weight-submit-button {
+    padding: 10px 20px;
+    background-color: #D6FF00;
+    color: #004aad;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.weight-submit-button:hover:not(:disabled) {
+    background-color: #e6ff33;
+}
+
+.weight-submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.status-message {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.status-message.success {
+    color: #D6FF00;
+}
+
+.status-message.error {
+    color: #ff4d4d;
+}
+
+.input-with-clear {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.clear-input-button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-input-button:hover {
+    color: #fff;
+}
+
+.weight-input {
+    padding-right: 35px;
+    cursor: text !important;
+}

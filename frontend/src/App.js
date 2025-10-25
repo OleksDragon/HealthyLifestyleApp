@@ -23,6 +23,13 @@ import ChallengeDetailsPage from "./components/pages/social/ChallengeDetailsPage
 import CreateChallengePage from "./components/pages/social/CreateChallengePage";
 import EditChallengePage from "./components/pages/social/EditChallengePage";
 
+import NutritionTrackerPage from "./components/pages/Nutrition/NutritionTrackerPage";
+import RationPage from "./components/pages/Nutrition/RationPage";
+import RecipesPage from "./components/pages/Nutrition/RecipesPage";
+import RecipeDetailsPage from "./components/pages/Nutrition/RecipeDetailsPage";
+import AddRecipePage from "./components/pages/Nutrition/AddRecipePage";
+import EditRecipePage from "./components/pages/Nutrition/EditRecipePage";
+
 import HealthPageMenu from "./components/elements/Health/HealthPageMenu/HealthPageMenu";
 import HealthPage from "./components/pages/HealthPages/HealthPage";
 import YourHealthPage from "./components/pages/HealthPages/YourHealthPages/YourHealthPage";
@@ -58,6 +65,10 @@ import SubscriptionPaymentPage from './components/pages/Subscription/Subscriptio
 
 import PaymentSuccessPage from "./components/pages/PaymentSuccessPage";
 
+import MarketplacePage from "./components/pages/Marketplace/MarketplacePage";
+import ProductPage from "./components/pages/Marketplace/ProductPage";
+import ShoppingCartPage from "./components/pages/Marketplace/ShoppingCartPage";
+import MarketplacePayment from "./components/pages/Marketplace/MarketplacePayment";
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -108,10 +119,18 @@ function AppRoutes() {
       <Route path="/social/create-challenge" element={<PrivateRoute><Menu><CreateChallengePage /></Menu></PrivateRoute>} />
       <Route path="/social/:id/edit" element={<PrivateRoute><Menu><EditChallengePage /></Menu></PrivateRoute>} />
 
+      {/* Харчування */}
+      <Route path="/eating" element={<PrivateRoute><Menu><NutritionTrackerPage /></Menu></PrivateRoute>} />
+      <Route path="/eating/ration" element={<PrivateRoute><Menu><RationPage /></Menu></PrivateRoute>} />
+      <Route path="/eating/recipes" element={<PrivateRoute><Menu><RecipesPage /></Menu></PrivateRoute>} />
+      <Route path="/eating/recipes/:id" element={<PrivateRoute><Menu><RecipeDetailsPage /></Menu></PrivateRoute>} />
+      <Route path="/eating/recipes/add" element={<PrivateRoute><Menu><AddRecipePage /></Menu></PrivateRoute>} />
+      <Route path="/eating/recipes/edit/:id" element={<PrivateRoute><Menu><EditRecipePage /></Menu></PrivateRoute>} />      
+
       {/* Здоровье - Основные страницы */}
       <Route path="/health" element={<PrivateRoute><Menu><HealthPageMenu /><HealthPage /></Menu></PrivateRoute>} />
       <Route path="/health/your" element={<PrivateRoute><Menu><HealthPageMenu><YourHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
-      
+ 
       {/* Ментальное здоровье */}
       <Route path="/health/mental" element={<PrivateRoute><Menu><HealthPageMenu><MentalHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/mental/diary" element={<PrivateRoute><Menu><HealthPageMenu><EmotionDiaryPage /></HealthPageMenu></Menu></PrivateRoute>} />
@@ -148,9 +167,15 @@ function AppRoutes() {
       {/* Success and canceled payment */}
       <Route path="/success" element={<PrivateRoute><Menu><PaymentSuccessPage /></Menu></PrivateRoute>} />
 
+      {/* Магазин */}
+      <Route path="/marketplace" element={<PrivateRoute><Menu><MarketplacePage /></Menu></PrivateRoute>} />
+      <Route path="/marketplace/product" element={<PrivateRoute><Menu><ProductPage /></Menu></PrivateRoute>} />
+      <Route path="/marketplace/shopping_cart" element={<PrivateRoute><Menu><ShoppingCartPage /></Menu></PrivateRoute>} />
+      <Route path="/marketplace/payment" element={<PrivateRoute><Menu><MarketplacePayment /></Menu></PrivateRoute>} />
+
       {/* Not found */}
       <Route path="*" element={<NotFoundPage />} />
-
+      
     </Routes>
   );
 }

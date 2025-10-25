@@ -688,7 +688,7 @@
 }
 
 .backdrop {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
@@ -735,4 +735,8 @@
 
 .link-to-meet {
     color: #0661CC;
+}
+
+.small-calendar-header .year-month-select .select-options-container {
+    background: white !important;
 }

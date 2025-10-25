@@ -38,6 +38,12 @@ public class MinioService : IObjectStorageService
                 var mkBucketArgs = new MakeBucketArgs().WithBucket(_settings.BucketName);
                 await _minioClient.MakeBucketAsync(mkBucketArgs).ConfigureAwait(false);
                 Console.WriteLine($"Бакет '{_settings.BucketName}' успешно создан.");
+
+                await SetPublicReadPolicyAsync();
+            }
+            else
+            {
+                await EnsurePublicReadPolicyAsync();
             }
 
             var putObjectArgs = new PutObjectArgs()
@@ -66,22 +72,64 @@ public class MinioService : IObjectStorageService
     }
 
     /// <summary>
-    /// Удаляет файл из хранилища.
+    /// Устанавливает политику публичного доступа на чтение для bucket
     /// </summary>
-    /// <param name="fileUrl">URL-адрес файла для удаления.</param>
-    
-    //public async Task DeleteFileAsync(string fileUrl)
-    //{
-    //    var uri = new Uri(fileUrl);
-    //    var bucketName = uri.Segments[1].TrimEnd('/');
-    //    var objectName = string.Join("", uri.Segments.Skip(2));
+    private async Task SetPublicReadPolicyAsync()
+    {
+        try
+        {
+            var policyJson = $@"{{
+                ""Version"": ""2012-10-17"",
+                ""Statement"": [
+                    {{
+                        ""Effect"": ""Allow"",
+                        ""Principal"": ""*"",
+                        ""Action"": ""s3:GetObject"",
+                        ""Resource"": ""arn:aws:s3:::{_settings.BucketName}/*""
+                    }}
+                ]
+            }}";
 
-    //    var removeObjectArgs = new RemoveObjectArgs()
-    //        .WithBucket(bucketName)
-    //        .WithObject(objectName);
+            var setPolicyArgs = new SetPolicyArgs()
+                .WithBucket(_settings.BucketName)
+                .WithPolicy(policyJson);
 
-    //    await _minioClient.RemoveObjectAsync(removeObjectArgs);
-    //}
+            await _minioClient.SetPolicyAsync(setPolicyArgs);
+            Console.WriteLine($"Политика публичного доступа установлена для bucket '{_settings.BucketName}'");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка установки политики: {ex.Message}");
+            // Не бросаем исключение, чтобы не ломать загрузку файлов
+        }
+    }
+
+    /// <summary>
+    /// Проверяет и устанавливает политику если её нет
+    /// </summary>
+    private async Task EnsurePublicReadPolicyAsync()
+    {
+        try
+        {
+            var getPolicyArgs = new GetPolicyArgs().WithBucket(_settings.BucketName);
+            var currentPolicy = await _minioClient.GetPolicyAsync(getPolicyArgs);
+
+            // Если политика пустая или не содержит разрешения на GetObject, устанавливаем новую
+            if (string.IsNullOrEmpty(currentPolicy) || !currentPolicy.Contains("s3:GetObject"))
+            {
+                await SetPublicReadPolicyAsync();
+            }
+        }
+        catch (MinioException ex) when (ex.Message.Contains("The bucket policy does not exist"))
+        {
+            // Политика не существует - устанавливаем
+            await SetPublicReadPolicyAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка проверки политики: {ex.Message}");
+        }
+    }
 
     public async Task DeleteFileAsync(string objectName)
     {
@@ -142,5 +190,4 @@ public class MinioService : IObjectStorageService
 
         return await _publicClient.PresignedGetObjectAsync(args);
     }
-
 }

@@ -193,6 +193,11 @@ namespace HealthyLifestyle.Core.Entities
         /// </summary>
         public virtual MaleHealthTracker? MaleHealthTracker { get; set; }
 
+        /// <summary>
+        /// Список улюблених товарів.
+        /// </summary>
+        public virtual ICollection<Product> FavoriteProducts { get; set; } = new List<Product>();
+
         #endregion
 
         #region Конструктори

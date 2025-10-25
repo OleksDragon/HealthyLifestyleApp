@@ -569,6 +569,30 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.ToTable("HealthDashboards");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Ingredient", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Amount")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("Ingredients");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.MaleHealthTracker", b =>
                 {
                     b.Property<Guid>("UserId")
@@ -637,7 +661,6 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("FoodItemName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MealType")
@@ -650,6 +673,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
 
+                    b.Property<Guid?>("RecipeId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -659,6 +685,8 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DietPlanId");
+
+                    b.HasIndex("RecipeId");
 
                     b.HasIndex("UserId");
 
@@ -864,7 +892,12 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -1024,6 +1057,123 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Purchases");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ShoppingCartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ShoppingCartId");
+
+                    b.ToTable("ShoppingCartItems");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Recipe", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Carbs")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Fat")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Kkal")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Protein")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VideoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.RecipeStep", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("StepText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("RecipeSteps");
                 });
 
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.SleepRecord", b =>
@@ -1429,6 +1579,31 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.ToTable("UserProfessionalQualifications");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.WeightLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("WeightLogs");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.Workout", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1792,6 +1967,17 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Ingredient", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.Recipe", "Recipe")
+                        .WithMany("Ingredients")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.MaleHealthTracker", b =>
                 {
                     b.HasOne("HealthyLifestyle.Core.Entities.User", "User")
@@ -1810,6 +1996,11 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .HasForeignKey("DietPlanId")
                         .OnDelete(DeleteBehavior.SetNull);
 
+                    b.HasOne("HealthyLifestyle.Core.Entities.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("HealthyLifestyle.Core.Entities.User", "User")
                         .WithMany("MealEntries")
                         .HasForeignKey("UserId")
@@ -1817,6 +2008,8 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("DietPlan");
+
+                    b.Navigation("Recipe");
 
                     b.Navigation("User");
                 });
@@ -1873,6 +2066,13 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Product", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", null)
+                        .WithMany("FavoriteProducts")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.PsychologistDetails", b =>
                 {
                     b.HasOne("HealthyLifestyle.Core.Entities.UserProfessionalQualification", "UserProfessionalQualification")
@@ -1893,6 +2093,45 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCart", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCartItem", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HealthyLifestyle.Core.Entities.ShoppingCart", "ShoppingCart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("ShoppingCartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ShoppingCart");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.RecipeStep", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.Recipe", null)
+                        .WithMany("Steps")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.SleepRecord", b =>
@@ -1981,6 +2220,17 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.WeightLog", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
@@ -2057,6 +2307,18 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("UserProfessionalQualifications");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCart", b =>
+                {
+                    b.Navigation("CartItems");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Recipe", b =>
+                {
+                    b.Navigation("Ingredients");
+
+                    b.Navigation("Steps");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.SocialChallenge", b =>
                 {
                     b.Navigation("Participations");
@@ -2084,6 +2346,8 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("DietPlans");
 
                     b.Navigation("FamilyMemberships");
+
+                    b.Navigation("FavoriteProducts");
 
                     b.Navigation("FemaleHealthTracker");
 

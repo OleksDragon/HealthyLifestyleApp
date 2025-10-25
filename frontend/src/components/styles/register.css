@@ -157,6 +157,7 @@
     flex-direction: column;
     color: white;
     text-align: center;
+    overflow: hidden;
 }
 
 .glass input {
@@ -201,7 +202,7 @@ input::placeholder {
 .eye:hover {
     background-color: none !important;
     color: white !important;
-    transform: none !important;
+    transform: translateY(-50%);;
 }
 
 .continue {

@@ -160,6 +160,7 @@
         -webkit-backdrop-filter: blur(10px);
         display: flex;
         align-items: center;
+        z-index: 100;
     }
 
     .header, .navbar, .container {

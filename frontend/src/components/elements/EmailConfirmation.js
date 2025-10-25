@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useRef, useState, useImperativeHandle, forwardRef, use } from 'react';
 import '../styles/emailConfirm.css';
 
-const EmailConfirmation = forwardRef(({ email, toggleForm, t }, ref) => {
+const EmailConfirmation = forwardRef(({ style, email, toggleForm, t }, ref) => {
     const [sendCodeAgain, setSendCodeAgain] = useState(0);
     const [error, setError] = useState("");
     const codeNums = 5;
@@ -88,7 +88,7 @@ const EmailConfirmation = forwardRef(({ email, toggleForm, t }, ref) => {
     }, [code]);
 
     return (
-        <div className="form-content">
+        <div className="form-content" style={style}>
             <div className='info right' style={{ marginTop: '10px' }}>
                 <span>{t("check_email")}</span>
                 <br />

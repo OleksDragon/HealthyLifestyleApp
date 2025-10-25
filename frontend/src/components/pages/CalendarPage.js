@@ -126,7 +126,8 @@ function CalendarPage() {
             const dayEvents = weekEvents.filter(e => (new Date(e.StartTime)).getDate() === d)
             .map(ev => ({
                 ...ev,
-                StartTime: toLocalISOString(new Date(ev.StartTime + "Z"))
+                StartTime: toLocalISOString(new Date(ev.StartTime + "Z")),
+                EndTime: ev.EndTime === null ? null : toLocalISOString(new Date(ev.EndTime + "Z"))
             }));
 
             return (
@@ -417,6 +418,8 @@ function CalendarPage() {
     }
 
     const handleAddEvent = async () => {
+        console.log(time)
+        console.log(end)
         try {
             if (id.length !== 0) {
                 await axios.put(`${process.env.REACT_APP_API_URL}/api/Calendar/${id}`,
@@ -559,7 +562,7 @@ function CalendarPage() {
     };
 
     return (
-        <div className="calendar-page-container scroll-data">
+        <div className="calendar-page-container">
             <div className="female-health-info">
                 <div className="title">{t("calendar")}</div>
                 <div className="sub-title" style={{color: "#0661CC"}}>{t("calendar_info")}</div>
@@ -687,7 +690,7 @@ function CalendarPage() {
                             </div>
                         </div>
                         <div className="date-time">
-                            <div className="date" style={{position: "relative", width: "100%", gridColumn: `1/${page === 3 ? '3' : '2'}`}}>
+                            <div style={{position: "relative", width: "100%", gridColumn: `1/${page === 3 ? '3' : '2'}`}} className="date">
                                 <img style={{position: "absolute", top: "50%", transform: "translateY(-50%)"}} className="clock-icon" src={iconCalendar}/>
                                 <DatePicker
                                     selected={date}
@@ -836,7 +839,7 @@ function CalendarPage() {
                                             <img src={crossIcon} onClick={() => delPart(p.id)}/>
                                         </div>
                                     )}
-                                    {(parts.length === 0 && curPart.length === 0 && !addNewPart) && <span>{t("invite_friend")}</span>}
+                                    {(parts.length === 0 && curPart.length === 0 && !addNewPart) && <span style={{position: "absolute", left: "20px"}}>{t("invite_friend")}</span>}
                                     {(parts.length !== 0 && curPart.length === 0 && !addNewPart) && <span className="plus-part">+</span>}
                                     {(addNewPart || curPart.length !== 0) && 
                                         <div>

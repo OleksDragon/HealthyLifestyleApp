@@ -101,3 +101,13 @@
     align-items: center;
     height: 70%;
 }
+
+@media (max-width: 431px) {
+    .week-chart {
+        height: 100px;
+    }
+
+    .linear-diagram {
+        margin-top: 4px;
+    }
+}

@@ -19,7 +19,7 @@ import successIcon from "../icons/success.png";
 import eyeOpen from "../icons/EyeOpen.png";
 import eyeClose from "../icons/EyeClose.png";
 
-function Form1({emailCorrect, email, setEmail, password, setPassword, passwordCorrect, confirmPassword, setConfirmPassword, show, setShow, toggleForm, t}) {
+function Form1({emailCorrect, email, setEmail, password, setPassword, passwordCorrect, confirmPassword, setConfirmPassword, show, setShow, showConf, setShowConf, toggleForm, t}) {
   return (
     <div className='form-content'>
         <input
@@ -57,7 +57,7 @@ function Form1({emailCorrect, email, setEmail, password, setPassword, passwordCo
         <div style={{ position: "relative", width: "100%" }}>
             <input
                 className='input'
-                type={show ? "text" : "password"}
+                type={showConf ? "text" : "password"}
                 placeholder={t("password")}
                 style={{color: confirmPassword === password ? 'white' : 'red', border: confirmPassword === password ? '' : '2px solid red'}}
                 value={confirmPassword}
@@ -68,9 +68,9 @@ function Form1({emailCorrect, email, setEmail, password, setPassword, passwordCo
             />
 
             <img 
-                src={show ? eyeOpen : eyeClose} 
-                alt={show ? "Hide" : "Show"} 
-                onClick={() => setShow(!show)} 
+                src={showConf ? eyeOpen : eyeClose} 
+                alt={showConf ? "Hide" : "Show"} 
+                onClick={() => setShowConf(!showConf)} 
                 className='eye'
             />
             <br />
@@ -109,6 +109,7 @@ function RegisterPage() {
     const [emailCorrect, setEmailCorrect] = useState(false);
     const [passwordCorrect, setPasswordCorrect] = useState(false);
     const [show, setShow] = useState(false);
+    const [showConf, setShowConf] = useState(false);
     const [activeForm, setActiveForm] = useState(1);
     const emailConf = useRef();
     const navigateTo = useNavigate();
@@ -266,7 +267,7 @@ function RegisterPage() {
                     <div className={`forms-container ${
                         activeForm === 1 ? '' : activeForm === 2 ? 'slide-left' : 'slide-left-2'
                     }`}>
-                        <Form1 emailCorrect={emailCorrect} password={password} setPassword={setPassword} email={email} setEmail={setEmail} passwordCorrect={passwordCorrect} confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword} show={show} setShow={setShow} toggleForm={toggleForm} t={t}/>
+                        <Form1 emailCorrect={emailCorrect} password={password} setPassword={setPassword} email={email} setEmail={setEmail} passwordCorrect={passwordCorrect} confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword} show={show} setShow={setShow} showConf={showConf} setShowConf={setShowConf} toggleForm={toggleForm} t={t}/>
                         <EmailConfirmation email={email} toggleForm={toggleForm} ref={emailConf} t={t}/>
                         <Form3 t={t}/>
                     </div>

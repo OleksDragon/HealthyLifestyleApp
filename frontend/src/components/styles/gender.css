@@ -581,3 +581,84 @@
 .reproductive-info > button {
     align-self: flex-end;
 }
+
+@media (max-width: 431px) {
+    .mascot-img {
+        display: none;
+    }
+
+    .female-health-options {
+        grid-template-columns: 1fr;
+    }
+
+    .useful-info {
+        flex-direction: column;
+    }
+
+    .useful-info > div, .useful-info > div:first-child {
+        width: 90% !important;
+        margin: 0 auto;
+    }
+
+    .female-health-options {
+        width: 100%;
+    }
+
+    .find-doctor-btn {
+        width: 90%;
+    }
+
+    .useful-info-container {
+        margin-top: 40px;
+    }
+
+    .useful-info-container > h2 {
+        text-align: center;
+    }
+    
+    .female-custom-select-1 {
+        grid-row: 2/3;
+        height: 70px;
+    }
+
+    .female-custom-select-2 {
+        grid-row: 3/4;
+        height: 70px;
+    }
+
+    .date-info > button {
+        width: 90%;
+    }
+
+    .warning-calc {
+        width: 90%;
+    }
+
+    .date-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cycle-info {
+        display: none;
+    }
+
+    .calendar-main-content {
+        grid-template-columns: 1fr !important;
+        max-height: none !important;
+        height: auto;
+    }
+
+    .calendar-info {
+        grid-template-columns: 1fr !important;
+    }
+
+    .current-cycle-info {
+        width: 90%;
+        height: auto !important;
+    }
+
+    .calendar {
+        margin-right: 0 !important;
+    }
+}

@@ -131,7 +131,7 @@ function FemaleCyclePage() {
                     />
                      <FemaleCustomSelect
                         id="number-1-10"
-                        placeholder="Тривалість місячних(дні)"
+                        placeholder={t("m_long")}
                         options={numbers1to10}
                         value={selectedNumber1}
                         onChange={(val) => setSelectedNumber1(val)}
@@ -140,7 +140,7 @@ function FemaleCyclePage() {
                     />
                     <FemaleCustomSelect
                         id="number-1-32"
-                        placeholder="Тривалість циклу"
+                        placeholder={t("c_long_wh")}
                         options={numbers21to35}
                         value={selectedNumber2}
                         onChange={(val) => setSelectedNumber2(val)}

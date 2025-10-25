@@ -8,7 +8,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../img/FigureBack.png"), url("../img/RectangleBack.png");
+    background-image: url("../img/BackRotateAuth.png"), url("../img/RectangleBack.png");
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
@@ -243,13 +243,6 @@ input::placeholder {
     cursor: pointer;
     font-weight: 530;
     font-family: 'Kumbh Sans', sans-serif;
-}
-
-.social-btns {
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-    margin-top: 24px;
 }
 
 .btn-log-another-way {

@@ -99,6 +99,11 @@ namespace HealthyLifestyle.Core.Entities
         public virtual ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
 
         /// <summary>
+        /// Колекція Family-підписок, у яких користувач є запрошеним.
+        /// </summary>
+        public virtual ICollection<FamilySubscriptionMember> FamilyMemberships { get; set; } = new List<FamilySubscriptionMember>();
+
+        /// <summary>
         /// Колекція фізичних активностей користувача.
         /// </summary>
         public virtual ICollection<FitnessActivity> FitnessActivities { get; set; } = new List<FitnessActivity>();
@@ -169,6 +174,16 @@ namespace HealthyLifestyle.Core.Entities
         public virtual ICollection<UserProfessionalQualification> ProfessionalQualifications { get; set; } = new List<UserProfessionalQualification>();
 
         /// <summary>
+        /// Колекція досягнень користувача.
+        /// </summary>
+        public virtual ICollection<Achievement> Achievements { get; set; } = new List<Achievement>();
+
+        /// <summary>
+        /// Колекція покупок користувача.
+        /// </summary>
+        public virtual ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
+
+        /// <summary>
         /// Трекер здоров'я для жінок (опціонально).
         /// </summary>
         public virtual FemaleHealthTracker? FemaleHealthTracker { get; set; }
@@ -177,6 +192,11 @@ namespace HealthyLifestyle.Core.Entities
         /// Трекер здоров'я для чоловіків (опціонально).
         /// </summary>
         public virtual MaleHealthTracker? MaleHealthTracker { get; set; }
+
+        /// <summary>
+        /// Список улюблених товарів.
+        /// </summary>
+        public virtual ICollection<Product> FavoriteProducts { get; set; } = new List<Product>();
 
         #endregion
 

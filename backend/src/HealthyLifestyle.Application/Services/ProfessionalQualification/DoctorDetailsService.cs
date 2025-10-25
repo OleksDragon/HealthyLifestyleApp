@@ -52,7 +52,9 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 yearsOfExperience: dto.YearsOfExperience,
                 certifications: dto.Certifications,
                 availability: dto.Availability,
-                clientTestimonials: dto.ClientTestimonials
+                clientTestimonials: dto.ClientTestimonials,
+                expertDetailsPictureUrl: dto.ExpertDetailsPictureUrl,
+                cardPictureUrl: dto.CardPictureUrl
             );
         }
 
@@ -80,6 +82,12 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 availability: dto.Availability,
                 clientTestimonials: dto.ClientTestimonials
             );
+
+            // Оновлення зображень
+            if (dto.ExpertDetailsPictureUrl != null)
+                entity.UpdateExpertDetailsPictureUrl(dto.ExpertDetailsPictureUrl);
+            if (dto.CardPictureUrl != null)
+                entity.UpdateCardPictureUrl(dto.CardPictureUrl);
         }
 
         #endregion

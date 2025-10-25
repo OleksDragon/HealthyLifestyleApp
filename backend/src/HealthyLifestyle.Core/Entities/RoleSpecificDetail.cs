@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HealthyLifestyle.Core.Entities
 {
@@ -62,7 +63,20 @@ namespace HealthyLifestyle.Core.Entities
         public string? ClientTestimonials { get; protected set; }
 
         /// <summary>
-        /// Навігаційна властивість до пов’язаної професійної кваліфікації користувача.
+        /// URL зображення для детальної сторінки експерта (опціонально).
+        /// Максимальна довжина — 500 символів; має відповідати формату URL.
+        /// </summary>
+       
+        public string? ExpertDetailsPictureUrl { get; protected set; }
+
+        /// <summary>
+        /// URL зображення для картки експерта (прев'ю у списках) (опціонально).
+        /// Максимальна довжина — 500 символів; має відповідати формату URL.
+        /// </summary>
+        public string? CardPictureUrl { get; protected set; }
+
+        /// <summary>
+        /// Навігаційна властивість до пов'язаної професійної кваліфікації користувача.
         /// </summary>
         public UserProfessionalQualification? UserProfessionalQualification { get; set; }
         #endregion
@@ -83,6 +97,8 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="contactPhone">Контактний номер телефону (опціонально).</param>
         /// <param name="website">Вебсайт (опціонально).</param>
         /// <param name="clientTestimonials">Відгуки клієнтів (опціонально).</param>
+        /// <param name="expertDetailsPictureUrl">URL зображення для детальної сторінки (опціонально).</param>
+        /// <param name="cardPictureUrl">URL зображення для картки експерта (опціонально).</param>
         protected RoleSpecificDetail(
             Guid id,
             string? biography,
@@ -94,7 +110,9 @@ namespace HealthyLifestyle.Core.Entities
             string? contactEmail,
             string? contactPhone,
             string? website,
-            string? clientTestimonials)
+            string? clientTestimonials,
+            string? expertDetailsPictureUrl = null,
+            string? cardPictureUrl = null)
             : base(id)
         {
             Biography = biography ?? string.Empty;
@@ -107,6 +125,8 @@ namespace HealthyLifestyle.Core.Entities
             ContactPhone = contactPhone;
             Website = website;
             ClientTestimonials = clientTestimonials;
+            ExpertDetailsPictureUrl = expertDetailsPictureUrl;
+            CardPictureUrl = cardPictureUrl;
         }
 
         /// <summary>
@@ -174,10 +194,10 @@ namespace HealthyLifestyle.Core.Entities
         /// Оновлює погодинну ставку.
         /// </summary>
         /// <param name="newRate">Нова погодинна ставка.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Якщо ставка від’ємна.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Якщо ставка від'ємна.</exception>
         public void UpdateHourlyRate(decimal newRate)
         {
-            if (newRate < 0) throw new ArgumentOutOfRangeException(nameof(newRate), "Погодинна ставка не може бути від’ємною.");
+            if (newRate < 0) throw new ArgumentOutOfRangeException(nameof(newRate), "Погодинна ставка не може бути від'ємною.");
             HourlyRate = newRate;
             SetUpdatedAt();
         }
@@ -221,6 +241,45 @@ namespace HealthyLifestyle.Core.Entities
             ClientTestimonials = testimonials;
             SetUpdatedAt();
         }
+
+        /// <summary>
+        /// Оновлює URL зображення для детальної сторінки експерта.
+        /// </summary>
+        /// <param name="expertDetailsPictureUrl">Новий URL зображення.</param>
+        public void UpdateExpertDetailsPictureUrl(string? expertDetailsPictureUrl)
+        {
+            ExpertDetailsPictureUrl = expertDetailsPictureUrl;
+            SetUpdatedAt();
+        }
+
+        /// <summary>
+        /// Оновлює URL зображення для картки експерта.
+        /// </summary>
+        /// <param name="cardPictureUrl">Новий URL зображення.</param>
+        public void UpdateCardPictureUrl(string? cardPictureUrl)
+        {
+            CardPictureUrl = cardPictureUrl;
+            SetUpdatedAt();
+        }
+
+        /// <summary>
+        /// Оновлює всі зображення професіонала.
+        /// </summary>
+        /// <param name="expertDetailsPictureUrl">Новий URL для детальної сторінки.</param>
+        /// <param name="cardPictureUrl">Новий URL для картки.</param>
+        public void UpdateProfileImages(
+            string? expertDetailsPictureUrl = null,
+            string? cardPictureUrl = null)
+        {
+            if (expertDetailsPictureUrl != null)
+                ExpertDetailsPictureUrl = expertDetailsPictureUrl;
+            
+            if (cardPictureUrl != null)
+                CardPictureUrl = cardPictureUrl;
+
+            SetUpdatedAt();
+        }
+
         #endregion
     }
 }

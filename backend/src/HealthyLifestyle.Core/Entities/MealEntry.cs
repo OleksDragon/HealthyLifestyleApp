@@ -1,4 +1,5 @@
-﻿using System;
+using HealthyLifestyle.Core.Enums;
+using System;
 using HealthyLifestyle.Core.Enums;
 
 namespace HealthyLifestyle.Core.Entities

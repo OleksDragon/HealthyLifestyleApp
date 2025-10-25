@@ -2,9 +2,11 @@
 using HealthyLifestyle.Core.Interfaces;
 using HealthyLifestyle.Core.Interfaces.Challenge;
 using HealthyLifestyle.Core.Interfaces.MealTracker;
+using HealthyLifestyle.Core.Interfaces.SubscriptionIR;
 using HealthyLifestyle.Infrastructure.Data;
 using HealthyLifestyle.Infrastructure.Repositories;
 using HealthyLifestyle.Infrastructure.Repositories.Challenge;
+using HealthyLifestyle.Infrastructure.Repositories.SubscriptionR;
 
 namespace HealthyLifestyle.Infrastructure.UnitOfWork
 {
@@ -20,6 +22,11 @@ namespace HealthyLifestyle.Infrastructure.UnitOfWork
         private IChallengeRepository? _challengeRepository;
         private IRecipeRepository? _recipeRepository;
         private IChallengeParticipantRepository? _challengeParticipantRepository;
+
+        /// <summary>
+        /// Репозиторій для керування учасниками сімейних підписок.
+        /// </summary>
+        private IFamilySubscriptionRepository? _familySubscriptionRepository;
 
         /// <summary>
         /// Словник для зберігання створених репозиторіїв за типом сутності.
@@ -65,6 +72,12 @@ namespace HealthyLifestyle.Infrastructure.UnitOfWork
 
         public IRecipeRepository Recipes =>
             _recipeRepository ??= new RecipeRepository(_dbContext);
+
+        /// <summary>
+        /// Доступ до репозиторію сімейних підписок (Family Plan).
+        /// </summary>
+        public IFamilySubscriptionRepository FamilySubscriptions =>
+        _familySubscriptionRepository ??= new FamilySubscriptionRepository(_dbContext);
 
         /// <summary>
         /// Асинхронно зберігає всі зміни в контексті бази даних.

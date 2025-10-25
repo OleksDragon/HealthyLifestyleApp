@@ -37,6 +37,57 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.ToTable("CalendarEventUser");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Achievement", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AchievedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Calories")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int?>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal?>("Value")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Achievements");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.CalendarEvent", b =>
                 {
                     b.Property<Guid>("Id")
@@ -59,8 +110,14 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<string>("MeetingLink")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("NotificationBefore")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("TaskToDo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -195,6 +252,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CardPictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Certifications")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -210,6 +270,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ExpertDetailsPictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("HourlyRate")
                         .HasPrecision(10, 2)
@@ -251,6 +314,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CardPictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Certifications")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -269,6 +335,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ExpertDetailsPictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("HourlyRate")
                         .HasPrecision(10, 2)
@@ -293,6 +362,33 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DoctorDetails");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.FamilySubscriptionMember", b =>
+                {
+                    b.Property<Guid>("SubscriptionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MemberId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AddedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("SubscriptionId", "MemberId");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("FamilySubscriptionMembers");
                 });
 
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.FemaleHealthTracker", b =>
@@ -796,7 +892,12 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -842,6 +943,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CardPictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Certifications")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -857,6 +961,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ExpertDetailsPictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("HourlyRate")
                         .HasPrecision(18, 2)
@@ -887,68 +994,122 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.ToTable("PsychologistDetails");
                 });
 
-            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Recipe", b =>
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Purchase", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Carbs")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeliveryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Icon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Fat")
+                    b.Property<string>("OrderNumber")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("PeriodEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("PeriodStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProductName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("ProductType")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("Kkal")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("Protein")
-                        .HasColumnType("int");
+                    b.Property<string>("TrackingNumber")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("VideoUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Recipes");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Purchases");
                 });
 
-            modelBuilder.Entity("HealthyLifestyle.Core.Entities.RecipeStep", b =>
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCart", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
-                    b.Property<Guid>("RecipeId")
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("StepText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
-                    b.ToTable("RecipeSteps");
+                    b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ShoppingCartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ShoppingCartId");
+
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.SleepRecord", b =>
@@ -1062,6 +1223,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("StripeSubscriptionId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1091,6 +1255,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CardPictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Certifications")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1106,6 +1273,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ExpertDetailsPictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("HourlyRate")
                         .HasPrecision(10, 2)
@@ -1332,6 +1502,10 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("WorkFormat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProfessionalRoleTypeId");
@@ -1548,6 +1722,17 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Achievement", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", "User")
+                        .WithMany("Achievements")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.CalendarEvent", b =>
                 {
                     b.HasOne("HealthyLifestyle.Core.Entities.Workout", "Workout")
@@ -1627,6 +1812,25 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("UserProfessionalQualification");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.FamilySubscriptionMember", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", "Member")
+                        .WithMany("FamilyMemberships")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("HealthyLifestyle.Core.Entities.Subscription", "Subscription")
+                        .WithMany("FamilyMembers")
+                        .HasForeignKey("SubscriptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
+
+                    b.Navigation("Subscription");
                 });
 
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.FemaleHealthTracker", b =>
@@ -1798,6 +2002,13 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Product", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", null)
+                        .WithMany("FavoriteProducts")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.PsychologistDetails", b =>
                 {
                     b.HasOne("HealthyLifestyle.Core.Entities.UserProfessionalQualification", "UserProfessionalQualification")
@@ -1809,13 +2020,45 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("UserProfessionalQualification");
                 });
 
-            modelBuilder.Entity("HealthyLifestyle.Core.Entities.RecipeStep", b =>
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Purchase", b =>
                 {
-                    b.HasOne("HealthyLifestyle.Core.Entities.Recipe", null)
-                        .WithMany("Steps")
-                        .HasForeignKey("RecipeId")
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", "User")
+                        .WithMany("Purchases")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCart", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCartItem", b =>
+                {
+                    b.HasOne("HealthyLifestyle.Core.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HealthyLifestyle.Core.Entities.ShoppingCart", "ShoppingCart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("ShoppingCartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ShoppingCart");
                 });
 
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.SleepRecord", b =>
@@ -1991,11 +2234,9 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("UserProfessionalQualifications");
                 });
 
-            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Recipe", b =>
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.ShoppingCart", b =>
                 {
-                    b.Navigation("Ingredients");
-
-                    b.Navigation("Steps");
+                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.SocialChallenge", b =>
@@ -2003,8 +2244,15 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("Participations");
                 });
 
+            modelBuilder.Entity("HealthyLifestyle.Core.Entities.Subscription", b =>
+                {
+                    b.Navigation("FamilyMembers");
+                });
+
             modelBuilder.Entity("HealthyLifestyle.Core.Entities.User", b =>
                 {
+                    b.Navigation("Achievements");
+
                     b.Navigation("ChallengeParticipations");
 
                     b.Navigation("ConsultationsAsClient");
@@ -2016,6 +2264,10 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("CreatedGroups");
 
                     b.Navigation("DietPlans");
+
+                    b.Navigation("FamilyMemberships");
+
+                    b.Navigation("FavoriteProducts");
 
                     b.Navigation("FemaleHealthTracker");
 
@@ -2036,6 +2288,8 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("ProfessionalQualifications");
+
+                    b.Navigation("Purchases");
 
                     b.Navigation("SleepRecords");
 

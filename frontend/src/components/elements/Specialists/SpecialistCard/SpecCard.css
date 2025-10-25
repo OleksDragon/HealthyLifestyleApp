@@ -1,0 +1,206 @@
+:root {
+  --bl: rgba(0, 102, 195, 1);
+  --black-gray: rgba(75, 75, 75, 1);
+  --lime: rgba(214, 255, 0, 1);
+  --roboto-20-font-family: "Roboto", Helvetica;
+  --roboto-20-font-size: 14.2857px; /* 20px * 0.7142857 */
+  --roboto-20-font-style: normal;
+  --roboto-20-font-weight: 400;
+  --roboto-20-letter-spacing: 0px;
+  --roboto-20-line-height: normal;
+  --variable-collection-bl: rgba(17, 111, 207, 1);
+  --variable-collection-black: rgba(52, 52, 52, 1);
+  --variable-collection-blu: rgba(6, 97, 204, 1);
+  --variable-collection-blue: rgba(0, 0, 0, 0.2);
+  --variable-collection-bluee: rgba(134, 176, 214, 1);
+  --variable-collection-color: rgba(97, 155, 215, 1);
+  --variable-collection-lim: rgba(214, 255, 0, 1);
+  --variable-collection-white: rgba(255, 255, 255, 1);
+}
+
+.frame {
+  background-color: #00000000;
+  border: 0;
+  border-radius: 28.5714px; /* 40px * 0.7142857 */
+  height: 350px; /* 490px * 0.7142857 */
+  overflow: hidden;
+  position: relative;
+  width: 300px; /* Fixed width as specified */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.frame:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.327);
+}
+.frame:active {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.327);
+}
+.frame .rectangle {
+  -webkit-backdrop-filter: blur(3.5714px) brightness(100%); /* 5px * 0.7142857 */
+  backdrop-filter: blur(3.5714px) brightness(100%);
+  background-color: #ffffff66;
+  border-radius: 28.5714px; /* 40px * 0.7142857 */
+  height: 350px; /* 490px * 0.7142857 */
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 300px; /* 420px * 0.7142857 */
+  
+}
+
+
+.frame .element {
+  aspect-ratio: 0.61;
+  left: 63.5714px; /* 89px * 0.7142857 */
+  object-fit: cover;
+  position: absolute;
+  top: 33.5714px; /* 47px * 0.7142857 */
+  width: 172.5714px; /* 242px * 0.7142857, to maintain aspect ratio */
+  height: 282.459px; /* 395px * 0.7142857, to maintain aspect ratio */
+}
+
+.frame .solar-heart-linear-instance {
+  height: 12.1429px !important; /* 17px * 0.7142857 */
+  left: 260.7143px !important; /* 365px * 0.7142857 */
+  position: absolute !important;
+  top: 25px !important; /* 35px * 0.7142857 */
+  width: 14.2857px !important; /* 20px * 0.7142857 */
+}
+
+.frame .design-component-instance-node {
+  height: 100% !important;
+  left: -2.5% !important;
+  top: -2.94% !important;
+}
+
+.frame .div {
+-webkit-backdrop-filter: blur(5.0px) brightness(100%);
+  backdrop-filter: blur(5px) brightness(100%);
+  mask: linear-gradient(transparent,blue, blue,blue);
+ 
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.385) 100%
+  ); 
+  border: 0px;
+  height: 125.7143px; /* 176px * 0.7142857 */
+  left: 0;
+  position: absolute;
+  top: 224.2857px; /* 314px * 0.7142857 */
+  width: 300px; /* 420px * 0.7142857 */
+  z-index: 4; /* Ensure above image and heart */
+}
+/* Ensure other elements have correct z-index */
+.frame .text-wrapper {
+  z-index: 6; /* Name above blur */
+}
+
+.frame .fitnessbik {
+  z-index: 7; /* Description above name */
+}
+
+.frame .rectangle-2 {
+  z-index: 8; /* Blue rectangle above description */
+}
+
+.frame .text-wrapper-2 {
+  z-index: 9; /* Top-5/Recomend text above blue rectangle */
+}
+
+.frame .rectangle-3 {
+  z-index: 10; /* Subscribe button background above all */
+}
+
+.frame .text-wrapper-3 {
+  z-index: 11; /* Subscribe text above button background */
+}
+.frame .text-wrapper {
+  align-items: center;
+  color: var(--variable-collection-blu);
+  display: flex;
+  font-family: "Roboto-ExtraBold", Helvetica;
+  font-size: 15px; /* 24px * 0.7142857 */
+  font-weight: 800;
+  height: 20px; /* 28px * 0.7142857 */
+  justify-content: center;
+  left: 30.7143px; /* 43px * 0.7142857 */
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 287.8571px; /* 403px * 0.7142857 */
+  white-space: nowrap;
+}
+
+.frame .fitnessbik {
+  align-items: center;
+  color: var(--variable-collection-blu);
+  display: flex;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 14px; /* 12px * 0.7142857 */
+  font-weight: 500;
+  height: 24.2857px; /* 34px * 0.7142857 */
+  justify-content: center;
+  left: 30.7143px; /* 43px * 0.7142857 */
+  letter-spacing: 0;
+  line-height: 12px; /* 16.8px * 0.7142857 */
+  position: absolute;
+  top: 312.1429px; /* 437px * 0.7142857 */
+}
+
+.frame .rectangle-2 {
+  background-color: var(--variable-collection-blu);
+  border-radius: 28.5714px; /* 40px * 0.7142857 */
+  height: 37.1429px; /* 52px * 0.7142857 */
+  left: -26.4286px; /* -37px * 0.7142857 */
+  position: absolute;
+  top: 18.5714px; /* 26px * 0.7142857 */
+  width: 112.8571px; /* 158px * 0.7142857 */
+}
+
+.frame .rectangle-3 {
+  background-color: var(--variable-collection-lim);
+  border-radius: 28.5714px; /* 40px * 0.7142857 */
+  height: 45.7143px; /* 64px * 0.7142857 */
+  left: 204.2857px; /* 287px * 0.7142857 */
+  position: absolute;
+  top: 290.7143px; /* 407px * 0.7142857 */
+  width: 139.2857px; /* 195px * 0.7142857 */
+}
+
+.frame .text-wrapper-2 {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Black", Helvetica;
+  font-size: 8.5714px; /* 12px * 0.7142857 */
+  font-weight: 900;
+  height: 12.1429px; /* 17px * 0.7142857 */
+  justify-content: center;
+  left: 30.7143px; /* 43px * 0.7142857 */
+  letter-spacing: 0;
+  line-height: 12px; /* 16.8px * 0.7142857 */
+  position: absolute;
+  top: 30.7143px; /* 43px * 0.7142857 */
+  white-space: nowrap;
+}
+
+.frame .text-wrapper-3 {
+  align-items: center;
+  color: var(--variable-collection-blu);
+  display: flex;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 12px; /* 12px * 0.7142857 */
+  font-weight: 700;
+  height: 12.1429px; /* 17px * 0.7142857 */
+  justify-content: start;
+  left: 220.8571px; /* 319px * 0.7142857 */
+  letter-spacing: 0;
+  line-height: 12px; /* 16.8px * 0.7142857 */
+  position: absolute;
+  top: 307.8571px; /* 431px * 0.7142857 */
+  white-space: nowrap;
+}

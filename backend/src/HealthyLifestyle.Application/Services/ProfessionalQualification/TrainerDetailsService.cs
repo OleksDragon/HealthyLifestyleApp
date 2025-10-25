@@ -104,7 +104,9 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 certifications: createDto.Certifications,
                 availability: createDto.Availability,
                 clientTestimonials: createDto.ClientTestimonials,
-                preferredWorkoutStyles: preferredWorkoutStylesList
+                preferredWorkoutStyles: preferredWorkoutStylesList,
+                expertDetailsPictureUrl: createDto.ExpertDetailsPictureUrl,
+                cardPictureUrl: createDto.CardPictureUrl
             );
 
             await _unitOfWork.GetRepository<TrainerDetails>().AddAsync(trainerDetails);
@@ -168,6 +170,12 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 availability: updateDto.Availability,
                 clientTestimonials: updateDto.ClientTestimonials
             );
+
+            // Оновлення зображень
+            if (updateDto.ExpertDetailsPictureUrl != null)
+                trainerDetails.UpdateExpertDetailsPictureUrl(updateDto.ExpertDetailsPictureUrl);
+            if (updateDto.CardPictureUrl != null)
+                trainerDetails.UpdateCardPictureUrl(updateDto.CardPictureUrl);
 
             _unitOfWork.GetRepository<TrainerDetails>().Update(trainerDetails);
             await _unitOfWork.SaveChangesAsync();

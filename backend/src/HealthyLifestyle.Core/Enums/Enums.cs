@@ -75,7 +75,7 @@ namespace HealthyLifestyle.Core.Enums
     public enum ProductCategory
     {
         SportsNutrition, // Спортивне харчування
-        Vitamins,        // Вітаміни
+        Other,           // Інше
         Gadgets,         // Гаджети
         Apparel          // Спортивний одяг
     }
@@ -150,5 +150,52 @@ namespace HealthyLifestyle.Core.Enums
         Meditation,
         Antidepressants,
         Other
+    }
+
+    public enum AchievementType
+    {
+        Training,       // Звичайне тренування
+        Marathon,       // Марафон
+        WeightLoss,     // Втрата ваги
+        MonthlyGoal     // Щомісячна ціль
+    }
+
+    // Статус покупки.
+    public enum PurchaseStatus
+    {
+        Pending,    // В обробці
+        Shipped,    // Відправлено
+        Delivered,  // Доставлено
+        Cancelled,  // Скасовано
+        Active,     // Активна (для підписок/курсів)
+        Expired,    // Термін дії закінчився
+        Completed   // Завершено
+    }
+
+    // Тип продукту.
+    public enum ProductType
+    {
+        Subscription,   // Підписка
+        Clothing,       // Одяг
+        Equipment,      // Спорядження / гаджети
+        Course,         // Тренувальний курс
+        Nutrition,      // Харчування / спортивні напої
+        Other           // Інше
+    }
+
+    // іконки (UI представлення, src/components/elements/Profile/data-card/DataCard.js).
+    public enum AP_Icon
+    {
+        smile,          // (іконка смайлик)         Виконані тренування, курси, преміум і тд. 
+        progress,       // (іконка колесу прогресу) В процесі (підготовка товару до доставки, якась обробка тощо)
+        truck,          // (іконка вантажівки)      Доставка товару (товар вже їде)
+        drop            // (іконка краплі)          Втрата ваги
+    }
+
+    public enum TaskType
+    {
+        Workout,
+        Eating,
+        Doctor
     }
 }

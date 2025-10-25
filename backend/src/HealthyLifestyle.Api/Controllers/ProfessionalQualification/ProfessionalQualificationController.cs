@@ -13,7 +13,7 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // Вимагає автентифікації для всіх дій за замовчуванням
+    /*[Authorize]*/ // Вимагає автентифікації для всіх дій за замовчуванням
     public class ProfessionalQualificationController : ControllerBase
     {
         #region Private Fields
@@ -114,7 +114,7 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
         /// - <see cref="StatusCode(StatusCodes.Status403Forbidden, object)"/> при недостатніх правах.
         /// </returns>
         [HttpGet("all")]
-        [Authorize(Roles = RoleNames.Admin)]
+        //[Authorize(Roles = RoleNames.Admin)]
         [ProducesResponseType(typeof(IEnumerable<ProfessionalQualificationDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> GetAllQualifications()
@@ -123,6 +123,20 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
             return Ok(qualifications);
         }
 
+        [HttpGet("{qualificationId}")]
+        [ProducesResponseType(typeof(UserProfessionalQualificationDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetQualificationById(Guid qualificationId)
+        {
+            var qualification = await _qualificationService.GetQualificationByIdAsync(qualificationId);
+
+            if (qualification == null)
+            {
+                return NotFound($"Qualification with ID '{qualificationId}' not found.");
+            }
+
+            return Ok(qualification);
+        }
         /// <summary>
         /// Оновлює статус професійної кваліфікації (тільки для адміністратора).
         /// </summary>

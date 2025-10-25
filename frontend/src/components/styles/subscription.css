@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font-family: 'Roboto', sans-serif;
+    --white: #FFF;
+    --blue: #0661CC;
+    --title: #1C6ED0;
+    --bl: #116FCF;
+    --lim: #D6FF00;
+    --img: #AADAFF;
+    --b-img: #D9D9D9;
+    --black: #343434;
+}
+
+/* Subscription Page Styles */
+.sp-subscription-page {
+    max-width: 90%;
+    margin-left: 40px;
+    background: transparent;
+    font-family: var(--font-family);
+    color: var(--white);
+}
+
+.sp-subscription-main-container {
+    max-width: 96.5%;
+}
+
+.sp-subscription-wraper {
+    width: 105%;
+    margin-top: 20px;
+    height: 62.5vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+
+.sp-subscription-wraper::-webkit-scrollbar {
+    width: 14px;
+}
+
+.sp-subscription-wraper::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 10px;
+    margin: 10px 0 15px 0;
+}
+
+.sp-subscription-wraper::-webkit-scrollbar-thumb {
+    background: var(--bl);
+    border: 0.5px solid var(--white);
+    border-radius: 10px;
+}
+
+.sp-subscription-wraper::-webkit-scrollbar-thumb:hover {
+    background: var(--title);
+}
+
+.sp-subscription-health-info {
+    display: flex;
+    background: var(--lim);
+    width: 100%;
+    height: 110px;
+    padding: 20px 30px;
+    border-radius: 30px;
+}
+
+.sp-subscription-health-info .sp-subscription-title {
+    font-family: var(--font-family);
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--title);
+    min-width: 300px;
+    margin-right: 5px;
+    padding: 18px;
+}
+
+.sp-subscription-health-info .sp-subscription-sub-title {
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--bl);
+    max-width: 530px;
+    margin-top: 9px;
+    margin-right: 70px;
+    padding: 18px;
+}
+
+.sp-subscription-health-info .sp-subscription-info-image {
+    background: var(--img);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 9px;
+    color: var(--bl);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subscription Section - ОНОВЛЕНА ЧАСТИНА */
+.sp-subscription-section {
+    width: 100%;
+    padding-top: 7px;
+}
+
+.sp-subscription-container {
+    display: flex;
+    gap: 60px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* Картки зберігають свою оригінальну ширину */
+.sp-subscription-container > * {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 346px;
+}
+
+/* Loading and Error States */
+.sp-subscription-loading, .sp-subscription-error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 1.3rem;
+    color: var(--white);
+    text-align: center;
+}
+
+.sp-subscription-loading {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sp-subscription-loading:after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--lim);
+    border-radius: 50%;
+    animation: sp-subscription-spin 1s linear infinite;
+}
+
+@keyframes sp-subscription-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.sp-subscription-error-message {
+    color: #ff6b6b;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #ff6b6b;
+}
+
+/* Subscription History Styles */
+.sp-subscription-history-section {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sp-subscription-history-container {
+    width: 100%;
+    background: transparent;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Блюр для основного контейнера історії */
+.sp-subscription-history-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    border-radius: 30px;
+}
+
+.sp-subscription-history-toggle {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--white);
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+    position: relative;
+    z-index: 2;
+}
+
+.sp-subscription-history-toggle:hover {
+    background: transparent;
+    transform: none;
+}
+
+.sp-subscription-history-label {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.sp-subscription-history-arrow {
+    transition: transform 0.3s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sp-subscription-history-arrow img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.sp-subscription-history-arrow-down img {
+    transform: rotate(0deg);
+}
+
+.sp-subscription-history-arrow-up img {
+    transform: rotate(180deg);
+}
+
+.sp-subscription-history-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.sp-subscription-history-container-expanded .sp-subscription-history-content {
+    max-height: 370px;
+}
+
+.sp-subscription-history-inner {
+    max-width: 96.85%;
+    padding: 0 30px 30px 30px;
+    max-height: 370px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.sp-subscription-h-wrapper {
+    max-width: 99%;
+}
+
+.sp-subscription-history-inner::-webkit-scrollbar {
+    width: 12px;
+}
+
+.sp-subscription-history-inner::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 10px;
+    margin: 10px 0 30px 0;
+}
+
+.sp-subscription-history-inner::-webkit-scrollbar-thumb {
+    background: var(--bl);
+    border: 0.5px solid var(--white);
+    border-radius: 10px;
+}
+
+.sp-subscription-history-inner::-webkit-scrollbar-thumb:hover {
+    background: var(--title);
+}
+
+.sp-subscription-history-loading,
+.sp-subscription-history-empty {
+    text-align: center;
+    color: var(--white);
+    padding: 40px;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.sp-subscription-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Оновлені стилі для історії підписок */
+.sp-subscription-history-item {
+    width: 95%;
+    background: transparent;
+    border-radius: 20px;
+    padding: 0;
+    color: var(--black);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Блюр фон для історії - аналогічно модальному вікну */
+.sp-subscription-history-item-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Контент історії */
+.sp-subscription-history-item-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+/* Оновлені стилі для вмісту всередині */
+.sp-subscription-history-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.sp-subscription-history-type {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.sp-subscription-history-type strong {
+    font-size: 1.2rem;
+    color: var(--white);
+    min-width: 100px;
+}
+
+.sp-subscription-history-dates {
+    color: var(--white);
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+
+.sp-subscription-history-price {
+    font-weight: 700;
+    color: var(--white);
+    font-size: 1.1rem;
+    min-width: 120px;
+    text-align: right;
+}
+
+/* Status Styles */
+.sp-subscription-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.sp-subscription-status-active, 
+.sp-subscription-status-expired, 
+.sp-subscription-status-cancelled, 
+.sp-subscription-status-unknown{
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+}
+
+/* Оновлені стилі для сімейних користувачів */
+.sp-subscription-family-members {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--lim);
+    position: relative;
+    z-index: 2;
+}
+
+.sp-subscription-family-title {
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.sp-subscription-family-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sp-subscription-family-member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+}
+
+.sp-subscription-family-email {
+    font-weight: 500;
+    color: var(--black);
+}
+
+.sp-subscription-family-date {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #474646;
+}

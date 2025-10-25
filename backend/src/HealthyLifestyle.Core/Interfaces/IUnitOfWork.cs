@@ -1,6 +1,7 @@
 ﻿using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces.Challenge;
 using HealthyLifestyle.Core.Interfaces.MealTracker;
+using HealthyLifestyle.Core.Interfaces.SubscriptionIR;
 
 namespace HealthyLifestyle.Core.Interfaces
 {
@@ -27,6 +28,11 @@ namespace HealthyLifestyle.Core.Interfaces
 
         IChallengeRepository Challenges { get; }
         IChallengeParticipantRepository ChallengeParticipants { get; }
+
+        /// <summary>
+        /// Репозиторій для роботи з сімейними підписками (Family Plan).
+        /// </summary>
+        IFamilySubscriptionRepository FamilySubscriptions { get; }
         IRecipeRepository Recipes { get; }
     }
 }

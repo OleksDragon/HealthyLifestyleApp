@@ -43,6 +43,16 @@ namespace HealthyLifestyle.Core.Entities
         public SubscriptionStatus Status { get; set; }
 
         /// <summary>
+        /// Ідентифікатор підписки в Stripe (sub_xxx)
+        /// </summary>
+        public string? StripeSubscriptionId { get; set; }
+
+        /// <summary>
+        /// Колекція запрошених користувачів - членів сім'ї (Family Plan).
+        /// </summary>
+        public virtual ICollection<FamilySubscriptionMember> FamilyMembers { get; set; } = new List<FamilySubscriptionMember>();
+
+        /// <summary>
         /// Навігаційна властивість для доступу до пов’язаного користувача.
         /// </summary>
         public User User { get; set; } = null!;
@@ -103,6 +113,15 @@ namespace HealthyLifestyle.Core.Entities
         public int GetRemainingDays()
         {
             return (EndDate - DateTime.UtcNow).Days;
+        }
+
+        /// <summary>
+        /// Позначає підписку як прострочену.
+        /// </summary>
+        public void MarkAsExpired()
+        {
+            Status = SubscriptionStatus.Expired;
+            SetUpdatedAt();
         }
         #endregion
     }

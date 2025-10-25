@@ -45,7 +45,7 @@ namespace HealthyLifestyle.Application.DTOs.User
         /// <summary>
         /// Вага користувача в кілограмах.
         /// </summary>
-        [Range(0.1, 500.0, ErrorMessage = "Вага має бути в межах від 0.1 до 500 кг.")]
+        [Range(0.1, 350.0, ErrorMessage = "Вага має бути в межах від 0.1 до 350 кг.")]
         public double Weight { get; set; }
 
         /// <summary>

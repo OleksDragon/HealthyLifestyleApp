@@ -128,6 +128,10 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 .AsQueryable()
                 .Include(q => q.ProfessionalRoleType)
                 .Include(q => q.User)
+                .Include(q => q.PsychologistDetails)
+                .Include(q => q.DoctorDetails)
+                .Include(q => q.TrainerDetails)
+                .Include(q => q.PsychologistDetails)
                 .ToListAsync();
 
             return _mapper.Map<IEnumerable<UserProfessionalQualificationDto>>(qualifications);
@@ -172,6 +176,11 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
             var qualification = await _unitOfWork.GetRepository<UserProfessionalQualification>()
                 .AsQueryable()
                 .Include(upq => upq.ProfessionalRoleType)
+                .Include(q => q.User)
+                .Include(q => q.PsychologistDetails)
+                .Include(q => q.DoctorDetails)
+                .Include(q => q.TrainerDetails)
+                .Include(q => q.DietitianDetails)
                 .FirstOrDefaultAsync(upq => upq.Id == qualificationId);
             return qualification == null ? null : _mapper.Map<UserProfessionalQualificationDto>(qualification);
         }
@@ -187,6 +196,11 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
             var qualification = await _unitOfWork.GetRepository<UserProfessionalQualification>()
                 .AsQueryable()
                 .Include(upq => upq.ProfessionalRoleType)
+                .Include(q => q.User)
+                .Include(q => q.PsychologistDetails)
+                .Include(q => q.DoctorDetails)
+                .Include(q => q.TrainerDetails)
+                .Include(q => q.DietitianDetails)
                 .FirstOrDefaultAsync(upq => upq.Id == qualificationId);
             return qualification == null ? null : _mapper.Map<UserProfessionalQualificationDto>(qualification);
         }

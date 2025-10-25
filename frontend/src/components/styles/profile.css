@@ -326,81 +326,6 @@
   text-align: center;
 }
 
-/* ==== Кнопка під формою ==== */
-.profile-actions {
-  text-align: center;
-}
-
-.profile-actions .save {
-  font-family: 'Roboto', sans-serif;
-  font-size: 17px;
-  font-weight: 600;
-  width: 606px;
-  height: 49px;
-  border-radius: 40px;
-  border: none;
-  background: #D6FF00;
-  color: #116FCF;
-  cursor: pointer;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-.profile-actions .save:hover {
-  background: #D6FF00 !important;
-}
-
-.profile-actions .save.disabled {
-  background: rgba(255, 255, 255, 0.40) !important;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  color: rgba(255, 255, 255);
-  cursor: not-allowed;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) inset;
-}
-
-/* Стилі блоку, при успішному збереженні */
-.success-message-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 75vh;
-}
-
-.success-message-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 760px;
-  width: 100%;
-  max-height: 150px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 70px;
-  padding: 40px;
-  color: #fff;
-  font-family: 'Roboto', sans-serif;
-  margin-bottom: 30px;
-  border: 0 solid transparent;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.success-btn {
-  max-width: 450px;
-}
-
-.success-title {
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.success-subtitle {
-  font-size: 17px;
-  font-weight: 300;
-}
-
 /* Для браузерів на рушіях WebKit (Chrome, Safari, новий Edge) */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -415,14 +340,14 @@ input[type="number"] {
 }
 
 /* ==== Позиціонування карток achievements та purchases ==== */
-.achievements.card {
+.achievements.p-dc-card {
   grid-column: 1;
   grid-row: 5 / span 4;
   width: 341px;
   margin-left: 14px;
 }
 
-.purchases.card {
+.purchases.p-dc-card {
   grid-column: 2;
   grid-row: 5 / span 4;
   width: 328px;
@@ -553,4 +478,233 @@ input {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Стилі блоку, при успішному збереженні */
+.success-message-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+}
+
+.success-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px;
+  width: 100%;
+  max-height: 150px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 70px;
+  padding: 40px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 30px;
+  border: 0 solid transparent;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ==== Модальне вікно, для переходу до профілю спеціаліста ==== */
+
+/* Затемнення фону */
+.pp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 999;
+}
+
+/* Ефект розмиття для основного контенту */
+.user-profile.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+/* Контейнер для кнопок під профілем */
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  padding: 0 20px;
+  position: relative;
+  width: 100%;
+}
+
+/* Контейнер для кнопки збереження по центру */
+.save-button-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.profile-actions .save {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  width: 606px;
+  height: 49px;
+  border-radius: 40px;
+  border: none;
+  background: #D6FF00;
+  color: #116FCF;
+  cursor: pointer;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.profile-actions .save:hover {
+  background: #D6FF00 !important;
+}
+
+.profile-actions .save.disabled {
+  background: rgba(255, 255, 255, 0.40) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: rgba(255, 255, 255);
+  cursor: not-allowed;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* Стилі для перемикача "Профіль спеціаліста" */
+.pp-specialist-profile-toggle {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  margin-left: 861px;
+  z-index: 1001;
+}
+
+.pp-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.pp-toggle-text {
+  font-size: 14px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pp-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  z-index: 2;
+}
+
+.pp-toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pp-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #AFBBC2;
+  transition: .4s;
+  border-radius: 34px;
+  border: 4px solid #FFF;
+}
+
+.pp-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  background-color: #D6FF00; /* Жовтий колір кружечка при ввімкненні */
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.pp-toggle-input:checked + .pp-toggle-slider {
+  background-color: rgba(255, 255, 255, 0.40); /* Колір еліпса залишається як є */
+}
+
+.pp-toggle-input:checked + .pp-toggle-slider:before {
+  transform: translateX(26px);
+  background-color: #D6FF00; /* Жовтий колір кружечка */
+}
+
+.pp-toggle-input:focus + .pp-toggle-slider {
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.40);
+}
+
+/* Модальне вікно спеціалістів */
+.pp-specialist-modal {
+  position: fixed;
+  top: 79%;
+  left: 82%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: transparent;
+  border-radius: 20px;
+  padding: 30px;
+  min-width: 350px;
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.pp-specialist-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pp-specialist-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.pp-specialist-btn {
+  border: none;
+  border-radius: 20px;
+  background-color: #116FCF;
+  color: #FFF;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  min-height: 60px;
+  min-width: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pp-specialist-btn:hover {
+  color: #116FCF;
+  background: #D6FF00;
+  transform: translateY(-2px);
 }

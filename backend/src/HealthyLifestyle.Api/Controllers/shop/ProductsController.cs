@@ -1,7 +1,13 @@
-﻿using HealthyLifestyle.Application.DTOs.Shop;
+﻿using AutoMapper;
+using HealthyLifestyle.Application.DTOs.Shop;
 using HealthyLifestyle.Application.Interfaces.Shop;
+using HealthyLifestyle.Core.Entities;
+using HealthyLifestyle.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace HealthyLifestyle.Api.Controllers.Shop
 {
@@ -13,15 +19,18 @@ namespace HealthyLifestyle.Api.Controllers.Shop
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
+        // Не дуже гарно, але найшвидше
+        private readonly ApplicationDbContext _dbContext;
 
         /// <summary>
         /// Ініціалізує новий екземпляр класу <see cref="ProductsController"/>.
         /// </summary>
         /// <param name="productService">Сервіс для обробки операцій, пов’язаних із продуктами.</param>
         /// <exception cref="ArgumentNullException">Викидається, якщо <paramref name="productService"/> є null.</exception>
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService, ApplicationDbContext dbContext)
         {
             _productService = productService;
+            _dbContext = dbContext;
         }
 
         #region Публічні методи API
@@ -178,6 +187,117 @@ namespace HealthyLifestyle.Api.Controllers.Shop
             }
         }
 
+        /// <summary>
+        /// Додає продукт до улюблених
+        /// </summary>
+        [HttpPost("favorites/{id}")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [Authorize]
+        public async Task<IActionResult> AddFavorite(Guid id)
+        {
+            try
+            {
+                var product = await _productService.GetProductFromDBByIdAsync(id);
+                var userId = GetUserIdFromClaims();
+                if (userId == null)
+                    return Unauthorized("Ідентифікатор користувача відсутній або недійсний.");
+
+                var user = await _dbContext.Users
+                           .Include(u => u.FavoriteProducts)
+                           .FirstOrDefaultAsync(u => u.Id == userId);
+                if (user == null)
+                    return Unauthorized("Ідентифікатор користувача відсутній або недійсний.");
+
+                if (user.FavoriteProducts.Any(p => p.Id == id))
+                {
+                    return Ok();
+                }
+
+                user.FavoriteProducts.Add(product);
+                await _dbContext.SaveChangesAsync();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Внутрішня помилка сервера: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Видаляє продукт з улюблених
+        /// </summary>
+        [HttpDelete("favorites/{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [Authorize]
+        public async Task<IActionResult> RemoveFavorite(Guid id)
+        {
+            try
+            {
+                var product = await _productService.GetProductFromDBByIdAsync(id);
+                var userId = GetUserIdFromClaims();
+                if (userId == null)
+                    return Unauthorized("Ідентифікатор користувача відсутній або недійсний.");
+
+                var user = await _dbContext.Users
+                           .Include(u => u.FavoriteProducts)
+                           .FirstOrDefaultAsync(u => u.Id == userId);
+                if (user == null)
+                    return Unauthorized("Ідентифікатор користувача відсутній або недійсний.");
+
+                if (user.FavoriteProducts.All(p => p.Id != id))
+                {
+                    return NoContent();
+                }
+
+                user.FavoriteProducts.Remove(product);
+                await _dbContext.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Внутрішня помилка сервера: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// отримує улюблені продукти
+        /// </summary>
+        [HttpGet("favorites")]
+        [ProducesResponseType(typeof(IEnumerable<Guid>), StatusCodes.Status200OK)]
+        [ProducesResponseType(400)]
+        [Authorize]
+        public async Task<IActionResult> GetFavorites()
+        {
+            try
+            {
+                var userId = GetUserIdFromClaims();
+                if (userId == null)
+                    return Unauthorized("Ідентифікатор користувача відсутній або недійсний.");
+
+                var user = await _dbContext.Users
+                           .Include(u => u.FavoriteProducts)
+                           .FirstOrDefaultAsync(u => u.Id == userId);
+                if (user == null)
+                    return Unauthorized("Ідентифікатор користувача відсутній або недійсний.");
+
+                return Ok(user.FavoriteProducts.Select(p => p.Id));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Внутрішня помилка сервера: {ex.Message}");
+            }
+        }
+
         #endregion
+
+        private Guid? GetUserIdFromClaims()
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return Guid.TryParse(userIdString, out var userId) ? userId : null;
+        }
     }
 }

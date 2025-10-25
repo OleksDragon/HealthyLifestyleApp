@@ -31,46 +31,49 @@ const MentalHealthPage = () => {
     }
 
     return (
-        <div className="mental-health-container">
-            <div className="mental-health-content">
-                <div className="mental-health-info">
-                    <div className="title">{t("mp_mhp_title")}</div>
-                    <div className="sub-title">{t("mp_mhp_sub_title")}</div>
-                    <div className="info-image">Зображення</div>
-                </div>
-                <div className="mental-health-card-link">
-                    <MentalHealthCard
-                        image={<div className="mh-card-image"></div>}
-                        title={t("mp_ebp_title")}
-                        buttonText={t("mp_btn_start")}
-                        onButtonClick={handleEmotionDiary}
-                    />
-                    <MentalHealthCard
-                        image={<div className="card-image"></div>}
-                        title={t("mp_mhp_test_card_title")}
-                        buttonText={t("mp_mhp_test_card_btn_text")}
-                        onButtonClick={handleTests}
-                    />
-                    <MentalHealthCard
-                        image={<div className="card-image"></div>}
-                        title={t("mp_mhp_breathing_card_title")}
-                        buttonText={t("mp_mhp_breathing_card_btn_text")}
-                        onButtonClick={handleBreathing}
-                    />
-                    <MentalHealthCard
-                        image={<div className="card-image"></div>}
-                        title={t("mp_mhp_articles_card_title")}
-                        buttonText={t("mp_mhp_articles_card_btn_text")}
-                        onButtonClick={handleArticles}
-                    />
-                </div>
-                <div>
-                    <button 
-                        className="contact-to-specialist-btn"
-                        onButtonClick={handleContactToSpecialist}
-                    >
-                        {t("mp_mhp_choose_specialist")}
-                    </button>
+        <div>
+            <div className="mental-health-info">
+                <div className="title">{t("mp_mhp_title")}</div>
+                <div className="sub-title">{t("mp_mhp_sub_title")}</div>
+                <div className="info-image">Зображення</div>
+            </div>
+            
+            <div className="mental-health-container">
+                <div className="mental-health-content">
+                    <div className="mental-health-card-link">
+                        <MentalHealthCard
+                            image={<div className="mh-card-image"></div>}
+                            title={t("mp_ebp_title")}
+                            buttonText={t("mp_btn_start")}
+                            onButtonClick={handleEmotionDiary}
+                        />
+                        <MentalHealthCard
+                            image={<div className="card-image"></div>}
+                            title={t("mp_mhp_test_card_title")}
+                            buttonText={t("mp_mhp_test_card_btn_text")}
+                            onButtonClick={handleTests}
+                        />
+                        <MentalHealthCard
+                            image={<div className="card-image"></div>}
+                            title={t("mp_mhp_breathing_card_title")}
+                            buttonText={t("mp_mhp_breathing_card_btn_text")}
+                            onButtonClick={handleBreathing}
+                        />
+                        <MentalHealthCard
+                            image={<div className="card-image"></div>}
+                            title={t("mp_mhp_articles_card_title")}
+                            buttonText={t("mp_mhp_articles_card_btn_text")}
+                            onButtonClick={handleArticles}
+                        />
+                    </div>
+                    <div>
+                        <button 
+                            className="contact-to-specialist-btn"
+                            onClick={handleContactToSpecialist}
+                        >
+                            {t("mp_mhp_choose_specialist")}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

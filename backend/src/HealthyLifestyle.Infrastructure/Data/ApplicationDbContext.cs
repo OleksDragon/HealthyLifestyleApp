@@ -27,8 +27,11 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<MealEntry> MealEntries { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<FamilySubscriptionMember> FamilySubscriptionMembers { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<FitnessActivity> FitnessActivities { get; set; }
         public DbSet<Group> Groups { get; set; }
@@ -42,10 +45,8 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<HealthDashboard> HealthDashboards { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
-        public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Ingredient> Ingredients { get; set; }
-        public DbSet<RecipeStep> RecipeSteps { get; set; }
-        public DbSet<WeightLog> WeightLogs { get; set; } = null!;
+        public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
 
         #endregion
 
@@ -102,6 +103,7 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureOrder(modelBuilder);
             ConfigureOrderItem(modelBuilder);
             ConfigureSubscription(modelBuilder);
+            ConfigureFamilySubscriptionMember(modelBuilder);
             ConfigureWorkout(modelBuilder);
             ConfigureFitnessActivity(modelBuilder);
             ConfigureGroup(modelBuilder);
@@ -115,6 +117,10 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureNotification(modelBuilder);
             ConfigureUserChallengeParticipation(modelBuilder);
             ConfigureCalendarEvents(modelBuilder);
+            ConfigureAchievement(modelBuilder);
+            ConfigurePurchase(modelBuilder);
+            ConfigureShoppingCarts(modelBuilder);
+            ConfigureShoppingCartItems(modelBuilder);
         }
         #endregion
 
@@ -245,6 +251,16 @@ namespace HealthyLifestyle.Infrastructure.Data
             modelBuilder.Entity<UserProfessionalQualification>(entity =>
             {
                 entity.Property(upq => upq.HourlyRate).HasPrecision(10, 2);
+                entity.Property(upq => upq.WorkFormat)
+                    .HasConversion(
+                        v => v != null ? string.Join(",", v) : string.Empty,
+                        v => string.IsNullOrEmpty(v) ? new List<string>() : v.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList(),
+                        new Microsoft.EntityFrameworkCore.ChangeTracking.ValueComparer<List<string>>(
+                            (c1, c2) => c1.SequenceEqual(c2),
+                            c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v != null ? v.GetHashCode() : 0)),
+                            c => c.ToList()
+                        )
+                    );
                 entity.HasOne(upq => upq.ProfessionalRoleType)
                    .WithMany(prt => prt.UserProfessionalQualifications)
                    .HasForeignKey(upq => upq.ProfessionalRoleTypeId)
@@ -291,7 +307,7 @@ namespace HealthyLifestyle.Infrastructure.Data
             modelBuilder.Entity<PsychologistDetails>(entity =>
             {
                 entity.HasKey(pd => pd.Id);
-                entity.Property(pd => pd.Specializations).HasConversion(
+                entity.Property(pd => pd.Specializations).HasConversion(
                     v => v == null ? string.Empty : string.Join(",", v),
                     v => string.IsNullOrEmpty(v) ? new List<string>() : v.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList(),
                     new ValueComparer<List<string>>(
@@ -438,10 +454,34 @@ namespace HealthyLifestyle.Infrastructure.Data
                 entity.Property(s => s.Price).HasPrecision(18, 2);
                 entity.Property(s => s.Type).HasConversion<string>();
                 entity.Property(s => s.Status).HasConversion<string>();
+
                 entity.HasOne(s => s.User)
-                   .WithMany(u => u.Subscriptions)
-                   .HasForeignKey(s => s.UserId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                    .WithMany(u => u.Subscriptions)
+                    .HasForeignKey(s => s.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasMany(s => s.FamilyMembers)
+                    .WithOne(fm => fm.Subscription)
+                    .HasForeignKey(fm => fm.SubscriptionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
+        private void ConfigureFamilySubscriptionMember(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<FamilySubscriptionMember>(entity =>
+            {
+                entity.HasKey(fm => new { fm.SubscriptionId, fm.MemberId });
+
+                entity.HasOne(fm => fm.Subscription)
+                    .WithMany(s => s.FamilyMembers)
+                    .HasForeignKey(fm => fm.SubscriptionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(fm => fm.Member)
+                    .WithMany(u => u.FamilyMemberships)
+                    .HasForeignKey(fm => fm.MemberId)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
 
@@ -681,6 +721,77 @@ namespace HealthyLifestyle.Infrastructure.Data
                     .WithMany();
             });
         }
+
+        /// <summary>
+        /// Налаштовує спільну конфігурацію для ShoppingCart.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureShoppingCarts(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ShoppingCart>(entity =>
+            {
+                entity.HasOne(sc => sc.User)
+                    .WithMany()
+                    .HasForeignKey(sc => sc.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasIndex(sc => sc.UserId)
+                    .IsUnique();
+            });
+        }
+
+        /// <summary>
+        /// Налаштовує спільну конфігурацію для ShoppingCartItem.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureShoppingCartItems(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ShoppingCartItem>(entity =>
+            {
+                entity.HasOne(oi => oi.ShoppingCart)
+                   .WithMany(o => o.CartItems)
+                   .HasForeignKey(oi => oi.ShoppingCartId)
+                   .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(oi => oi.Product)
+                    .WithMany()
+                    .HasForeignKey(oi => oi.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
+        /// <summary>
+        /// Додаємо конфігурацію сутності Achievement
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureAchievement(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Achievement>(entity =>
+            {
+                entity.Property(a => a.Icon).HasConversion<string>();
+                entity.HasOne(a => a.User)
+                      .WithMany(u => u.Achievements)
+                      .HasForeignKey(a => a.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
+        /// <summary>
+        /// Додаємо конфігурацію сутності Purchase
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigurePurchase(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Purchase>(entity =>
+            {
+                entity.Property(p => p.Icon).HasConversion<string>();
+                entity.Property(p => p.Amount).HasPrecision(18, 2);
+                entity.HasOne(p => p.User)
+                      .WithMany(u => u.Purchases)
+                      .HasForeignKey(p => p.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
         #endregion
     }
 }

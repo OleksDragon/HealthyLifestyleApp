@@ -1,0 +1,334 @@
+.expert-details-container {
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: var(--font-family);
+  position: relative;
+  overflow-y: auto;
+  height: calc(100vh - 140px); /* відняти висоту шапки, якщо є */
+  max-width: 97%;
+  overflow-x: hidden;
+  margin-right: 20px;
+}
+
+/* Дві основні колонки */
+.two-column-layout {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* перенос на мобільних */
+}
+
+/* Ліва колонка */
+.left-column {
+  
+  min-width: auto;
+}
+
+/* Фото + деталі */
+.specialist-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap; /* щоб не ламалось на вузьких екранах */
+}
+
+.image-wrapper {
+  flex-shrink: 0;
+}
+
+.specialist-image {
+  width: 400px;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Контент справа від фото */
+.details-wrapper {
+  flex: 1;
+  min-width: 250px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* backdrop-filter: blur(10px);
+background: rgba(255, 255, 255, 0.233); */
+border-radius: 40px;
+padding: 20px;
+}
+
+/* Заголовки */
+.specialist-name {
+  /* position: sticky;
+  display: block;
+  top: 30px; */
+  right: inherit;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 600;
+  font-size: 60px;
+  color: var(--lime);
+  margin: 0;
+  color: var(--lim);
+  
+}
+.line {
+  height: 2px;
+  position: relative;
+  top: -1px;
+  left: -300px;
+  width: 1000px;
+  background: #59b7ff;
+  z-index: 0;
+}
+.specialist-role {
+  font-size: clamp(18px, 3.5vw, 22px);
+  font-weight: 500;
+  margin: 0;
+  color: #ddd;
+}
+.about-header-wrapper {
+  display: flex;
+  align-items: center; /* вирівнює текст і іконку по вертикалі */
+  justify-content: space-between;
+  gap: 12px; /* відстань між текстом і іконкою */
+  flex-wrap: wrap; /* дозволяє переноситись на менших екранах */
+}
+
+.about-header {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+}
+
+
+.icons-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+   flex-wrap: wrap;
+}
+
+.social-icons {
+  flex-shrink: 0; /* щоб іконка не зменшувалась при zoom */
+  margin: 0 10px;
+  
+}
+/* New styles for SpecialistBiography */
+.biography-container {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  margin-top: 14px;
+  width: 697px;
+}
+
+.biography {
+  color: #fff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+.no-biography {
+  font-style: italic;
+  color: #fff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+/* Блоки тексту */
+.work-format,
+.about,
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.about h3
+{
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+}
+
+.work-format h3,
+.skills h3 {
+  font-size: clamp(16px, 3.5vw, 20px);
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+}
+
+.work-format p,
+
+.skills-list {
+  font-size: clamp(14px, 3vw, 16px);
+  line-height: 1.5;
+  margin: 0;
+  color: #ccc;
+  margin-top: 20px;
+}
+
+/* Список навичок */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 24px;
+  border-radius: 16px;
+  color: #fff;
+  min-width: 200px;
+  height: 40px;
+  background-color: #ffffff66;
+  text-align: center;  
+  font-size: 16px;
+  font-weight: 700;
+  
+}
+/* Кнопка */
+.action-box{
+  
+  bottom: 0;
+  display: flex;
+  justify-content: end;
+  padding: 15px;
+  max-width: 700px;
+}
+
+.subscribe-button {
+  position: fixed;
+  display: block;
+  bottom: 4rem; 
+  right: 5rem;
+  max-width: 300px;
+  height: 50px;
+  background-color: #d6ff00;
+  color: #333;
+  font-size: clamp(16px, 3vw, 18px);
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 1200;
+
+  box-shadow: 0 0 50px  rgb(0, 94, 255);
+  
+}
+
+.subscribe-button:hover {
+  background-color: #c0e600;
+}
+
+
+/* Права колонка */
+.right-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Мобільна адаптація */
+@media (max-width: 768px) {
+  .specialist-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .details-wrapper {
+    align-items: center;
+  }
+
+  .skills-list {
+    justify-content: center;
+  }
+
+  .subscribe-button {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.specialist-image {
+  
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 5;
+}
+
+/* SVG поверх фото */
+.status-icon {
+  position: relative;
+  top: 7px;
+  right: 5rem;
+  width: 40px;
+  height: 40px;
+}
+.scroll-data::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll-data::-webkit-scrollbar-track {
+  background: #FFF;
+  border-radius: 10px;
+  margin: 5px 0;
+  box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.scroll-data::-webkit-scrollbar-thumb {
+  background: #0661CC;
+  border-radius: 10px;
+}
+
+.scroll-data::-webkit-scrollbar-thumb:hover {   
+  background: #044a99;
+}
+
+/* Контейнер секції */
+.review-section {
+  width: 100%;
+  padding: 20px;
+}
+
+.reviews-container {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  justify-items: center;
+  align-items: start;
+}
+
+.section-title {
+  width: 100%;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #fff;
+}
+
+
+
+

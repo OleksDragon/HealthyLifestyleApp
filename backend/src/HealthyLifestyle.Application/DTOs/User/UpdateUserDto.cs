@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using HealthyLifestyle.Core.Enums;
+﻿using HealthyLifestyle.Core.Enums;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace HealthyLifestyle.Application.DTOs.User
 {
@@ -35,21 +36,25 @@ namespace HealthyLifestyle.Application.DTOs.User
         /// Діапазон допустимих значень: від 1 до 350 кг.
         /// </summary>
         [Range(1.0, 350.0, ErrorMessage = "Вага має бути в діапазоні від 1 до 350 кг.")]
-        public double? Weight { get; set; }
+        public string? Weight { get; set; }
 
         /// <summary>
         /// Зріст користувача в сантиметрах.
         /// Діапазон допустимих значень: від 1 до 250 см.
         /// </summary>
         [Range(1.0, 250.0, ErrorMessage = "Зріст має бути в діапазоні від 1 до 250 см.")]
-        public double? Height { get; set; }
+        public string? Height { get; set; }
 
         /// <summary>
-        /// URL зображення профілю користувача.
-        /// Максимальна довжина — 500 символів; має відповідати формату URL.
+        /// Нове зображення профілю (якщо користувач хоче завантажити).
+        /// Має пріоритет над ProfilePictureUrl.
         /// </summary>
-        [StringLength(500, MinimumLength = 1, ErrorMessage = "URL зображення профілю має містити від 1 до 500 символів.")]
-        [Url(ErrorMessage = "Невірний формат URL для зображення профілю.")]
+        public IFormFile? ProfilePictureFile { get; set; }
+
+        /// <summary>
+        /// Прямий URL (якщо вже є посилання ззовні, напр. Google, Facebook).
+        /// Якщо = "" → сигнал на видалення зображення.
+        /// </summary>
         public string? ProfilePictureUrl { get; set; }
 
         /// <summary>

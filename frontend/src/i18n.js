@@ -155,6 +155,8 @@ i18n
           p_loading_streets: "Loading streets...",
           p_btn_save: "Save",
           p_btn_saving: "Saving...",
+          p_specialist_profile: "Specialist Profile",
+          p_profile_incomplete_alert: "Please complete your user profile",
 
           // --- Custom calendar translations (user birthday) ---
           p_january: "january",
@@ -185,10 +187,70 @@ i18n
           p_spain_country: "Spain",
           p_usa_country: "USA",
 
+          // --- Переклади для календара місячних
+          last_cycle_first_day: "1st day of last cycle",
+
+          // --- Translations for Specialists
+          filter_speciality: "Specialization",
+          filter_mode: "Online/Offline",
+          filter_experience: "Experience",
+          filter_price: "Price",
+
+          spec_psychologist: "Psychologist",
+          spec_doctor: "Doctor",
+          spec_trainer: "Trainer",
+          spec_dietitian: "Dietitian",
+
+          mode_online: "Online only",
+          mode_offline: "Offline only",
+          mode_hybrid: "Online / Offline",
+          select_city: "Locations",
+
+          experience_1: "Up to 1 year",
+          experience_3: "From 3 years",
+          experience_5: "From 5 years",
+          experience_10: "From 10 years",
+
+          price_50: "up to 50 $/hour",
+          price_75: "from 50 to 75 $/hour",
+          price_100: "from 75 to 100 $/hour",
+          price_150: "from 100 to 150 $/hour",
+          hourly_rate_title: "$/hour",
+
+          clear_option: "Clear",
+          clear_filter: "Clear filter",
+          unknown_specialist: "Unknown specialist",
+          top_5: "TOP - 5",
+          subscribe: "Subscribe",
+          no_specialists_found: "No specialists found",
+          recomend: "Recommended!",
+          join_team: "Join our team!",
+
+          // Additional translations
+          tariffs: "Tariffs",
+          reviews: "Reviews",
+          choose: "Choose",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 days",
+          plan_start_30_price: "13 USD",
+          plan_result_30_price: "40 USD",
+          plan_vip_30_price: "107 USD",
+          plan_feature_1: "Individual training plan (2-3 days/week)",
+          plan_feature_2: "Nutrition suggestions",
+          plan_feature_3: "1 online consultation per week",
+          plan_feature_4: "Training plan + detailed diet",
+          plan_feature_5: "Weekly corrections + video analysis of technique",
+          plan_feature_6: "Support in messenger 5/7",
+          plan_feature_7: "Full online management",
+          plan_feature_8: "12 trainings per month",
+          plan_feature_9: "Nutrition analysis and individual recommendations",
+          plan_feature_10: "Full support in messenger",
           // --- Links mapping translations ---
-          mental: "Mental Health",
           diary: "Emotion Diary",
-          articles: "Useful Articles",
           article_1: "10 simple stress relief techniques",
           article_2: "Effective methods for combating anxiety",
           article_3: "Breathing techniques for relaxation",
@@ -196,7 +258,6 @@ i18n
           article_5: "Basics of meditation for beginners",
           article_6: "Strategies for improving self-esteem",
           article_7: "Prevention and overcoming burnout",
-          gender: "Health by gender",
 
           // --- Nutrition translations ---
           welcome: "Welcome",
@@ -468,7 +529,8 @@ i18n
           ch_type_personalgoal: "Personal Goal",
 
           // --- Menstrual calendar translations ---
-          last_cycle_first_day: "1st day of last cycle",
+          m_long: "Duration of menstruation (days)",
+          c_long_wh: "Cycle length",
           menstruation_calendar: "Menstrual calendar",
           male: "Male",
           female: "Female",
@@ -624,23 +686,17 @@ i18n
           pain_is_ok: "Menstrual pain is always normal",
           pain_is_ok_desc:
             "Mild discomfort is typical, but severe or debilitating pain may indicate endometriosis or other conditions and should be checked by a doctor.",
-
+          calendar: "Calendar",
+          calendar_info: "Your best calendar",
+          create_event: "Create",
           // --- Mental Health translations ---
           your: "Your Health",
-          diary: "Emotion Journal",
           breathing: "Breathing Practices",
           diaphragmatic: "Diaphragmatic Breathing",
           square: "Box Breathing",
           nadishodhana: "Nadi Shodhana",
           mentaltest: "State Test",
           articles: "Useful Articles",
-          article_1: "10 Simple Stress Relief Techniques",
-          article_2: "Effective Methods to Combat Anxiety",
-          article_3: "Breathing Techniques for Relaxation",
-          article_4: "The Connection Between Sleep and Mental Health",
-          article_5: "Basics of Meditation for Beginners",
-          article_6: "Strategies for Improving Self-Esteem",
-          article_7: "Prevention and Overcoming Burnout",
 
           // --- Health menu translations ---
           hmp_your_health: "Your Health",
@@ -1126,6 +1182,119 @@ i18n
           mp_diagram_low: "Low",
           mp_diagram_norm: "Normal",
           mp_diagram_high: "High",
+
+          before_5: "In 5 minutes",
+          before_10: "In 10 minutes",
+          sign_for_doctor: "Doctor appointment",
+          sure_to_delete_event: "Are you sure you want to delete the event?",
+          notification: "Reminder",
+          task: "Task",
+          meeting: "Meeting",
+          choose_date: "Choose a date",
+          choose_time: "Choose a time",
+          choose_end_time: "Choose end time",
+          my_tasks: "My tasks",
+          invite_friend: "Invite a friend",
+          link: "Link",
+          add_title: "Add a title",
+          go_to_main_page: "HOME",
+
+          // === Premium ===
+          sp_you_already_have_active_subscription: "You already have an active subscription",
+          sp_please_login: "Please log in",
+          sp_active: "Active",
+          sp_expired: "Expired",
+          sp_cancelled: "Cancelled",
+          sp_basic_title: "Basic",
+          sp_duration: "/ 30 days",
+          sp_basic_features_1: "Trackers",
+          sp_basic_features_2: "Basic analytics",
+          sp_premium_title: "Premium",
+          sp_premium_features_1: "Courses",
+          sp_premium_features_2: "Personalized plans",
+          sp_family_title: "Family",
+          sp_family_features_1: "All Premium features",
+          sp_family_features_2: "Access for up to 3 users",
+          sp_loading: "Loading...",
+          sp_subscription_title: "Invest in yourself",
+          sp_subscription_sub_title: "Your best project is you. Let’s make it happen together.",
+          sp_subscription_history_label: "Subscription history",
+          sp_subscription_history_loading: "Loading history...",
+          sp_subscription_history_price: "Free",
+          sp_subscription_family_title: "Added users",
+          sp_subscription_family_date: "added",
+          sp_subscription_history_empty: "You don't have any subscription history yet",
+          sc_processing: "Processing...",
+          sc_select: "Select",
+
+          // === Subscription Payment ===
+          spp_please_input_correct_email: "Please enter valid email addresses",
+          spp_uncnown_subsription_type: "Unknown subscription type. Please try again.",
+          spp_family_sub: "Family subscription",
+          spp_add_email_addresses_of_family_members: "Add email addresses of family members (up to 3 people)",
+          spp_go_to_payment: "Go to payment",
+
+          // === Subscription Details ===
+          sdp_already_have_active_sub: "already has an active subscription",
+          sdp_already_a_member_of_another_family_subscription: "is already a member of another family subscription",
+          sdp_this_is_the_subscription_owner: "this is the subscription owner",
+          sdp_user_not_found: "User not found",
+          sdp_some_users_could_not_be_added: "Some users could not be added",
+          sdp_family_member_list_successfully_updated: "Family member list successfully updated!",
+          sdp_error_updating_family_users: "Error updating family users: ",
+          sdp_subscription_not_found: "Subscription not found",
+          sdp_return_to_tariffs: "Return to plans",
+          sdp_your_current_subscription: "Your current subscription",
+          sdp_subscription_type: "Subscription type",
+          sdp_subscription_status: "Status",
+          sdp_subscription_start_date: "Start date",
+          sdp_subscription_end_date: "Valid until",
+          sdp_subscription_price: "Price",
+          sdp_subscription_section_content: "Family access",
+          sdp_subscription_detail_label: "Access type",
+          sdp_subscription_detail_value: "Family member",
+          sdp_subscription_section_content_title: "Family members",
+          sdp_subscription_member_added: "Added",
+          sdp_subscription_renew_btn: "Renew subscription",
+          sdp_subscription_manage_family_btn: "Manage family members",
+          sdp_family_modal_instruction: "Add or remove family member email addresses",
+          sdp_sub_saving: "Saving...",
+          sdp_family_member_email: "Family member email",
+          payment: "Payment",
+          details: "Details",
+
+          // === Success Payment ===
+          ps_payment_success_main_title: "YAY",
+          ps_payment_success_title: "PAYMENT SUCCESSFUL",
+          ps_payment_success_description: "The payment receipt has been sent to your email",
+          ps_payment_success_btn: "Go to home",
+
+          // Marketplace
+          sport_eating: "Sports Nutrition",
+          sport_cloth: "Sportswear",
+          sport_gadgets: "Gadgets",
+          sport_other: "Other",
+          marketplace_filter: "Filter",
+          brand: "Brand",
+          from: "From",
+          to: "To",
+          one_thing: "pcs",
+          put_in_cart: "Add to Cart",
+          already_in_cart: "Already in Cart",
+          similar_products: "Similar Products",
+          basket_marketplace: "Basket",
+          sure_to_delete_product_from_cart: "Are you sure you want to remove this product from the cart?",
+          product: "Product",
+          amount_marketplace: "Quantity",
+          my_order: "My Order",
+          marketplace_total: "Total",
+          order_details: "Details",
+          to_payment: "To Payment",
+          order_sum: "Amount",
+          delivery: "Delivery",
+          post_index: "Postal Code",
+          shopping_cart: "Shopping cart",
+
         },
       },
       uk: {
@@ -1245,8 +1414,8 @@ i18n
           welcome: "Привіт",
           health_one_place: "Твоє здоров'я в одному місці!",
           mental: "Ментальне здоров'я",
-
           // === ВІДЖЕТИ ДАШБОРДУ ===
+
           kkal: "Калорії",
           current_week: "Поточний тиждень",
           water: "Вода",
@@ -1283,6 +1452,8 @@ i18n
           p_loading_streets: "Завантаження вулиць..",
           p_btn_save: "Зберегти",
           p_btn_saving: "Збереження...",
+          p_specialist_profile: "Профіль спеціаліста",
+          p_profile_incomplete_alert: "Будь ласка, заповніть профіль користувача",
 
           // === КАЛЕНДАР (ДЕНЬ НАРОДЖЕННЯ) ===
           p_january: "січень",
@@ -1314,9 +1485,7 @@ i18n
           p_usa_country: "США",
 
           // === ПОСИЛАННЯ ===
-          mental: "Ментальне здоров'я",
           diary: "Щоденник емоцій",
-          articles: "Корисні статті",
           article_1: "10 простих технік зняття стресу",
           article_2: "Ефективні методи боротьби з тривогою",
           article_3: "Дихальні техніки для релаксації",
@@ -1324,7 +1493,6 @@ i18n
           article_5: "Основи медитації для новачків",
           article_6: "Стратегії покращення самооцінки",
           article_7: "Профілактика та подолання вигорання",
-          gender: "Здоров'я за статтю",
 
           // === Сторінка харчування ===
           welcome: "Ласкаво просимо",
@@ -1603,6 +1771,72 @@ i18n
           male: "Чоловік",
           female: "Жінка",
           gender: "Здоров'я за статтю",
+
+          // --- Переклади для Спеціалістів
+          filter_speciality: "Спеціалізація",
+          filter_mode: "Онлайн/офлайн",
+          filter_experience: "Досвід",
+          filter_price: "Ціна",
+
+          spec_psychologist: "Психолог",
+          spec_doctor: "Лікар",
+          spec_trainer: "Тренер",
+          spec_dietitian: "Дієтолог",
+
+          mode_online: "Тільки онлайн",
+          mode_offline: "Тільки офлайн",
+          mode_hybrid: "Онлайн / офлайн",
+          select_city: "Локації",
+
+          experience_1: "До 1 року",
+          experience_3: "Від 3 років",
+          experience_5: "Від 5 років",
+          experience_10: "Від 10 років",
+
+          // price_100: "від 100 грн/год",
+          // price_200: "від 200 грн/год",
+          // price_500: "від 500 грн/год",
+          // price_1000: "від 1000 грн/год",
+
+          price_50: "до 50 $/год",
+          price_75: "від 50 до 75 $/год",
+          price_100: "від 75 до 100 $/год",
+          price_150: "від 100 до 150 $/год",
+          hourly_rate_title: "$/год",
+
+          clear_option: "Очистити",
+          clear_filter:"Очистити філтр",
+          unknown_specialist: "Невідомий спеціаліст",
+          top_5: "ТОП - 5",
+          subscribe: "Підписатись",
+          no_specialists_found: "Спеціалістів не знайдено",
+          recomend: "Рекомендуємо!",
+          join_team: "Приєднуйся до нас в команду!",
+
+          // Additional translations
+          tariffs: "Тарифи",
+          reviews: "Відгуки",
+          choose: "Обрати",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 днів",
+          plan_start_30_price: "500 грн",
+          plan_result_30_price: "1500 грн",
+          plan_vip_30_price: "4000 грн",
+          plan_feature_1: "Індивідуальний план тренувань (2–3 дні/тиждень)",
+          plan_feature_2: "Пропозиції щодо харчування",
+          plan_feature_3: "1 онлайн-консультація на тиждень",
+          plan_feature_4: "План тренувань + детальний раціон",
+          plan_feature_5: "Щотижневі корекції + відеоаналіз техніки",
+          plan_feature_6: "Підтримка в месенджері 5/7",
+          plan_feature_7: "Повне онлайн ведення",
+          plan_feature_8: "12 тренувань на місяць",
+          plan_feature_9: "Розбір харчування та індивідуальні рекомендації",
+          plan_feature_10: "Повна підтримка в месенджері",
+
           female_health: "Жіноче здоров'я",
           female_health_fine:
             "Жіноче здоров'я без табу - чесно, просто і з турботою про тебе.",
@@ -1757,7 +1991,6 @@ i18n
 
           // === МЕНТАЛЬНЕ ЗДОРОВ'Я ===
           your: "Твоє здоров'я",
-          diary: "Щоденник емоцій",
           breathing: "Дихальні практики",
           diaphragmatic: "Діафрагмальне дихання",
           square: "Дихання Квадрат",
@@ -1778,6 +2011,141 @@ i18n
           mp_article_5: "Медитація для початківців",
           mp_article_6: "Як підвищити самооцінку",
           mp_article_7: "Ефективні методи боротьби з вигоранням",
+          mp_article_content_1: 
+            `
+            # 10 простих технік зняття стресу
+            ## Глибоке дихання
+            Зробіть кілька глибоких вдихів і видихів, концентруючись на диханні. Техніка «4-4-4» проста: вдих на 4 секунди, затримка дихання на 4 секунди, видих на 4 секунди. Це заспокоює нервову систему.
+            ## Прогресивна м'язова релаксація
+            Напружте та розслабьте всі групи м'язів по черзі, починаючи з пальців ніг і закінчуючи обличчям.
+            ## Медитація
+            Приділяйте 5-10 хвилин на день медитації. Сфокусуйтесь на диханні або використовуйте керовані медитації.
+            ## Прогулянка на свіжому повітрі
+            Щоденні 20-хвилинні прогулянки зменшують рівень кортизолу та покращують настрій.
+            ## Ароматерапія
+            Використовуйте ефірні олії лаванди, ромашки або бергамота для релаксації.
+            ## Ведення щоденника
+            Записуйте свої думки та почуття. Це допомагає структурувати думки та зменшити стрес.
+            ## Слухайте музику
+            Спокійна музика або звуки природи можуть значно знизити рівень стресу.
+            ## Техніка "5-4-3-2-1"
+            Назвіть: 5 речей, які бачите; 4 речі, які відчуваєте; 3 речі, які чуєте; 2 речі, які відчуваєте запах; 1 річ, яку можете скуштувати.
+            ## Йога та розтяжка
+            Прості вправи йоги допомагають зняти м'язове напруження.
+            ## Обмеження споживання новин
+            Обмежте час, який витрачаєте на перегляд новин, щоб зменшити інформаційне навантаження.
+                    `,
+          mp_article_content_2: 
+            `
+            # Ефективні методи боротьби з тривогою
+            ## Техніки заземлення
+            Використовуйте методи заземлення, щоб повернутися до реальності. Наприклад, зосередьтесь на физичних відчуттях.
+            ## Когнітивно-поведінкова терапія
+            Визначте негативні думки та замініть їх на більш реалістичні.
+            ## Регулярні вправи
+            Фізична активність зменшує тривожність та покращує настрій.
+            ## Обмеження кофеїну
+            Кофеїн може посилювати тривожність, тому обмежте його споживання.
+            ## Якісний сон
+            Регулярний режим сну допомагає зменшити тривожність.
+            ## Соціальна підтримка
+            Обговорюйте свої почуття з близькими людьми або фахівцем.
+            ## Практика вдячності
+            Щоденно записуйте 3 речі, за які ви вдячні.
+                    `,
+          mp_article_content_3: 
+            `
+            # Дихальні техніки для релаксації
+            ## Дихання животом
+            Ляжте або сядьте зручно. Одну руку покладіть на груди, іншу - на живіт. Повільно вдихайте через ніс, відчуваючи, як живіт піднімається. Видихайте через рот.
+            ## Техніка "4-7-8"
+            Вдихніть через ніс на 4 рахунки, затримайте дихання на 7 рахунків, видихніть через рот на 8 рахунків.
+            ## Равове дихання
+            Вдихайте та видихайте на однакову кількість рахунків (наприклад, 4-4 або 5-5).
+            ## Дихання з підвищеним видихом
+            Вдихайте на 4 рахунки, видихайте на 6-8 рахунків.
+            ## Альтернативне дихання ніздрями
+            Закрийте праву ніздрю, вдихніть лівою. Затримайте дихання. Закрийте ліву ніздрю, видихніть правою.
+                    `,
+          mp_article_content_4: 
+            `
+            # Взаємозв'язок сну та психічного здоров'я
+            ## Регулярний режим сну
+            Лягайте та вставайте в один і той же час кожного дня, навіть у вихідні.
+            ## Створення ідеальних умов для сну
+            Забезпечте темряву, тишу та комфортну температуру в спальні.
+            ## Обмеження екранного часу
+            Припиніть використовувати електронні пристрої за 1-2 години до сну.
+            ## Релаксаційні ритуали
+            Створіть вечірній ритуал: тепла ванна, читання, медитація.
+            ## Обмеження кофеїну та алкоголю
+            Уникайте кофеїну після обіду та алкоголю перед сном.
+            ## Регулярна фізична активність
+            Вправи покращують якість сну, але уникайте інтенсивних тренувань перед сном.
+            ## Збалансоване харчування
+            Уживайте їжу, багату на триптофан, магній та вітаміни групи B.
+                    `,
+          mp_article_content_5: 
+            `
+            # Основи медитації для новачків
+            ## Початок з малого
+            Почніть з 5-10 хвилин на день і поступово збільшуйте час.
+            ## Зосередження на диханні
+            Сфокусуйтесь на відчутті дихання - як повітря входить і виходить.
+            ## Спостереження за думками
+            Не намагайтеся зупинити думки, просто спостерігайте за ними без оцінки.
+            ## Використання керованих медитацій
+            Використовуйте додатки або аудіозаписи для керованих сесій.
+            ## Створення комфортного простору
+            Знайдіть тихе місце, де вас ніхто не турбуватиме.
+            ## Регулярність
+            Медитуйте регулярно, краще в один і той же час дня.
+            ## Терпіння до себе
+            Не критикуйте себе, якщо не виходить зосередитись. Це нормальна частина процесу.
+                    `,
+          mp_article_content_6: 
+            `
+            # Стратегії покращення самооцінки
+            ## Практика самоспівчуття
+            Ставтесь до себе так, як до друга, який потребує підтримки.
+            ## Визнання своїх сильних сторін
+            Складіть список своїх сильних сторін та досягнень.
+            ## Встановлення реалістичних цілей
+            Ставте досяжні цілі та відзначайте прогрес.
+            ## Обмеження негативного самомовлення
+            Замініть критичні думки на підтримуючі.
+            ## Оточення позитивними людьми
+            Проводьте час з людьми, які підтримують та надихають вас.
+            ## Догляд за собою
+            Регулярно робіть те, що приносить вам радість та розслаблення.
+            ## Професійна допомога
+            Зверніться до психолога, якщо самооцінка значно впливає на якість життя.
+                    `,
+          mp_article_content_7: 
+            `
+            # Профілактика та подолання вигорання
+            ## Встановлення меж
+            Навчіться говорити "ні" та встановлюйте здорові межі.
+            ## Регулярні перерви
+            Робіть короткі перерви протягом робочого дня.
+            ## Пріоритизація завдань
+            Фокусуйтесь на найважливіших завданнях та делегуйте, коли це можливо.
+            ## Пошук сенсу
+            Знайдіть особистий сенс у тому, що ви робите.
+            ## Фізична активність
+            Регулярні вправи допомагають боротися зі стресом.
+            ## Соціальна підтримка
+            Обговорюйте свої почуття з колегами, друзями або фахівцем.
+            ## Відновлення балансу
+            Знайдіть час для хобі та особистого життя поза роботою.
+            ## Професійна допомога
+            Не вагайтеся звернутися до психолога або коуча.
+                    `,
+          mp_article_not_found: "Статтю не знайдено",
+          mp_article_not_found_desc_1: "Стаття з ID",
+          mp_article_not_found_desc_2: "не існує.",
+          m_long: "Тривалість місячних(дні)",
+          c_long_wh: "Тривалість циклу",
 
           // === ЕМОЦІЙНИЙ ЩОДЕННИК ===
           mp_aew_notes: "Нотатка",
@@ -2116,7 +2484,7 @@ i18n
           mp_form_free_testosterone_2: "Вільний Т",
           mp_form_prolactin: "Пролактин",
           mp_form_estradiol: "Естрадіол",
-          mp_form_lh: "ЛГ(лютейнзуючий гармон)",
+          mp_form_lh: "ЛГ(лютейнзуючий гормон)",
           mp_form_lh_2: "ЛГ",
           mp_form_fsh: "ФСГ",
           mp_form_ng_dl: "нг/дл",
@@ -2131,6 +2499,121 @@ i18n
           mp_diagram_low: "Низький",
           mp_diagram_norm: "Норма",
           mp_diagram_high: "Високий",
+          calendar: "Календар",
+          calendar_info: "Твій найкращій календар",
+          create_event: "Створити",
+
+          before_5: "За 5 хвилин",
+          before_10: "За 10 хвилин",
+          sign_for_doctor: "Запис до лікаря",
+          sure_to_delete_event: "Ви впевнені, що хочете видалити подію?",
+          notification: "Нагадування",
+          task: "Завдання",
+          meeting: "Зустріч",
+          choose_date: "Оберіть дату",
+          choose_time: "Оберіть час",
+          choose_end_time: "Оберіть час закінчення",
+          my_tasks: "Мої завдання",
+          invite_friend: "Запросити друга",
+          link: "Посилання",
+          add_title: "Додай назву",
+          go_to_main_page: "НА ГОЛОВНУ",
+
+          // === Premium ===
+          sp_you_already_have_active_subscription: "У вас вже є активна підписка",
+          sp_please_login: "Будь ласка, увійдіть в систему",
+          sp_active: "Активна",
+          sp_expired: "Закінчилась",
+          sp_cancelled: "Скасована",
+          sp_basic_title: "Базова",
+          sp_duration: "/ 30 днів",
+          sp_basic_features_1: "Трекери",
+          sp_basic_features_2: "Базова аналітика",
+          sp_premium_title: "Преміум",
+          sp_premium_features_1: "Курси",
+          sp_premium_features_2: "Індивідуальні плани",
+          sp_family_title: "Сімейна",
+          sp_family_features_1: "Всі можливості \"Преміум\" підписки",
+          sp_family_features_2: "Можливість надання доступу 3-м користувачам",
+          sp_loading: "Завантаження...",
+          sp_subscription_title: "Інвестуйте в себе",
+          sp_subscription_sub_title: "Ваш найкращий проект — це ви. Давайте реалізуємо його разом.",
+          sp_subscription_history_label: "Історія підписок",
+          sp_subscription_history_loading: "Завантаження історії...",
+          sp_subscription_history_price: "Безкоштовно",
+          sp_subscription_family_title: "Додані користувачі",
+          sp_subscription_family_date: "додано",
+          sp_subscription_history_empty: "У вас ще немає історії підписок",
+          sc_processing: "Обробка...",
+          sc_select: "Обрати",
+
+          // === Subscription Payment ===
+          spp_please_input_correct_email: "Будь ласка, введіть коректні email адреси",
+          spp_uncnown_subsription_type: "Невідомий тип підписки. Спробуйте ще раз.",
+          spp_family_sub: "Сімейна підписка",
+          spp_add_email_addresses_of_family_members: "Додайте email адреси членів сім'ї (до 3 осіб)",
+          spp_go_to_payment: "Перейти до оплати",
+
+          // === Subscription Details ===
+          sdp_already_have_active_sub: "вже має активну підписку",
+          sdp_already_a_member_of_another_family_subscription: "вже є членом іншої сімейної підписки",
+          sdp_this_is_the_subscription_owner: "це власник підписки",
+          sdp_user_not_found: "користувача не знайдено",
+          sdp_some_users_could_not_be_added: "Деяких користувачів не вдалося додати",
+          sdp_family_member_list_successfully_updated: "Список сімейних користувачів успішно оновлено!",
+          sdp_error_updating_family_users: "Помилка при оновленні сімейних користувачів: ",
+          sdp_subscription_not_found: "Підписка не знайдена",
+          sdp_return_to_tariffs: "Повернутись до тарифів",
+          sdp_your_current_subscription: "Ваша поточна підписка",
+          sdp_subscription_type: "Тип підписки",
+          sdp_subscription_status: "Статус",
+          sdp_subscription_start_date: "Дата початку",
+          sdp_subscription_end_date: "Дійсна до",
+          sdp_subscription_price: "Ціна",
+          sdp_subscription_section_content: "Сімейний доступ",
+          sdp_subscription_detail_label: "Тип доступу",
+          sdp_subscription_detail_value: "Член сімейної підписки",
+          sdp_subscription_section_content_title: "Члени сім'ї",
+          sdp_subscription_member_added: "Додано",
+          sdp_subscription_renew_btn: "Продовжити підписку",
+          sdp_subscription_manage_family_btn: "Керувати членами сім'ї",
+          sdp_family_modal_instruction: "Додайте або видаліть email адреси членів сім'ї",
+          sdp_sub_saving: "Збереження...",
+          sdp_family_member_email: "Електронна пошта члена сім'ї",
+          payment: "Оплата",
+          details: "Деталі",
+
+          // === Success Payment ===
+          ps_payment_success_main_title: "УРА",
+          ps_payment_success_title: "УСПІШНА ОПЛАТА",
+          ps_payment_success_description: "квитанція про оплату прийшла вам на пошту",
+          ps_payment_success_btn: "На головну",
+
+          // Marketplace
+          sport_eating: "Спортивне харчування",
+          sport_cloth: "Спортивний одяг",
+          sport_gadgets: "Гаджети",
+          sport_other: "Інше",
+          marketplace_filter: "Фільтр",
+          brand: "Бренд",
+          from: "Від",
+          to: "до",
+          one_thing: "шт.",
+          put_in_cart: "В кошик",
+          already_in_cart: "Вже в кошику",
+          similar_products: "Схожі продукти",
+          basket_marketplace: "Кошик",
+          sure_to_delete_product_from_cart: "Ви впевнені, що хочете видалити товар з корзини?",
+          product: "Продукт",
+          amount_marketplace: "Кількість",
+          my_order: "Моє замовлення",
+          marketplace_total: "Усього",
+          order_details: "Деталі",
+          to_payment: "До сплати",
+          order_sum: "Сума",
+          delivery: "Доставка",
+          post_index: "Почтовий індекс",
+          shopping_cart: "Кошик",
         },
       },
       de: {
@@ -2254,6 +2737,7 @@ i18n
           mental: "Psychische Gesundheit",
 
           // === DASHBOARD-WIDGETS ===
+
           kkal: "Kalorien",
           current_week: "Aktuelle Woche",
           water: "Wasser",
@@ -2290,6 +2774,8 @@ i18n
           p_loading_streets: "Lade Straßen...",
           p_btn_save: "Speichern",
           p_btn_saving: "Wird gespeichert...",
+          p_specialist_profile: "Spezialistenprofil",
+          p_profile_incomplete_alert: "Bitte vervollständigen Sie Ihr Benutzerprofil",
 
           // === KALENDER (GEBURTSTAG) ===
           p_january: "Januar",
@@ -2320,10 +2806,67 @@ i18n
           p_spain_country: "Spanien",
           p_usa_country: "USA",
 
+          // --- Übersetzungen für Spezialisten
+          filter_speciality: "Spezialisierung",
+          filter_mode: "Online/Offline",
+          filter_experience: "Erfahrung",
+          filter_price: "Preis",
+
+          spec_psychologist: "Psychologe",
+          spec_doctor: "Arzt",
+          spec_trainer: "Trainer",
+          spec_dietitian: "Ernährungsberater",
+
+          mode_online: "Nur online",
+          mode_offline: "Nur offline",
+          mode_hybrid: "Online / Offline",
+          select_city: "Standorte",
+
+          experience_1: "Bis 1 Jahr",
+          experience_3: "Ab 3 Jahren",
+          experience_5: "Ab 5 Jahren",
+          experience_10: "Ab 10 Jahren",
+
+          price_50: "bis 50 $/Stunde",
+          price_75: "von 50 bis 75 $/Stunde",
+          price_100: "von 75 bis 100 $/Stunde",
+          price_150: "von 100 bis 150 $/Stunde",
+          hourly_rate_title: "$/Stunde",
+
+          clear_option: "Löschen",
+          clear_filter: "Filter löschen",
+          unknown_specialist: "Unbekannter Spezialist",
+          top_5: "TOP - 5",
+          subscribe: "Abonnieren",
+          no_specialists_found: "Keine Spezialisten gefunden",
+          recomend: "Empfohlen!",
+          join_team: "Tritt unserem Team bei!",
+
+          // Additional translations
+          tariffs: "Tarife",
+          reviews: "Bewertungen",
+          choose: "Wählen",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 Tage",
+          plan_start_30_price: "12 EUR",
+          plan_result_30_price: "38 EUR",
+          plan_vip_30_price: "102 EUR",
+          plan_feature_1: "Individueller Trainingsplan (2-3 Tage/Woche)",
+          plan_feature_2: "Ernährungsvorschläge",
+          plan_feature_3: "1 Online-Beratung pro Woche",
+          plan_feature_4: "Trainingsplan + detaillierte Diät",
+          plan_feature_5: "Wöchentliche Korrekturen + Videoanalyse der Technik",
+          plan_feature_6: "Support im Messenger 5/7",
+          plan_feature_7: "Vollständige Online-Betreuung",
+          plan_feature_8: "12 Trainings pro Monat",
+          plan_feature_9: "Ernährungsanalyse und individuelle Empfehlungen",
+          plan_feature_10: "Vollständige Unterstützung im Messenger",
           // === LINKS ===
-          mental: "Psychische Gesundheit",
           diary: "Emotionstagebuch",
-          articles: "Nützliche Artikel",
           article_1: "10 einfache Techniken zum Stressabbau",
           article_2: "Effektive Methoden zur Bewältigung von Angst",
           article_3: "Atemtechniken zur Entspannung",
@@ -2332,7 +2875,6 @@ i18n
           article_5: "Grundlagen der Meditation für Anfänger",
           article_6: "Strategien zur Verbesserung des Selbstwertgefühls",
           article_7: "Prävention und Überwindung von Burnout",
-          gender: "Gesundheit nach Geschlecht",
 
           welcome: "Willkommen",
           nt_tracker_tab: "Ernährungs-Tracker",
@@ -2774,10 +3316,11 @@ i18n
           pain_is_ok: "Menstruationsbeschwerden sind immer normal",
           pain_is_ok_desc:
             "Leichtes Unbehagen ist typisch, aber starke oder erschöpfende Schmerzen können auf Endometriose oder andere Erkrankungen hinweisen, und es lohnt sich, einen Arzt aufzusuchen.",
+          m_long: "Dauer der Menstruation (Tage)",
+          c_long_wh: "Zykluslänge",
 
           // === PSYCHISCHE GESUNDHEIT ===
           your: "Deine Gesundheit",
-          diary: "Emotionstagebuch",
           breathing: "Atemübungen",
           diaphragmatic: "Zwerchfellatmung",
           square: "Quadratisches Atmen",
@@ -2798,6 +3341,139 @@ i18n
           mp_article_5: "Meditation für Anfänger",
           mp_article_6: "Wie man das Selbstwertgefühl steigert",
           mp_article_7: "Effektive Methoden zur Bekämpfung von Burnout",
+          mp_article_content_1: 
+            `
+            # 10 Einfache Techniken zum Stressabbau
+            ## Tiefes Atmen
+            Machen Sie einige tiefe Ein- und Ausatmungen und konzentrieren Sie sich auf das Atmen. Die "4-4-4"-Technik ist einfach: 4 Sekunden einatmen, den Atem 4 Sekunden anhalten, 4 Sekunden ausatmen. Dies beruhigt das Nervensystem.
+            ## Progressive Muskelentspannung
+            Spannen und entspannen Sie nacheinander alle Muskelgruppen, beginnend bei den Zehen bis hin zum Gesicht.
+            ## Meditation
+            Verbringen Sie 5-10 Minuten pro Tag mit Meditation. Konzentrieren Sie sich auf den Atem oder nutzen Sie geführte Meditationen.
+            ## Spaziergang an der frischen Luft
+            Tägliche 20-minütige Spaziergänge reduzieren den Cortisolspiegel und verbessern die Stimmung.
+            ## Aromatherapie
+            Verwenden Sie ätherische Öle von Lavendel, Kamille oder Bergamotte zur Entspannung.
+            ## Tagebuch führen
+            Schreiben Sie Ihre Gedanken und Gefühle auf. Dies hilft, Gedanken zu strukturieren und Stress abzubauen.
+            ## Musik hören
+            Ruhige Musik oder Naturgeräusche können den Stresspegel erheblich senken.
+            ## "5-4-3-2-1"-Technik
+            Nennen Sie: 5 Dinge, die Sie sehen; 4 Dinge, die Sie fühlen; 3 Dinge, die Sie hören; 2 Dinge, die Sie riechen; 1 Ding, das Sie schmecken können.
+            ## Yoga und Dehnung
+            Einfache Yoga-Übungen helfen, Muskelverspannungen zu lösen.
+            ## Nachrichtenkonsum einschränken
+            Begrenzen Sie die Zeit, die Sie mit dem Ansehen von Nachrichten verbringen, um die Informationsbelastung zu reduzieren.
+                    `,
+          mp_article_content_2: 
+            `
+            # Effektive Methoden zur Bekämpfung von Angstzuständen
+            ## Grounding-Techniken
+            Verwenden Sie Grounding-Techniken, um in die Realität zurückzukehren. Konzentrieren Sie sich zum Beispiel auf körperliche Empfindungen.
+            ## Kognitive Verhaltenstherapie
+            Identifizieren Sie negative Gedanken und ersetzen Sie sie durch realistischere.
+            ## Regelmäßige Bewegung
+            Körperliche Aktivität reduziert Angst und verbessert die Stimmung.
+            ## Koffeineinschränkung
+            Koffein kann Angst verstärken, daher sollten Sie den Konsum einschränken.
+            ## Qualitativer Schlaf
+            Ein regelmäßiger Schlafrhythmus hilft, Angst zu reduzieren.
+            ## Soziale Unterstützung
+            Besprechen Sie Ihre Gefühle mit nahestehenden Personen oder einem Fachmann.
+            ## Dankbarkeitspraxis
+            Schreiben Sie täglich 3 Dinge auf, für die Sie dankbar sind.
+                    `,
+          mp_article_content_3: 
+            `
+            # Atemtechniken zur Entspannung
+            ## Bauchatmung
+            Legen Sie sich hin oder setzen Sie sich bequem hin. Legen Sie eine Hand auf die Brust, die andere auf den Bauch. Atmen Sie langsam durch die Nase ein und spüren Sie, wie sich der Bauch hebt. Atmen Sie durch den Mund aus.
+            ## "4-7-8"-Technik
+            Atmen Sie durch die Nase für 4 Zählzeiten ein, halten Sie den Atem für 7 Zählzeiten an, atmen Sie durch den Mund für 8 Zählzeiten aus.
+            ## Gleiches Atmen
+            Atmen Sie für die gleiche Anzahl von Zählzeiten ein und aus (z.B. 4-4 oder 5-5).
+            ## Atmung mit verlängerter Ausatmung
+            Atmen Sie für 4 Zählzeiten ein, atmen Sie für 6-8 Zählzeiten aus.
+            ## Wechselatmung durch die Nasenlöcher
+            Schließen Sie das rechte Nasenloch, atmen Sie durch das linke ein. Halten Sie den Atem an. Schließen Sie das linke Nasenloch, atmen Sie durch das rechte aus.
+                    `,
+          mp_article_content_4: 
+            `
+            # Der Zusammenhang zwischen Schlaf und psychischer Gesundheit
+            ## Regelmäßiger Schlafrhythmus
+            Gehen Sie jeden Tag zur gleichen Zeit ins Bett und stehen Sie auf, auch am Wochenende.
+            ## Schaffen idealer Schlafbedingungen
+            Sorgen Sie für Dunkelheit, Ruhe und eine angenehme Temperatur im Schlafzimmer.
+            ## Bildschirmzeit einschränken
+            Hören Sie 1-2 Stunden vor dem Schlafengehen auf, elektronische Geräte zu benutzen.
+            ## Entspannungsrituale
+            Schaffen Sie ein Abendritual: ein warmes Bad, Lesen, Meditation.
+            ## Einschränkung von Koffein und Alkohol
+            Vermeiden Sie Koffein nach dem Mittagessen und Alkohol vor dem Schlafengehen.
+            ## Regelmäßige körperliche Aktivität
+            Bewegung verbessert die Schlafqualität, aber vermeiden Sie intensive Workouts vor dem Schlafengehen.
+            ## Ausgewogene Ernährung
+            Verzehren Sie Lebensmittel, die reich an Tryptophan, Magnesium und B-Vitaminen sind.
+                    `,
+          mp_article_content_5: 
+            `
+            # Grundlagen der Meditation für Anfänger
+            ## Klein anfangen
+            Beginnen Sie mit 5-10 Minuten pro Tag und steigern Sie die Zeit allmählich.
+            ## Fokus auf den Atem
+            Konzentrieren Sie sich auf die Empfindung des Atems - wie die Luft ein- und ausströmt.
+            ## Beobachten von Gedanken
+            Versuchen Sie nicht, Gedanken zu stoppen, beobachten Sie sie einfach, ohne sie zu bewerten.
+            ## Verwendung geführter Meditationen
+            Verwenden Sie Apps oder Audioaufnahmen für geführte Sitzungen.
+            ## Schaffen eines komfortablen Raums
+            Suchen Sie sich einen ruhigen Ort, an dem Sie niemand stört.
+            ## Regelmäßigkeit
+            Meditieren Sie regelmäßig, vorzugsweise zur gleichen Tageszeit.
+            ## Geduld mit sich selbst
+            Kritisieren Sie sich nicht, wenn Sie sich nicht konzentrieren können. Dies ist ein normaler Teil des Prozesses.
+                    `,
+          mp_article_content_6: 
+            `
+            # Strategien zur Verbesserung des Selbstwertgefühls
+            ## Selbstmitgefühl praktizieren
+            Behandeln Sie sich so, wie Sie einen Freund behandeln würden, der Unterstützung braucht.
+            ## Anerkennen der eigenen Stärken
+            Machen Sie eine Liste Ihrer Stärken und Erfolge.
+            ## Setzen realistischer Ziele
+            Setzen Sie erreichbare Ziele und feiern Sie Fortschritte.
+            ## Negatives Selbstgespräch einschränken
+            Ersetzen Sie kritische Gedanken durch unterstützende.
+            ## Umgeben mit positiven Menschen
+            Verbringen Sie Zeit mit Menschen, die Sie unterstützen und inspirieren.
+            ## Selbstfürsorge
+            Tun Sie regelmäßig Dinge, die Ihnen Freude und Entspannung bringen.
+            ## Professionelle Hilfe
+            Wenden Sie sich an einen Psychologen, wenn das Selbstwertgefühl Ihre Lebensqualität erheblich beeinträchtigt.
+                    `,
+          mp_article_content_7: 
+            `
+            # Prävention und Überwindung von Burnout
+            ## Grenzen setzen
+            Lernen Sie, "Nein" zu sagen und setzen Sie gesunde Grenzen.
+            ## Regelmäßige Pausen
+            Machen Sie kurze Pausen während des Arbeitstages.
+            ## Priorisierung von Aufgaben
+            Konzentrieren Sie sich auf die wichtigsten Aufgaben und delegieren Sie, wann immer möglich.
+            ## Sinnfindung
+            Finden Sie eine persönliche Bedeutung in dem, was Sie tun.
+            ## Körperliche Aktivität
+            Regelmäßige Bewegung hilft, Stress zu bekämpfen.
+            ## Soziale Unterstützung
+            Besprechen Sie Ihre Gefühle mit Kollegen, Freunden oder einem Fachmann.
+            ## Wiederherstellung des Gleichgewichts
+            Finden Sie Zeit für Hobbys und das Privatleben außerhalb der Arbeit.
+            ## Professionelle Hilfe
+            Zögern Sie nicht, einen Psychologen oder Coach zu kontaktieren.
+                    `,
+          mp_article_not_found: "Artikel nicht gefunden",
+          mp_article_not_found_desc_1: "Artikel mit ID",
+          mp_article_not_found_desc_2: "existiert nicht.",
 
           // === EMOTIONSTAGEBUCH ===
           mp_aew_notes: "Notiz",
@@ -3165,7 +3841,122 @@ i18n
             "Fehler beim Laden der Daten. Bitte wende dich an den technischen Support.",
           mp_diagram_low: "Niedrig",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Hoch",
+          mp_diagram_high: "Hoch",          calendar: "Kalender",
+          calendar_info: "Ihr bester Kalender",
+          create_event: "Erstellen",
+
+          before_5: "In 5 Minuten",
+          before_10: "In 10 Minuten",
+          sign_for_doctor: "Arzttermin",
+          sure_to_delete_event: "Sind Sie sicher, dass Sie das Ereignis löschen möchten?",
+          notification: "Erinnerung",
+          task: "Aufgabe",
+          meeting: "Besprechung",
+          choose_date: "Datum auswählen",
+          choose_time: "Uhrzeit auswählen",
+          choose_end_time: "Endzeit auswählen",
+          my_tasks: "Meine Aufgaben",
+          invite_friend: "Freund einladen",
+          link: "Link",
+          add_title: "Titel hinzufügen",
+          go_to_main_page: "HEIM",
+
+          // === Premium ===
+          sp_you_already_have_active_subscription: "Sie haben bereits ein aktives Abonnement",
+          sp_please_login: "Bitte melden Sie sich an",
+          sp_active: "Aktiv",
+          sp_expired: "Abgelaufen",
+          sp_cancelled: "Storniert",
+          sp_basic_title: "Basis",
+          sp_duration: "/ 30 Tage",
+          sp_basic_features_1: "Tracker",
+          sp_basic_features_2: "Basisanalyse",
+          sp_premium_title: "Premium",
+          sp_premium_features_1: "Kurse",
+          sp_premium_features_2: "Personalisierte Pläne",
+          sp_family_title: "Familie",
+          sp_family_features_1: "Alle Premium-Funktionen",
+          sp_family_features_2: "Zugang für bis zu 3 Benutzer",
+          sp_loading: "Lädt...",
+          sp_subscription_title: "Investiere in dich selbst",
+          sp_subscription_sub_title: "Dein bestes Projekt bist du selbst. Lass es uns gemeinsam umsetzen.",
+          sp_subscription_history_label: "Abonnementverlauf",
+          sp_subscription_history_loading: "Verlauf wird geladen...",
+          sp_subscription_history_price: "Kostenlos",
+          sp_subscription_family_title: "Hinzugefügte Benutzer",
+          sp_subscription_family_date: "hinzugefügt",
+          sp_subscription_history_empty: "Sie haben noch keinen Abonnementverlauf",
+          sc_processing: "Verarbeitung...",
+          sc_select: "Auswählen",
+
+          // === Subscription Payment ===
+          spp_please_input_correct_email: "Bitte geben Sie gültige E-Mail-Adressen ein",
+          spp_uncnown_subsription_type: "Unbekannter Abonnementtyp. Bitte versuchen Sie es erneut.",
+          spp_family_sub: "Familienabonnement",
+          spp_add_email_addresses_of_family_members: "Fügen Sie die E-Mail-Adressen von Familienmitgliedern hinzu (bis zu 3 Personen)",
+          spp_go_to_payment: "Zur Zahlung gehen",
+
+          // === Subscription Details ===
+          sdp_already_have_active_sub: "hat bereits ein aktives Abonnement",
+          sdp_already_a_member_of_another_family_subscription: "ist bereits Mitglied eines anderen Familienabonnements",
+          sdp_this_is_the_subscription_owner: "dies ist der Abonnementinhaber",
+          sdp_user_not_found: "Benutzer nicht gefunden",
+          sdp_some_users_could_not_be_added: "Einige Benutzer konnten nicht hinzugefügt werden",
+          sdp_family_member_list_successfully_updated: "Familienmitgliedsliste erfolgreich aktualisiert!",
+          sdp_error_updating_family_users: "Fehler beim Aktualisieren der Familienbenutzer: ",
+          sdp_subscription_not_found: "Abonnement nicht gefunden",
+          sdp_return_to_tariffs: "Zurück zu den Tarifen",
+          sdp_your_current_subscription: "Ihr aktuelles Abonnement",
+          sdp_subscription_type: "Abonnementtyp",
+          sdp_subscription_status: "Status",
+          sdp_subscription_start_date: "Startdatum",
+          sdp_subscription_end_date: "Gültig bis",
+          sdp_subscription_price: "Preis",
+          sdp_subscription_section_content: "Familienzugang",
+          sdp_subscription_detail_label: "Zugangstyp",
+          sdp_subscription_detail_value: "Familienmitglied",
+          sdp_subscription_section_content_title: "Familienmitglieder",
+          sdp_subscription_member_added: "Hinzugefügt",
+          sdp_subscription_renew_btn: "Abonnement verlängern",
+          sdp_subscription_manage_family_btn: "Familienmitglieder verwalten",
+          sdp_family_modal_instruction: "E-Mail-Adressen von Familienmitgliedern hinzufügen oder entfernen",
+          sdp_sub_saving: "Speichern...",
+          sdp_family_member_email: "E-Mail des Familienmitglieds",
+          payment: "Zahlung",
+          details: "Einzelheiten",
+
+          // === Success Payment ===
+          ps_payment_success_main_title: "JUCHHU",
+          ps_payment_success_title: "ZAHLUNG ERFOLGREICH",
+          ps_payment_success_description: "Die Zahlungsbestätigung wurde an Ihre E-Mail gesendet",
+          ps_payment_success_btn: "Zur Startseite",
+
+          // Marketplace
+          sport_eating: "Sportnahrung",
+          sport_cloth: "Sportbekleidung",
+          sport_gadgets: "Gadgets",
+          sport_other: "Andere",
+          marketplace_filter: "Filter",
+          brand: "Marke",
+          from: "Von",
+          to: "Bis",
+          one_thing: "Stk.",
+          put_in_cart: "In den Warenkorb",
+          already_in_cart: "Bereits im Warenkorb",
+          similar_products: "Ähnliche Produkte",
+          basket_marketplace: "Warenkorb",
+          sure_to_delete_product_from_cart: "Sind Sie sicher, dass Sie dieses Produkt aus dem Warenkorb entfernen möchten?",
+          product: "Produkt",
+          amount_marketplace: "Menge",
+          my_order: "Meine Bestellung",
+          marketplace_total: "Gesamt",
+          order_details: "Details",
+          to_payment: "Zur Zahlung",
+          order_sum: "Betrag",
+          delivery: "Lieferung",
+          post_index: "Postleitzahl",
+          shopping_cart: "Warenkorb",
+
         },
       },
       fr: {
@@ -3289,6 +4080,7 @@ i18n
           mental: "Santé mentale",
 
           // === WIDGETS DU TABLEAU DE BORD ===
+
           kkal: "Calories",
           current_week: "Semaine en cours",
           water: "Eau",
@@ -3326,6 +4118,8 @@ i18n
           p_loading_streets: "Chargement des rues...",
           p_btn_save: "Sauvegarder",
           p_btn_saving: "Sauvegarde en cours...",
+          p_specialist_profile: "Spezialistenprofil",
+          p_profile_incomplete_alert: "Veuillez compléter votre profil utilisateur",
 
           // === CALENDRIER (ANNIVERSAIRE) ===
           p_january: "janvier",
@@ -3356,10 +4150,67 @@ i18n
           p_spain_country: "Espagne",
           p_usa_country: "États-Unis",
 
+          // --- Traductions pour Spécialistes
+          filter_speciality: "Spécialisation",
+          filter_mode: "En ligne/Hors ligne",
+          filter_experience: "Expérience",
+          filter_price: "Prix",
+
+          spec_psychologist: "Psychologue",
+          spec_doctor: "Médecin",
+          spec_trainer: "Entraîneur",
+          spec_dietitian: "Diététicien",
+
+          mode_online: "En ligne uniquement",
+          mode_offline: "Hors ligne uniquement",
+          mode_hybrid: "En ligne / Hors ligne",
+          select_city: "Lieux",
+
+          experience_1: "Jusqu'à 1 an",
+          experience_3: "À partir de 3 ans",
+          experience_5: "À partir de 5 ans",
+          experience_10: "À partir de 10 ans",
+
+          price_50: "jusqu'à 50 $/h",
+          price_75: "de 50 à 75 $/h",
+          price_100: "de 75 à 100 $/h",
+          price_150: "de 100 à 150 $/h",
+          hourly_rate_title: "$/h",
+
+          clear_option: "Effacer",
+          clear_filter: "Effacer le filtre",
+          unknown_specialist: "Spécialiste inconnu",
+          top_5: "TOP - 5",
+          subscribe: "S'abonner",
+          no_specialists_found: "Aucun spécialiste trouvé",
+          recomend: "Recommandé !",
+          join_team: "Rejoignez notre équipe !",
+
+          // Additional translations
+          tariffs: "Tarifs",
+          reviews: "Avis",
+          choose: "Choisir",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 jours",
+          plan_start_30_price: "12 EUR",
+          plan_result_30_price: "38 EUR",
+          plan_vip_30_price: "102 EUR",
+          plan_feature_1: "Plan d'entraînement individuel (2-3 jours/semaine)",
+          plan_feature_2: "Suggestions nutritionnelles",
+          plan_feature_3: "1 consultation en ligne par semaine",
+          plan_feature_4: "Plan d'entraînement + régime détaillé",
+          plan_feature_5: "Corrections hebdomadaires + analyse vidéo de la technique",
+          plan_feature_6: "Support en messagerie 5/7",
+          plan_feature_7: "Gestion complète en ligne",
+          plan_feature_8: "12 entraînements par mois",
+          plan_feature_9: "Analyse nutritionnelle et recommandations individuelles",
+          plan_feature_10: "Support complet en messagerie",
           // === LIENS ===
-          mental: "Santé mentale",
           diary: "Journal des émotions",
-          articles: "Articles utiles",
           article_1: "10 techniques simples pour réduire le stress quotidien",
           article_2: "Méthodes efficaces pour gérer l'anxiété",
           article_3: "Techniques de respiration pour la relaxation",
@@ -3367,7 +4218,6 @@ i18n
           article_5: "Bases de la méditation pour les débutants",
           article_6: "Stratégies pour améliorer l'estime de soi",
           article_7: "Prévention et surmonter l'épuisement professionnel",
-          gender: "Santé par genre",
 
           welcome: "Bienvenue",
           nt_tracker_tab: "Suivi Nutritionnel",
@@ -3807,7 +4657,6 @@ i18n
 
           // === SANTÉ MENTALE ===
           your: "Ta santé",
-          diary: "Journal des émotions",
           breathing: "Exercices de respiration",
           diaphragmatic: "Respiration diaphragmatique",
           square: "Respiration carrée",
@@ -3830,6 +4679,141 @@ i18n
           mp_article_6: "Comment améliorer l'estime de soi",
           mp_article_7:
             "Méthodes efficaces pour lutter contre l'épuisement professionnel",
+          mp_article_content_1: 
+            `
+            # 10 techniques simples pour soulager le stress
+            ## Respiration profonde
+            Prenez quelques respirations profondes en vous concentrant sur votre souffle. La technique « 4-4-4 » est simple : inspirez pendant 4 secondes, retenez votre respiration pendant 4 secondes, expirez pendant 4 secondes. Cela calme le système nerveux.
+            ## Relaxation musculaire progressive
+            Tendez et détendez tous les groupes musculaires tour à tour, en commençant par les orteils et en remontant jusqu'au visage.
+            ## Méditation
+            Accordez 5 à 10 minutes par jour à la méditation. Concentrez-vous sur votre respiration ou utilisez des méditations guidées.
+            ## Marche au grand air
+            Une marche quotidienne de 20 minutes réduit le niveau de cortisol et améliore l'humeur.
+            ## Aromathérapie
+            Utilisez des huiles essentielles de lavande, de camomille ou de bergamote pour vous détendre.
+            ## Tenue d'un journal
+            Notez vos pensées et vos sentiments. Cela aide à structurer les pensées et à réduire le stress.
+            ## Écoutez de la musique
+            Une musique calme ou des sons de la nature peuvent significativement réduire le niveau de stress.
+            ## Technique "5-4-3-2-1"
+            Nommez : 5 choses que vous voyez ; 4 choses que vous touchez ; 3 choses que vous entendez ; 2 choses que vous sentez ; 1 chose que vous goûtez.
+            ## Yoga et étirements
+            Des exercices simples de yoga aident à soulager les tensions musculaires.
+            ## Limiter la consommation d'actualités
+            Limitez le temps passé à regarder les informations pour réduire la charge mentale.
+                    `,
+          mp_article_content_2: 
+            `
+            # Méthodes efficaces pour lutter contre l'anxiété
+            ## Techniques de mise à la terre
+            Utilisez des techniques de mise à la terre pour revenir à la réalité. Par exemple, concentrez-vous sur les sensations physiques.
+            ## Thérapie cognitivo-comportementale
+            Identifiez les pensées négatives et remplacez-les par des pensées plus réalistes.
+            ## Exercice régulier
+            L'activité physique réduit l'anxiété et améliore l'humeur.
+            ## Limitation de la caféine
+            La caféine peut augmenter l'anxiété, il est donc conseillé d'en limiter la consommation.
+            ## Sommeil de qualité
+            Un rythme de sommeil régulier aide à réduire l'anxiété.
+            ## Soutien social
+            Parlez de vos sentiments avec vos proches ou un professionnel.
+            ## Pratique de la gratitude
+            Notez chaque jour 3 choses pour lesquelles vous êtes reconnaissant.
+                    `,
+          mp_article_content_3: 
+            `
+            # Techniques de respiration pour la relaxation
+            ## Respiration abdominale
+            Allongez-vous ou asseyez-vous confortablement. Placez une main sur votre poitrine, l'autre sur votre ventre. Inspirez lentement par le nez en sentant votre ventre se soulever. Expirez par la bouche.
+            ## Technique "4-7-8"
+            Inspirez par le nez sur 4 temps, retenez votre respiration sur 7 temps, expirez par la bouche sur 8 temps.
+            ## Respiration égale
+            Inspirez et expirez sur le même nombre de temps (par exemple, 4-4 ou 5-5).
+            ## Respiration avec expiration allongée
+            Inspirez sur 4 temps, expirez sur 6-8 temps.
+            ## Respiration alternée par les narines
+            Bouchez votre narine droite, inspirez par la gauche. Retenez votre respiration. Bouchez votre narine gauche, expirez par la droite.
+                    `,
+          mp_article_content_4: 
+            `
+            # Le lien entre le sommeil et la santé mentale
+            ## Rythme de sommeil régulier
+            Couchez-vous et levez-vous à la même heure chaque jour, même le week-end.
+            ## Création de conditions idéales pour le sommeil
+            Assurez l'obscurité, le silence et une température confortable dans la chambre.
+            ## Limitation du temps d'écran
+            Arrêtez d'utiliser les appareils électroniques 1 à 2 heures avant de dormir.
+            ## Rituels de relaxation
+            Créez un rituel du soir : bain chaud, lecture, méditation.
+            ## Limitation de la caféine et de l'alcool
+            Évitez la caféine après le déjeuner et l'alcool avant le coucher.
+            ## Activité physique régulière
+            L'exercice améliore la qualité du sommeil, mais évitez les entraînements intenses avant de dormir.
+            ## Alimentation équilibrée
+            Consommez des aliments riches en tryptophane, magnésium et vitamines B.
+                    `,
+          mp_article_content_5: 
+            `
+            # Les bases de la méditation pour les débutants
+            ## Commencez petit
+            Commencez par 5 à 10 minutes par jour et augmentez progressivement la durée.
+            ## Concentration sur la respiration
+            Concentrez-vous sur la sensation de la respiration - comment l'air entre et sort.
+            ## Observation des pensées
+            N'essayez pas d'arrêter vos pensées, observez-les simplement sans jugement.
+            ## Utilisation de méditations guidées
+            Utilisez des applications ou des enregistre audio pour des séances guidées.
+            ## Création d'un espace confortable
+            Trouvez un endroit calme où vous ne serez pas dérangé.
+            ## Régularité
+            Méditez régulièrement, de préférence à la même heure chaque jour.
+            ## Patience envers soi-même
+            Ne vous critiquez pas si vous avez du mal à vous concentrer. C'est une partie normale du processus.
+                    `,
+          mp_article_content_6: 
+            `
+            # Stratégies pour améliorer l'estime de soi
+            ## Pratique de l'auto-compassion
+            Traitez-vous comme vous traiteriez un ami qui a besoin de soutien.
+            ## Reconnaissance de ses points forts
+            Faites une liste de vos points forts et de vos réalisations.
+            ## Établissement d'objectifs réalistes
+            Fixez-vous des objectifs atteignables et célébrez vos progrès.
+            ## Limitation du discours intérieur négatif
+            Remplacez les pensées critiques par des pensées encourageantes.
+            ## S'entourer de personnes positives
+            Passez du temps avec des personnes qui vous soutiennent et vous inspirent.
+            ## Soins personnels
+            Faites régulièrement des choses qui vous apportent de la joie et de la détente.
+            ## Aide professionnelle
+            Consultez un psychologue si l'estime de soi affecte significativement votre qualité de vie.
+                    `,
+          mp_article_content_7: 
+            `
+            # Prévention et surmontement de l'épuisement
+            ## Établissement de limites
+            Apprenez à dire "non" et à établir des limites saines.
+            ## Pauses régulières
+            Prenez de courtes pauses tout au long de la journée de travail.
+            ## Priorisation des tâches
+            Concentrez-vous sur les tâches les plus importantes et déléguez lorsque c'est possible.
+            ## Recherche de sens
+            Trouvez un sens personnel à ce que vous faites.
+            ## Activité physique
+            L'exercice régulier aide à lutter contre le stress.
+            ## Soutien social
+            Parlez de vos sentiments avec des collègues, des amis ou un professionnel.
+            ## Rétablissement de l'équilibre
+            Trouvez du temps pour les loisirs et la vie personnelle en dehors du travail.
+            ## Aide professionnelle
+            N'hésitez pas à consulter un psychologue ou un coach.
+                    `,
+          mp_article_not_found: "Article non trouvé",
+          mp_article_not_found_desc_1: "L'article avec l'ID",
+          mp_article_not_found_desc_2: "n'existe pas.",
+          m_long: "Durée des menstruations (jours)",
+          c_long_wh: "Durée du cycle",
 
           // === JOURNAL DES ÉMOTIONS ===
           mp_aew_notes: "Note",
@@ -4200,7 +5184,122 @@ i18n
             "Erreur lors du chargement des données. Contacte le support technique.",
           mp_diagram_low: "Faible",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Élevé",
+          mp_diagram_high: "Élevé",          calendar: "Calendrier",
+          calendar_info: "Votre meilleur calendrier",
+          create_event: "Créer",
+
+          before_5: "Dans 5 minutes",
+          before_10: "Dans 10 minutes",
+          sign_for_doctor: "Rendez-vous chez le médecin",
+          sure_to_delete_event: "Êtes-vous sûr de vouloir supprimer l’événement ?",
+          notification: "Rappel",
+          task: "Tâche",
+          meeting: "Réunion",
+          choose_date: "Choisir une date",
+          choose_time: "Choisir l’heure",
+          choose_end_time: "Choisir l’heure de fin",
+          my_tasks: "Mes tâches",
+          invite_friend: "Inviter un ami",
+          link: "Lien",
+          add_title: "Ajouter un titre",
+          go_to_main_page: "MAISON",
+
+          // === Premium ===
+          sp_you_already_have_active_subscription: "Vous avez déjà un abonnement actif",
+          sp_please_login: "Veuillez vous connecter",
+          sp_active: "Actif",
+          sp_expired: "Expiré",
+          sp_cancelled: "Annulé",
+          sp_basic_title: "Basique",
+          sp_duration: "/ 30 jours",
+          sp_basic_features_1: "Suiveurs",
+          sp_basic_features_2: "Analyse de base",
+          sp_premium_title: "Premium",
+          sp_premium_features_1: "Cours",
+          sp_premium_features_2: "Plans personnalisés",
+          sp_family_title: "Famille",
+          sp_family_features_1: "Toutes les fonctionnalités Premium",
+          sp_family_features_2: "Accès pour jusqu’à 3 utilisateurs",
+          sp_loading: "Chargement...",
+          sp_subscription_title: "Investissez en vous-même",
+          sp_subscription_sub_title: "Votre meilleur projet, c’est vous. Réalisons-le ensemble.",
+          sp_subscription_history_label: "Historique des abonnements",
+          sp_subscription_history_loading: "Chargement de l’historique...",
+          sp_subscription_history_price: "Gratuit",
+          sp_subscription_family_title: "Utilisateurs ajoutés",
+          sp_subscription_family_date: "ajouté",
+          sp_subscription_history_empty: "Vous n’avez pas encore d’historique d’abonnement",
+          sc_processing: "Traitement...",
+          sc_select: "Sélectionner",
+
+          // === Subscription Payment ===
+          spp_please_input_correct_email: "Veuillez saisir des adresses e-mail valides",
+          spp_uncnown_subsription_type: "Type d’abonnement inconnu. Veuillez réessayer.",
+          spp_family_sub: "Abonnement familial",
+          spp_add_email_addresses_of_family_members: "Ajoutez les adresses e-mail des membres de la famille (jusqu’à 3 personnes)",
+          spp_go_to_payment: "Aller au paiement",
+
+          // === Subscription Details ===
+          sdp_already_have_active_sub: "a déjà un abonnement actif",
+          sdp_already_a_member_of_another_family_subscription: "est déjà membre d’un autre abonnement familial",
+          sdp_this_is_the_subscription_owner: "c’est le propriétaire de l’abonnement",
+          sdp_user_not_found: "Utilisateur non trouvé",
+          sdp_some_users_could_not_be_added: "Certains utilisateurs n’ont pas pu être ajoutés",
+          sdp_family_member_list_successfully_updated: "Liste des membres de la famille mise à jour avec succès !",
+          sdp_error_updating_family_users: "Erreur lors de la mise à jour des utilisateurs familiaux : ",
+          sdp_subscription_not_found: "Abonnement introuvable",
+          sdp_return_to_tariffs: "Retour aux tarifs",
+          sdp_your_current_subscription: "Votre abonnement actuel",
+          sdp_subscription_type: "Type d’abonnement",
+          sdp_subscription_status: "Statut",
+          sdp_subscription_start_date: "Date de début",
+          sdp_subscription_end_date: "Valide jusqu’au",
+          sdp_subscription_price: "Prix",
+          sdp_subscription_section_content: "Accès familial",
+          sdp_subscription_detail_label: "Type d’accès",
+          sdp_subscription_detail_value: "Membre de la famille",
+          sdp_subscription_section_content_title: "Membres de la famille",
+          sdp_subscription_member_added: "Ajouté",
+          sdp_subscription_renew_btn: "Renouveler l’abonnement",
+          sdp_subscription_manage_family_btn: "Gérer les membres de la famille",
+          sdp_family_modal_instruction: "Ajoutez ou supprimez des adresses e-mail de membres de la famille",
+          sdp_sub_saving: "Enregistrement...",
+          sdp_family_member_email: "E-mail du membre de la famille",
+          payment: "Paiement",
+          details: "Détails",
+
+          // === Success Payment ===
+          ps_payment_success_main_title: "SUPER",
+          ps_payment_success_title: "PAIEMENT RÉUSSI",
+          ps_payment_success_description: "Le reçu de paiement a été envoyé à votre e-mail",
+          ps_payment_success_btn: "Accueil",
+
+          // Marketplace
+          sport_eating: "Nutrition sportive",
+          sport_cloth: "Vêtements de sport",
+          sport_gadgets: "Gadgets",
+          sport_other: "Autre",
+          marketplace_filter: "Filtre",
+          brand: "Marque",
+          from: "De",
+          to: "À",
+          one_thing: "pcs",
+          put_in_cart: "Ajouter au panier",
+          already_in_cart: "Déjà dans le panier",
+          similar_products: "Produits similaires",
+          basket_marketplace: "Panier",
+          sure_to_delete_product_from_cart: "Êtes-vous sûr de vouloir supprimer ce produit du panier ?",
+          product: "Produit",
+          amount_marketplace: "Quantité",
+          my_order: "Ma commande",
+          marketplace_total: "Total",
+          order_details: "Détails",
+          to_payment: "Vers le paiement",
+          order_sum: "Montant",
+          delivery: "Livraison",
+          post_index: "Code postal",
+          shopping_cart: "Panier",
+
         },
       },
       es: {
@@ -4215,7 +5314,7 @@ i18n
           balance_action: "Equilibrio en acción",
           less_chaos: "MENOS CAOS –",
           more_energy: "MÁS ENERGÍA.",
-          healthy_lifestyle: "TU ESTILO DE VIDA SALUDABLE EN UN SOLO LUGAR.",
+          healthy_lifestyle: "TU ESTILO DE VIE SALUDABLE EN UN SOLO LUGAR.",
           register: "Registrarse",
           description_part1:
             " es una plataforma que te ayuda a cuidarte fácilmente y con una sonrisa.",
@@ -4264,6 +5363,7 @@ i18n
             "Deja una solicitud en nuestro sitio y nos contactaremos contigo.",
 
           // === PIE DE PÁGINA ===
+
           specialists: "Especialistas",
           privacy_policy: "Política de privacidad",
           support_service: "Servicio de soporte",
@@ -4319,10 +5419,12 @@ i18n
           exit: "Cerrar sesión",
           search_placeholder: "Buscar",
           welcome: "Hola",
+
           health_one_place: "¡Tu salud en un solo lugar!",
           mental: "Salud mental",
 
           // === WIDGETS DEL TABLERO ===
+
           kkal: "Calorías",
           current_week: "Semana actual",
           water: "Agua",
@@ -4359,6 +5461,8 @@ i18n
           p_loading_streets: "Cargando calles...",
           p_btn_save: "Guardar",
           p_btn_saving: "Guardando...",
+          p_specialist_profile: "Spezialistenprofil",
+          p_profile_incomplete_alert: "Por favor, completa tu perfil de usuario",
 
           // === CALENDARIO (CUMPLEAÑOS) ===
           p_january: "enero",
@@ -4389,10 +5493,68 @@ i18n
           p_spain_country: "España",
           p_usa_country: "EE.UU.",
 
+          // --- Traducciones para Especialistas
+          filter_speciality: "Especialización",
+          filter_mode: "En línea/Presencial",
+          filter_experience: "Experiencia",
+          filter_price: "Precio",
+
+          spec_psychologist: "Psicólogo",
+          spec_doctor: "Médico",
+          spec_trainer: "Entrenador",
+          spec_dietitian: "Nutricionista",
+
+          mode_online: "Solo en línea",
+          mode_offline: "Solo presencial",
+          mode_hybrid: "En línea / Presencial",
+          select_city: "Ubicaciones",
+
+          experience_1: "Hasta 1 año",
+          experience_3: "Desde 3 años",
+          experience_5: "Desde 5 años",
+          experience_10: "Desde 10 años",
+
+          price_50: "hasta 50 $/hora",
+          price_75: "de 50 a 75 $/hora",
+          price_100: "de 75 a 100 $/hora",
+          price_150: "de 100 a 150 $/hora",
+          hourly_rate_title: "$/hora",
+
+          clear_option: "Borrar",
+          clear_filter: "Borrar filtro",
+          unknown_specialist: "Especialista desconocido",
+          top_5: "TOP - 5",
+          subscribe: "Suscribirse",
+          no_specialists_found: "No se encontraron especialistas",
+          recomend: "¡Recomendado!",
+          join_team: "¡Únete a nuestro equipo!",
+
+          // Additional translations
+          tariffs: "Tarifas",
+          reviews: "Reseñas",
+          choose: "Elegir",
+
+          // Plan features translations
+          plan_start_30_title: "Start 30",
+          plan_result_30_title: "Result 30", 
+          plan_vip_30_title: "VIP 30",
+          plan_duration: "/ 30 días",
+          plan_start_30_price: "12 EUR",
+          plan_result_30_price: "38 EUR",
+          plan_vip_30_price: "102 EUR",
+          plan_feature_1: "Plan de entrenamiento individual (2-3 días/semana)",
+          plan_feature_2: "Sugerencias nutricionales",
+          plan_feature_3: "1 consulta en línea por semana",
+          plan_feature_4: "Plan de entrenamiento + dieta detallada",
+          plan_feature_5: "Correcciones semanales + análisis de video de la técnica",
+          plan_feature_6: "Soporte en mensajería 5/7",
+          plan_feature_7: "Gestión completa en línea",
+          plan_feature_8: "12 entrenamientos por mes",
+          plan_feature_9: "Análisis nutricional y recomendaciones individuales",
+          plan_feature_10: "Soporte completo en mensajería",
+          
           // === ENLACES ===
-          mental: "Salud mental",
           diary: "Diario de emociones",
-          articles: "Artículos útiles",
           article_1: "10 técnicas simples para reducir el estrés diario",
           article_2: "Métodos efectivos para manejar la ansiedad",
           article_3: "Técnicas de respiración para relajación",
@@ -4400,7 +5562,6 @@ i18n
           article_5: "Bases de meditación para principiantes",
           article_6: "Estrategias para mejorar la autoestima",
           article_7: "Prevención y superación del agotamiento",
-          gender: "Salud por género",
 
           welcome: "Bienvenido",
           nt_tracker_tab: "Seguimiento de Nutrición",
@@ -4841,7 +6002,6 @@ i18n
 
           // === SALUD MENTAL ===
           your: "Tu salud",
-          diary: "Diario de emociones",
           breathing: "Ejercicios de respiración",
           diaphragmatic: "Respiración diafragmática",
           square: "Respiración cuadrada",
@@ -4862,6 +6022,141 @@ i18n
           mp_article_5: "Meditación para principiantes",
           mp_article_6: "Cómo mejorar la autoestima",
           mp_article_7: "Métodos efectivos para combatir el agotamiento",
+          mp_article_content_1: 
+            `
+            # 10 técnicas simples para aliviar el estrés
+            ## Respiración profunda
+            Toma algunas respiraciones profundas concentrándote en la respiración. La técnica «4-4-4» es simple: inhalar durante 4 segundos, retener la respiración durante 4 segundos, exhalar durante 4 segundos. Esto calma el sistema nervioso.
+            ## Relajación muscular progresiva
+            Tensa y relaja todos los grupos musculares uno por uno, comenzando por los dedos de los pies y terminando en el rostro.
+            ## Meditación
+            Dedica 5-10 minutos al día a la meditación. Concéntrate en la respiración o usa meditaciones guiadas.
+            ## Caminata al aire libre
+            Caminatas diarias de 20 minutos reducen el nivel de cortisol y mejoran el estado de ánimo.
+            ## Aromaterapia
+            Usa aceites esenciales de lavanda, manzanilla o bergamota para relajarte.
+            ## Llevar un diario
+            Anota tus pensamientos y sentimientos. Esto ayuda a estructurar los pensamientos y reducir el estrés.
+            ## Escuchar música
+            La música tranquila o los sonidos de la naturaleza pueden reducir significativamente el nivel de estrés.
+            ## Técnica "5-4-3-2-1"
+            Nombra: 5 cosas que ves; 4 cosas que tocas; 3 cosas que escuchas; 2 cosas que hueles; 1 cosa que saboreas.
+            ## Yoga y estiramientos
+            Ejercicios simples de yoga ayudan a aliviar la tensión muscular.
+            ## Limitar el consumo de noticias
+            Limita el tiempo que pasas viendo noticias para reducir la carga informativa.
+                    `,
+          mp_article_content_2: 
+            `
+            # Métodos efectivos para combatir la ansiedad
+            ## Técnicas de grounding
+            Usa técnicas de grounding para volver a la realidad. Por ejemplo, concéntrate en sensaciones físicas.
+            ## Terapia cognitivo-conductual
+            Identifica pensamientos negativos y reemplázalos por otros más realistas.
+            ## Ejercicio regular
+            La actividad física reduce la ansiedad y mejora el estado de ánimo.
+            ## Limitar la cafeína
+            La cafeína puede aumentar la ansiedad, por lo que se recomienda limitar su consumo.
+            ## Sueño de calidad
+            Una rutina regular de sueño ayuda a reducir la ansiedad.
+            ## Apoyo social
+            Habla de tus sentimientos con personas cercanas o un profesional.
+            ## Práctica de gratitud
+            Anota diariamente 3 cosas por las que estás agradecido.
+                    `,
+          mp_article_content_3: 
+            `
+            # Técnicas de respiración para relajación
+            ## Respiración abdominal
+            Acuéstate o siéntate cómodamente. Coloca una mano en el pecho, la otra en el abdomen. Inhala lentamente por la nariz, sintiendo cómo el abdomen se eleva. Exhala por la boca.
+            ## Técnica "4-7-8"
+            Inhala por la nariz contando 4, retén la respiración contando 7, exhala por la boca contando 8.
+            ## Respiración equitativa
+            Inhala y exhala en la misma cantidad de tiempos (por ejemplo, 4-4 o 5-5).
+            ## Respiración con exhalación alargada
+            Inhala en 4 tiempos, exhala en 6-8 tiempos.
+            ## Respiración alternada por fosas nasales
+            Cierra la fosa nasal derecha, inhala por la izquierda. Retén la respiración. Cierra la fosa nasal izquierda, exhala por la derecha.
+                    `,
+          mp_article_content_4: 
+            `
+            # La relación entre sueño y salud mental
+            ## Rutina regular de sueño
+            Acuéstate y levántate a la misma hora todos los días, incluso los fines de semana.
+            ## Crear condiciones ideales para dormir
+            Asegura oscuridad, silencio y temperatura cómoda en el dormitorio.
+            ## Limitar el tiempo de pantalla
+            Deja de usar dispositivos electrónicos 1-2 horas antes de dormir.
+            ## Rituales de relajación
+            Crea un ritual nocturno: baño caliente, lectura, meditación.
+            ## Limitar cafeína y alcohol
+            Evita la cafeína después del almuerzo y el alcohol antes de dormir.
+            ## Actividad física regular
+            El ejercicio mejora la calidad del sueño, pero evita entrenamientos intensos antes de dormir.
+            ## Alimentación equilibrada
+            Consume alimentos ricos en triptófano, magnesio y vitaminas del grupo B.
+                    `,
+          mp_article_content_5: 
+            `
+            # Bases de meditación para principiantes
+            ## Empezar poco a poco
+            Comienza con 5-10 minutos al día y aumenta gradualmente el tiempo.
+            ## Concentrarse en la respiración
+            Enfócate en la sensación de la respiración - cómo el aire entra y sale.
+            ## Observar los pensamientos
+            No intentes detener los pensamientos, simplemente obsérvalos sin juzgar.
+            ## Usar meditaciones guiadas
+            Usa aplicaciones o grabaciones de audio para sesiones guiadas.
+            ## Crear un espacio cómodo
+            Encuentra un lugar tranquilo donde no te molesten.
+            ## Regularidad
+            Medita regularmente, preferiblemente a la misma hora del día.
+            ## Paciencia contigo mismo
+            No te critiques si no puedes concentrarte. Es una parte normal del proceso.
+                    `,
+          mp_article_content_6: 
+            `
+            # Estrategias para mejorar la autoestima
+            ## Practicar la autocompasión
+            Trátate como tratarías a un amigo que necesita apoyo.
+            ## Reconocer tus fortalezas
+            Haz una lista de tus puntos fuertes y logros.
+            ## Establecer metas realistas
+            Fíjate objetivos alcanzables y celebra tus progresos.
+            ## Limitar el diálogo interno negativo
+            Reemplaza pensamientos críticos por otros de apoyo.
+            ## Rodearse de personas positivas
+            Pasa tiempo con personas que te apoyen y te inspiren.
+            ## Cuidado personal
+            Haz regularmente cosas que te traigan alegría y relajación.
+            ## Ayuda profesional
+            Consulta a un psicólogo si la autoestima afecta significativamente tu calidad de vida.
+                    `,
+          mp_article_content_7: 
+            `
+            # Prevención y superación del agotamiento
+            ## Establecer límites
+            Aprende a decir "no" y establece límites saludables.
+            ## Pausas regulares
+            Toma breves descansos durante la jornada laboral.
+            ## Priorizar tareas
+            Enfócate en las tareas más importantes y delega cuando sea posible.
+            ## Buscar significado
+            Encuentra un sentido personal en lo que haces.
+            ## Actividad física
+            El ejercicio regular ayuda a combatir el estrés.
+            ## Apoyo social
+            Habla de tus sentimientos con colegas, amigos o un profesional.
+            ## Recuperar el equilibrio
+            Encuentra tiempo para hobbies y vida personal fuera del trabajo.
+            ## Ayuda profesional
+            No dudes en consultar a un psicólogo o coach.
+                    `,
+          mp_article_not_found: "Artículo no encontrado",
+          mp_article_not_found_desc_1: "El artículo con ID",
+          mp_article_not_found_desc_2: "no existe.",
+          m_long: "Duración de la menstruación (días)",
+          c_long_wh: "Duración del ciclo",
 
           // === DIARIO DE EMOCIONES ===
           mp_aew_notes: "Nota",
@@ -5226,7 +6521,121 @@ i18n
             "Error al cargar los datos. Contacta al soporte técnico.",
           mp_diagram_low: "Bajo",
           mp_diagram_norm: "Normal",
-          mp_diagram_high: "Alto",
+          mp_diagram_high: "Alto",          calendar: "Calendario",
+          calendar_info: "Tu mejor calendario",
+          create_event: "Crear",
+          
+          before_5: "En 5 minutos",
+          before_10: "En 10 minutos",
+          sign_for_doctor: "Cita con el médico",
+          sure_to_delete_event: "¿Está seguro de que desea eliminar el evento?",
+          notification: "Recordatorio",
+          task: "Tarea",
+          meeting: "Reunión",
+          choose_date: "Elegir fecha",
+          choose_time: "Elegir hora",
+          choose_end_time: "Elegir hora de finalización",
+          my_tasks: "Mis tareas",
+          invite_friend: "Invitar a un amigo",
+          link: "Enlace",
+          add_title: "Agregar título",
+          go_to_main_page: "HOGAR",
+
+          // === Premium ===
+          sp_you_already_have_active_subscription: "Ya tienes una suscripción activa",
+          sp_please_login: "Por favor, inicia sesión",
+          sp_active: "Activa",
+          sp_expired: "Expirada",
+          sp_cancelled: "Cancelada",
+          sp_basic_title: "Básica",
+          sp_duration: "/ 30 días",
+          sp_basic_features_1: "Rastreadores",
+          sp_basic_features_2: "Analítica básica",
+          sp_premium_title: "Premium",
+          sp_premium_features_1: "Cursos",
+          sp_premium_features_2: "Planes personalizados",
+          sp_family_title: "Familiar",
+          sp_family_features_1: "Todas las funciones Premium",
+          sp_family_features_2: "Acceso para hasta 3 usuarios",
+          sp_loading: "Cargando...",
+          sp_subscription_title: "Invierte en ti mismo",
+          sp_subscription_sub_title: "Tu mejor proyecto eres tú. Hagámoslo realidad juntos.",
+          sp_subscription_history_label: "Historial de suscripciones",
+          sp_subscription_history_loading: "Cargando historial...",
+          sp_subscription_history_price: "Gratis",
+          sp_subscription_family_title: "Usuarios añadidos",
+          sp_subscription_family_date: "añadido",
+          sp_subscription_history_empty: "Aún no tienes historial de suscripciones",
+          sc_processing: "Procesando...",
+          sc_select: "Seleccionar",
+
+          // === Subscription Payment ===
+          spp_please_input_correct_email: "Por favor, introduce direcciones de correo electrónico válidas",
+          spp_uncnown_subsription_type: "Tipo de suscripción desconocido. Inténtalo de nuevo.",
+          spp_family_sub: "Suscripción familiar",
+          spp_add_email_addresses_of_family_members: "Agrega las direcciones de correo electrónico de los miembros de la familia (hasta 3 personas)",
+          spp_go_to_payment: "Ir al pago",
+
+          // === Subscription Details ===
+          sdp_already_have_active_sub: "ya tiene una suscripción activa",
+          sdp_already_a_member_of_another_family_subscription: "ya es miembro de otra suscripción familiar",
+          sdp_this_is_the_subscription_owner: "este es el propietario de la suscripción",
+          sdp_user_not_found: "Usuario no encontrado",
+          sdp_some_users_could_not_be_added: "Algunos usuarios no pudieron ser añadidos",
+          sdp_family_member_list_successfully_updated: "¡Lista de miembros de la familia actualizada correctamente!",
+          sdp_error_updating_family_users: "Error al actualizar los usuarios familiares: ",
+          sdp_subscription_not_found: "Suscripción no encontrada",
+          sdp_return_to_tariffs: "Volver a los planes",
+          sdp_your_current_subscription: "Tu suscripción actual",
+          sdp_subscription_type: "Tipo de suscripción",
+          sdp_subscription_status: "Estado",
+          sdp_subscription_start_date: "Fecha de inicio",
+          sdp_subscription_end_date: "Válida hasta",
+          sdp_subscription_price: "Precio",
+          sdp_subscription_section_content: "Acceso familiar",
+          sdp_subscription_detail_label: "Tipo de acceso",
+          sdp_subscription_detail_value: "Miembro de familia",
+          sdp_subscription_section_content_title: "Miembros de la familia",
+          sdp_subscription_member_added: "Añadido",
+          sdp_subscription_renew_btn: "Renovar suscripción",
+          sdp_subscription_manage_family_btn: "Gestionar miembros de la familia",
+          sdp_family_modal_instruction: "Agrega o elimina direcciones de correo electrónico de los miembros de la familia",
+          sdp_sub_saving: "Guardando...",
+          sdp_family_member_email: "Correo electrónico del miembro de la familia",
+          payment: "Pago",
+          details: "Detalles",
+
+          // === Success Payment ===
+          ps_payment_success_main_title: "¡GENIAL!",
+          ps_payment_success_title: "PAGO EXITOSO",
+          ps_payment_success_description: "El recibo de pago ha sido enviado a tu correo electrónico",
+          ps_payment_success_btn: "Ir al inicio",
+
+          // Marketplace
+          sport_eating: "Nutrición deportiva",
+          sport_cloth: "Ropa deportiva",
+          sport_gadgets: "Gadgets",
+          sport_other: "Otro",
+          marketplace_filter: "Filtro",
+          brand: "Marca",
+          from: "Desde",
+          to: "Hasta",
+          one_thing: "uds.",
+          put_in_cart: "Añadir al carrito",
+          already_in_cart: "Ya en el carrito",
+          similar_products: "Productos similares",
+          basket_marketplace: "Carrito",
+          sure_to_delete_product_from_cart: "¿Está seguro de que desea eliminar este producto del carrito?",
+          product: "Producto",
+          amount_marketplace: "Cantidad",
+          my_order: "Mi pedido",
+          marketplace_total: "Total",
+          order_details: "Detalles",
+          to_payment: "Ir al pago",
+          order_sum: "Importe",
+          delivery: "Entrega",
+          post_index: "Código postal",
+          shopping_cart: "Carro de la compra",
         },
       },
     },

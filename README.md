@@ -46,9 +46,7 @@ MSSQL_DB=HealthyLifestyleDb
 MSSQL_USER=sa
 
 MSSQL_PORT=1433
-
 JWT_KEY=72O3^G4BUrXY$T:LM*7Asdhtp^vpCt>l1CDK4DMua1<+SaUC4viz\04:HnLkLGSh
-
 JWT_ISSUER=HealthyLifestyleApi
 
 JWT_AUDIENCE=HealthyLifestyleClients
@@ -60,10 +58,9 @@ GOOGLE_CLIENT_ID=596782705647-sa9h8d11i8grjh3jukglih9c9hnsp3co.apps.googleuserco
 GOOGLE_CLIENT_SECRET=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
 MINIO_ACCESS_KEY=VoKSFVKFGlQRLeBJFzNHTJwy
 MINIO_SECRET_KEY=YRs3EsL7BtDHGaIxlBVsBTxGm3rX9m1
-
-MINIO_ACCESS_KEY=VoKSFVKFGlQRLeBJFzNHTJwy
-
-MINIO_SECRET_KEY=YRs3EsL7BtDHGaIxlBVsBTxGm3rX9m1
+STRIPE_PUBLISHABLE_KEY=pk_test_51SJGFYAJhBPBHq3pynSlySBplu7u37A4bPEOZRdq5YjeqZhcyT9FEUhGrwof7EgLUtC6tNlZA0fGBh7W6GLMmWiF00VrnHD8WD
+STRIPE_SECRET_KEY=sk_test_51SJGFYAJhBPBHq3phOEuBBLJl7L4ee6mkmOJtuV4YD7Inzg4r2MGAPLY5nwdwhjjz8oCylBrm0N2MuplDcOBSzhN00B8JWBvqY
+WEBHOOK_SECRET=whsec_9mm2ZUMIHpuspkbji0xTuuzqvYKVX5gN # змінити whsec_... пілся заміни url webhook
 
 Важно: Для продакшн-среды нужно использовать более надежные и безопасные методы управления секретами.
 

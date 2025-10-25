@@ -1,0 +1,95 @@
+/* Existing styles from previous responses */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.no-skills {
+  font-style: italic;
+  color: #888;
+}
+
+/* New styles from provided CSS */
+.box {
+  align-items: flex-start;
+  display: flex;
+  min-width: 697px;
+}
+
+.box .group {
+  display: flex;
+  height: 158px;
+  width: 697px;
+  /* Removed position: fixed and z-index: 1 to avoid layout issues; uncomment if needed */
+  /* position: fixed; */
+  /* z-index: 1; */
+}
+
+.box .div {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  height: 158px;
+  max-width: 650px; /* Adjusted to match .box and .group */
+  margin-top: 30px;
+
+}
+
+
+.box .text-wrapper-exp {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  height: 30px;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: 20;
+  white-space: nowrap;
+  width: 220px;
+  margin-bottom: 20px;
+}
+
+.box .no-work-format {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  height: 104px;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 10px;
+  width: 687px;
+}
+
+/* Added styles for work-format-list and work-format-item */
+.work-format-list {
+  list-style-type: disc;
+  padding-left: 60px;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  text-wrap: 5;
+  white-space: normal;   /* дозволяє перенос рядків */
+  overflow-wrap: break-word; /* переносить довгі слова */
+  word-break: break-word; /* fallback */
+}
+
+.work-format-item {
+  margin-bottom: 6px;
+  
+}
+.no-skills {
+  font-style: italic;
+  color: #888;
+}

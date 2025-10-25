@@ -1,4 +1,5 @@
 ﻿using HealthyLifestyle.Application.DTOs.Shop;
+using HealthyLifestyle.Core.Entities;
 
 namespace HealthyLifestyle.Application.Interfaces.Shop
 {
@@ -10,6 +11,13 @@ namespace HealthyLifestyle.Application.Interfaces.Shop
         /// <param name="id">Ідентифікатор продукту.</param>
         /// <returns>Об'єкт ProductDto, якщо продукт знайдено; інакше null.</returns>
         Task<ProductDto> GetProductByIdAsync(Guid id);
+
+        /// <summary>
+        /// Отримує інформацію про продукт за його ідентифікатором.
+        /// </summary>
+        /// <param name="id">Ідентифікатор продукту.</param>
+        /// <returns>Об'єкт Product, якщо продукт знайдено; інакше null.</returns>
+        Task<Product> GetProductFromDBByIdAsync(Guid id);
 
         /// <summary>
         /// Отримує список усіх продуктів.

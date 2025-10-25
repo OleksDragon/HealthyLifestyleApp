@@ -10,10 +10,14 @@ import LoginPage from "./components/pages/LoginPage";
 import HomePage from "./components/pages/HomePage";
 import DashboardPage from "./components/pages/DashboardPage";
 import ProfilePage from "./components/pages/ProfilePage";
+import SpecialistProfilePage from "./components/pages/SpecialistProfilePage";
 import RestorePasswordPage from "./components/pages/RestorePasswordPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Menu from "./components/elements/Menu";
 import SpecialistsPage from "./components/pages/SpecialistsPage";
+
+import ExpertDetailsPage from "./components/pages/SpecialistPages/ExpertDetailsPage/ExpertDetailsPage";
+
 import ChallengesPage from "./components/pages/social/ChallengesPage";
 import ChallengeDetailsPage from "./components/pages/social/ChallengeDetailsPage";
 import CreateChallengePage from "./components/pages/social/CreateChallengePage";
@@ -52,6 +56,19 @@ import FemaleReproductiveHealthPage from './components/pages/HealthPages/GenderH
 import MaleHealthPage from "./components/pages/HealthPages/GenderHealthPages/MaleHealthPage";
 import MaleHormonesFormPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesFormPage";
 import MaleHormonesDiagramPage from "./components/pages/HealthPages/GenderHealthPages/MaleHormonesDiagramPage";
+import CalendarPage from './components/pages/CalendarPage';
+import NotFoundPage from "./components/pages/NotFoundPage";
+
+import SubscriptionPage from './components/pages/Subscription/SubscriptionPage';
+import SubscriptionDetailsPage from './components/pages/Subscription/SubscriptionDetailsPage';
+import SubscriptionPaymentPage from './components/pages/Subscription/SubscriptionPaymentPage';
+
+import PaymentSuccessPage from "./components/pages/PaymentSuccessPage";
+
+import MarketplacePage from "./components/pages/Marketplace/MarketplacePage";
+import ProductPage from "./components/pages/Marketplace/ProductPage";
+import ShoppingCartPage from "./components/pages/Marketplace/ShoppingCartPage";
+import MarketplacePayment from "./components/pages/Marketplace/MarketplacePayment";
 
 function App() {
   console.log("Using ", process.env.REACT_APP_API_URL, "as API URL");
@@ -84,8 +101,17 @@ function AppRoutes() {
       
       {/* Основные маршруты */}
       <Route path="/dashboard" element={<PrivateRoute><Menu><DashboardPage/></Menu></PrivateRoute>} />
-      <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
+
+
+      <Route path="/specialists" element={<Menu><SpecialistsPage/></Menu>} />
+      <Route path="/specialists/:id" element={<Menu><ExpertDetailsPage/></Menu>} />
+
       <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
+
+      <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
+
+      {/* Профіль спеціалістів */}
+      <Route path="/profile/specialist" element={<PrivateRoute><Menu><SpecialistProfilePage /></Menu></PrivateRoute>} />
 
       {/* Социальные челленджи */}
       <Route path="/social" element={<PrivateRoute><Menu><ChallengesPage /></Menu></PrivateRoute>} />
@@ -126,10 +152,30 @@ function AppRoutes() {
       <Route path="/health/gender/female/examination" element={<PrivateRoute><Menu><HealthPageMenu><FemaleExaminationPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/female/reproductive" element={<PrivateRoute><Menu><HealthPageMenu><FemaleReproductiveHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
 
+      <Route path="/calendar" element={<PrivateRoute><Menu><CalendarPage /></Menu></PrivateRoute>} />
+
       {/* Мужское здоровье */}
       <Route path="/health/gender/male" element={<PrivateRoute><Menu><HealthPageMenu><MaleHealthPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/male/hormonas" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesFormPage /></HealthPageMenu></Menu></PrivateRoute>} />
       <Route path="/health/gender/male/hormonas_diagram" element={<PrivateRoute><Menu><HealthPageMenu><MaleHormonesDiagramPage /></HealthPageMenu></Menu></PrivateRoute>} />
+
+      {/* Подписки */}
+      <Route path="/premium" element={<PrivateRoute><Menu><SubscriptionPage /></Menu></PrivateRoute>} />
+      <Route path="/premium/details" element={<PrivateRoute><Menu><SubscriptionDetailsPage /></Menu></PrivateRoute>} />
+      <Route path="/premium/payment" element={<PrivateRoute><Menu><SubscriptionPaymentPage /></Menu></PrivateRoute>} />
+
+      {/* Success and canceled payment */}
+      <Route path="/success" element={<PrivateRoute><Menu><PaymentSuccessPage /></Menu></PrivateRoute>} />
+
+      {/* Магазин */}
+      <Route path="/marketplace" element={<PrivateRoute><Menu><MarketplacePage /></Menu></PrivateRoute>} />
+      <Route path="/marketplace/product" element={<PrivateRoute><Menu><ProductPage /></Menu></PrivateRoute>} />
+      <Route path="/marketplace/shopping_cart" element={<PrivateRoute><Menu><ShoppingCartPage /></Menu></PrivateRoute>} />
+      <Route path="/marketplace/payment" element={<PrivateRoute><Menu><MarketplacePayment /></Menu></PrivateRoute>} />
+
+      {/* Not found */}
+      <Route path="*" element={<NotFoundPage />} />
+      
     </Routes>
   );
 }

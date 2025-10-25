@@ -297,8 +297,7 @@
     justify-content: center;
 }
 
-.sdp-subscription-manage-family-btn,
-.sdp-subscription-renew-btn {
+.sdp-subscription-manage-family-btn {
     border: none;
     height: 47px;
     margin-top: -15px;
@@ -322,13 +321,7 @@
     transform: translateY(-2px);
 }
 
-.sdp-subscription-renew-btn:hover {
-    background: var(--lim);
-    transform: translateY(-2px);
-}
-
-.sdp-subscription-manage-family-btn:disabled,
-.sdp-subscription-renew-btn:disabled {
+.sdp-subscription-manage-family-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none !important;
@@ -558,4 +551,278 @@
     opacity: 0.6;
     cursor: not-allowed;
     transform: none !important;
+}
+
+/* Мобільна версія для SubscriptionDetailsPage */
+@media (max-width: 431px) {
+    .sdp-subscription-details-main-page {
+        max-width: 100%;
+        margin-left: 0;
+        padding: 0 15px;
+    }
+
+    .sdp-subscription-details-page {
+        max-height: none;
+        margin-top: 0;
+    }
+
+    .sdp-subscription-details-page-no-item {
+        transform: translateY(20%);
+    }
+
+    .sdp-subscription-no-subscription {
+        width: 100%;
+        border-radius: 25px;
+        padding: 40px 20px;
+    }
+
+    .sdp-subscription-back-btn {
+        width: 100%;
+        max-width: 280px;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .sdp-subscription-details-card {
+        border-radius: 25px;
+        padding: 20px 20px 0 20px;
+        height: auto;
+        min-height: 550px;
+        margin-bottom: 20px;
+    }
+
+    .sdp-subscription-card-blur {
+        border-radius: 25px;
+    }
+
+    .sdp-subscription-card-content h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .sdp-subscription-details-content {
+        min-height: 350px;
+        max-height: 600px;
+        width: 100%;
+    }
+
+    .sdp-subscription-details-content-wrapper {
+        width: 100%;
+    }
+
+    .sdp-subscription-details-section {
+        border-radius: 20px;
+        margin-bottom: 12px;
+    }
+
+    .sdp-subscription-section-blur {
+        border-radius: 20px;
+    }
+
+    .sdp-subscription-section-content {
+        padding: 20px;
+    }
+
+    .sdp-subscription-section-content h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .sdp-subscription-details-grid {
+        gap: 12px;
+    }
+
+    .sdp-subscription-detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        padding: 10px 0;
+    }
+
+    .sdp-subscription-detail-label {
+        font-size: 15px;
+    }
+
+    .sdp-subscription-detail-value {
+        font-size: 15px;
+    }
+
+    .sdp-subscription-detail-value.sdp-subscription-status {
+        font-size: 0.8rem;
+        padding: 3px 10px;
+    }
+
+    .sdp-subscription-family-members-list {
+        gap: 10px;
+    }
+
+    .sdp-family-member-content {
+        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .sdp-subscription-member-email {
+        font-size: 14px;
+    }
+
+    .sdp-subscription-member-added {
+        font-size: 0.8rem;
+    }
+
+    .sdp-subscription-actions {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .sdp-subscription-manage-family-btn{
+        max-width: 100%;
+        height: 50px;
+        padding: 13px 0;
+        margin-top: 0;
+        font-size: 16px;
+    }
+
+    .sdp-subscription-loading {
+        height: 300px;
+        font-size: 1.1rem;
+    }
+
+    .sdp-subscription-loading:after {
+        width: 40px;
+        height: 40px;
+    }
+
+    .sdp-family-modal-overlay {
+        padding: 15px;
+    }
+
+    .sdp-family-modal {
+        border-radius: 25px;
+        max-width: 100%;
+    }
+
+    .sdp-family-modal-blur {
+        border-radius: 25px;
+    }
+
+    .sdp-family-modal-content-wrapper {
+        padding: 25px 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 400px;
+    }
+
+    .sdp-family-modal-instruction {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .sdp-family-email-inputs {
+        gap: 12px;
+        margin-bottom: 20px;
+        flex: 1;
+    }
+
+    .sdp-family-email-input {
+        height: 45px;
+        font-size: 15px;
+        padding: 0 15px;
+    }
+
+    .sdp-family-email-input::placeholder {
+        font-size: 14px;
+    }
+
+    .sdp-family-modal-actions {
+        flex-direction: column-reverse;
+        gap: 12px;
+        margin-top: 0;
+    }
+
+    .sdp-family-modal-actions .sdp-family-cancel-btn,
+    .sdp-family-modal-actions .sdp-family-save-btn {
+        width: 100%;
+        min-width: auto;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .ns-back-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px 0;
+    }
+
+    .ns-back-button span {
+        font-size: 14px;
+    }
+
+    .sdp-subscription-details-content::-webkit-scrollbar {
+        width: 6px;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .sdp-subscription-details-main-page {
+        padding: 0 10px;
+    }
+
+    .sdp-subscription-details-card {
+        padding: 15px 15px 0 15px;
+        min-height: 520px;
+    }
+
+    .sdp-subscription-card-content h2 {
+        font-size: 20px;
+    }
+
+    .sdp-subscription-details-content {
+        min-height: 320px;
+        max-height: 460px;
+    }
+
+    .sdp-subscription-section-content {
+        padding: 15px;
+    }
+
+    .sdp-subscription-section-content h3 {
+        font-size: 16px;
+    }
+
+    .sdp-subscription-detail-label {
+        font-size: 14px;
+    }
+
+    .sdp-subscription-detail-value {
+        font-size: 14px;
+    }
+
+    .sdp-subscription-manage-family-btn {
+        height: 48px;
+        font-size: 15px;
+    }
+
+    .sdp-family-modal-content-wrapper {
+        padding: 20px 15px;
+        min-height: 380px;
+    }
+
+    .sdp-family-modal-instruction {
+        font-size: 15px;
+    }
+
+    .sdp-family-email-input {
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .sdp-family-modal-actions .sdp-family-cancel-btn,
+    .sdp-family-modal-actions .sdp-family-save-btn {
+        height: 42px;
+        font-size: 14px;
+    }
 }

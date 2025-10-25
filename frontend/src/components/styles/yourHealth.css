@@ -280,7 +280,6 @@
         padding-bottom: 20px;
     }
 
-    /* Прибираємо скролбар на мобільних */
     .yh-health-column-container::-webkit-scrollbar {
         display: none;
     }
@@ -363,7 +362,6 @@
         margin-bottom: 5px;
     }
 
-    /* Специфічні коригування для кожного блоку */
     .a-health-info-block .yh-health-block-content {
         padding-left: 120px;
     }

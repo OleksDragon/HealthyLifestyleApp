@@ -188,3 +188,113 @@
     cursor: not-allowed;
     transform: none !important;
 }
+
+/* Мобільна версія для SubscriptionPaymentPage */
+@media (max-width: 431px) {
+    .spp-subscription-payment-main-page {
+        padding: 15px;
+        min-height: 100vh;
+        justify-content: flex-start;
+    }
+
+    .spp-back-button {
+        margin-left: 0;
+        margin-bottom: 0;
+        padding: 10px 0;
+        align-self: flex-start;
+    }
+
+    .spp-back-button span {
+        font-size: 14px;
+    }
+
+    .spp-form-container {
+        width: 100%;
+    }
+
+    .spp-family-modal {
+        border-radius: 25px;
+        max-width: 100%;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .spp-family-modal-blur {
+        border-radius: 25px;
+    }
+
+    .spp-family-modal-content-wrapper {
+        padding: 25px 20px;
+    }
+
+    .spp-family-modal-content h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .spp-family-modal-instruction {
+        font-size: 16px;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+
+    .spp-family-email-inputs {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .spp-family-email-input {
+        height: 45px;
+        font-size: 15px;
+        padding: 0 15px;
+    }
+
+    .spp-family-email-input::placeholder {
+        font-size: 14px;
+    }
+
+    .spp-family-modal-actions {
+        margin-top: 25px;
+    }
+
+    .spp-family-save-btn {
+        height: 50px;
+        font-size: 16px;
+        min-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .spp-subscription-payment-main-page {
+        padding: 10px;
+    }
+
+    .spp-family-modal-content-wrapper {
+        padding: 20px 15px;
+    }
+
+    .spp-family-modal-content h2 {
+        font-size: 20px;
+    }
+
+    .spp-family-modal-instruction {
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+    .spp-family-email-input {
+        height: 42px;
+        font-size: 14px;
+        padding: 0 12px;
+    }
+
+    .spp-family-email-input::placeholder {
+        font-size: 13px;
+    }
+
+    .spp-family-save-btn {
+        height: 48px;
+        font-size: 15px;
+    }
+}

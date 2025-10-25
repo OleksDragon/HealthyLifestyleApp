@@ -99,80 +99,80 @@ const SubscriptionPaymentPage = () => {
 
     return (
         <div className="spp-subscription-payment-main-page">
-        <div className="spp-back-button" onClick={() => navigate('/premium')}>
-            <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 23.0703L3 12.5703L11 2.07031" stroke="white" strokeWidth="4" />
-            </svg>
-            <span>{t("mp_return_back")}</span>
-        </div>
+            <div className="spp-back-button" onClick={() => navigate('/premium')}>
+                <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 23.0703L3 12.5703L11 2.07031" stroke="white" strokeWidth="4" />
+                </svg>
+                <span>{t("mp_return_back")}</span>
+            </div>
 
-        <div className="spp-family-modal">
-            <div
-            className={`spp-family-modal-blur ${
-                familyEmails.some(email => email.trim() !== '')
-                ? 'spp-family-modal-blur-active'
-                : ''
-            }`}
-            ></div>
+            <div className="spp-family-modal">
+                <div
+                className={`spp-family-modal-blur ${
+                    familyEmails.some(email => email.trim() !== '')
+                    ? 'spp-family-modal-blur-active'
+                    : ''
+                }`}
+                ></div>
 
-            <div className="spp-family-modal-content-wrapper">
-            <div className="spp-family-modal-content">
-                <h2 style={{ textAlign: "center", color: "white", marginBottom: "15px" }}>
-                {t("spp_family_sub")}
-                </h2>
-                <p className="spp-family-modal-instruction">
-                {t("spp_add_email_addresses_of_family_members")}
-                </p>
+                <div className="spp-family-modal-content-wrapper">
+                <div className="spp-family-modal-content">
+                    <h2 style={{ textAlign: "center", color: "white", marginBottom: "15px" }}>
+                    {t("spp_family_sub")}
+                    </h2>
+                    <p className="spp-family-modal-instruction">
+                    {t("spp_add_email_addresses_of_family_members")}
+                    </p>
 
-                <div className="spp-family-email-inputs">
-                {familyEmails.map((email, index) => (
-                    <div key={index} className="spp-family-email-input-group">
-                    <input
-                        type="email"
-                        placeholder={`${t("sdp_family_member_email")} ${index + 1}`}
-                        value={email}
-                        onChange={(e) => handleFamilyEmailChange(index, e.target.value)}
-                        className={`spp-family-email-input ${
-                        email.trim() !== '' ? 'spp-family-email-input-active' : ''
-                        } ${
-                        !emailValidity[index] && email.trim() !== ''
-                            ? 'spp-family-email-input-invalid'
-                            : ''
-                        }`}
-                        disabled={loading}
-                        style={{
-                        color:
-                            emailValidity[index] || email.trim() === ''
-                            ? 'var(--white)'
-                            : 'red',
-                        border:
-                            emailValidity[index] || email.trim() === ''
-                            ? 'none'
-                            : '2px solid red',
-                        }}
-                    />
+                    <div className="spp-family-email-inputs">
+                    {familyEmails.map((email, index) => (
+                        <div key={index} className="spp-family-email-input-group">
+                        <input
+                            type="email"
+                            placeholder={`${t("sdp_family_member_email")} ${index + 1}`}
+                            value={email}
+                            onChange={(e) => handleFamilyEmailChange(index, e.target.value)}
+                            className={`spp-family-email-input ${
+                            email.trim() !== '' ? 'spp-family-email-input-active' : ''
+                            } ${
+                            !emailValidity[index] && email.trim() !== ''
+                                ? 'spp-family-email-input-invalid'
+                                : ''
+                            }`}
+                            disabled={loading}
+                            style={{
+                            color:
+                                emailValidity[index] || email.trim() === ''
+                                ? 'var(--white)'
+                                : 'red',
+                            border:
+                                emailValidity[index] || email.trim() === ''
+                                ? 'none'
+                                : '2px solid red',
+                            }}
+                        />
+                        </div>
+                    ))}
                     </div>
-                ))}
-                </div>
 
-                <div className="spp-family-modal-actions">
-                <button
-                    className="spp-family-save-btn"
-                    onClick={handleContinueToPayment}
-                    disabled={
-                    loading ||
-                    familyEmails.some(
-                        (email, index) =>
-                        email.trim() !== '' && !emailValidity[index]
-                    )
-                    }
-                >
-                    {loading ? t("sc_processing") : t("spp_go_to_payment")}
-                </button>
+                    <div className="spp-family-modal-actions">
+                    <button
+                        className="spp-family-save-btn"
+                        onClick={handleContinueToPayment}
+                        disabled={
+                        loading ||
+                        familyEmails.some(
+                            (email, index) =>
+                            email.trim() !== '' && !emailValidity[index]
+                        )
+                        }
+                    >
+                        {loading ? t("sc_processing") : t("spp_go_to_payment")}
+                    </button>
+                    </div>
+                </div>
                 </div>
             </div>
-            </div>
-        </div>
         </div>
     );
 };

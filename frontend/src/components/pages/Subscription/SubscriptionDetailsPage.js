@@ -67,18 +67,6 @@ const SubscriptionDetailsPage = () => {
         }
     }, [userId, token, emailRegex]);
 
-    // Перевіряємо чи потрібно показувати кнопку продовження (залишилось <= 5 днів)
-    const shouldShowRenewButton = () => {
-        if (!currentSubscription || !hasActiveSubscription() || currentSubscription.IsFamilyMember) return false;
-        
-        const endDate = new Date(currentSubscription.EndDate || currentSubscription.endDate);
-        const today = new Date();
-        const timeDiff = endDate.getTime() - today.getTime();
-        const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        
-        return daysDiff <= 5;
-    };
-
     // Функції для роботи з підпискою
     const updateFamilyMembers = async (subscriptionId, memberEmails) => {
         try {
@@ -102,14 +90,6 @@ const SubscriptionDetailsPage = () => {
             }
             throw error;
         }
-    };
-
-    const handleRenewSubscription = () => {
-        if (!currentSubscription) return;
-
-        // Перенаправляємо на сторінку оплати з ID підписки
-        const subscriptionId = currentSubscription.Id || currentSubscription.id;
-        navigate(`/premium/payment?subscriptionId=${subscriptionId}`);
     };
 
     const handleManageFamily = () => {
@@ -340,16 +320,6 @@ const SubscriptionDetailsPage = () => {
                             {/* Дії з підпискою - показуємо тільки для ВЛАСНИКІВ підписки */}
                             {!currentSubscription.IsFamilyMember && (
                                 <div className="sdp-subscription-actions">
-                                    {/* Продовжити підписку */}
-                                    {shouldShowRenewButton() && (
-                                        <button 
-                                            className="sdp-subscription-renew-btn"
-                                            onClick={handleRenewSubscription}
-                                        >
-                                            {t("sdp_subscription_renew_btn")}
-                                        </button>
-                                    )}
-                                    
                                     {/* Керувати членами сім'ї - тільки для сімейної підписки */}
                                     {(currentSubscription.Type === 'Family' || currentSubscription.type === 'Family') && (
                                         <button 

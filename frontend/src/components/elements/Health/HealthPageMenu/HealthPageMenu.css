@@ -81,7 +81,7 @@
 
     .mobile-health-nav {
         position: relative;
-        z-index: 1000;
+        z-index: 100;
     }
 
     /* Health Burger Menu Button */
@@ -145,7 +145,7 @@
         right: 0;
         margin: 10px -10px 0 0;
         min-width: 200px;
-        z-index: 1001;
+        z-index: 100;
     }
 
     .health-burger-content {
@@ -238,7 +238,7 @@
 
 @media (max-width: 431px) {
     .health-container {
-        z-index: 999;
+        z-index: 100;
     }
     
     .mobile-health-nav {

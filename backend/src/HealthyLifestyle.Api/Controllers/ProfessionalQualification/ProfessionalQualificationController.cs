@@ -65,7 +65,7 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
         /// - <see cref="Unauthorized(object)"/> при відсутності автентифікації.
         /// </returns>
         [HttpPost("apply")]
-        [Authorize(Roles = $"{RoleNames.User},{RoleNames.Dietitian},{RoleNames.Doctor},{RoleNames.Psychologist},{RoleNames.Trainer}")]
+        [Authorize(Roles = $"{RoleNames.Admin},{RoleNames.User},{RoleNames.Dietitian},{RoleNames.Doctor},{RoleNames.Psychologist},{RoleNames.Trainer}")]
         [ProducesResponseType(typeof(ProfessionalQualificationDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -164,6 +164,55 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
 
             if (result == null)
                 return NotFound("Кваліфікація не знайдена або оновлення не вдалося.");
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Оновлює дані професійної кваліфікації.
+        /// Доступно для власника кваліфікації та адміністратора.
+        /// </summary>
+        /// <param name="qualificationId">Ідентифікатор кваліфікації.</param>
+        /// <param name="request">DTO з новими даними кваліфікації.</param>
+        /// <returns>
+        /// - <see cref="Ok(object)"/> з оновленими даними кваліфікації при успіху.
+        /// - <see cref="BadRequest(object)"/> при невалідних даних.
+        /// - <see cref="NotFound(object)"/> якщо кваліфікація не знайдена.
+        /// - <see cref="StatusCode(StatusCodes.Status403Forbidden, object)"/> при недостатніх правах доступу.
+        /// - <see cref="Unauthorized(object)"/> при відсутності автентифікації.
+        /// </returns>
+        [HttpPut("{qualificationId}")]
+        [Authorize(Roles = $"{RoleNames.Admin},{RoleNames.User},{RoleNames.Dietitian},{RoleNames.Doctor},{RoleNames.Psychologist},{RoleNames.Trainer}")]
+        [ProducesResponseType(typeof(UserProfessionalQualificationDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> UpdateQualification(Guid qualificationId, [FromBody] UpdateProfessionalQualificationDto request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!Guid.TryParse(userIdString, out var userId))
+                return Unauthorized("Невірний ідентифікатор користувача в токені.");
+
+            // Перевіряємо, чи існує кваліфікація та чи має користувач право її редагувати
+            var qualification = await _qualificationService.GetQualificationByIdAsync(qualificationId);
+            if (qualification == null)
+                return NotFound("Кваліфікація не знайдена.");
+
+            // Перевіряємо права доступу: власник або адміністратор
+            var isAdmin = User.IsInRole(RoleNames.Admin);
+            var isOwner = qualification.UserId == userId;
+
+            if (!isAdmin && !isOwner)
+                return StatusCode(StatusCodes.Status403Forbidden, "Недостатньо прав для оновлення цієї кваліфікації.");
+
+            var result = await _qualificationService.UpdateProfessionalQualificationAsync(qualificationId, request);
+
+            if (result == null)
+                return BadRequest("Не вдалося оновити кваліфікацію.");
 
             return Ok(result);
         }

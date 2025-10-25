@@ -17,7 +17,7 @@ namespace HealthyLifestyle.Application.Interfaces.ObjectStorage
         /// </summary>
         /// <param name="objectName">Имя файла (объекта) в хранилище.</param>
         /// <returns>Поток данных файла.</returns>
-        Task<Stream> GetFileAsync(string objectName);
+        Task<Stream> GetFileAsync(string objectName, CancellationToken cancellationToken);
 
         /// <summary>
         /// Удаляет файл по его URL.

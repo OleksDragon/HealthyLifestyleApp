@@ -436,12 +436,25 @@ namespace HealthyLifestyle.Api.Controllers.ImageUpload
                     return BadRequest(new { message = "ID спеціаліста є обов'язковим" });
                 }
 
+                _logger.LogInformation("🖼️ [UPLOAD] Початок завантаження фото для спеціаліста {SpecialistId}, тип: {ImageType}", specialistId, imageType);
+
                 // Upload the image
                 var result = await _specialistImageService.UploadSpecialistImageByIdAsync(file, specialistId, imageType);
+                _logger.LogInformation("🖼️ [UPLOAD] Зображення завантажено: {ImageUrl}", result.ImageUrl);
+                
+                // Remove MinIO prefix before saving to database
+                var cleanImageUrl = result.ImageUrl;
+                if (cleanImageUrl.StartsWith("minio:9000/images/"))
+                {
+                    cleanImageUrl = cleanImageUrl.Substring("minio:9000/images/".Length);
+                    _logger.LogInformation("🖼️ [UPLOAD] Очищено URL зображення: {CleanUrl}", cleanImageUrl);
+                }
                 
                 // Save URL to database
-                var savedToDatabase = await _databaseService.SaveImageUrlToDatabase(specialistId, result.ImageUrl, imageType);
+                _logger.LogInformation("🖼️ [UPLOAD] Зберігаємо URL в БД для спеціаліста {SpecialistId}: {ImageUrl}", specialistId, cleanImageUrl);
+                var savedToDatabase = await _databaseService.SaveImageUrlToDatabase(specialistId, cleanImageUrl, imageType);
                 var entityType = savedToDatabase ? await _databaseService.GetEntityTypeForSpecialist(specialistId) : null;
+                _logger.LogInformation("🖼️ [UPLOAD] Результат збереження в БД: {Saved}, тип сутності: {EntityType}", savedToDatabase, entityType);
                 
                 // Update response with database save status
                 result.SavedToDatabase = savedToDatabase;
@@ -479,6 +492,7 @@ namespace HealthyLifestyle.Api.Controllers.ImageUpload
         [ProducesResponseType(typeof(FileResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any, NoStore = false)]
         public async Task<IActionResult> GetImage(string imagePath)
         {
             try
@@ -500,7 +514,8 @@ namespace HealthyLifestyle.Api.Controllers.ImageUpload
                 Stream fileStream;
                 try
                 {
-                    fileStream = await objectStorageService.GetFileAsync(decodedPath);
+                    var ct = HttpContext.RequestAborted;
+                    fileStream = await objectStorageService.GetFileAsync(decodedPath, ct);
                     _logger.LogInformation("🖼️ [IMAGE_PROXY] Файл успішно завантажено з MinIO, розмір: {Size} байт", fileStream.Length);
                 }
                 catch (FileNotFoundException)
@@ -511,7 +526,8 @@ namespace HealthyLifestyle.Api.Controllers.ImageUpload
                     {
                         alternativePath = decodedPath.Replace("images/specialistsImages/", "images/images/specialistsImages/");
                         _logger.LogInformation("🖼️ [IMAGE_PROXY] Спробуємо альтернативний шлях: {AlternativePath}", alternativePath);
-                        fileStream = await objectStorageService.GetFileAsync(alternativePath);
+                        var ct = HttpContext.RequestAborted;
+                        fileStream = await objectStorageService.GetFileAsync(alternativePath, ct);
                         _logger.LogInformation("🖼️ [IMAGE_PROXY] Файл знайдено за альтернативним шляхом, розмір: {Size} байт", fileStream.Length);
                     }
                     else
@@ -524,8 +540,9 @@ namespace HealthyLifestyle.Api.Controllers.ImageUpload
                 var contentType = GetContentTypeFromPath(decodedPath);
                 _logger.LogInformation("🖼️ [IMAGE_PROXY] Визначено тип контенту: {ContentType}", contentType);
                 
-                // Return file with appropriate content type
+                // Return file with appropriate content type and caching headers
                 _logger.LogInformation("🖼️ [IMAGE_PROXY] Успішно повертаємо файл клієнту");
+                Response.Headers.CacheControl = "public, max-age=300";
                 return File(fileStream, contentType);
             }
             catch (FileNotFoundException)

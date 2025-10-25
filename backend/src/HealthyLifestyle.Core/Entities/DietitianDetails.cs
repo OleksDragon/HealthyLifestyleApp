@@ -117,7 +117,9 @@ namespace HealthyLifestyle.Core.Entities
             decimal? hourlyRate = null,
             string? clientTestimonials = null)
         {
-            Specializations = specializations ?? Specializations;
+            // Оновлюємо спеціалізації (включаючи порожній масив)
+            Specializations = specializations ?? new List<string>();
+            
             NutritionalApproach = nutritionalApproach ?? NutritionalApproach;
 
             UpdateProfessionalLicenseNumber(professionalLicenseNumber);
@@ -126,7 +128,10 @@ namespace HealthyLifestyle.Core.Entities
             UpdateContactPhone(contactPhone);
             UpdateWebsite(website);
             UpdateYearsOfExperience(yearsOfExperience);
-            UpdateCertifications(certifications ?? Certifications);
+            
+            // Оновлюємо сертифікати (включаючи порожній масив)
+            UpdateCertifications(certifications ?? new List<string>());
+            
             UpdateAvailability(availability);
             if (hourlyRate.HasValue) UpdateHourlyRate(hourlyRate.Value);
             UpdateClientTestimonials(clientTestimonials);

@@ -117,8 +117,12 @@ namespace HealthyLifestyle.Core.Entities
             decimal? hourlyRate = null,
             string? clientTestimonials = null)
         {
-            TrainingStyle = trainingStyle ?? TrainingStyle;
-            PreferredWorkoutStyles = preferredWorkoutStyles ?? PreferredWorkoutStyles;
+            // Оновлюємо стилі тренувань ТІЛЬКИ якщо значення передані (не перетираємо при null)
+            if (trainingStyle != null)
+                TrainingStyle = trainingStyle;
+
+            if (preferredWorkoutStyles != null)
+                PreferredWorkoutStyles = preferredWorkoutStyles;
 
             UpdateProfessionalLicenseNumber(professionalLicenseNumber);
             UpdateBiography(biography ?? Biography);
@@ -126,7 +130,11 @@ namespace HealthyLifestyle.Core.Entities
             UpdateContactPhone(contactPhone);
             UpdateWebsite(website);
             UpdateYearsOfExperience(yearsOfExperience);
-            UpdateCertifications(certifications ?? Certifications);
+
+            // Оновлюємо сертифікати тільки якщо передані; інакше залишаємо попередні
+            if (certifications != null)
+                UpdateCertifications(certifications);
+
             UpdateAvailability(availability);
             if (hourlyRate.HasValue) UpdateHourlyRate(hourlyRate.Value);
             UpdateClientTestimonials(clientTestimonials);

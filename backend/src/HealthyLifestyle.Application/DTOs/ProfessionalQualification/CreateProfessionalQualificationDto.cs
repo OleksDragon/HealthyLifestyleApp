@@ -34,16 +34,16 @@ namespace HealthyLifestyle.Application.DTOs.ProfessionalQualification
         /// <summary>
         /// Формати роботи спеціаліста (наприклад, онлайн, офлайн, корекції плану тощо).
         /// </summary>
-        public List<string>? WorkFormat { get; set; }
+        public List<string> WorkFormat { get; set; } = new List<string>();
 
-        /// <summary>
-        /// URL до підтверджуючих документів або сертифікатів.
-        /// Може бути null, але якщо вказано, має бути валідною URL-адресою.
-        /// Максимальна довжина — 500 символів.
-        /// </summary>
-        [Url(ErrorMessage = "URL сертифікатів має бути валідною адресою.")]
-        [StringLength(500, ErrorMessage = "URL сертифікатів не може перевищувати 500 символів.")]
-        public string? CertificatesUrl { get; set; }
+        // /// <summary>
+        // /// URL до підтверджуючих документів або сертифікатів.
+        // /// Може бути null, але якщо вказано, має бути валідною URL-адресою.
+        // /// Максимальна довжина — 500 символів.
+        // /// </summary>
+        // //[Url(ErrorMessage = "URL сертифікатів має бути валідною адресою.")]
+        // [StringLength(500, ErrorMessage = "URL сертифікатів не може перевищувати 500 символів.")]
+        // public string? CertificatesUrl { get; set; }
         #endregion
     }
 }

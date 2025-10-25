@@ -1,0 +1,40 @@
+.sp-save-button-wrapper {
+  width: 100%;
+}
+
+.sp-save-button {
+  background-color: #ffffff66;
+  border-radius: 100px;
+  height: 75px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-save-button-active {
+  background-color: var(--variable-collection-lim);
+  color: #333;
+}
+
+.sp-save-button-active:hover:not(:disabled) {
+  background-color: #b8e600;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(214, 255, 0, 0.3);
+}
+
+.sp-save-button-text {
+  color: inherit;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sp-save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}

@@ -43,21 +43,29 @@ namespace HealthyLifestyle.Infrastructure.Services
                 // Update the appropriate details entity
                 if (trainer != null)
                 {
+                    _logger.LogInformation("Знайдено TrainerDetails з ID: {SpecialistId}, оновлюємо CardPictureUrl з '{OldUrl}' на '{NewUrl}'", 
+                        specialistId, trainer.CardPictureUrl, imageUrl);
                     trainer.UpdateCardPictureUrl(imageUrl);
                     _logger.LogInformation("Оновлено CardPictureUrl для TrainerDetails з ID: {SpecialistId}", specialistId);
                 }
                 else if (doctor != null)
                 {
+                    _logger.LogInformation("Знайдено DoctorDetails з ID: {SpecialistId}, оновлюємо CardPictureUrl з '{OldUrl}' на '{NewUrl}'", 
+                        specialistId, doctor.CardPictureUrl, imageUrl);
                     doctor.UpdateCardPictureUrl(imageUrl);
                     _logger.LogInformation("Оновлено CardPictureUrl для DoctorDetails з ID: {SpecialistId}", specialistId);
                 }
                 else if (dietitian != null)
                 {
+                    _logger.LogInformation("Знайдено DietitianDetails з ID: {SpecialistId}, оновлюємо CardPictureUrl з '{OldUrl}' на '{NewUrl}'", 
+                        specialistId, dietitian.CardPictureUrl, imageUrl);
                     dietitian.UpdateCardPictureUrl(imageUrl);
                     _logger.LogInformation("Оновлено CardPictureUrl для DietitianDetails з ID: {SpecialistId}", specialistId);
                 }
                 else if (psychologist != null)
                 {
+                    _logger.LogInformation("Знайдено PsychologistDetails з ID: {SpecialistId}, оновлюємо CardPictureUrl з '{OldUrl}' на '{NewUrl}'", 
+                        specialistId, psychologist.CardPictureUrl, imageUrl);
                     psychologist.UpdateCardPictureUrl(imageUrl);
                     _logger.LogInformation("Оновлено CardPictureUrl для PsychologistDetails з ID: {SpecialistId}", specialistId);
                 }

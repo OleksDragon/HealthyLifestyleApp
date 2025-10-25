@@ -324,7 +324,7 @@ namespace HealthyLifestyle.Application.Services.ImageUpload
             // Конвертуємо українські імена в англійські для зберігання файлів
             var englishName = ConvertUkrainianToEnglish(specialistName);
             var cleanSpecialistName = englishName.Replace(" ", "_").Replace("'", "").Replace("-", "_").ToLowerInvariant();
-            return $"specialists/{cleanSpecialistName}_{imageType}{extension}";
+            return $"images/specialistsImages/{cleanSpecialistName}_{imageType}{extension}";
         }
 
         /// <summary>
@@ -409,7 +409,8 @@ namespace HealthyLifestyle.Application.Services.ImageUpload
         {
             // Use specialist ID for filename generation
             var cleanId = specialistId.ToString("N"); // Remove hyphens
-            return $"specialists/{cleanId}_{imageType}{extension}";
+            //return $"specialistsIma/{cleanId}_{imageType}{extension}";
+            return $"images/specialistsImages/{cleanId}_{imageType}{extension}";
         }
 
         #endregion

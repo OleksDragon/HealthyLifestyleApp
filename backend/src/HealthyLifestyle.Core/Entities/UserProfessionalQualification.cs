@@ -119,12 +119,14 @@ namespace HealthyLifestyle.Core.Entities
         /// <param name="description">Опис кваліфікації.</param>
         /// <param name="certificatesUrl">URL-адреса сертифікатів (опціонально).</param>
         /// <param name="hourlyRate">Погодинна ставка (опціонально).</param>
+        /// <param name="workFormat">Формати роботи спеціаліста (опціонально).</param>
         public UserProfessionalQualification(
             Guid userId,
             Guid professionalRoleTypeId,
             string description,
             string? certificatesUrl,
-            decimal? hourlyRate)
+            decimal? hourlyRate,
+            List<string>? workFormat = null)
             : base(Guid.NewGuid())
         {
             UserId = userId;
@@ -132,6 +134,7 @@ namespace HealthyLifestyle.Core.Entities
             Description = description;
             CertificatesUrl = certificatesUrl;
             HourlyRate = hourlyRate;
+            WorkFormat = workFormat ?? new List<string>();
             Status = QualificationStatus.Pending;
             ApplicationDate = DateTime.UtcNow;
         }

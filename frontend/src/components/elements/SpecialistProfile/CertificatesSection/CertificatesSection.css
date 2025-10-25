@@ -1,0 +1,202 @@
+.sp-certificates-section {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  padding: 20px;
+}
+
+.sp-certificates-section h3 {
+  color: #ffffff;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+.sp-certificate-item {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sp-certificate-item span {
+  color: #ffffff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 14px;
+}
+
+.sp-certificate-item button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sp-add-certificate-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+  padding: 5px;
+}
+.sp-add-certificate-button:hover {
+  
+  color: var(--bl);
+  
+}
+.sp-certificate-input {
+  display: none;
+}
+/*Секція сертифікатів (посередині) */
+.sp-certificates-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sp-certificates-section {
+  backdrop-filter: blur(10.0px) saturate(103.5%);
+   
+  background-color: #ffffff66;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  padding: 20px;
+  min-height: 272px;
+  font-weight: 500;
+}
+
+.sp-certificates-section h3 {
+  color: #ffffff;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.sp-certificates-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.sp-certificate-item {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: max-content;
+}
+
+.sp-certificate-item span {
+  color: #ffffff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.sp-certificate-remove {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-certificate-remove:hover {
+  color: var(--bl) !important;
+}
+.sp-add-certificate-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  text-align: left;
+}
+
+.sp-add-certificate-button:hover {
+  color: var(--bl);
+}
+
+/* Стилі для поля введення нового сертифіката */
+.sp-certificate-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sp-certificate-text-input {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 20px;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sp-certificate-text-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sp-certificate-text-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.sp-certificate-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.sp-add-certificate-confirm,
+.sp-add-certificate-cancel {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sp-add-certificate-confirm:hover {
+  background-color: var(--bl);
+}
+
+.sp-add-certificate-confirm:disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+.sp-add-certificate-cancel:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}

@@ -7,6 +7,8 @@ import card5Img from '../../../../assets/specialists-img/card-5.png';
 import card2Img from '../../../../assets/specialists-img/card-2.png';
 import card3Img from '../../../../assets/specialists-img/card-3.png';
 import card6Img from '../../../../assets/specialists-img/card-6.png';
+
+import card7Img from '../../../../assets/specialists-img/img_not_found.png';
 import { useTranslation } from 'react-i18next';
 import { SolarHeartLinear } from '../SolarHeartLinear/SolarHeartLinear';
 
@@ -28,7 +30,7 @@ const SpecialistCard = ({ specialist, index }) => {
       'Олеся Мамкіна': card2Img, // Олеся Мамкіна
       'Дмитро Делитанович': card6Img, // Дмитро Делитанович
     };
-    return imageMap[id] || card6Img; // Use card-6.png as fallback
+    return imageMap[id] || card7Img; // Use card-6.png as fallback
   };
 
   // Get CardPictureUrl from specialist details (MinIO URL)

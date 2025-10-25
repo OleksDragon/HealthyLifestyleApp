@@ -1,0 +1,495 @@
+/* CSS змінні з Figma */
+:root {
+  --bl: rgba(0, 102, 195, 1);
+  --black-gray: rgba(75, 75, 75, 1);
+  --lime: rgba(214, 255, 0, 1);
+  --roboto-20-font-family: "Roboto", Helvetica;
+  --roboto-20-font-size: 20px;
+  --roboto-20-font-style: normal;
+  --roboto-20-font-weight: 400;
+  --roboto-20-letter-spacing: 0px;
+  --roboto-20-line-height: normal;
+  --variable-collection-bl: rgba(17, 111, 207, 1);
+  --variable-collection-black: rgba(52, 52, 52, 1);
+  --variable-collection-blu: rgba(6, 97, 204, 1);
+  --variable-collection-blue: rgba(0, 0, 0, 0.2);
+  --variable-collection-bluee: rgba(134, 176, 214, 1);
+  --variable-collection-color: rgba(97, 155, 215, 1);
+  --variable-collection-lim: rgba(214, 255, 0, 1);
+  --variable-collection-white: rgba(255, 255, 255, 1);
+}
+
+/* Головний контейнер - CSS Grid */
+.sp-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  grid-template-rows: min-content min-content min-content min-content;
+  gap: 20px;
+  height: 500px;
+  padding: 0 20px 20px 40px;
+  box-sizing: border-box;
+
+  position: relative;
+    overflow-y: auto;
+    height: calc(100vh - 120px); /* відняти висоту шапки, якщо є */
+    width: 97%;
+    overflow-x: hidden;
+}
+
+/* Альтернативний варіант з фіксованими розмірами рядків для точного контролю */
+.sp-container.fixed-rows {
+  grid-template-rows: 60px 80px 120px 80px; /* Фіксовані висоти рядків */
+}
+
+.sp-specialist-type-title {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  grid-row-start: auto;
+  color: #ffffff;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 30px;
+  font-weight: 700;
+  align-self: start;
+}
+
+/* Базова інформація - hourly rate та experience */
+.sp-info-basic {
+  grid-column: 1 / 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Рядок для Biography та WorkFormat */
+.sp-biography-workformat-row {
+  grid-column: 1 / 4;
+  grid-row: 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.sp-biography-column,
+.sp-workformat-column {
+  display: flex;
+  flex-direction: column;
+  /* Прив'язуємо висоту до розміру ячейки сітки */
+  height: 100%;
+  min-height: 120px; /* Мінімальна висота для зручності використання */
+}
+
+/* Спеціальні стилі для секції біографії */
+.sp-biography-column {
+  /* Додатковий контроль висоти для секції біографії */
+  min-height: 150px;
+  max-height: 300px;
+}
+
+/* Прив'язка висоти поля біографії до розміру ячейки сітки */
+.sp-biography-column .sp-biography-field {
+  flex: 1; /* Займає всю доступну висоту */
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-biography-column .sp-biography-textarea {
+  flex: 1; /* Розтягується на всю доступну висоту */
+  min-height: 100px;
+  max-height: none; /* Прибираємо обмеження максимальної висоти */
+}
+
+/* Середня колонка - сертифікати */
+.sp-certificates-column {
+  grid-column: 2 / 3;
+  grid-row: 3;
+}
+.sp-skills-column {
+  grid-column: 1 / 2;
+  grid-row: 3;
+}
+/* Права колонка - фото */
+.sp-main-content {
+  grid-column: 3 / 4;
+  grid-row: 2 / 5; /* Займає 3 рядки (2, 3, 4) */
+  display: flex;
+  align-items: flex-start;
+  /* Дозволяємо контейнеру розтягуватися на всю доступну висоту */
+  height: 100%;
+}
+
+/* Футер */
+.sp-footer {
+  grid-column: 1 / 4;
+  grid-row: 5;
+  justify-self: center;
+  width: 80%; /* або інше значення */
+  
+  gap: 20px;
+}
+
+/* Інфо-панель - 2 колонки полів */
+.sp-info-panel {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sp-info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sp-field-input {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 14px;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sp-field-input::placeholder {
+  color: #ffffff;
+}
+
+.sp-field-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Навички (вибрані з X) */
+.sp-skills-section {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.sp-selected-skills {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sp-skill-chip-selected {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  height: 35px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.sp-skill-chip-selected span {
+  color: #ffffff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 10px;
+}
+
+.sp-skill-remove-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-available-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sp-skill-chip-available {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  height: 30px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sp-skill-chip-available:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+.sp-skill-chip-available span {
+  color: #ffffff;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 10px;
+}
+.sp-socials-links {
+  grid-column: 2 / 3;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* Фото (велике, праворуч) */
+.sp-photo-container {
+  background-color: var(--variable-collection-lim);
+  border-radius: 40px;
+  width: 350px;
+  
+  /* Прив'язуємо висоту до розміру 2 рядків сітки */
+  /* Використовуємо CSS Grid для точного контролю висоти */
+  height: 100%; /* Займає всю доступну висоту батьківського контейнера */
+  min-height: 200px; /* Мінімальна висота */
+  max-height: 400px; /* Максимальна висота */
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Точний контроль висоти для 2 ячеек сітки */
+.sp-photo-container.grid-height {
+  /* Висота = 2 рядки + gap між ними */
+  height: calc(2 * var(--grid-row-height, 80px) + var(--grid-gap, 20px));
+  min-height: 180px;
+  max-height: 300px;
+}
+
+.sp-photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 40px;
+}
+
+.sp-photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+}
+
+.sp-photo-icon {
+  height: 69px;
+  width: 69px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sp-photo-icon:hover {
+  transform: scale(1.1);
+}
+
+.sp-photo-input {
+  display: none;
+}
+
+.sp-photo-upload-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  z-index: 10;
+}
+
+.sp-photo-upload-label:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
+/* Показуємо label при hover на контейнер фото */
+.sp-photo-container:hover .sp-photo-upload-label {
+  opacity: 1;
+}
+
+.sp-upload-status {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Футер (кнопка та перемикач) */
+.sp-save-button-wrapper {
+  flex: 1;
+}
+
+.sp-save-button {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  height: 60px;
+  width: 100%;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-save-button:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.sp-save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sp-save-button-text {
+  color: inherit;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sp-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sp-toggle-label {
+  color: var(--variable-collection-white);
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sp-toggle-wrapper {
+  height: 40px;
+  width: 76px;
+  display: flex;
+}
+
+.sp-toggle-switch {
+  background-color: #ffffff;
+  border-radius: 18px;
+  height: 40px;
+  width: 76px;
+  position: relative;
+  cursor: pointer;
+}
+
+.sp-toggle-input {
+  display: none;
+}
+
+.sp-toggle-track {
+  background-color: #afbbc280;
+  border-radius: 16px;
+  inset: 4px;
+  position: absolute;
+}
+
+.sp-toggle-thumb {
+  background-color: #d6ff00;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: transform 0.3s ease;
+}
+
+.sp-toggle-switch.active .sp-toggle-thumb {
+  transform: translateX(36px);
+}
+
+/* Responsive дизайн */
+@media (max-width: 1200px) {
+  .sp-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto auto;
+  }
+  
+  .sp-specialist-type-title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  /* Фото з самого початку */
+  .sp-main-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .sp-info-basic {
+    grid-column: 1;
+    grid-row: 3;
+    grid-template-columns: 1fr;
+  }
+  
+  .sp-socials-links {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  
+  .sp-skills-column {
+    grid-column: 1;
+    grid-row: 5;
+  }
+  
+  .sp-certificates-column {
+    grid-column: 1;
+    grid-row: 6;
+  }
+  
+  .sp-biography-workformat-row {
+    grid-column: 1;
+    grid-row: 7;
+    grid-template-columns: 1fr;
+  }
+  
+  .sp-footer {
+    grid-column: 1;
+    grid-row: 8;
+  }
+
+  .sp-photo-container {
+    height: 100%;
+  }
+}

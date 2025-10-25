@@ -153,8 +153,10 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.QualificationId))
                 .ForMember(dest => dest.UserProfessionalQualification, opt => opt.Ignore())
                 .ForMember(dest => dest.TrainingStyle, opt => opt.MapFrom(src => src.TrainingStyle))
+                .ForMember(dest => dest.HourlyRate, opt => opt.Condition(src => src.HourlyRate.HasValue))
+                .ForMember(dest => dest.HourlyRate, opt => opt.MapFrom(src => src.HourlyRate!.Value))
                 .ForMember(dest => dest.Biography, opt => opt.Condition(src => src.Biography != null))
-                .ForMember(dest => dest.YearsOfExperience, opt => opt.Condition(src => src.YearsOfExperience.HasValue))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
                 .ForMember(dest => dest.Certifications, opt => opt.Condition(src => src.Certifications != null))
                 .ForMember(dest => dest.Availability, opt => opt.Condition(src => src.Availability != null))
                 .ForMember(dest => dest.PreferredWorkoutStyles, opt => opt.Condition(src => src.PreferredWorkoutStyles != null))
@@ -165,8 +167,21 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
             CreateMap<TrainerDetails, TrainerDetailsDto>()
+                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Biography, opt => opt.MapFrom(src => src.Biography))
+                .ForMember(dest => dest.ContactEmail, opt => opt.MapFrom(src => src.ContactEmail))
+                .ForMember(dest => dest.ContactPhone, opt => opt.MapFrom(src => src.ContactPhone))
+                .ForMember(dest => dest.Website, opt => opt.MapFrom(src => src.Website))
                 .ForMember(dest => dest.TrainingStyle, opt => opt.MapFrom(src => src.TrainingStyle))
-                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id));
+                .ForMember(dest => dest.PreferredWorkoutStyles, opt => opt.MapFrom(src => src.PreferredWorkoutStyles))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
+                .ForMember(dest => dest.Certifications, opt => opt.MapFrom(src => src.Certifications))
+                .ForMember(dest => dest.Availability, opt => opt.MapFrom(src => src.Availability))
+                .ForMember(dest => dest.ClientTestimonials, opt => opt.MapFrom(src => src.ClientTestimonials))
+                .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.MapFrom(src => src.ProfessionalLicenseNumber))
+                .ForMember(dest => dest.HourlyRate, opt => opt.MapFrom(src => src.HourlyRate))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.MapFrom(src => src.ExpertDetailsPictureUrl))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.MapFrom(src => src.CardPictureUrl));
         }
 
         /// <summary>
@@ -179,7 +194,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UserProfessionalQualification, opt => opt.Ignore())
                 .ForMember(dest => dest.Specializations, opt => opt.Condition(src => src.Specializations != null))
                 .ForMember(dest => dest.Biography, opt => opt.Condition(src => src.Biography != null))
-                .ForMember(dest => dest.YearsOfExperience, opt => opt.Condition(src => src.YearsOfExperience.HasValue))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
                 .ForMember(dest => dest.Certifications, opt => opt.Condition(src => src.Certifications != null))
                 .ForMember(dest => dest.NutritionalApproach, opt => opt.Condition(src => src.NutritionalApproach != null))
                 .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.Condition(src => src.ProfessionalLicenseNumber != null))
@@ -190,7 +205,20 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
             CreateMap<DietitianDetails, DietitianDetailsDto>()
-                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id));
+                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Biography, opt => opt.MapFrom(src => src.Biography))
+                .ForMember(dest => dest.ContactEmail, opt => opt.MapFrom(src => src.ContactEmail))
+                .ForMember(dest => dest.ContactPhone, opt => opt.MapFrom(src => src.ContactPhone))
+                .ForMember(dest => dest.Website, opt => opt.MapFrom(src => src.Website))
+                .ForMember(dest => dest.Specializations, opt => opt.MapFrom(src => src.Specializations))
+                .ForMember(dest => dest.NutritionalApproach, opt => opt.MapFrom(src => src.NutritionalApproach))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
+                .ForMember(dest => dest.Certifications, opt => opt.MapFrom(src => src.Certifications))
+                .ForMember(dest => dest.Availability, opt => opt.MapFrom(src => src.Availability))
+                .ForMember(dest => dest.ClientTestimonials, opt => opt.MapFrom(src => src.ClientTestimonials))
+                .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.MapFrom(src => src.ProfessionalLicenseNumber))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.MapFrom(src => src.ExpertDetailsPictureUrl))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.MapFrom(src => src.CardPictureUrl));
         }
 
         /// <summary>
@@ -203,7 +231,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UserProfessionalQualification, opt => opt.Ignore())
                 .ForMember(dest => dest.Specializations, opt => opt.Condition(src => src.Specializations != null))
                 .ForMember(dest => dest.Biography, opt => opt.Condition(src => src.Biography != null))
-                .ForMember(dest => dest.YearsOfExperience, opt => opt.Condition(src => src.YearsOfExperience.HasValue))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
                 .ForMember(dest => dest.Certifications, opt => opt.Condition(src => src.Certifications != null))
                 .ForMember(dest => dest.ClinicAffiliation, opt => opt.Condition(src => src.ClinicAffiliation != null))
                 .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.Condition(src => src.ProfessionalLicenseNumber != null))
@@ -214,7 +242,20 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
             CreateMap<DoctorDetails, DoctorDetailsDto>()
-                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id));
+                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Biography, opt => opt.MapFrom(src => src.Biography))
+                .ForMember(dest => dest.ContactEmail, opt => opt.MapFrom(src => src.ContactEmail))
+                .ForMember(dest => dest.ContactPhone, opt => opt.MapFrom(src => src.ContactPhone))
+                .ForMember(dest => dest.Website, opt => opt.MapFrom(src => src.Website))
+                .ForMember(dest => dest.Specializations, opt => opt.MapFrom(src => src.Specializations))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
+                .ForMember(dest => dest.Certifications, opt => opt.MapFrom(src => src.Certifications))
+                .ForMember(dest => dest.Availability, opt => opt.MapFrom(src => src.Availability))
+                .ForMember(dest => dest.ClientTestimonials, opt => opt.MapFrom(src => src.ClientTestimonials))
+                .ForMember(dest => dest.ClinicAffiliation, opt => opt.MapFrom(src => src.ClinicAffiliation))
+                .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.MapFrom(src => src.ProfessionalLicenseNumber))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.MapFrom(src => src.ExpertDetailsPictureUrl))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.MapFrom(src => src.CardPictureUrl));
         }
 
         /// <summary>
@@ -231,7 +272,7 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.ContactEmail, opt => opt.Condition(src => src.ContactEmail != null))
                 .ForMember(dest => dest.ContactPhone, opt => opt.Condition(src => src.ContactPhone != null))
                 .ForMember(dest => dest.Website, opt => opt.Condition(src => src.Website != null))
-                .ForMember(dest => dest.YearsOfExperience, opt => opt.Condition(src => src.YearsOfExperience.HasValue))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
                 .ForMember(dest => dest.Certifications, opt => opt.Condition(src => src.Certifications != null))
                 .ForMember(dest => dest.Availability, opt => opt.Condition(src => src.Availability != null))
                 .ForMember(dest => dest.ClientTestimonials, opt => opt.Condition(src => src.ClientTestimonials != null))
@@ -241,7 +282,20 @@ namespace HealthyLifestyle.Application.Mappings
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
             CreateMap<PsychologistDetails, PsychologistDetailsDto>()
-                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id));
+                .ForMember(dest => dest.QualificationId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Biography, opt => opt.MapFrom(src => src.Biography))
+                .ForMember(dest => dest.ContactEmail, opt => opt.MapFrom(src => src.ContactEmail))
+                .ForMember(dest => dest.ContactPhone, opt => opt.MapFrom(src => src.ContactPhone))
+                .ForMember(dest => dest.Website, opt => opt.MapFrom(src => src.Website))
+                .ForMember(dest => dest.Specializations, opt => opt.MapFrom(src => src.Specializations))
+                .ForMember(dest => dest.TherapyApproaches, opt => opt.MapFrom(src => src.TherapyApproaches))
+                .ForMember(dest => dest.YearsOfExperience, opt => opt.MapFrom(src => src.YearsOfExperience))
+                .ForMember(dest => dest.Certifications, opt => opt.MapFrom(src => src.Certifications))
+                .ForMember(dest => dest.Availability, opt => opt.MapFrom(src => src.Availability))
+                .ForMember(dest => dest.ClientTestimonials, opt => opt.MapFrom(src => src.ClientTestimonials))
+                .ForMember(dest => dest.ProfessionalLicenseNumber, opt => opt.MapFrom(src => src.ProfessionalLicenseNumber))
+                .ForMember(dest => dest.ExpertDetailsPictureUrl, opt => opt.MapFrom(src => src.ExpertDetailsPictureUrl))
+                .ForMember(dest => dest.CardPictureUrl, opt => opt.MapFrom(src => src.CardPictureUrl));
         }
 
         /// <summary>

@@ -87,12 +87,10 @@ function AppRoutes() {
       <Route path="/specialists" element={<PrivateRoute><Menu><SpecialistsPage/></Menu></PrivateRoute>} />
       <Route path="/specialists/:id" element={<PrivateRoute><Menu><ExpertDetailsPage/></Menu></PrivateRoute>} />
 
-      <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
-
-      <Route path="/profile" element={<PrivateRoute><Menu><ProfilePage /></Menu></PrivateRoute>} />
+      <Route path="/profile" element={<Menu><ProfilePage /></Menu>} />
 
       {/* Профіль спеціалістів */}
-      <Route path="/profile/specialist" element={<PrivateRoute><Menu><SpecialistProfilePage /></Menu></PrivateRoute>} />
+      <Route path="/profile/specialist" element={<Menu><SpecialistProfilePage /></Menu>} />
 
       {/* Социальные челленджи */}
       <Route path="/social" element={<PrivateRoute><Menu><ChallengesPage /></Menu></PrivateRoute>} />

@@ -13,7 +13,7 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
     /// </summary>
     [ApiController]
     [Route("api/professional-qualification/{qualificationId}/dietitian-details")]
-    [Authorize(Roles = "Dietitian,Admin")] // Застосовуємо авторизацію на рівні контролера для всіх дій
+    [Authorize] // Застосовуємо авторизацію на рівні контролера для всіх дій
     public class DietitianDetailsController : ControllerBase
     {
         #region Private Fields

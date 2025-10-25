@@ -1172,7 +1172,7 @@ namespace HealthyLifestyle.Infrastructure.Migrations
                     b.Property<string>("ProfessionalLicenseNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TrainingStyle")
+                    b.Property<string>("Specializations")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

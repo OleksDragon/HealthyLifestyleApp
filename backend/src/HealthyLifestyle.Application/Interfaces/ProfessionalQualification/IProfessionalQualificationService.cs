@@ -63,11 +63,22 @@ namespace HealthyLifestyle.Application.Interfaces.ProfessionalQualification
         /// </summary>
         /// <param name="qualificationId">Унікальний ідентифікатор кваліфікації (GUID).</param>
         /// <returns>
-        /// Об’єкт <see cref="UserProfessionalQualificationDto"/> з повною інформацією про кваліфікацію або <c>null</c>, якщо кваліфікація не знайдена.
+        /// Об'єкт <see cref="UserProfessionalQualificationDto"/> з повною інформацією про кваліфікацію або <c>null</c>, якщо кваліфікація не знайдена.
         /// </returns>
         /// <remarks>
-        /// Цей метод дублює функціональність <see cref="GetQualificationByIdAsync"/>; розгляньте об’єднання або чітке розмежування логіки в реалізації.
+        /// Цей метод дублює функціональність <see cref="GetQualificationByIdAsync"/>; розгляньте об'єднання або чітке розмежування логіки в реалізації.
         /// </remarks>
         Task<UserProfessionalQualificationDto?> GetFullQualificationByIdAsync(Guid qualificationId);
+
+        /// <summary>
+        /// Оновлює дані професійної кваліфікації.
+        /// </summary>
+        /// <param name="qualificationId">Унікальний ідентифікатор кваліфікації (GUID).</param>
+        /// <param name="updateDto">Об'єкт <see cref="UpdateProfessionalQualificationDto"/> із новими даними кваліфікації.</param>
+        /// <returns>
+        /// Об'єкт <see cref="UserProfessionalQualificationDto"/> з оновленою інформацією про кваліфікацію або <c>null</c>, якщо оновлення не вдалося.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Виникає, якщо <paramref name="updateDto"/> є <c>null</c>.</exception>
+        Task<UserProfessionalQualificationDto?> UpdateProfessionalQualificationAsync(Guid qualificationId, UpdateProfessionalQualificationDto updateDto);
     }
 }

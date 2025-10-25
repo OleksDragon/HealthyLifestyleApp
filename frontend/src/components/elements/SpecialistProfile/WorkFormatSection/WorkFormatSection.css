@@ -1,0 +1,185 @@
+.sp-work-format-card {
+  -webkit-backdrop-filter: blur(15.0px) brightness(88.4%) saturate(103.5%) hue-rotate(0deg);
+  backdrop-filter: blur(15.0px) brightness(88.4%) saturate(103.5%) hue-rotate(0deg);
+  background-color: #ffffff0d;
+  border: 1px solid #ffffff4c;
+  border-radius: 50px;
+  padding: 20px 20px 24px 20px;
+}
+
+.sp-selected-work-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.sp-work-format-chip-selected {
+  background-color: rgba(255,255,255,0.4);
+  border: none;
+  border-radius: 40px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  max-width: max-content;
+}
+
+.sp-work-format-chip-selected span {
+  color: #ffffff;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.sp-work-format-remove {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.sp-divider {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.4);
+  margin: 8px 0 16px;
+}
+
+.sp-available-work-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.sp-work-format-chip-available {
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 40px;
+  border: none;
+  padding: 10px 16px;
+  color: #ffffff99;
+  cursor: pointer;
+}
+
+.sp-work-format-add-btn {
+  background-color: rgba(255,255,255,0.2);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Overlay add panel */
+.sp-add-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  z-index: 1000;
+}
+
+.sp-add-card1 {
+  backdrop-filter: blur(15px) brightness(100%);
+  background-color: rgba(0, 101, 195, 0.818);
+  border: 1px solid #ffffff4c;
+  border-radius: 32px;
+  padding: 20px;
+  width: min(560px, 92vw);
+}
+
+.sp-add-input {
+  width: 100%;
+  background-color: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 24px;
+  color: #fff;
+  padding: 12px 16px;
+}
+
+.sp-add-input:focus-visible {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sp-add-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.sp-add-confirm, .sp-add-cancel {
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  border-radius: 24px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.sp-suggestion-list {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sp-suggestion-chip {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 24px;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+/* Hover effects */
+.sp-work-format-chip-selected:hover,
+.sp-work-format-chip-available:hover,
+.sp-work-format-add-btn:hover,
+.sp-add-confirm:hover,
+.sp-add-cancel:hover,
+.sp-suggestion-chip:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Empty state */
+.sp-work-format-empty {
+  color: #ffffff99;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .sp-work-format-card { 
+    border-radius: 40px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .sp-work-format-card {
+    padding: 16px;
+    border-radius: 32px;
+  }
+  
+  .sp-available-work-formats {
+    gap: 8px 16px;
+  }
+  
+  .sp-work-format-chip-available,
+  .sp-work-format-chip-selected {
+    padding: 8px 12px;
+    font-size: 9px;
+  }
+}
+
+

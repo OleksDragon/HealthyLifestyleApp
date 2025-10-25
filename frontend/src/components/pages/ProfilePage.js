@@ -19,6 +19,7 @@ const UserProfile = () => {
 
   const [isSpecialistProfile, setIsSpecialistProfile] = useState(false);
   const [showSpecialistModal, setShowSpecialistModal] = useState(false);
+  const [isCheckingQualification, setIsCheckingQualification] = useState(false);
 
   const [activeView, setActiveView] = useState({ achievements: 'list', purchases: 'list' });
   const [selectedItem, setSelectedItem] = useState({
@@ -67,6 +68,33 @@ const UserProfile = () => {
   // Отримання токена
   const getToken = () => {
     return localStorage.getItem("helth-token");
+  };
+
+  // Перевірка наявності кваліфікації спеціаліста
+  const checkExistingQualification = async () => {
+    try {
+      const token = getToken();
+      if (!token) return null;
+      
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/ProfessionalQualification/my-qualifications`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
+      
+      const qualifications = response.data;
+      if (qualifications && qualifications.length > 0) {
+        // Повертаємо тип спеціаліста з кваліфікації
+        return qualifications[0].ProfessionalRoleType?.Name || null;
+      }
+      return null;
+    } catch (error) {
+      console.error("Error checking qualification:", error);
+      return null;
+    }
   };
 
   // Завантаження даних профілю
@@ -672,10 +700,25 @@ const handleCountryChange = async (value) => {
   };
 
 // Обробник для перемикача "Профіль спеціаліста"
-  const handleSpecialistToggle = (checked) => {
+  const handleSpecialistToggle = async (checked) => {
     setIsSpecialistProfile(checked);
     if (checked) {
-      setShowSpecialistModal(true);
+      // Показуємо індикатор завантаження
+      setIsCheckingQualification(true);
+      
+      // Перевіряємо наявність кваліфікації
+      const existingSpecialistType = await checkExistingQualification();
+      
+      setIsCheckingQualification(false);
+      
+      if (existingSpecialistType) {
+        // Якщо кваліфікація існує - зберігаємо тип і переходимо
+        localStorage.setItem("specialist-profile", existingSpecialistType);
+        navigate(`${location.pathname}/specialist`);
+      } else {
+        // Якщо кваліфікації немає - показуємо модальне вікно
+        setShowSpecialistModal(true);
+      }
     } else {
       setShowSpecialistModal(false);
     }
@@ -958,10 +1001,14 @@ const handleCountryChange = async (value) => {
                 checked={isSpecialistProfile}
                 onChange={(e) => handleSpecialistToggle(e.target.checked)}
                 className="pp-toggle-input"
+                disabled={isCheckingQualification}
               />
               <span className="pp-toggle-slider"></span>
             </div>
           </label>
+          {isCheckingQualification && (
+            <span className="pp-checking-text">{t("loading")}</span>
+          )}
         </div>
       </div>
 
@@ -972,25 +1019,25 @@ const handleCountryChange = async (value) => {
             <div className="pp-specialist-buttons">
               <button 
                 className="pp-specialist-btn pp-doctor"
-                onClick={() => handleSpecialistButtonClick('doctor')}
+                onClick={() => handleSpecialistButtonClick('Doctor')}
               >
                 {t("spec_doctor")}
               </button>
               <button 
                 className="pp-specialist-btn"
-                onClick={() => handleSpecialistButtonClick('coach')}
+                onClick={() => handleSpecialistButtonClick('Trainer')}
               >
                 {t("spec_trainer")}
               </button>
               <button 
                 className="pp-specialist-btn"
-                onClick={() => handleSpecialistButtonClick('psychologist')}
+                onClick={() => handleSpecialistButtonClick('Psychologist')}
               >
                 {t("spec_psychologist")}
               </button>
               <button 
                 className="pp-specialist-btn"
-                onClick={() => handleSpecialistButtonClick('nutritionist')}
+                onClick={() => handleSpecialistButtonClick('Dietitian')}
               >
                 {t("spec_dietitian")}
               </button>

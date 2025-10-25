@@ -152,15 +152,13 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 return null;
             }
 
-            var trainingStyleList = updateDto.TrainingStyle ?? trainerDetails.TrainingStyle;
-            var preferredWorkoutStylesList = updateDto.PreferredWorkoutStyles ?? trainerDetails.PreferredWorkoutStyles;
+            // Формуємо значення, які справді змінюються; передаємо null, якщо не оновлюємо це поле
+            var trainingStyleList = updateDto.TrainingStyle; // null => не чіпаємо
+            var preferredWorkoutStylesList = updateDto.PreferredWorkoutStyles; // null => не чіпаємо
 
             trainerDetails.UpdateTrainerSpecificDetails(
                 trainingStyle: trainingStyleList,
-                preferredWorkoutStyles: preferredWorkoutStylesList
-            );
-
-            trainerDetails.UpdateTrainerSpecificDetails(
+                preferredWorkoutStyles: preferredWorkoutStylesList,
                 biography: updateDto.Biography,
                 contactEmail: updateDto.ContactEmail,
                 contactPhone: updateDto.ContactPhone,
@@ -168,6 +166,7 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 yearsOfExperience: updateDto.YearsOfExperience,
                 certifications: updateDto.Certifications,
                 availability: updateDto.Availability,
+                hourlyRate: updateDto.HourlyRate,
                 clientTestimonials: updateDto.ClientTestimonials
             );
 

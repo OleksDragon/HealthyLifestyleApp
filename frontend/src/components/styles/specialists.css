@@ -1,4 +1,10 @@
- .page {
+/* Ефект розмиття для основного контенту при відкритті модального вікна */
+.specialists-page.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.page {
   padding: 20px;
   color: #fff;
   /* display: flex; */

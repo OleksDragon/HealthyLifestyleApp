@@ -89,7 +89,8 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
 
             if (qualification.QualificationStatus != QualificationStatus.Approved)
             {
-                if (currentUserId == Guid.Empty || qualification.UserId != currentUserId && !User.IsInRole(RoleNames.Admin))
+                var targetQualification = await GetTargetQualification(qualificationId, currentUserId);
+                if (targetQualification == null)
                 {
                     return StatusCode(StatusCodes.Status403Forbidden, new { message = "У вас немає прав для перегляду цих деталей тренера (профіль не схвалений або ви не є власником/адміністратором)." });
                 }
@@ -147,14 +148,11 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
                 return NotFound("Кваліфікація не знайдена.");
             }
 
-            if (qualification.UserId != currentUserId && !User.IsInRole(RoleNames.Admin))
+            // Перевірка прав: власник або адміністратор
+            var targetQualification = await GetTargetQualification(qualificationId, currentUserId);
+            if (targetQualification == null)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, new { message = "У вас немає прав на створення деталей для цієї кваліфікації: ви не власник або не адміністратор." });
-            }
-
-            if (qualification.ProfessionalRoleType?.Name != RoleNames.Trainer)
-            {
-                return BadRequest("Кваліфікація не відповідає ролі тренера.");
             }
 
             var createdTrainerDetails = await _trainerDetailsService.CreateTrainerDetailsAsync(qualificationId, createDto);
@@ -213,14 +211,11 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
                 return NotFound("Кваліфікація не знайдена.");
             }
 
-            if (qualification.UserId != currentUserId && !User.IsInRole(RoleNames.Admin))
+            // Перевірка прав: власник або адміністратор
+            var targetQualification = await GetTargetQualification(qualificationId, currentUserId);
+            if (targetQualification == null)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, new { message = "У вас немає прав на оновлення деталей для цієї кваліфікації: ви не власник або не адміністратор." });
-            }
-
-            if (qualification.ProfessionalRoleType?.Name != RoleNames.Trainer)
-            {
-                return BadRequest("Кваліфікація не відповідає ролі тренера.");
             }
 
             var updatedTrainerDetails = await _trainerDetailsService.UpdateTrainerDetailsAsync(qualificationId, updateDto);
@@ -268,14 +263,11 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
                 return NotFound("Кваліфікація не знайдена.");
             }
 
-            if (qualification.UserId != currentUserId && !User.IsInRole(RoleNames.Admin))
+            // Перевірка прав: власник або адміністратор
+            var targetQualification = await GetTargetQualification(qualificationId, currentUserId);
+            if (targetQualification == null)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, new { message = "У вас немає прав на видалення деталей для цієї кваліфікації: ви не власник або не адміністратор." });
-            }
-
-            if (qualification.ProfessionalRoleType?.Name != RoleNames.Trainer)
-            {
-                return BadRequest("Кваліфікація не відповідає ролі тренера.");
             }
 
             var isDeleted = await _trainerDetailsService.DeleteTrainerDetailsAsync(qualificationId);
@@ -285,6 +277,46 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
             }
 
             return NoContent();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Отримує цільову кваліфікацію для поточного користувача.
+        /// </summary>
+        /// <param name="qualificationId">Ідентифікатор кваліфікації.</param>
+        /// <param name="currentUserId">Ідентифікатор поточного користувача.</param>
+        /// <returns>Цільову кваліфікацію або null, якщо доступ заборонено.</returns>
+        private async Task<UserProfessionalQualificationDto?> GetTargetQualification(Guid qualificationId, Guid currentUserId)
+        {
+            var targetQualification = await _professionalQualificationService.GetQualificationByIdAsync(qualificationId);
+            
+            if (targetQualification == null || targetQualification.ProfessionalRoleType?.Name != RoleNames.Trainer)
+            {
+                return null;
+            }
+            
+            // Адмін може керувати будь-якою кваліфікацією тренера
+            if (User.IsInRole(RoleNames.Admin))
+            {
+                return targetQualification;
+            }
+            
+            // Користувач з роллю тренера може керувати своїми кваліфікаціями
+            if (User.IsInRole(RoleNames.Trainer) && targetQualification.UserId == currentUserId)
+            {
+                return targetQualification;
+            }
+            
+            // Звичайний користувач може керувати своїми кваліфікаціями (поки чекає схвалення)
+            if (User.IsInRole(RoleNames.User) && targetQualification.UserId == currentUserId)
+            {
+                return targetQualification;
+            }
+            
+            return null;
         }
 
         #endregion

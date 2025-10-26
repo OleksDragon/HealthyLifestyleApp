@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import useNotification from '../../hooks/useNotification';
 import NotificationContainer from '../elements/Notification/NotificationContainer';
+import { validateField, hasValidationErrors } from '../../utils/validation';
 
 // Import components
 import ProfilePhoto from '../elements/SpecialistProfile/ProfilePhoto/ProfilePhoto';
@@ -113,6 +114,17 @@ const SpecialistsProfilePage = () => {
     
     // Form fields
     const [formFields, setFormFields] = useState({
+        hourlyRate: '',
+        experience: '',
+        biography: '',
+        contactEmail: '',
+        contactPhone: '',
+        website: '',
+        facebook: ''
+    });
+    
+    // Validation errors
+    const [errors, setErrors] = useState({
         hourlyRate: '',
         experience: '',
         biography: '',
@@ -378,6 +390,13 @@ const SpecialistsProfilePage = () => {
             [fieldName]: value
         }));
         setHasChanges(true);
+        
+        // Валідація в реальному часі
+        const errorMessage = validateField(fieldName, value);
+        setErrors(prev => ({
+            ...prev,
+            [fieldName]: errorMessage
+        }));
     };
 
     // Handle work formats change
@@ -415,6 +434,12 @@ const SpecialistsProfilePage = () => {
     // Handle save
     const handleSave = async () => {
         if (!hasChanges) return;
+        
+        // Перевірка валідації перед збереженням
+        if (hasValidationErrors(errors)) {
+            showError(t("validation_errors_exist") || "Будь ласка, виправте помилки валідації перед збереженням");
+            return;
+        }
         
         setIsSaving(true);
         try {
@@ -766,6 +791,8 @@ const SpecialistsProfilePage = () => {
                     onChange={(e) => handleFieldChange('hourlyRate', e.target.value)}
                     placeholder="sp_hourly_rate_placeholder"
                     type="number"
+                    error={errors.hourlyRate}
+                    hasError={!!errors.hourlyRate}
                 />
                 <InfoField
                     label="sp_experience"
@@ -773,6 +800,8 @@ const SpecialistsProfilePage = () => {
                     onChange={(e) => handleFieldChange('experience', e.target.value)}
                     placeholder="sp_experience_placeholder"
                     type="number"
+                    error={errors.experience}
+                    hasError={!!errors.experience}
                 />
             </div>
 
@@ -785,6 +814,8 @@ const SpecialistsProfilePage = () => {
                         onChange={(e) => handleFieldChange('biography', e.target.value)}
                         placeholder="sp_biography_placeholder"
                         maxLength={1000}
+                        error={errors.biography}
+                        hasError={!!errors.biography}
                     />
                 </div>
                 <div className="sp-workformat-column">
@@ -804,12 +835,16 @@ const SpecialistsProfilePage = () => {
                     onChange={(e) => handleFieldChange('website', e.target.value)}
                     placeholder="sp_website_placeholder"
                     type="url"
+                    error={errors.website}
+                    hasError={!!errors.website}
                 />
                 <InfoField
                     label="sp_facebook"
                     value={formFields.facebook}
                     onChange={(e) => handleFieldChange('facebook', e.target.value)}
                     placeholder="sp_facebook_placeholder"
+                    error={errors.facebook}
+                    hasError={!!errors.facebook}
                 />
             </div>
             <div className="sp-skills-column">

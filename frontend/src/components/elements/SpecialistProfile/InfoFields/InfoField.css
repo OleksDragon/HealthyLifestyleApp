@@ -25,3 +25,37 @@
   outline: none;
   background-color: rgba(255, 255, 255, 0.4);
 }
+
+/* Стилі для помилок валідації */
+.sp-field-input.error {
+  border: 2px solid #FF4444;
+  background-color: rgba(255, 68, 68, 0.1);
+  transition: all 0.3s ease;
+}
+
+.sp-field-input.error:focus {
+  background-color: rgba(255, 68, 68, 0.15);
+  border-color: #E53935;
+}
+
+.sp-field-error-message {
+  color: #FF4444;
+  font-family: "Roboto", Helvetica;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  margin-left: 4px;
+  opacity: 0;
+  animation: fadeInError 0.3s ease forwards;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

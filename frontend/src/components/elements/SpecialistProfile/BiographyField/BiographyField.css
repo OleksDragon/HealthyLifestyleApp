@@ -118,6 +118,44 @@
   }
 }
 
+/* Стилі для помилок валідації */
+.sp-biography-textarea.error {
+  border: 2px solid #FF4444;
+  background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(255, 68, 68, 0.05));
+  transition: all 0.3s ease;
+}
+
+.sp-biography-textarea.error:focus {
+  background: linear-gradient(135deg, rgba(255, 68, 68, 0.15), rgba(255, 68, 68, 0.08));
+  border-color: #E53935;
+  box-shadow: 
+    0 8px 32px rgba(229, 57, 53, 0.2),
+    0 0 0 4px rgba(229, 57, 53, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.sp-biography-field .sp-field-error-message {
+  color: #FF4444;
+  font-family: "Roboto", Helvetica;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  margin-left: 4px;
+  opacity: 0;
+  animation: fadeInError 0.3s ease forwards;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Адаптивність */
 @media (max-width: 768px) {
   .sp-biography-textarea {

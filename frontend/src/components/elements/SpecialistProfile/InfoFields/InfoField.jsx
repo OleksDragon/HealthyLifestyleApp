@@ -9,7 +9,9 @@ const InfoField = ({
   placeholder, 
   type = 'text',
   className = '',
-  required = false 
+  required = false,
+  error = '',
+  hasError = false
 }) => {
   const { t } = useTranslation();
 
@@ -20,9 +22,14 @@ const InfoField = ({
         value={value || ''}
         onChange={onChange}
         placeholder={t(placeholder || label)}
-        className="sp-field-input"
+        className={`sp-field-input ${hasError ? 'error' : ''}`}
         required={required}
       />
+      {hasError && error && (
+        <div className="sp-field-error-message">
+          {t(error)}
+        </div>
+      )}
     </div>
   );
 };

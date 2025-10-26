@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Filters from "../elements/Specialists/Filter/Filter";
 import "../styles/specialists.css";
+import "../styles/profile.css";
 import { TrainerIcon } from "../elements/Specialists/SpecialistsIcons/TrainerIcon";
 import { PsychologistIcon } from "../elements/Specialists/SpecialistsIcons/PsychologistIcon";
 import { DoctorIcon } from "../elements/Specialists/SpecialistsIcons/DoctorIcon";
@@ -18,10 +19,6 @@ const RemoveIcon = () => (
     <path d="M1 1L9 9M9 1L1 9" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-
-const getToken = () => {
-  return localStorage.getItem("helth-token");
-};
 
 const SpecialistsPage = () => {
   const { t } = useTranslation();
@@ -37,6 +34,80 @@ const SpecialistsPage = () => {
   city: ''
 });
   const [isLoading, setIsLoading] = useState(true);
+  const [showSpecialistModal, setShowSpecialistModal] = useState(false);
+  const [isCheckingQualification, setIsCheckingQualification] = useState(false);
+
+  const getToken = () => {
+    return localStorage.getItem("helth-token");
+  };
+
+  // Перевірка наявності кваліфікації спеціаліста
+  const checkExistingQualification = async () => {
+    try {
+      const token = getToken();
+      if (!token) return null;
+      
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/ProfessionalQualification/my-qualifications`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
+      
+      const qualifications = response.data;
+      if (qualifications && qualifications.length > 0) {
+        // Повертаємо тип спеціаліста з кваліфікації
+        return qualifications[0].ProfessionalRoleType?.Name || null;
+      }
+      return null;
+    } catch (error) {
+      console.error("Error checking qualification:", error);
+      return null;
+    }
+  };
+
+  // Обробник кліку на кнопку "Стати фахівцем"
+  const handleBecomeSpecialistClick = async () => {
+    const token = getToken();
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    setIsCheckingQualification(true);
+    
+    const existingSpecialistType = await checkExistingQualification();
+    
+    setIsCheckingQualification(false);
+    
+    if (existingSpecialistType) {
+      // Якщо кваліфікація існує - зберігаємо тип і переходимо
+      localStorage.setItem("specialist-profile", existingSpecialistType);
+      navigate("/profile/specialist");
+    } else {
+      // Якщо кваліфікації немає - показуємо модальне вікно
+      setShowSpecialistModal(true);
+    }
+  };
+
+  // Обробники для кнопок спеціалістів
+  const handleSpecialistButtonClick = (specialistType) => {
+    // Закриваємо модальне вікно після вибору
+    setShowSpecialistModal(false);
+
+    // Зберігаємо тип спеціаліста в localStorage
+    localStorage.setItem("specialist-profile", specialistType);
+    navigate("/profile/specialist");
+  };
+
+  // Закриття модального вікна при кліку на затемнену область
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setShowSpecialistModal(false);
+    }
+  };
 
   // Filter configuration
   const filterConfig = [
@@ -268,7 +339,7 @@ const SpecialistsPage = () => {
 
 
   return (
-    <div className="specialists-page">
+    <div className={`specialists-page ${showSpecialistModal ? 'blurred' : ''}`}>
       {/* Breadcrumbs */}
       <div className="breadcrumbs">
         <div className="reset-align">
@@ -348,12 +419,54 @@ const SpecialistsPage = () => {
         </div>
         <div className="join-section">
           <h1 className="text-wrapper">{t("join_team")}</h1>
-          <div className="property-default-wrapper">
+          <div className="property-default-wrapper" onClick={handleBecomeSpecialistClick} style={{cursor: 'pointer'}}>
             <span>{t("become_specialist")}</span>
           </div>
         </div>
        
       </div>
+
+      {/* Затемнення при відкритті модального вікна */}
+      {showSpecialistModal && (
+        <div 
+          className="pp-modal-overlay" 
+          onClick={handleOverlayClick}
+        />
+      )}
+
+      {/* Модальне вікно з кнопками спеціалістів */}
+      {showSpecialistModal && (
+        <div className="pp-specialist-modal">
+          <div className="pp-specialist-modal-content">
+            <div className="pp-specialist-buttons">
+              <button 
+                className="pp-specialist-btn pp-doctor"
+                onClick={() => handleSpecialistButtonClick('Doctor')}
+              >
+                {t("spec_doctor")}
+              </button>
+              <button 
+                className="pp-specialist-btn pp-trainer"
+                onClick={() => handleSpecialistButtonClick('Trainer')}
+              >
+                {t("spec_trainer")}
+              </button>
+              <button 
+                className="pp-specialist-btn pp-psychologist"
+                onClick={() => handleSpecialistButtonClick('Psychologist')}
+              >
+                {t("spec_psychologist")}
+              </button>
+              <button 
+                className="pp-specialist-btn pp-dietitian"
+                onClick={() => handleSpecialistButtonClick('Dietitian')}
+              >
+                {t("spec_dietitian")}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

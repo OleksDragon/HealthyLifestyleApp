@@ -582,6 +582,10 @@
     align-self: flex-end;
 }
 
+.calendar-month {
+    color: white;
+}
+
 @media (max-width: 431px) {
     .mascot-img {
         display: none;
@@ -601,7 +605,8 @@
     }
 
     .female-health-options {
-        width: 100%;
+        width: 100% !important;
+        gap: 20px !important;
     }
 
     .find-doctor-btn {
@@ -660,5 +665,110 @@
 
     .calendar {
         margin-right: 0 !important;
+        width: 100%;
+    }
+
+    .calendar-body {
+        margin: 10px 0 !important;
+    }
+
+    .current-cycle-info {
+        flex-direction: column;
+        gap: 10px !important;
+    }
+
+    .calendar-signs {
+        grid-row: 1/2;
+        margin: 10px 0 !important;
+    }
+
+    .calendar-signs {
+        gap: 10px;
+    }
+
+    .example-text {
+        width: 30%;
+    }
+
+    .current-cycle-info > div {
+        margin-bottom: 20px;
+    }
+
+    .hidden-scroll {
+        overflow: auto;
+        scrollbar-width: none; 
+        -ms-overflow-style: none;
+    }
+
+    .hidden-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .female-health-container {
+        padding-right: 0;
+    }
+
+    .current-cycle-info > div > div {
+        width: 90% !important;
+    }
+
+    .full-calendar-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    .sub-calendar {
+        margin: 10px auto !important;
+    }
+
+    .cycle-container {
+        width: 100%;
+        padding-right: 0;
+        margin: 10px auto;
+        margin-left: 10px;
+    }
+
+    .hidden-phone {
+        display: none;
+    }
+
+    .gynecology-content > .useful-info {
+        grid-template-columns: 1fr !important;
+    }
+
+    .gynecology-content > .useful-info > div {
+        width: 90% !important;
+    }
+
+    .female-health-options button {
+        width: 100%;
+    }
+
+    .tests-container {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .tests-tips > div {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .review-tip {
+        grid-template-columns: 1fr 1fr !important;
+        margin: 10px !important;
+        row-gap: 10px;
+        margin-bottom: 30px !important;
+    }
+
+    .review-tip .tip-text {
+        grid-column: 1/2;
+        text-align: center;
+    }
+
+    .review-tip .tip-icon {
+        grid-column: 2/3;
+        grid-row: 1/3;
+        width: 80%;
+        margin: auto;
     }
 }

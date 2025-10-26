@@ -218,7 +218,7 @@ function FemaleCycleCalendarPage() {
     }
 
     return (
-        <div className="scroll-data female-health-container">
+        <div className="scroll-data female-health-container hidden-scroll">
             <div className="navigation">
                 <div className="to-general-cycle">
                     <img src={arrowLeft} alt="Arrow left"/>

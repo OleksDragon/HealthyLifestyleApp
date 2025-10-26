@@ -85,7 +85,7 @@ function ShoppingCartPage() {
                     <h3>{t("filter_price")}</h3>
                 </div>
                 <div />
-                <div className="scroll-data marketplace-cart-list">
+                <div className="scroll-data marketplace-cart-list hidden-scroll">
                     {cart.CartItems.map(ci => (
                         <div className="products-in-cart">
                             <div>

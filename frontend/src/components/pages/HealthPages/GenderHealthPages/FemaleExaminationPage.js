@@ -86,7 +86,7 @@ function FemaleExaminationPage() {
     }
     
     return (
-        <div className="scroll-data female-health-container">
+        <div className="scroll-data female-health-container hidden-scroll">
             <div className="navigation">
                 <div className="to-general-cycle" style={{marginBottom: "10px"}}>
                     <img src={arrowLeft} alt="Arrow left"/>
@@ -95,7 +95,7 @@ function FemaleExaminationPage() {
             </div>
             <div className="woman-health-info" style={{height: "80px"}}>
                 <div className="title">{t("examination_head")}</div>
-                <div className="sub-title">{t("examination_desc")}</div>
+                <div className="sub-title hidden-phone">{t("examination_desc")}</div>
             </div>
             <div className="tests-container">
                 <div className="tests-options">

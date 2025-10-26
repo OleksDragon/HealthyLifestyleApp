@@ -155,7 +155,7 @@ function FemaleReproductiveHealthPage() {
     }, [])
 
     return (
-        <div className="scroll-data female-health-container">
+        <div className="scroll-data female-health-container hidden-scroll">
             <div className="navigation">
                 <div className="to-general-cycle" style={{marginBottom: "10px"}}>
                     <img src={arrowLeft} alt="Arrow left"/>
@@ -164,7 +164,7 @@ function FemaleReproductiveHealthPage() {
             </div>
             <div className="woman-health-info" style={{height: "100px", gridTemplateColumns: "2fr 3fr"}}>
                 <div className="title">{t("reproductive")}</div>
-                <div className="sub-title">{t("reproductive_sub")}</div>
+                <div className="sub-title hidden-phone">{t("reproductive_sub")}</div>
             </div>
             <div className="calendar-main-content">
                 <div className="calendar" style={{marginTop: "20px"}}>

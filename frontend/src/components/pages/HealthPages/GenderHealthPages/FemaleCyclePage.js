@@ -111,7 +111,7 @@ function FemaleCyclePage() {
     }, [])
 
     return (
-        <div className="scroll-data cycle-container">
+        <div className="scroll-data cycle-container hidden-scroll">
             <div className="female-health-info" style={{position: "relative"}}>
                 <div className="title">{t("your_cycle")}</div>
                 <div className="sub-title">{t("cycle_control")}</div>

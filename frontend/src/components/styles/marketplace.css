@@ -615,4 +615,8 @@ input:focus {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .marketplace-cart-list {
+        padding-right: 0 !important;
+    }
 }

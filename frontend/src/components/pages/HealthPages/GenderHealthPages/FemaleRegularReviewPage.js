@@ -12,7 +12,7 @@ function FemaleRegularReviewPage() {
     const navigate = useNavigate();
 
     return (
-        <div className="scroll-data female-health-container">
+        <div className="scroll-data female-health-container hidden-scroll">
             <div className="navigation">
                 <div className="to-general-cycle" style={{marginBottom: "10px"}}>
                     <img src={arrowLeft} alt="Arrow left"/>
@@ -21,7 +21,7 @@ function FemaleRegularReviewPage() {
             </div>
             <div className="woman-health-info" style={{height: "80px"}}>
                 <div className="title">{t("regular_review")}</div>
-                <div className="sub-title">{t("review_sub")}</div>
+                <div className="sub-title hidden-phone">{t("review_sub")}</div>
             </div>
             <div className="review-tips-container">
                 <h3>{t("what_to_check_regulary")}</h3>

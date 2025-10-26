@@ -105,6 +105,7 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
                 availability: createDto.Availability,
                 clientTestimonials: createDto.ClientTestimonials,
                 preferredWorkoutStyles: preferredWorkoutStylesList,
+                professionalLicenseNumber: createDto.ProfessionalLicenseNumber,
                 expertDetailsPictureUrl: createDto.ExpertDetailsPictureUrl,
                 cardPictureUrl: createDto.CardPictureUrl
             );
@@ -159,6 +160,7 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
             trainerDetails.UpdateTrainerSpecificDetails(
                 trainingStyle: trainingStyleList,
                 preferredWorkoutStyles: preferredWorkoutStylesList,
+                professionalLicenseNumber: updateDto.ProfessionalLicenseNumber,
                 biography: updateDto.Biography,
                 contactEmail: updateDto.ContactEmail,
                 contactPhone: updateDto.ContactPhone,

@@ -120,7 +120,7 @@ const SpecialistsProfilePage = () => {
         contactEmail: '',
         contactPhone: '',
         website: '',
-        facebook: ''
+        licenseNumber: ''
     });
     
     // Validation errors
@@ -131,7 +131,7 @@ const SpecialistsProfilePage = () => {
         contactEmail: '',
         contactPhone: '',
         website: '',
-        facebook: ''
+        licenseNumber: ''
     });
     
     // Skills and certificates
@@ -354,7 +354,7 @@ const SpecialistsProfilePage = () => {
                         contactEmail: details.ContactEmail || null,
                         contactPhone: details.ContactPhone || null,
                         website: details.Website || null,
-                        facebook: null
+                        licenseNumber: details.ProfessionalLicenseNumber || null
                     });
                     
                     setProfilePhotoUrl(details.CardPictureUrl || '');
@@ -544,6 +544,7 @@ const SpecialistsProfilePage = () => {
                     contactEmail: emptyToNull(formFields.contactEmail),
                     contactPhone: emptyToNull(formFields.contactPhone),
                     website: emptyToNull(formFields.website),
+                    professionalLicenseNumber: emptyToNull(formFields.licenseNumber),
                     yearsOfExperience: formFields.experience && !isNaN(parseInt(formFields.experience)) ? parseInt(formFields.experience) : null,
                     certifications: certificates.map(cert => cert.name),
                     availability: emptyToNull(formFields.availability),
@@ -642,6 +643,7 @@ const SpecialistsProfilePage = () => {
                     contactEmail: emptyToNull(formFields.contactEmail),
                     contactPhone: emptyToNull(formFields.contactPhone),
                     website: emptyToNull(formFields.website),
+                    professionalLicenseNumber: emptyToNull(formFields.licenseNumber),
                     yearsOfExperience: formFields.experience && !isNaN(parseInt(formFields.experience)) ? parseInt(formFields.experience) : null,
                     certifications: certificates.map(cert => cert.name),
                     availability: emptyToNull(formFields.availability),
@@ -839,12 +841,12 @@ const SpecialistsProfilePage = () => {
                     hasError={!!errors.website}
                 />
                 <InfoField
-                    label="sp_facebook"
-                    value={formFields.facebook}
-                    onChange={(e) => handleFieldChange('facebook', e.target.value)}
-                    placeholder="sp_facebook_placeholder"
-                    error={errors.facebook}
-                    hasError={!!errors.facebook}
+                    label="sp_license_number"
+                    value={formFields.licenseNumber}
+                    onChange={(e) => handleFieldChange('licenseNumber', e.target.value)}
+                    placeholder="sp_license_number_placeholder"
+                    error={errors.licenseNumber}
+                    hasError={!!errors.licenseNumber}
                 />
             </div>
             <div className="sp-skills-column">

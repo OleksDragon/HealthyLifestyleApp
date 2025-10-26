@@ -126,6 +126,14 @@ export const validateWebsite = (value) => {
     return 'validation_website_too_long';
   }
   
+  // Перевірка чи містить тільки англійські літери, цифри та допустимі символи URL
+  // Дозволяємо: a-z, A-Z, 0-9, ., -, _, :, /, ?, #, [, ], @, !, $, &, ', (, ), *, +, ,, ;, =
+  const urlRegex = /^[a-zA-Z0-9\.\-\_\/\?\#\[\]\!\$\&\'\(\)\*\+\,\;\=\:\@]+$/;
+  if (!urlRegex.test(value)) {
+    return 'validation_website_invalid_format';
+  }
+  
+  // Перевірка чи це валідний URL формат
   try {
     // Додаємо протокол якщо його немає
     let urlToCheck = value;
@@ -141,36 +149,25 @@ export const validateWebsite = (value) => {
 };
 
 /**
- * Валідація Facebook посилання
+ * Валідація номера ліцензії
  * @param {string} value - значення для перевірки
  * @returns {string} - повідомлення про помилку або порожній рядок
  */
-export const validateFacebook = (value) => {
+export const validateLicenseNumber = (value) => {
   if (!value || value === '') return ''; // Поле не обов'язкове
   
-  if (value.length > 500) {
-    return 'validation_facebook_too_long';
+  if (value.length > 100) {
+    return 'validation_license_number_too_long';
   }
   
-  // Перевірка чи це валідний URL
-  try {
-    let urlToCheck = value;
-    if (!value.startsWith('http://') && !value.startsWith('https://')) {
-      urlToCheck = 'https://' + value;
-    }
-    
-    const url = new URL(urlToCheck);
-    
-    // Перевірка чи це Facebook URL
-    const hostname = url.hostname.toLowerCase();
-    if (!hostname.includes('facebook.com') && !hostname.includes('fb.com')) {
-      return 'validation_facebook_invalid_format';
-    }
-    
-    return '';
-  } catch (error) {
-    return 'validation_facebook_invalid_format';
+  // Перевірка чи номер ліцензії містить тільки допустимі символи
+  // Дозволяємо літери, цифри, тире, пробіли та крапки
+  const licenseRegex = /^[a-zA-Z0-9\-\s\.]+$/;
+  if (!licenseRegex.test(value)) {
+    return 'validation_license_number_invalid_format';
   }
+  
+  return '';
 };
 
 /**
@@ -193,8 +190,8 @@ export const validateField = (fieldName, value) => {
       return validatePhone(value);
     case 'website':
       return validateWebsite(value);
-    case 'facebook':
-      return validateFacebook(value);
+    case 'licenseNumber':
+      return validateLicenseNumber(value);
     default:
       return '';
   }

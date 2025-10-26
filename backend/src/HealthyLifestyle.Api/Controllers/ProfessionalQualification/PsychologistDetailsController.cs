@@ -139,13 +139,13 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
                 }
 
                 var targetQualification = await GetTargetQualification(qualificationId, currentUserId.Value);
-                if (targetQualification == null)
-                {
+            if (targetQualification == null)
+            {
                     return StatusCode(StatusCodes.Status403Forbidden, "Доступ до цієї кваліфікації заборонено.");
-                }
+            }
 
                 request.QualificationId = qualificationId;
-                var createdDetails = await _psychologistDetailsService.CreatePsychologistDetailsAsync(qualificationId, request);
+            var createdDetails = await _psychologistDetailsService.CreatePsychologistDetailsAsync(qualificationId, request);
 
                 return CreatedAtAction(
                     nameof(GetPsychologistDetails),
@@ -203,19 +203,19 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
                 }
 
                 var targetQualification = await GetTargetQualification(qualificationId, currentUserId.Value);
-                if (targetQualification == null)
-                {
+            if (targetQualification == null)
+            {
                     return StatusCode(StatusCodes.Status403Forbidden, "Доступ до цієї кваліфікації заборонено.");
-                }
+            }
 
                 request.QualificationId = qualificationId;
-                var updatedDetails = await _psychologistDetailsService.UpdatePsychologistDetailsAsync(qualificationId, request);
-                if (updatedDetails == null)
-                {
+            var updatedDetails = await _psychologistDetailsService.UpdatePsychologistDetailsAsync(qualificationId, request);
+            if (updatedDetails == null)
+            {
                     return NotFound("Деталі психолога не знайдені для оновлення.");
-                }
+            }
 
-                return Ok(updatedDetails);
+            return Ok(updatedDetails);
             }
             catch (Exception ex)
             {
@@ -266,9 +266,9 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
                 if (!success)
                 {
                     return NotFound("Деталі психолога не знайдені для видалення.");
-                }
+            }
 
-                return NoContent();
+            return NoContent();
             }
             catch (Exception ex)
             {
@@ -289,12 +289,12 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
         private async Task<UserProfessionalQualificationDto?> GetTargetQualification(Guid qualificationId, Guid currentUserId)
         {
             var targetQualification = await _professionalQualificationService.GetQualificationByIdAsync(qualificationId);
-            
+
             if (targetQualification == null || targetQualification.ProfessionalRoleType?.Name != RoleNames.Psychologist)
             {
                 return null;
             }
-            
+
             // Адмін може керувати будь-якою кваліфікацією психолога
             if (User.IsInRole(RoleNames.Admin))
             {
@@ -312,7 +312,7 @@ namespace HealthyLifestyle.Api.Controllers.ProfessionalQualification
             {
                 return targetQualification;
             }
-            
+
             return null;
         }
 

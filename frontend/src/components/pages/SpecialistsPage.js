@@ -337,9 +337,15 @@ const SpecialistsPage = () => {
 
 
 
-
   return (
-    <div className={`specialists-page ${showSpecialistModal ? 'blurred' : ''}`}>
+    <div className="specialists-page">
+      {/* Затемнення при відкритті модального вікна */}
+      {showSpecialistModal && (
+        <div 
+          className="pp-modal-overlay" 
+          onClick={handleOverlayClick}
+        />
+      )}
       {/* Breadcrumbs */}
       <div className="breadcrumbs">
         <div className="reset-align">
@@ -387,18 +393,7 @@ const SpecialistsPage = () => {
           />
         ))}
         
-        {/* <button className="location-btn" onClick={handleReset}>
-          <svg width="21" height="27" viewBox="0 0 21 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <mask id="mask0_2141_5572" maskUnits="userSpaceOnUse" x="0" y="0" width="21" height="27">
-              <path d="M10.375 26C10.375 26 19.75 18.5 19.75 10.375C19.75 5.1975 15.5525 1 10.375 1C5.1975 1 1 5.1975 1 10.375C1 18.5 10.375 26 10.375 26Z" fill="white" stroke="white" strokeWidth="2" strokeLinejoin="round" />
-              <path d="M10.375 14.125C10.8675 14.125 11.3551 14.028 11.8101 13.8395C12.265 13.6511 12.6784 13.3749 13.0267 13.0267C13.3749 12.6784 13.6511 12.265 13.8395 11.8101C14.028 11.3551 14.125 10.8675 14.125 10.375C14.125 9.88254 14.028 9.39491 13.8395 8.93994C13.6511 8.48497 13.3749 8.07157 13.0267 7.72335C12.6784 7.37513 12.265 7.09891 11.8101 6.91045C11.3551 6.722 10.8675 6.625 10.375 6.625C9.38044 6.625 8.42661 7.02009 7.72335 7.72335C7.02009 8.42661 6.625 9.38044 6.625 10.375C6.625 11.3696 7.02009 12.3234 7.72335 13.0267C8.42661 13.7299 9.38044 14.125 10.375 14.125Z" fill="black" stroke="black" strokeWidth="2" strokeLinejoin="round" />
-            </mask>
-            <g mask="url(#mask0_2141_5572)">
-              <path d="M-4.625 -1.5H25.375V28.5H-4.625V-1.5Z" fill="#0661CC" />
-            </g>
-          </svg>
-          
-        </button> */}
+        
         <CityMap 
           city={selectedValues.city} 
           onCityChange={(value) => handleSelectChange("city", value)} 
@@ -426,39 +421,33 @@ const SpecialistsPage = () => {
        
       </div>
 
-      {/* Затемнення при відкритті модального вікна */}
-      {showSpecialistModal && (
-        <div 
-          className="pp-modal-overlay" 
-          onClick={handleOverlayClick}
-        />
-      )}
+      
 
       {/* Модальне вікно з кнопками спеціалістів */}
       {showSpecialistModal && (
-        <div className="pp-specialist-modal">
-          <div className="pp-specialist-modal-content">
-            <div className="pp-specialist-buttons">
+        <div className="sp-specialist-modal">
+          <div className="sp-specialist-modal-content">
+            <div className="sp-specialist-buttons">
               <button 
-                className="pp-specialist-btn pp-doctor"
+                className="sp-specialist-btn sp-doctor"
                 onClick={() => handleSpecialistButtonClick('Doctor')}
               >
                 {t("spec_doctor")}
               </button>
               <button 
-                className="pp-specialist-btn pp-trainer"
+                className="sp-specialist-btn sp-trainer"
                 onClick={() => handleSpecialistButtonClick('Trainer')}
               >
                 {t("spec_trainer")}
               </button>
               <button 
-                className="pp-specialist-btn pp-psychologist"
+                className="sp-specialist-btn sp-psychologist"
                 onClick={() => handleSpecialistButtonClick('Psychologist')}
               >
                 {t("spec_psychologist")}
               </button>
               <button 
-                className="pp-specialist-btn pp-dietitian"
+                className="sp-specialist-btn sp-dietitian"
                 onClick={() => handleSpecialistButtonClick('Dietitian')}
               >
                 {t("spec_dietitian")}
@@ -467,6 +456,7 @@ const SpecialistsPage = () => {
           </div>
         </div>
       )}
+
     </div>
   );
 };

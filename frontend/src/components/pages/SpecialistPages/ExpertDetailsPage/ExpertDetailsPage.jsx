@@ -54,13 +54,7 @@ const SpecialistSocialLinks = ({ specialist }) => {
                     specialist.PsychologistDetails?.Website ||
                     specialist.DietitianDetails?.Website;
     
-    const facebook = specialist.TrainerDetails?.Facebook ||
-                     specialist.DoctorDetails?.Facebook ||
-                     specialist.PsychologistDetails?.Facebook ||
-                     specialist.DietitianDetails?.Facebook;
-    
     return {
-      facebook: facebook || '#',
       google: website || '#'  // Google використовує Website поле
     };
   };
@@ -69,12 +63,6 @@ const SpecialistSocialLinks = ({ specialist }) => {
 
   return (
     <div className="icons-container">
-      <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer">
-        <svg className="social-icons" width="50" height="50" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="50" height="50" rx="30" fill="white" />
-          <path d="M27.0713 25.456H31.7241L32.4546 20.7007H27.0704V18.1017C27.0704 16.1262 27.712 14.3745 29.5487 14.3745H32.5V10.2247C31.9814 10.1543 30.8847 10 28.8124 10C24.4852 10 22.7817 12.2991 22.7817 17.5372V20.7007H17.5V25.456H22.7817V38.5262C23.6627 38.6596 24.5549 38.75 25.471 38.75C26.2989 38.75 27.107 38.6738 27.0713 38.5653V25.456Z" fill="#0661CC" />
-        </svg>
-      </a>
       <a href={socialLinks.google} target="_blank" rel="noopener noreferrer">
         <svg className="social-icons" width="50" height="50" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M50 25C50 11.1929 38.8071 0 25 0C11.1929 0 0 11.1929 0 25C0 38.8071 11.1929 50 25 50C38.8071 50 50 38.8071 50 25Z" fill="white" />

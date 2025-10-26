@@ -166,10 +166,7 @@ namespace HealthyLifestyle.Application.Services.ProfessionalQualification
             psychologistDetails.UpdatePsychologistSpecificDetails(
                 specializations: updateDto.Specializations,
                 therapyApproaches: updateDto.TherapyApproaches,
-                professionalLicenseNumber: updateDto.ProfessionalLicenseNumber
-            );
-
-            psychologistDetails.UpdatePsychologistSpecificDetails(
+                professionalLicenseNumber: updateDto.ProfessionalLicenseNumber,
                 biography: updateDto.Biography,
                 contactEmail: updateDto.ContactEmail,
                 contactPhone: updateDto.ContactPhone,

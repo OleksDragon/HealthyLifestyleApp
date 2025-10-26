@@ -187,12 +187,3 @@ export default MinIOService;
 
 
 
-
-
-
-
-
-
-
-
-

@@ -267,3 +267,146 @@
     transform: translateY(-2px);
     background-color: var(--lim);
 }
+
+/* Мобільна версія для MentalTestPage */
+@media (max-width: 431px) {
+    .mtp-mental-test-container {
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .mtp-mental-test-description {
+        margin-bottom: 0;
+    }
+
+    /* Початковий екран */
+    .mtp-initial-content {
+        width: 100%;
+        margin-top: 0;
+        gap: 25px;
+    }
+
+    .mtp-start-message {
+        font-size: 15px;
+        margin-bottom: 0;
+        line-height: 1.4;
+    }
+
+    .mtp-start-button {
+        padding: 12px 40px;
+        font-size: 15px;
+        border-radius: 25px;
+    }
+
+    .mtp-mental-test-content-block {
+        height: 420px;
+    }
+
+    /* Екран питань */
+    .mtp-question-content {
+        gap: 20px;
+        width: 100%;
+    }
+
+    .mtp-question-header {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 0;
+    }
+
+    .mtp-question-number-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .mtp-question-text {
+        font-size: 16px;
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    .mtp-answers-container {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .mtp-answer-button {
+        min-width: unset;
+        width: 100%;
+        height: 44px;
+        font-size: 14px;
+        padding: 10px 15px;
+        border-radius: 25px;
+        margin-bottom: 0;
+    }
+
+    .mtp-navigation-buttons {
+        flex-direction: column-reverse;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .mtp-back-button,
+    .mtp-next-button {
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+    }
+
+    .mtp-back-button.hidden {
+        display: none;
+    }
+
+    /* Екран результатів */
+    .mtp-result-content {
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    .mtp-result-animation {
+        margin-top: -40px;
+        margin-bottom: -30px;
+    }
+
+    .mtp-result-animation .lottie-animation {
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    .mtp-result-title {
+        font-size: 18px;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .mtp-result-description {
+        font-size: 14px;
+        line-height: 1.4;
+        padding: 0 10px;
+        margin-bottom: 10px;
+    }
+
+    .mtp-restart-button {
+        padding: 12px 30px;
+        font-size: 14px;
+        border-radius: 25px;
+        margin-top: 5px;
+    }
+
+    .mtp-start-button,
+    .mtp-answer-button,
+    .mtp-back-button,
+    .mtp-next-button,
+    .mtp-restart-button {
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+
+    .mtp-question-content,
+    .mtp-initial-content,
+    .mtp-result-content {
+        padding: 0 5px;
+    }
+}

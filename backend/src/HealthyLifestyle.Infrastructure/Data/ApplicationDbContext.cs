@@ -27,8 +27,11 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<MealEntry> MealEntries { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<FamilySubscriptionMember> FamilySubscriptionMembers { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<FitnessActivity> FitnessActivities { get; set; }
         public DbSet<Group> Groups { get; set; }
@@ -44,6 +47,10 @@ namespace HealthyLifestyle.Infrastructure.Data
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<RecipeStep> RecipeSteps { get; set; }
+        public DbSet<WeightLog> WeightLogs { get; set; } = null!;
 
         #endregion
 
@@ -100,6 +107,7 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureOrder(modelBuilder);
             ConfigureOrderItem(modelBuilder);
             ConfigureSubscription(modelBuilder);
+            ConfigureFamilySubscriptionMember(modelBuilder);
             ConfigureWorkout(modelBuilder);
             ConfigureFitnessActivity(modelBuilder);
             ConfigureGroup(modelBuilder);
@@ -115,6 +123,8 @@ namespace HealthyLifestyle.Infrastructure.Data
             ConfigureCalendarEvents(modelBuilder);
             ConfigureAchievement(modelBuilder);
             ConfigurePurchase(modelBuilder);
+            ConfigureShoppingCarts(modelBuilder);
+            ConfigureShoppingCartItems(modelBuilder);
         }
         #endregion
 
@@ -216,6 +226,10 @@ namespace HealthyLifestyle.Infrastructure.Data
                    .WithMany(dp => dp.MealEntries)
                    .HasForeignKey(me => me.DietPlanId)
                    .OnDelete(DeleteBehavior.SetNull);
+                entity.HasOne(me => me.Recipe)
+                .WithMany()
+                .HasForeignKey(me => me.RecipeId)
+                .OnDelete(DeleteBehavior.SetNull);
             });
         }
 
@@ -444,10 +458,34 @@ namespace HealthyLifestyle.Infrastructure.Data
                 entity.Property(s => s.Price).HasPrecision(18, 2);
                 entity.Property(s => s.Type).HasConversion<string>();
                 entity.Property(s => s.Status).HasConversion<string>();
+
                 entity.HasOne(s => s.User)
-                   .WithMany(u => u.Subscriptions)
-                   .HasForeignKey(s => s.UserId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                    .WithMany(u => u.Subscriptions)
+                    .HasForeignKey(s => s.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasMany(s => s.FamilyMembers)
+                    .WithOne(fm => fm.Subscription)
+                    .HasForeignKey(fm => fm.SubscriptionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+
+        private void ConfigureFamilySubscriptionMember(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<FamilySubscriptionMember>(entity =>
+            {
+                entity.HasKey(fm => new { fm.SubscriptionId, fm.MemberId });
+
+                entity.HasOne(fm => fm.Subscription)
+                    .WithMany(s => s.FamilyMembers)
+                    .HasForeignKey(fm => fm.SubscriptionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(fm => fm.Member)
+                    .WithMany(u => u.FamilyMemberships)
+                    .HasForeignKey(fm => fm.MemberId)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
 
@@ -685,6 +723,43 @@ namespace HealthyLifestyle.Infrastructure.Data
                     .OnDelete(DeleteBehavior.SetNull);
                 entity.HasMany(ce => ce.MeetingParticipants)
                     .WithMany();
+            });
+        }
+
+        /// <summary>
+        /// Налаштовує спільну конфігурацію для ShoppingCart.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureShoppingCarts(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ShoppingCart>(entity =>
+            {
+                entity.HasOne(sc => sc.User)
+                    .WithMany()
+                    .HasForeignKey(sc => sc.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasIndex(sc => sc.UserId)
+                    .IsUnique();
+            });
+        }
+
+        /// <summary>
+        /// Налаштовує спільну конфігурацію для ShoppingCartItem.
+        /// </summary>
+        /// <param name="modelBuilder">Конструктор моделі для налаштування сутності.</param>
+        private void ConfigureShoppingCartItems(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ShoppingCartItem>(entity =>
+            {
+                entity.HasOne(oi => oi.ShoppingCart)
+                   .WithMany(o => o.CartItems)
+                   .HasForeignKey(oi => oi.ShoppingCartId)
+                   .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(oi => oi.Product)
+                    .WithMany()
+                    .HasForeignKey(oi => oi.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
 

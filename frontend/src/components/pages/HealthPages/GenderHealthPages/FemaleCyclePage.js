@@ -111,7 +111,7 @@ function FemaleCyclePage() {
     }, [])
 
     return (
-        <div className="scroll-data cycle-container">
+        <div className="scroll-data cycle-container hidden-scroll">
             <div className="female-health-info" style={{position: "relative"}}>
                 <div className="title">{t("your_cycle")}</div>
                 <div className="sub-title">{t("cycle_control")}</div>
@@ -131,7 +131,7 @@ function FemaleCyclePage() {
                     />
                      <FemaleCustomSelect
                         id="number-1-10"
-                        placeholder="Тривалість місячних(дні)"
+                        placeholder={t("m_long")}
                         options={numbers1to10}
                         value={selectedNumber1}
                         onChange={(val) => setSelectedNumber1(val)}
@@ -140,7 +140,7 @@ function FemaleCyclePage() {
                     />
                     <FemaleCustomSelect
                         id="number-1-32"
-                        placeholder="Тривалість циклу"
+                        placeholder={t("c_long_wh")}
                         options={numbers21to35}
                         value={selectedNumber2}
                         onChange={(val) => setSelectedNumber2(val)}

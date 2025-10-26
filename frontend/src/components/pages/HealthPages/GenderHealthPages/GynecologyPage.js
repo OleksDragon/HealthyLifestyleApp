@@ -7,10 +7,10 @@ function GynecologyPage() {
     const navigate = useNavigate();
 
     return (
-        <div className="scroll-data female-health-container">
+        <div className="scroll-data female-health-container hidden-scroll">
             <div className="woman-health-info">
                 <div className="title">{t("gynecology")}</div>
-                <div className="sub-title">{t("gynecology_sub")}</div>
+                <div className="sub-title hidden-phone">{t("gynecology_sub")}</div>
             </div>
             <div className="gynecology-content">
                 <div className="female-health-options female-health-options-gyn">

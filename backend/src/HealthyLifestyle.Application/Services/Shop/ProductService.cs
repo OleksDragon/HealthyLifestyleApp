@@ -8,6 +8,7 @@ using System.Text.Json;
 using HealthyLifestyle.Application.Interfaces.Shop;
 using HealthyLifestyle.Core.Interfaces.Shop;
 using HealthyLifestyle.Application.Interfaces.ObjectStorage;
+using HealthyLifestyle.Application.DTOs.User;
 
 namespace HealthyLifestyle.Application.Services.Shop
 {
@@ -66,11 +67,10 @@ namespace HealthyLifestyle.Application.Services.Shop
             if (productCreateDto.ImageFile != null)
             {
                 // Завантажуємо файл у MinIO
-                imageUrl = await _objectStorageService.UploadFileAsync(
-                    productCreateDto.ImageFile.OpenReadStream(),
-                    "products",
-                    productCreateDto.ImageFile.ContentType
-                );
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(productCreateDto.ImageFile.FileName)}";
+
+                await _objectStorageService.UploadFileAsync(productCreateDto.ImageFile.OpenReadStream(), fileName, productCreateDto.ImageFile.ContentType);
+                imageUrl = fileName;
             }
 
             var product = _mapper.Map<Product>(productCreateDto);
@@ -119,7 +119,17 @@ namespace HealthyLifestyle.Application.Services.Shop
             if (!string.IsNullOrEmpty(cachedProductsJson))
             {
                 Console.WriteLine("Products: Loaded from Redis cache.");
-                return JsonSerializer.Deserialize<IEnumerable<ProductDto>>(cachedProductsJson) ?? Enumerable.Empty<ProductDto>();
+                var _productDtos = JsonSerializer.Deserialize<IEnumerable<ProductDto>>(cachedProductsJson) ?? Enumerable.Empty<ProductDto>();
+
+                foreach (var product in _productDtos)
+                {
+                    if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        product.ImageUrl = await _objectStorageService.GetPresignedUrlAsync(product.ImageUrl, 3600);
+                    }
+                }
+
+                return _productDtos;
             }
 
             var products = await _productRepository.GetAllAsync();
@@ -141,6 +151,14 @@ namespace HealthyLifestyle.Application.Services.Shop
                 Console.WriteLine("Products: No products found in DB.");
             }
 
+            foreach (var product in productDtos)
+            {
+                if (!string.IsNullOrEmpty(product.ImageUrl))
+                {
+                    product.ImageUrl = await _objectStorageService.GetPresignedUrlAsync(product.ImageUrl, 3600);
+                }
+            }
+
             return productDtos;
         }
 
@@ -157,7 +175,32 @@ namespace HealthyLifestyle.Application.Services.Shop
             {
                 throw new KeyNotFoundException($"Product with ID {id} not found.");
             }
-            return _mapper.Map<ProductDto>(product);
+
+            var productDto = _mapper.Map<ProductDto>(product);
+
+            if (!string.IsNullOrEmpty(product.ImageUrl))
+            {
+                productDto.ImageUrl = await _objectStorageService.GetPresignedUrlAsync(product.ImageUrl, 3600);
+            }
+
+            return productDto;
+        }
+
+        /// <summary>
+        /// Gets a product (not dto) by its ID.
+        /// </summary>
+        /// <param name="id">Unique product identifier.</param>
+        /// <returns>Product</returns>
+        /// <exception cref="KeyNotFoundException">Occurs if the product is not found.</exception>
+        public async Task<Product> GetProductFromDBByIdAsync(Guid id)
+        {
+            var product = await _productRepository.GetByIdAsync(id);
+            if (product == null)
+            {
+                throw new KeyNotFoundException($"Product with ID {id} not found.");
+            }
+
+            return product;
         }
 
         /// <summary>
@@ -185,12 +228,10 @@ namespace HealthyLifestyle.Application.Services.Shop
                     await _objectStorageService.DeleteFileAsync(product.ImageUrl);
                 }
 
-                // Завантажуємо нове
-                product.ImageUrl = await _objectStorageService.UploadFileAsync(
-                    productUpdateDto.ImageFile.OpenReadStream(),
-                    "products",
-                    productUpdateDto.ImageFile.ContentType
-                );
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(productUpdateDto.ImageFile.FileName)}";
+
+                await _objectStorageService.UploadFileAsync(productUpdateDto.ImageFile.OpenReadStream(), fileName, productUpdateDto.ImageFile.ContentType);
+                product.ImageUrl = fileName;
             }
             else if (productUpdateDto.ImageUrl == "")
             {

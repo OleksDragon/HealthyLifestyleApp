@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../styles/widget.css';
 
 function DiagramLinear({ values, goal, start, step }) {
-    const width = 200;
-    const height = 70;
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    useEffect(() => {
+        const checkScreen = () => {
+        setIsSmallScreen(window.innerWidth < 431);
+        };
+
+        checkScreen();
+
+        window.addEventListener("resize", checkScreen);
+        return () => window.removeEventListener("resize", checkScreen);
+    }, []);
+
+    const width = isSmallScreen ? window.innerWidth * 0.7 : 200;
+    const height = isSmallScreen ? 100 : 70;
     const paddingLeft = 12;
     const up = 6;
 

@@ -26,6 +26,14 @@ namespace HealthyLifestyle.Application.Interfaces.Calendar
         Task<IEnumerable<CalendarEventDto>> GetAllCalendarEventsByUserIdInDateRangeAsync(Guid userId, DateTime start, DateTime end);
 
         /// <summary>
+        /// Отримує список усіх подій за проміжок часу.
+        /// </summary>
+        /// <param name="start">Початкова дата пошуку.</param>
+        /// <param name="end">Кінцева дата пошуку.</param>
+        /// <returns>Колекція об'єктів CalendarEventDto.</returns>
+        Task<IEnumerable<CalendarEventDto>> GetAllCalendarEventsToRemindAsync();
+
+        /// <summary>
         /// Створює нову подію.
         /// </summary>
         /// <param name="calendarEventCreateDto">Об'єкт CalendarEventCreateDto, що містить дані для створення події.</param>

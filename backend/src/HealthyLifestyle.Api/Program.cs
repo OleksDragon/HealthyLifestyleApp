@@ -12,6 +12,7 @@ using HealthyLifestyle.Application.Interfaces.HealthTracker;
 using HealthyLifestyle.Application.Interfaces.Location;
 using HealthyLifestyle.Application.Interfaces.Notification;
 using HealthyLifestyle.Application.Interfaces.ObjectStorage;
+using HealthyLifestyle.Application.Interfaces.Payment;
 using HealthyLifestyle.Application.Interfaces.ProfessionalQualification;
 using HealthyLifestyle.Application.Interfaces.Record;
 using HealthyLifestyle.Application.Interfaces.Shop;
@@ -30,6 +31,7 @@ using HealthyLifestyle.Application.Services.GroupS;
 using HealthyLifestyle.Application.Services.HealthTracker;
 using HealthyLifestyle.Application.Services.Location;
 using HealthyLifestyle.Application.Services.ObjectStorage;
+using HealthyLifestyle.Application.Services.Payment;
 using HealthyLifestyle.Application.Services.ProfessionalQualification;
 using HealthyLifestyle.Application.Services.Record;
 using HealthyLifestyle.Application.Services.Shop;
@@ -38,6 +40,7 @@ using HealthyLifestyle.Application.Services.UserS;
 using HealthyLifestyle.Application.Services.WorkoutS;
 using HealthyLifestyle.Application.Services.ImageUpload;
 using HealthyLifestyle.Application.Interfaces.ImageUpload;
+using HealthyLifestyle.BackgroundServices;
 using HealthyLifestyle.Core.Entities;
 using HealthyLifestyle.Core.Interfaces;
 using HealthyLifestyle.Core.Interfaces.APInfoBlock;
@@ -74,6 +77,14 @@ using StackExchange.Redis;
 using System.Text;
 using System.Text.Json.Serialization;
 using YourProject.Application.Services;
+using HealthyLifestyle.Application.Services.Payments;
+using HealthyLifestyle.Application.Services.Payments.Handlers;
+using HealthyLifestyle.Application.Services.Payment.Handlers;
+using HealthyLifestyle.Core.Interfaces.MealTracker;
+using HealthyLifestyle.Application.Services.MealTracker;
+using HealthyLifestyle.Infrastructure.Repositories.Weight;
+using HealthyLifestyle.Application.Services.Weight;
+using HealthyLifestyle.Application.Interfaces.Weight;
 
 
 // Створюємо білдер для веб-програми
@@ -184,6 +195,8 @@ builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IChallengeService, ChallengeService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IMealService, MealService>();
+builder.Services.AddScoped<IRecipeService, RecipeService>();
+builder.Services.AddScoped<IWeightService, WeightService>();
 builder.Services.AddScoped<IDietPlanService, DietPlanService>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
@@ -198,10 +211,16 @@ builder.Services.AddScoped<SpecialistImageService>();
 builder.Services.AddScoped<ISpecialistImageStartupService, SpecialistImageStartupService>();
 builder.Services.AddScoped<HealthyLifestyle.Infrastructure.Interfaces.ISpecialistImageDatabaseService, HealthyLifestyle.Infrastructure.Services.SpecialistImageDatabaseService>();
 builder.Services.AddScoped<HealthyLifestyle.Infrastructure.Services.SpecialistImageStartupDatabaseService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IWebhookHandler, SubscriptionWebhookHandler>();
+builder.Services.AddScoped<IWebhookHandler, OrderWebhookHandler>();
+builder.Services.AddScoped<WebhookProcessingService>();
+builder.Services.AddScoped<IShopCartService, ShopCartService>();
 
 // 6. Реєстрація репозиторію та Unit of Work
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IConsultationRepository, ConsultationRepository>();
@@ -215,14 +234,18 @@ builder.Services.AddScoped<IMentalHealthRecordRepository, MentalHealthRecordRepo
 builder.Services.AddScoped<ISleepRecordRepository, SleepRecordRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<IMealRepository, MealRepository>();
+builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<IWeightLogRepository, WeightLogRepository>();
 builder.Services.AddScoped<IDietPlanRepository, DietPlanRepository>();
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IFitnessActivityRepository, FitnessActivityRepository>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+builder.Services.AddScoped<IFamilySubscriptionRepository, FamilySubscriptionRepository>();
 builder.Services.AddScoped<ICalendarRepository, CalendarRepository>();
 builder.Services.Configure<MinioSettings>(builder.Configuration.GetSection("MinIO"));
 builder.Services.AddScoped<IAchievementRepository, AchievementRepository>();
 builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+builder.Services.AddScoped<IShopCartRepository, ShopCartRepository>();
 
 // 7. Конфігурація CORS
 builder.Services.AddCors(options =>
@@ -319,6 +342,9 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+// Регеструємо фоновий сервіс
+builder.Services.AddHostedService<SendNotificationService>();
 
 // --- Створюємо та налаштовуємо конвеєр обробки запитів ---
 

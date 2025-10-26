@@ -141,3 +141,124 @@
 .ad-container {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
+
+/* Мобільна версія для ArticleDetailPage */
+@media (max-width: 431px) {
+    .ad-container {
+        height: 85vh;
+        margin-top: 0;
+        margin-left: 10px;
+        padding: 15px 12px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ad-back-button {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 140px;
+        height: 35px;
+        margin-bottom: 10px;
+        justify-content: flex-start;
+        flex-shrink: 0;
+    }
+
+    .ad-back-btn-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .ad-back-btn-label {
+        font-size: 11px;
+        width: auto;
+        margin-left: 5px;
+    }
+
+    .ad-content {
+        padding: 0 5px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .ad-static-content {
+        flex-shrink: 0;
+    }
+
+    .ad-main-title {
+        font-size: 20px;
+        margin: 0 0 15px 0;
+        text-align: left;
+    }
+
+    .ad-text {
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+
+    .ad-section-title,
+    .ad-subsection {
+        font-size: 16px;
+        text-align: left;
+        margin: 15px 0 10px 0;
+    }
+
+    /* Скроляться тільки техніки */
+    .ad-scrollable-techniques {
+        flex: 1;
+        overflow-y: auto;
+        margin-top: 10px;
+    }
+
+    /* ЗМІНА: об'єднуємо стовбці в один */
+    .ad-techniques-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .ad-techniques-grid .ad-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .ad-techniques-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ad-technique-item {
+        padding: 12px 15px;
+        min-height: 70px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        gap: 10px;
+    }
+
+    .ad-number {
+        font-size: 35px;
+        min-width: 30px;
+    }
+
+    .ad-technique-title {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    .ad-technique-text {
+        font-size: 11px;
+        line-height: 1.3;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .ad-container {
+        height: 80vh;
+    }
+}

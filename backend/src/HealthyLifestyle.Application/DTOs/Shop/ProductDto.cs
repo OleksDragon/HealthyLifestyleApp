@@ -35,7 +35,7 @@ namespace HealthyLifestyle.Application.DTOs.Shop
         public ProductCategory Category { get; set; }
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Ціна продукту повинна бути позитивним числом.")]
-        public decimal Price { get; set; }
+        public string Price { get; set; } = "0";
 
         [Required(ErrorMessage = "Бренд є обов'язковим.")]
         [StringLength(255, MinimumLength = 2, ErrorMessage = "Назва бренду повинна містити від 2 до 255 символів.")]
@@ -49,10 +49,10 @@ namespace HealthyLifestyle.Application.DTOs.Shop
         public IFormFile? ImageFile { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Кількість на складі не може бути від'ємною.")]
-        public int StockQuantity { get; set; }
+        public string StockQuantity { get; set; } = "1";
 
         [Range(0.0, 1.0, ErrorMessage = "Комісія платформи повинна бути в діапазоні від 0 до 1.")]
-        public decimal PlatformCommissionPercentage { get; set; }
+        public string PlatformCommissionPercentage { get; set; } = "0.1";
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ namespace HealthyLifestyle.Application.DTOs.Shop
         public ProductCategory? Category { get; set; }
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Ціна продукту повинна бути позитивним числом.")]
-        public decimal? Price { get; set; }
+        public string? Price { get; set; }
 
         [StringLength(255, MinimumLength = 2, ErrorMessage = "Назва бренду повинна містити від 2 до 255 символів.")]
         public string? Brand { get; set; }
@@ -81,10 +81,10 @@ namespace HealthyLifestyle.Application.DTOs.Shop
         public string? ImageUrl { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Кількість на складі не може бути від'ємною.")]
-        public int? StockQuantity { get; set; }
+        public string? StockQuantity { get; set; }
 
         [Range(0.0, 1.0, ErrorMessage = "Комісія платформи повинна бути в діапазоні від 0 до 1.")]
-        public decimal? PlatformCommissionPercentage { get; set; }
+        public string? PlatformCommissionPercentage { get; set; }
     }
 
     /// <summary>

@@ -96,7 +96,7 @@ const MaleHealthPage = () => {
                                 <div className="mhp-glass-background"></div>
                                 <div className="mhp-block-content">
                                     <div className="mhp-block-text">
-                                        <h3 className="mhp-block-title">{t("mp_analyses_block_title")}</h3>
+                                        <h3 className="mhp-block-title mhp-analyses-title">{t("mp_analyses_block_title")}</h3>
                                         <div className="mhp-content-grid">
                                             <div className="mhp-content-item">
                                                 <div className="mhp-content-label">{t("mp_analyses_block_content_label_1")}</div>
@@ -119,12 +119,6 @@ const MaleHealthPage = () => {
                                                 <div className="mhp-content-value">{t("mp_analyses_block_content_value_5")}</div>
                                             </div>
                                         </div>
-                                        <button 
-                                            className="mhp-hormones-button"
-                                            onClick={handleHormonesClick}
-                                        >
-                                            {t("mp_add_hormones_data")}
-                                        </button>
                                     </div>
                                 </div>
                             </div>

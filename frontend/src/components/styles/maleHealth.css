@@ -227,6 +227,10 @@
     width: 100%;
 }
 
+.mhp-analyses-title {
+    margin: 20px 0 45px 0;
+}
+
 .mhp-content-grid {
     display: flex;
     flex-direction: column;
@@ -305,4 +309,282 @@
 
 .mhp-specialist-button:hover {
     background: var(--lim);
+}
+
+/* Мобільна адаптація для Male Health Page */
+@media (max-width: 431px) {
+    
+
+    .mhp-overflow-container {
+        padding: 0 10px;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0;
+        width: 98vw;
+    }
+
+    .mhp-overflow-container::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .mhp-overflow-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        margin: 10px 0 30px 0;
+    }
+
+    .mhp-overflow-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+    }
+
+    .mhp-overflow-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .mhp-page {
+        width: 100%;
+        display: block;
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .mhp-header-block {
+        padding: 20px 0 0 0;
+        height: auto;
+        margin-top: -15px;
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .mhp-header-content {
+        padding: 20px 15px 15px 15px;
+        max-height: none;
+        border-radius: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .mhp-header-text {
+        margin-left: 0;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .mhp-main-title {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .mhp-main-subtitle {
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .mhp-header-icon {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: 5px;
+    }
+
+    .mhp-nomic-mascot {
+        width: 100px;
+        height: 100px;
+    }
+
+    .mhp-container {
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .mhp-button-wrapper {
+        margin: 0 0 10px 0;
+        width: 100%;
+    }
+
+    .mhp-main-button {
+        width: 100%;
+        height: 50px;
+        border-radius: 25px;
+    }
+
+    .mhp-button-content {
+        gap: 10px;
+    }
+
+    .mhp-button-content svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .mhp-button-text {
+        font-size: 16px;
+    }
+
+    .mhp-blocks-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .mhp-block-column {
+        gap: 12px;
+    }
+
+    .mhp-info-block {
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .mhp-hormones-block,
+    .mhp-analysis-block,
+    .mhp-reproductive-block,
+    .mhp-urinary-block,
+    .mhp-potency-block {
+        height: auto;
+        min-height: auto;
+        margin-bottom: 5px;
+    }
+
+    .mhp-hormones-block {
+        min-height: 280px;
+        margin-top: -5px;
+    }
+
+    .mhp-analysis-block {
+        min-height: 320px;
+    }
+
+    .mhp-reproductive-block {
+        min-height: 180px;
+    }
+
+    .mhp-urinary-block {
+        min-height: 180px;
+    }
+
+    .mhp-potency-block {
+        min-height: 190px;
+        margin-bottom: 45px;
+    }
+
+    .mhp-glass-background {
+        border-radius: 20px;
+    }
+
+    .mhp-block-content {
+        border-radius: 20px;
+        padding: 15px;
+        height: auto;
+    }
+
+    .mhp-block-text {
+        gap: 15px;
+    }
+
+    .mhp-block-title {
+        font-size: 18px;
+        margin: 10px 0 15px 0;
+    }
+
+    .mhp-analyses-title {
+        margin: 0 0 15px 0;
+    }
+
+    .mhp-content-grid {
+        gap: 10px;
+        margin: 0 0 10px 15px;
+    }
+
+    .mhp-content-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .mhp-content-label {
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 0;
+        margin-bottom: 2px;
+    }
+
+    .mhp-content-value {
+        font-size: 13px;
+        line-height: 1.3;
+        margin-left: 5px;
+    }
+
+    .mhp-content-value p {
+        margin: 2px 0;
+    }
+
+    .mhp-hormones-button {
+        min-width: 100%;
+        height: 42px;
+        font-size: 15px;
+        transform: none;
+        margin: 10px auto 0 auto;
+    }
+
+    .mhp-hormones-button:hover {
+        transform: none;
+    }
+
+    .mhp-specialist-button-wrapper {
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    .mhp-specialist-button {
+        min-width: 100%;
+        height: 46px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+}
+
+/* Додаткові стилі для дуже маленьких екранів */
+@media (max-width: 360px) {
+    .mhp-hormones-block {
+        min-height: 300px;
+    }
+
+    .mhp-analysis-block {
+        min-height: 350px;
+    }
+
+    .mhp-block-title {
+        font-size: 16px;
+    }
+
+    .mhp-content-label {
+        font-size: 13px;
+    }
+
+    .mhp-content-value {
+        font-size: 12px;
+    }
+
+    .mhp-hormones-button {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .mhp-specialist-button {
+        font-size: 15px;
+        height: 44px;
+    }
 }

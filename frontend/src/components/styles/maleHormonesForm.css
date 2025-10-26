@@ -164,3 +164,235 @@
     transform: none !important;
     background: var(--white) !important;
 }
+
+/* Мобільна адаптація для Male Hormones Form Page */
+@media (max-width: 431px) {
+    .mh-mhf-page {
+        width: 100%;
+        display: block;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .mhp-header-block {
+        padding: 20px 0 0 0;
+        height: auto;
+        margin-top: -15px;
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .mhp-header-content {
+        padding: 20px 15px 15px 15px;
+        max-height: none;
+        border-radius: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .mhp-header-text {
+        margin-left: 0;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .mhp-main-title {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .mhp-main-subtitle {
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .mhp-header-icon {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: 5px;
+    }
+
+    .mhp-nomic-mascot {
+        width: 100px;
+        height: 100px;
+    }
+
+    .mh-mhf-container {
+        grid-column: 1;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .mh-mhf-back-button {
+        width: 55%;
+        margin-top: 0;
+        margin-left: 5px;
+        margin-bottom: 20px;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+
+    .mh-mhf-back-button svg {
+        width: 10px;
+        height: 20px;
+    }
+
+    .mh-mhf-hormones-form {
+        border-radius: 20px;
+        padding: 20px 15px;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mh-mhf-form-content {
+        max-width: 100%;
+        min-height: auto;
+        margin: 0;
+    }
+
+    .mh-mhf-title {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .mh-mhf-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+
+    .mh-mhf-form-grid {
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .mh-mhf-form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .mh-mhf-input-with-suffix {
+        width: 100%;
+    }
+
+    .mh-mhf-form-row > .mh-mhf-input-with-suffix:first-child,
+    .mh-mhf-form-row > .mh-mhf-input-with-suffix:last-child {
+        justify-self: center;
+    }
+
+    .mh-mhf-input {
+        width: 100%;
+        height: 44px;
+        padding: 10px 40px 10px 20px;
+        font-size: 16px;
+        border-radius: 25px;
+    }
+
+    .mh-mhf-input::placeholder {
+        font-size: 15px;
+    }
+
+    .mh-mhf-input-suffix {
+        right: 15px;
+        font-size: 14px;
+    }
+
+    .mh-mhf-save-button {
+        width: 100%;
+        height: 46px;
+        font-size: 16px;
+        border-radius: 25px;
+    }
+
+    .mh-mhf-save-button:hover {
+        transform: none;
+    }
+
+    .mh-mhf-save-button-disabled:hover {
+        transform: none;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .mh-mhf-page {
+        width: 95vw;
+        padding: 0 10px 0 2px;
+        height: 80vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mh-mhf-hormones-form {
+        padding: 15px 12px;
+        min-height: 68vh;
+    }
+
+    .mh-mhf-form-content {
+        min-height: auto;
+    }
+
+    .mh-mhf-title {
+        font-size: 17px;
+    }
+
+    .mh-mhf-subtitle {
+        font-size: 13px;
+    }
+
+    .mh-mhf-input {
+        height: 42px;
+        font-size: 15px;
+        padding: 10px 35px 10px 15px;
+    }
+
+    .mh-mhf-input::placeholder {
+        font-size: 14px;
+    }
+
+    .mh-mhf-input-suffix {
+        font-size: 13px;
+        right: 12px;
+    }
+
+    .mh-mhf-save-button {
+        height: 44px;
+        font-size: 15px;
+    }
+
+    .mh-mhf-back-button {
+        width: 70%;
+        padding: 6px 10px;
+    }
+
+    .mh-mhf-container {
+        overflow-y: auto;
+    }
+
+    .mh-mhf-page::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .mh-mhf-page::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+    }
+
+    .mh-mhf-page::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+    }
+
+    .mh-mhf-page::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+}

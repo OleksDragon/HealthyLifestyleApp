@@ -4,7 +4,7 @@
   justify-content: center;
   margin: 20px 0;
   gap: 10px;
-  touch-action: pan-y; /* Дозволяє вертикальний скролл, але не блокує горизонтальні жести */
+  touch-action: pan-y;
 }
 
 .dc-day-circle {
@@ -19,7 +19,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  user-select: none; /* Запобігає виділенню тексту при тапі */
+  user-select: none;
 }
 
 .dc-day-circle.dc-active {
@@ -65,4 +65,42 @@
 .dc-arrow {
   width: 24px;
   height: 24px;
+}
+
+/* Мобільна версія для DateCarousel */
+@media (max-width: 431px) {
+  .dc-carousel {
+    margin: 15px 0;
+    gap: 8px;
+    padding: 0 5px;
+  }
+
+  .dc-day-circle {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .dc-arrow-btn {
+    display: none;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+  .dc-carousel {
+    margin: 12px 0;
+    gap: 6px;
+  }
+
+  .dc-day-circle {
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
+  }
+
+  .dc-arrow-btn {
+    display: none;
+  }
 }

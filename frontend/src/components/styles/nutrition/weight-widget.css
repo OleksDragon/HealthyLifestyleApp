@@ -1,0 +1,167 @@
+.weight-analytics-widget.glass-card {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    color: #fff;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.weight-analytics-widget .card-title-white {
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+
+.weight-analytics-widget .title-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.weight-analytics-widget .weight-target-line {
+    font-family: "MuseoModerno", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.weight-analytics-widget .weight-target-line .start-weight {
+    color: #0661CC;
+}
+
+.weight-analytics-widget .weight-target-line .target-weight {
+    color: #ffffff;
+}
+
+.weight-analytics-widget .progress-bar-container {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.weight-analytics-widget .progress-fill {
+    height: 100%;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.weight-analytics-widget .current-month {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 0 10px 0;
+    opacity: 0.8;
+    text-align: left;
+}
+
+.chart-wrapper {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.chart-y-axis-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    padding-right: 5px;
+    text-align: right;
+    position: relative;
+    height: 60px;
+}
+
+.chart-y-axis-item {
+    line-height: 1;
+    margin-top: -0.4em;
+}
+
+.chart-main {
+    flex: 1;
+    position: relative;
+}
+
+.chart-grid-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.chart-line-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+}
+
+.chart-path {
+    fill: none;
+    stroke: #D6FF00;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.chart-control-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+.current-month {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.chart-mode-switch {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 3px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.chart-mode-switch .mode-button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.chart-mode-switch .mode-button:hover {
+    color: #007bff;
+}
+
+.chart-mode-switch .mode-button.active {
+    background: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}

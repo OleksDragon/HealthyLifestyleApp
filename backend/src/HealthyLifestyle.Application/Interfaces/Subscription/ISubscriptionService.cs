@@ -1,4 +1,5 @@
 ﻿using HealthyLifestyle.Application.DTOs.Subscription;
+using static HealthyLifestyle.Application.Services.SubscriptionS.SubscriptionService;
 
 namespace HealthyLifestyle.Application.Interfaces.Subscription
 {
@@ -13,7 +14,7 @@ namespace HealthyLifestyle.Application.Interfaces.Subscription
         /// Отримати підписки користувача.
         /// </summary>
         /// <param name="id">Ідентифікатор користувача.</param>
-        Task<List<SubscriptionDto>> GetSubscriptionsByIdAsync(Guid id);
+        Task<List<SubscriptionDto>> GetSubscriptionsByUserIdAsync(Guid id);
 
         /// <summary>
         /// Створити нову підписку.
@@ -53,5 +54,40 @@ namespace HealthyLifestyle.Application.Interfaces.Subscription
         /// <param name="id">Ідентифікатор підписки.</param>
         /// при вході користувача порівняти EndDate з поточним часом, якщо EndDate < DateTime.Now то викликати ExpireSubscriptionAsync(id)
         Task ExpireSubscriptionAsync(Guid id);
+
+        /// <summary>
+        /// Перевіряє статус підписки користувача:
+        /// якщо закінчилась — автоматично оновлює статус;
+        /// якщо активна — повертає її;
+        /// якщо немає — повертає повідомлення.
+        /// </summary>
+        /// <param name="userId">Ідентифікатор підписки.</param>
+        Task<SubscriptionDto?> CheckAndUpdateSubscriptionStatusAsync(Guid userId);
+
+        /// <summary>
+        /// Створити сімейну підписку (owner + члени сім'ї).
+        /// </summary>
+        /// <param name="createDto">Дані для створення сімейної підписки.</param>
+        Task<SubscriptionDto> CreateFamilySubscriptionAsync(FamilySubscriptionCreateDto createDto);
+
+        /// <summary>
+        /// Оновлення членів сімейної підписки.
+        /// </summary>
+        /// <param name="subscriptionId">Ідентифікатор підписки.</param>
+        /// <param name="memberEmails">Список емайлів користувачів.</param>
+        Task<FamilySubscriptionUpdateResultDto> UpdateFamilyMembersAsync(Guid subscriptionId, List<string> memberEmails);
+
+        /// <summary>
+        /// Отримати всіх членів сімейної підписки певного користувача (власника).
+        /// </summary>
+        /// <param name="ownerId">Ідентифікатор власника сімейної підписки.</param>
+        Task<List<FamilySubscriptionMemberDto>> GetFamilyMembersAsync(Guid ownerId);
+
+        /// <summary>
+        /// Видалити члена з сімейної підписки.
+        /// </summary>
+        /// <param name="ownerId">Ідентифікатор власника підписки.</param>
+        /// <param name="memberEmail">емейл користувача, якого потрібно видалити.</param>
+        Task RemoveFamilyMemberAsync(Guid ownerId, string memberEmail);
     }
 }

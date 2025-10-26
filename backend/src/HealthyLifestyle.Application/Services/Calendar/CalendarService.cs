@@ -80,6 +80,12 @@ namespace HealthyLifestyle.Application.Services.Calendar
             return _mapper.Map<IEnumerable<CalendarEventDto>>(calendars);
         }
 
+        public async Task<IEnumerable<CalendarEventDto>> GetAllCalendarEventsToRemindAsync()
+        {
+            var calendars = await _calendarRepository.GetAllCalendarEventsToRemindAsync();
+            return _mapper.Map<IEnumerable<CalendarEventDto>>(calendars);
+        }
+
         public async Task<CalendarEventDto> GetCalendarEventByIdAsync(Guid id)
         {
             var calendar = await _calendarRepository.GetEventWithParticipantsAsync(id);

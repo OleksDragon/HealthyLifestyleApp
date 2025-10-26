@@ -48,3 +48,30 @@
     font-weight: bold;
     border-radius: 4px;
 }
+
+/* Новий стиль для Portal */
+.portalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: transparent;
+}
+
+@media (max-width: 431px) {
+    .dropdownMenu {
+        margin-top: 15px; /* вирівнюємо по рівню хедера */ 
+        z-index: 1001;
+    }
+    
+    /* Для Portal версії на мобільних */
+    .portalOverlay .dropdownMenu {
+        position: fixed;
+        top: 60px;
+        right: 64%;
+        z-index: 10000;
+        margin-top: 0;
+    }
+}

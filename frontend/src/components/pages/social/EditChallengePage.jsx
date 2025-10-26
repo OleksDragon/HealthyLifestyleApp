@@ -136,63 +136,65 @@ const EditChallengePage = () => {
 
   return (
     <div className="page-container create-challenge-page">
-      <h2 className="ch-create-title">{t("ch_edit_title")}</h2>
-      <form onSubmit={handleSubmit} className="challenge-form">
-        <div className="form-group">
-          <label htmlFor="name">{t("ch_name")}</label>
-          <input type="text" name="name" value={challengeData.name} onChange={handleChange} required />
-        </div>
+      <div className="scrollable-form-container">
+        <h2 className="ch-create-title">{t("ch_edit_title")}</h2>
+        <form onSubmit={handleSubmit} className="challenge-form">
+          <div className="form-group">
+            <label htmlFor="name">{t("ch_name")}</label>
+            <input type="text" name="name" value={challengeData.name} onChange={handleChange} required />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="description">{t("ch_description")}</label>
-          <textarea name="description" value={challengeData.description} onChange={handleChange} required />
-        </div>
+          <div className="form-group">
+            <label htmlFor="description">{t("ch_description")}</label>
+            <textarea name="description" value={challengeData.description} onChange={handleChange} required />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="startDate">{t("ch_start_date")}</label>
-          <input type="date" name="startDate" value={challengeData.startDate} onChange={handleChange} required />
-        </div>
+          <div className="form-group">
+            <label htmlFor="startDate">{t("ch_start_date")}</label>
+            <input type="date" name="startDate" value={challengeData.startDate} onChange={handleChange} required />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="endDate">{t("ch_end_date")}</label>
-          <input type="date" name="endDate" value={challengeData.endDate} onChange={handleChange} required />
-        </div>
+          <div className="form-group">
+            <label htmlFor="endDate">{t("ch_end_date")}</label>
+            <input type="date" name="endDate" value={challengeData.endDate} onChange={handleChange} required />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="type">{t("ch_type")}</label>
-          <select name="type" value={challengeData.type} onChange={handleChange}>
-            <option value="Competition">{t("ch_type_competition")}</option>
-            <option value="GroupChallenge">{t("ch_type_group")}</option>
-            <option value="PersonalGoal">{t("ch_type_personal")}</option>
-          </select>
-        </div>        
-        <div className="challenge-button-group">
-            <button type="button" onClick={handleGoBack} className="ch-button">
-                {t("ch_back")}
-            </button>
-            <button type="submit" disabled={isSubmitting} className="ch-button">
-                {isSubmitting ? t("ch_saving") : t("ch_save")}
-            </button>          
-        </div>
-      </form>
+          <div className="form-group">
+            <label htmlFor="type">{t("ch_type")}</label>
+            <select name="type" value={challengeData.type} onChange={handleChange}>
+              <option value="Competition">{t("ch_type_competition")}</option>
+              <option value="GroupChallenge">{t("ch_type_group")}</option>
+              <option value="PersonalGoal">{t("ch_type_personal")}</option>
+            </select>
+          </div>        
+          <div className="challenge-button-group">
+              <button type="button" onClick={handleGoBack} className="ch-button">
+                  {t("ch_back")}
+              </button>
+              <button type="submit" disabled={isSubmitting} className="ch-button">
+                  {isSubmitting ? t("ch_saving") : t("ch_save")}
+              </button>          
+          </div>
+        </form>
 
-        {modal.open && modal.type === "success" && (
-        <Modal onClose={() => setModal({ open: false, type: null, message: "" })}>
-            <h3 className="modal-title">{t("ch_edit_success_title")}</h3>
-            <p className="modal-message">{modal.message}</p>
-            <div className="modal-actions">
-                <button
-                    className="modal-btn confirm"
-                    onClick={() => {
-                        setModal({ open: false, type: null, message: "" });
-                        navigate(`/social/${id}`);
-                    }}
-                >
-                    {t("ok")}
-                </button>
-            </div>
-        </Modal>
-        )}
+          {modal.open && modal.type === "success" && (
+          <Modal onClose={() => setModal({ open: false, type: null, message: "" })}>
+              <h3 className="modal-title">{t("ch_edit_success_title")}</h3>
+              <p className="modal-message">{modal.message}</p>
+              <div className="modal-actions">
+                  <button
+                      className="modal-btn confirm"
+                      onClick={() => {
+                          setModal({ open: false, type: null, message: "" });
+                          navigate(`/social/${id}`);
+                      }}
+                  >
+                      {t("ok")}
+                  </button>
+              </div>
+          </Modal>
+          )}
+      </div>
     </div>
   );
 };

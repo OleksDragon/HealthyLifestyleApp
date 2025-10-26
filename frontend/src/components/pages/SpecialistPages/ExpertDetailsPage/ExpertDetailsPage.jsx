@@ -116,15 +116,15 @@ const SpecialistSocialLinks = ({ specialist }) => {
   // Map images to specialists based on their ID (fallback for static images)
   const getSpecialistImageStatic = (id) => {
     const imageMap = {
-      'Маргарита Дронова': card1Img, // Маргарита Дронова
-      'Олексій Соколенко': card4Img, // Олексій Соколенко
-      'Антоніна Смила': card5Img, // Антоніна Смила
-      'Олександр Медичний': card3Img, // Д-р Олександр Медичний
-      'Андрій Кач': card6Img, // Андрій Кач
-      'Олеся Мамкіна': card2Img, // Олеся Мамкіна
-      'Дмитро Делитанович': card6Img, // Дмитро Делитанович
+      'Маргарита Дронова': card1Img,
+      'Олексій Соколенко': card4Img,
+      'Антоніна Смила': card5Img,
+      'Олександр Медичний': card3Img,
+      'Андрій Кач': card6Img,
+      'Олеся Мамкіна': card2Img,
+      'Дмитро Делитанович': card6Img,
     };
-    return imageMap[id] || card6Img; // Use card-6.png as fallback
+    return imageMap[specialist.User?.FullName] || card6Img;
   };
 
   // Get specialist image from API or fallback to local images

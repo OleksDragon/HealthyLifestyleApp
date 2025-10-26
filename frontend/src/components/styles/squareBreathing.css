@@ -93,3 +93,114 @@
 .sb-back-button:hover {
     opacity: 0.8;
 }
+
+/* Мобільна версія для SquareBreathingPage */
+@media (max-width: 431px) {
+    .sb-square-breathing-container {
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .sb-back-button {
+        width: 70%;
+        margin-left: 0;
+        margin-bottom: 20px;
+        gap: 8px;
+    }
+
+    .sb-back-button svg {
+        width: 10px;
+        height: 20px;
+    }
+
+    .sb-square-breathing-info-block {
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .sb-breathing-exercise-container {
+        margin-top: 0;
+        border-radius: 20px;
+        padding: 15px;
+        min-height: 400px;
+        justify-content: flex-start;
+    }
+
+    .sb-timer {
+        padding: 12px 40px;
+        font-size: 18px;
+        margin: 10px 0 20px 0;
+        border-radius: 25px;
+        width: auto;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .sb-square-container {
+        height: 250px;
+        margin: 20px 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sb-square-container .lottie-animation {
+        width: 220px !important;
+        height: 220px !important;
+    }
+
+    .square-icon {
+        width: 160px;
+        height: 160px;
+    }
+
+    .sb-square-breathing-content {
+        gap: 15px;
+    }
+
+    .sb-timer.clickable {
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+
+    .sb-back-button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .sb-square-container > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .sb-square-breathing-container {
+        height: 80vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 10px;
+        margin-top: 0;
+        width: 95vw;
+    }
+
+    .sb-square-breathing-container::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .sb-square-breathing-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        margin: 10px 0;
+    }
+
+    .sb-square-breathing-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+    }
+
+    .sb-square-breathing-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+}

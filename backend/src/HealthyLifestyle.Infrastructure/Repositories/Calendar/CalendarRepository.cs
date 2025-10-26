@@ -25,6 +25,21 @@ namespace HealthyLifestyle.Infrastructure.Repositories.Calendar
                 .Where(e => (e.AuthorId == userId || e.MeetingParticipants.Any(p => p.Id == userId)) && e.StartTime >= start && e.StartTime <= end).Select(e => e).ToListAsync();
         }
 
+        public async Task<IEnumerable<CalendarEvent>> GetAllCalendarEventsToRemindAsync()
+        {
+            var now = DateTime.UtcNow;
+            var from = now;
+            var to = now.AddMinutes(1);
+
+            return await _dbContext.CalendarEvents
+                .Include(e => e.MeetingParticipants)
+                .Where(e =>
+                    e.NotificationBefore.HasValue &&
+                    e.StartTime.AddMinutes(-e.NotificationBefore.Value) >= from &&
+                    e.StartTime.AddMinutes(-e.NotificationBefore.Value) <= to)
+                .ToListAsync();
+        }
+
         public async Task<CalendarEvent> GetEventWithParticipantsAsync(Guid id)
         {
             return await _dbContext.CalendarEvents

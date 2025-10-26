@@ -39,9 +39,223 @@
     border: 0 solid transparent;
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(15px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.health-link-btn:hover {
+    background: #5d96d8;
 }
 
 .health-link-btn.active {
     background: var(--lim);
     color: var(--bl);
+}
+
+/* Мобільна версія для HealthPage */
+@media (max-width: 431px) {
+    .health-container {
+        max-width: 100%;
+        margin-top: 13px;
+        margin-left: 0;
+        padding: 0 15px;
+        position: relative;
+    }
+
+    .health-content {
+        padding: 0;
+        margin: 0;
+    }
+
+    .health-links {
+        display: none;
+    }
+
+    /* Mobile Health Header */
+    .mobile-health-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    .mobile-health-nav {
+        position: relative;
+        z-index: 100;
+    }
+
+    /* Health Burger Menu Button */
+    .health-burger-menu {
+        width: 35px;
+        height: 35px;
+        background: #76A7E3;
+        border: none;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 0 -12px 0 0;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .health-burger-menu:hover {
+        background: #5d96d8;
+        transform: scale(1.05);
+    }
+
+    .health-burger-menu.active {
+        background: var(--lim);
+    }
+
+    .health-burger-menu span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.1s ease;
+        transform-origin: center;
+    }
+
+    .health-burger-menu.active span:nth-child(1) {
+        transform: rotate(42deg) translate(4.3px, 4.3px);
+        background: var(--bl);
+    }
+
+    .health-burger-menu.active span:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    .health-burger-menu.active span:nth-child(3) {
+        transform: rotate(-42deg) translate(4.3px, -4.3px);
+        background: var(--bl);
+    }
+
+    /* Health Burger Dropdown */
+    .health-burger-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin: 10px -10px 0 0;
+        min-width: 200px;
+        z-index: 100;
+    }
+
+    .health-burger-content {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        animation: healthMenuSlideIn 0.3s ease;
+    }
+
+    @keyframes healthMenuSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .health-burger-option {
+        width: 100%;
+        padding: 12px 16px;
+        background: #76A7E3;
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(15px);
+        border: none;
+        border-radius: 20px;
+        color: var(--white);
+        font-family: var(--font-family);
+        font-size: 15px;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .health-burger-option:last-child {
+        margin-bottom: 0;
+    }
+
+    .health-burger-option:hover {
+        background: #5d96d8;
+    }
+
+    .health-burger-option.active {
+        background: var(--lim);
+        color: var(--bl);
+        font-weight: 600;
+    }
+
+    .health-option-text {
+        flex: 1;
+    }
+
+    .health-option-indicator {
+        display: none;
+    }
+
+    .health-content {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+/* Додаткові стилі для дуже маленьких екранів */
+@media (max-width: 360px) {
+    .health-burger-dropdown {
+        min-width: 180px;
+    }
+
+    .health-burger-option {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .health-burger-menu {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 431px) {
+    .health-container {
+        z-index: 100;
+    }
+    
+    .mobile-health-nav {
+        position: static;
+    }
+    
+    .health-burger-dropdown {
+        position: fixed;
+        top: 5.5%;
+        right: 25%;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .health-burger-dropdown {
+        position: fixed;
+        top: 6.5%;
+        right: 20%;
+    }
 }

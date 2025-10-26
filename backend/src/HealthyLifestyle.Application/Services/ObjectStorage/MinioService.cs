@@ -11,6 +11,7 @@ namespace HealthyLifestyle.Application.Services.ObjectStorage;
 public class MinioService : IObjectStorageService
 {
     private readonly IMinioClient _minioClient;
+    private readonly IMinioClient _publicClient;
     private readonly MinioSettings _settings;
     private readonly ILogger<MinioService> _logger;
 
@@ -23,6 +24,11 @@ public class MinioService : IObjectStorageService
             .WithEndpoint(_settings.Endpoint)
             .WithCredentials(_settings.AccessKey, _settings.SecretKey)
             .Build();
+
+        _publicClient = new MinioClient()
+        .WithEndpoint(_settings.PublicEndpoint)
+        .WithCredentials(_settings.AccessKey, _settings.SecretKey)
+        .Build();
     }
 
     public async Task<string> UploadFileAsync(Stream stream, string objectName, string contentType)
@@ -51,7 +57,8 @@ public class MinioService : IObjectStorageService
             await _minioClient.PutObjectAsync(putObjectArgs);
             _logger.LogInformation("File '{ObjectName}' uploaded successfully", objectName);
 
-            return $"{_settings.Endpoint}/{_settings.BucketName}/{objectName}";
+            //return $"{_settings.Endpoint}/{_settings.BucketName}/{objectName}";
+            return $"{_settings.PublicEndpoint}/{_settings.BucketName}/{objectName}";
         }
         catch (MinioException ex)
         {

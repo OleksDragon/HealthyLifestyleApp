@@ -302,6 +302,7 @@ const SquareBreathingPage = () => {
                                 animationData={square_breathing} 
                                 style={{ width: 280, height: 280 }}
                                 loop={true}
+                                className="lottie-animation"
                             />
                         ) : (
                             <img src={square} alt="square" className="square-icon" />

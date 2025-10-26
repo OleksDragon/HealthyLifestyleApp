@@ -24,12 +24,16 @@ services:
       - GoogleAuth__ClientSecret=${GOOGLE_CLIENT_SECRET}
       - DynamicRendering:InternalFrontendUrl=http://healthy_frontend:3000
       - MinIO__Endpoint=minio:9000
+      - MinIO__PublicEndpoint=localhost:9000   # якщо розгортаємо на сервері — https://your-domain.com:9000
       - MinIO__AccessKey=${MINIO_ACCESS_KEY}
       - MinIO__SecretKey=${MINIO_SECRET_KEY}
       - MinIO__BucketName=images
+      - Stripe__PublishableKey=${STRIPE_PUBLISHABLE_KEY}
+      - Stripe__SecretKey=${STRIPE_SECRET_KEY}
+      - WebhookSecret=whsec_9mm2ZUMIHpuspkbji0xTuuzqvYKVX5gN # змінити whsec_... пілся заміни url webhook 
     networks:
       - healthy_net
-    command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"
+    command: sh -c "until nc -z -w 1 healthy_mssql 1433; do echo 'Waiting for MSSQL to be ready...'; sleep 1; done && dotnet HealthyLifestyle.Api.dll"    
 
   minio:
     image: minio/minio:latest

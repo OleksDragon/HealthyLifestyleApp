@@ -368,3 +368,222 @@
   background: var(--lim);
   transform: translateY(-2px);
 }
+
+/* Мобільна версія для AddEmotionWizard */
+@media (max-width: 431px) {
+  .aew-emotion-wizard {
+    padding: 15px;
+    height: 630px;
+    border-radius: 25px;
+    margin: 15px 0;
+    width: 100%;
+  }
+
+  .aew-wizard-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .aew-wizard-subtitle {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .aew-wizard-description {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .aew-category-nav {
+    margin: 15px 0;
+    gap: 8px;
+  }
+
+  .aew-progress-nav-btn {
+    display: none;
+  }
+
+  .aew-progress-container {
+    width: 100%;
+    max-width: 280px;
+    height: 40px;
+    margin: 0;
+  }
+
+  .aew-progress-line {
+    left: 20px;
+    right: 20px;
+    height: 40px;
+  }
+
+  .aew-progress-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .aew-progress-dot.active {
+    width: 40px;
+    height: 40px;
+  }
+
+  .aew-progress-dot.active:first-child {
+    width: 40px;
+    height: 40px;
+  }
+
+  .aew-emotion-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin: 20px 0;
+  }
+
+  .aew-emotion-btn {
+    padding: 8px 10px;
+    font-size: 14px;
+    min-width: auto;
+    border-radius: 20px;
+    min-height: 40px;
+  }
+
+  .aew-cause-categories {
+    margin: 20px 0;
+  }
+
+  .aew-cause-category {
+    margin-bottom: 20px;
+  }
+
+  .aew-cause-category-title {
+    font-size: 14px;
+    margin: 0 0 5px 10px;
+  }
+
+  .aew-cause-grid-5-col {
+    grid-template-columns: repeat(3, minmax(70px, 1fr));
+    gap: 6px;
+  }
+
+  .aew-cause-btn {
+    padding: 6px 4px;
+    font-size: 11px;
+    min-width: 70px;
+    border-radius: 20px;
+    min-height: 35px;
+  }
+
+  .aew-step3-subtitle {
+    font-size: 14px;
+    margin: 30px 0 -5px 10px;
+  }
+
+  .aew-step3-description {
+    margin: -5px 0 30px 10px;
+    font-size: 12px;
+  }
+
+  .aew-notes-textarea-content {
+    height: 120px;
+    border-radius: 15px;
+    margin: 15px 0;
+  }
+
+  .aew-notes-textarea {
+    height: 100px;
+    padding: 8px 0 8px 15px;
+    font-size: 13px;
+  }
+
+  .aew-wizard-nav {
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+
+  .aew-nav-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    min-width: 100px;
+    min-height: 40px;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+  .aew-emotion-wizard {
+    height: 550px;
+    overflow-y: auto;
+  }
+
+  .aew-wizard-title {
+    font-size: 15px;
+  }
+
+  .aew-wizard-subtitle {
+    font-size: 17px;
+  }
+
+  .aew-progress-container {
+    max-width: 250px;
+  }
+
+  .aew-emotion-grid {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .aew-emotion-btn {
+    min-width: auto;
+    font-size: 13px;
+    padding: 7px 10px;
+    min-height: 38px;
+  }
+
+  .aew-cause-grid-5-col {
+    grid-template-columns: repeat(2, minmax(65px, 1fr));
+  }
+
+  .aew-cause-btn {
+    min-width: 65px;
+    font-size: 10px;
+    padding: 5px 4px;
+    min-height: 32px;
+  }
+
+  .aew-notes-textarea-content {
+    height: 110px;
+  }
+
+  .aew-notes-textarea {
+    height: 90px;
+  }
+
+  .aew-nav-btn {
+    padding: 7px 16px;
+    min-width: 90px;
+    font-size: 13px;
+    min-height: 38px;
+  }
+
+  .aew-emotion-wizard::-webkit-scrollbar {
+    width: 4px;
+    margin: 100px 0;
+  }
+
+  .aew-emotion-wizard::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 2px;
+  }
+
+  .aew-emotion-wizard::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+
+  .aew-emotion-wizard::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .aew-emotion-wizard {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  }
+}

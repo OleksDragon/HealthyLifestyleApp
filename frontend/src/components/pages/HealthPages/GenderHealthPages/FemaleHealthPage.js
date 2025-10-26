@@ -9,7 +9,7 @@ const FemaleHealthPage = () => {
     const location = useLocation();
     
     return (
-        <div className="female-health-container scroll-data">
+        <div className="female-health-container scroll-data hidden-scroll">
             <div className="female-health-info">
                 <div className="title">{t("female_health")}</div>
                 <div className="sub-title">{t("female_health_fine")}</div>

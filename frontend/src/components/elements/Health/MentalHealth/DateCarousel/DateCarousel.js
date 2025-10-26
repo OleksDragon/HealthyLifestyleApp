@@ -7,12 +7,30 @@ const DateCarousel = ({ selectedDate, onDateSelect }) => {
   const today = new Date();
   const currentDay = today.getDate();
   const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
-  const visibleDaysCount = 10;
+  
+  const getVisibleDaysCount = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth <= 431) {
+        return 6;
+      }
+    }
+    return 10;
+  };
 
+  const [visibleDaysCount, setVisibleDaysCount] = useState(getVisibleDaysCount());
   const [startIndex, setStartIndex] = useState(0);
   const carouselRef = useRef(null);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleDaysCount(getVisibleDaysCount());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const calculateStartIndex = () => {
@@ -33,32 +51,26 @@ const DateCarousel = ({ selectedDate, onDateSelect }) => {
     if (startIndex < daysInMonth - visibleDaysCount) setStartIndex(startIndex + 1);
   };
 
-  // Обробка початку дотику
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
 
-  // Обробка руху пальцем
   const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
-  // Обробка завершення дотику
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     
     const distance = touchStart - touchEnd;
-    const minSwipeDistance = 50; // Мінімальна дистанція для swipe
+    const minSwipeDistance = 50;
     
     if (distance > minSwipeDistance) {
-      // Swipe вліво - наступні дні
       handleNext();
     } else if (distance < -minSwipeDistance) {
-      // Swipe вправо - попередні дні
       handlePrev();
     }
     
-    // Скидання значень
     setTouchStart(0);
     setTouchEnd(0);
   };

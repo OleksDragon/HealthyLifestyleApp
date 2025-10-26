@@ -74,7 +74,7 @@ const CustomBirthdateDatePicker = ({ selected, onChange, placeholder, className 
   const [isOpen, setIsOpen] = useState(false);
   const [displayDate, setDisplayDate] = useState(() => (selected instanceof Date ? selected : new Date()));
   const { t } = useTranslation();
-  const minAge = 16;
+  const minAge = 18;
 
   const months = [
     t("p_january"), t("p_february"), t("p_march"), t("p_april"), t("p_may"), t("p_june"),
@@ -94,7 +94,7 @@ const CustomBirthdateDatePicker = ({ selected, onChange, placeholder, className 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: currentYear - 1900 + 1 }, (_, i) => currentYear - i);
   const monthsOptions = months.map((m, idx) => ({ value: idx, label: m }));
-
+  
   useEffect(() => {
     if (selected instanceof Date) {
       if (!displayDate || selected.getTime() !== displayDate.getTime()) {
@@ -194,6 +194,10 @@ const CustomBirthdateDatePicker = ({ selected, onChange, placeholder, className 
         onClickOutside={() => setIsOpen(false)}
         dateFormat="dd MM yyyy"
         placeholderText={placeholder}
+        popperClassName="custom-datepicker-popper"
+        popperProps={{
+          positionFixed: true
+        }}
         renderCustomHeader={() => (
           <div className="custom-header">
             <div className="year-month-selectors">

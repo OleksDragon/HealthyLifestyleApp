@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import axios from "axios";
 import "../styles/profile.css";
 import ProfileIcon from "../../assets/profile-icons/ProfileIcon.svg";
+import ArrowLeft from "../../assets/profile-icons/ArrowLeft.svg"
 import CustomSelect from "../elements/Profile/custom-profile-data-select/CustomSelect";
 import CustomDatePicker from "../elements/Profile/custom-birthdate-date-picker/CustomBirthdateDatePicker";
 import DataCard from "../elements/Profile/data-card/DataCard";
@@ -65,6 +66,35 @@ const UserProfile = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [originalFormData, setOriginalFormData] = useState(initialFormData);
 
+  // Функція для перевірки заповненості всіх полів профілю
+  const isProfileComplete = useCallback(() => {
+    const requiredFields = [
+      'firstName',
+      'lastName', 
+      'gender',
+      'birthDate',
+      'height',
+      'weight',
+      'country',
+      'city',
+      'street',
+      'phoneCode',
+      'phoneNumber',
+      'about'
+    ];
+
+    // Перевіряємо, чи всі обов'язкові поля заповнені
+    const allFieldsFilled = requiredFields.every(field => {
+      const value = formData[field];
+      return value !== null && value !== undefined && value !== '';
+    });
+
+    // Додатково перевіряємо наявність аватара (або файл, або URL)
+    const hasAvatar = avatarFile || formData.avatarUrl;
+
+    return allFieldsFilled && hasAvatar;
+  }, [formData, avatarFile]);
+
   // Отримання токена
   const getToken = () => {
     return localStorage.getItem("helth-token");
@@ -118,13 +148,7 @@ const UserProfile = () => {
 
       const userData = response.data;
       
-      // ✅ ВИПРАВЛЕННЯ: Корекція URL аватара
       let avatarUrl = userData.ProfilePictureUrl || '';
-      if (avatarUrl && !avatarUrl.startsWith('http')) {
-        // Додаємо протокол, якщо відсутній
-        avatarUrl = `/${avatarUrl}`;
-      }
-
 
       // Розбиваємо FullName на firstName та lastName
       const nameParts = userData.FullName?.split(' ') || [];
@@ -177,7 +201,6 @@ const UserProfile = () => {
       if (avatarUrl) {
         setAvatarPreview(avatarUrl);
       }
-
 
     } catch (error) {
       console.error("Помилка при завантаженні профілю:", error);
@@ -316,7 +339,6 @@ const loadCities = useCallback(async (countryName) => {
     setLoadingStreets(false);
   }
 }, [COUNTRY_CODES]);
-
 
   // Реакція на зміну мови
   useEffect(() => {
@@ -722,6 +744,7 @@ const handleCountryChange = async (value) => {
     } else {
       setShowSpecialistModal(false);
     }
+    setIsSpecialistProfile(checked);
   };
 
   // Обробники для кнопок спеціалістів
@@ -768,6 +791,17 @@ const handleCountryChange = async (value) => {
 
   return (
     <div className="user-profile-wrapper">
+
+      {/* Мобільний заголовок зі стрілкою назад */}
+      <div className="mobile-profile-header">
+        <button 
+          className="mobile-back-button"
+          onClick={() => window.location.href = '/dashboard'}
+        >
+          <img src={ArrowLeft} alt="Back" className="mobile-back-arrow" />
+        </button>
+        <h1 className="mobile-profile-title">{t("profile")}</h1>
+      </div>
 
       {/* Затемнення при відкритті модального вікна */}
       {showSpecialistModal && (

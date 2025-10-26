@@ -72,3 +72,110 @@
     top: 52%;
     transform: translateY(-50%);
 }
+
+/* Мобільна версія для InfoBlockWithAnimation */
+@media (max-width: 431px) {
+    .bp-animation-container-transparent {
+        margin-top: 0;
+        height: auto;
+        min-height: 150px;
+        margin-bottom: 20px;
+    }
+
+    .bp-info-block-with-animation {
+        padding: 20px 15px;
+        border-radius: 25px;
+    }
+
+    .bp-info-block-content {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .bp-info-block-text {
+        flex: 1;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        min-width: 0;
+    }
+
+    .bp-info-block-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    .bp-info-block-subtitle {
+        font-size: 13px;
+        text-align: left;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .bp-info-block-descriptions {
+        gap: 4px;
+    }
+
+    .bp-info-block-description {
+        font-size: 11px;
+        line-height: 1.3;
+        text-align: left;
+        margin: 0;
+    }
+
+    .bp-info-block-animation {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: auto;
+        margin-top: 0;
+        flex-shrink: 0;
+    }
+
+    .bp-animation-element {
+        width: 140px !important;
+        height: 140px !important;
+        min-width: 120px;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+    .bp-info-block-with-animation {
+        padding: 20px 15px; /* Зменшити паддінг */
+    }
+    
+    .bp-info-block-content {
+        gap: 10px; /* Зменшити проміжок між текстом і анімацією */
+    }
+    
+    .bp-info-block-text {
+        flex: 1;
+        min-width: 0; /* Дозволити тексту стискатися */
+    }
+    
+    .bp-info-block-title {
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+    
+    .bp-info-block-subtitle {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    
+    .bp-info-block-description {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+    
+    .bp-animation-element {
+        width: 110px !important;
+        height: 110px !important;
+    }
+}

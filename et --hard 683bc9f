@@ -1,0 +1,12 @@
+[33m3783078[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/nutrion-branch[m[33m, [m[1;31morigin/feature/nutrion-branch[m[33m)[m HEAD@{0}: commit (merge): Resolve merge conflicts with master
+[33m683bc9f[m HEAD@{1}: commit: Added weight analytics widget, weight recording, translation of all pages
+[33m830239d[m HEAD@{2}: commit: The functionality of the Nutrition Tracker and Diet pages has been implemented. The ability to add, edit, and delete a recipe, etc. has been added.
+[33m97024f6[m HEAD@{3}: checkout: moving from feature/nutrion-branch to feature/nutrion-branch
+[33m97024f6[m HEAD@{4}: pull --rebase origin feature/nutrion-branch (finish): returning to refs/heads/feature/nutrion-branch
+[33m97024f6[m HEAD@{5}: pull --rebase origin feature/nutrion-branch (pick): Adds a recipe module with full CRUD functionality
+[33m64a6f41[m HEAD@{6}: pull --rebase origin feature/nutrion-branch (start): checkout 64a6f4185bbc0073114c2018b4805dbb584ddb50
+[33med5ec4e[m HEAD@{7}: commit: Adds a recipe module with full CRUD functionality
+[33m4f026f8[m HEAD@{8}: commit: Додано функціонал харчування на фронтенді: компоненти, стилі
+[33me5449de[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{9}: checkout: moving from master to feature/nutrion-branch
+[33me5449de[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{10}: commit: Fix: Added missing commas in i18n.js to resolve SyntaxError
+[33m5c206b1[m HEAD@{11}: clone: from https://github.com/OleksDragon/HealthyLifestyleApp.git

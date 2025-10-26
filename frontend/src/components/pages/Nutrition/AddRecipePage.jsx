@@ -149,7 +149,7 @@ const AddRecipePage = () => {
         submitData.append(`Steps[${index}]`, step);
       });
 
-      await axios.post("http://localhost:5000/api/recipes", submitData, {
+      await axios.post(process.env.REACT_APP_API_URL + "/api/recipes", submitData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

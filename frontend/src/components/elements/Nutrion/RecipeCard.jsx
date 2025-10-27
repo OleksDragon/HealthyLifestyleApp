@@ -44,8 +44,8 @@ const RecipeCard = ({ recipe, onRecipeClick }) => {
             </div>
 
             <div className="recipe-image-wrapper">
-                {recipe.ImageUrl && recipe.ImageUrl.startsWith('http') ? (
-                    <img src={recipe.ImageUrl} alt={recipeName} className="recipe-image" />
+                {recipe.ImageUrl  ? (
+                    <img src={"http://" + recipe.ImageUrl} alt={recipeName} className="recipe-image" />
                 ) : (
                     <div className="recipe-image-placeholder">
                          <span style={{color: 'rgba(255, 255, 255, 0.6)', zIndex: 6}}>

@@ -12,8 +12,8 @@ const WeightChartWidget = ({ className = "", userId, refreshTrigger }) => {
     
     const [chartMode, setChartMode] = useState('month'); 
     
-    const targetWeight = 96; 
-    const startWeight = 100.5;
+    const targetWeight = 95; 
+    const startWeight = 120.5;
 
     const fetchWeightData = useCallback(async () => {
         if (!userId) {

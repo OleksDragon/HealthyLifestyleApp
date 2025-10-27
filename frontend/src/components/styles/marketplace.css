@@ -587,10 +587,12 @@ input:focus {
         height: 86vh;
         overflow: auto;
         margin: 20px 10px;
+        padding-bottom: 30px;
     }
 
     .cart-container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
     }
 
     .products-in-cart img {
@@ -600,6 +602,8 @@ input:focus {
 
     .marketplace-cart-list {
         margin-bottom: 20px;
+        max-height: 380px !important;
+        height: auto !important;
     }
 
     .marketplace-total-total {

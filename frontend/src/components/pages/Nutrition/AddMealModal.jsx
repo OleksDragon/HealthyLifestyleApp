@@ -48,11 +48,13 @@ const AddMealModal = ({ onClose, onMealAdded, selectedDate, userId: propUserId }
       return imageUrl;
     }
     
-    if (imageUrl.startsWith('/')) {
-      return `${API_URL}${imageUrl}`;
-    }
+    // if (imageUrl.startsWith('/')) {
+    //   return `${API_URL}${imageUrl}`;
+    // }
+
+    return `http://${imageUrl}`;
     
-    return `${API_URL}/images/recipes/${imageUrl}`;
+    // return `${API_URL}/images/recipes/${imageUrl}`;
   };
 
   const getRecipeDescription = (recipe) => {

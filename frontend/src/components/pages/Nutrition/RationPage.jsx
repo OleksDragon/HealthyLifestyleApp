@@ -359,7 +359,7 @@ const RationPage = () => {
                                             Protein: meal.proteinsG,
                                             Fat: meal.fatsG,
                                             Carbs: meal.carbsG,
-                                            ImageUrl: meal.imageUrl,
+                                            ImageUrl: `http://${meal.imageUrl}`,
                                         }} 
                                     />
                                 ))

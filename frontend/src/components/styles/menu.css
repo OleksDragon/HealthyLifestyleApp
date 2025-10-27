@@ -319,7 +319,7 @@
     .mobile-menu-panel {
         width: 85%;
         max-width: 220px;
-        height: 100vh;
+        height: 95vh;
         min-height: 500px;
         background-color: rgba(6, 97, 204, 0.6);
         backdrop-filter: blur(20px);
@@ -416,6 +416,6 @@
 
 @media (min-width: 350px) and (max-width: 390px) {
     .mobile-menu-panel {
-        height: 100vh;
+        height: 95vh;
     }
 }

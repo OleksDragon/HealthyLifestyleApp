@@ -71,6 +71,18 @@ const RecipeDetailsPage = () => {
     }, 5000);
   };
 
+  const getRecipeImageUrl = (recipe) => {
+    const imageUrl = recipe.imageUrl || recipe.ImageUrl;
+    
+    if (!imageUrl) return null;
+    
+    if (imageUrl.startsWith('http')) {
+      return imageUrl;
+    }
+    
+    return `http://${imageUrl}`;
+  };
+
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
@@ -164,7 +176,13 @@ const RecipeDetailsPage = () => {
 
           <div className="main-media-column">
             <div className="main-image-card">
-              <img src={recipe.imageUrl} alt={recipe.name} className="recipe-main-image-v2" />
+              <img 
+                src={getRecipeImageUrl(recipe)} 
+                alt={recipe.name} 
+                className="recipe-main-image-v2"
+                onError={(e) => {
+                  e.target.style.display = 'none';}}
+              />
             </div>
 
             <div className="recipe-steps-card">

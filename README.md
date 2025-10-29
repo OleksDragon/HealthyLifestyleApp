@@ -39,34 +39,30 @@ cd HealthyLifestyle
 
 Скопируйте следующее содержимое в ваш файл .env:
 
-SA_PASSWORD=118MtdRtra8LbzVSC
+SA_PASSWORD=your password 
 
-MSSQL_DB=HealthyLifestyleDb
+MSSQL_DB= your Db
 
-MSSQL_USER=sa
+MSSQL_USER=your USER
 
-MSSQL_PORT=1433
+MSSQL_PORT=your port
 
-JWT_KEY=72O3^G4BUrXY$T:LM*7Asdhtp^vpCt>l1CDK4DMua1<+SaUC4viz\04:HnLkLGSh
+JWT_KEY=your key
 
-JWT_ISSUER=HealthyLifestyleApi
+JWT_ISSUER=your ISSUER
 
-JWT_AUDIENCE=HealthyLifestyleClients
+JWT_AUDIENCE=your AUDIENCE
 
-REACT_APP_API_URL=http://localhost:5000
+REACT_APP_API_URL=your URL
 
-GOOGLE_CLIENT_ID=596782705647-sa9h8d11i8grjh3jukglih9c9hnsp3co.apps.googleusercontent.com
+GOOGLE_CLIENT_ID=your id
 
-GOOGLE_CLIENT_SECRET=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
-MINIO_ACCESS_KEY=VoKSFVKFGlQRLeBJFzNHTJwy
-MINIO_SECRET_KEY=YRs3EsL7BtDHGaIxlBVsBTxGm3rX9m1
-
-MINIO_ACCESS_KEY=VoKSFVKFGlQRLeBJFzNHTJwy
-
-MINIO_SECRET_KEY=YRs3EsL7BtDHGaIxlBVsBTxGm3rX9m1
-STRIPE_PUBLISHABLE_KEY=pk_test_51SJGFYAJhBPBHq3pynSlySBplu7u37A4bPEOZRdq5YjeqZhcyT9FEUhGrwof7EgLUtC6tNlZA0fGBh7W6GLMmWiF00VrnHD8WD
-STRIPE_SECRET_KEY=sk_test_51SJGFYAJhBPBHq3phOEuBBLJl7L4ee6mkmOJtuV4YD7Inzg4r2MGAPLY5nwdwhjjz8oCylBrm0N2MuplDcOBSzhN00B8JWBvqY
-WEBHOOK_SECRET=whsec_9mm2ZUMIHpuspkbji0xTuuzqvYKVX5gN # змінити whsec_... пілся заміни url webhook
+GOOGLE_CLIENT_SECRET=your secret
+MINIO_ACCESS_KEY=your ACCESS_KEY
+MINIO_SECRET_KEY=your SECRET_KEY
+STRIPE_PUBLISHABLE_KEY= your PUBLISHABLE_KEY
+STRIPE_SECRET_KEY=your SECRET_KEY
+WEBHOOK_SECRET=your WEBHOOK_SECRET
 
 Важно: Для продакшн-среды нужно использовать более надежные и безопасные методы управления секретами.
 
@@ -113,11 +109,11 @@ healthy_backend | Application started. Press Ctrl+C to shut down.
 
 Тип аутентификации (Authentication): SQL Server Authentication
 
-Имя пользователя (Login): sa
+Имя пользователя (Login): your login
 
-Пароль (Password): SUe3qjEm4c7fEYrqd (из вашего .env файла)
+Пароль (Password): your password (из вашего .env файла)
 
-Имя базы данных (Database Name): HealthyLifestyleDb (из вашего .env файла)
+Имя базы данных (Database Name): your Database Name (из вашего .env файла)
 
 Пример подключения (для SSMS/Azure Data Studio):
 
@@ -127,11 +123,11 @@ healthy_backend | Application started. Press Ctrl+C to shut down.
 
 Выберите "SQL Server Authentication" в качестве типа аутентификации.
 
-Введите sa в поле "Login" и 118MtdRtra8LbzVSC в поле "Password".
+Введите "your login" в поле "Login" и "your password" в поле "Password".
 
 Нажмите "Connect".
 
-После успешного подключения вы сможете просматривать схемы, таблицы и данные вашей базы данных HealthyLifestyleDb.
+После успешного подключения вы сможете просматривать схемы, таблицы и данные вашей базы данных.
 
 6. Остановка приложения
    Чтобы остановить все запущенные Docker-контейнеры и удалить их (но сохранить тома с данными базы данных):
